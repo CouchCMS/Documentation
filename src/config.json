@@ -1,0 +1,7 @@
+{
+    "baseUrl": "./",
+    "output": "./../",
+    "plugins": [
+        "wintersmith-nunjucks"
+    ]
+}

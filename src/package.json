@@ -1,0 +1,8 @@
+{
+    "name": "couchcms.documentation",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "wintersmith-nunjucks": "0.5.1"
+    }
+}
