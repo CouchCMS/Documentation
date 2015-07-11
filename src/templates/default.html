@@ -1,0 +1,127 @@
+{%- if page.metadata.absoluteLinks -%}
+    {%- set base = '/' -%}
+{%- else -%}
+    {%- set base = './' -%}
+{%- endif -%}
+
+{%- if page.metadata.category -%}
+    {%- set base = '../' -%}
+
+    {%- if page.metadata.category == 'concept' -%}
+        {%- set categoryTitle = 'Core Concepts' -%}
+        {%- set categoryLink = 'concepts.html' -%}
+    {%- elif page.metadata.category == 'tag' -%}
+        {%- set categoryTitle = 'Tags Reference' -%}
+        {%- set categoryLink = 'tags-reference.html' -%}
+    {%- elif page.metadata.category == 'tutorial' -%}
+        {%- set categoryTitle = 'Tutorials' -%}
+        {%- set categoryLink = 'tutorials.html' -%}
+    {%- elif page.metadata.category == 'miscellaneous' -%}
+        {%- set categoryTitle = 'Miscellaneous' -%}
+        {%- set categoryLink = 'miscellaneous.html' -%}
+    {%- endif -%}
+
+    {%- if page.metadata.subCategory -%}
+        {%- set base = '../../' -%}
+
+        {%- if page.metadata.subCategory == 'editable' -%}
+            {%- set subCategoryTitle = 'editable' -%}
+            {%- set subCategoryLink = 'editable.html' -%}
+        {%- elif page.metadata.subCategory == 'portfolio-site' -%}
+            {%- set subCategoryTitle = 'Sample Portfolio Site' -%}
+            {%- set subCategoryLink = 'portfolio-site.html' -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
+
+
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>{% if page.title != 'Untitled' %}{{page.title|escape}} - {% endif %}Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="{{base}}assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="{{base}}favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="{{base}}assets/js/IE9.js"></script><![endif]-->
+    <script src="{{base}}assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="{{base}}assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://www.couchcms.com/docs/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="{{page.title|escape}}" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="{{base}}assets/img/bug.png"/></a>
+
+        <div id="content">
+            {%- if page.title != 'Untitled' -%}
+                {%- set position = 1 -%}
+
+                <ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{base}}index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="{{position}}" itemprop="position"/></a></li>
+
+                    {%- set position = position + 1 -%}
+
+                    {%- if page.metadata.category -%}
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{base}}{{categoryLink}}" itemprop="item"><span itemprop="name">{{categoryTitle}}</span><meta content="{{position}}" itemprop="position"/></a></li>
+
+                        {%- set position = position + 1 -%}
+
+                        {%- if page.metadata.subCategory -%}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../{{subCategoryLink}}" itemprop="item"><span itemprop="name">{{subCategoryTitle}}</span><meta content="{{position}}" itemprop="position"/></a></li>
+
+                            {%- set position = position + 1 -%}
+                        {%- endif -%}
+                    {%- endif -%}
+
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="{{base}}{{page.url}}" itemprop="item"><span itemprop="name">{{page.title|escape}}</span><meta content="{{position}}" itemprop="position"/></a></li>
+                </ul>
+            {%- endif -%}
+
+            <form action="{{base}}search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article>{{page.html}}</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="{{base}}assets/js/jquery.min.js"></script>
+    <script src="{{base}}assets/js/main.js"></script>
+    <script src="{{base}}assets/js/ga.js"></script>
+</body>
+</html>
