@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Listing Pages - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Listing Pages" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/listing-pages.html" itemprop="item"><span itemprop="name">Listing Pages</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="listing-pages">Listing Pages</h1>
+<p>Couch has a powerful tag named <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> that can be used to list all pages belonging to a template.<br/>
+For example -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39;&gt;
+     &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
+     &lt;cms:show k_page_title /&gt;&lt;br&gt;
+&lt;/cms:pages&gt;
+</code></pre><p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.<br/>
+The <em>masterpage</em> parameter stands for the template&#39;s name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.</p>
+<p>This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its page-view).</p>
+<p><a href="../tags-reference/pages.html"><em><strong>Pages</strong></em></a> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
+Please see the <a href="../tags-reference/pages.html#parameters"><strong>parameters</strong></a> section for a comprehensive list.</p>
+<h3 id="listing-pages-in-the-list-views-home-view-folder-view-and-archive-view-">LISTING PAGES IN THE LIST-VIEWS (HOME-VIEW, FOLDER-VIEW AND ARCHIVE-VIEW)</h3>
+<p>As shown in the previous chapter, for clonable templates, Couch considers certain URLS as those meant for listing pages cloned out of the template being accessed.</p>
+<p>For example:<br/>
+<em>http&#58;//www.mysite.com/blog/</em><br/>
+- is considered to be a <strong>home-view</strong> and a list to all the pages cloned out of <em>blog.php</em> should be displayed in this view.</p>
+<p><em>http&#58;//www.mysite.com/blog/hobbies/</em><br/>
+- is considered to be a <strong>folder-view</strong> and a list of all the pages cloned out of <em>blog.php</em> that belong to &#39;hobbies&#39; sub-folder should be displayed in this view.</p>
+<p><em>http&#58;//www.mysite.com/blog/2010/05/</em><br/>
+- is considered to be an <strong>archive-view</strong> and a list of all the pages cloned out of <em>blog.php</em> that have been published during the month of May in 2010 should be displayed in this view.</p>
+<p>When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.<br/>
+See: <a href="variables-in-views.html"><strong>Variables available in views</strong></a>.<br/>
+It is ultimately upto you whether or not you choose to list pages in the expected manner.</p>
+<h3 id="handling-home-view">Handling home-view</h3>
+<p>The <em>k_is_home</em> variable can be used to recognize this view and then the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag can be used to list all pages cloned from the template being accessed.</p>
+<pre><code>&lt;cms:if k_is_home &gt;
+    &lt;cms:pages&gt;
+        &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
+    &lt;/cms:pages&gt;
+&lt;/cms:if&gt;
+</code></pre><h3 id="handling-folder-view">Handling folder-view</h3>
+<p>The <em>k_is_folder</em> variable can be used to recognize this view. The <em>k_folder_name</em> variable made available by Couch in this view can then be used as a parameter of the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag to list pages belonging to that folder -</p>
+<pre><code>&lt;cms:if k_is_folder &gt;
+    &lt;cms:pages folder=k_folder_name include_subfolders=&#39;1&#39; &gt;
+        &lt;!-- All the variables of each page in this folder are available here --&gt;
+    &lt;/cms:pages&gt;
+&lt;/cms:if&gt;
+</code></pre><h3 id="handling-archive-view">Handling archive-view</h3>
+<p>The <em>k_is_archive</em> can be used to recognize this view. In this view, Couch makes available the <em>k_archive_date</em> and <em>k_next_archive_date</em> variables that denote the boundries of the archive&#39;s period. These two variables can then be used as parameters of the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag to list pages belonging to that time period -</p>
+<pre><code>&lt;cms:if k_is_archive &gt;
+    &lt;cms:pages start_on=k_archive_date stop_before=k_next_archive_date &gt;
+        &lt;!-- All the variables of each page belonging to this archive period are available here --&gt;
+    &lt;/cms:pages&gt;
+&lt;/cms:if&gt;
+</code></pre><h3 id="a-unified-way-of-handling-all-the-listviews">A unified way of handling all the listviews</h3>
+<p>The three list views can be handled separately if the way the pages and their contents are displayed differs between the views. However, if their is no difference in the way the list is displayed, the following is the preferred way of handling all the three list-views together -</p>
+<pre><code>&lt;cms:if k_is_list &gt;
+    &lt;cms:pages folder=k_folder_name include_subfolders=&#39;1&#39; start_on=k_archive_date stop_before=k_next_archive_date &gt;
+        &lt;!-- All the variables of each page belonging to this view are available here --&gt;
+    &lt;/cms:pages&gt;
+&lt;/cms:if&gt;
+</code></pre><p class="success">The snippet given above can handle all the list-views because if the current view is a <em>home-view</em>, the <em>k_folder_name</em>, <em>k_archive_date</em> and <em>k_next_archive_date</em> will not be set and hence these parameters will have no effect on the pages fetched. Similarly in the <em>folder-view</em> the <em>k_archive_date</em> and <em>k_next_archive_date</em> will not be set and in the archive-view the <em>k_folder_name</em> will not be set.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

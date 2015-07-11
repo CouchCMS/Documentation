@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>entries - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="entries" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/entries.html" itemprop="item"><span itemprop="name">entries</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="entries">entries</h1>
+<p>The <strong>entries</strong> tag is a special tag that works only within the <strong>calendar</strong> tag - specifically within the <strong>days</strong> tag present within the <strong>calendar</strong> tag.</p>
+<p>This tag enumerates all the pages published on the day being enumerated by the <strong>days</strong> tag. The pages will belong to the template specified by the <em>masterpage</em> parameter of the calendar tag.</p>
+<p>Please see <a href="../concepts/events-calendar.html"><strong>Core Concepts - Events Calendar</strong></a> for a working example of this tag in action.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>limit</li>
+<li>skip_custom_fields</li>
+</ul>
+<h3 id="limit">limit</h3>
+<p>This parameter limits the number of pages that this tag enumerates.</p>
+<h3 id="skip_custom_fields">skip_custom_fields</h3>
+<p>As it enumerates the fetched pages, by default this tag makes available all the variables associated with every page - this includes the editable regions too.<br/>
+If you simply require to display the names and links of the pages, the values contained within the editable regions of the pages can be skipped from being fetched by setting this parameter. This will result in a performance boost.</p>
+<h2 id="variables">Variables</h2>
+<p>As this tag iterates through the pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a <em>page-view</em> (see <a href="../concepts/variables-in-views.html"><strong>Variables available in Views</strong></a>).</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="calendar.html">calendar</a></li>
+<li><a href="weeks.html">weeks</a></li>
+<li><a href="days.html">days</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

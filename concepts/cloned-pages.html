@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Cloned Pages - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Cloned Pages" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/cloned-pages.html" itemprop="item"><span itemprop="name">Cloned Pages</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="cloned-pages">Cloned Pages</h1>
+<p>Some templates represent one single page of a website, e.g. <em>about-us.php</em> and <em>contact-us.php</em>.<br/>
+To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tags and Couch will make them editable.</p>
+<p>Some other templates, e.g. <em>blog.php</em> or <em>property.php</em>, cannot possibly represent one single page.<br/>
+A website will have several blog pages, each page representing a single blog entry. Similarly, there will be several property pages where each page would stand for a single property.</p>
+<p>We&#39;ll take the example of <em>blog.php</em> to illustrate the point we are trying to make.<br/>
+Suppose we created three editable regions, named <em>my_blog_text</em>, <em>my_blog_image</em> and <em>my_blog_author</em>, within <em>blog.php</em> template.<br/>
+The user edits the contents within these areas and after saving his changes visits the template in his browser -<br/>
+<em>http&#58;//www.yoursite.com/blog.php</em></p>
+<p>As expected, the changes he made should be visible on this page. But this is one single page.<br/>
+Any number of times he edits the contents of this template in the admin panel, it is only this page that will reflect the changes.<br/>
+How can he create a second blog page that is identical to this page in all respects, has the same editable regions and allows him to update its content independent of the first page?</p>
+<p>Couch&#39;s answer is to &#39;clone&#39; the new page out of the original <em>blog.php</em> template.</p>
+<h3 id="clonable-template-for-cloned-pages">CLONABLE TEMPLATE FOR CLONED PAGES</h3>
+<p>To create cloned pages out of a template, the template first needs to be marked as being <em>clonable</em>.</p>
+<p>A template can be marked as being clonable by using the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag somewhere within it and setting its <em>clonable</em> parameter to &#39;1&#39;.<br/>
+Place the following snippet somewhere at the begining of the template (within the HEAD tag will do just fine) -</p>
+<pre><code>&lt;cms:template clonable=&#39;1&#39; &gt; &lt;/cms:template&gt;
+</code></pre><p>As always, persist your changes by visiting <em>blog.php</em> in your browser (needless to repeat that you must be logged on as super-admin).</p>
+<p>Now when you visit the admin panel, you&#39;ll notice that Couch has added a new page below <em>blog.php</em> -<br/>
+&#39;Default page for blog.php * PLEASE CHANGE THIS TITLE *&#39;.</p>
+<p>Importantly note that Couch no longer allows you to edit <em>blog.php</em> directly. What is going on? And what is this new page? We did not ask to create a new page, did we?</p>
+<p>To find out, click the newly created page to edit it.<br/>
+You&#39;ll find that <strong>ALL</strong> the data that was inputted in the <em>blog.php</em> template when it was not declared clonable, has been moved into this new page.<br/>
+The same three editable regions are present but in addition to them a few new fields have been added - namely the <em>Title</em> and <em>Name</em> field.</p>
+<h3 id="clonable-the-schizophrenic-template">CLONABLE - THE SCHIZOPHRENIC TEMPLATE</h3>
+<p>There is a very important concept of Couch that we need to understand here so please pay attention to the following discussion -</p>
+<p>Let us change the title of the newly created page to &#39;My First Page&#39; and its name to &#39;my-first-page&#39;.<br/>
+Scroll to the bottom of the page and you&#39;ll find the &#39;View&#39; button adjacent to the &#39;Save&#39; button.<br/>
+Clicking it will bring up the new page in the browser. It should be IDENTICAL to what we used to see on visiting blog.php before it became clonable.<br/>
+Take a look at the URL displayed in the address-bar of the browser. It should be something like -<br/>
+<em>http&#58;//www.yoursite.com/blog.php?p=12</em><br/>
+Notice the addition of the &#39;?p=&#39; followed by a number after blog.php.</p>
+<p>Let us now add a new cloned page.<br/>
+Going back to the dashboard, create a new page from <em>blog.php</em> and we&#39;ll be shown the same three editable regions (along with the <em>Name</em> and <em>Title</em> fields).<br/>
+Edit and place new contents within all regions. Name this page as &#39;My Second Page&#39; and save it.<br/>
+Click &#39;View&#39; to visit this page. You should see a new page with the data we entered into it. The URL should be something like -<br/>
+<em>http&#58;//www.yoursite.com/blog.php?p=13</em><br/>
+Notice how the number after &#39;?p=&#39; is different from the first page.</p>
+<p>So now we have two blog pages. One was created by default and contained the data that was originally placed within the not-yet-clonable blog.php while the second page was created by us.</p>
+<p>Finally, visit one more time the blog.php page as we used to do before making it clonable -<br/>
+<em>http&#58;//www.yoursite.com/blog.php</em><br/>
+Notice that just as before we are not suffixing blog.php with anything at all.</p>
+<p>You might be surprised to see that all the data that we had previously placed into the editable regions of blog.php is GONE. The HTML elements of the template are all there but the updatable regions are all empty.</p>
+<p>And this brings us to the important concept we mentioned above.<br/>
+When a template is non-clonable (the default), it represents one single page of the website and so all the data that is entered in its editable regions belongs to it.<br/>
+Thus a non-clonable template like <em>about-us.php</em>, when visited like this -<br/>
+<em>http&#58;//www.yoursite.com/about-us.php</em><br/>
+- is unequivocally one single page.</p>
+<p>In contrast, as in the case with <em>blog.php</em> above, once a template is declared clonable, it can now represent one to any number of pages that might be cloned out of it. Thus<br/>
+<em>http&#58;//www.yoursite.com/blog.php?p=12</em> is one page while<br/>
+<em>http&#58;//www.yoursite.com/blog.php?p=13</em> is a totally different page.</p>
+<p class="success">
+    It becomes even more distinct when we use pretty urls (see).<br/>
+    Then the URLs for the above two pages will become -<br/>
+    <em>http&#58;//www.yoursite.com/blog/my-first-page.html</em><br/>
+    <em>http&#58;//www.yoursite.com/blog/my-second-page.html</em>
+</p>
+
+<p>Notice how in each of the instances above, the template is the same (<em>blog.php</em>) but the page is different.<br/>
+However when <em>blog.php</em> is accessed in the following manner -<br/>
+<em>http&#58;//www.yoursite.com/blog.php</em><br/>
+- <em>blog.php</em> is not representing any page (there is no &#39;?=p&#39; present). It is, well, simply itself.<br/>
+And this is the point that we were trying to make -</p>
+<p class="error"><strong>V.IMP</strong> - A clonable template acquires a split personality - it can represent a cloned page or it can be simply itself.</p>
+
+<p>Once a template becomes clonable it has NO DATA OF ITS OWN. Whatever data was associated to it, before being clonable, is moved into a new first page that gets created automatically.<br/>
+This should explain the page that appeared out of nowhere and why it is identical to the not cloned blog.php of yore.</p>
+<h3 id="introducing-the-views">INTRODUCING THE VIEWS</h3>
+<p>Each of the page (including the default first page) that gets cloned out of <em>blog.php</em> has its own editable data.<br/>
+When <em>blog.php</em> is visited as<br/>
+<em>http&#58;//www.yoursite.com/blog.php?p=12</em><br/>
+the number after &#39;?p=&#39; provides it with information as to which cloned page it is representing and thus it displays the data that belongs to that cloned page.</p>
+<p>It should be easy to see that when a clonable template is accessed in a stand-alone manner (i.e. not providing it with any information about the cloned page it could stand for e.g. -<br/>
+<em>http&#58;//www.yoursite.com/blog.php</em><br/>
+- <em>blog.php</em> is clueless about which cloned page&#39;s data it should display and since it has no data of its own, the updatable regions come up empty.</p>
+<p>So is the URL<br/>
+<em>http&#58;//www.yoursite.com/blog.php</em><br/>
+useless?</p>
+<p>Not at all. By default Couch displays nothing here but it is totally upto you as to what you wish to show on this page.<br/>
+This page is ideal for displaying a list of all pages that have been cloned out of this template.<br/>
+You might want to display the contents of a particular page here or maybe a list of the latest pages cloned from a different template altogether (see <a href="listing-pages.html"><strong>listing pages</strong></a>).</p>
+<p class="notice">In fact, Couch recognizing the fact that a clonable template can be viewed in two different contexts - as a cloned page and as simply itself where possibly a listing of its cloned pages will be displayed, calls the first scenario a &#39;Page View&#39; and the second a &#39;List View&#39;.</p>
+
+<p>Couch indicates to your template which &#39;view&#39; it is executing in by setting certain variables (see <a href="views.html"><strong>Views</strong></a>).<br/>
+Your template can test these variables and display whatever you wish accordingly (see <a href="variables-in-views.html"><strong>Variables available in Views</strong></a>).</p>
+<p class="error">
+    <strong>V.IMP</strong> - If you have turned on the <a href="pretty-urls.html"><strong>pretty-urls</strong></a> feature, every time you declare a template to be clonable, make sure to recreate your .htaccess file else the cloned pages will NOT be accessible.<br/>
+    As a temporary measure, you can turn off pretty-urls in <em>config.php</em> till you are done with the testing.
+</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

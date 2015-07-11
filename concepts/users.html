@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Users - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Users" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/users.html" itemprop="item"><span itemprop="name">Users</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="users-and-access-control">Users and Access Control</h1>
+<p>Couch supports creation of any number of user accounts.<br/>
+Each user account can be assigned to one of the four groups discussed below and depending on the containing group, the account&#39;s access to the web-site is controlled.</p>
+<h4 id="1-super-admin">1. Super Admin</h4>
+<p>The first user account that gets created during Couch&#39;s installation. It is an all-powerful account and only one such account can exist in Couch.<br/>
+A Super Admin can do everything that a user possibly can in Couch. Specifically, he can -</p>
+<ul>
+<li>Create/manage templates and define editable regions, folders etc. within templates.</li>
+<li>Access the Admin panel and create new pages and edit/delete all existing pages.</li>
+<li>Create/manage any number of lower level user accounts.</li>
+<li>Access the website.</li>
+</ul>
+<p>Usually it is the designer/coder building the site that uses this <em>super-admin</em> account. If you&#39;ve gone through the creation of <a href="editable-regions.html"><strong>editable regions</strong></a> and some other tags like the <a href="../tags-reference/folder.html"><em><strong>folder</strong></em></a> tag, you&#39;ll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
+Hence this account is used by someone who makes structural changes to the web-site.</p>
+<h4 id="2-administrator">2. Administrator</h4>
+<p>The <em>super-admin</em> can create any number of administrator level accounts.<br/>
+These accounts are meant to be used by the web-site owners who will be responsible for managing the contents and day to day operations of the web-site.<br/>
+An Administrator can -</p>
+<ul>
+<li>Access the Admin panel and create new pages and edit/delete all existing pages except those that have been marked by the Super Admin has having only super-admin access (usually done to prevent the site owners from accidently modifying them).</li>
+<li>Create/manage any number of lower level user accounts.</li>
+<li>Access the website.</li>
+</ul>
+<p>All the users belonging to the Administrator group have identical access permissions and can add/delete/modify each other&#39;s pages.</p>
+<h4 id="3-registered-users">3. Registered Users</h4>
+<p>The super-admin/administrators can create registered users by placing them in either of these two lower-level accounts -<br/>
+<em>Authenticated User (Special)</em><br/>
+<em>Authenticated User</em><br/>
+These two accounts are meant for visitors who are registered with the website.</p>
+<p>Registered users can -</p>
+<ul>
+<li>Only access the website.</li>
+</ul>
+<h4 id="4-unauthenticated">4. Unauthenticated</h4>
+<p>Every visitor to the website who is not logged-in is automatically placed in this group by Couch.<br/>
+Thus unregistered users as well as registered users who have not yet logged-in by providing their username/password are placed in this group.</p>
+<p>Unauthenticated users can -</p>
+<ul>
+<li>Only access the website.</li>
+</ul>
+<p>Only users belonging to the <em>Super Admin</em> and the <em>Administrator</em> groups can access the Couch&#39;s Admin panel.<br/>
+All users, as far as Couch is concerned, can equally access the website.<br/>
+It is you, who as the designer/coder decides which pages or portion of the pages within the website these users can access. Couch will simply, by setting relevant variables, indicate the group of the visitor so that your code can take appropriate action.</p>
+<h3 id="access-control">ACCESS CONTROL</h3>
+<p>To be honest, the access mechanism currently implemented is fairly coarse (you can expect some major changes in the coming versions).<br/>
+However some very powerful access control can be wired up by properly using the available functionality.<br/>
+Before us see how, we need to know a few facts that we&#39;ll use -</p>
+<p>Upon the execution of every page, the following variables are set by Couch to give information about the visitor accessing the page -</p>
+<ul>
+<li>k_logged_in</li>
+<li>k_logged_out</li>
+<li>k_user_id</li>
+<li>k_user_name</li>
+<li>k_user_title</li>
+<li>k_user_email</li>
+<li>k_user_access_level</li>
+<li>k_user_disabled</li>
+<li>k_login_link</li>
+<li>k_logout_link</li>
+</ul>
+<p>The <em>k_logged_in</em> or <em>k_logged_out</em> variable can be used to figure out if the visitor is currently logged in and hence possesses an account on the website.<br/>
+If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_title</em>, <em>k_user_email</em> and <em>k_user_access_level</em> can be used to get details about him.</p>
+<p>The <em>k_user_access_level</em> is an important variable and indicates the &#39;group&#39; of the user by the following numeric values -</p>
+<ul>
+<li>Super Admin: 10</li>
+<li>Administrator: 7</li>
+<li>Authenticated User (Special): 4</li>
+<li>Authenticated User: 2</li>
+<li>Everybody: 0</li>
+</ul>
+<p>As can be seen, the higher the number, the more powerful an account is deemed to be.</p>
+<h3 id="template-level-access">Template level access</h3>
+<p>All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the <em>access_level</em> parameter of the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag to the minimum level required. Thus -</p>
+<pre><code>&lt;cms:template title=&#39;News&#39; clonable=&#39;1&#39; access_level=&#39;2&#39;&gt;
+    &lt;!-- Editable regions and Folders are usually defined here --&gt;
+&lt;/cms:template&gt;
+</code></pre><p>- to access any of the pages cloned from the template above the user must atleast be an <em>Authenticated User</em>. None of the pages would be accessible without being logged in.</p>
+<h3 id="page-level-access">Page level access</h3>
+<p>Access to any individual page can be controlled by selecting the minimum access level required from the dropdown list visible while editing the page in Admin Panel -</p>
+<p><img src="../assets/img/contents/users.png" alt=""></p>
+<p class="notice">
+    In both the cases mentioned above, if a page is accessed by a user who is not logged-in, the login box is displayed to him to input his credentials.<br/>
+    If the user is already logged-in but his current access level is less than that required to access the page, a message is displayed to him prompting him to logout and re-login with proper credentials.
+</p>
+
+<h3 id="element-level-access">Element level access</h3>
+<p>The most fine-grained access control can be achieved by restricting access to certain parts of a page - e.g. text or links to files that are to be made available to only registered users.</p>
+<pre><code>&lt;cms:if k_user_access_level ge &#39;4&#39; &gt;
+    &lt;h1&gt;If you can see this you must atleast be an Authenticated User (Special)&lt;/h1&gt;
+&lt;cms:else /&gt;
+    &lt;cms:if k_logged_out &gt;
+        You need to be logged in as an Authenticated User (Special) or higher to access this area &lt;p&gt;
+        Please &lt;a href=&quot;&lt;cms:show k_login_link /&gt;&quot;&gt;Login&lt;/a&gt;.
+    &lt;cms:else /&gt;
+        You do not have sufficient priveleges to access this area&lt;p&gt;
+        You need to be logged in as an Authenticated User (Special) or higher.&lt;p&gt;
+        Please &lt;a href=&quot;&lt;cms:show k_logout_link /&gt;&quot;&gt;Logout&lt;/a&gt; and login again with the right credentials.
+    &lt;/cms:if&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.<br/>
+If it is not, it could either be that the user is not logged-in or that he is logged-in but the access level of his account is lesser than the required level.<br/>
+We check this by the <em>k_logged_out</em> variable and then show the appropriate message.<br/>
+Note how we use the <em>k_login_link</em> and <em>k_logout_link</em> to diplay the links that the user can click to either login or logout.</p>
+<h3 id="access-control-of-discrete-files">Access control of discrete files</h3>
+<p>Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag.<br/>
+Please see <a href="cloaked-links.html#allowing-only-registered-users-to-access-links"><strong>Cloaked links - Allowing only registered users to a access links</strong></a> section for a full discussion of this.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

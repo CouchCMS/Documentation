@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>pages - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="pages" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/pages.html" itemprop="item"><span itemprop="name">pages</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="pages">pages</h1>
+<p><strong>Pages</strong> tag can be used to list all pages belonging to a template.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39;&gt;
+     &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
+     &lt;cms:show k_page_title /&gt;&lt;br&gt;
+&lt;/cms:pages&gt;
+</code></pre><p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.<br/>
+The <em>masterpage</em> parameter stands for the template&#39;s name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.</p>
+<p>This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its <a href="../concepts/variables-in-views.html"><em>page-view</em></a>).</p>
+<p><strong>Pages</strong> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>masterpage</li>
+<li>id</li>
+<li>page_name</li>
+<li>limit</li>
+<li>paginate</li>
+<li>offset</li>
+<li>startcount</li>
+<li>folder</li>
+<li>include_subfolders</li>
+<li>start_on</li>
+<li>stop_before</li>
+<li>show_future_entries</li>
+<li>orderby</li>
+<li>order</li>
+<li>custom_field</li>
+</ul>
+<h3 id="masterpage">masterpage</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php.</p>
+<p>If this parameter is skipped, the template being currently executed is used instead. Thus -</p>
+<pre><code>&lt;cms:pages&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from the template being currently executed.</p>
+<h3 id="id">id</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; id=&#39;14&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch only page with id of 14 that has been cloned from blog.php.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; id=&#39;14, 13&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch only pages with id of 14 or 13 that have been cloned from blog.php.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; id=&#39;NOT 14, 13&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php except the two with the ids of 14 or 13.</p>
+<h3 id="page_name">page_name</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; page_name=&#39;my_first_entry&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch the page named &#39;my_first_entry&#39; that has been cloned from blog.php.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; page_name=&#39;my_first_entry, my_another_entry&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch pages named &#39;my_first_entry&#39; or &#39;my_another_entry&#39; that have been cloned from blog.php.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; page_name=&#39;NOT my_first_entry, my_another_entry&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php except the two named &#39;my_first_entry&#39; or &#39;my_another_entry&#39;.</p>
+<h3 id="limit">limit</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;5&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch five pages cloned from blog.php. (Since no &#39;orderby&#39; and &#39;order&#39; parameters specified, the default values of these parameters will be used and the most recent five pages will be fetched.)</p>
+<h3 id="paginate">paginate</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;5&#39; paginate=&#39;1&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch ALL pages cloned from blog.php but show only 5 at one time. To move to the next 5 or the previous 5 pages, pagination code has to be used (see <a href="../concepts/pagination.html"><strong>Pagination</strong></a>).</p>
+<h3 id="offset">offset</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; offset=&#39;2&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch pages cloned from blog.php after skipping the first two.</p>
+<h3 id="startcount">startcount</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; startcount=&#39;0&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>The <em>k_count</em>, <em>k_record_from</em>, <em>k_current_record</em> and <em>k_record_to</em> variables (see <a href="../concepts/pagination.html"><strong>Pagination</strong></a>) start by default from &#39;1&#39;. This can be changed to any other value by setting this parameter.</p>
+<h3 id="folder">folder</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; folder=&#39;classic-bikes&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch pages cloned from blog.php and belonging to folder named &#39;classic-bikes&#39;.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; folder=&#39;classic-bikes, super-bikes&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch pages cloned from blog.php and belonging to folders named &#39;classic-bikes&#39; or &#39;super-bikes&#39;.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; folder=&#39;NOT classic-bikes, super-bikes&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php except those belonging to folders named &#39;classic-bikes&#39; or &#39;super-bikes&#39;.</p>
+<p>By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).<br/>
+To include the pages that are within the subfolders of the given folder(s), set the <em>include_subfolders</em> parameter as well.<br/>
+See below.</p>
+<p>In the <em>folder-view</em> (see <a href="../concepts/views.html"><strong>Views</strong></a>), the <em>k_folder_name</em> variable is set to the name of the current folder. It can be used to list the right pages -</p>
+<pre><code>&lt;cms:pages folder=k_folder_name include_subfolders=&#39;1&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><h3 id="include_subfolders">include_subfolders</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; folder=&#39;classic-bikes&#39; include_subfolders=&#39;1&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php that belong to &#39;classic-bikes&#39; or any of its sub-folders.</p>
+<p>This parameter augments the <em>folder</em> parameter given above which only fetches pages that lie DIRECTLY within the given folder(s).</p>
+<h3 id="start_on">start_on</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; start_on=&#39;2010-02-01&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php that have been published on or after the 1st of February, 2010.</p>
+<h3 id="stop_before">stop_before</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; stop_before=&#39;2010-03-01&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php that have been published before the first of March, 2010.</p>
+<p>The parameters <em>start_on</em> and <em>stop_before</em> can be combined to fetch pages published betwen a particular time period. Thus -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; start_on=&#39;2010-02-01&#39; stop_before=&#39;2010-03-01&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php that have been published on or after the first of February, 2010 but before the first of March, 2010. (i.e. only during the month of February of 2010)</p>
+<p>In the <em>archive-view</em> (see <a href="../concepts/views.html"><strong>Views</strong></a>), the <em>k_archive_date</em> and the <em>k_next_archive_date</em> are set to the first day of the archive and the first day of the next archive (month). These can be used to easily fetch pages that belong to only that archive period -</p>
+<pre><code>&lt;cms:pages start_on=k_archive_date stop_before=k_next_archive_date &gt;&lt;/cms:pages&gt;
+</code></pre><h3 id="show_future_entries">show_future_entries</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; show_future_entries=&#39;0&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch only those pages cloned from blog.php that have been published on or before the current date (i.e. skip those pages the publication date of whom fall in the future).</p>
+<h3 id="orderby">orderby</h3>
+<p>The pages fetched can be sorted and ordered according to the following fields -</p>
+<ul>
+<li>publish_date (<em>default</em>)</li>
+<li>page_name</li>
+<li>page_title</li>
+<li>modification_date</li>
+<li>comments_count</li>
+<li>random</li>
+</ul>
+<p>Thus -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; orderby=&#39;page_name&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>Apart from the three fields mentioned above, any of the custom field defined in the template (i.e. the editable regions contained within the template) may be used for sorting the fetched pages. Thus, for example if the template &#39;blog.php&#39; has three editable regions - <em>my_blog_text</em>, <em>my_blog_image</em> and <em>my_blog_author</em>, the following snippet -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; orderby=&#39;my_blog_author&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>will sort the fetched pages by the custom field named &#39;my_blog_author&#39;.</p>
+<p class="notice"><strong>IMP.</strong> Though any type of editable region can be used as the orderby field, it is the &#39;text&#39;, &#39;textarea&#39;, &#39;dropdown&#39; and &#39;radio&#39; types that are best suited for ordering the pages.</p>
+
+<p>Multiple fields can be used together for sorting e.g.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; orderby=&#39;modification_date, page_name&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><h3 id="order">order</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; orderby=&#39;publish_date&#39; order=&#39;desc&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages cloned from blog.php and arrange them in descending order of &#39;publish_date&#39;.</p>
+<p>If <em>order</em> parameter is not set, the default value used is &#39;desc&#39;. Since the default value used for <em>orderby</em> is &#39;publish_date&#39;, the above snippet is equivalent to the following -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>If multiple fields have been used in the <em>orderby</em> parameter, separate sort orders can be set for each of the <em>orderby</em> field. Thus -</p>
+<pre><code>&lt;cms:pages orderby=&#39;my_custom_field_1, my_custom_field_2&#39; order=&#39;asc, desc&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>The above will first sort pages in ascending order of &#39;my_custom_field_1&#39;. The pages having the same value for &#39;my_custom_field_1&#39; will then be sorted in descending order of &#39;my_custom_field_2&#39;.</p>
+<h3 id="custom_field">custom_field</h3>
+<p>The editable regions defined for a template can be used to fetch cloned pages that contain certain values within those editable regions (custom fields) -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author=jeffrey&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all cloned pages of blog.php where the editable region &#39;my_blog_author&#39; contained the word &#39;jeffrey&#39; anywhere within it.</p>
+<p>To fetch those pages where the editable region &#39;my_blog_author&#39; exactly matches the term &#39;jeffrey&#39;, use &#39;==&#39; instead of &#39;=&#39;. Thus -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author==jeffrey&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author==jeffrey, arthur&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all cloned pages of blog.php where the editable region &#39;my_blog_author&#39; exactly matches either the term &#39;jeffrey&#39; or &#39;arthur&#39;.</p>
+<p class="notice">
+    Since a comma &#39;,&#39; is being used to separate two values, if any of the values contains a comma<br/>
+    within itself you&#39;ll have to &#39;escape&#39; the comma by prepending it with a backward slash -<br/>
+    &#39;my_blog_text=veni, vidi, veci&#39;  - contains any of the terms veni, vidi or veci<br/>
+    &#39;my_blog_text=veni\, vidi\, veci&#39; - contains the phrase &#39;veni, vidi, veci&#39;.<br/>
+    <br/>
+    Similarly if any of the values contains a single quote &#39;&#39;&#39; or double quote &#39;&quot;&#39;, it can be escaped likewise.
+</p>
+
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author!=jeffrey&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all cloned pages of blog.php where the editable region &#39;my_blog_author&#39; DOES NOT contain the word &#39;jeffrey&#39; anywhere within it.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author!==jeffrey&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all cloned pages of blog.php where the editable region &#39;my_blog_author&#39; DOES NOT exactly match the term &#39;jeffrey&#39;.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author!=jeffrey, arthur&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all cloned pages of blog.php where the editable region &#39;my_blog_author&#39; DOES NOT contain the words &#39;jeffrey&#39; and &#39;arthur&#39; anywhere within it.</p>
+<p class="error">
+    The above snippet might seem a little counter-intuitive.<br/>
+    It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not<br/>
+    have both jeffrey and arthur in the same field.<br/>
+    For how to fetch pages that contain neither jeffrey nor arthur, use the multiple fields examples given below.
+</p>
+
+<p>Multiple custom fields may be combined together with a pipe &#39;|&#39; character (The pipe stands for a boolean AND) -<br/>
+The same custom field may be repeated.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author!=jeffrey | my_blog_author!=arthur&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages that do not contain &#39;jeffrey&#39; AND do not contain &#39;arthur&#39; anywhere within &#39;my_blog_author&#39; (i.e. have neither jeffrey nor arthur).</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author=jeffrey | my_blog_author=arthur&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages that contain &#39;jeffery&#39; AND contain &#39;arthur&#39; somewhere within &#39;my_blog_author&#39; (i.e. contain both jeffery as well as arthur).</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; custom_field=&#39;my_blog_author=jeffrey | my_blog_text=fellow countrymen&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages that contain &#39;jeffery&#39; within &#39;my_blog_author&#39; AND contain &#39;fellow countrymen&#39; within &#39;my_blog_text&#39;</p>
+<p>Custom fields can also be used for comparisions other than the equality and non-equality described above.<br/>
+For example, we can fetch pages that have the value of a certain editable region &#39;greater than&#39; or &#39;less than&#39; a particular value.</p>
+<p class="notice">
+    Please bear in mind that if an editable region will contain values that you plan to compare in this manner<br/>
+    (i.e. test whether the value is greater or less than some value), most probably the value will be a &#39;number&#39; -<br/>
+    age &lt; 35<br/>
+    salary &gt; 12500<br/>
+    distance &gt;= 23.56<br/>
+    price = 355.39<br/>
+    <br/>
+    Telephone number, though it might contain all numeric values, is not a &#39;number&#39; because you are unlikely to do something like -<br/>
+    telephone_number &lt; 234567878<br/>
+    <br/>
+    For all such cases where the values will be numbers and you&#39;d want to use them in the <em>custom_field</em> parameter, MAKE SURE to set the <em>search_type</em> parameter of the editable regions to either &#39;integer&#39; (for values that will not be fractional e.g. number of bathrooms) or &#39;decimal&#39; (for values that can be fractional e.g. price).<br/>
+    <br/>
+    Remember that only editable regions of types &#39;text&#39;, &#39;radio&#39; and &#39;dropdown&#39; can be made of &#39;integer&#39;/&#39;decimal&#39; search_type.
+</p>
+
+<p>As an example of numeric fields -</p>
+<pre><code>&lt;cms:pages custom_field=&#39;distance&lt;50 | price&gt;=1000000 | price&lt;=3000000&#39;&gt;&lt;/cms:pages&gt;
+</code></pre><p>This example would fetch all pages with custom field distance containing a value less than 50<br/>
+AND custom field price &#39;greater than or equal to&#39; 1000000<br/>
+AND custom field price &#39;less than or equal to&#39; 3000000 (i.e. price between 1000000 and 3000000)</p>
+<p>The following comparisions can be done with numeric fields -</p>
+<ul>
+<li>= (equal to)</li>
+<li>!= (not equal to)</li>
+<li>&lt;= (less than or equal to)</li>
+<li>&gt;= (greater than or equal to)</li>
+<li>&lt;&gt; (not equal to)</li>
+<li>&lt; (less than)</li>
+<li>&gt; (greater than)</li>
+</ul>
+<h2 id="variables">Variables</h2>
+<p>As this tag iterates through all the fetched pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a <em>page-view</em> (see <a href="../concepts/variables-in-views.html"><strong>Variables available in Views</strong></a>).<br/>
+Apart from this, several variables are also set that indicate the current status of the loop.<br/>
+These variables can be used to show the fetched pages in a paginated manner.<br/>
+See <a href="../concepts/pagination.html"><strong>Pagination</strong></a>.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="folders.html">folders</a></li>
+<li><a href="archives.html">archives</a></li>
+<li><a href="templates.html">templates</a></li>
+<li><a href="comments.html">comments</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

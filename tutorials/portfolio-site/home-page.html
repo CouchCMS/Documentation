@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Finally home - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Finally home" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tutorials.html" itemprop="item"><span itemprop="name">Tutorials</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../portfolio-site.html" itemprop="item"><span itemprop="name">Sample Portfolio Site</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tutorials/portfolio-site/home-page.html" itemprop="item"><span itemprop="name">Finally home</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="finally-home">Finally home</h1>
+<p><a href="http://www.couchcms.com/docs/code/home.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p>The home page in Aurelius is represented by <em>index.html</em>.</p>
+<p>Having configured all the other sections of this web site, configuring the home page should now be pretty straightforward.</p>
+<p>Let us begin by attaching Couch to this template.<br/>
+Take the usual steps to do so -<br/>
+Change the extension of <em>index.html</em> to make it <em>index.php</em><br/>
+Add the two lines of boilerplate PHP code to enclose the contents of this file and use the template tag to change the display-name of the template.</p>
+<p><img src="../../assets/img/contents/portfolio-site-179.png" alt=""></p>
+<p><img src="../../assets/img/contents/portfolio-site-180.png" alt=""></p>
+<p>Access <em>http&#58;//www.mytestsite.com/</em> while logged on as the super-admin.<br/>
+This will hook up Couch to the template.<br/>
+Visit the admin panel. An new entry &#39;Home Page&#39; should appear in the list of templates.</p>
+<h3 id="defining-editable-regions">Defining editable regions</h3>
+<p>Take a look at the home page -</p>
+<p><img src="../../assets/img/contents/portfolio-site-181.png" alt=""></p>
+<p>It has two distinct regions that will need to be handled.<br/>
+The top region shows images of the five latest portfolio entries in a carousel while the bottom region displays four separate boxes that have some content.<br/>
+The portfolio images will be fetched from the existing portfolio pages and hence do not require the creation of any editable regions.<br/>
+The boxes at the bottom need to be looked at a little closer -</p>
+<p><img src="../../assets/img/contents/portfolio-site-182.png" alt=""></p>
+<p>The three marked elements can do with an editable region each. A fourth editable region will be required to hold the link of the page that this box leads to.</p>
+<p>This is the original code for the boxes with the proposed editable regions marked out for one box -</p>
+<p><img src="../../assets/img/contents/portfolio-site-183.png" alt=""></p>
+<p>Create editable regions out of the marked regions by enclosing them with cms:editable tags.<br/>
+Here is how the editable regions are created for all the boxes -</p>
+<p><img src="../../assets/img/contents/portfolio-site-184.png" alt=""></p>
+<p>(There is not sufficient space to show the full width of the code so the closing tags of editable regions are not visible. However it is fairly regular stuff and you can check it out from the php file you&#39;ll find linked to this tutorial.)</p>
+<p>If defining the editable regions in-line seems too cluttered to you, you can define them, the way we did for <em>blog</em> and <em>portfolio</em>, within the template tag instead. In that case, you&#39;ll need to show only the variables representing the editable regions at the marked regions.</p>
+<p>Please note in the code above that the labels of several regions are the same however, as is mandatory, their names are different.<br/>
+Also note that we have grouped together the editable regions belonging to each box by creating group type editable regions for each box and linking them to the regions.</p>
+<p>Refresh the home page by visiting <em>http&#58;//www.mytestsite.com/</em> logged-in as the super-admin.<br/>
+Visit the admin panel and you should find the following -</p>
+<p><img src="../../assets/img/contents/portfolio-site-185.png" alt=""></p>
+<p>Edit the links to make the boxes lead to the proper sections and we can then move on.</p>
+<h3 id="listing-the-portfolio-items">Listing the portfolio items</h3>
+<p>Let us now get the carousel display images from the latest five portfolio items.<br/>
+This is the original code -</p>
+<p><img src="../../assets/img/contents/portfolio-site-186.png" alt=""></p>
+<p>As you can see, it consists of an unordered list with each LI representing one portfolio item.<br/>
+You must have guessed that we&#39;ll use the Couch pages tag to fetch the pages cloned from <em>portfolio.php</em> template.<br/>
+We&#39;ll proceed the way we have done several times while working with the enumerator tags (pages, folders, archives) in <em>blog</em> and <em>portfolio</em> sections -<br/>
+Delete all items representing the object to be enumerated (the pages, in this case), except one.</p>
+<p><img src="../../assets/img/contents/portfolio-site-187.png" alt=""></p>
+<p>Enclose the solitary item by the enumerator tag. The tag will cause this item to be repeated as many times as the objects fetched by it.</p>
+<p><img src="../../assets/img/contents/portfolio-site-188.png" alt=""></p>
+<p>Finally, use the variables set by the enumerator tag belonging to each fetched object</p>
+<p><img src="../../assets/img/contents/portfolio-site-189.png" alt=""></p>
+<p>Visit <em>http&#58;//www.mytestsite.com/</em> to see the results of your work -</p>
+<p><img src="../../assets/img/contents/portfolio-site-190.png" alt=""></p>
+<p>Couldn&#39;t have been any easier.</p>
+<p>Well, that completes our last template. A little more work still needs to be done before we can finally call it quits - e.g. make the menu links work etc.</p>
+<p><a href="tying-the-loose-ends.html">We&#39;ll tie all the loose ends in the next tutorial.</a></p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

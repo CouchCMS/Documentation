@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Setting a Tag&#39;s Parameters - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Setting a Tag&#39;s Parameters" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/setting-parameters.html" itemprop="item"><span itemprop="name">Setting a Tag&#39;s Parameters</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="setting-a-tag-s-parameters">Setting a Tag&#39;s Parameters</h1>
+<p>There are three ways a tag&#39;s parameter may be set -</p>
+<p><strong>1. By using an explicit value</strong> - e.g.</p>
+<pre><code>&lt;cms:show &quot;Hello World&quot; /&gt;
+</code></pre><p>or</p>
+<pre><code>&lt;cms:repeat count=&#39;4&#39;&gt;
+    This line gets repeated
+&lt;/cms:repeat&gt;
+</code></pre><p>In the snippets above, &quot;Hello World&quot; and &#39;4&#39; are literal values being used as parameters.<br/>
+Please notice that <strong>an explicit value is ALWAYS enclosed within quotes (either single or double)</strong>.</p>
+<p><strong>2. By using a variable</strong> - e.g.</p>
+<pre><code>&lt;cms:show k_template_name /&gt;
+</code></pre><p>or</p>
+<pre><code>&lt;cms:set my_count=&#39;4&#39; /&gt;
+&lt;cms:repeat count=my_count&gt;
+    This line gets repeated
+&lt;/cms:repeat&gt;
+</code></pre><p>In the snippets above, <em>k_template_name</em> and <em>my_count</em> are variables that are used as parameters.<br/>
+Please notice that <strong>any value that is NOT enclosed by quotes is considered by Couch to be a variable</strong>.</p>
+<p><strong>3. By using the output of another tag</strong> -</p>
+<p>We know that while rendering a template, every tag gets replaced by its output (which might be a blank).<br/>
+This feature can be utilized to set a tag&#39;s parameter by using the output of another tag.</p>
+<pre><code>&lt;cms:set message=&quot;&lt;cms:show &#39;Hello World&#39; /&gt;&quot; /&gt;
+&lt;cms:show message /&gt;
+</code></pre><p>In the snippet above, message will be set to &#39;Hello World&#39; which was the output of the nested <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.<br/>
+Please notice that <strong>the nested tag is ALWAYS enclosed within DOUBLE quotes</strong>.</p>
+<p class="notice">
+    <strong>V.IMP -</strong><br/>
+    <strong>If single quotes are used, Couch considers the parameter&#39;s value to be an explicit value.<br/>
+    If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag.<br/>
+    If no quotes are used, Couch considers the value to be a variable.</strong><br/>
+    <br/>
+    This is a very important point because it is very easy to forget the quotes while setting a parameter, e.g.<br/><br/>
+    <code>&lt;cms:repeat count=4&gt;&lt;/cms:repeat&gt;</code>
+    - in the snippet above the value being passed to <em>count</em> is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value &#39;4&#39;, will consider it to be a variable named 4 and try and use the value of a variable named &#39;4&#39; as the parameter. Incidently, it is illegal to begin a variable&#39;s name with a number and so Couch will throw an error. But had this value been a text string e.g.<br/><br/>
+    <code>&lt;cms:show var=Hello /&gt;</code>
+    Couch would have used the value of an non-existent variable <em>Hello</em> as parameter for <a href="../tags-reference/show.html"><em><strong>show</strong></em></a>, which would then have printed nothing.
+</p>
+
+<h3 id="nesting-parameters">NESTING PARAMETERS</h3>
+<p>There is no limit to how deeply tags may be thus nested. That is to say that a tag being used as a parameter of another tag can itself have another tag as its own parameter and so on. Thus -</p>
+<pre><code>&lt;cms:set message=&quot;&lt;cms:show &quot;&lt;cms:show &#39;hello&#39; /&gt;&quot; /&gt; world&quot; /&gt;
+</code></pre><p>Don&#39;t be confused by seeing a Couch tag being used as the parameter for another Couch tag.<br/>
+Begin from the innermost nested tag and try mentally replacing it with its output -</p>
+<pre><code>&lt;cms:set message=&quot;&lt;cms:show &quot;&lt;cms:show &#39;hello&#39; /&gt;&quot; /&gt; world&quot; /&gt;
+&lt;cms:set message=&quot;&lt;cms:show &quot;hello&quot; /&gt; world&quot; /&gt;
+&lt;cms:set message=&quot;hello world&quot; /&gt;
+</code></pre><p>and everything should make sense.</p>
+<p>The example given above is rather extreme and futile but using the output of one tag as input for another is a very powerful mechanism and we&#39;ll be using it very often to solve some otherwise very sticky problems.</p>
+<p class="error"><strong>ADVANCED</strong> (skip the following section if you are not keen to delve any deeper into nested tags):</p>
+
+<p>As a more practical example consider the following very useful snippet -</p>
+<pre><code>&lt;cms:if &quot;&lt;cms:exists &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;&quot; &gt;
+    &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Don&#39;t worry, we&#39;ll replace the tags by their outputs and everything will start making perfect sense.<br/>
+The above snippet uses three new tags - <a href="../tags-reference/if.html"><em><strong>if</strong></em></a>, <a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> and <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a>.<br/>
+You can find more about them in the documentation but for now a brief word about these tags will do.</p>
+<p>If the parameter passed to <a href="../tags-reference/if.html"><em><strong>if</strong></em></a> tag is &#39;1&#39;, it outputs anything contained between its start_tag and end_tag else it does not.<br/>
+<a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> expects the parameter passed to it to be a file&#39;s (or folder&#39;s) name. It tests if the given file/folder is actually present and if it is, it outputs &#39;1&#39;, else it outputs &#39;0&#39;.<br/>
+Finally, the <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a> tag expects the parameter passed to it to be a file&#39;s name. It then simply reads the file and returns back its contents as its own output.</p>
+<p>With this background, let us try replacing the tags with their respective outputs.<br/>
+Always begin from the innermost tag, which here happens to be the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.<br/>
+We are already familiar with the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.</p>
+<pre><code>&lt;cms:show k_page_name/&gt;
+</code></pre><p>- the parameter being passed to it has no quotes around it so it must be a variable.<br/>
+The <em>k_page_name</em> variable is set by Couch everytime a page (see <a href="cloned-pages.html"><strong>pages</strong></a>) is executed to hold the page&#39;s name. Thus if the page being currently executed is <em>about-us</em>, the value of <em>k_page_name</em> will be <em>about_us</em> while if the page being executed is <em>contact-us</em>, <em>k_page_name</em> will be set to <em>contact-us</em>.</p>
+<p>Assuming that the current page is <em>about-us</em>, substituting <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag with its output will result in -</p>
+<pre><code>&lt;cms:if &quot;&lt;cms:exists &quot;about-us.inc&quot; /&gt;&quot; &gt;
+    &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Assume that file named &#39;about-us.inc&#39; does exist. In this case the output of <a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> tag will be &#39;1&#39;. Substituting exists with its output results in -</p>
+<pre><code>&lt;cms:if &quot;1&quot; &gt;
+    &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Since the parameter being passed to <em>if</em> is &#39;1&#39;, it will go ahead and execute the contents within it and return the output.<br/>
+- Resolve the contents of <a href="../tags-reference/if.html"><em><strong>if</strong></em></a>, using our substitution method -</p>
+<pre><code>&lt;cms:if &quot;1&quot; &gt;
+    &lt;cms:embed &quot;about-us.inc&quot; /&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Suppose the sole content of <em>about-us.inc</em> is -<br/>
+&lt;h1&gt;Hello I am About Us&lt;/h1&gt;,<br/>
+this will be the output of the <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a> tag, so we end up being -</p>
+<pre><code>&lt;cms:if &quot;1&quot; &gt;
+    &lt;h1&gt;Hello I am About Us&lt;/h1&gt;
+&lt;/cms:if&gt;
+</code></pre><p>and finally the output of <em>if</em> -</p>
+<p>&lt;h1&gt;Hello I am About Us&lt;/h1&gt;</p>
+<p>With the information we have had so far, we are ready to move on to the <a href="editable-regions.html"><strong>Editable Regions</strong></a>.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

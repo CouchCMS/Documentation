@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Templates - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Templates" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/templates.html" itemprop="item"><span itemprop="name">Templates</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="templates">Templates</h1>
+<p>To start working with Couch, you need to have a regular HTML coded site in hand.<br/>
+As an example, your site could consist of several HTML pages e.g. <em>index.html</em>, <em>services.html</em>, <em>about-us.html</em>, <em>contact-us.html</em> etc. along with the associated media, CSS and JavaScript files.<br/>
+<strong>Each of the above mentioned HTML files, for Couch, is a template.</strong></p>
+<p>Couch works by retrofitting into these templates.<br/>
+Since the templates used by Couch are regular HTML files, any of your existing static HTML sites too can be easily ported to Couch with minimal effort.</p>
+<h3 id="installing-couch">INSTALLING COUCH</h3>
+<p>Please see the following tutorial, where we use Couch to build a full fledged site, for a step-by-step illustrated guide on how to install Couch - <a href="../tutorials/portfolio-site/building-a-real-world-site.html">Building a real-world site</a>.</p>
+<h3 id="hooking-up-couch-into-the-templates">HOOKING UP COUCH INTO THE TEMPLATES</h3>
+<p class="error"><strong>IMP.</strong> To make the following changes you need to be logged in as the super-admin (the first account created by Couch during its installation). If you are not already logged in as super-admin, do so now else the following procedure will not work.</p>
+
+<p>Once Couch is installed, the next step is to hook it up into the templates.<br/>
+Three steps are required to accomplish this -</p>
+<ol>
+<li>Since Couch is a PHP application, in order to make to your HTML templates compatible with it you need to change their extensions from &#39;.html&#39; or &#39;.htm&#39; to &#39;.php&#39;.<br/>
+For example, if <em>about-us.html</em> is a template that you wish to be managed by Couch, rename it as <em>about-us.php</em>.<br/>
+Accessing <em>http&#58;//www.yoursite.com/about-us.php</em> should show up the page just the way it was when it had a &#39;.html&#39; extension.</li>
+<li>Once the template has been made a &#39;.php&#39; file, two lines of PHP code need to be added to it.<br/>
+Open the template in a text editor (any plain text editor will do fine. We recommend using Notepad++. It is free and awesome).<br/>
+At the very top of the page, add the following line -<br/>
+<br/>
+<code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;</code>
+[IMP. It is important that you place it at the very top so that it becomes the first line of your template.]<br/>
+<br/>
+Add the following as the LAST line of your template -<br/>
+<br/>
+<code>&lt;?php COUCH::invoke(); ?&gt;</code>
+That is it. That is all the PHP that you&#39;ll ever need to write for using Couch.</li>
+<li>As the final step, you&#39;ll need to execute the template - i.e. access it through the browser.<br/>
+For example, if <em>about-us.php</em> was the template, upload it back to your server and access <em>http&#58;//www.yoursite.com/about-us.php</em> through a browser.<br/>
+<br/>
+[IMP. This is something you&#39;ll come across often - for your changes to show up in the admin panel, you&#39;ll need to run the modified template in the browser while being logged in as the super-admin]<br/>
+<br/>
+If everything goes right, nothing should appear to have changed. The page should look exactly the same in the browser as it did before. However, now when you visit Couch&#39;s Admin Panel (<em>http&#58;//www.yoursite.com/couch/</em>) you should see that <em>about-us.php</em> has been added to the list of templates that are managed by Couch.</li>
+</ol>
+<h3 id="what-next-">WHAT NEXT?</h3>
+<p>Once we have Couch hooked into the template, we can place Couch <a href="tags.html"><strong>Tags</strong></a> in the template to make Couch work its magic.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

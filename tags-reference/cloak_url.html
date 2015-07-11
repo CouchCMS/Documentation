@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>cloak_url - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="cloak_url" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/cloak_url.html" itemprop="item"><span itemprop="name">cloak_url</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="cloak_url">cloak_url</h1>
+<p>The <strong>cloak_url</strong> tag, as the name suggests, can be used to cloak links so that it does not become apparent from just looking at the links as to where they actually lead to.</p>
+<p>Please see <a href="../concepts/cloaked-links.html"><strong>Core Concepts - Cloaked Links</strong></a> for a detailed discussion of this tag.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>link</li>
+<li>expiry</li>
+<li>access_level</li>
+<li>prompt_login</li>
+<li>redirect</li>
+<li>force_download</li>
+</ul>
+<h3 id="link">link</h3>
+<p>The link (URL) to cloak.</p>
+<h3 id="expiry">expiry</h3>
+<p>This parameter can be used to set a time (in seconds) after which the link produced wll no longer be valid.</p>
+<h3 id="access_level">access_level</h3>
+<p>If an access level is set by this parameter, only authenticated users with the right level of privileges will be able to access the link.</p>
+<h3 id="prompt_login">prompt_login</h3>
+<p>This parameter works in tandem with the <em>access_level</em> parameter above. With this parameter set to &#39;1&#39;, if a link that has an access level set on it is accessed by someone who is not privileged enough, a login box is shown to hime thus promting him to login for accessing the link.<br/>
+By default, this parameter is &#39;0&#39; and unauthorized users are simply served a blank page.</p>
+<h3 id="redirect">redirect</h3>
+<p>If this parameter is set to &#39;1&#39;, the user is redirected to the <em>link</em> provided (by issuing a HTTP 302 redirect).</p>
+<h3 id="force_download">force_download</h3>
+<p>By default, this tag evaluates the type of the file being linked to and sends back proper Content-Type to the browser. This causes the browser to display certain files (e.g. image files like gif, png etc.) directly while displaying a messagebox prompting the user to download certain types of files (e.g. executables, zip files etc.).<br/>
+If this parameter is set to &#39;1&#39;, Couch will cause the browser to always display the download box regardless of the type of file being served.</p>
+<h2 id="variables">Variables</h2>
+<p>This tag is self-closing and does not set any variables of its own.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="cloak_email.html">cloak_email</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

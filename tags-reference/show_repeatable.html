@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>show_repeatable - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="show_repeatable" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/show_repeatable.html" itemprop="item"><span itemprop="name">show_repeatable</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="show_repeatable">show_repeatable</h1>
+<p>Please see <a href="../concepts/repeatable-regions.html#displaying-the-values"><strong>Core Concepts - Repeatable Regions</strong></a> for an in-depth discussion about this tag.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>var (default)</li>
+<li>startcount</li>
+</ul>
+<h3 id="var">var</h3>
+<p>Default parameter (usually left unnamed). The name of the <a href="repeatable.html"><strong>repeatable</strong></a> tag defining the repeatable regions.</p>
+<pre><code>&lt;cms:show_repeatable &#39;my_multiple_images&#39; &gt;
+   &lt;b&gt;Image: &lt;img src=&quot;&lt;cms:show my_image /&gt;&quot; /&gt; &lt;br/&gt;
+   &lt;b&gt;Desc:&lt;/b&gt; &lt;cms:show my_desc /&gt;
+   &lt;hr&gt;
+&lt;/cms:show_repeatable&gt;
+</code></pre><p>In the snippet above the string &#39;my_multiple_images&#39; is the name of a <a href="repeatable.html"><strong>repeatable</strong></a> tag.</p>
+<h3 id="startcount">startcount</h3>
+<p>One of the variables set by this tag is <em>k_count</em>. The value of this variable increases with each iteration. By default, the first iteration is numbered 1. The <em>startcount</em> parameter can be used to make <em>k_count</em> begin from any arbitrary number.</p>
+<h2 id="variables">Variables</h2>
+<ul>
+<li>k_count</li>
+<li>k_total_records</li>
+</ul>
+<h3 id="k_count">k_count</h3>
+<p>As this tag iterates through the rows of repeated regions, this variable keeps track of the number of current iteration.<br/>
+By default, the first iteration is numbered from &#39;1&#39; but the <strong>startcount</strong> parameter mentioned above can be used to change this.</p>
+<h3 id="k_total_records">k_total_records</h3>
+<p>The total number of rows that will be iterated.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

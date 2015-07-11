@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>exists - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="exists" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/exists.html" itemprop="item"><span itemprop="name">exists</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="exists">exists</h1>
+<p>The <strong>Exists</strong> tag can be used to confirm the presence of a file or a folder on the server.<br/>
+It returns &#39;1&#39; if the object file/folder exists. Otherwise it returns a &#39;0&#39;.<br/>
+For example -</p>
+<pre><code>&lt;cms:exists &quot;contact.inc&quot; /&gt;
+</code></pre><p>will output either &#39;1&#39; or &#39;0&#39; depending on whether the file &#39;contact.inc&#39; is present or not within the &#39;couch/snippets&#39; folder.</p>
+<p class="notice">
+    Exactly like the <a href="embed.html"><strong>embed</strong></a> tag, the <strong>exists</strong> tag considers the file/folder provided to be relative to the &#39;couch/snippets&#39; folder.<br/>
+    For example<br/>
+    <br/>
+    <code>&lt;cms:exists &quot;common/contact.inc&quot; /&gt;</code>
+    will look for &#39;contact.inc&#39; file within a folder named &#39;common&#39; that resides within the &#39;couch/snippets&#39; folder. Whereas<br/>
+    <br/>
+    <code>&lt;cms:exists &quot;../../common/contact.inc&quot; /&gt;</code>
+    will move up through the folder hierarchy (the first &#39;../&#39; will move into the &#39;couch&#39; folder while the next &#39;../&#39;  will move into the website folder within which &#39;couch&#39; folder resides) and search for the file within a folder named &#39;common&#39; residing in the main website folder.
+</p>
+
+<p>Combined with the <a href="if.html"><strong>If</strong></a> tag and <a href="embed.html"><strong>Embed</strong></a> tag, the <strong>Exists</strong> tag provides a very powerful method of choosing the right template to display while showing a particular page.<br/>
+For example, let us say we have a template &#39;index.php&#39; that is clonable and several pages have been made out of it - e.g. &#39;about-us&#39;, &#39;services&#39;,  &#39;contact-us&#39; etc.. The template has defined one editable richtext area named &#39;my_content&#39; and, as usual, every page has its own data in this area. The code within this template to display the data for each cloned page might go somewhat like this</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+   &lt;cms:show my_content /&gt;
+&lt;/cms:if&gt;
+</code></pre><p>This is perfect for all pages but for &#39;contact-us&#39;, we do not want to display &#39;my_content&#39;. We wish to display a form (created by using <a href="form.html"><strong>Form</strong></a> tag). One way to do this would be to make &#39;contact-us&#39; a separate template in itself. However a better method would be to check in the code snippet above whether the page being displayed is &#39;contact-us&#39; or not and if it is, instead of displaying the usual &#39;my_content&#39;, display the form instead.<br/>
+Let us say we have saved the code for the form in a snippet called &#39;contact-us.inc&#39; within &#39;couch/snippets&#39; folder. The modified code will be -</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+   &lt;cms:if k_page_name==&#39;contact-us&#39; &gt;
+      &lt;cms:embed &#39;contact-us.inc&#39; /&gt;
+   &lt;cms:else /&gt;
+       &lt;cms:show my_content /&gt;
+   &lt;/cms:if&gt;
+&lt;/cms:if&gt;
+</code></pre><p>This will do the trick.<br/>
+However, suppose there is one other page, &#39;testimonials&#39;, where we wish to use the <a href="pages.html"><strong>Pages</strong></a> tag to iterate through and display excerpts from pages created through some other template (or any other logic). Once again, instead of creating a separate template, we decide to check for &#39;testimonials&#39; page and execute some different code. We&#39;ll assume that the code for this page has been saved in a snippet named &#39;testimonials.inc&#39; within snippets folder.<br/>
+The code above can be modified to fit in the new condition -</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+   &lt;cms:if k_page_name==&#39;contact-us&#39; &gt;
+      &lt;cms:embed &#39;contact-us.inc&#39; /&gt;
+   &lt;cms:else /&gt;
+        &lt;cms:if k_page_name==&#39;testimonials&#39; &gt;
+            &lt;cms:embed &#39;testimonials.inc&#39; /&gt;
+        &lt;cms:else /&gt;
+            &lt;cms:show my_content /&gt;
+        &lt;/cms:if&gt;
+   &lt;/cms:if&gt;
+&lt;/cms:if&gt;
+</code></pre><p>This works but it is now becoming painfully evident that this technique is crumbling under its own weight and the addition of few more pages will make it too complex to handle.</p>
+<p>Employing <strong>Exists</strong> tag for the above task makes it a snap. Here is how -</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+    &lt;cms:if &quot;&lt;cms:exists &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;&quot; &gt;
+        &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
+    &lt;cms:else /&gt;
+        &lt;cms:show my_content /&gt;
+    &lt;/cms:if&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Notice how we are checking for the existence of a snippet that is named the same as the page being displayed (but with a &#39;.inc&#39; appended).<br/>
+If such a file exists, it gets embedded, else the usual logic is folllowed.<br/>
+The beauty of this method is that if you decide to add more pages that will require custom logic, you simply have to place the code in a snippet named the same as the page (and a &#39;.inc&#39; extension) and put the snippet in the &#39;couch/snippets&#39; folder.<br/>
+You&#39;ll never need to modify the code given above.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>unnamed</li>
+</ul>
+<p>Takes one unnamed parameter (only the value is required).<br/>
+It is considered to be a path to a file or folder. The path is always relative to the &#39;couch/snippets&#39; folder.<br/>
+See above for a discussion on relative path.</p>
+<h2 id="variables">Variables</h2>
+<p>This tag does not set any variables of its own.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="page_exists.html">page_exists</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

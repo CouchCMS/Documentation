@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Editable Regions - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Editable Regions" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/editable-regions.html" itemprop="item"><span itemprop="name">Editable Regions</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="editable-regions">Editable Regions</h1>
+<p>With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the <a href="../tags-reference/editable.html"><em><strong>Editable</strong></em></a> tag.<br/>
+You can use it to define areas within your HTML template that you wish to make editable.</p>
+<p>As an example, suppose the following is a chunk of HTML from a template named <em>property.php</em> -</p>
+<pre><code>&lt;div class=&quot;prop_desc&quot;&gt;
+    &lt;b&gt;Property Description:&lt;/b&gt;
+    &lt;span class=&quot;gray&quot;&gt;
+        Condo pricing starts at just under $700,000.
+        Waterfront Private Residences.
+        Jack Nicklaus Signature Golf Course.
+    &lt;/span&gt;
+    &lt;br class=&quot;clear&quot;/&gt;
+&lt;/div&gt;
+</code></pre><p>The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.<br/>
+To do so, simply enclose this part by an <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag -</p>
+<pre><code>&lt;div class=&quot;prop_desc&quot;&gt;
+    &lt;b&gt;Property Description:&lt;/b&gt;
+    &lt;span class=&quot;gray&quot;&gt;
+        &lt;cms:editable name=&#39;prop_desc&#39; &gt;
+        Condo pricing starts at just under $700,000.
+        Waterfront Private Residences.
+        Jack Nicklaus Signature Golf Course.
+        &lt;/cms:editable&gt;
+    &lt;/span&gt;
+    &lt;br class=&quot;clear&quot;/&gt;
+&lt;/div&gt;
+</code></pre><p><a href="../tags-reference/editable.html"><em><strong>Editable</strong></em></a> tag accepts several parameters but only one is mandatory - <em>name</em>. It has to be unique within a template.</p>
+<p>Now, while being logged in as the super-admin, visit the template in your browser.<br/>
+For example, if the template was <em>property.php</em>, visit <em>http&#58;//www.yoursite.com/property.php</em></p>
+<p class="notice">At the risk of repeating ourselves - for your changes to show up in the admin panel, you&#39;ll always need to run the modified template in the browser while being logged in as the super-admin.</p>
+
+<p>Now visit the admin panel and access <em>property.php</em> and you&#39;ll find that Couch has created a textarea for the editable region.</p>
+<p class="success">
+    If you enclose some text between the opening and closing <a href="../tags-reference/editable.html"><em><strong>Editable</strong></em></a> tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the <a href="../tags-reference/editable.html"><em><strong>Editable</strong></em></a> tag as a self closing tag.<br/>
+    <br/>
+    <code>&lt;cms:editable name=&#39;prop_desc&#39; /&gt;</code>
+</p>
+
+<p>Input or edit the text within this textarea and save your changes.<br/>
+Visiting the template in your browser again should show up the edited text on the webpage.</p>
+<h3 id="types-of-editable-regions">TYPES OF EDITABLE REGIONS</h3>
+<p>In the example above, the type of the editable region that Couch created to allow editing was a textarea.<br/>
+You have a choice of several other types of editable regions that you can ask Couch to create, depending on the kind of data that will be inputted into it.<br/>
+For example, the textarea created above is suitable when you wish the users to input only plain text (i.e. not formatted by HTML tags). However, when the type of text that will be inputted requires HTML formatting, you can get Couch to create a richtext editor instead.<br/>
+Similarly, sometimes a single line of text input is all that is needed.<br/>
+The <em>type</em> parameter of Editable text can bet set to the kind of editable region you wish to create.</p>
+<p>e.g. setting the type to &#39;richtext&#39; -</p>
+<pre><code>&lt;cms:editable name=&#39;prop_desc&#39; type=&#39;richtext&#39;&gt;..&lt;/cms:editable&gt;
+</code></pre><p>- will result in Couch now displaying a WYSIWYG editor instead of the plain textarea.</p>
+<p>The followng are the different types of editable regions currently supported by Couch -</p>
+<ul>
+<li><a href="../tags-reference/editable/text.html">text</a></li>
+<li><a href="../tags-reference/editable/password.html">password</a></li>
+<li><a href="../tags-reference/editable/textarea.html">textarea</a></li>
+<li><a href="../tags-reference/editable/richtext.html">richtext</a></li>
+<li><a href="../tags-reference/editable/image.html">image</a></li>
+<li><a href="../tags-reference/editable/thumbnail.html">thumbnail</a></li>
+<li><a href="../tags-reference/editable/file.html">file</a></li>
+<li><a href="../tags-reference/editable/radio.html">radio</a></li>
+<li><a href="../tags-reference/editable/checkbox.html">checkbox</a></li>
+<li><a href="../tags-reference/editable/dropdown.html">dropdown</a></li>
+<li><a href="../tags-reference/editable/group.html">group</a></li>
+<li><a href="../tags-reference/editable/message.html">message</a></li>
+<li><a href="../tags-reference/editable/nicedit.html">nicedit</a></li>
+<li><a href="../tags-reference/editable/relation.html">relation</a></li>
+</ul>
+<p>You can define any number of editable regions in a template.</p>
+<p class="error"><strong>V.IMP:</strong> Editable tags cannot be nested within other editable tags.</p>
+
+<h3 id="accessing-the-contents-of-editable-regions">ACCESSING THE CONTENTS OF EDITABLE REGIONS</h3>
+<p>There are four ways the contents of an editable region defined within a template may be accessed. The first two can be used only within the templates that defined the editable regions while the last two can be used in any template - even those that did not define the regions.</p>
+<p><strong>1. As the output of the editable tag defining it -</strong></p>
+<p>You might recall from our previous discussion about tags that, every tag after executing its function returns back it output (which could be a blank).</p>
+<p>The <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag, as its function, checks if the editable region has not already been created in the Admin Panel. If not, it creates one. After executing its function, the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag fetches back the contents of the editable region and returns it as its output.</p>
+<p>Thus you can see that in the resulting webpage, the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tags are replaced by the current contents of the associated editable regions.</p>
+<p><strong>2. As variables automatically set by Couch -</strong></p>
+<p>When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.<br/>
+Thus in the example above, since the name of the editable region is <em>prop_desc</em>, a variable by the same name will also be set by Couch during the execution of this page.<br/>
+So if you use the following snippet anywhere within your template -</p>
+<pre><code>&lt;cms:show prop_desc /&gt;
+</code></pre><p>the current contents of the editable region will be output by show.</p>
+<p>[See: <a href="variables-in-views.html">Variables available in Views</a>]</p>
+<p><strong>3. As variables set by the <a href="../tags-reference/pages.html"><em>pages</em></a> tag -</strong></p>
+<p>The <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag is used to list (all or specific) pages cloned from a template. The tag, as it fetches the pages, makes vailable all the variables pertaining to the pages - these include the variables that represent the editables regions defined for the pages.</p>
+<p>See also <a href="listing-pages.html"><strong>Listing Pages</strong></a></p>
+<p><strong>4. By using the <a href="../tags-reference/get_custom_field.html"><em>get_custom_field</em></a> tag -</strong></p>
+<p>While the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag mentioned in the previous method can be used to access all the variables of a page (or multiple pages) in a single go, the <a href="../tags-reference/get_custom_field.html"><em><strong>get_custom_field</strong></em></a> tag can be used to access a single variable of a page.</p>
+<p>See <a href="../tags-reference/get_custom_field.html"><em><strong>get_custom_field</strong></em></a> tag for more details.</p>
+<h3 id="separating-the-definition-of-editable-region-from-its-display">SEPARATING THE DEFINITION OF EDITABLE REGION FROM ITS DISPLAY</h3>
+<p>In the examples above we have been creating the editable regions exactly at the spot where we wanted their outputs to appear. In effect we have been using the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag to both define the editable regions as well as to display their contents.</p>
+<p>In complex templates (<em>clonable</em> templates, specifically) with several editable regions it is sometimes more manageable to define all the editable regions together at a single place.</p>
+<p>For such cases, we can use the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag to only define the editable regions and use the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag to display the contents.<br/>
+A good practice is to define together all editable regions used by the template somewhere at the very top of the template -</p>
+<pre><code>&lt;cms:template title=&#39;Index&#39; clonable=&#39;1&#39; &gt;
+    &lt;cms:editable name=&quot;body&quot; label=&quot;Body&quot; type=&quot;richtext&quot; /&gt;
+    &lt;cms:editable name=&quot;excerpt&quot; label=&quot;Excerpt&quot; type=&quot;textarea&quot; /&gt;
+&lt;/cms:template&gt;
+</code></pre><p>The editable tags themselves can be enclosed within <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag (more about it in a little while) because this is a key tag in clonable templates and also because this tag has no output of its own and thus it &#39;swallows up&#39; the default output of the enclosed editable tags, which otherwise would have appeared on the webpage.</p>
+<p>If you do not wish to enclose the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tags within <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag, set the <em>hidden</em> parameter of each to &#39;1&#39; and this will turn off the output of the tags.</p>
+<p>The content of these editable regions can be displayed where ever required by using the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag -</p>
+<pre><code>&lt;cms:show body /&gt;
+&lt;cms:show excerpt /&gt;
+</code></pre></article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

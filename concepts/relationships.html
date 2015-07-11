@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Relationships - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Relationships" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/relationships.html" itemprop="item"><span itemprop="name">Relationships</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="relationships">Relationships</h1>
+<p>Couch v1.3 introduces a powerful new feature that can be used to establish relationships between pages of two templates.</p>
+<p>Some example scenarios where this feature will come in handy -<br/>
+<strong>1.</strong> Your site has two discrete sections - &#39;products&#39; and &#39;manufacturers&#39;.<br/>
+Pages of the two sections are related to each other in a way that a manufacturer may have several products whereas a product can be related to only a single manufacturer.</p>
+<p><strong>2.</strong> Two discrete sections - &#39;artists&#39; and &#39;albums&#39; can be related to each other in a way that an artist may have several albums while an album in turn can also have several artists associated with it.</p>
+<h2 id="how-is-it-done-">How is it done?</h2>
+<p>Any relationship, necessarily, will involve two parties (actually the templates representing them). Taking the second example mentioned above, &#39;artists&#39; and &#39;albums&#39; are the two parties that are involved in the relationship (we&#39;ll assume the name of their respective templates to be &#39;artists.php&#39; and &#39;albums.php&#39;).</p>
+<p>To define a relationship between the two templates, we use a new type of editable region introduced by Couch v1.3 - <a href="../tags-reference/editable/relation.html"><strong>relation</strong></a>.<br/>
+Place the following code snippet in the &#39;artists.php&#39; template.</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; /&gt;
+</code></pre><p>Make the mandatory visit to the template as super-admin. Coming back to the admin-panel and editing any of artist.php&#39;s cloned pages will show us something like this -</p>
+<p><img src="../assets/img/contents/relationships-1.png" alt=""></p>
+<p>As can be seen, Couch shows us a list of all the cloned pages of &#39;albums.php&#39;.<br/>
+We can choose all the albums from this list that are related to the artist being edited.</p>
+<p class="success">
+    By default, all the pages of the related template are show in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the &#39;editable&#39; tag of type <a href="../tags-reference/editable/relation.html"><strong>relation</strong></a> -<br/>
+    <br/>
+    <a href="../tags-reference/editable/relation.html#parameters"><strong>folder</strong></a><br/>
+    <a href="../tags-reference/editable/relation.html#parameters"><strong>include_subfolders</strong></a><br/>
+    <a href="../tags-reference/editable/relation.html#parameters"><strong>orderby</strong></a><br/>
+    <a href="../tags-reference/editable/relation.html#parameters"><strong>order_dir</strong></a>
+</p>
+
+<p>Important points to note in the code above -</p>
+<p><strong>1.</strong> It is the &#39;masterpage&#39; parameter that specifies the template at the &#39;other&#39; end of the relationship - i.e. we have placed this code in &#39;albums.php&#39; that implicitly makes it one of the two templates involved in the relationship - the &#39;masterpage&#39; parameter explicitly specifies the second one.</p>
+<p><strong>2.</strong> Although there are two templates involved in the relationship, we can place the code defining the relationship in only one of the two.<br/>
+Which of the two templates is used to define the relationship is sometimes purely an arbitrary decision, although there is an important behavior that might help us in making the choice -</p>
+<p>While being edited, it is only the pages of the template that carries the relation defining editable tag (let us call this template the &#39;primary&#39; template) that display a list of pages of the opposite template to choose from.<br/>
+In our example we have chosen the &#39;artists.php&#39; template to be the &#39;primary&#39; template in the relationship. While editing any page of this template, we&#39;ll be shown a list of all the &#39;albums&#39; to choose from and hence relate to the artist being edited.<br/>
+The reverse is not true - i.e. while editing an &#39;album&#39;, there will no such list of &#39;artists&#39; to choose from.</p>
+<p>Apart from this distinction, the two templates are equal partners in the relationship. Given an &#39;artist&#39;, we can query all the &#39;albums&#39; related to it and likewise given an &#39;album&#39; we can find all the &#39;artists&#39; related to it with equal ease.</p>
+<p><strong>3.</strong> Finally, the relationship being defined can be named (using the &#39;name&#39; parameter) arbitrarily but it is a good practice to use the names of both the templates participating in the relationship. In our example, the name &#39;artist_albums&#39; will make it easy to know that this relationship is about an artist with the albums.</p>
+<h2 id="types-of-relations">Types of relations</h2>
+<h3 id="many-to-many-relation">Many-to-Many relation</h3>
+<p>In our example above, an artist can be associated with multiple albums. Conversely, an album may also be associated with multiple artists.<br/>
+This is what is known in database parlance as a &#39;Many-to-Many relation&#39;. It is the default type of relation that we get unless we specify otherwise while defining the relation (using the parameters discussed below).</p>
+<h3 id="one-to-many-relation">One-to-Many relation</h3>
+<p>To illustrate this type of relationship, let us assume that an artist can still have multiple albums but an album can be associated with only a single artist (no more &#39;bands&#39; - only solo albums permitted).</p>
+<p>This is a &#39;One-to-Many relation&#39; and is very commonly encountered. It might seem a little contrived for our artists and albums example but consider the following entities -<br/>
+<strong>a.</strong> Authors and books (An author can write multiple books but a book can be written by only one author)<br/>
+<strong>b.</strong> Albums and songs (an album consists of multiple songs but a song can only be in a single album)<br/>
+<strong>c.</strong> Orders and order-items (an e-commerce classic - an order can have multiple order-items but an order-item can only be related to a single order).</p>
+<p>To define a One-to-Many relation in Couch, we make a small change to our code -</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; reverse_has=&#39;one&#39; /&gt;
+</code></pre><p>The <strong>reverse_has</strong> parameter simply specifies that a page of the template related in &#39;reverse&#39; (i.e. the &#39;albums&#39; in our example) &#39;has&#39; only &#39;one&#39; associated page of the template at other end (i.e. &#39;artists&#39;)</p>
+<p>Returning back to the edit-panel we find that we still have a multi-select list but this list of &#39;albums&#39; only shows the albums that are not associated with any other artist.</p>
+<p><img src="../assets/img/contents/relationships-2.png" alt=""></p>
+<p>If we were to select any albums to associate them with the artist being edited and then move on to edit another artist, the albums we associated with the previous artist will not be available with this artist.</p>
+<h3 id="many-to-one-relation">Many-to-One relation</h3>
+<p>For the sake of illustration, now let us make the (preposterous) assumption that an artist can have only a single album associated with him while an album can still be associated with multiple artists.</p>
+<p>This is a &#39;Many-to-One relation&#39; and to define such kind of a relation we need to make the following change to our code -</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; has=&#39;one&#39; /&gt;
+</code></pre><p>The <strong>has</strong> parameter specifies that the &#39;primary&#39; template (the one this code is present in i.e. &#39;artists&#39; in our example) has only &#39;one&#39; associated page of the opposite template (&#39;albums&#39; in our example).</p>
+<p>This is what the edit-panel shows now.</p>
+<p><img src="../assets/img/contents/relationships-3.png" alt=""></p>
+<p>As can be seen, instead of a list with checkboxes allowing multiple choices, we now have a drop-down list that allows a single choice only.</p>
+<p>Once again, this type of relation looks mighty contrived for our artists and albums example. But in realty, it is actually only the &#39;One-to-Many relation&#39; we saw above in reverse.<br/>
+It would make a lot more sense if, instead of the &#39;artists&#39; template, we define the relationship in the &#39;albums&#39; templates (thus making the &#39;albums&#39; template the &#39;primary&#39; template).</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;album_artists&#39; masterpage=&#39;artists.php&#39; has=&#39;one&#39; /&gt;
+</code></pre><p>Now while editing an album, we&#39;ll see a drop-down list showing all the artists and we can choose the single artist this album belongs to. This way an album can be associated with only a single artist but an artist can be associated with multiple albums - which, I&#39;m sure you&#39;ll agree, is a more real-life situation.</p>
+<p class="notice">Incidentally, this also illustrates a case where you&#39;d want to give a little thought as to which template you&#39;d want to make the &#39;primary&#39; in the relationship.</p>
+
+<h3 id="one-to-one-relation">One-to-one relation</h3>
+<p>As the name suggests, if our example artists and albums scenario were to be converted to this type of relationship, an artist could be associated with only a single album and conversely, an album could be associated with only a single artist.</p>
+<p class="notice">This is a not a relationship that you&#39;ll find very often because it offers no design benefits. As you can see from our example scenario, it&#39;d be better to define all the &#39;album&#39; fields in the &#39;artist&#39; template itself.</p>
+
+<p>This is how we define this type of relation -</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;album_artists&#39; masterpage=&#39;artists.php&#39; has=&#39;one&#39; reverse_has=&#39;one&#39; /&gt;
+</code></pre><p>The resulting edit-panel shows a drop-down (allowing a single selection) of only those albums that are not yet associated with any other artist.</p>
+<p><img src="../assets/img/contents/relationships-4.png" alt=""></p>
+<h2 id="displaying-the-related-pages">Displaying the related pages</h2>
+<p>With the relationship having been defined between the two templates and the &#39;album&#39; pages associated with their &#39;artists&#39;, now comes the time to display the related pages with the page they are related to e.g.<br/>
+While showing an &#39;artist&#39; page, display all the albums associated with this artist or<br/>
+while showing an &#39;album&#39; page, display all the artists associated with this album.</p>
+<p>Couch provides two different tags to do this enumeration for us -</p>
+<ul>
+<li><a href="../tags-reference/related_pages.html"><strong>related_pages</strong></a></li>
+<li><a href="../tags-reference/reverse_related_pages.html"><strong>reverse_related_pages</strong></a></li>
+</ul>
+<h3 id="related_pages">related_pages</h3>
+<p>We use the <strong>related_pages</strong> tag to list pages of the opposite template that are related to a page of a primary template (i.e. the one defining the relationship).<br/>
+In our example, the &#39;artists&#39; template is the primary so we use the following code in &#39;artists.php&#39; -</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+   &lt;!-- All variables of &#39;artists.php&#39; are available here --&gt;
+   &lt;h2&gt;Artist: &lt;cms:show k_page_title /&gt;&lt;/h2&gt;
+
+   &lt;h3&gt;Related albums:&lt;/h3&gt;
+   &lt;cms:related_pages &#39;artist_albums&#39; &gt;
+      &lt;!-- All variables of &#39;albums.php&#39; are available here --&gt;
+      &lt;cms:show k_page_title /&gt;&lt;br/&gt;
+   &lt;/cms:related_pages&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Please notice that in the code above, we have specified the name of the relation field (&#39;artist_albums&#39;). This can be omitted if there is only a single editable region of type &#39;relation&#39; in the template, but it is better to include the name for clarity.</p>
+<h3 id="reverse_related_pages">reverse_related_pages</h3>
+<p>We use the <strong>reverse_related_pages</strong> to list the pages of the primary template that are related to page belonging to the opposite template.<br/>
+In our example it is the &#39;albums&#39; template that falls at the opposite end of the relationship.<br/>
+To list all &#39;artists&#39; that are associated with the &#39;album&#39; page being visited, we place the following code into &#39;albums.php&#39; -</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+   &lt;!-- All variables of &#39;albums.php&#39; are available here --&gt;
+   &lt;h2&gt;Album: &lt;cms:show k_page_title /&gt;&lt;/h2&gt;
+
+   &lt;h3&gt;Artists:&lt;/h3&gt;
+   &lt;cms:reverse_related_pages &#39;artist_albums&#39; masterpage=&#39;artists.php&#39; &gt;
+      &lt;!-- All variables of &#39;artists.php&#39; are available here --&gt;
+      &lt;cms:show k_page_title /&gt;&lt;br/&gt;
+   &lt;/cms:reverse_related_pages&gt;
+&lt;/cms:if&gt;
+</code></pre><p>Please notice in the code above that, like &#39;related_pages&#39; tag, we have specified the name of the relation field (&#39;artist_albums&#39;). This can be omitted if there is only a single editable region of type &#39;relation&#39; in the &#39;primary&#39; template.</p>
+<p>Unlike &#39;related_pages&#39; tag, however, in &#39;reverse_related_pages&#39; it is mandatory to provide the name of the template that contains the relation field (i.e. the &#39;primary&#39; template that defines the relationship - &#39;artists.php&#39; in our example).<br/>
+Come to think about it - this code is executing within &#39;albums.php&#39; while the definition of the relationship is contained in &#39;artists.php&#39;. There is nothing in &#39;albums.php&#39; that makes it aware about the relationship formed by &#39;artists.php&#39;. Therefore, when working with the &#39;opposite&#39; template, we have to specify the &#39;primary&#39; template also.</p>
+<h2 id="context-where-these-tags-are-used">Context where these tags are used</h2>
+<p>In both the code examples above you might have noticed that we did NOT provide the name or id of the page the pages related to which are fetched.<br/>
+This is because we used the &#39;related_pages&#39; and &#39;reverse_related_pages&#39; tags in context of a &#39;page-view&#39; (the enclosing &#39;if k_is_page&#39; statement ensures this).<br/>
+All the information regarding the page being currently viewed is already available in this view and &#39;related_pages&#39;/&#39;reverse_related_pages&#39; tags pick up this info from the context thus displaying the pages related to whatever page is being viewed.</p>
+<p>In fact, both the &#39;related_pages&#39; as well as the &#39;reverse_related_pages&#39; tags cannot be directly given the id/name of a page to fetch the related pages of. They will only work if used in context of a page. For places where the context of a single-page is not available (e.g. list-view or even page-view of a different template), we can provide it with the context of the right page by using the &#39;pages&#39; tag.<br/>
+For example, the following code will get all related albums of John Lennon -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;artists.php&#39; page_name=&#39;john-lennon&#39;&gt;
+   &lt;h3&gt;Albums of John Lennon:&lt;/h3&gt;
+   &lt;cms:related_pages &#39;artist_albums&#39; &gt;
+      &lt;!-- All variables of &#39;albums.php&#39; are available here --&gt;
+      &lt;cms:show k_page_title /&gt;&lt;br/&gt;
+   &lt;/cms:related_pages&gt;
+&lt;/cms:pages&gt;
+</code></pre><p>The &#39;related_pages&#39; and &#39;reverse_related_pages&#39; tags are almost identical to the <a href="../tags-reference/pages.html"><strong>pages</strong></a> tag we know so well. Just like the <a href="../tags-reference/pages.html"><strong>pages</strong></a> tag, these two tags also make available all the variables associated with the (related) page being iterated. They also support almost <a href="../tags-reference/pages.html#parameters">all the parameters</a> that the <a href="../tags-reference/pages.html"><strong>pages</strong></a> tag supports.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

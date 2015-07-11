@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Cloaked Links - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Cloaked Links" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/cloaked-links.html" itemprop="item"><span itemprop="name">Cloaked Links</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="cloaked-links">Cloaked Links</h1>
+<p>Sometimes it is required to conceal the real location of a file while still allowing people to access it.<br/>
+This file, for example, could be a digital product that resides on your server. After someone has made the neccessary payment, you&#39;d want to provide him access to this file without disclosing the file&#39;s real location to him.<br/>
+In such cases, you&#39;d additionaly also wish to make this access temporary i.e. the link provided to the user should be valid for only a limited period of time.</p>
+<p>A similar requirement is as follows - You have a eBay affiliate website which lists several eBay products. A visitor upon clicking a product link is redirected to the eBay site. However, you do not wish the links displayed on your website to reveal to anyone, prima-fascie, that they&#39;ll lead to eBay.</p>
+<p>You can use Couch&#39;s <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag to do all the above very easily.</p>
+<p class="notice">This feature was added to augment the <a href="paypal.html"><strong>PayPal button</strong></a> functionality by providing secure and controlled access to the downloadable digital products being sold. However it can be used with any other links that have similar needs.</p>
+
+<h3 id="cloaking-links-to-webpages">CLOAKING LINKS TO WEBPAGES</h3>
+<p>To get a gist of <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a>, suppose following is a link in your template -</p>
+<pre><code>&lt;a href=&quot;http://www.google.com&quot; &gt;Visit Site&lt;/a&gt;
+</code></pre><p>A visitor to your site will only see &#39;Visit Site&#39; displayed but it cannot be made hidden from him that this link leads to Google (hovering over the link will show Goolgle in the status bar, the source code will have Google&#39;s link etc.)</p>
+<p>Now consider the following modification made to the link above -</p>
+<pre><code>&lt;a href=&quot;&lt;cms:cloak_url link=&#39;http://www.google.com&#39; redirect=&#39;1&#39; /&gt;&quot; &gt;Visit Site&lt;/a&gt;
+</code></pre><p>Take a look at the generated url and how clicking it still leads to Google. This is classic &#39;URL cloaking&#39;.</p>
+<p>In the snippet above we set the <em>redirect</em> parameter to &#39;1&#39; because the link being cloaked was that of a webpage and not of a physical file.</p>
+<h3 id="cloaking-links-of-files">CLOAKING LINKS OF FILES</h3>
+<p>Let us now see how to make <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> work with physical files.</p>
+<p class="notice">
+    <strong>IMP.</strong> - While the use of <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> with files will hide their real locations by obfuscating the links, you&#39;ll also want to ensure that the files are not directly accessible to anyone who happens to know their real locations (e.g. by intelligent guesswork)- one way of doing this would be by using the .htaccess file.<br/>
+    Create a file named .htaccess, put the following lines into it and place it within the folder that will house the protected files.<br/>
+    <br/>
+    <code>Options All -Indexes
+deny from all</code>
+    Files uploaded via Couch&#39;s editable region of type file, are by default saved in the &#39;uploads/file&#39; folder within the &#39;couch&#39; folder. A subfolder named &#39;secure&#39; is present in this folder and already has the required .htaccess file in it.<br/>
+    You can use this folder to store protected files that are uploaded via Couch.
+</p>
+
+<p>Suppose an image file <em>test.jpg</em> is stored in the aforesaid &#39;uploads/file/secure&#39; folder (so that it is not directly downloadable).<br/>
+Placing the following snippet in your template -</p>
+<pre><code>&lt;a href=&quot;&lt;cms:cloak_url link=&#39;http://yoursite.com/couch/uploads/file/secure/test.jpg&#39; /&gt;&quot;&gt;Test Link&lt;/a&gt;
+</code></pre><p>- will display a link that when clicked should show the (otherwise inaccessible) image in the browser.</p>
+<p class="success">
+    It is always a good idea to use &lt;cms:show k_admin_link/&gt; to output the full URL of the couch folder instead of hard coding it. Thus the above snippet will become
+    <br/>
+    <code>&lt;a href=&quot;&lt;cms:cloak_url link=&quot;&lt;cms:show k_admin_link/&gt;uploads/file/secure/test.jpg&quot; /&gt;&quot;&gt;Test Link&lt;/a&gt;</code>
+</p>
+
+<h3 id="forcing-download">FORCING DOWNLOAD</h3>
+<p>If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location.<br/>
+This is because <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.</p>
+<p>If you&#39;d rather have the download box shown for all types of files, set the <em>force_download</em> parameter to &#39;1&#39;.<br/>
+Thus the following link will always force the user to download the image file -</p>
+<pre><code>&lt;a href=&quot;
+    &lt;cms:cloak_url
+    link=&#39;http://yoursite.com/couch/uploads/file/secure/test.jpg&#39;
+    force_download=&#39;1&#39;
+    /&gt;
+&quot;&gt;Test Link&lt;/a&gt;
+</code></pre><h3 id="setting-an-expiry-time-for-the-cloaked-links">SETTING AN EXPIRY TIME FOR THE CLOAKED LINKS</h3>
+<p>The cloaked links can be made to expire after a fixed period by setting the <em>expiry</em> parameter to the expiry period in seconds.<br/>
+Thus to allow a link to be valid for only 24 hours, the following snippet can be used -</p>
+<pre><code>&lt;a href=&quot;
+    &lt;cms:cloak_url
+    link=&quot;http://yoursite.com/couch/uploads/file/secure/test.jpg&quot;
+    force_download=&#39;1&#39;
+    expiry=&#39;86400&#39;
+    /&gt;
+&quot;&gt;Test Link&lt;/a&gt;
+</code></pre><p>- where 86400 is, ofcourse, the number of seconds in 24 hours (24 * 60 * 60).</p>
+<h3 id="allowing-only-registered-users-to-access-links">ALLOWING ONLY REGISTERED USERS TO ACCESS LINKS</h3>
+<p>If you have gone through the <a href="users.html"><strong>Users and Access Control</strong></a> section, you&#39;ll recall that Couch allots every visitor a numeric value denoting his access level. This depends on the group the user belongs to - thus an <em>Administrator</em> will have an access level of 7 while an <em>Authenticated User (Special)</em> will have a value of 4. Users not logged-in have an access level of 0.</p>
+<p>Links can be configured to be accessible by only users of atleast a particular level by setting the <em>access_level</em> parameter.</p>
+<pre><code>&lt;a href=&quot;
+    &lt;cms:cloak_url
+    link=&quot;http://yoursite.com/couch/uploads/file/secure/test.jpg&quot;
+    force_download=&#39;1&#39;
+    access_level=&#39;4&#39;
+    /&gt;
+&quot;&gt;Test Link&lt;/a&gt;
+</code></pre><p>In the snippet above, only authenticated users with access level equal to or higher than 4 will be able to download the image file.<br/>
+If unauthenticated users try to access this link, they&#39;ll get a blank screen.<br/>
+To prompt them to login to download the file, set the <em>prompt_login</em> parameter to &#39;1&#39; -</p>
+<pre><code>&lt;a href=&quot;
+    &lt;cms:cloak_url
+    link=&quot;http://yoursite.com/couch/uploads/file/secure/test.jpg&quot;
+    force_download=&#39;1&#39;
+    access_level=&#39;4&#39;
+    prompt_login=&#39;1&#39;
+    /&gt;
+&quot;&gt;Test Link&lt;/a&gt;
+</code></pre></article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Search - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Search" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/using-search.html" itemprop="item"><span itemprop="name">Search</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="search">Search</h1>
+<p>Given a single word or several words, Couch supports searching for them through all the defined <a href="editable-regions.html"><strong>editable regions</strong></a> of your templates (and a few of the system fields - namely the <em>title</em> and <em>name</em> fields) and give back all the pages that contain these words.</p>
+<p class="notice">
+    Couch uses MySQL&#39;s <strong>Fulltext search</strong> for this purpose. An advantage of this is that Couch can assign different weightages to words apprearing at different places in a page and fetch back pages ordered according to their calculated relevance.<br/>
+    <br/>
+    Thus a page that contains the searched word in its title will be considered more relavant than another page that has the same word somewhere in an editable region. Similarly a page that contains the searched word multiple times is considered more relevant to the one containing it only once.<br/>
+    <br/>
+    Fulltext search also has a few drawbacks that you need to be aware of -<br/>
+    It cannot be used to search for words that are less than four characters in length (considers them unimportant).<br/>
+    Also fulltext search does not match partial words.
+</p>
+
+<p>The tag that Couch uses to find pages containing the searched word/words is the <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> tag.<br/>
+This tag is very similar to the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag discussed before in the way it fetches the relevant pages and then steps through each of them setting up variables that describe the current page.</p>
+<p>Two of the parameters supported by this tag are - <em>masterpage</em> and <em>limit</em>.<br/>
+By default, the <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> tag searches through pages of all the available templates. If you wish to set up search for only a section of your website, use the <em>masterpage</em> parameter to make Couch search only certain templates or exclude certain templates.</p>
+<p><em>Limit</em> parameter can be set to display only a limited number of pages that were found. The rest of the pages can be displayed in a paginated manner (See <a href="pagination.html"><strong>Pagination</strong></a>).</p>
+<p>As noted above, this tag iterates through all the found pages setting up variables pertaining to each page as it steps through it. Thus the following snippet -</p>
+<pre><code>&lt;cms:search masterpage=&#39;blog.php&#39; limit=&#39;10&#39; &gt;
+    &lt;h3&gt;&lt;a href=&quot;&lt;cms:show k_page_link /&gt;&quot;&gt;&lt;cms:show k_search_title /&gt;&lt;/a&gt;&lt;/h3&gt;
+    &lt;cms:show k_search_excerpt /&gt;
+&lt;/cms:search&gt;
+</code></pre><p>- will fetch the top 10 blog pages that fulfill the current search.</p>
+<p>For each page all the variables normally available in its <em>page-view</em> will be available. Apart from these, the following variables are also made available -</p>
+<ul>
+<li>k_search_title</li>
+<li>k_search_content</li>
+<li>k_search_excerpt</li>
+</ul>
+<p><em>k_search_content</em> is the the entire content of the page that was searched while <em>k_search_excerpt</em> consists of very short snippets from various parts of the page where each searched word was found.<br/>
+You&#39;ll normally be displaying the <em>k_search_excerpt</em> as search results because it also has the additional feature of showing all the searched words in a highlighted state.<br/>
+<em>k_search_title</em> also shows the searched word/words (if any present in it) in a highlighted manner and hence is preferable to use instead of the regular <em>k_page_title</em> variable.</p>
+<p>Which brings up the question - what exactly was being searched above?</p>
+<p>There are two different ways of indicating this to the <strong>search</strong> tag</p>
+<p><strong>1.</strong> <a href="../tags-reference/search.html"><em><strong>Search</strong></em></a> tag is hardwired to get the search terms from a parameter named &#39;s&#39; in the querystring (the part after the &#39;?&#39; in the URL) of the page the tag is invoked from.<br/>
+In the code snippet given above, the <strong>search</strong> tag is expecting the search terms to be passed to it via the querystring.<br/>
+Thus if the following URL is used to invoke the page the search snippet was placed on, two words - &#39;hello&#39; and &#39;world&#39; will be searched by the <strong>search</strong> tag -<br/>
+<em>http&#58;//www.yoursite.com/search.php?s=hello+world</em></p>
+<p><strong>2.</strong> You can set the <em>keywords</em> parameter of the <strong>search</strong> tag to the terms to be searched. This method makes possible the use of variables for specifying the search terms. In fact, we can even get values from the querystring of URL and pass it on to the <strong>search</strong> tag via the <em>keywords</em> parameter -</p>
+<pre><code>&lt;cms:search masterpage=&#39;blog.php&#39; limit=&#39;10&#39; keywords=&quot;&lt;cms:gpc &#39;s&#39; /&gt;&quot; &gt;
+    &lt;h3&gt;&lt;a href=&quot;&lt;cms:show k_page_link /&gt;&quot;&gt;&lt;cms:show k_search_title /&gt;&lt;/a&gt;&lt;/h3&gt;
+    &lt;cms:show k_search_excerpt /&gt;
+&lt;/cms:search&gt;
+</code></pre><p>In the example above, we are using the <a href="../tags-reference/gpc.html"><strong>gpc</strong></a> tag to get a querystring parameter named &#39;s&#39; from the URL and set its value as the keywords to be searched, thus making the example behave exactly as that with the <strong>search</strong> tag not having any keywords explicitly specified.</p>
+<h3 id="search-forms">Search Forms</h3>
+<p>Of the two different ways of specifying the search terms to the search tag, that we mentioned above, normally the first method of setting the search terms as a parameter named &#39;s&#39; in the querystring should suffice for most cases.</p>
+<p>We can set this parameter in the querystring by using a HTML form that has a textfield named &#39;s&#39;. Upon submission of this form, any content of the textfield will be automatically added to the querystring and passed on to the page handling the submission.</p>
+<p>Couch has a simple tag named <a href="../tags-reference/search_form.html"><em><strong>search_form</strong></em></a> that generates such a form for you that has a textfield named &#39;s&#39; -</p>
+<pre><code>&lt;cms:search_form /&gt;
+</code></pre><p>The snippet above will generate a search form that when submitted will invoke the same page the snippet was called from, after putting the searched terms in the querystring.<br/>
+Of course you are expected to place a <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> tag on the same page to handle the search.</p>
+<p class="success">You can create and use your own form instead of using the one created by <a href="../tags-reference/search_form.html"><em><strong>search_form</strong></em></a> tag. Just make sure that the textbox, within which the keywords will be inputted by the users, is named &#39;s&#39;.</p>
+
+<p>Sometimes one wishes to initiate the search from one page and display the results in another page.<br/>
+For example you might wish to place the search form on the homepage (<em>index.php</em>) of the website but want that on submitting this form the user is taken to another page (<em>search.php</em>) that then displays the result of the search.<br/>
+You can do this by placing the <a href="../tags-reference/search_form.html"><em><strong>search_form</strong></em></a> tag within <em>index.php</em> and placing the <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> tag snippet within <em>search.php</em>.<br/>
+To make the <a href="../tags-reference/search_form.html"><em><strong>search_form</strong></em></a> tag invoke <em>search.php</em> (instead of <em>index.php</em>) upon form submssion, its <em>processor</em> parameter can be set in the following manner -</p>
+<pre><code>&lt;cms:search_form msg=&#39;Enter keywords&#39; processor=&quot;&lt;cms:show k_site_link /&gt;search.php&quot; /&gt;
+</code></pre><p>The <em>msg</em> parameter is used to display some message inside the search box. The default text is &#39;Search&#39;.</p>
+<p>As a final example, following is a snippet that can be placed on a search page -</p>
+<pre><code>&lt;cms:search_form /&gt;
+
+&lt;cms:search limit=&#39;10&#39; &gt;
+    &lt;cms:if k_paginated_top &gt;
+        &lt;div&gt;
+            &lt;cms:if k_paginator_required &gt;
+                Page &lt;cms:show k_current_page /&gt; of &lt;cms:show k_total_pages /&gt;&lt;br&gt;
+            &lt;/cms:if&gt;
+            &lt;cms:show k_total_records /&gt; Pages Found -
+            displaying: &lt;cms:show k_record_from /&gt;-&lt;cms:show k_record_to /&gt;
+        &lt;/div&gt;
+    &lt;/cms:if&gt;
+
+    &lt;h3&gt;&lt;a href=&quot;&lt;cms:show k_page_link /&gt;&quot;&gt;&lt;cms:show k_search_title /&gt;&lt;/a&gt;&lt;/h3&gt;
+    &lt;cms:show k_search_excerpt /&gt;
+    &lt;hr&gt;
+
+    &lt;cms:paginator /&gt;
+
+&lt;/cms:search&gt;
+</code></pre><p>See <a href="pagination.html"><strong>Pagination</strong></a> for details about the other variables used in the snippet.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

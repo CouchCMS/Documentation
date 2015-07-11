@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>template - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="template" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/template.html" itemprop="item"><span itemprop="name">template</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="template">template</h1>
+<p>The <strong>template</strong> tag can be used to modify the attributes of the template this tag is used on.<br/>
+It is customary to place this tag somewhere at the beginning of a template. This tag outputs nothing and this makes it a good place to put the structural Couch tags, like <strong>editable</strong> and <strong>folders</strong>, within it.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>title</li>
+<li>clonable</li>
+<li>access_level</li>
+<li>executable</li>
+<li>commentable</li>
+<li>hidden</li>
+<li>order</li>
+</ul>
+<h3 id="title">title</h3>
+<p>This parameter is used to set the display name of the template in Couch admin panel.<br/>
+If this parameter is skipped, the name of the template (will have the .php extension) is used instead.</p>
+<h3 id="clonable">clonable</h3>
+<p>This parameter needs to be set to &#39;1&#39; in order to declare a template clonable i.e. allow multiple pages to be cloned out of it.</p>
+<h3 id="access_level">access_level</h3>
+<p>This parameter can be set to restrict the access to the template and all its cloned pages to users of certain access level. For details, please see &#39;Template level access&#39; in <a href="../concepts/users.html">Users and Access Control</a>.</p>
+<h3 id="executable">executable</h3>
+<p>If this parameter is set to &#39;0&#39;, non-super-admin users will be unable to access the template and all its cloned pages via their URLs. This is usually done when a template is used only to define editable regions that will be used to capture data in the admin panel. The captured data is then usually displayed on other templates by the use of either <a href="pages.html"><strong>pages</strong></a> tag or <a href="get_custom_field.html"><strong>get_custom_field</strong></a> tag.</p>
+<h3 id="commentable">commentable</h3>
+<p>To allow users to comment on pages of this template, this parameter has to be set to &#39;1&#39;. See <a href="../concepts/using-comments.html"><strong>Comments</strong></a>.</p>
+<h3 id="hidden">hidden</h3>
+<p>Certain templates, like the ones used for RSS feeds and custom 404 page, might not contain any editable regions at all. Since there is nothing that the non-super-admins are supposed to enter in these templates as data, it is advisable to hide the names of such templates from them in the admin panel. This can be done by setting this parameter to &#39;1&#39;.</p>
+<h3 id="order">order</h3>
+<p>By default, all the templates defined for a web site are displayed in the admin panel in the order of their creation, the oldest one being on the top. This order can be manipulated by setting this parameter for each template. The smaller the number set as the order, the higher up the template appears in the list.</p>
+<h2 id="variables">Variables</h2>
+<p>Does not set any variables of its own.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="templates.html">templates</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>nested_pages - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="nested_pages" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/nested_pages.html" itemprop="item"><span itemprop="name">nested_pages</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="nested_pages">nested_pages</h1>
+<p>The <strong>nested_pages</strong> tag is used to list <a href="../concepts/nested-pages-aka-menu-maker.html">nested-pages</a>.</p>
+<p>Since the primary purpose of nested-pages (as explained in the <a href="../concepts/nested-pages-aka-menu-maker.html">Core Concepts</a>) is to create a hierarchy of pages that can be represented as the site&#39;s menu, you&#39;ll find that usually the &#39;<a href="menu.html">menu</a>&#39; tag will suffice for the purpose of creating a menu.<br/>
+However, sometimes you&#39;ll need more control over the generated menu than what the &#39;<a href="menu.html">menu</a>&#39; tag offers.<br/>
+For such cases, the &#39;nested_pages&#39; tag can be used as it is a lower level tag (in fact, the &#39;<a href="menu.html">menu</a>&#39; tag uses the &#39;nested_pages&#39; internally).</p>
+<p>To illustrate the use of &#39;nested_pages&#39;, we&#39;ll use the same sample hierarchy of elements that we used in the &#39;<a href="../concepts/using-folders.html">folders</a>&#39; section. The difference being that in this case the elements represent pages instead of folders.<br/>
+We&#39;ll assume that a template named &#39;index.php&#39; has been used to create the nested-pages.</p>
+<pre><code>index.php
+    |---World News
+    |   |---North American News
+    |   |   |---United States News
+    |   |       |---Ohio News
+    |   |       |---Nevada News
+    |   |---Asian News
+    |       |---China News
+    |       |---Japan News
+    |---Sports News
+    |---Music News
+    |---Entertainment News
+</code></pre><p>The simplest way to list the nested-pages would be as follows -</p>
+<pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39;&gt;
+   &lt;a href=&quot;&lt;cms:show k_nestedpage_link /&gt;&quot;&gt;&lt;cms:show k_nestedpage_title /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/cms:nested_pages&gt;
+</code></pre><p>The output -</p>
+<pre><code>World News
+North American News
+United States News
+Ohio News
+Nevada News
+Asian News
+China News
+Japan News
+Sports News
+Music News
+Entertainment News
+</code></pre><p>Notice how the hierarchical relationship between the pages has been preserved.</p>
+<p>As is the norm with other similar tags in Couch, the &#39;nested_pages&#39; tag too, as it iterates through the pages within the tree, makes available all the information pertaining the page it is currently on by setting various variables.<br/>
+Place a <em>&lt;cms:dump /&gt;</em> statement inside the loop and you&#39;ll see that Couch provides all the information that was inputted in the admin-section for each nested-page.</p>
+<pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39;&gt;
+   &lt;cms:dump /&gt;
+   &lt;a href=&quot;&lt;cms:show k_nestedpage_link /&gt;&quot;&gt;&lt;cms:show k_nestedpage_title /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/cms:nested_pages&gt;
+</code></pre><p>These, for example, are the variables that get set for page &#39;United States News&#39; -</p>
+<pre><code>* k_level: 2
+* k_nestedpage_id: 1595
+* k_nestedpage_name: united-states-news
+* k_nestedpage_title: United States News
+* k_nestedpage_is_active: 1
+* k_nestedpage_comments_count: 0
+* k_nestedpage_parent_id: 1594
+* k_nestedpage_weight: 1
+* k_show_in_menu: 1
+* k_menu_text:
+* k_is_pointer: 0
+* k_pointer_link:
+* k_open_external: 0
+* k_masquerades: 0
+* k_is_active: 1
+* k_is_current: 1
+* k_immediate_children: 2
+* k_total_children: 2
+* k_nestedpage_link: http://www.yourdomain.com/?p=1595
+* k_menu_link: http://www.yourdomain.com/?p=1595
+* k_menu_title: United States News
+</code></pre><p>As you can see, all the information that would be needed to create manually a menu markup is available.<br/>
+Let us use is to create one.</p>
+<h3 id="creating-menu-using-nested_pages-tag">Creating menu using &#39;nested_pages&#39; tag</h3>
+<p>A menu is normally created using nested &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; elements. To make the task of doing so easy, the &#39;nested_pages&#39; tag, like the &#39;<a href="folders.html">folders</a>&#39; tag, supports the &#39;extended_info&#39; parameter. Setting the &#39;extended_info&#39; parameter to &#39;1&#39; makes the &#39;nested_pages&#39; tag provide additional information that can be used to output the closing and opening &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; tags without any pain.</p>
+<pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39; extended_info=&#39;1&#39; &gt;
+   &lt;cms:if k_level_start &gt;&lt;ul&gt;&lt;/cms:if&gt;
+   &lt;cms:if k_element_start &gt;&lt;li&gt;
+      &lt;cms:show k_nestedpage_title /&gt;
+   &lt;/cms:if&gt;
+   &lt;cms:if k_element_end &gt;&lt;/li&gt;&lt;/cms:if&gt;
+   &lt;cms:if k_level_end &gt;&lt;/ul&gt;&lt;/cms:if&gt;
+&lt;/cms:nested_pages&gt;
+</code></pre><p>Output -</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;
+        Asian News
+        &lt;ul&gt;
+            &lt;li&gt;China News&lt;/li&gt;
+            &lt;li&gt;Japan News&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        North American News
+        &lt;ul&gt;
+            &lt;li&gt;
+                United States News
+                &lt;ul&gt;
+                    &lt;li&gt;Nevada News&lt;/li&gt;
+                    &lt;li&gt;Ohio News&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>Following is a complete example that makes use of the variables mentioned before to create a functioning menu -</p>
+<pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39; extended_info=&#39;1&#39; &gt;
+   &lt;cms:if k_level_start &gt;
+      &lt;cms:if k_level=&#39;0&#39;&gt;
+          &lt;ul class=&quot;my-menu-class-1 my-menu-class-2&quot; id=&quot;my-menu-id&quot;&gt;
+      &lt;cms:else /&gt;
+          &lt;ul&gt;
+      &lt;/cms:if&gt;
+   &lt;/cms:if&gt;
+
+   &lt;cms:if k_element_start &gt;
+      &lt;li id=&quot;item-&lt;cms:show k_nestedpage_name /&gt;&quot; class=&quot;level-&lt;cms:show k_level/&gt;&lt;cms:if k_total_children&gt; has-submenu&lt;/cms:if&gt;&lt;cms:if k_first_child&gt; first&lt;/cms:if&gt;&lt;cms:if k_last_child&gt; last&lt;/cms:if&gt;&lt;cms:if k_is_active&gt; active&lt;/cms:if&gt;&lt;cms:if k_is_current&gt; current&lt;/cms:if&gt;&quot;&gt;
+      &lt;a href=&quot;&lt;cms:show k_menu_link /&gt;&quot;&gt;&lt;cms:show k_menu_title /&gt;&lt;/a&gt;
+   &lt;/cms:if&gt;
+
+   &lt;cms:if k_element_end &gt;&lt;/li&gt;&lt;/cms:if&gt;
+   &lt;cms:if k_level_end &gt;&lt;/ul&gt;&lt;/cms:if&gt;
+&lt;/cms:nested_pages&gt;
+</code></pre><p>The example shown above is equivalent to the following using &#39;<a href="menu.html">menu</a>&#39; tag -</p>
+<pre><code>&lt;cms:menu masterpage=&#39;index.php&#39; menu_class=&#39;my-menu-class-1 my-menu-class-2&#39; menu_id=&#39;my-menu-id&#39; first_class=&#39;first&#39; last_class=&#39;last&#39; active_trail_class=&#39;active&#39; selected_class=&#39;current&#39; /&gt;
+</code></pre><h3 id="creating-a-paginated-listing-using-nested_pages-tag">Creating a paginated listing using &#39;nested_pages&#39; tag</h3>
+<p>Apart from being used to create a menu, the &#39;nested_pages&#39; tag may also be used to create a conventional listing of pages, complete with pagination etc., the way it is usually done using the &#39;<a href="pages.html">pages</a>&#39; tag with normal (i.e. non nestable) pages.</p>
+<p>If you are familiar with the &#39;<a href="pages.html">pages</a>&#39; tag, the following snippet will seem familiar -</p>
+<pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39; extended_info=&#39;1&#39; paginate=&#39;1&#39; limit=&#39;5&#39; &gt;
+   &lt;cms:if k_paginated_top&gt;
+     &lt;cms:if k_paginator_required &gt;
+         Page &lt;cms:show k_current_page /&gt; of &lt;cms:show k_total_pages /&gt;&lt;br&gt;
+     &lt;/cms:if&gt;
+     &lt;cms:show k_total_records /&gt; records Found.
+     Displaying: &lt;cms:show k_record_from /&gt;-&lt;cms:show k_record_to /&gt;
+     &lt;br /&gt;&lt;hr /&gt;
+   &lt;/cms:if&gt;
+
+    &lt;a href=&quot;&lt;cms:show k_nestedpage_link /&gt;&quot;&gt;&lt;cms:show k_nestedpage_title /&gt;&lt;/a&gt;&lt;br /&gt;
+
+    &lt;cms:paginator /&gt;
+
+&lt;/cms:nested_pages&gt;
+</code></pre><p>Output -</p>
+<pre><code>Page 1 of 3
+11 records Found. Displaying: 1-5
+
+World News
+North American News
+United States News
+Ohio News
+Nevada News
+
+« prev 1 2 3 next »
+</code></pre><p>Some points to note -</p>
+<ol>
+<li>With &#39;paginate&#39; set to &#39;1&#39;, the &#39;extended_info&#39; is automatically turned off - i.e. only the conventional linear listing is possible.</li>
+<li>For performance reasons, data from the custom fields (i.e. the editable regions defined for the nested-pages template) is not made available by default. You can set the &#39;include_custom_fields&#39; parameter to &#39;1&#39; to make the custom fields available.</li>
+</ol>
+<p class="notice">
+    <strong>IMPORTANT:</strong> Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the &#39;pages&#39; tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
+    One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).<br/>
+    <br/>
+    However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.<br/>
+    You can definitely have hundreds of them, but if the number of pages is likely to reach into the thousands please use the regular cloned pages as they are optimized for handling larger numbers.
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>masterpage</li>
+<li>depth</li>
+<li>orderby</li>
+<li>order</li>
+<li>exclude</li>
+<li>ignore_show_in_menu</li>
+<li>root</li>
+<li>childof</li>
+<li>extended_info</li>
+<li>include_custom_fields</li>
+<li>paginate</li>
+<li>limit</li>
+<li>offset</li>
+<li>startcount</li>
+</ul>
+<h3 id="masterpage">masterpage</h3>
+<p>This parameter is used to specify the template behind the nested-pages tree.<br/>
+If left empty, the template of the currently executing page is assumed.</p>
+<h3 id="depth">depth</h3>
+<p>This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be listed by this tag.<br/>
+This can be used, for example, to list only the top-level pages in the tree by setting the depth to 1. A depth of 0 means unlimited depth.</p>
+<h3 id="orderby">orderby</h3>
+<p>By default the pages are listed in the order they are arranged in the admin-panel.<br/>
+This order can be changed by using the &#39;orderby&#39; parameter. Valid values are: name, title, id.</p>
+<h3 id="order">order</h3>
+<p>Can be set to specify whether the pages are ordered in the ascending order or in descending order.<br/>
+Valid values are asc and desc. Default is asc.</p>
+<h3 id="exclude">exclude</h3>
+<p>Pages can be excluded from being listed by specifying their names using this parameter.<br/>
+If an excluded page has children, they are excluded too.<br/>
+If multiple pages are to be excluded, separate their names using comma.</p>
+<h3 id="ignore_show_in_menu">ignore_show_in_menu</h3>
+<p>The &#39;Advanced Settings&#39; of each nested-page has a checkbox labeled &#39;Show in menu&#39;.<br/>
+If that is unchecked, the page (an all its child pages) is not included by default in the listing.<br/>
+You can override this by setting &#39;ignore_show_in_menu&#39; parameter to &#39;1&#39;</p>
+<h3 id="root">root</h3>
+<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
+The page specified as the root is displayed along with all its children (compare with &#39;childof&#39; parameter below where only the children are displayed).</p>
+<h3 id="childof">childof</h3>
+<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
+Only the children of the page specified are displayed (compare with &#39;root&#39; parameter above where the specified page is also included in the display).</p>
+<p class="notice">If both &#39;childof&#39; and &#39;root&#39; are set, the &#39;root&#39; parameter gets precedence.</p>
+
+<h3 id="extended_info">extended_info</h3>
+<p>If this parameter is set, additional variables get set to report the changes in hierarchy encountered by the nested_pages tag, as it traverses through the tree. Please see the Variables section below.</p>
+<h3 id="include_custom_fields">include_custom_fields</h3>
+<p>By default, in a bid to enhance performance, the custom-field&#39;s data (i.e. data within the editable regions) are not made available as the nested_pages tag traverses through the pages in the tree.<br/>
+If the &#39;include_custom_fields&#39; is set to &#39;1&#39;, all the values within the editable regions of each page are made available as variables named after the regions.</p>
+<h3 id="paginate">paginate</h3>
+<p>To list the nested-pages in conventional manner (i.e. the way the &#39;pages&#39; tag lists the regular cloned pages), set this parameter to &#39;1&#39;.<br/>
+One the &#39;paginate&#39; parameter is set -<br/>
+<strong>a.</strong> &#39;extended_info&#39; is automatically turned off so information about the changes in hierarchy levels in no longer available.<br/>
+<strong>b.</strong> All the variables that help in creating the pagination buttons become available (see <a href="../concepts/pagination.html">Pagination</a>)<br/>
+<strong>c.</strong> The &#39;limit&#39;, &#39;offset&#39; and &#39;startcount&#39; parameters described below become effective.</p>
+<h3 id="limit">limit</h3>
+<p>This parameter takes effect only when the &#39;paginate&#39; parameter is set to &#39;1&#39;.<br/>
+It can be used to limit the number of pages listed before the pagination buttons leading to the next/prev set of pages appear.</p>
+<h3 id="offset">offset</h3>
+<p>This parameter takes effect only when the &#39;paginate&#39; parameter is set to &#39;1&#39;.<br/>
+it can be used to skip any number of pages before beginning the listing.</p>
+<h3 id="startcount">startcount</h3>
+<p>This parameter takes effect only when the &#39;paginate&#39; parameter is set to &#39;1&#39;.<br/>
+The k_count, k_record_from, k_current_record and k_record_to variables (see <a href="../concepts/pagination.html">Pagination</a>) start by default from &#39;1&#39;. This can be changed to any other value by setting this parameter.</p>
+<h2 id="variables">Variables</h2>
+<p>The following variables are set to provide information about each nested-page that gets enumerated -</p>
+<ul>
+<li>k_nestedpage_id</li>
+<li>k_nestedpage_name</li>
+<li>k_nestedpage_title</li>
+<li>k_nestedpage_is_active</li>
+<li>k_nestedpage_comments_count</li>
+<li>k_nestedpage_parent_id</li>
+<li>k_nestedpage_weight</li>
+<li>k_show_in_menu</li>
+<li>k_menu_text:</li>
+<li>k_menu_link</li>
+<li>k_menu_title</li>
+<li>k_is_pointer</li>
+<li>k_pointer_link:</li>
+<li>k_open_external</li>
+<li>k_masquerades</li>
+<li>k_is_active</li>
+<li>k_is_current</li>
+<li>k_immediate_children</li>
+<li>k_total_children</li>
+<li>k_first_child</li>
+<li>k_last_child</li>
+<li>k_nestedpage_link</li>
+</ul>
+<p>If the &#39;extended_info&#39; parameter is set to &#39;1&#39;, the following variables also get set to indicate the current position in the hierarchy as this tag enumerates the pages -</p>
+<ul>
+<li>k_level_start</li>
+<li>k_element_start</li>
+<li>k_element_end</li>
+<li>k_level_end</li>
+</ul>
+<p>If the &#39;include_custom_fields&#39; parameter is set to &#39;1&#39;, all the values within the editable regions of each page are made available as variables named after the regions.</p>
+<p>If the &#39;paginate&#39; parameter is set to &#39;1&#39;, variables that help in creating the pagination buttons become available (see <a href="../concepts/pagination.html">Pagination</a>)</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="pages.html">pages</a></li>
+<li><a href="folders.html">folders</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Building a real-world site - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Building a real-world site" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tutorials.html" itemprop="item"><span itemprop="name">Tutorials</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../portfolio-site.html" itemprop="item"><span itemprop="name">Sample Portfolio Site</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tutorials/portfolio-site/building-a-real-world-site.html" itemprop="item"><span itemprop="name">Building a real-world site</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="building-a-real-world-site">Building a real-world site</h1>
+<p>To demonstrate the power and ease of Couch, we&#39;ll build a complete real world site from scratch using it.</p>
+<p>The template we have chosen to do so is Aurelius.<a href="http://www.couchcms.com/docs/code/Aurelius.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a><br/>
+It was originally created to be sold commercially at Themeforest. However the author later on changed his mind and very graciously released it as a free template.</p>
+<p>We chose this template because it has almost all the sections that you&#39;ll come across while building a similar site -</p>
+<ul>
+<li>About Us</li>
+<li>Portfolio</li>
+<li>Blog</li>
+<li>Contact Us</li>
+<li>Home</li>
+</ul>
+<p>It can be found at <a href="http://net.tutsplus.com/articles/news/free-website-template/"><em>http&#58;//net.tutsplus.com/articles/news/free-website-template/</em></a>. You can choose to download it from the aforesaid link or get it from <a href="http://www.couchcms.com/docs/code/Aurelius.zip">here</a> (our version has all unnecessary files removed).</p>
+<h3 id="installing-aurelius">Installing Aurelius</h3>
+<p>Couch works by retrofitting within an existing working site. As such, our first step will be to get the static Aurelius site working.<br/>
+Unzip and upload all the files of Aurelius to your web server.</p>
+<p class="notice">
+    You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP&#39;ing the modified files back to the server every time you make any changes.<br/>
+    <br/>
+    A more pragmatic approach would be to use <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> or <a href="http://www.wampserver.com/en/">WampServer</a> on your local machine. This way you can directly make changes to local files.<br/>
+    <br/>
+    For this tutorial, we&#39;ll assume that your web server is hosted locally and hence will simply say &#39;edit this file and save it&#39; instead of &#39;edit this file locally and FTP it back to your server&#39;.
+</p>
+
+<p>If you are using the files downloaded from <em>http&#58;//net.tutsplus.com/</em>, remove the <em>Documentation</em> and <em>psd</em> folders as well as the <em>config.php</em>, <em>send_email.php</em> and <em>full_width.html</em> files as these will no longer be needed by us (this won&#39;t be necessary if you downloaded the template from our site).</p>
+<p>The resulting folder structure should look like this -</p>
+<p><img src="../../assets/img/contents/portfolio-site-1.gif" alt=""></p>
+<p>Confirm that all the pages of this template are now accessible through the browser.<br/>
+With the website in place, we can now move on to install Couch within it.</p>
+<h3 id="installing-couch">Installing Couch</h3>
+<p>Download and unzip <em>couch.zip</em>. You&#39;ll get a folder named <em>couch</em> containing the following files -</p>
+<p><img src="../../assets/img/contents/portfolio-site-2.gif" alt=""></p>
+<p>Rename the file named <em>config.example.php</em> to <em>config.php</em>.<br/>
+Open it in your text editor and find the following lines -</p>
+<p><img src="../../assets/img/contents/portfolio-site-3.png" alt=""></p>
+<p>Change the values to match those of your MySQL database.</p>
+<p>Upload the entire <em>couch</em> folder, along with the modified <em>config.php</em>, to your web server, which already contains the Aurelius files.<br/>
+The resulting site structure should now look like this with the <em>couch</em> folder appearing as a subfolder of your existing site -</p>
+<p><img src="../../assets/img/contents/portfolio-site-4.png" alt=""></p>
+<p class="notice">
+    The uploaded <em>couch</em> folder is your site&#39;s admin section.<br/>
+    It is a good security measure to rename this folder to anything else you wish. This way you&#39;ll make it more difficult for unwanted visitors to try and access your admin section.<br/>
+    For this tutorial we&#39;ll assume you have chosen to go with the default name.
+</p>
+
+<p>Access the admin section through your browser - <em>http&#58;//www.mytestsite.com/couch/</em></p>
+<p class="success">For the rest of this tutorial we&#39;ll assume the site&#39;s address to be <em>http&#58;//www.mytestsite.com/</em>. Replace it with your site&#39;s address for all examples.</p>
+
+<p>Couch will sense that installation is required and will display the following form for you to fill -</p>
+<p><img src="../../assets/img/contents/portfolio-site-5.jpg" alt=""></p>
+<p class="notice">If, however, at this point you get an &#39;500 Internal Server Error&#39;, please try deleting the .htaccess file present in the &#39;couch&#39; installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file.</p>
+
+<p>Enter your desired name, password and email address. Press install and in a little while you should be prompted with the following screen -</p>
+<p><img src="../../assets/img/contents/portfolio-site-6.jpg" alt=""></p>
+<p>Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.</p>
+<p class="error">
+    <strong>V. Imp:</strong> This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any &#39;structural&#39; changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
+    <br/>
+    Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account&#39;s password.
+</p>
+
+<p>Login using the super-admin account you created and brace yourself for facing the most &#39;barren&#39; admin section you&#39;ll ever come across -</p>
+<p><img src="../../assets/img/contents/portfolio-site-7.jpg" alt=""></p>
+<p>This almost bare admin panel is an important feature of Couch.<br/>
+We realize that the person most often logged into it is going to be the client that you&#39;ll be building the website for and, more often than not, he is not going to be as computer savvy as you are.<br/>
+Instead of overwhelming such a client with an admin panel that resembles the cockpit of an airliner, we wished to confront him with just as much information as is absolutely essential.<br/>
+As we move along with building the site, the admin panel will start displaying more information. This is the admin panel of our finished site -</p>
+<p><img src="../../assets/img/contents/portfolio-site-8.png" alt=""></p>
+<p>It is important to note that the admin panels of no two sites built with Couch are going to be identical. As the designer of a website, it is you who&#39;ll choose how much data gets exposed to the client within the admin section.</p>
+<p>With Couch installed we can now begin porting the Aurelius files to it.</p>
+<p>Next: <a href="about-us.html">Starting up simple - The About Us page</a>.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

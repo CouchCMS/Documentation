@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>type = &#39;thumbnail&#39; - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="type = &#39;thumbnail&#39;" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../editable.html" itemprop="item"><span itemprop="name">editable</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tags-reference/editable/thumbnail.html" itemprop="item"><span itemprop="name">type = &#39;thumbnail&#39;</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="type-thumbnail-">type = &#39;thumbnail&#39;</h1>
+<p>Editable region of type <em>thumbnail</em>, as the name suggests, is used to automatically create thumbnail images.</p>
+<p><em>Thumbnail</em> type is different from all other types of editable regions in that the user does not directly edit anything within it. Instead it is attached to an existing editable region of type <em>image</em> which then becomes the source for the thumbnail. Any time the content of the <em>image</em> type is edited, the thumbnail attached to it also gets automatically updated.</p>
+<p>Once the thumbnail has been created, this editable region then holds its fully qualified URL.</p>
+<p class="notice">The thumbnail gets created in the same folder as that of the main image.</p>
+
+<p>Suppose we have an editable region, named <em>my_image</em>, of type <em>image</em> -</p>
+<pre><code>&lt;cms:editable name=&#39;my_image&#39; label=&#39;Image&#39; desc=&#39;Upload main image here&#39; type=&quot;image&quot; /&gt;
+</code></pre><p>To create a thumbnail automatically for any image that gets selected into it, we can define a new editable region of type <em>thumbnail</em> and associate it with the region above by using the <em>assoc_field</em> parameter -</p>
+<pre><code>&lt;cms:editable
+    name=&#39;my_image_thumb&#39;
+    label=&#39;Image Thumbnail&#39;
+    desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    show_preview=&#39;1&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39;
+/&gt;
+</code></pre><p>The code above will result in something like this below the parent <em>image</em> type editable region -</p>
+<p><img src="../../assets/img/contents/editable-thumbnail-1.jpg" alt=""></p>
+<p>Once the user selects an image into the main image region (and saves the page), the thumbnail gets created automatically -</p>
+<p><img src="../../assets/img/contents/editable-thumbnail-2.jpg" alt=""></p>
+<p>Anytime the user changes the main image (and saves the changes), the thumbnail automatically reflects the changes.</p>
+<p class="success">To create multiple thumbnail images of the same image (one might be square, the other rectangular, perhaps), define multiple regions and associate them all with the same parent image.</p>
+
+<p>The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -</p>
+<pre><code>&lt;img src=&quot;&lt;cms:show my_image_thumb /&gt;&quot; /&gt;
+</code></pre><h2 id="parameters">Parameters</h2>
+<p>Apart from the parameters common to all types of editable regions, the regions of <em>thumbnail</em> type can take the following parameters -</p>
+<ul>
+<li>width</li>
+<li>height</li>
+<li>enforce_max</li>
+<li>quality</li>
+<li>show_preview</li>
+<li>preview_width</li>
+<li>preview_height</li>
+</ul>
+<h3 id="width">width</h3>
+<h3 id="height">height</h3>
+<p>Parameters <em>width</em> and <em>height</em> specify the dimensions of the thumbnail.<br/>
+If neither <em>width</em> nor <em>height</em> are specified, the resulting thumbnail is of exactly the same dimensions as the associated image.</p>
+<p>Specifying a single dimension only will create a thumbnail with that dimension of the specified value and the other dimension of a value that retains the original proportion of the image. e.g.</p>
+<pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    show_preview=&#39;1&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39; /&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">Parent Image (200 x 300)</th>
+<th style="text-align:left">Thumbnail (100 x 150)</th>
+<th style="text-align:left">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-3.jpg" alt=""></td>
+<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-4.jpg" alt=""></td>
+<td style="text-align:left">The width was made 100px and the height was proportionately scaled to 150px so that the original proportion between the dimensions is retained.</td>
+</tr>
+</tbody>
+</table>
+<p>Specifying both the dimensions will create a thumbnail with each dimension of the specified values. The original proportion between the dimensions is preserved and hence this could lead to cropping off of any dimension that overshoots the specified value in the attempt to retain proportion. e.g.</p>
+<pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    height=&#39;80&#39;
+    show_preview=&#39;1&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39; /&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">Parent Image (200 x 300)</th>
+<th style="text-align:left">Thumbnail (100 x 80)</th>
+<th style="text-align:left">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-5.jpg" alt=""></td>
+<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-6.jpg" alt=""></td>
+<td style="text-align:left">The width was made 100px and the height was proportionately scaled resulting in a dimension of 150px. Since a height of only 80px was asked for, the surplus 70px were cropped off (35px equally from both sides with the two images aligned in the center).</td>
+</tr>
+</tbody>
+</table>
+<p>As is obvious from the second example above, if both the dimensions are specified and the thumbnail&#39;s ratio does not match that of the parent image, the cropping that inevitably occurs can sometimes lead to unacceptable results. In the thumbnail above the most important part of the image has been cropped off. This can be rectified by asking Couch to recreate the thumbnail but this time aligning it to the top of the parent image instead of the default center.</p>
+<p><img src="../../assets/img/contents/editable-thumbnail-7.jpg" alt=""></p>
+<p>The following is the resulting thumbnail -</p>
+<p><img src="../../assets/img/contents/editable-thumbnail-8.jpg" alt=""></p>
+<h3 id="enforce_max">enforce_max</h3>
+<p>Setting this parameter will cause Couch to simply scale (instead of cropping as in the example above) the thumbnail, ensuring that none of its two dimensions exceed those specfied by the <em>width</em> and <em>height</em> parameters.</p>
+<h3 id="quality">quality</h3>
+<pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    show_preview=&#39;1&#39;
+    quality=&#39;50&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39; /&gt;
+</code></pre><p>You can set <em>quality</em> from 0 (worst quality, smaller file) to 100 (best quality, biggest file). The default value is 80.</p>
+<h3 id="show_preview">show_preview</h3>
+<pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    show_preview=&#39;1&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39; /&gt;
+</code></pre><p>Setting show_preview to &#39;1&#39; makes Couch display a preview of the created thumbnail (as visible in the examples above). Omitting this parameter or explicitly setting it to &#39;0&#39; will make Couch display only a link to the thumbnail instead of the preview image.</p>
+<p><img src="../../assets/img/contents/editable-thumbnail-9.gif" alt=""></p>
+<h3 id="preview_width">preview_width</h3>
+<h3 id="preview_height">preview_height</h3>
+<p>As noted above, setting <em>show_preview</em> to &#39;1&#39; causes a preview of the thumbnail to appear. The dimensions of this preview can be set by using <em>preview_width</em> and <em>preview_height</em> (needless to say, these two parameters take effect only with <em>show_preview</em> set to &#39;1&#39;).</p>
+<pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
+    width=&#39;100&#39;
+    show_preview=&#39;1&#39;
+    preview_width=&#39;80&#39;
+    assoc_field=&#39;my_image&#39;
+    type=&#39;thumbnail&#39; /&gt;
+</code></pre><p class="success">If both <em>preview_width</em> and <em>preview_height</em> are omitted, the thumbnail preview is of exactly the same dimensions as the thumbnail. Usually this is what you&#39;d want and you won&#39;t find yourself setting <em>preview_width</em> or <em>preview_height</em> too often.</p>
+
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="../editable.html">editable</a></li>
+<li><a href="text.html">editable (text)</a></li>
+<li><a href="password.html">editable (password)</a></li>
+<li><a href="textarea.html">editable (textarea)</a></li>
+<li><a href="richtext.html">editable (richtext)</a></li>
+<li><a href="image.html">editable (image)</a></li>
+<li><a href="file.html">editable (file)</a></li>
+<li><a href="radio.html">editable (radio)</a></li>
+<li><a href="checkbox.html">editable (checkbox)</a></li>
+<li><a href="dropdown.html">editable (dropdown)</a></li>
+<li><a href="group.html">editable (group)</a></li>
+<li><a href="message.html">editable (message)</a></li>
+<li><a href="nicedit.html">editable (nicedit)</a></li>
+<li><a href="relation.html">editable (relation)</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

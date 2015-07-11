@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>type = &#39;checkbox&#39; - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="type = &#39;checkbox&#39;" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../editable.html" itemprop="item"><span itemprop="name">editable</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tags-reference/editable/checkbox.html" itemprop="item"><span itemprop="name">type = &#39;checkbox&#39;</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="type-checkbox-">type = &#39;checkbox&#39;</h1>
+<p>Editable region of <em>checkbox</em> type is used to allow the user to choose multiple options from several presented to him in the form of check boxes.</p>
+<p>An editable region of <em>checkbox</em> type can be defined this way -</p>
+<pre><code>&lt;cms:editable
+  name=&quot;my_categories&quot;
+  label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
+  opt_values=&#39;Entertainment | Computers | Sports | Health&#39;
+  type=&#39;checkbox&#39;
+/&gt;
+</code></pre><p>The code above will result in -</p>
+<p><img src="../../assets/img/contents/editable-checkbox-1.gif" alt=""></p>
+<p>The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.<br/>
+Unlike its counterparts, <a href="dropdown.html"><em>dropdown</em></a> and <a href="radio.html"><em>radio</em></a> types, <em>checkbox</em> type can contain multiple selected options. In the example given above, if the user selected <em>Entertainment</em>, <em>Sports</em> and <em>Health</em>, the following code -</p>
+<pre><code>&lt;cms:show my_categories /&gt;
+</code></pre><p>will output -</p>
+<pre><code>Entertainment|Sports|Health
+</code></pre><p>As you can see, the value consists of all the three selected options clubbed together with a &#39;|&#39; (pipe) character separating them.</p>
+<p class="success">
+    <strong>TIP:</strong> To access each of the individual selected option, you can use the <a href="../each.html"><strong>Each</strong></a> tag -<br/>
+    <br/>
+    <code>&lt;cms:each my_categories as=&#39;cat&#39;&gt;
+      &lt;cms:show cat /&gt;&lt;br&gt;
+&lt;/cms:each&gt;</code>
+</p>
+
+<h2 id="parameters">Parameters</h2>
+<p>In addition to the parameters common to all the types of editable regions, <em>checkbox</em> accepts the following parameters</p>
+<ul>
+<li>opt_values</li>
+<li>opt_selected</li>
+<li>separator</li>
+<li>val_separator</li>
+</ul>
+<h3 id="opt_values">opt_values</h3>
+<p>This parameter takes a list of all the options that are displayed as check boxes.</p>
+<pre><code>&lt;cms:editable name=&quot;my_categories&quot; label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
+  opt_values=&#39;Entertainment | Computers | Sports | Health&#39;
+  type=&#39;checkbox&#39;
+/&gt;
+</code></pre><p>The selected options will get saved as the value of the editable region. For example, if the user selected <em>Sports</em>, the following code -</p>
+<pre><code>&lt;cms:show my_categories /&gt;
+</code></pre><p>- will output &#39;Sports&#39;.</p>
+<p>As can be seen, the saved value is the same as the option&#39;s name. However we can a specify a different value that can get saved into the editable region by using the following syntax -</p>
+<pre><code>opt_values=&#39;Entertainment=0 | Computers=1 | Sports=2 | Health=3&#39;
+</code></pre><p>Printing out the value contained within the editable region -</p>
+<pre><code>&lt;cms:show my_categories /&gt;
+</code></pre><p>- will now output &#39;2&#39;</p>
+<p class="notice">Multiple selections have been discussed above.</p>
+
+<p class="success">
+    <strong>TIP:</strong> Specifying an empty option makes Couch generate a break &#39;&lt;BR&gt;&#39;. e.g.<br/>
+    <br/>
+    <code>opt_values=&#39;Entertainment=0 | | Computers=1 | | Sports=2 | | Health=3&#39;</code>
+    In the code above, actually seven options have been specified - three are empty (nothing between the pipes).<br/>
+    This results in -<br/>
+    <br/>
+    <img src="../../assets/img/contents/editable-checkbox-2.gif" alt="">
+</p>
+
+<h3 id="opt_selected">opt_selected</h3>
+<p>You can show any option as selected by setting <em>opt_selected</em> to the value of that option. For example -</p>
+<pre><code>&lt;cms:editable name=&quot;my_categories&quot; label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
+  opt_values=&#39;Entertainment | Computers | Sports | Health&#39;
+  opt_selected = &#39;Sports&#39;
+  type=&#39;checkbox&#39;
+/&gt;
+</code></pre><p>- or -</p>
+<pre><code>&lt;cms:editable name=&quot;my_categories&quot; label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
+  opt_values=&#39;Entertainment=0 | Computers=1 | Sports=2 | Health=3&#39;
+  opt_selected = &#39;2&#39;
+  type=&#39;checkbox&#39;
+/&gt;
+</code></pre><p>- will show <em>Sports</em> as the option selected by default.</p>
+<p>Multiple options can be shown as selected by separating the values by a &#39;|&#39; (pipe character) -</p>
+<pre><code>opt_selected = &#39;0 | 2&#39;
+</code></pre><p>The above will show <em>Entertainment</em> and <em>Sports</em> selected by default.</p>
+<h3 id="separator">separator</h3>
+<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a &#39;|&#39; (pipe) character and so are the values provided to <em>opt_selected</em>.<br/>
+This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -</p>
+<pre><code>&lt;cms:editable name=&quot;my_categories&quot; label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
+  opt_values=&#39;Entertainment=0 * Computers=1 * Sports=2 * Health=3&#39;
+  opt_selected = &#39;1 * 3&#39;
+  separator=&#39;*&#39;
+  type=&#39;checkbox&#39;
+/&gt;
+</code></pre><p>Note how the <em>opt_values</em> and <em>opt_selected</em> are separated by &#39;*&#39;.</p>
+<h3 id="val_separator">val_separator</h3>
+<p>Similar to the problem outlined above, sometimes the options in the list contain the &#39;=&#39; (equals to) character. This makes it imposible to use &#39;=&#39; between the option&#39;s name and value. You can set any other character for this purpose by setting this parameter. For example -</p>
+<pre><code>val_separator=&#39;:&#39;
+</code></pre><h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="../editable.html">editable</a></li>
+<li><a href="text.html">editable (text)</a></li>
+<li><a href="password.html">editable (password)</a></li>
+<li><a href="textarea.html">editable (textarea)</a></li>
+<li><a href="richtext.html">editable (richtext)</a></li>
+<li><a href="image.html">editable (image)</a></li>
+<li><a href="thumbnail.html">editable (thumbnail)</a></li>
+<li><a href="file.html">editable (file)</a></li>
+<li><a href="radio.html">editable (radio)</a></li>
+<li><a href="dropdown.html">editable (dropdown)</a></li>
+<li><a href="group.html">editable (group)</a></li>
+<li><a href="message.html">editable (message)</a></li>
+<li><a href="nicedit.html">editable (nicedit)</a></li>
+<li><a href="relation.html">editable (relation)</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>editable - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="editable" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/editable.html" itemprop="item"><span itemprop="name">editable</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="editable">editable</h1>
+<p>Please see <a href="../concepts/editable-regions.html"><strong>Core Concepts - Editable Regions</strong></a> for an introduction to the Editable tag.</p>
+<h2 id="parameters">Parameters</h2>
+<p>The following are the parameters that are <strong>common</strong> to all the <em>types</em> of editable regions. The parameters that are <strong>specific</strong> to individual <em>types</em> are discussed along with that <em>type</em> of editable region.</p>
+<ul>
+<li>name</li>
+<li>label</li>
+<li>desc</li>
+<li>type</li>
+<li>order</li>
+<li>group</li>
+<li>searchable</li>
+<li>search_type</li>
+<li>hidden</li>
+<li>required</li>
+<li>validator</li>
+<li>validator_msg</li>
+<li>separator</li>
+<li>val_separator</li>
+</ul>
+<h3 id="name">name</h3>
+<p>The only attribute that is mandatory. It needs to be unique amongst all the editable regions within the same template. Only lowercase[a-z] alphabets, numerals[0-9] hyphen and underscore are permitted to be used within a name. For usage see discussion above.</p>
+<h3 id="label">label</h3>
+<p>Label instructs Couch to display a more user friendly name than the <em>name</em> attribute above. Unlike <em>name</em>, it has no limitation of the type of characters that can be used within it. If <em>label</em> attribute is not supplied, Couch by default uses the <em>name</em> as the <em>label</em>. For usage see discussion above.</p>
+<h3 id="desc">desc</h3>
+<p>This can be used to provide the user some more information about the editable region. For usage see discussion above.</p>
+<h3 id="type">type</h3>
+<p>The following are the different types of editable regions that can be created (<em>click for full details</em>).</p>
+<ul>
+<li><a href="editable/text.html">text</a></li>
+<li><a href="editable/password.html">password</a></li>
+<li><a href="editable/textarea.html">textarea</a></li>
+<li><a href="editable/richtext.html">richtext</a></li>
+<li><a href="editable/image.html">image</a></li>
+<li><a href="editable/thumbnail.html">thumbnail</a></li>
+<li><a href="editable/file.html">file</a></li>
+<li><a href="editable/radio.html">radio</a></li>
+<li><a href="editable/checkbox.html">checkbox</a></li>
+<li><a href="editable/dropdown.html">dropdown</a></li>
+<li><a href="editable/group.html">group</a></li>
+<li><a href="editable/message.html">message</a></li>
+<li><a href="editable/nicedit.html">nicedit</a></li>
+<li><a href="editable/relation.html">relation</a></li>
+</ul>
+<h3 id="order">order</h3>
+<p>By default, the order in which the editable regions appear in the Admin panel matches the order in which they have been created. This order can be tweaked by setting the <em>order</em> parameter. For example -</p>
+<pre><code>order=&#39;3&#39;
+</code></pre><p>The higher the order number, the lower the editable region appears on the page (think about it as the higher number being <em><strong>heavier</strong></em>). Thus a region with an order number of &#39;-2&#39; will appear above that with an order number of &#39;0&#39; which in turn will appear higher on the page than a region with an order number of &#39;2&#39;.</p>
+<p>The default order number given to all editable regions is &#39;0&#39;.</p>
+<h3 id="group">group</h3>
+<p>Related editable regions can be grouped together by setting the <em>group</em> parameter of each region to the name of an another editable region of type <a href="editable/group.html"><strong>group</strong></a>. For example -</p>
+<pre><code>group=&#39;paypal_group&#39;
+</code></pre><p>- where paypal_group is the name of an editable region of type <a href="editable/group.html"><strong>group</strong></a>.</p>
+<h3 id="searchable">searchable</h3>
+<pre><code>searchable=&#39;0&#39;
+</code></pre><p>Setting the <em>searchable</em> parameter to &#39;0&#39; for an editable region will exclude its contents from search results.</p>
+<h3 id="search_type">search_type</h3>
+<pre><code>search_type=&#39;decimal&#39;
+</code></pre><p><em>search_type</em> parameter determines how the values contained within an editable region are <em>sorted</em> and <em>compared</em>. Couch recognizes three different search_types -</p>
+<ul>
+<li>text</li>
+<li>integer</li>
+<li>decimal</li>
+</ul>
+<p>The default <em>search_type</em> of all editable regions is <em>text</em>. For editable regions of type <a href="editable/text.html"><strong>text</strong></a>, <a href="editable/radio.html"><strong>radio</strong></a> and <a href="editable/dropdown.html"><strong>dropdown</strong></a>, the <em>search_type</em> can be changed to <em>integer</em> or <em>decimal</em> if the values contained within them would be numeric.</p>
+<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See <a href="pages.html#custom_field"><strong>Pages</strong></a>.</p>
+
+<h3 id="hidden">hidden</h3>
+<pre><code>hidden=&#39;1&#39;
+</code></pre><p><em>hidden</em> parameter can be set to &#39;1&#39; to supress the output of an editable region that has been defined outside the <a href="template.html"><strong>Template</strong></a> tag.</p>
+<h3 id="required">required</h3>
+<pre><code>required=&#39;1&#39;
+</code></pre><p>Setting the <em>required</em> parameter to &#39;1&#39; for an editable region will make it mandatory for the user to input something within it. i.e. the region cannot be left empty.</p>
+<p class="success">If an editable region marked as required is left empty, the user is not allowed to save his changes and a default error message gets displayed. You can display your custom error message by setting the <em>validator_msg</em> parameter described below.</p>
+
+<h3 id="validator">validator</h3>
+<p>Couch has several built-in validators that can be used to enforce that the user only inputs valid data into an editable region -</p>
+<h4 id="min_len">min_len</h4>
+<pre><code>validator=&#39;min_len=6&#39;
+</code></pre><p>In the example above the length of the input (i.e. the number of characters in it) cannot be less than 6.</p>
+<h4 id="max_len">max_len</h4>
+<pre><code>validator=&#39;max_len=20&#39;
+</code></pre><p>In the example above the length of the input (i.e. the number of characters in it) cannot be more than 20.</p>
+<h4 id="exact_len">exact_len</h4>
+<pre><code>validator=&#39;exact_len=10&#39;
+</code></pre><p>In the example above the length of the input (i.e. the number of characters in it) has to be exactly 10. It cannot be less or more than the specified value.</p>
+<h4 id="alpha">alpha</h4>
+<pre><code>validator=&#39;alpha&#39;
+</code></pre><p>In the example above the only characters allowed in the input would be <strong>a to z</strong> and <strong>A to Z</strong>.</p>
+<h4 id="alpha_num">alpha_num</h4>
+<pre><code>validator=&#39;alpha_num&#39;
+</code></pre><p>In the example above the only characters allowed in the input would be <strong>a to z</strong>, <strong>A to Z</strong> and numbers <strong>0 to 9</strong>.</p>
+<h4 id="integer">integer</h4>
+<pre><code>validator=&#39;integer&#39;
+</code></pre><p>In the example above only numbers <strong>0 to 9</strong> and the <strong>negative sign</strong> &#39;<strong>-</strong>&#39; are allowed. e.g.</p>
+<pre><code>-3, -2, -1, 0, 1, 2, 3
+</code></pre><h4 id="non_negative_integer">non_negative_integer</h4>
+<pre><code>validator=&#39;non_negative_integer&#39;
+</code></pre><p>In the example above only numbers <strong>0 to 9</strong> are allowed. e.g.</p>
+<pre><code>0, 1, 2, 3
+</code></pre><h4 id="non_zero_integer">non_zero_integer</h4>
+<pre><code>validator=&#39;non_zero_integer&#39;
+</code></pre><p>In the example above only numbers <strong>1 to 9</strong> are allowed. e.g.</p>
+<pre><code>1, 2, 3
+</code></pre><h4 id="decimal">decimal</h4>
+<pre><code>validator=&#39;decimal&#39;
+</code></pre><p>In the example above only numeric values are allowed. e.g.</p>
+<pre><code>-3, -2.5, -2, -1, 0, 0.02, 1, 2, 3.45
+</code></pre><h4 id="non_negative_decimal">non_negative_decimal</h4>
+<pre><code>validator=&#39;non_negative_decimal&#39;
+</code></pre><p>In the example above only non-negative numeric values are allowed. e.g.</p>
+<pre><code>0, 0.02, 1, 2, 3.45
+</code></pre><h4 id="non_zero_decimal">non_zero_decimal</h4>
+<pre><code>validator=&#39;non_zero_decimal&#39;
+</code></pre><p>In the example above only numeric values larger than 0 are allowed. e.g.</p>
+<pre><code>0.02, 1, 2, 3.45
+</code></pre><h4 id="email">email</h4>
+<pre><code>validator=&#39;email&#39;
+</code></pre><p>In the example above only a valid email address is allowed.</p>
+<h4 id="matches_field">matches_field</h4>
+<p>This is used to ensure that the user has input identical contents into two ediatble regions (e.g. Password and Confirm Password).</p>
+<pre><code>validator=&#39;matches_field=my_password&#39;
+</code></pre><p>In the example above, Couch will allow input only if it matches that in another editable region named <em>my_password</em>.</p>
+<h4 id="regex">regex</h4>
+<p>This is a very powerful option and can actually mimic all the validators described above (and much more).<br/>
+It requires a little knowledge of Regular Expressions (as understood by PHP), though.</p>
+<pre><code>validator=&#39;regex=/(cat|dog)$/i&#39;
+</code></pre><p>In the silly example, the input is considered valid only if it ends in either <em>cat</em> or <em>dog</em>.</p>
+<p class="success">
+    Multiple validators can be applied together by separating them with a &#39;|&#39; (pipe) character. For example -<br/>
+    <br/>
+    <code>validator=&#39;alpha_num | min_len=6 | max_len=14&#39;</code>
+</p>
+
+<h3 id="validator_msg">validator_msg</h3>
+<p>When a validator mentioned above fails (this includes the <em>required</em> parameter too) and the input is rejected, the changes made by the user are not saved and a default error message is displayed.</p>
+<p>You can display your own custom message instead by setting the <em>validator_msg</em> parameter. For example, the following is a custom message that is displayed when a <em>required</em> region is left empty -</p>
+<pre><code>validator_msg=&#39;required=What! You think you can get away with leaving this empty?&#39;
+</code></pre><p class="success">
+    Multiple messages can be applied together by separating them with a &#39;|&#39; (pipe) character. For example -<br/>
+    <br/>
+    <code>validator_msg=&#39;required=Please enter something | min_len=Too short!&#39;</code>
+</p>
+
+<h3 id="separator">separator</h3>
+<h3 id="val_separator">val_separator</h3>
+<p>The use of &#39;|&#39; (pipe) character as the default separator between <em>validators</em> and <em>validator_msg</em> parameters, as well as the use of &#39;=&#39; (equals-to) before a value, is sometimes not possible if the same characters appear elsewhere within the expression. e.g. in the regex example -</p>
+<pre><code>validator=&#39;regex=/(cat|dog)$/i&#39;
+</code></pre><p>- the pipe character appears within the regular expression itself, thus that validator cannot be combined with any other using a pipe.</p>
+<p>In such cases, the default separator and value separator can be set to any other character using the <em>separator</em> and <em>val_separator</em> parameters. For example -</p>
+<pre><code>separator=&#39;#&#39;
+val_separator=&#39;:&#39;
+</code></pre><p>With the <em>separator</em> and the <em>val_separator</em> having changed, the regex validator can now be combined with other validator thus -</p>
+<pre><code>validator=&#39;regex:/(cat|dog)$/i # min_len:14&#39;
+</code></pre><p>The <em>validator_msg</em> will now become -</p>
+<pre><code>validator_msg=&#39;required:Please enter something # min_len:Too short!&#39;
+</code></pre><h2 id="variables">Variables</h2>
+<p>A variable by the name of the editable region becomes available in the context the region is being used in.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="editable/text.html">editable (text)</a></li>
+<li><a href="editable/password.html">editable (password)</a></li>
+<li><a href="editable/textarea.html">editable (textarea)</a></li>
+<li><a href="editable/richtext.html">editable (richtext)</a></li>
+<li><a href="editable/image.html">editable (image)</a></li>
+<li><a href="editable/thumbnail.html">editable (thumbnail)</a></li>
+<li><a href="editable/file.html">editable (file)</a></li>
+<li><a href="editable/radio.html">editable (radio)</a></li>
+<li><a href="editable/checkbox.html">editable (checkbox)</a></li>
+<li><a href="editable/dropdown.html">editable (dropdown)</a></li>
+<li><a href="editable/group.html">editable (group)</a></li>
+<li><a href="editable/message.html">editable (message)</a></li>
+<li><a href="editable/nicedit.html">editable (nicedit)</a></li>
+<li><a href="editable/relation.html">editable (relation)</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>comments - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="comments" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/comments.html" itemprop="item"><span itemprop="name">comments</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="comments">comments</h1>
+<p>Please see <a href="../concepts/using-comments.html"><strong>Core Concepts - Comments</strong></a> for a full discussion of the Comments tag.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>masterpage</li>
+<li>page_id</li>
+<li>page_name</li>
+<li>limit</li>
+<li>paginate</li>
+<li>offset</li>
+<li>order</li>
+</ul>
+<p>Normally <em>comments</em> tag will fetch all the available approved comments.<br/>
+It can be constrained into fetching comments from only certain pages by setting the <em>masterpage</em>, <em>page_id</em> and <em>page_name</em> parameters.</p>
+<h3 id="masterpage">masterpage</h3>
+<pre><code>&lt;cms:comments masterpage=&#39;blog.php&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the pages that have been cloned out of blog.php.</p>
+<pre><code>&lt;cms:comments masterpage=&#39;blog.php, testimonial.php&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the pages that have been cloned out of blog.php or testimonial.php.</p>
+<pre><code>&lt;cms:comments masterpage=&#39;NOT blog.php, testimonial.php&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of all the pages except those that have been cloned out of blog.php or testimonial.php.</p>
+<h3 id="page_id">page_id</h3>
+<pre><code>&lt;cms:comments page_id=&#39;13&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the page with the id of &#39;13&#39;.</p>
+<pre><code>&lt;cms:comments page_id=&#39;13, 17&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the pages that have an id of &#39;13&#39; or &#39;17&#39;.</p>
+<pre><code>&lt;cms:comments page_id=&#39;NOT 13, 17&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of all the pages except the pages that have an id of &#39;13&#39; or &#39;17&#39;.</p>
+<h3 id="page_name">page_name</h3>
+<pre><code>&lt;cms:comments page_name=&#39;my_first_entry&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the page named &#39;my_first_entry&#39;.</p>
+<pre><code>&lt;cms:comments page_name=&#39;my_first_entry, my_another_entry&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of only the pages named &#39;my_first_entry&#39; or &#39;my_another_entry&#39;.</p>
+<pre><code>&lt;cms:comments page_name=&#39;NOT my_first_entry, my_another_entry&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch comments of all the pages except the pages named &#39;my_first_entry&#39; or &#39;my_another_entry&#39;.</p>
+<h3 id="limit">limit</h3>
+<pre><code>&lt;cms:comments limit=&#39;5&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch five approved comments. (Since &#39;order&#39; is not specified, the default value of &#39;desc&#39; will be used and the latest 5 comments will be fetched.</p>
+<h3 id="paginate">paginate</h3>
+<pre><code>&lt;cms:comments limit=&#39;5&#39; paginate=&#39;1&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch ALL approved comments but show only 5 at one time. To move to the next 5 or the previous 5 comments, pagination code has to be used (see <a href="paginator.html"><strong>paginator</strong></a>).</p>
+<h3 id="offset">offset</h3>
+<pre><code>&lt;cms:comments limit=&#39;5&#39; offset=&#39;2&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch five approved comments after skipping the first two.</p>
+<h3 id="order">order</h3>
+<p>Comments are always ordered by their dates. The order in which they are displayed can be made either ascending or descending by setting this parameter to &#39;asc&#39; or &#39;desc&#39; respectively. If omitted, &#39;desc&#39; (latest first) is assumed.</p>
+<pre><code>&lt;cms:comments order=&#39;asc&#39;&gt;&lt;/cms:comments&gt;
+</code></pre><p>Fetch all approved comments and order them in ascending order (oldest first) of their dates.</p>
+<h2 id="variables">Variables</h2>
+<ul>
+<li>k_comment_id</li>
+<li>k_comment</li>
+<li>k_comment_author_id</li>
+<li>k_comment_author</li>
+<li>k_comment_author_email</li>
+<li>k_comment_author_website</li>
+<li>k_comment_date</li>
+<li>k_comment_link</li>
+<li>k_comment_page_id</li>
+<li>k_comment_page_title</li>
+<li>k_comment_page_name</li>
+<li>k_comment_template_name</li>
+</ul>
+<p>In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see <a href="paginator.html"><strong>paginator</strong></a> for details.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="process_comment.html">process_comment</a></li>
+<li><a href="pages.html">pages</a></li>
+<li><a href="folders.html">folders</a></li>
+<li><a href="archives.html">archives</a></li>
+<li><a href="templates.html">templates</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

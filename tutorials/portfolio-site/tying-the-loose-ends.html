@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Tying the loose ends - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Tying the loose ends" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tutorials.html" itemprop="item"><span itemprop="name">Tutorials</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../portfolio-site.html" itemprop="item"><span itemprop="name">Sample Portfolio Site</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tutorials/portfolio-site/tying-the-loose-ends.html" itemprop="item"><span itemprop="name">Tying the loose ends</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="tying-the-loose-ends">Tying the loose ends</h1>
+<p><br/></p>
+<h3 id="the-menu">The Menu</h3>
+<p><a href="http://www.couchcms.com/docs/code/final.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p>The links in the menu at the top of all the five templates are still pointing to the original files of Aurelius (those with the <em>.html</em> extensions). We need to link them to our new templates.</p>
+<p>A look at the HTML code of our templates will reveal that they all have this piece of code for menu in common -</p>
+<p><img src="../../assets/img/contents/portfolio-site-191.png" alt=""></p>
+<p>The only little difference in each is the part highlighted above. The <em>class=&quot;current&quot;</em> string appears only on the menu item that corresponds to the template this menu appears in. This causes a little arrow to appear below the current section.</p>
+<p>We can easily replace the static links in the menu by those of our new templates by using the Couch link tag.<br/>
+We have already encountered the link tag while configuring a previous section and know that we should always use this instead of hard coding links ourselves because it takes into account the prettyurls setting of the site and outputs links accordingly.</p>
+<p>Thus the modified code of the menu (we are modifying <em>blog.php</em>) will become -</p>
+<p><img src="../../assets/img/contents/portfolio-site-192.png" alt=""></p>
+<p>That is a straightforward change. The <em>blog</em> section will now display the correct menu.<br/>
+To make all the other templates do the same, we need to make the same modifications in all of them.<br/>
+That is a total of 7 places to do so (the five templates and the two embedded list-views - <em>blog_list.html</em> and <em>portfolio_list.html</em>.</p>
+<p>A cleaner approach would be to place the code for menu in a separate snippet and then embed the snippet at all the required places.<br/>
+We&#39;ll take this approach.</p>
+<p>Cut the code we have been working on above, paste it into a file and save the file as header.html in the snippets folder of Couch.<br/>
+Embed the following code at all the seven locations we mentioned -</p>
+<pre><code>&lt;cms:embed &#39;header.html&#39; /&gt;
+</code></pre><p>Access the various sections. The menu links should work now but regardless of the section we might be currently in, the menu will show blog as the current section.<br/>
+That is not surprising as the code we embedded had the <em>class=&quot;current&quot;</em> string in the <em>blog</em> menu item.</p>
+<p>To rectify the situation, let us now modify the embedded <em>header.html</em>.<br/>
+We&#39;ll place some simple conditional tags to check for the current template and then output the <em>class=&quot;current&quot;</em> within the right menu item.<br/>
+The variable to check is the <em>k_template_name</em> that is always set by Couch to indicate the template being used.<br/>
+The modified code -</p>
+<p><img src="../../assets/img/contents/portfolio-site-193.png" alt=""></p>
+<p>Visit all the sections again and the menu should work fine.<br/>
+The usefulness of embedded snippets is that you need to make modifications only at a single place for the changes to appear at all the places the embed was used on.</p>
+<p>The code we placed in the header.html also contained the name of the site as a Text Logo Aurelius.<br/>
+This name appears on every page of our web site.</p>
+<p><img src="../../assets/img/contents/portfolio-site-194.png" alt=""></p>
+<p>Change that to whatever you wish and all the templates will show the modified name.</p>
+<p>Instead of hard-coding the site&#39;s name ourselves, a better option would be to give the client a way to do so.<br/>
+The question is how.<br/>
+Creating an editable region for it, the way we have done so far, will not work because this item belongs to multiple templates and not to single one.<br/>
+A similar problem will arise if we were to make, for example, the highlighted region in the portfolio template below, editable by the client.</p>
+<p><img src="../../assets/img/contents/portfolio-site-195.png" alt=""></p>
+<p>We cannot do so by creating an editable region for it in <em>portfolio.php</em> because in that case any changes made to it would belong to any one single portfolio item - not globally to the template itself.</p>
+<h3 id="global-values">Global values</h3>
+<p>The solution to these global items is creating a separate template for then altogether.<br/>
+We&#39;ll define the editable regions for all globally required values in this template. The user can edit the values here and then we can simply fetch these values and use them anywhere we desire.<br/>
+Since this template will only be used to hold editable values and will never be accessed directly through a URL, we can declare it to be non-executable (we have covered this in a previous tutorial).</p>
+<p>Create and add a new file named <em>globals.php</em> to our existing templates.<br/>
+Add the mandatory PHP code to it to attach Couch to it -</p>
+<p><img src="../../assets/img/contents/portfolio-site-196.png" alt=""></p>
+<p>Access <em>http&#58;//www.mytestsite.com/globals.php</em> as super-admin and then visit the admin section.<br/>
+Our new template should now be available.</p>
+<p><img src="../../assets/img/contents/portfolio-site-197.png" alt=""></p>
+<h4 id="setting-global-values">Setting global values</h4>
+<p>We can now define all the editable regions that will hold the global values.<br/>
+We have already discussed the site&#39;s name. We&#39;ll create one to hold a one-line site&#39;s description. Each of the five templates has a catch-line each. We&#39;ll create editable regions for these too.<br/>
+The finished code should look like this -</p>
+<p><img src="../../assets/img/contents/portfolio-site-198.png" alt=""></p>
+<p>Refresh <em>http&#58;//www.mytestsite.com/globals.php</em> still logged-in as the super-admin to make Couch pick up the changes.<br/>
+Visiting the admin panel should reveal the following editable regions -</p>
+<p><img src="../../assets/img/contents/portfolio-site-199.png" alt=""></p>
+<p>That is half of our work done. We can now get the values in. Let us see how to get those values out and use them in the templates.</p>
+<h4 id="fetching-global-values">Fetching global values</h4>
+<p>There are two different methods of fetching in the global values, We&#39;ll describe both -<br/>
+<strong>a.</strong> The first method uses the regular Couch pages tag that we have used several times so far.<br/>
+Somewhere at the start of a template, use the pages tag and specify <em>globals.php</em> as the masterpage. <em>globals.php</em> is non-clonable, so the pages tag will fetch in the values of all the editable regions defined for the template.</p>
+<p><img src="../../assets/img/contents/portfolio-site-200.png" alt=""></p>
+<p>The variables set by the pages tag are available for use only within the opening and closing components of the pages tag. We want to use them at other parts of the template and hence we copy their values to new variables. These new variables are specified to have a global scope, which makes them available everywhere on the page.</p>
+<p>Notice in the code above how we are copying the value of the variable <em>site_name</em>, containing the value of the editable region by the same name, into a variable named <em>g_site_name</em> (we can use any arbitrary name). The <em>g_site_name</em> has been specified to have a global scope hence, unlike variable <em>site_name</em>, can be used even outside the pages tag anywhere in the template.</p>
+<p>The new global variable can now be in the regular manner.<br/>
+For example, the following code in the embedded <em>header.html</em></p>
+<p><img src="../../assets/img/contents/portfolio-site-201.png" alt=""></p>
+<p>becomes</p>
+<p><img src="../../assets/img/contents/portfolio-site-202.png" alt=""></p>
+<p><strong>b.</strong> The first method given above is good to fetch in all global values in one fell sweep but has the drawback of having to place the code using the pages tag somewhere at the start of every template where the values are to be used.<br/>
+Sometimes you need to show only a few values from the global template. For such cases you can use the Couch get_custom_field tag to directly fetch the variable&#39;s value. This tag takes as parameters the name of the variable to be fetched, the template&#39;s name and the page&#39;s name if the template is clonable.<br/>
+Since our <em>globals.php</em> template is non-clonable, we can skip the cloned page&#39;s name and simply state -</p>
+<pre><code>&lt;cms:get_custom_field &#39;site_name&#39; masterpage=&#39;globals.php&#39; /&gt;
+</code></pre><p>Thus the code to display the site&#39;s name in header.html becomes -</p>
+<p><img src="../../assets/img/contents/portfolio-site-203.png" alt=""></p>
+<p>Since for our templates we&#39;ll be mainly displaying only solitary global values. we&#39;ll use the second method.</p>
+<p>For example, to fix the caption for <em>about.php</em>, change the following code -</p>
+<p><img src="../../assets/img/contents/portfolio-site-204.png" alt=""></p>
+<p>to</p>
+<p><img src="../../assets/img/contents/portfolio-site-205.png" alt=""></p>
+<p>Similarly fix the captions for all the other templates.</p>
+<p>One final thing remains to be fixed before wrapping up everything - the text that appears in the title bar of the Brower.<br/>
+Of course, it is the HTML title tag that shows up there and it differs from template to template.</p>
+<p>We&#39;ll list the original code along with the modified code of a couple of templates.</p>
+<p><strong>index.php</strong><br/>
+Original -</p>
+<p><img src="../../assets/img/contents/portfolio-site-206.png" alt=""></p>
+<p>Modified -</p>
+<p><img src="../../assets/img/contents/portfolio-site-207.png" alt=""></p>
+<p><br/><strong>portfolio.php</strong><br/>
+Original -</p>
+<p><img src="../../assets/img/contents/portfolio-site-208.png" alt=""></p>
+<p>Modified -</p>
+<p><img src="../../assets/img/contents/portfolio-site-209.png" alt=""></p>
+<p><br/><strong>portfolio_list.html</strong><br/>
+Original -</p>
+<p><img src="../../assets/img/contents/portfolio-site-210.png" alt=""></p>
+<p>Modified -</p>
+<p><img src="../../assets/img/contents/portfolio-site-211.png" alt=""></p>
+<p>List views don&#39;t have a single item to display the title of, so we remove the item name from the title.</p>
+<p>You can similarly modify the rest of the templates.</p>
+<h3 id="prettyurls">PrettyURLs</h3>
+<p>With this, all the templates in Aurelius are finally fully configured.<br/>
+Before handing this site over to the client, however, you&#39;d want to turn on the prettyurls for it.<br/>
+Please see Couch&#39;s documentation that shows you in detail how to do so.<br/>
+Once you complete the steps detailed in the documentation, visit all the templates again to see how the URLs have changed.<br/>
+You&#39;ll immediately notice a problem - except for the home page, in all the other templates the CSS files do not load properly with the new prettyurls.<br/>
+The reason lies in the original code of Aurelius -</p>
+<p><img src="../../assets/img/contents/portfolio-site-212.png" alt=""></p>
+<p>As you can see, the hrefs of the stylesheets are given in relative format. With prettyurls turned on, once the URL of any containing page changes, so do these links.<br/>
+We need to make the hrefs absolute. To do so, modify the code shown above to the following in all the templates (don&#39;t forget the embedded <em>blog_list.html</em> and <em>portfolio_list.html</em> -</p>
+<p><img src="../../assets/img/contents/portfolio-site-213.png" alt=""></p>
+<p><em>portfolio.php</em> will also need this fixing of relative links for the .js files -</p>
+<p><img src="../../assets/img/contents/portfolio-site-214.png" alt=""></p>
+<p>With these changes, the CSS files should now load properly in all the templates.</p>
+<h3 id="parting-words">Parting words</h3>
+<p>This brings us finally to the end of this tutorial (<a href="http://www.couchcms.com/docs/code/final.zip">Download the finished code</a>).<br/>
+We started with a plain HTML template and transformed it into a dynamic, fully CMS enabled site that even the most tech-challenged client should be able to manage easily.<br/>
+The real beauty of all this was that we were able to accomplish it without writing any PHP at all (except for the two lines that remain the same for every template).<br/>
+There is a lot more that you can do with Couch. It is a highly flexible system and there are several ways of accomplishing the same thing in it. Please take a look at the <a href="../../index.html">documentation</a> for a fuller treatment of all its features.</p>
+<p>Good-bye and relax! You are on the Couch now!</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

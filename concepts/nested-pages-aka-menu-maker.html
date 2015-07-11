@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Nested Pages (AKA Menu Maker) - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Nested Pages (AKA Menu Maker)" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/nested-pages-aka-menu-maker.html" itemprop="item"><span itemprop="name">Nested Pages (AKA Menu Maker)</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="nested-pages-aka-menu-maker-">Nested Pages (AKA Menu Maker)</h1>
+<p>A typical website usually consists of two kind of pages -</p>
+<ol>
+<li>Pages that can be grouped together under a common section e.g. all the pages belonging to the blog section or portfolio section.</li>
+<li>Standalone single pages that are distinct enough to form a section of their own e.g. About-us, Contact-us or Privacy-policy etc.</li>
+</ol>
+<p>In Couch we handle the first kind of pages mentioned above by cloning them out of a single template e.g. all the pages of the blog section will actually use only a single physical template &#39;blog.php&#39; (see: <a href="cloned-pages.html">Cloned Pages</a>).</p>
+<p>We handle the second kind of pages by using a separate template for each of such pages e.g. About-us section might use &#39;about-us.php&#39; while Contact-us uses &#39;contact.php&#39;.</p>
+<p>Very often we find that the two kind of pages mentioned have an hierarchical relation with each other e.g. the following could be the site-map of a typical website -</p>
+<p><img src="../assets/img/contents/nested-pages-1.png" alt=""></p>
+<p>The hierarchical relation between the pages usually manifests itself in these ways -<br/>
+<strong>1.</strong> In the menu - where the hierarchical structure is represented by having menus that in turn have submenus.<br/>
+<strong>2.</strong> The breadcrumbs - where the crumbs represent the hierarchy of pages leading up to the page being visited.<br/>
+<strong>3.</strong> The URL of a page - where the page&#39;s hierarchy in the site-tree shows up as segments of the URL (if prettyURLs are used).</p>
+<p class="success">
+    Creating a menu that reflects the site structure is the more pressing demand that is encountered.<br/>
+    A related requirement that often crops up with building a site&#39;s menu may be cited here - it is the site-owner&#39;s demand to be able to manipulate the menu himself i.e. to decide which pages show up in the menu and at which location.
+</p>
+
+<p>If a site having the structure shown above was to be built in Couch, we already know how to create each of the sections. Creating the hierarchical relation between them, however, would not be so straightforward.</p>
+<p>One way could be by placing the templates within physical folders that mimic the structure.<br/>
+Apart from being a little convoluted, this approach also rules out granting the site-owner the ability to manage the site menu by himself. Also, creating a new standalone page would entail expecting him to be able to place a physical template on his website.<br/>
+Clearly, a better way is required.<br/>
+Couch version 1.2 introduces &#39;Nested Pages&#39; feature to provide such a way.</p>
+<h3 id="so-what-is-a-nested-page-">So what is a nested page?</h3>
+<p>A nested-page, internally, is just a variation of the regular cloned-page in Couch that you are already familiar with.</p>
+<p class="error">If not, please first take a look at the &#39;<a href="cloned-pages.html">Cloned Pages</a>&#39; documentation. Much of the current discussion will not make much sense unless you are familiar with the regular cloned pages in Couch.</p>
+
+<p>It is almost identical to the regular cloned page except for the following characteristics -</p>
+<p><strong>1.</strong> A nested-page allows another nested-page (cloned out of the same template) to be placed below it as its child page. The child page in its turn can have another nested-page as its child and so on. This allows us to create the hierarchical relation between the pages that we were looking for.</p>
+<p><strong>2.</strong> The position of a nested-page in the hierarchy gets reflected in its URL (if prettyURLs are used) with its parent pages listed before it.<br/>
+E.g. if the URL of a nested-page is <em>http&#58;//www.yoursite.com/one/two/three/</em>, &#39;three&#39; would be the page itself with &#39;two&#39; and &#39;one&#39; being its parent nested-pages.</p>
+<p><strong>3.</strong> Nested-pages do not have a folder-view.<br/>
+Regular cloned-pages (i.e. non-nested) use &#39;folders&#39; to create the hierarchical structure. Since for nested-pages, the pages themselves fulfill this task a folder-view is redundant.<br/>
+In fact, if you look closely at the sample URL of a nested-page given in the point above<br/>
+<em>http&#58;//www.yoursite.com/one/two/three/</em><br/>
+you&#39;ll notice that had this URL been of a regular cloned template (i.e. non-nested), it would represent a folder-view - with &#39;one&#39;, &#39;two&#39; and &#39;three&#39; being folders of the template. For a nested-page, the &#39;three&#39; becomes the name of the page (notice that unlike regular cloned pages, there is no &#39;.html&#39; extension).</p>
+<h3 id="how-do-we-create-nested-pages-">How do we create nested pages?</h3>
+<p>As mentioned above, a nested-page is just a variation of the regular cloned page. We create a nested-page exactly the same way a normal page gets created.<br/>
+The process, as usual, begins by declaring the template as &#39;clonable&#39;.</p>
+<pre><code>&lt;cms:template clonable=&#39;1&#39;&gt; ... &lt;/cms:template&gt;
+</code></pre><p>The key is that we additionally also declare this clonable template as supporting nested-pages by using this new parameter -</p>
+<pre><code>&lt;cms:template clonable=&#39;1&#39; nested_pages=&#39;1&#39;&gt; ... &lt;/cms:template&gt;
+</code></pre><p><img src="../assets/img/contents/nested-pages-2.png" alt=""></p>
+<p>That is it. Define all required editable regions and follow it all up with the mandatory visit to the template while logged-in as super-admin to add the template in Couch.<br/>
+Returning back to the admin-panel we&#39;ll find that, as happens with regular templates, Couch creates a default cloned page for the template.</p>
+<p><img src="../assets/img/contents/nested-pages-3.png" alt=""></p>
+<p>We can rename the default page to create our first nested-page.</p>
+<p><img src="../assets/img/contents/nested-pages-4.png" alt=""></p>
+<p>So far everything is exactly the same as happens with the regular cloned pages.<br/>
+Create another cloned page and edit it to find the first difference.</p>
+<p><img src="../assets/img/contents/nested-pages-5.png" alt=""></p>
+<p>Nested-pages get an additional system field - a dropdown that lists all the existing pages of the same template.<br/>
+We can choose to place the page being created/edited below another page. We have only one existing page so far so that is the only entry available to choose.</p>
+<p><img src="../assets/img/contents/nested-pages-6.png" alt=""></p>
+<p>Place the new second page below the first one we created and save.<br/>
+Create a third page in a similar fashion and also place it below the first page. So now the first page becomes the parent of the next two pages.</p>
+<p>The admin page that lists cloned nested-pages looks a little different than what we are used to seeing.</p>
+<p><img src="../assets/img/contents/nested-pages-7.png" alt=""></p>
+<p>You&#39;ll find that Couch indicates the hierarchical relation between the pages by using indentation.<br/>
+Also notice that the two sibling pages at the same level have these little arrows added. You can use them to easily change their display order below their parent.</p>
+<p><img src="../assets/img/contents/nested-pages-8.png" alt=""></p>
+<p>Also there is no dropdown showing the folders (as nested-pages do not support and actually ignore any folders defined for the template).</p>
+<p>Apart from these minor differences, there are a few more that lie hidden in the &#39;Advanced settings&#39; dropdown. We&#39;ll describe them in the next section when we actually make use of them.</p>
+<p>So, as you can see, handling nested-pages is not much different from handling regular pages that we are familiar with.</p>
+<p>Let us now put the nested-pages feature into action by using it to implement the hierarchical site structure we came across at the top.</p>
+<h3 id="putting-nested-pages-into-action">Putting nested-pages into action</h3>
+<p>Please take a look at the proposed site-map again.</p>
+<p><img src="../assets/img/contents/nested-pages-9.png" alt=""></p>
+<p>As we already mentioned, the blog and portfolio sections can be implemented using the regular cloned pages.</p>
+<p><img src="../assets/img/contents/nested-pages-10.png" alt=""></p>
+<p>Get them done first using clonable templates e.g. blog.php and portfolio.php.</p>
+<p class="notice">We assume you already know how to create regular cloned pages. <a href="cloned-pages.html">Please see the documentation</a> if you need a refresher.</p>
+
+<p>With those sections done we can move on to the isolated standalone pages.<br/>
+It is these pages that we&#39;ll implement using the nested-pages feature.</p>
+<p><img src="../assets/img/contents/nested-pages-11.png" alt=""></p>
+<p>This is the plan -<br/>
+We&#39;ll declare our index.php as clonable (and as supporting nested-page) and then create all the standalone pages as cloned pages of index.php.<br/>
+By using index.php as the template we&#39;ll benefit from the URL structure that will emerge with prettyURLs turned on (the word &#39;index&#39; gets removed from the URL).<br/>
+For example, the URL of &#39;about-us&#39; page will become<br/>
+<em>http&#58;//www.yoursite.com/about-us/</em><br/>
+while that of &#39;testimonials&#39; will become<br/>
+<em>http&#58;//www.yoursite.com/about-us/what-we-do/testimonials/</em></p>
+<p>It is easy to see that when the URL <em>http&#58;//www.yoursite.com/about-us/</em> is visited, the &#39;about-us&#39; in the URL will indicate to Couch to load the &#39;about-us&#39; page.<br/>
+Same applies for the &#39;testimonials&#39; in <em>http&#58;//www.yoursite.com/about-us/what-we-do/testimonials/</em>.<br/>
+However which page do you think will get loaded for this URL? -<br/>
+<em>http&#58;//www.yoursite.com/</em></p>
+<p>If you are familiar with the regular cloned pages, you&#39;ll recognize that this is the &#39;list-view&#39; [see <a href="cloned-pages.html">cloned-pages</a> and <a href="views.html">views</a>].<br/>
+Since no page is indicated, none gets loaded. Only the empty template will show up (i.e. the HTML will appear but the editable regions will be empty).<br/>
+We also know that in &#39;list-view&#39;, we usually list all the cloned pages of the template (we can choose to do any other thing we want to - point is we&#39;ll have to handle the view ourselves).<br/>
+As with any other clonable template, we&#39;ll add the following logic to the index.php template -</p>
+<pre><code>&lt;cms:if k_is_page&gt;
+    &lt;!-- Single page being visited. Show contents of its editable regions --&gt;
+&lt;cms:else /&gt;
+    &lt;!-- List view. Show a listing of pages --&gt;
+&lt;/cms:if&gt;
+</code></pre><p>This is all staple stuff we use with cloned pages. I am repeating it here to bring home the point that the &#39;home page&#39; (http&#58;//www.yoursite.com/) of the site is not a &#39;page&#39; that we can create but is a &#39;view&#39; that has to be handled in template code.</p>
+<p>Moving on, we now define the editable regions for index.php. Since all the cloned pages will share these editable regions, we&#39;ll create one that can be generically used in all the stand-alone pages. We&#39;ll create only a single region of type richtext and name it &#39;content&#39;.</p>
+<p><img src="../assets/img/contents/nested-pages-12.png" alt=""></p>
+<p class="success">Most of the standalone pages are usually similar and can share the same template and editable regions but what happens when one of them happens to differ from the rest (e.g. contact-us page will usually have a different markup than the others)?. Please read on. We&#39;ll illustrate how to handle that a little further down.</p>
+
+<p>With the preparations done, make the mandatory visit to index.php as super-admin. This will make Couch persist all the changes and add &#39;index.php&#39; as a template managed by it.</p>
+<p>Rest should be easy. Simply create a cloned page for each of the standalone pages. Use the &#39;Parents&#39; dropdown list to set the appropriate parents and use the up/down arrows to set the order of their appearance.<br/>
+Once we are through, this is how our tree should look like -</p>
+<p><img src="../assets/img/contents/nested-pages-13.png" alt=""></p>
+<p>Fine, but if we are supposed to use this tree structure to create the site&#39;s menu - where are the &#39;blog&#39;, &#39;portfolio&#39; and the &#39;home&#39; items?<br/>
+This brings us to a feature of nested-pages that is not shared by the regular pages.</p>
+<h3 id="pointer-pages">Pointer pages</h3>
+<p>A nested-page, as we have seen so far, is no different from a regular page (except that it supports nesting).<br/>
+However a nested-page has one more card up its sleeve - it can act as a <em>pointer</em> to a different page or section.<br/>
+When one visits a nested-page that is acting as a pointer, instead of seeing the nested-page&#39;s own data, one gets to see the data of the page that is being pointed to.</p>
+<p>Try this out - we already have a discrete &#39;portfolio&#39; section. Let us suppose its URL is <em>http&#58;//www.yoursite.com/portfolio/</em> (assuming the template is &#39;portfolio.php&#39; and prettyURLs are turned on).<br/>
+To assimilate this section into the hierarchical tree of nested-pages that we have created so far, create a new cloned page of &#39;index.php&#39; and name it &#39;portfolio&#39;. Set the &#39;what-we-do&#39; page as its parent to end up having this structure -</p>
+<p><img src="../assets/img/contents/nested-pages-14.png" alt=""></p>
+<p>The new page is now part of the hierarchy and can be accessed as <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/</em>.<br/>
+Now for the fun part - edit this nested &#39;portfolio&#39; page. Click on the &#39;Advanced settings&#39;. You&#39;ll see that nested-pages have some new options in their advanced settings.</p>
+<p><img src="../assets/img/contents/nested-pages-15.png" alt=""></p>
+<p>We&#39;ll discuss them in detail when we create the menu - what we are interested in for now is the &#39;Points to another page&#39; option.</p>
+<p><img src="../assets/img/contents/nested-pages-16.png" alt=""></p>
+<p>Click on this to set the check box. Close the &quot;Advanced settings&#39; dropdown. You&#39;ll see that the main body of the edit page now no longer shows the editable regions defined for the template. Instead this is what gets shown -</p>
+<p>Before:</p>
+<p><img src="../assets/img/contents/nested-pages-17.png" alt=""></p>
+<p>After:</p>
+<p><img src="../assets/img/contents/nested-pages-18.png" alt=""></p>
+<p>Paste the URL of the actual portfolio section into the textbox</p>
+<p><img src="../assets/img/contents/nested-pages-19.png" alt=""></p>
+<p class="error"><strong>IMP:</strong> always get the URL of any section being pointed to by visiting it and copying its URL from the address bar of the browser.</p>
+
+<p>Click save. Click on the &#39;View&#39; button to visit this nested page of ours. You&#39;ll notice that, instead of <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/</em> (this nested &#39;portfolio&#39; page&#39;s canonical URL), we get redirected to <em>http&#58;//www.yoursite.com/portfolio/</em>.</p>
+<h4 id="masquerading">MASQUERADING</h4>
+<p>In the example above, notice that the nested-page acting as pointer <strong>redirected</strong> us to the target page.</p>
+<p>If <em>index.php</em> is being used as the template for the nested-pages (as we are doing in this example), we get another option to set the method used by the pointer pages to show us the target page - <strong>masquerading</strong>.</p>
+<p>Masquerading is a very powerful method that can be used to <strong>make the pointer page behave as if it were the target section itself</strong>.<br/>
+By using this option we can virtually move an entire section anywhere within the nested-pages hierarchy, thus being able to choose any arbitrary URL for that section.</p>
+<p class="notice">Masquerading requires prettyURLs to be enabled. This is understandable because the whole purpose of masquerading is to impose a new URL structure (established by the pointer page&#39;s hierarchy) upon the section being masqueraded. Please see <a href="pretty-urls.html">Pretty URLS</a> section in documentation if you require information on how to enable this feature.</p>
+
+<p>A slight modification to the previous example should make the concept of masquerading clear.</p>
+<p>Edit the nested &#39;portfolio&#39; page we used above. This time, instead of the previously chosen &#39;Redirects&#39; method, choose &#39;Masquerades&#39;.</p>
+<p><img src="../assets/img/contents/nested-pages-20.png" alt=""></p>
+<p>Remember that the canonical URL of this nested-page is <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/</em> and we are making it point to a separate portfolio section with the canonical URL of <em>http&#58;//www.yoursite.com/portfolio/</em> (with prettyURLs enabled).</p>
+<p>Save your changes and visit the nested page <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/</em>.<br/>
+You&#39;ll find that this time, instead of redirecting to <em>http&#58;//www.yoursite.com/portfolio/, _the nested-page itself shows the same content that you would have seen had you visited _http&#58;//www.yoursite.com/portfolio/</em>.</p>
+<p>If the portfolio section has links to its cloned pages and to its various views (i.e. page-view, folder-view, archive-view etc.), try clicking on them and you&#39;ll find that all the links of the portfolio section have now changed automatically and appear as <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/somepagename.html</em>, <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/some-folder/</em> etc. instead of the original <em>http&#58;//www.yoursite.com/portfolio/somepagename.html</em>, <em>http&#58;//www.yoursite.com/portfolio/some-folder/</em> etc.</p>
+<p><strong>For all practical purposes, the portfolio section has been moved in its entirety</strong> from <em>http&#58;//www.yoursite.com/portfolio/</em> to <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/</em> <strong>without making any changes whatsover to the portfolio section!</strong><br/>
+In fact, if now you try to access the portfolio section using its original URL (<em>http&#58;//www.yoursite.com/portfolio/</em>), it will send you back to its new URL <em>http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/some-folder/</em> with a 301 HTTP code that the page has moved to the new location.</p>
+<p>A comparision between the two methods used by pointer pages may be in order:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Redirection</th>
+<th style="text-align:left">Masquerading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Primarily meant to create menus (where menu-items, i.e. nested-pages, direct the visitors to proper sections of the website).</td>
+<td style="text-align:left">Primarily meant to relocate entire discrete sections at any desired location within the site&#39;s hierarchy. Also helps providing the site-owner a unified and compact interface to manage all the sections of the web-site.</td>
+</tr>
+<tr>
+<td style="text-align:left">Available in pages of all templates that support nested-pages</td>
+<td style="text-align:left">Available only in pages of <em>index.php</em> template (if configured to support nested-pages)</td>
+</tr>
+<tr>
+<td style="text-align:left">Does not depend on prettyURLs to work.</td>
+<td style="text-align:left">Requires prettyURLs.</td>
+</tr>
+<tr>
+<td style="text-align:left">Multiple nested-pages of a template can point to the same section. E.g. one nested-page of a template may point to a particular page of &#39;portfolio&#39; section while another nested-page of the same template may point to another page or folder of the same &#39;portfolio&#39; section.</td>
+<td style="text-align:left">A template can be masqueraded only once by any of the nested-pages of <em>index.php</em>. E.g. if &#39;portfolio&#39; section is masqueraded by a particular nested-page of <em>index.php</em>, no other nested-page of <em>index.php</em> can masquerade &#39;portfolio&#39; section again.<br/><br/>Also, the &#39;portfolio&#39; section will be masqueraded in its entirety - i.e. all its pages and all its views will get masqueraded and hence their original URLs changed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="moving-on-">Moving on...</h3>
+<p>With the &#39;pointer page&#39; concept understood, it should be easy to see how a menu of any complexity can be implemented using the nested-pages. Simply create a nested-page that reflects the desired hierarchical position and make it point to any page (hence the title &#39;AKA Menu maker&#39;).</p>
+<p>Create a similar pointer-page for the &#39;blog&#39; section and another one for the &#39;home&#39; section.<br/>
+Remember that the &#39;home&#39; section&#39; is actually a &#39;view&#39; (as opposed to being a &#39;page&#39;). That is perfectly okay. Just paste in the home page&#39;s URL <em>http&#58;//www.yoursite.com/</em> in the &#39;points to&#39; textbox. Uncheck the &#39;Mark as selected for all pages below this link&#39; (this is important - we&#39;ll explain why a little later. For now just be sure to uncheck it).</p>
+<p><img src="../assets/img/contents/nested-pages-21.png" alt=""></p>
+<p>Visit and page and it will dutifully redirect to the site&#39;s home page.</p>
+<p>The site structure we now have looks like this -</p>
+<p><img src="../assets/img/contents/nested-pages-22.png" alt=""></p>
+<p>Notice how the pointer pages have a &#39;hand&#39; icon indicating that they are pointers. Also that you can access the pointed sections directly from the links that appear alongside.</p>
+<p>We are almost there. Just implementing the &#39;contact-us&#39; section remains and we can move on to create our site&#39;s menu using this tree structure of &#39;index.php&#39;.</p>
+<p>In the tree structure that we have now, all the standalone pages share the same HTML markup and the same editable regions - not surprising as that is how the cloned pages are supposed to be. The &#39;contact-us&#39; page, however, needs a different HTML markup (will have an HTML form etc.).</p>
+<p>Such pages can be implemented using the same method that was used with the &#39;portfolio&#39; and &#39;blog&#39; sections above.<br/>
+Implement the &#39;contact-us&#39; page as a section in itself by using a separate non-clonable template, say named &#39;contact-us.php&#39; -</p>
+<p><img src="../assets/img/contents/nested-pages-23.png" alt=""></p>
+<p>Edit the nested-page named &#39;contact-us&#39; (<em>http&#58;//www.yoursite.com/about-us/contact-us/</em>) that we have in our tree and make it a pointer page masquerading as the &#39;contact-us.php&#39; we implemented above -</p>
+<p><img src="../assets/img/contents/nested-pages-24.png" alt=""></p>
+<p>Visit <em>http&#58;//www.yoursite.com/about-us/contact-us/</em> and the contents of the original <em>http&#58;//www.yoursite.com/contact-us/</em> should appear.</p>
+<p>Our hierarchical tree structure is now complete.</p>
+<p><img src="../assets/img/contents/nested-pages-25.png" alt=""></p>
+<p>What remains now is to make Couch automatically generate a menu for the site that reflects this hierarchy.</p>
+<h3 id="creating-the-menu">CREATING THE MENU</h3>
+<p>Typically, menu and breadcrumbs are the two elements on a web page that reflect the hierarchical structure of the website.<br/>
+The tree we created above using nested-pages contains all the information that is needed to create such menus and breadcrumbs.<br/>
+To help us with this task, Couch now has three new tags - &#39;<a href="../tags-reference/nested_pages.html">nested_pages</a>&#39;, &#39;<a href="../tags-reference/menu.html">menu</a>&#39; and &#39;<a href="../tags-reference/nested_crumbs.html">nested_crumbs</a>&#39; that can iterate through our tree and output the desired markup.<br/>
+&#39;nested_pages&#39; is a rather low-level (but very powerful) tag that can be used to iterate through the hierarchy of nested-pages and output just about any kind of markup. The &#39;menu&#39; and &#39;nested_crumbs&#39; are actually just thin veneers around the &#39;nested_pages&#39; tag but can be used to very quickly generate the typical markup associated with menus and breadcrumbs respectively.</p>
+<p>More often than not, you&#39;ll find the &#39;menu&#39; and &#39;nested_crumbs&#39; tags more than sufficient for working with typical menus and breadcrumbs of a website and will rarely need to resort to using &#39;nested_pages&#39; tag directly.<br/>
+Here is how we use them.</p>
+<h4 id="menu">Menu</h4>
+<p>Using the &#39;menu&#39; tag is pretty straightforward. Following is a sample code -</p>
+<pre><code>&lt;cms:menu masterpage=&#39;index.php&#39; /&gt;
+</code></pre><p>It couldn&#39;t get any simpler than that. Notice the mandatory &#39;masterpage&#39; parameter to specify the template of the nested-pages tree.</p>
+<p>This is the output we get -</p>
+<pre><code>&lt;ul class=&quot;level-0&quot;&gt;
+   &lt;li id=&quot;item-home&quot; class=&quot;level-0 first &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+   &lt;li id=&quot;item-about-us&quot; class=&quot;level-0 has-submenu active &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=1&quot;&gt;About Us&lt;/a&gt;
+      &lt;ul class=&quot;level-1&quot;&gt;
+         &lt;li id=&quot;item-what-we-do&quot; class=&quot;level-1 has-submenu first active &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=6&quot;&gt;What we do&lt;/a&gt;
+            &lt;ul class=&quot;level-2&quot;&gt;
+               &lt;li id=&quot;item-portfolio&quot; class=&quot;level-2 first &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/portfolio.php&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+               &lt;li id=&quot;item-testimonials&quot; class=&quot;level-2 last active current &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=8&quot;&gt;Testimonials&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+         &lt;/li&gt;
+         &lt;li id=&quot;item-our-team&quot; class=&quot;level-1 &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=9&quot;&gt;Our Team&lt;/a&gt;&lt;/li&gt;
+         &lt;li id=&quot;item-contact-us&quot; class=&quot;level-1 last &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=10&quot;&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+   &lt;/li&gt;
+   &lt;li id=&quot;item-blog&quot; class=&quot;level-0 &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/blog.php&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+   &lt;li id=&quot;item-privacy-policy&quot; class=&quot;level-0 last &quot;&gt;&lt;a href=&quot;http://www.yoursite.com/index.php?p=12&quot;&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>As you can see, this is the typical <em>&lt;UL&gt;&lt;LI&gt;</em> markup used to create menus.<br/>
+Each of the nested-page we had in the tree is represented by a menu-item using the <em>&lt;LI&gt;</em> element while the hierarchy is represented by creating nested sub-menus using the <em>&lt;UL&gt;</em> element.</p>
+<p>Each nested-page has certain settings in its &#39;Advanced Settings&#39; that may be used to control its appearance in the menu markup generated by the &#39;menu&#39; tag.</p>
+<p><img src="../assets/img/contents/nested-pages-26.png" alt=""></p>
+<ul>
+<li>Show in menu</li>
+<li>Menu Text</li>
+<li>Open in separate window</li>
+<li>Points to another page</li>
+</ul>
+<p>The settings should be self-explanatory.</p>
+<h4 id="styling-the-menu">Styling the menu</h4>
+<p>We now have the requisite HTML structure for our menu.<br/>
+What remains now is putting in some CSS styling and we are done.</p>
+<p>We could code up all the CSS required to shape up a good-looking dropdown menu ourselves or use any of the several very good off-the-shelf scripts that do the job for us.<br/>
+For our example, we&#39;ll make use of a jQuery plugin - <a href="http://users.tpg.com.au/j_birch/plugins/superfish/">Superfish </a> (http&#58;//users.tpg.com.au/j_birch/plugins/superfish/).</p>
+<p>Superfish is a set of CSS and JavaScript files that need to be included within our templates.<br/>
+You can choose to either download the files from Superfish&#39;s site or <a href="http://www.couchcms.com/docs/code/superfish.zip">use the slightly modified version that we used for this example</a> - [<a href="http://www.couchcms.com/docs/code/superfish.zip">Download superfish.zip</a>].<br/>
+For our example we have placed the Superfish folder within the site&#39;s root. If you choose to place the files elsewhere make sure to adjust the paths in the code that follows.</p>
+<p>Since the menu is likely to be shown on all the templates of our website, instead of placing the menu related code in each of our site&#39;s templates,  we&#39;ll put it in a single snippet (name it &#39;menu.html&#39;) and then embed the snippet in our templates.</p>
+<p>Create a snippet file named &#39;menu.html&#39; placing it within the &#39;snippets&#39; folder of Couch.<br/>
+Place the following code within it -</p>
+<pre><code>&lt;cms:set path_to_superfish=&quot;&lt;cms:show k_site_link /&gt;/superfish/&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;&lt;cms:show path_to_superfish /&gt;css/superfish.css&quot; /&gt;
+
+&lt;script src=&quot;&lt;cms:show path_to_superfish /&gt;js/jquery-1.2.6.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;&lt;cms:show path_to_superfish /&gt;js/superfish.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+
+    $(document).ready(function(){
+        $(&quot;ul.sf-menu&quot;).superfish();
+    });
+
+&lt;/script&gt;
+
+&lt;div id=&quot;navwrap&quot;&gt;
+    &lt;cms:menu masterpage=&#39;index.php&#39; menu_class=&#39;sf-menu&#39; /&gt;
+&lt;/div&gt;
+</code></pre><p>As you can see, the snippet starts off with linking to the Superfish CSS and JavaScript files.<br/>
+The portion that outputs the HTML markup for the menu using our cms:menu tag is at the end -</p>
+<pre><code>&lt;div id=&quot;navwrap&quot;&gt;
+    &lt;cms:menu masterpage=&#39;index.php&#39; menu_class=&#39;sf-menu&#39; /&gt;
+&lt;/div&gt;
+</code></pre><p>and this is the portion that actually attaches Superfish with the markup -</p>
+<pre><code>$(document).ready(function(){
+    $(&quot;ul.sf-menu&quot;).superfish();
+});
+</code></pre><p>Superfish needs to be informed about the classname of the menu&#39;s outermost list container (ul or ol). In our case we have indicated &#39;sf-menu&#39;. Notice how we use the cms:menu tag&#39;s &#39;menu_class&#39; parameter to make the tag apply a classname of &#39;sf-menu&#39; to the menu markup.</p>
+<p>Finally, embed the menu snippet within each of our templates by placing the following line within each of them -</p>
+<pre><code>&lt;cms:embed &#39;menu.html&#39; /&gt;
+</code></pre><p>Visit the site and this is the menu that should appear -</p>
+<p><img src="../assets/img/contents/nested-pages-27.png" alt=""></p>
+<p>Play around with this menu and you&#39;ll notice that not only does it automatically highlight the page being visited but also all the parent pages above the current page (if there are any). For example, in the image above, the page being visited is &#39;Testimonials&#39;. As can be seen, both the parent pages of it are also highlighted.<br/>
+By default, the &#39;menu&#39; tag applies the classname &#39;current&#39; to the current menu-item. It also applies the classname &#39;active&#39; to all the parent menu-items leading to (and including) the current menu-item. We can use this behavior to set appropriate CSS styles for highlighting the selected items.</p>
+<p class="notice">
+    How the &#39;menu&#39; tag recognizes a menu-item to be current requires a little explanation.<br/>
+    <br/>
+    When a page is visited, the &#39;menu&#39; tag iterates through its associated nested-pages tree testing each menu-item (i.e. nested-page) against the visited page to determine if they match.<br/>
+    <br/>
+    For normal menu-items (i.e. those that are not pointers to other pages) the process is straightforward - if the page being visited is the same as the menu-item, the menu-item is marked as &#39;current&#39; and all menu-items leading to it (including the current menu-item) as &#39;active&#39;.<br/>
+    <br/>
+    For menu-items that point to other pages, however, the &#39;menu&#39; tag needs to apply a fair bit of intelligence to recognize if a menu-item is current.<br/>
+    Let us say that a menu-item being tested by the &#39;menu&#39; tag points to the following location -<br/>
+    <em>http&#58;//www.yoursite.com/portfolio.php</em> (<em>http&#58;//www.yoursite.com/portfolio/</em> with prettyURL) - the home-view of template &#39;portfolio.php&#39;.<br/>
+    <br/>
+    Now if the page being visited is <em>http&#58;//www.yoursite.com/portfolio.php</em>, it is perfect match and so the menu-item in question will be marked as &#39;current&#39;, its parents will be marked as &#39;active&#39; and the process will end i.e. no further menu-items will be examined (there can be only one current page in the tree at any time). This was no different than what happens with non-pointer pages.<br/>
+    <br/>
+    However, consider if the page being visited happens to be a cloned page of &#39;portfolio.php&#39;<br/>
+    e.g. <em>http&#58;//www.yoursite.com/portfolio.php?p=34</em> (<em>http&#58;//www.yoursite.com/portfolio/some-item.html</em> with prettyURL).<br/>
+    Or it happens to be a folder-view of &#39;portfolio.php&#39;<br/>
+    e.g. <em>http&#58;//www.yoursite.com/portfolio.php?f=2</em> (<em>http&#58;//www.yoursite.com/portfolio/some-folder/</em> with prettyURL).<br/>
+    In both these cases, although the same template is involved (i.e. portfolio.php), the URL of the pages does not match that which the menu-item is pointing to.<br/>
+    <br/>
+    For such cases, by default, the &#39;menu&#39; tag tries to figure out if the page being visited &#39;logically&#39; falls below the page being pointed to.<br/>
+    <br/>
+    Thus, in the example above, both<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/some-item.html</em><br/>
+    as well as<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/some-folder/</em><br/>
+    logically are sub-pages of<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/</em> (with prettyURL)<br/>
+    and so the &#39;menu&#39; tag goes ahead and marks the menu-item in question as &#39;current&#39; and all its parents as &#39;active&#39;.<br/>
+    <br/>
+    Now consider another menu-item - this one pointing to a folder-view<br/>
+    e.g. <em>http&#58;//www.yoursite.com/portfolio.php?f=2</em> (<em>http&#58;//www.yoursite.com/portfolio/some-folder/</em> with prettyURL)<br/>
+    In this case, the menu-item will be marked as &#39;current&#39; only for the same folder<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/some-folder/</em><br/>
+    and any page that is below the folder<br/>
+    e.g. <em>http&#58;//www.yoursite.com/portfolio/some-folder/some-item.html</em><br/>
+    but NOT for<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/</em> or<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/some-item.html</em> or<br/>
+    <em>http&#58;//www.yoursite.com/portfolio/some-other-folder/</em><br/>
+    as they are logically not sub-pages of folder being pointed to.<br/>
+    <br/>
+    This is a powerful functionality and allows the menu to seamlessly blend with other discrete sections of the site, for example the portfolio section, as we saw above.<br/>
+    <br/>
+    Finally consider a point we touched upon earlier but deferred the explanation for later -<br/>
+    in our tree, we have a &#39;Home&#39; menu-item that points to the home-view of index.php (<em>http&#58;//www.yoursite.com</em>) and we have separate menu-items that represent other pages of index.php e.g. <em>http&#58;//www.yoursite.com/about-us/</em> and <em>http&#58;//www.yoursite.com/about-us/what-we-do/</em>.<br/>
+    <br/>
+    Going by the logic we discussed above, if we visit <em>http&#58;//www.yoursite.com/about-us/</em> or <em>http&#58;//www.yoursite.com/about-us/what-we-do/</em>, since in the tree the &#39;Home&#39; menu-item physically comes before the menu-item representing the visited page, <strong>it is the &#39;Home&#39; menu-item that will always get selected although we have a menu-item that specifically represents the visited page</strong>.<br/>
+    <br/>
+    For such cases we can configure the nested-page behind the menu-item NOT to be marked as current for the child-pages (i.e. be marked as current only for the page that is perfect match).
+</p>
+
+<p>The &#39;menu&#39; tag supports a rich set of parameters that can be used to create menus of almost any complexity.<br/>
+Please see the tag&#39;s documentation for a full list of the parameters and their use.</p>
+<h3 id="breadcrumbs">BREADCRUMBS</h3>
+<p>Another element on a typical web page that reflects the hierarchy of pages is the breadcrumb where the parent pages of the page being visited show up as crumbs.</p>
+<p>The Couch tag that can be used to easily create breadcrumbs is the &#39;<a href="../tags-reference/nested_crumbs.html">nested_crumbs</a>&#39; tag.</p>
+<p class="notice">
+    There already is an existing tag named &#39;<a href="../tags-reference/breadcrumbs.html">breadcrumbs</a>&#39; which is used with the folder hierarchy associated with normal cloned pages.<br/>
+    &#39;<a href="../tags-reference/nested_crumbs.html">nested_crumbs</a>&#39; on the other hand works with nested-pages only.
+</p>
+
+<h4 id="usage">Usage</h4>
+<p><strong>1.</strong> As self-closing tag. e.g.</p>
+<pre><code>&lt;cms:nested_crumbs masterpage=&#39;index.php&#39; /&gt;
+</code></pre><p>where &#39;masterpage&#39; points to the template behind the nested-pages tree.</p>
+<p><strong>2.</strong> As a tag-pair for better control over the generated breadcrumbs markup. e.g.</p>
+<pre><code>&lt;cms:nested_crumbs masterpage=&#39;index.php&#39; ignore_show_in_menux=&#39;1&#39; prepend=&#39;&lt;ul class=&quot;breadcrumb&quot;&gt;&#39; append=&#39;&lt;/ul&gt;&#39;&gt;
+    &lt;li&gt;&lt;a href=&quot;&lt;cms:show k_crumb_link /&gt;&quot;&gt;&lt;cms:show k_crumb_text /&gt;&lt;/a&gt;&lt;cms:if k_crumb_is_last=&#39;0&#39;&gt; &amp;raquo; &lt;/cms:if&gt;&lt;/li&gt;
+&lt;/cms:nested_crumbs&gt;
+</code></pre><p>Please see the &#39;<a href="../tags-reference/nested_crumbs.html">nested_crumbs</a>&#39; tag&#39;s documentation for a full list of the parameters and their use.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

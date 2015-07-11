@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>if - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="if" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/if.html" itemprop="item"><span itemprop="name">if</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="if">if</h1>
+<p>The <strong>If</strong> tag is one of the most important tags. It can be used to make decisions based on the presence or absence of a certain condition (or conditions) and then execute or ignore statements enclosed within the opening and closing <strong>If</strong> tags.</p>
+<pre><code>&lt;cms:if my_var &gt;
+   &lt;h3&gt; my_var is present &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above, the heading will be outputted only if a variable named &#39;my_var&#39; is present and has a value that is not &#39;0&#39;.</p>
+<p class="notice"><strong>If</strong> evaluates the condition(s) provided as parameter and executes all the statements enclosed within it <strong>only</strong> if the result of the evaluation is <strong>neither &#39;&#39; (i.e. blank or no value) nor &#39;0&#39;</strong>.</p>
+
+<p>In the above snippet we were checking if the variable has any value at all. We can also check if a variable has a certain value or if that value is greater than or smaller than a certain value -</p>
+<h3 id="checking-if-equal">Checking if equal</h3>
+<pre><code>&lt;cms:if my_var = &#39;hello&#39; &gt;
+    &lt;h3&gt; Hello &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the variable &#39;my_var&#39; holds the string &#39;hello&#39; and output &#39;Hello&#39; only if it does.</p>
+<p class="notice">As noted above, <strong>If</strong> goes ahead with executing statements enclosed within it only if the result of evaluating the condition is neither blank nor &#39;0&#39;. During the comparision above, if my_var is indeed equal to &#39;hello&#39;, the result of the evaluation is &#39;1&#39;, otherwise the result is &#39;0&#39;.</p>
+
+<p>Instead of &#39;=&#39; we can also use &#39;eq&#39; or &#39;==&#39; -</p>
+<pre><code>&lt;cms:if my_var eq &#39;hello&#39;&gt; &lt;h3&gt;Hello&lt;/h3&gt; &lt;/cms:if&gt;
+</code></pre><pre><code>&lt;cms:if my_var == &#39;hello&#39;&gt; &lt;h3&gt;Hello&lt;/h3&gt; &lt;/cms:if&gt;
+</code></pre><p>The above are the same as using &#39;=&#39;.</p>
+<h3 id="checking-if-not-equal">Checking if not equal</h3>
+<pre><code>&lt;cms:if my_var != &#39;hello&#39; &gt;
+    &lt;h3&gt; Not Hello &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the variable &#39;my_var&#39; does NOT hold the string &#39;hello&#39; and output &#39;Not Hello&#39; only if it is true.<br/>
+Instead of &#39;!=&#39; we can instead use &#39;ne&#39; -</p>
+<pre><code>&lt;cms:if my_var ne &#39;hello&#39;&gt; &lt;h3&gt; Not Hello &lt;/h3&gt; &lt;/cms:if&gt;
+</code></pre><p>The above is the same as using &#39;!=&#39;.</p>
+<h3 id="checking-if-greater-than">Checking if greater than</h3>
+<pre><code>&lt;cms:if my_var gt &#39;100&#39; &gt;
+    &lt;h3&gt; Value greater than 100 &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the value in variable &#39;my_var&#39; is greater than 100.</p>
+<h3 id="checking-if-greater-than-or-equal">Checking if greater than or equal</h3>
+<pre><code>&lt;cms:if my_var ge &#39;100&#39; &gt;
+    &lt;h3&gt; Value greater than or equal to 100 &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the value in variable &#39;my_var&#39; is greater than or equal to 100.</p>
+<h3 id="checking-if-lesser-than">Checking if lesser than</h3>
+<pre><code>&lt;cms:if my_var lt &#39;100&#39; &gt;
+    &lt;h3&gt; Value lesser than 100 &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the value in variable &#39;my_var&#39; is lesser than 100.</p>
+<h3 id="checking-if-lesser-than-or-equal">Checking if lesser than or equal</h3>
+<pre><code>&lt;cms:if my_var le &#39;100&#39; &gt;
+    &lt;h3&gt; Value lesser than or equal to 100 &lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>In the snippet above we are checking if the value in variable &#39;my_var&#39; is lesser than or equal to 100.</p>
+<h3 id="combining-multiple-conditions-using-and-or-">Combining multiple conditions using &amp;&amp; (AND), || (OR)</h3>
+<h3 id="-and-">&amp;&amp; (AND)</h3>
+<p>If multiple conditions are combined by using &#39;&amp;&amp;&#39;, the <strong>If</strong> statement will execute only if <strong>ALL</strong> the conditions are true.</p>
+<pre><code>&lt;cms:if (age gt &#39;18&#39;) &amp;&amp; (age lt &#39;40&#39;)&gt; .. &lt;/cms:if&gt;
+</code></pre><p>The above will be true only if variable &#39;age&#39; is greater than 18 and is lesser than 40. Thus if &#39;age&#39; is 25, the above <strong>If</strong> statement will execute but if &#39;age&#39; is 50, it will not because the second condition is false.</p>
+<h3 id="-or-">|| (OR)</h3>
+<p>If multiple conditions are combined by using &#39;||&#39;, the <strong>If</strong> statement will execute even if <strong>any one</strong> of the conditions is true.</p>
+<pre><code>&lt;cms:if (age gt &#39;18&#39;) || (age lt &#39;40&#39;)&gt; .. &lt;/cms:if&gt;
+</code></pre><p>The above will be true if variable &#39;age&#39; is greater than 18 or is lesser than 40. Thus if &#39;age&#39; is 25, the above <strong>If</strong> statement will execute (both conditions true) but if &#39;age&#39; is 50, it will still execute because the first condition is true. In fact the above statement will always execute. A better illustration would be</p>
+<pre><code>&lt;cms:if (age lt &#39;18&#39;) || (age gt &#39;40&#39;)&gt; .. &lt;/cms:if&gt;
+</code></pre><p>here an age of 13 will cause the <strong>If</strong> to execute and so will an age of 50 but an age of 25 will not do so. As another example -</p>
+<pre><code>&lt;cms:if (age gt &#39;18&#39;) || (sex == &#39;M&#39;)&gt; .. &lt;/cms:if&gt;
+</code></pre><p>The statement above will execute if either age of the person is more than 18 or if his sex is male regardless of his age (I know, this is sexist).</p>
+<h3 id="using-and-together">Using &amp;&amp; and || together</h3>
+<p>Both &amp;&amp; as well as || can be used together in the same <strong>if</strong> tag</p>
+<pre><code>&lt;cms:if (age lt &#39;18&#39;) || (age gt &#39;40&#39;) &amp;&amp; (sex == &#39;M&#39;)&gt; .. &lt;/cms:if&gt;
+</code></pre><p>In the snippet above it seems we are trying to do something only if the sex of a person is male and his age is less than 18 or more than 40.<br/>
+Suppose that the variable &#39;age&#39; holds a value of &#39;13&#39; while variable &#39;sex&#39; holds &#39;F. For example -</p>
+<pre><code>&lt;cms:set age = &#39;13&#39; /&gt;
+&lt;cms:set sex = &#39;F&#39; /&gt;
+
+&lt;cms:if (age lt &#39;18&#39;) || (age gt &#39;40&#39;) &amp;&amp; (sex == &#39;M&#39;)&gt;
+   &lt;h3&gt;Welcome Gentleman!&lt;/h3&gt;
+&lt;/cms:if&gt;
+</code></pre><p>You might be surprised to see the Welcome message appearing although the sex is clearly not &#39;M&#39;.<br/>
+This is because when || and &amp;&amp; are used together, the &amp;&amp; is given precedence over ||. Implicitly the condition that is being evaluated by <strong>if</strong> above is</p>
+<pre><code>&lt;cms:if (age lt &#39;18&#39;) || ((age gt &#39;40&#39;) &amp;&amp; (sex == &#39;M&#39;))&gt;
+</code></pre><p>where being lesser than 18 is one condition and the <strong>combined</strong> result of being over 40 and also being a male is the second condition. The two conditions are separated by an || which evaluates to true even if one of the two conditions is true. It should be clear now that in the example above since the age was lesser than 18, the entire condition was evaluated as being true and the <strong>If</strong> block executed.</p>
+<p>The right way of using both || and &amp;&amp; together is to <strong>always explicitly indicate the precedence</strong>. Thus -</p>
+<pre><code>&lt;cms:if ((age lt &#39;18&#39;) || (age gt &#39;40&#39;)) &amp;&amp; (sex == &#39;M&#39;)&gt;
+</code></pre><p>will make the code behave the way we had originally intended. The Welcome message will dissapear and will only reappear when we set &#39;sex&#39; as &#39;M&#39;. Notice how we enclosed the first two conditions that were supposed to be evaluated together within an extra pair of paranthesis.</p>
+<p class="error">Always explicitly indicate the evaluation precedence of the conditions by using brackets when you use &amp;&amp; and || together.</p>
+
+<h2 id="parameters">Parameters</h2>
+<p>See discussion above.</p>
+<h2 id="variables">Variables</h2>
+<p>This tag does not set any variables of its own.</p>
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="else.html">else</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

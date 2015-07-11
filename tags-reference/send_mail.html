@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>send_mail - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="send_mail" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/send_mail.html" itemprop="item"><span itemprop="name">send_mail</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="send_mail">send_mail</h1>
+<p>The <strong>send_mail</strong> tag, as the name suggests, can be used to send emails.</p>
+<pre><code>&lt;cms:send_mail from=&#39;admin@mysite.com&#39; to=&#39;johndoe@gmail.com&#39; subject=&#39;Feedback from your site&#39;&gt;
+Anything here (between the opening and closing tags of send_mail)
+will form the body of the email that will be sent.
+&lt;/cms:send_mail&gt;
+</code></pre><p>Anything enclosed within the opening and closing tags will form the body of the message to be sent.<br/>
+Each line should be separated with a LF (\n). Lines should not be larger than 70 characters.</p>
+<p class="notice">There is no provision (yet) for attachments.</p>
+
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>from</li>
+<li>to</li>
+<li>cc</li>
+<li>bcc</li>
+<li>subject</li>
+<li>debug</li>
+<li>logfile</li>
+<li>html</li>
+</ul>
+<h3 id="from">from</h3>
+<p>Sender&#39;s email address.</p>
+<h3 id="to">to</h3>
+<p>Receiver, or receivers of the mail.</p>
+<p>The formatting of this string must comply with <a href="http://www.faqs.org/rfcs/rfc2822">» RFC 2822</a>. Some examples are:</p>
+<p>user@example.com<br/>
+user@example.com, anotheruser@example.com<br/>
+User &lt;user@example.com&gt;<br/>
+User &lt;user@example.com&gt;, Another User &lt;anotheruser@example.com&gt;</p>
+<h3 id="cc">cc</h3>
+<p>Carbon copy receivers.</p>
+<h3 id="bcc">bcc</h3>
+<p>Blind carbon copy receivers.</p>
+<h3 id="subject">subject</h3>
+<p>Subject of the email.</p>
+<h3 id="debug">debug</h3>
+<p>If set to &#39;1&#39;, all send emails will be logged. The file used for logging can be set by the <em>logfile</em> parameter below.</p>
+<h3 id="logfile">logfile</h3>
+<p>This can be set to the log file used to save all send emails. The file can be given a path relative to the site&#39;s root. If skipped, a log file named &#39;log.txt&#39; in the site&#39;s root will be used (will be created if not present).</p>
+<h3 id="html">html</h3>
+<p>If set to &#39;1&#39;, HTML will be allowed in the body of the message.</p>
+<h2 id="variables">Variables</h2>
+<p>This tag does not set any variables of its own.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Comments - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Comments" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/using-comments.html" itemprop="item"><span itemprop="name">Comments</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="comments">Comments</h1>
+<p>Couch allows the submission of comments on pages created by it but this must first be permitted by you.<br/>
+To do so, the <em>commentable</em> parameter of the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag has to be set to &#39;1&#39; for each template that you wish to allow comments for.<br/>
+Thus if, for example, comments are to be turned on for pages cloned out of <em>blog.php</em>, the following change needs to be done to the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag (usually placed in the HTML head tag) within blog.php -</p>
+<pre><code>&lt;cms:template title=&#39;Blog&#39; clonable=&#39;1&#39; commentable=&#39;1&#39;&gt;
+    &lt;!-- The editable and folder tags can go here --&gt;
+&lt;/cms:template&gt;
+</code></pre><p>Once commenting is turned on for a template, each of the page created out of it will have the following option available as its advanced setting in the admin panel while editing it -</p>
+<p><img src="../assets/img/contents/comments.png" alt=""></p>
+<p>By default, &#39;<em>Allow users to comment</em>&#39; is checked for every new page. You can check this option off to disallow comments on a particular page. If you turn this off after a page has already had some comments, the existing comments will be retained but any further comments will be disallowed.</p>
+<p>You&#39;ll find the following two settings in <em>config.php</em> file which are worth noting -</p>
+<pre><code>// 20.
+// A setting of &#39;1&#39; will necessitate the admin to approve comments before they get published.
+// &#39;0&#39; will publish comments immediately.
+// A setting of &#39;1&#39; is strongly recommended in order to avoid spam.
+define( &#39;K_COMMENTS_REQUIRE_APPROVAL&#39;, 1 );
+
+// 21.
+// Minimum time interval required between two comments posted by the same user (in seconds).
+// Prevents comment flooding. A setting of 5 minutes (300 seconds) is recommended.
+define( &#39;K_COMMENTS_INTERVAL&#39;, 5 * 60 );
+</code></pre><p>Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.</p>
+<p class="error">The following discussion about the comment form assumes that you are already familiar with the <a href="../tags-reference/form.html"><em><strong>form</strong></em></a> tag which is used to create it.</p>
+
+<h3 id="comment-submission">COMMENT SUBMISSION</h3>
+<p>Roughly speaking, a comment form needs to have three inputs (of type text) named <em>k_author</em>, <em>k_email</em> and <em>k_link</em>. These are used to input the commentator&#39;s name, his email and a link to his site. The form also needs to have a textarea named <em>k_comment</em> for inputting the actual comment.</p>
+<p>Only the <em>k_comment</em> field is mandatory for Couch to save the comments. However, if needed, you can make any of the other fields mandatory too by setting their <em>required</em> parameter.</p>
+<p>On successful submission of the form, the <a href="../tags-reference/process_comment.html"><em><strong>process_comment</strong></em></a> Couch tag can be invoked to process the submitted comment and save it into the database.</p>
+<p>Following is a complete snippet that generates such a form -</p>
+<pre><code>&lt;cms:if k_is_commentable &gt;
+&lt;div class=&quot;comment-form&quot; &gt;
+    &lt;h3&gt;Post a comment&lt;/h3&gt;
+
+    &lt;cms:form method=&quot;post&quot; class=&quot;k_form&quot;&gt;
+
+        &lt;cms:if k_success &gt;
+
+            &lt;cms:process_comment /&gt;
+
+            &lt;cms:if k_process_comment_success&gt;
+                &lt;cms:send_mail from=k_email_from to=k_email_to subject=&#39;Comment posted&#39;&gt;
+                    The following comment has been posted at your site:
+                    &lt;cms:show k_success /&gt;
+                &lt;/cms:send_mail&gt;
+
+                &lt;div class=&quot;k_successmessage&quot;&gt;
+                    &lt;p&gt;
+                        Thank you for the feed back! &lt;br&gt;
+                        Your comment awaits moderation and will be published as soon as reviewed by the Admin.
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;cms:else /&gt;
+                &lt;div class=&quot;k_errormessage&quot;&gt;
+                    &lt;p&gt;
+                        Could not post comment! &lt;br&gt;
+                        The following error occured while processing your comment:&lt;br&gt;
+                        &lt;cms:show k_process_comment_error /&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+
+            &lt;/cms:if&gt;
+
+        &lt;cms:else /&gt;
+
+            &lt;cms:if k_error &gt;
+                &lt;div class=&quot;k_errormessage&quot;&gt;
+                    &lt;h2&gt;Fields incomplete!&lt;/h2&gt;
+                    &lt;ul&gt;
+                        &lt;cms:each k_error &gt;
+                            &lt;li&gt;&lt;cms:show item /&gt;&lt;/li&gt;
+                        &lt;/cms:each&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/cms:if&gt;
+
+            &lt;cms:if k_logged_out &gt;
+                &lt;p class=&quot;comment-input&quot;&gt;
+                    &lt;cms:input type=&quot;text&quot; name=&quot;k_author&quot; size=&quot;22&quot; tabindex=&quot;1&quot; required=&quot;1&quot;/&gt;
+                    &lt;label for=&quot;author&quot;&gt;&lt;small&gt;Name *&lt;/small&gt;&lt;/label&gt;
+                &lt;/p&gt;
+
+                &lt;p class=&quot;comment-input&quot;&gt;
+                    &lt;cms:input type=&quot;text&quot; name=&quot;k_email&quot; size=&quot;22&quot; tabindex=&quot;2&quot; validator=&quot;email&quot; required=&quot;1&quot;/&gt;
+                    &lt;label for=&quot;email&quot;&gt;&lt;small&gt;Email * (will not be published)&lt;/small&gt;&lt;/label&gt;
+                &lt;/p&gt;
+
+                &lt;p class=&quot;comment-input&quot;&gt;
+                    &lt;cms:input type=&quot;text&quot; name=&quot;k_link&quot; value=&quot;http://&quot; size=&quot;22&quot; tabindex=&quot;3&quot; /&gt;
+                    &lt;label for=&quot;link&quot;&gt;&lt;small&gt;Website&lt;/small&gt;&lt;/label&gt;
+                &lt;/p&gt;
+            &lt;cms:else /&gt;
+                &lt;p&gt;
+                    Logged in as &lt;b&gt;&lt;cms:show k_user_title /&gt;&lt;/b&gt;.
+                    &lt;a href=&quot;&lt;cms:show k_logout_link /&gt;&quot; onclick=&quot;if( confirm(&#39;Are you sure you want to logout?&#39;) ) { return true; } return false;&quot;&gt;Logout &amp;raquo;&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/cms:if&gt;
+
+            &lt;p class=&quot;comment-input&quot;&gt;
+                &lt;cms:input type=&quot;textarea&quot; name=&quot;k_comment&quot; style=&quot;width:93%&quot; rows=&quot;10&quot; cols=&quot;10&quot; tabindex=&quot;4&quot;
+                    validator_msg=&quot;required=Please enter something as comment&quot;
+                    required=&quot;1&quot; /&gt;
+
+                &lt;br&gt;
+                &lt;small&gt;
+                &lt;cms:html_encode&gt;
+                    You can use the following HTML tags: &lt;a&gt;&lt;br&gt;&lt;strong&gt;&lt;b&gt;&lt;em&gt;&lt;i&gt;&lt;blockquote&gt;&lt;code&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;del&gt;
+                &lt;/cms:html_encode&gt;
+                &lt;/small&gt;
+            &lt;/p&gt;
+
+            &lt;cms:if k_logged_out &gt;
+                &lt;p class=&quot;comment-input&quot;&gt;
+                    &lt;label for=&quot;captcha&quot;&gt;&lt;small&gt;Please enter this word in the textbox below&lt;/small&gt;&lt;/label&gt;&lt;br&gt;
+                    &lt;cms:input type=&quot;captcha&quot; name=&quot;captcha&quot; format=&#39;i-r-t&#39; /&gt;
+                &lt;/p&gt;
+            &lt;/cms:if&gt;
+
+            &lt;cms:input type=&quot;submit&quot; value=&quot;Submit&quot; name=&quot;submit&quot;/&gt;
+
+        &lt;/cms:if&gt;
+    &lt;/cms:form&gt;
+
+&lt;/div&gt;
+&lt;/cms:if&gt;
+</code></pre><p class="success">
+    <strong>TIP:</strong> The above snippet can be saved into a file named, for example, <em>comment-form.inc</em> within the snippets folder and then be used in any template by using the <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a> tag -<br/>
+    <br/>
+    <code>&lt;cms:embed &#39;comment-form.inc&#39; /&gt;</code>
+</p>
+
+<p>If you have been through the <a href="forms.html"><em><strong>form</strong></em></a> tag discussion, the code above should look familiar. We&#39;ll discuss a few features of the snippet though -<br/>
+The form consists of the four aforementioned input tags - <em>k_author</em>, <em>k_email</em>, <em>k_link</em>, <em>k_comment</em>. A fifth in the form of <strong>captcha</strong> has also been added. Please never omit the captcha from any of your forms or you risk facing a deluge of spam.</p>
+<p class="notice">
+    To fight spam always use a captcha during comment submission and always require approval of comments before publishing them.<br/>
+    As a way of warding off spam, Couch also rejects duplicate comments and multiple comments that originate from the same place too quickly.
+</p>
+
+<p>Note that we first check that no registered user is logged in (<em>k_logged_out</em>) before showing the input fields for name, email, link and the captcha. If a user is already logged in, the values for these inputs can be had from his registration profile and hence only the textbox for inputting comments needs to be displayed to him.</p>
+<p>On successful submission of the form (<em>k_success</em>), we simply invoke the <a href="../tags-reference/process_comment.html"><em><strong>process_comment</strong></em></a> tag.<br/>
+This tag processes the submitted values and attempts to save the comment into the database. If it succeeds, it sets the <em>k_process_comment_success</em> variable else the <em>k_process_comment_error</em> is set.<br/>
+Upon finding the <em>k_process_comment_success</em> set, an email is sent to the admin informing him about the pending comment that awaits his approval.</p>
+<p>Use the <em>comments</em> tab of the Couch admin panel to administrate the submitted comments.</p>
+<h3 id="listing-comments">LISTING COMMENTS</h3>
+<p>Once the submission of comments is in its place as explained above, one would now like to list all the submitted comments.<br/>
+Usually only the comments belonging to a particular page need to be listed on that page. However, we can list comments belonging to all (or any) of the commentable pages or belonging to only pages cloned out of some of the templates etc (e.g. the latest 5 comments that are routinely displayed on the home pages of sites) on any page.</p>
+<p>The <a href="../tags-reference/comments.html"><em><strong>comments</strong></em></a> tag is used to list comments based on the parameters passed to it.<br/>
+It is closely related to the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag and hence shares several of the <a href="../tags-reference/pages.html#parameters"><strong>parameters</strong></a> accepted by the pages tag.</p>
+<pre><code>&lt;cms:comments limit=&#39;5&#39;&gt;
+    &lt;!-- sets comment related variables here --&gt;
+&lt;/cms:comments&gt;
+</code></pre><p>The above snippet will loop through the latest five comments, regardless of the templates their pages belong to.<br/>
+At each iteration of the loop, this tag makes available the data associated with the comment being currently iterated by setting the variables listed below.</p>
+<h4 id="variables">VARIABLES</h4>
+<p>For each comment, the following variables (containing the data submitted by the user and the parent page) are made available by Couch -</p>
+<ul>
+<li>k_comment_id</li>
+<li>k_comment (<em>the actual comment text</em>)</li>
+<li>k_comment_author_id</li>
+<li>k_comment_author</li>
+<li>k_comment_author_email</li>
+<li>k_comment_author_website</li>
+<li>k_comment_date</li>
+<li>k_comment_link</li>
+<li>k_comment_anchor</li>
+<li>k_comment_page_id</li>
+<li>k_comment_page_title</li>
+<li>k_comment_page_name</li>
+<li>k_comment_template_name</li>
+</ul>
+<p>In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see <a href="pagination.html"><strong>pagination</strong></a> for details.</p>
+<h4 id="parameters">PARAMETERS</h4>
+<p>Normally <a href="../tags-reference/comments.html"><em><strong>comments</strong></em></a> tag will fetch all the available approved comments.<br/>
+It can be constrained into fetching comments from only certain pages by setting the <em>masterpage</em>, <em>page_id</em> and <em>page_name</em> parameters.</p>
+<p>Please see: <a href="../tags-reference/comments.html#parameters"><strong>Tags Reference - Comments</strong></a> for a complete list of parameters that are accepted by this tag and how they can be used.</p>
+<h3 id="example">EXAMPLE</h3>
+<p>As an example of the <a href="../tags-reference/comments.html"><em><strong>comments</strong></em></a> tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.<br/>
+Notice the use of the variable <em>k_page_id</em> (always set by Couch to the id of the current page in <em>page-view</em>) to constrain the <em>comments</em> tag to fetch only comments belonging to the current page.<br/>
+Also notice the use of the <a href="../tags-reference/gravatar.html"><em><strong>gravatar</strong></em></a> tag.</p>
+<pre><code>&lt;cms:if k_is_page &gt;
+    &lt;cms:comments page_id=k_page_id limit=&#39;5&#39; order=&#39;asc&#39; paginate=&#39;1&#39;&gt;
+        &lt;cms:if k_paginated_top &gt;
+            &lt;h3&gt;&lt;cms:show k_total_records /&gt; Comments&lt;/h3&gt;
+            &lt;ul id=&quot;commentlist&quot;&gt;
+        &lt;/cms:if&gt;
+
+        &lt;li id=&quot;comment-&lt;cms:show k_comment_id /&gt;&quot;&gt;
+            &lt;cms:gravatar email=&quot;&lt;cms:show k_comment_author_email /&gt;&quot; size=&quot;36&quot; /&gt;
+            &lt;p&gt;
+                &lt;cite&gt;
+                    &lt;span class=&quot;commenter&quot;&gt;
+                        &lt;cms:if k_comment_author_website &gt;
+                            &lt;a class=&quot;url&quot; rel=&quot;external nofollow&quot; href=&quot;&lt;cms:show k_comment_author_website /&gt;&quot;&gt;&lt;cms:show k_comment_author /&gt;&lt;/a&gt;
+                        &lt;cms:else/&gt;
+                            &lt;cms:show k_comment_author /&gt;
+                        &lt;/cms:if&gt;
+                        Says:
+                    &lt;/span&gt;
+                    &lt;br/&gt;
+                    &lt;span class=&quot;meta&quot;&gt;&lt;a name=&quot;&lt;cms:show k_comment_anchor /&gt;&quot;&gt;&lt;cms:date k_comment_date format=&#39;F j, Y&#39;/&gt; at &lt;cms:date k_comment_date format=&#39;h:ia&#39;/&gt;&lt;/a&gt;&lt;/span&gt;
+                &lt;/cite&gt;
+            &lt;/p&gt;
+
+            &lt;div class=&quot;comment_text&quot;&gt;
+                &lt;cms:show k_comment /&gt;
+            &lt;/div&gt;
+
+        &lt;/li&gt;
+
+        &lt;cms:if k_paginated_bottom &gt;
+            &lt;/ul&gt;
+        &lt;/cms:if&gt;
+
+        &lt;cms:paginator /&gt;
+
+    &lt;/cms:comments&gt;
+&lt;/cms:if&gt;
+</code></pre></article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

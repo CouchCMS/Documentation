@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Forms - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Forms" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/forms.html" itemprop="item"><span itemprop="name">Forms</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="forms">Forms</h1>
+<p>Forms are an essential part of any website and even the simplest of website is likely to have atleast one form - the contact form.<br/>
+Creating a form in HTML is a relatively simple affair. What is not so simple is creating a validation routine that allows only a properly filled up form to be submitted. This usually entails coding up a PHP script that does all the validations upon form submission and takes necessary actions on successful validation or otherwise.</p>
+<p>Couch takes away this pain of coding validation routines for your forms by doing this automatically for you.<br/>
+A form of almost any complexity can be very easily created by using a few Couch tags.</p>
+<p>Let us begin with a very simple example.<br/>
+The following is the HTML code one would use to create a simple form. Note how a php script (<em>action=&quot;contact.php&quot;</em>) is needed to handle the posted values, to validate them and then, probably, to email them somewhere.</p>
+<pre><code>&lt;form method=&quot;post&quot; action=&quot;contact.php&quot;&gt;
+    Name: &lt;input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot;&gt; &lt;br /&gt;
+    Email: &lt;input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot;&gt; &lt;br /&gt;
+
+    &lt;input type=&quot;submit&quot; value=&quot;Send&quot;&gt;
+&lt;/form&gt;
+</code></pre><p>The same form created by using Couch tags would look like -</p>
+<pre><code>&lt;cms:form method=&quot;post&quot;&gt;
+    Name: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; /&gt; &lt;br /&gt;
+    Email: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot; /&gt; &lt;br /&gt;
+
+    &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;/cms:form&gt;
+</code></pre><p>Note how with just a little modification, an existing HTML form was transformed into a Couch managed form.</p>
+<p>The <a href="../tags-reference/form.html"><em><strong>form</strong></em></a> and <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tags were converted to their Couch equivalents by simply adding &#39;cms:&#39; prefix.<br/>
+Couch expects its single tags to be properly self-closed hence the two input tags were fitted with the closing slashes.<br/>
+The <em>name</em> parameter is mandatory for an input tag in Couch hence the submit type was given a name.<br/>
+Finally, since now Couch will be handling all the validation chores, the <em>action</em> attribute is removed.</p>
+<p class="notice">The <em>action</em> attribute can be retained if you wish the form to be processed by some other script. In such cases, Couch tags will simply be used to output the form.</p>
+
+<p>Submitting the form generated by our snippet above will do nothing useful yet. To make it do anything useful we&#39;ll need to understand how Couch handles form submission and validation.</p>
+<h3 id="form-validation">FORM VALIDATION</h3>
+<p>When a form is submitted, Couch validates the submitted contents of all the constituent fields.</p>
+<p>If all the fields validate, Couch makes available to your code all the submitted values by placing them in variables named after the respective fields. Thus if a form has two fields named <em>name</em> and <em>password</em>, on successful submission of the form, two variables named <em>frm_name</em> and <em>frm_password</em> will become available in the context of the parent form. The values of these variables will be what was submitted by the user through these fields.<br/>
+Additionaly, the names and values of each fields are concatenated using a &#39;\n&#39; newline character to get a single string and this string is placed in a variable named <em>k_success</em>.</p>
+<p>Conversely, if even a single field fails to validate, Couch makes available to your code each field that failed validation. Thus if two fields named <em>name</em> and <em>password</em> did not validate, two variables named <em>k_error_name</em> and <em>k_error_password</em> will become available in the context of the parent form. These variables will contain the relavent error messages.<br/>
+Additionaly, the names of each failed fields along with their error messages are concatenated using a &#39;|&#39; pipe character to get a single string and this string is placed in a variable named <em>k_error</em>.</p>
+<p>We can test the <em>k_success</em> and <em>k_error</em> variables in our code to determine the result of the submission and then access the involved input fields to offer appropriate feedback to the user.</p>
+<p>It should be evident from the discussion above that for both the success as well as the error conditions, there are two ways to access the input fields -</p>
+<ul>
+<li>Individually via variables named after them.</li>
+<li>Through the <em>k_success</em> and <em>k_error</em> variables.</li>
+</ul>
+<p>Before we demonstrate how to use both the ways, let us first place some validation constrains on the input fields.<br/>
+The most common validation that is required is making sure that a field has not been left empty. This can be done by setting the <em>required</em> parameter to &#39;1&#39;.</p>
+<p class="notice">
+    For a <em>required</em> field further several kinds of validations can be enforced.<br/>
+    The input tags use the same validators that are used by the <a href="editable-regions.html"><strong>editable regions</strong></a>. Please see the <a href="../tags-reference/editable.html#validator"><strong>validators</strong></a> section of <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag for a list of all the validators that can be used.
+</p>
+
+<p>For our example we&#39;ll make both the fields required and futher ensure that a valid email is always inputted in the email field by setting the <em>email</em> validator. Modify the input fields as follows -</p>
+<pre><code>&lt;cms:form method=&quot;post&quot;&gt;
+    Name: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt; &lt;br /&gt;
+    Email: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot; required=&#39;1&#39; validator=&#39;email&#39; /&gt; &lt;br /&gt;
+
+    &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;/cms:form&gt;
+</code></pre><p>The following snippets demonstrate the validation process and both the aforementioned ways of accessing the input fields -</p>
+<h3 id="1-accessing-input-fields-via-k_success-and-k_error">1. Accessing input fields via k_success and k_error</h3>
+<pre><code>&lt;cms:form method=&quot;post&quot;&gt;
+    &lt;cms:if k_success &gt;
+        &lt;h3&gt;Form successfully submitted&lt;/h3&gt;
+        &lt;cms:each k_success sep=&#39;\n&#39;&gt;
+            &lt;cms:show item /&gt;&lt;br&gt;
+        &lt;/cms:each&gt;
+    &lt;/cms:if&gt;
+
+    &lt;cms:if k_error &gt;
+        &lt;h3&gt;Failed to submit form&lt;/h3&gt;
+        &lt;cms:each k_error &gt;
+            &lt;cms:show item /&gt;&lt;br&gt;
+        &lt;/cms:each&gt;
+    &lt;/cms:if&gt;
+
+    Name: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt;
+    Email: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot; required=&#39;1&#39; validator=&#39;email&#39; /&gt;
+
+    &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;/cms:form&gt;
+</code></pre><p>Note the use of each tag to get the individual values within <em>k_success</em> and <em>k_error</em>.</p>
+<h3 id="2-accessing-input-fields-individually">2. Accessing input fields individually</h3>
+<pre><code>&lt;cms:form method=&quot;post&quot;&gt;
+    &lt;cms:if k_success &gt;
+        &lt;h3&gt;Form successfully submitted&lt;/h3&gt;
+        name: &lt;cms:show frm_name /&gt;&lt;br&gt;
+        email: &lt;cms:show frm_email /&gt;&lt;br&gt;
+    &lt;/cms:if&gt;
+
+    &lt;cms:if k_error &gt;
+        &lt;h3&gt;Failed to submit form&lt;/h3&gt;
+    &lt;/cms:if&gt;
+
+    Name: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt;
+          &lt;cms:if k_error_name &gt;&lt;cms:show k_error_name /&gt;&lt;/cms:if&gt; &lt;br /&gt;
+    Email: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot; required=&#39;1&#39; validator=&#39;email&#39; /&gt;
+           &lt;cms:if k_error_email &gt;&lt;cms:show k_error_email /&gt;&lt;/cms:if&gt; &lt;br /&gt;
+
+    &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;/cms:form&gt;
+</code></pre><p>Notice how we append an error message after each field if a validation error occurs.</p>
+<p>Submit the form and see how the validation takes place.</p>
+<h3 id="taking-action-upon-successful-submission">TAKING ACTION UPON SUCCESSFUL SUBMISSION</h3>
+<p>In our examples given above we have simply been echoing back the submitted values upon successful submission of form.<br/>
+Usually you&#39;ll wish to do something more substantial - like emailing the values to some address etc. This is how it could be done -</p>
+<pre><code>&lt;cms:form method=&quot;post&quot;&gt;
+    &lt;cms:if k_success &gt;
+        &lt;h3&gt;Thanks for your submission. We&#39;ll get back to you.&lt;/h3&gt;
+        &lt;cms:send_mail from=&#39;abc@somemail.com&#39; to=&#39;xyz@somemail.com&#39; subject=&#39;Feedback from your site&#39;&gt;
+            The following is an email sent by a visitor to your site:
+            &lt;cms:show k_success /&gt;
+        &lt;/cms:send_mail&gt;
+    &lt;/cms:if&gt;
+
+    &lt;cms:if k_error &gt;
+        &lt;h3&gt;Failed to submit form&lt;/h3&gt;
+        &lt;cms:each k_error &gt;
+            &lt;cms:show item /&gt;&lt;br&gt;
+        &lt;/cms:each&gt;
+    &lt;/cms:if&gt;
+
+    Name: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt; &lt;br /&gt;
+    Email: &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; name=&quot;email&quot; required=&#39;1&#39; validator=&#39;email&#39; /&gt; &lt;br /&gt;
+
+    &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;/cms:form&gt;
+</code></pre><p>Notice how we are using the <em>k_success</em> variable to email the submitted data via <a href="../tags-reference/send_mail.html"><em><strong>send_mail</strong></em></a> tag.</p>
+<h3 id="input-types">INPUT TYPES</h3>
+<p>As seen in the snippets above, Couch employs its own variations of the <a href="../tags-reference/form.html"><em><strong>form</strong></em></a> tag and the <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tags to create and validate forms.<br/>
+Most (but not all) of the input types of Couch have one to one correlation with their HTML counterparts.<br/>
+The types of input tags that are currently supported by Couch and how they relate with the HTML equivalents are given below.</p>
+<p class="notice">For a full list of all the parameters accepted by the <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tag, please see its <a href="../tags-reference/input.html#parameters"><strong>parameters</strong></a> section.</p>
+
+<p><strong>The following four input types are almost identical to the HTML types.</strong></p>
+<p>Porting these HTML tags to Couch tags requires only the addition of the &#39;cms:&#39; prefix as we have seen in the snippets above. These tags are self-closing hence the end-slash is required - and so is the &#39;name&#39; attribute.</p>
+<ul>
+<li><strong>text</strong></li>
+<li><strong>password</strong></li>
+<li><strong>submit</strong></li>
+<li><strong>hidden</strong></li>
+</ul>
+<p>HTML version -</p>
+<pre><code>&lt;input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot;&gt;
+&lt;input type=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;10&quot; name=&quot;password&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Send&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;max_val&quot; value=&quot;100&quot;&gt;
+</code></pre><p>Couch equivalent -</p>
+<pre><code>&lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; /&gt;
+&lt;cms:input type=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;10&quot; name=&quot;password&quot; /&gt;
+&lt;cms:input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Send&quot; /&gt;
+&lt;cms:input type=&quot;hidden&quot; name=&quot;max_val&quot; value=&quot;100&quot; /&gt;
+</code></pre><p><strong>The following Couch input types are a little different from their equivalent HTML types.</strong></p>
+<h4 id="textarea">textarea</h4>
+<p>HTML version -</p>
+<pre><code>&lt;textarea rows=&quot;5&quot; cols=&quot;20&quot; wrap=&quot;physical&quot; name=&quot;comments&quot;&gt;
+    Enter Comments Here
+&lt;/textarea&gt;
+</code></pre><p>Couch equivalent -</p>
+<pre><code>&lt;cms:input type=&#39;textarea&#39; rows=&quot;5&quot; cols=&quot;20&quot; wrap=&quot;physical&quot; name=&quot;comments&quot;&gt;
+    Enter Comments Here
+&lt;/cms:input&gt;
+</code></pre><h4 id="radio">radio</h4>
+<p>HTML version -</p>
+<pre><code>What kind of shirt are you wearing? &lt;br /&gt;
+
+Shade:
+&lt;input type=&quot;radio&quot; name=&quot;shade&quot; value=&quot;dark&quot;&gt;Dark
+&lt;input type=&quot;radio&quot; name=&quot;shade&quot; value=&quot;light&quot;&gt;Light &lt;br /&gt;
+
+Size:
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;small&quot;&gt;Small
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;medium&quot;&gt;Medium
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;large&quot;&gt;Large &lt;br /&gt;
+</code></pre><p>Couch equivalent -</p>
+<pre><code>What kind of shirt are you wearing? &lt;br /&gt;
+
+Shade:
+&lt;cms:input type=&quot;radio&quot; name=&quot;shade&quot; opt_values=&quot;Dark=dark | Light=light&quot; /&gt;&lt;br /&gt;
+
+Size:
+&lt;cms:input type=&quot;radio&quot; name=&quot;size&quot; opt_values=&quot;Small=small | Medium=medium | Large=large&quot; /&gt;&lt;br /&gt;
+</code></pre><h4 id="checkbox">checkbox</h4>
+<p>HTML version -</p>
+<pre><code>Select your favorite cartoon characters.
+&lt;input type=&quot;checkbox&quot; name=&quot;toon&quot; value=&quot;Goofy&quot;&gt;Goofy
+&lt;input type=&quot;checkbox&quot; name=&quot;toon&quot; value=&quot;Donald&quot;&gt;Donald
+&lt;input type=&quot;checkbox&quot; name=&quot;toon&quot; value=&quot;Bugs&quot;&gt;Bugs Bunny
+&lt;input type=&quot;checkbox&quot; name=&quot;toon&quot; value=&quot;Scoob&quot;&gt;Scooby Doo
+</code></pre><p>Couch equivalent -</p>
+<pre><code>Select your favorite cartoon characters.
+&lt;cms:input type=&quot;checkbox&quot; name=&quot;toon&quot; opt_values=&quot;Goofy | Donald | Bugs Bunny=Bugs | Scooby Doo=Scoob&quot; /&gt;
+</code></pre><p class="notice">In case the user selects multiple checkboxes, the value in the resulting variable will be a comma separated string containing all the selected checkbox values. Thus if in the given example, the user selects Goofy, Bugs Bunny and Scooby Doo, the variable <em>frm_toon</em> will have the value - &#39;<em>Goofy, Bugs, Scoob</em>&#39;.</p>
+
+<h4 id="dropdown">dropdown</h4>
+<p>HTML version -</p>
+<pre><code>College Degree?
+&lt;select name=&quot;degree&quot;&gt;
+    &lt;option&gt;Choose One&lt;/option&gt;
+    &lt;option&gt;High School Degree&lt;/option&gt;
+    &lt;option&gt;Some College&lt;/option&gt;
+    &lt;option&gt;Bachelor&#39;s Degree&lt;/option&gt;
+    &lt;option&gt;Doctorate&lt;/option&gt;
+&lt;/select&gt;
+</code></pre><p>Couch equivalent -</p>
+<pre><code>&lt;cms:input type=&quot;dropdown&quot;
+    name=&quot;degree&quot;
+    opt_values=&quot;Choose One | High School Degree | Some College | Bachelor&#39;s Degree | Doctorate&quot;
+/&gt;
+</code></pre><p class="notice">
+    Setting the <em>size</em> parameter will convert the drodown to a plain selection list -<br/>
+    <br/>
+    <code>&lt;cms:input type=&quot;dropdown&quot;
+    name=&quot;degree&quot;
+    size=&#39;4&#39;
+    opt_values=&quot;Choose One | High School Degree | Some College | Bachelor&#39;s Degree | Doctorate&quot;
+/&gt;</code>
+</p>
+
+<p class="notice">Please note: Multiple selection is not currently supported.</p>
+
+<p><strong>The following Couch type has no HTML equivalent.</strong></p>
+<h4 id="captcha">captcha</h4>
+<p>It is used to create a CAPTCHA that prevents spammers from abusing your form.</p>
+<p class="notice"><em>required</em> parameter is always assumed to be set to &#39;1&#39; for a captcha.</p>
+
+<pre><code>&lt;cms:input type=&#39;captcha&#39; name=&#39;my-captcha&#39; /&gt;
+</code></pre><p>The captcha type, unlike the other input types, is a composite input and consists of three discrete elements -</p>
+<ol>
+<li>A generated image that has some random numbers.</li>
+<li>A textbox input that will be used by the user to enter the number shown to him.</li>
+<li>A &#39;Reload Image&#39; link that can be used by the user to get another image without reloadng the entire page.</li>
+</ol>
+<p>You can use the <em>format</em> parameter to control which of the three constituent elements are shown and in which order.<br/>
+The <em>format</em> parameter expects a text string that can consist of 4 different characters - &#39;t&#39;, &#39;i&#39;, &#39;r&#39; and &#39;-&#39; where<br/>
+t = textbox<br/>
+i = image<br/>
+r = reload text<br/>
+- = HTML break</p>
+<p>Since each of these characters represent a constituent element of the captcha, it is easy to see how these elements can be manipulated.<br/>
+e.g.</p>
+<pre><code>&lt;cms:input type=&#39;captcha&#39; name=&#39;my-captcha&#39; format=&#39;i-r-t&#39; /&gt;
+</code></pre><p>will show -</p>
+<p><img src="../assets/img/contents/forms-1.png" alt=""></p>
+<p>while</p>
+<pre><code>&lt;cms:input type=&#39;captcha&#39; name=&#39;my-captcha&#39; format=&#39;r-i-t&#39; /&gt;
+</code></pre><p>will show</p>
+<p><img src="../assets/img/contents/forms-2.png" alt=""></p>
+<p>If you do not wish the three elements to be separated by &lt;BR&gt;s, use this -</p>
+<pre><code>&lt;cms:input type=&#39;captcha&#39; name=&#39;my-captcha&#39; format=&#39;rit&#39; /&gt;
+</code></pre><p class="notice">The default value of <em>format</em> is &#39;t-i-r&#39;</p>
+
+<p>The <em>reload_text</em> parameter can be used to change the &#39;Reload Image&#39; text to anything you wish.<br/>
+The <em>width</em> parameter can be used to set the width of the text box.</p>
+<p class="notice">
+    Couch, as of the current version, does not support file uploads e.g.<br/>
+    <br/>
+    <code>&lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;</code>
+</p>
+
+<h3 id="using-fieldset">USING FIELDSET</h3>
+<p>As demonstrated so far, an easy way to create a working form in Couch is to start with an existing HTML coded form and convert the existing form and input tags to their Couch equivalents. This way you can add validation to any of your existing forms.</p>
+<p>However, if are required to code a form from scratch, you can use the <a href="../tags-reference/fieldset.html"><em><strong>fieldset</strong></em></a> tag of Couch to give you a helping hand. Couch&#39;s version of this tag is the exact equivalent of its HTML counterpart and serves the same purpose of grouping together related form elements. Additionaly it also outputs &lt;DL&gt;, &lt;DT&gt; and &lt;DD&gt; tags to wrap correctly the child input tags. This way you can quickly get a semantically correct form quite easily.</p>
+<p>The following Couch snippet -</p>
+<pre><code>&lt;cms:fieldset&gt;
+    &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt;
+    &lt;cms:input type=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;10&quot; name=&quot;password&quot; /&gt;
+&lt;/cms:fieldset&gt;
+</code></pre><p>- will output the following HTML code -</p>
+<pre><code>&lt;fieldset&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;name&quot;&gt;name &lt;span class=&quot;k_fielderror&quot;&gt;*&lt;/span&gt; &lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; maxlength=&quot;40&quot; size=&quot;10&quot; value=&quot;aa&quot; id=&quot;name&quot; name=&quot;name&quot;/&gt;&lt;/dd&gt;
+
+        &lt;dt&gt;&lt;label for=&quot;password&quot;&gt;password &lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;password&quot; maxlength=&quot;10&quot; size=&quot;10&quot; value=&quot;&quot; id=&quot;password&quot; name=&quot;password&quot;/&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/fieldset&gt;
+</code></pre><p class="notice">For input tags that are wrapped within <a href="../tags-reference/fieldset.html"><em><strong>fieldset</strong></em></a> tags, you can set the <em>label</em> and <em>desc</em> parameters to properly label the fields.</p>
+
+<h3 id="example-of-a-full-form">EXAMPLE OF A FULL FORM</h3>
+<p>Following is an example of a real-world form</p>
+<pre><code>&lt;cms:form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot; class=&quot;k_form&quot;&gt;
+
+        &lt;cms:if k_success &gt;
+            &lt;div class=&quot;k_successmessage&quot;&gt;
+                &lt;cms:send_mail from=k_email_from to=k_email_to subject=&#39;Feedback from your site&#39;&gt;
+                    The following is an email sent by a visitor to your site:
+                    &lt;cms:show k_success /&gt;
+                &lt;/cms:send_mail&gt;
+
+                &lt;h3&gt;Message sent&lt;/h3&gt;
+                &lt;pre&gt; &lt;cms:show k_success /&gt; &lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/cms:if&gt;
+
+        &lt;cms:if k_error &gt;
+            &lt;div class=&quot;k_errormessage&quot;&gt;
+                &lt;ul&gt;
+                    &lt;cms:each k_error &gt;
+                        &lt;li&gt;&lt;cms:show item /&gt;&lt;/li&gt;
+                    &lt;/cms:each&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/cms:if&gt;
+
+        &lt;cms:fieldset label=&#39;Personal details&#39;&gt;
+            &lt;cms:input type=&quot;text&quot;
+                       name=&quot;name&quot;
+                       label=&quot;Name&quot;
+                       desc=&#39;These are some instructions&#39;
+                       maxlength=&quot;100&quot;
+                       required=&#39;1&#39;
+                       validator=&#39;min_len=3&#39;/&gt;
+
+            &lt;cms:input type=&quot;text&quot;
+                       name=&quot;email&quot;
+                       label=&#39;Email&#39;
+                       maxlength=&quot;100&quot;
+                       validator=&#39;email&#39;
+                       required=&#39;1&#39; /&gt;
+
+            &lt;cms:input type=&quot;password&quot;
+                       name=&quot;userpassword&quot;
+                       label=&#39;Password&#39;
+                       maxlength=&quot;12&quot;
+                       required=&#39;1&#39; /&gt;
+
+        &lt;/cms:fieldset&gt;
+
+        &lt;cms:fieldset label=&#39;Your message&#39;&gt;
+            &lt;cms:input type=&quot;dropdown&quot;
+                       name=&quot;subject&quot;
+                       label=&#39;Subject&#39;
+                       opt_values=&#39;Please select a subject=- | General enquiry | Booking enquiry&#39;
+                       opt_selected=&#39;General enquiry&#39;
+                       required=&#39;1&#39; /&gt;
+
+            &lt;cms:input type=&quot;textarea&quot; cols=&quot;35&quot; rows=&quot;5&quot; name=&quot;message&quot;
+                       required=&#39;1&#39;
+                       label=&#39;Message&#39;&gt;&lt;/cms:input&gt;
+
+        &lt;/cms:fieldset&gt;
+
+        &lt;cms:fieldset label=&#39;Additional information&#39;&gt;
+            &lt;cms:input type=&quot;radio&quot;
+                       name=&quot;mailinglist&quot;
+                       label=&#39;Add me to your mailing list&#39;
+                       opt_values=&#39;Yes=y | No=n&#39;
+                       opt_selected=&#39;n&#39;
+                       required=&#39;1&#39; /&gt;
+
+            &lt;cms:input type=&quot;checkbox&quot;
+                       name=&quot;interests_arr&quot;
+                       label=&#39;Interests&#39;
+                       opt_values=&#39;Music | Computers | Movies | Sport | Art&#39;
+                       opt_selected=&#39;Music | Computers | Movies | Art&#39;
+                       required=&#39;1&#39; /&gt;
+
+            &lt;cms:input type=&#39;captcha&#39;
+                       name=&#39;my-captcha&#39;
+                       label=&#39;Are you human?&#39;
+                       /&gt;
+
+        &lt;/cms:fieldset&gt;
+
+        &lt;input type=&quot;submit&quot; value=&quot;Send Email&quot; name=&quot;submit&quot;/&gt;
+
+&lt;/cms:form&gt;
+</code></pre><p>The code above results in the following form -</p>
+<p><img src="../assets/img/contents/forms-3.png" alt=""></p>
+<p>The form displayed above uses form .css for display [<a href="http://www.couchcms.com/docs/code/form.css">Download it</a>].</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

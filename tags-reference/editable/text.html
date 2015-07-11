@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>type = &#39;text&#39; - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="type = &#39;text&#39;" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../editable.html" itemprop="item"><span itemprop="name">editable</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tags-reference/editable/text.html" itemprop="item"><span itemprop="name">type = &#39;text&#39;</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="type-text-">type = &#39;text&#39;</h1>
+<p>Editable region of <em>text</em> type is used to allow users to input text when only one line of text is required.<br/>
+For this type, Couch creates a single line textbox for data input.</p>
+<p>An editable region of <em>text</em> type can be defined this way -</p>
+<pre><code>&lt;cms:editable
+ name=&#39;prop_title&#39;
+ label=&#39;Title&#39;
+ desc=&#39;Enter title of property here&#39;
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
+</code></pre><p>The code above will result in -</p>
+<p><img src="../../assets/img/contents/editable-text.gif" alt=""></p>
+<p class="notice">
+    Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the <strong>Editable</strong> tag self-closing e.g.<br/>
+    <br/>
+    <code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
+ desc=&#39;Enter title of property here&#39;
+ type=&#39;text&#39; /&gt;</code>
+</p>
+
+<p>The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -</p>
+<pre><code>&lt;cms:show prop_title /&gt;
+</code></pre><h2 id="parameters">Parameters</h2>
+<p>In addition to the parameters common to all the types of editable regions, <em>text</em> accepts the following parameters</p>
+<ul>
+<li>width</li>
+<li>maxlength</li>
+<li>search_type</li>
+</ul>
+<h3 id="width">width</h3>
+<p>The width of the generated textbox can be changed by setting this parameter. For example, the following will make the textbox 200px wide -</p>
+<pre><code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
+ desc=&#39;Enter title of property here&#39;
+ width=&#39;200&#39;
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
+</code></pre><h3 id="maxlength">maxlength</h3>
+<p>The maximum number of characters that can be inputted by the user in this textbox can be constrained by setting this parameter. For example, the following code will prevent the user from entering more than 40 characters -</p>
+<pre><code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
+ desc=&#39;Enter title of property here&#39;
+ maxlength=&#39;40&#39;
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
+</code></pre><h3 id="search_type">search_type</h3>
+<p>Can be set to the following valid values -</p>
+<ul>
+<li>text</li>
+<li>integer</li>
+<li>decimal</li>
+</ul>
+<p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.<br/>
+If you wish to use this region to input numeric values (e.g. age or salary), set the type to either <em>numeric</em> or <em>decimal</em> (if the value can be fractional).</p>
+<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See <a href="../pages.html#custom_field"><strong>Pages</strong></a>.</p>
+
+<h2 id="related-tags">Related Tags</h2>
+<ul>
+<li><a href="../editable.html">editable</a></li>
+<li><a href="password.html">editable (password)</a></li>
+<li><a href="textarea.html">editable (textarea)</a></li>
+<li><a href="richtext.html">editable (richtext)</a></li>
+<li><a href="image.html">editable (image)</a></li>
+<li><a href="thumbnail.html">editable (thumbnail)</a></li>
+<li><a href="file.html">editable (file)</a></li>
+<li><a href="radio.html">editable (radio)</a></li>
+<li><a href="checkbox.html">editable (checkbox)</a></li>
+<li><a href="dropdown.html">editable (dropdown)</a></li>
+<li><a href="group.html">editable (group)</a></li>
+<li><a href="message.html">editable (message)</a></li>
+<li><a href="nicedit.html">editable (nicedit)</a></li>
+<li><a href="relation.html">editable (relation)</a></li>
+</ul>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

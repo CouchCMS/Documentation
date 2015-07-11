@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Pretty URLS - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Pretty URLS" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/pretty-urls.html" itemprop="item"><span itemprop="name">Pretty URLS</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="pretty-urls">Pretty URLS</h1>
+<p>Couch supports the use of Pretty URLS (aka search engine friendly - SEF URLs).<br/>
+This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages.<br/>
+For Example, a URL like this -</p>
+<pre><code>http://www.mysite.com/blog.php?f=3
+</code></pre><p>where 3 is the id of a folder named &#39;electronics&#39;, will get converted to -</p>
+<pre><code>http://www.mysite.com/blog/electronics/
+</code></pre><p>and another URL -</p>
+<pre><code>http://www.mysite.com/blog.php?p=12
+</code></pre><p>where 12 is the id of a cloned page named &#39;mobile-phones&#39; which is in &#39;electronics&#39; folder, will get converted to -</p>
+<pre><code>http://www.mysite.com/blog/electronics/mobile-phones.html
+</code></pre><p>It is obvious that the &#39;pretty&#39; versions of the URLs convey more meaning about the pages they represent.<br/>
+Not only do they appear friendlier to the visitors but they also offer immense benefit from the SEO (Search Engine Optimization) perspective - something that cannot be ignored if you wish your pages to rank high in Google search.</p>
+<p class="notice">
+    For Pretty URLS to work in Couch, the Apache server it is hosted on must have the &#39;mod_rewrite&#39; module enabled.<br/>
+    To make sure this module is indeed available at your server, <a href="http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832">please use this utility available at our forums</a>.
+</p>
+
+<h3 id="enabling-pretty-urls">ENABLING PRETTY URLS</h3>
+<p>In Couch Pretty URLS apply only to clonable templates.<br/>
+By default, Pretty URLS are not enabled. It is strongly advised that you turn this feature on only after you have configured all your clonable templates.</p>
+<p>Enabling Pretty URLS is a two step process -</p>
+<p><strong>1.</strong> Find and modify the following line in <em>config.php</em> -</p>
+<pre><code>// 8.
+// Set the following to &#39;1&#39; if you wish to enable Pretty URLS.
+// After enabling it, use gen_htaccess.php to generate an .htaccess file and place it in the root folder of your site.
+define( &#39;K_PRETTY_URLS&#39;, 0 );
+</code></pre><p>Set the K_PRETTY_URLS to 1.</p>
+<p><strong>2.</strong> Fire up your browser and visit the following page (substitute the domain name with that of yours) -<br/>
+<em>http&#58;//www.yoursite.com/couch/gen_htaccess.php</em></p>
+<p>A list of rewrite rules should appear on the page.<br/>
+Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it into a file named &#39;.htaccess&#39; and place this file in your website&#39;s root.</p>
+<p class="notice">
+    If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. &#39;dummy.htaccess&#39;, upload it to your server and then rename it to remove the name.<br/>
+    <br/>
+    <strong>EDIT:</strong> You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with <strong>double-quotes</strong>.
+</p>
+
+<p>Try visiting your cloned pages from the Admin Panel and the pretty urls should be now seen in action.</p>
+<p>The rules that are copied and pasted into the .htaccess file pertain to all your clonable templates. If you happen to add other clonable templates after you have taken the steps outlined above, you&#39;ll have to regenerate the rewrite rules (using <em>gen_htaccess.php</em>) and replace the former contents of the <em>.htaccess</em> file with these new rules.</p>
+<p>This is the reason why it is advisable to turn on Pretty URLS after all the clonable templates are already in place.</p>
+<p class="error">The rewrite rules created by <em>gen_htaccess.php</em> use PCRE flavor of Regular Expressions instead of the now deprecated (and much slower) POSIX type. Unfortunately, some very old versions of Apache 1.x have been reported to still be using POSIX and as such the PrettyURLs feature might not work on them. Placing the generated .htaccess file on such servers will usually result in an &#39;<em>HTTP 500: Internal Server Error</em>&#39;.</p>
+
+<h3 id="troubleshooting">TROUBLESHOOTING</h3>
+<p>There are two problems very commonly encountered once prettyURLs are turned on:</p>
+<h4 id="1-the-pages-throw-internal-server-error-">1. The pages throw &#39;Internal Server Error&#39;.</h4>
+<p>Please make sure that your server has the required <em>mod_rewrite</em> module enabled. As mentioned above, <a href="http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832">you can use this utility for testing it</a>.</p>
+<h4 id="2-the-pages-do-come-up-but-all-the-css-js-or-image-links-are-broken-">2. The pages do come up but all the CSS, JS or image links are broken.</h4>
+<p>This happens if the links are &#39;relative&#39;. Please convert them to &#39;absolute&#39; to rectify this problem.<br/>
+For example, a link such as the follows</p>
+<pre><code>&lt;link href=&quot;css/lightbox.css&quot; rel=&quot;stylesheet&quot; /&gt;
+</code></pre><p>should be made either the following (notice the added leading slash)</p>
+<pre><code>&lt;link href=&quot;/css/lightbox.css&quot; rel=&quot;stylesheet&quot; /&gt;
+</code></pre><p>or, better still, the following</p>
+<pre><code>&lt;link href=&quot;&lt;cms:show k_site_link /&gt;css/lightbox.css&quot; rel=&quot;stylesheet&quot; /&gt;
+</code></pre></article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

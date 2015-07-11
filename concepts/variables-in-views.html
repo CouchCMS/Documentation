@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Variables available in Views - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Variables available in Views" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/variables-in-views.html" itemprop="item"><span itemprop="name">Variables available in Views</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="variables-available-in-views">Variables available in Views</h1>
+<p>From what we have read so far, we know that a template can be either <em>clonable</em> or <em>non-clonable</em>.<br/>
+A <em>clonable</em> template will necessarily have cloned pages associated with it hence it is said to be executing within a <em>page-view</em> when a cloned page of it is accessed while it is said to be executing within a <em>list-view</em> if it is accessed in a stand alone manner.</p>
+<p>A <em>non-clonable</em> template always represents one single page and hence it has no such views associated with it.</p>
+<p>Depending on whether a template is clonable or non-clonable and upon the view it is being executed in, each time a template is accessed, Couch makes available certain variables that are relevant to the template&#39;s state.</p>
+<p>For example, when executed in a <em>page-view</em>, a template is used to access a cloned page and hence all that cloned page&#39;s data (including all its editable region&#39;s contents) are made available by Couch for use by your script.</p>
+<p>In contrast, when executed in a <em>list-view</em>, it is not any single page that is accessed and hence no such page specific data is made available. Instead, certain variables that describe the &#39;list-view&#39; and make it easy for your script to actually &#39;list&#39; the pages pertaining to the view, are made available.</p>
+<p>A complete list of all the variables that become available during the above mentioned conditions are listed below.</p>
+<p>For the sake of this example we make use of a template named <em>blog.php</em> that has three editable regions defined within it - <em>my_blog_text</em>, <em>my_blog_image</em> and <em>my_blog_author</em> (these will be made available as variables with the same names. They are shown highlighted below).</p>
+<p>The following variables are available in ALL the cases, irrespective of the clonable status of the template and the current view -</p>
+<ul>
+<li>k_page_link</li>
+<li>k_admin_link</li>
+<li>k_site_link</li>
+<li>k_admin_path</li>
+<li>k_site_path</li>
+<li>k_template_title</li>
+<li>k_template_name</li>
+<li>k_template_id</li>
+<li>k_template_link</li>
+<li>k_prettyurls</li>
+<li>k_site_charset</li>
+<li>k_email_from</li>
+<li>k_email_to</li>
+<li>k_is_commentable</li>
+</ul>
+<h3 id="non-clonable-template-">NON-CLONABLE TEMPLATE -</h3>
+<p>If <em>blog.php</em> is non-clonable, the only way it can be accessed is -<br/>
+<em>http&#58;//www.mysite.com/blog.php</em></p>
+<p>- and the available variables are -</p>
+<ul>
+<li>k_is_list_page</li>
+<li>k_comments_count</li>
+<li>k_page_date</li>
+<li>k_page_modification_date</li>
+<li><strong>my_blog_text</strong></li>
+<li><strong>my_blog_image</strong></li>
+<li><strong>my_blog_author</strong></li>
+</ul>
+<h3 id="clonable-template-">CLONABLE TEMPLATE -</h3>
+<p>If <em>blog.php</em> is made clonable, the different views it can be accessed in and the variables made available in each view are -</p>
+<h4 id="page-view">PAGE VIEW</h4>
+<p>e.g. <em>http&#58;//www.mysite.com/blog/some_page_name.html</em><br/>
+In this view, variables giving information about the current page, the containing folder (if the page resides in one) and the contents of the page&#39;s editable regions are made available.</p>
+<p>The folowing variables carry information about the page in question -</p>
+<ul>
+<li>k_is_page</li>
+<li>k_page_title</li>
+<li>k_page_name</li>
+<li>k_page_id</li>
+<li>k_page_date</li>
+<li>k_page_modification_date</li>
+<li>k_comments_count</li>
+</ul>
+<p>The following variables carry Information about the folder, if the page resides in one -</p>
+<ul>
+<li>k_page_folderid</li>
+<li>k_page_foldername</li>
+<li>k_page_foldertitle</li>
+<li>k_page_folderlink</li>
+<li>k_page_folderpagecount</li>
+<li>k_page_foldertotalpagecount</li>
+</ul>
+<p>Finally the contents of editable regions -</p>
+<ul>
+<li><strong>my_blog_text</strong></li>
+<li><strong>my_blog_image</strong></li>
+<li><strong>my_blog_author</strong></li>
+</ul>
+<h4 id="folder-view">FOLDER VIEW</h4>
+<p>e.g. <em>http&#58;//www.mysite.com/blog/some_subfolder/</em><br/>
+In this view, variables giving information about the folder mentioned in the URL are set.</p>
+<ul>
+<li>k_is_list</li>
+<li>k_is_folder</li>
+<li>k_folder_id</li>
+<li>k_folder_name</li>
+<li>k_folder_title</li>
+<li>k_folder_link</li>
+<li>k_folder_pagecount (<em>Number of pages in the folder</em>)</li>
+<li>k_folder_totalpagecount (<em>Total number of pages, including pages in subfolders</em>)</li>
+</ul>
+<h4 id="archive-view">ARCHIVE VIEW</h4>
+<p>e.g. <em>http&#58;//www.mysite.com/blog/2010/05/</em><br/>
+In this view, variables giving information about the archive&#39;s time period (as given in the URL) are set.</p>
+<ul>
+<li>k_is_list</li>
+<li>k_is_archive</li>
+<li>k_archive_date</li>
+<li>k_next_archive_date</li>
+<li>k_archive_link</li>
+<li>k_day</li>
+<li>k_month</li>
+<li>k_year</li>
+</ul>
+<h4 id="home-view">HOME VIEW</h4>
+<p>e.g. <em>http&#58;//www.mysite.com/blog/</em></p>
+<ul>
+<li>k_is_list</li>
+<li>k_is_home</li>
+<li>k_folder_pagecount (<em>Number of pages. Remember home view is also the root folder</em>)</li>
+<li>k_folder_totalpagecount (<em>Total number of cloned pages, including pages in subfolders</em>)</li>
+</ul>
+<p class="notice"><strong>IMP.</strong> Notice that for cloneable templates, the contents of the editable regions associated with a page are made available only in page view.</p>
+
+<p class="success"><strong>TIP:</strong> You can use the Couch tags - <a href="../tags-reference/dump.html"><em><strong>dump</strong></em></a> and <a href="../tags-reference/dump_all.html"><em><strong>dump_all</strong></em></a> to see for youself all the variables with their current values.</p>
+
+<p>Next is <a href="listing-pages.html"><strong>Listing Pages</strong></a></p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

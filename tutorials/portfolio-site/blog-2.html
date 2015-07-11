@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Diving deep - the Blog (Part 2) - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../../assets/js/IE9.js"></script><![endif]-->
+    <script src="../../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Diving deep - the Blog (Part 2)" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../../tutorials.html" itemprop="item"><span itemprop="name">Tutorials</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../portfolio-site.html" itemprop="item"><span itemprop="name">Sample Portfolio Site</span><meta content="3" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../../tutorials/portfolio-site/blog-2.html" itemprop="item"><span itemprop="name">Diving deep - the Blog (Part 2)</span><meta content="4" itemprop="position"/></a></li>
+                </ul><form action="../../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="diving-deep-the-blog-part-2-">Diving deep - the Blog (Part 2)</h1>
+<p><br/></p>
+<h3 id="listing-cloned-pages-the-list-view">LISTING CLONED PAGES - The list-view</h3>
+<p>As already discussed, <em>http&#58;//www.mytestsite.com/blog.php</em> is the view where we list all the existing blog entries.<br/>
+Access it through your browser and you&#39;ll see that currently it is showing some hard coded HTML.<br/>
+We are going to change that now to make it display pages cloned from <em>blog.php</em> template in descending order of their publication date.</p>
+<p>The way we have configured it, template <em>blog.php</em> is using an embedded template <em>blog_list.html</em> to render the list-view.<br/>
+File <em>blog_list.html</em> is where we&#39;ll make the changes now. Open it up in your text editor.</p>
+<p>Couch has a tag named pages that is used to enumerate or list pages belonging to a particular template.<br/>
+Let us take a little overview of how this tag works before putting it into real use.<br/>
+The syntax of pages tag is pretty simple.</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; &gt;
+
+&lt;/cms:pages&gt;
+</code></pre><p>As you can see, the pages tag consists of a pair of opening and closing tags. The masterpage attribute specifies the template we wish to enumerate the cloned pages of. This attribute can be skipped if we want to enumerate pages cloned from the template this code is placed in but we&#39;ll use it for the sake of clarity.</p>
+<p>The tag fetches all the relevant cloned pages of the specified template and then loops through them selecting one page at a time sequentially.
+At each iteration, all the variables normally available for the selected page, had it been accessed directly in page-view, are made accessible by the tag. These variables, of course, include all the editable regions too.<br/>
+Finally anything that appears within the opening and closing tags of pages will be output in the normal way. This content can contain Couch tags that can make use of the variables that are made available.</p>
+<p>As a quick and dirty test, place the following code</p>
+<p><img src="../../assets/img/contents/portfolio-site-73.png" alt=""></p>
+<p>anywhere within <em>blog_list.html</em> (I chose just after the BODY tag) and access <em>http&#58;//www.mytestsite.com/blog.php</em>.</p>
+<p>You&#39;ll see that the heading &#39;<em>Hi, I am a page!</em>&#39; appears twice.</p>
+<p><img src="../../assets/img/contents/portfolio-site-74.png" alt=""></p>
+<p>The <em>blog.php</em> currently has only two cloned pages. As the pages tag loops through the two cloned pages, it executes the contents nested within itself at each iteration and hence the H1 tag gets output twice.</p>
+<p>Since at each iteration it also makes available all the variables belonging to the page currently selected, changing the code to -</p>
+<p><img src="../../assets/img/contents/portfolio-site-75.png" alt=""></p>
+<p>will display -</p>
+<p><img src="../../assets/img/contents/portfolio-site-76.png" alt=""></p>
+<p>As you can see we can access all variables belonging to each cloned pages just the way we did when the page was accessed in its page-view.</p>
+<p class="notice">The <a href="../../tags-reference/pages.html">pages</a> tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please consult the <a href="../../tags-reference/pages.html">documentation</a> for a full discussion.</p>
+
+<p>With this ability to list cloned pages and access their data, we can now make changes to the <em>blog_list.html</em> snippet to display the cloned pages instead of its hard coded content.</p>
+<p>The <em>blog_list.html</em> is hard coded to display three blog posts.<br/>
+Delete two posts so that we are left with only one. Visit <em>http&#58;//www.mytestsite.com/blog.php</em> to ensure that it displays only one blog post.</p>
+<p>We have already seen that the pages tag repeats the contents enclosed by it as many times as there are pages for it to display. We are going to enclose the remaining one post with the pages tag hence we need the HTML for only one blog post.<br/>
+Enclose the solitary blog post by the pages tag this way -</p>
+<p><img src="../../assets/img/contents/portfolio-site-77.png" alt=""></p>
+<p>Visit <em>http&#58;//www.mytestsite.com/blog.php</em> again and see that now it has repeated the static blog post twice, once for each cloned page of <em>blog.php</em>. The two posts are of course identical. We&#39;ll now set them to display variables from the cloned pages fetched by the pages tag instead of the hard coded HTML.</p>
+<p>We have already been through this step of finding relevant regions within the HTML code and replacing them with the page&#39;s variables while configuring the page-view. The finished code should look like this -</p>
+<p><img src="../../assets/img/contents/portfolio-site-78.png" alt=""></p>
+<p>Visit <em>http&#58;//www.mytestsite.com/blog.php</em> to see the two cloned pages listed on it -</p>
+<p><img src="../../assets/img/contents/portfolio-site-79.png" alt=""></p>
+<p>Click on the title of any post to verify that it loads the page-view of that post.</p>
+<p>Everything looks good for now.<br/>
+The &#39;<em>Read More..</em>&#39; button at the bottom of each post needs some attention.<br/>
+Usually when a blog post is displayed in its page-view (i.e. singly), its entire content is displayed. However, when the same post is displayed in the list-view (with several other posts) it is pragmatic to display only an excerpt of its contents and provide a link that leads to its page-view.</p>
+<p>Couch has two tags that can be used to get an excerpt from any input provided to them - excerpt and excerptHTML.<br/>
+The difference between the two, of course, is that excerptHTML preserves the HTML elements present in the input while excerpt strips off all HTML tags.<br/>
+We&#39;ll use the excerptHTML tag for our purpose. It can be additionally configured to ignore certain HTML tags. We&#39;ll make it ignore any IMG tag because if it happens to be present within the excerpt it is certainly going to make the post taller than what we desire. We&#39;ll set the count of words for the excerpt to 75.<br/>
+The modified code is -</p>
+<p><img src="../../assets/img/contents/portfolio-site-80.png" alt=""></p>
+<p>Note that we have fixed the &#39;<em>Read More..</em>&#39; link too.<br/>
+Try it out by editing &#39;<em>My second blog entry</em>&#39;, placing several paragraphs of text within it and then compare its page-view</p>
+<p><img src="../../assets/img/contents/portfolio-site-81.png" alt=""></p>
+<p>with the list-view</p>
+<p><img src="../../assets/img/contents/portfolio-site-82.png" alt=""></p>
+<p>Our blog is beginning to take its final shape.<br/>
+To illustrate the remaining features, we&#39;ll add three more blog entries (i.e. create cloned pages of <em>blog.php</em>).<br/>
+We&#39;ll place two pages in &#39;<em>clients</em>&#39; folder, two in &#39;<em>philosophy</em>&#39; and leave one in the root (i.e. within no folder).</p>
+<p><img src="../../assets/img/contents/portfolio-site-83.png" alt=""></p>
+<p>As we keep on adding new blog entries, the list-view faithfully keeps showing them all. It is okay for a few pages but as soon as the number of pages grows it soon becomes untenable to display all of them on a single page.<br/>
+The solution? Show the pages in fixed chunks of, say, ten pages at a time and give visitors the option to navigate to other chunks by providing links. This is pagination and Couch supports it natively.</p>
+<h3 id="pagination">PAGINATION</h3>
+<p>For the purpose of our demonstration, we&#39;ll show three pages at a time in the list-view.<br/>
+Add the following parameters to the pages tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-84.png" alt=""></p>
+<p>The <em>limit</em> parameter limits the number of pages fetched to 3 while setting the <em>paginate</em> parameter to 1 indicates to Couch that it now has to support pagination. Once Couch is made to support pagination, it will set some new variables for us that show the current status of the paginated result [see Pagination in documentation for more details].<br/>
+The new variables include links to the next and the previous set of three pages (if available).<br/>
+We can use them to modify the links of the two buttons at the bottom that say &#39;<em>Previous Posts</em>&#39; and &#39;<em>Next Posts</em>&#39;, but before we can do that we&#39;ll have to move the HTML code for the two buttons within the pages tags (because the variables are available only within this tag&#39;s context) -<br/>
+Before -</p>
+<p><img src="../../assets/img/contents/portfolio-site-85.png" alt=""></p>
+<p>After -</p>
+<p><img src="../../assets/img/contents/portfolio-site-86.png" alt=""></p>
+<p>But now when you access <em>blog.php</em>, you&#39;ll see that the next and previous buttons now get repeated for all the posts that are listed on the page. Certainly not what we desired. We wish to display the navigation buttons only after the last post on the page. As noted above, Couch sets up several variables that reflect the current status of the loop as the pages tag iterates through the fetched pages.<br/>
+<em>k_paginated_top</em> and <em>k_paginated_bottom</em> are two such variables.</p>
+<p class="success">Use &lt;cms:dump /&gt; or &lt;cms:dump_all /&gt; anywhere within the opening and closing component of the pages tag to see the variables change values as the cloned pages are looped through.</p>
+
+<p><em>k_paginated_top</em> is set when the first page of the current set of pages is being displayed while <em>k_paginated_bottom</em> is set when it is the last page that is getting displayed.<br/>
+We can use the <em>k_paginated_bottom</em> variable to conditionally output the navigation buttons only after the last entry -</p>
+<p><img src="../../assets/img/contents/portfolio-site-87.png" alt=""></p>
+<p>Visit <em>blog.php</em> and the navigation buttons should now display properly after the last post.<br/>
+We can now set the two buttons to link to the next and previous set of pages.<br/>
+Couch sets two variables - <em>k_paginate_link_prev</em> and <em>k_paginate_link_next</em> that give us these links.<br/>
+We&#39;ll add them to the buttons.</p>
+<p><img src="../../assets/img/contents/portfolio-site-88.png" alt=""></p>
+<p>Visit <em>blog.php</em> again and click on the &#39;<em>Previous Posts</em>&#39; button. You should now see <em>blog.php</em> displaying the remaining two posts.</p>
+<p>There is small issue here, however, that needs attention.<br/>
+The five posts were split into two sets - the first set (or page) had three posts while the second has two posts.<br/>
+We are at the second set and there are no more posts to display after this. Yet the &#39;<em>Previous Posts</em>&#39; is still being displayed.<br/>
+Similarly, when we were at the first set there were no &#39;<em>Newer Posts</em>&#39; to display and yet this button was being displayed.</p>
+<p>Couch, in fact, is aware of which set is being displayed and actually sets the <em>k_paginate_link_prev</em> and <em>k_paginate_link_next</em> variables only if there are any next or previous sets to display.<br/>
+We simply have to check for these variables before displaying the navigation buttons.<br/>
+Let us modify the code to do this -</p>
+<p><img src="../../assets/img/contents/portfolio-site-89.png" alt=""></p>
+<p>Visit <em>blog.php</em> again and the pagination should work perfectly.<br/>
+Time to move our attention to the sidebar.</p>
+<h3 id="the-sidebar">THE SIDEBAR</h3>
+<p>The sidebar of both the views is almost identical. Both show a listing of Catagories (sic) and Archive periods.</p>
+<p><img src="../../assets/img/contents/portfolio-site-90.png" alt=""></p>
+<p>The one shown in page-view has an additional list showing the &#39;<em>Latest News</em>&#39;. It is difficult to say what the original designer of Aurelius had in mind as there is no &#39;<em>news</em>&#39; section. We&#39;ll list our latest four blog posts here.</p>
+<p>Since the sidebars are almost identical, we can save the one that has more elements as a snippet and then embed it in both the views.</p>
+<p>Find the following sidebar code in <em>blog.php</em>.</p>
+<p><img src="../../assets/img/contents/portfolio-site-91.png" alt=""></p>
+<p>Cut and paste it into a file and save it as <em>blog_sidebar.html</em> in the snippets folder.<br/>
+Place the following code in <em>blog.php</em> in place the code removed above</p>
+<p><img src="../../assets/img/contents/portfolio-site-92.png" alt=""></p>
+<p>Similarly remove the sidebar code from <em>blog_list.html</em> (list-view) and replace it with the embed tag shown above.</p>
+<p>The two views should now show identical sidebars. However the &#39;<em>Latest News</em>&#39; portion of the sidebar was supposed to be visible only in the page-view.<br/>
+A little conditional code should handle this -<br/>
+Open up <em>blog_sidebar.html</em> in your text editor and enclose the &#39;<em>Latest News</em>&#39; list with a conditional tag like this -</p>
+<p><img src="../../assets/img/contents/portfolio-site-93.png" alt=""></p>
+<p>The &#39;<em>Latest News</em>&#39; section should now be visible only in page-view.</p>
+<p>Let us now make the three listings in the sidebar dynamic.<br/>
+We&#39;ll start with the first listing. The first thing to do is correct the header&#39;s spelling by changing &#39;Catagories&#39; to &#39;Categories&#39;. We&#39;ll now list the folders of this template.</p>
+<h3 id="listing-folders">Listing Folders</h3>
+<p>As we can see, the category (folders) listing in the sidebar is a series of LI&#39;s within a UL tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-94.png" alt=""></p>
+<p>In Couch, we can enumerate the folders of a template by using the folders tag. This tag works in a similar fashion as the pages tag we saw a little while back. It fetches the folders and then iterates through them, making available each folder&#39;s variables as it loops through each.<br/>
+The LI portion of the list shown above is the part that needs to be output for each folder found.<br/>
+Delete all LIs except one and then enclose this single LI with the folders tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-95.png" alt=""></p>
+<p>Next replace the folder&#39;s name and its link with the variables that Couch provides for each folder it finds -</p>
+<p><img src="../../assets/img/contents/portfolio-site-96.png" alt=""></p>
+<p>This will result in a list of all the five folders we defined for <em>blog.php</em> template.</p>
+<h4 id="listing-pages-within-a-folder">Listing pages within a folder</h4>
+<p>Each folder in the list produced by the folders tag above is also linked to a URL similar to<br/>
+<em>http&#58;//www.mytestsite.com/blog.php?f=5</em><br/>
+Notice how the name of the template is followed by &#39;<em>?f=n</em>&#39; (where n is a number denoting a particular folder).<br/>
+This URL is meant for listing pages that belong to the specified folder only. Such view is a sub-category of the list-view and is known as the folder-view [see <a href="../../concepts/views.html">Views</a>].</p>
+<p>The &#39;<em>?f=n</em>&#39; after the template&#39;s name makes Couch treat this URL as the template&#39;s folder-view and it makes available to you (as variables) all the information about the folder specified in the URL [see: <a href="../../concepts/variables-in-views.html">Variables available in Views</a>].<br/>
+Currently, however, if you click on any of the folders in the list, it will lead you to blog.php in the same list-view that is displayed when <em>blog.php</em> is accessed without any parameter appended after its name. That is, all pages regardless of the folder they belong to, get displayed.</p>
+<p>The reason is that, although Couch recognizes the URL as folder-view and sets all relevant variables for us, it is eventually up to us to decide what to display in this view.<br/>
+We can, for example, display information about the folder in question in this view or display only the pages that belong to the specified folder.<br/>
+In our case, currently we are not checking at all if the list-view is actually also a folder-view (i.e. we do need to list pages in this view but the pages should belong only to the particular folder that is being specified in the URL).<br/>
+Let us add this intelligence to our template.</p>
+<p>As we know, it is the pages tag in <em>blog_list.html</em> template that is fetching and displaying pages in list-view.<br/>
+Currently it only has the <em>masterpage</em> parameter that is constraining the pages fetched.<br/>
+The tag also supports a parameter named &#39;<em>folder</em>&#39; where we can specify the name of the folder (or folders) the pages belonging to which need to be fetched.<br/>
+For example, if we hardcode the name of folder as &#39;<em>clients</em>&#39;, the list-view will start showing only the two pages that currently reside in this folder -</p>
+<p><img src="../../assets/img/contents/portfolio-site-97.png" alt=""></p>
+<p>As it happens, during folder-view, a variable named <em>k_folder_name</em> gets set by Couch, which gives us the name of the folder specified in the URL. Place this variable as the &#39;<em>folder</em>&#39; parameter in the pages tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-98.png" alt=""></p>
+<p>Refresh <em>blog.php</em> and click on the &#39;<em>Clients</em>&#39; folder in the sidebar list.<br/>
+Only two pages, each belonging to &#39;<em>Clients</em>&#39; folder will be displayed.<br/>
+Click on the &#39;<em>Philosophy</em>&#39; folder and you should now see only the two pages belonging to &#39;<em>Philosophy</em>&#39; being listed.<br/>
+Remove the &#39;<em>?f=n</em>&#39; part from the URL and access <em>http&#58;//www.mytestsite.com/blog.php</em> directly.<br/>
+It will display all folders, regardless of their containing folders, as before.<br/>
+This works as before because this view not being the folder-view, the <em>k_folder_name</em> variable comes up empty and hence the &#39;<em>folder</em>&#39; parameter of the pages tag is ignored.</p>
+<p>Thus with only the addition of one parameter we were able to handle the folder-view too.<br/>
+Couch supports one last sub-category of the list-view - the <em>archive-view</em>.<br/>
+In this view we display pages belonging to only a particular time period.<br/>
+Let us move on to it.</p>
+<h3 id="listing-archives">Listing Archives</h3>
+<p>This section is very similar to the Listing folders section we handled above -</p>
+<p><img src="../../assets/img/contents/portfolio-site-99.png" alt=""></p>
+<p>Edit <em>blog_sidebar.html</em> to delete all the LIs within the UL except one.<br/>
+The Couch tag used to enumerate all the archive periods that have published pages within them is the archives tag.<br/>
+Enclose the solitary LI with this tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-100.png" alt=""></p>
+<p>Similar to the pages or folders tag, the archives tag makes available all information about each archive period by setting up variables.<br/>
+Variable <em>k_archive_date</em> gives the date that represents the first day of the archive period while <em>k_archive_link</em> provides the link to the archive-view that should display all pages belonging to this period.<br/>
+Add the aforesaid variables to the LI -</p>
+<p><img src="../../assets/img/contents/portfolio-site-101.png" alt=""></p>
+<p>We have already discussed the use of date tag to format dates.</p>
+<p>Visit <em>blog.php</em> and you&#39;ll see the archives being displayed in the sidebar.<br/>
+Click on one archive item and it should lead you to a URL like -<br/>
+<em>http&#58;//www.mytestsite.com/blog.php?d=201010</em></p>
+<p>The &#39;<em>?d=201010</em>&#39; after the <em>blog.php</em> signals to Couch that an archive-view is being accessed. Couch makes available all information pertaining to the archive period specified in the URL by setting various variables [see <a href="../../concepts/variables-in-views.html">Variables available in Views</a>].<br/>
+It is up to the template being accessed to handle the archive period anyway it chooses to.<br/>
+For now, our <em>blog.php</em> will simply display whatever it did in the list-view (remember archive-view and folder-view are sub-categories of list-view) because we have not yet handled the archive-view.<br/>
+Let us do that now.</p>
+<p>Once again it is the pages tag that we placed within the <em>blog_list.html</em> (that handles list-view) that needs a little modification.<br/>
+Pages tag supports two parameters that can be set to constrain the fetched pages to belong to a certain time period - <em>start_on</em> and <em>stop_before</em>.<br/>
+We&#39;ll set the values of these parameters by using two variables that are set by Couch in archive-view that denote the start and end dates of the archive period - <em>k_archive_date</em> and <em>k_next_archive_date</em>.<br/>
+The modified pages tag should look like -</p>
+<p><img src="../../assets/img/contents/portfolio-site-102.png" alt=""></p>
+<p>This minor modification will make our original code handle the archive-view too (i.e. list only pages belonging to that archive period).<br/>
+As with the folder-view, this works because when <em>blog.php</em> is accessed in a view other than the archive-view, the two variables we used are empty and hence are ignored by the pages tag.</p>
+<p>This wraps up the two lists that appear in the sidebar of list-view.<br/>
+The page-view has an additional list, the <em>Latest News list</em>, which we&#39;ll use to display the latest four blog posts.<br/>
+Open up <em>blog_sidebar.html</em> in your text editor and find the <em>Latest News</em> listing.</p>
+<p><img src="../../assets/img/contents/portfolio-site-103.png" alt=""></p>
+<p>Having already configured the folders and archive listings, this one should be a cinch.<br/>
+We already know that the Couch tag used to list pages is the pages tag.<br/>
+The steps needed to make this listing dynamic should now be familiar -</p>
+<p><strong>a.</strong> Delete all but one LI representing one page entry in the list.<br/>
+<strong>b.</strong> Enclose the solitary LI with the tag that enumerates the objects being listed - in this case it is the pages tag.<br/>
+<strong>c.</strong> Use the variables set by the enumerator tag in the list item.</p>
+<p>The finished code is as follows -</p>
+<p><img src="../../assets/img/contents/portfolio-site-104.png" alt=""></p>
+<p>Notice that we have set the limit to four.</p>
+<p>Visit any blog entry (page-view) and the latest four blog entries should be found listed in the sidebar.</p>
+<p><img src="../../assets/img/contents/portfolio-site-105.png" alt=""></p>
+<p>That wraps up all the sidebar sections.<br/>
+The only features left to complete now are the comments listing and comments form.<br/>
+Let us move on to them to finally finish the blog in Aurelius.</p>
+<h3 id="comments">COMMENTS</h3>
+<p>As the very first step in configuring comments, mark the <em>blog.php</em> template as being commentable.<br/>
+This is done by setting the <em>commentable</em> attribute to &#39;1&#39; in the template tag present in <em>blog.php</em> -</p>
+<p><img src="../../assets/img/contents/portfolio-site-106.png" alt=""></p>
+<p>Access <em>blog.php</em> in your browser while being logged-in as the super-admin.<br/>
+Visit the admin section and you&#39;ll find that as soon as a template is declared as commentable, a new item is added to the sidebar -</p>
+<p><img src="../../assets/img/contents/portfolio-site-107.png" alt=""></p>
+<p>This will be used to administrate all the submitted comments. For now there are no comments for us to administrate so we&#39;ll come back to it a little latter.</p>
+<p>Let us add the form used to submit comments in the page-view.<br/>
+Within <em>blog.php</em>, find the form that is meant to submit comments -</p>
+<p><img src="../../assets/img/contents/portfolio-site-108.png" alt=""></p>
+<p>We could modify this form to make Couch fit into it. However, since a comments submission form is such a standard component of a blog, in this case we can save some time by reusing the submission form that is described in Couch documentation of <a href="../../concepts/using-comments.html">comments</a>.<br/>
+Copy and save that sample form into a file named <em>comments_form.html</em> <a href="http://www.couchcms.com/docs/code/blog.zip">[download it]</a> and save this into the snippet folder of Couch.<br/>
+Replace the original form block in <em>blog.php</em> shown above with -</p>
+<p><img src="../../assets/img/contents/portfolio-site-109.png" alt=""></p>
+<p>This will cause the following to display when you are logged in -</p>
+<p><img src="../../assets/img/contents/portfolio-site-110.png" alt=""></p>
+<p>while the following form is shown to non logged-in users -</p>
+<p><img src="../../assets/img/contents/portfolio-site-111.png" alt=""></p>
+<p>You can style the input elements within this form yourself or simply substitute them with those found in the original Aurelius code.</p>
+<p>The code we copied uses the following values from <em>config.php</em> to email submission intimation messages to the administrator -</p>
+<p><img src="../../assets/img/contents/portfolio-site-112.png" alt=""></p>
+<p>Don&#39;t forget to change them.</p>
+<p>Try submitting a few comments being logged in as admin and otherwise.<br/>
+Comments submitted by non-admins are, by default, not published immediately but are enqueued for moderation.<br/>
+[This can be changed by editing the <em>config.php</em> but we strongly advice against doing this.]</p>
+<p><img src="../../assets/img/contents/portfolio-site-113.png" alt=""></p>
+<p>Visit your admin panel and click on the comments item in the sidebar that we mentioned previously.<br/>
+All the submitted comments should be available here.</p>
+<p><img src="../../assets/img/contents/portfolio-site-114.png" alt=""></p>
+<p>Approve the comments that need approval and now we can move on to getting all the approved comments listed on the page they were submitted to.</p>
+<h3 id="listing-comments">Listing Comments</h3>
+<p>Listing comments follows the same pattern we have seen so far with all the listings we have configured i.e. pages, folders and archives.<br/>
+The enumerator tag for listing comments is, no prizes for guessing, the comments tag.<br/>
+With no parameters specified, comments tag will list all the approved comments in the system regardless of the template they belong to. However, you can use the <em>masterpage</em>, <em>page_id</em> or <em>page_name</em> parameters to make it fetch only the comments that belong to a particular template or page.</p>
+<p>To put the comments tag into use, follow the usual method of isolating a single item and enclosing it with the enumerator tags.<br/>
+Here is how the sample comment contained in <em>blog.php</em> looks like after being enclosed by the comments tag -</p>
+<p><img src="../../assets/img/contents/portfolio-site-115.png" alt=""></p>
+<p>Notice how we are using the system variable <em>k_page_id</em>, which is set by Couch to give the current page&#39;s id, to fetch only the comments that are associated with the page being accessed in page-view.</p>
+<p>Follow this with the usual step of replacing the static content with the variables set by the enumerator tag.</p>
+<p><img src="../../assets/img/contents/portfolio-site-116.png" alt=""></p>
+<p>Notice the use of the gravatar tag. Also please notice the use of the following code</p>
+<p><img src="../../assets/img/contents/portfolio-site-117.png" alt=""></p>
+<p>which is used to give every comment a unique anchor. This is helpful in linking back to specific comments from other pages.</p>
+<p>If you wish you can add pagination to this list of comments. The method is the same as that we used to paginate the list of pages before.</p>
+<p><img src="../../assets/img/contents/portfolio-site-118.png" alt=""></p>
+<p>For the pagination, we have opted to use the Couch paginator instead of the usual &#39;<em>next</em>&#39; and &#39;<em>prev</em>&#39; buttons. This tag automatically generates a Google style pagination. You&#39;ll need to add a bit of CSS though to make the looks suit your needs (please see <a href="../../concepts/pagination.html">Pagination documentation</a> for a sample CSS)</p>
+<p>As a final tweak, we&#39;ll add a conditional tag to display this list only if the page has any comments available else show a &#39;<em>No comments</em>&#39; message. The final code -</p>
+<p><img src="../../assets/img/contents/portfolio-site-119.png" alt=""></p>
+<p>That completes the last feature of the blog section.</p>
+<h3 id="finishing-touches">FINISHING TOUCHES</h3>
+<p>Let us tie up some loose ends before wrapping up the blog section.</p>
+<p>Below every blog post in page-view, there is a button that says &#39;<em>Back to Blog</em>&#39;. We need to make it link to our list view - <em>http&#58;//www.mytestsite.com/blog.php</em>.<br/>
+We could hard-code the link ourselves but in Couch it is never a good idea to do so with any link.<br/>
+The reason is that, latter on when all the templates have been configured, usually you&#39;ll want to turn on the prettyURLs feature. With this feature enabled, all default links of Couch will change to become more SEO friendly.</p>
+<p>Thus, for example,<br/>
+<em>http&#58;//www.mytestsite.com/blog.php</em> will become<br/>
+<em>http&#58;//www.mytestsite.com/blog/</em><br/>
+<br/>
+<em>http&#58;//www.mytestsite.com/blog.php?p=2</em> will become<br/>
+<em>http&#58;//www.mytestsite.com/blog/my-first-blog-entry.html</em><br/>
+<br/>
+<em>http&#58;//www.mytestsite.com/blog.php?f=5</em> will become<br/>
+<em>http&#58;//www.mytestsite.com/blog/clients/</em><br/>
+etc.</p>
+<p>The right way to code any link in Couch is to use the link tag.<br/>
+This tag takes as parameters the names of the masterpage, page, folder etc. and depending on whether or not prettyURL is turned on, outputs the proper link.</p>
+<p>Find the following in <em>blog.php</em></p>
+<p><img src="../../assets/img/contents/portfolio-site-120.png" alt=""></p>
+<p>and change it to.</p>
+<p><img src="../../assets/img/contents/portfolio-site-121.png" alt=""></p>
+<p>Congratulations. The blog section is finally complete.</p>
+<p>Next: <a href="portfolio.html">The portfolio section</a></p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/ga.js"></script>
+</body>
+</html>

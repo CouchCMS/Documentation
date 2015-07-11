@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Pagination - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Pagination" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/pagination.html" itemprop="item"><span itemprop="name">Pagination</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="pagination">Pagination</h1>
+<p><a href="../tags-reference/pages.html"><em><strong>Pages</strong></em></a>, <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> and <a href="../tags-reference/comments.html"><em><strong>comments</strong></em></a> tags can fetch many more items than that set by the <em>limit</em> parameter.<br/>
+In such cases, it is normal to display the items in a paginated manner i.e. split across several pages with navigational buttons provided to access the pages.<br/>
+These tags, apart from the variables set to describe the current item being iterated through, set several variables that provide information about the current status of the tag&#39;s loop. Many of these variables can be used to display the fetched items in a paginated fashion.</p>
+<p>To explain these variables, we&#39;ll use the following snippet -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;10&#39; paginate=&#39;1&#39;&gt;
+    &lt;!-- All the variables can be accessed here --&gt;
+&lt;/cms:pages&gt;
+</code></pre><p class="notice">Although we are using the example of a <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag to explain pagination, please keep in mind that the following discussion holds equally good for the <a href="../tags-reference/search.html"><em><strong>search</strong></em></a> and <a href="../tags-reference/comments.html"><em><strong>comments</strong></em></a> tags as well.</p>
+
+<p>Suppose a total of 23 records have been fetched by the given snippet.<br/>
+Since the limit has been set to 10, splitting up the total in chunks of 10 records will result in requiring 3 pages to display all the records.</p>
+<p>The following variables get set as the tag iterates through each item fetched -</p>
+<h4 id="k_total_records">k_total_records</h4>
+<p>Total records fetched - 23 in our example</p>
+<h4 id="k_count">k_count</h4>
+<p>Will range from 1 to 10 on each page. Thus it points to the relative position of the current record on the page.<br/>
+Can be changed by setting &#39;startcount&#39; parameter.<br/>
+Thus if &#39;startcount&#39; is set to 0, <em>k_count</em> will range from 0-9 on each page.</p>
+<h4 id="k_record_from">k_record_from</h4>
+<p>First record on page. Thus it will be 1 for page 1, 11 for page 2 and 21 for page 3.<br/>
+Can be changed by setting &#39;startcount&#39; parameter.<br/>
+Thus if &#39;startcount&#39; is set to 0, <em>k_record_from</em> will be 0 for page 1, 10 for page 2 and 20 for page 3.</p>
+<h4 id="k_current_record">k_current_record</h4>
+<p>Will range from 1-10 for page 1, 11-20 for page 2 and 21-23 for page 3.<br/>
+Thus it always points to the absolute position of the current record.<br/>
+Can be changed by setting &#39;startcount&#39; parameter.<br/>
+Thus if &#39;startcount&#39; is set to 0, <em>k_current_record</em> will range from 0-9 for page 1, 10-19 for page 2 and 20 to 22 for page 3.</p>
+<h4 id="k_record_to">k_record_to</h4>
+<p>Last record on page. Thus it will be 10 for page 1, 20 for page 2 and 23 for page 3.<br/>
+Can be changed by setting &#39;startcount&#39; parameter.<br/>
+Thus if &#39;startcount&#39; is set to 0, <em>k_record_to</em> will be 9 for page 1, 19 for page 2 and 22 for page 3.</p>
+<h4 id="k_total_pages">k_total_pages</h4>
+<p>Total pages - 3 in our example.</p>
+<h4 id="k_current_page">k_current_page</h4>
+<p>Current page number - will change from 1 to 3 in our example.</p>
+<h4 id="k_paginated_top">k_paginated_top</h4>
+<p>&#39;Pages&#39; tag loops through 10 records on each page in our example.<br/>
+<em>k_paginated_top</em> gets set for the first record of each page.<br/>
+It can be used to output something at the very start of the loop.</p>
+<h4 id="k_paginated_bottom">k_paginated_bottom</h4>
+<p>&#39;Pages&#39; tag loops through 10 records on each page in our example.<br/>
+<em>k_paginated_bottom</em> gets set for the last record of each page.<br/>
+It can be used to output something at the very end of the loop.</p>
+<h4 id="k_paginator_required">k_paginator_required</h4>
+<p>When the total number of pages fetched exceeds the maximum set by the &#39;limit&#39; parameter,<br/>
+(and &#39;paginate&#39; parameter is also set), the fetched set of pages is split across pages and<br/>
+<em>k_paginator_required</em> gets set to indicate this.<br/>
+It can be used to figure out when to display text that makes sense only in such situation<br/>
+for example - the &#39;next&#39; and &#39;forward&#39; links or the &#39;Page 1 of 3&#39;.</p>
+<h4 id="k_paginate_link_next">k_paginate_link_next</h4>
+<p>Link to the next page (if any)</p>
+<h4 id="k_paginate_link_prev">k_paginate_link_prev</h4>
+<p>Link to the previous page (if any)</p>
+<h3 id="examples-">EXAMPLES:</h3>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;10&#39; paginate=&#39;1&#39;&gt;
+    &lt;cms:if k_paginated_top&gt;
+        &lt;cms:if k_paginator_required &gt;
+            Page &lt;cms:show k_current_page /&gt; of &lt;cms:show k_total_pages /&gt;&lt;br&gt;
+        &lt;/cms:if&gt;
+        &lt;cms:show k_total_records /&gt; Pages Found.
+        Displaying: &lt;cms:show k_record_from /&gt;-&lt;cms:show k_record_to /&gt;
+    &lt;/cms:if&gt;
+
+    &lt;!-- All the page variables can be accessed here --&gt;
+
+    &lt;cms:if k_paginated_bottom &gt;
+        &lt;cms:if k_paginate_link_prev &gt;
+            &lt;a href=&quot;&lt;cms:show k_paginate_link_prev /&gt;&quot;&gt;prev&lt;/a&gt;
+        &lt;/cms:if&gt;
+        &lt;cms:if k_paginate_link_next &gt;
+            &lt;a href=&quot;&lt;cms:show k_paginate_link_next /&gt;&quot;&gt;next&lt;/a&gt;
+        &lt;/cms:if&gt;
+    &lt;/cms:if&gt;
+&lt;/cms:pages&gt;
+</code></pre><p>Instead of manually coding the &#39;next&#39; and &#39;prev&#39; buttons for navigating through the pages, the <a href="../tags-reference/paginator.html"><em><strong>paginator</strong></em></a> tag can be used instead -</p>
+<pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;10&#39; paginate=&#39;1&#39;&gt;
+    &lt;cms:if k_paginated_top&gt;
+        &lt;cms:if k_paginator_required &gt;
+            Page &lt;cms:show k_current_page /&gt; of &lt;cms:show k_total_pages /&gt;&lt;br&gt;
+        &lt;/cms:if&gt;
+        &lt;cms:show k_total_records /&gt; Pages Found.
+        Displaying: &lt;cms:show k_record_from /&gt;-&lt;cms:show k_record_to /&gt;
+    &lt;/cms:if&gt;
+
+    &lt;!-- All the page variables can be accessed here --&gt;
+
+    &lt;cms:paginator /&gt;
+&lt;/cms:pages&gt;
+</code></pre><p>If the <a href="../tags-reference/paginator.html"><em><strong>paginator</strong></em></a> tag is used to generate the navigation buttons, the following CSS code may be used to properly style the buttons -</p>
+<pre><code>/*
+    Paginator -
+    Source: http://www.strangerstudios.com/sandbox/pagination/diggstyle.php (strangerstudios.com)
+*/
+
+div.pagination {
+    padding: 3px;
+    margin: 3px;
+}
+
+div.pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #AAAADD;
+    zoom: 100%;
+    text-decoration: none; /* no underline */
+    color: #000099;
+}
+div.pagination a:hover, div.pagination a:active {
+    border: 1px solid #000099;
+
+    color: #000;
+}
+div.pagination span.page_current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #000099;
+
+    * zoom: 100%;
+
+    font-weight: bold;
+    background-color: #000099;
+    color: #FFF;
+}
+div.pagination span.page_disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #EEE;
+
+    * zoom: 100%;
+
+    color: #DDD;
+}
+
+* span.elipsis {zoom:100%}
+</code></pre><p>The following is a sample output of the <a href="../tags-reference/paginator.html"><em><strong>paginator</strong></em></a> tag</p>
+<p><img src="../assets/img/contents/pagination.png" alt=""></p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

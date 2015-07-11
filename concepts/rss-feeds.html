@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>RSS Feeds - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="RSS Feeds" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/rss-feeds.html" itemprop="item"><span itemprop="name">RSS Feeds</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="rss-feeds">RSS Feeds</h1>
+<p>Let us first see how a RSS feed is created manually (i.e. without using Couch or any other CMS) and then we&#39;ll see how to automate the task by retrofitting Couch into it.</p>
+<p>For our example, we&#39;ll suppose you publish news items on your website and wish to offer these news items as a RSS feed.<br/>
+Place the following snippet within a plain text file and name it, say, <em>rss.xml</em> (make sure there is no space between the beginning of the file and the <em>&lt;?xml version=&quot;1.0&quot;?&gt;</em> statement).</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rss version=&quot;2.0&quot;&gt;
+    &lt;channel&gt;
+        &lt;title&gt;My Explosive News&lt;/title&gt;
+        &lt;link&gt;http://www.mysite.com&lt;/link&gt;
+        &lt;description&gt;News and articles written by me&lt;/description&gt;
+        &lt;language&gt;en-us&lt;/language&gt;
+        &lt;pubDate&gt;Fri, 30 Jul 2010 05:49:44 GMT&lt;/pubDate&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;
+</code></pre><p>In the snippet above, we are declaring one RSS channel that will carry your news items. You&#39;ll need to modify the title, link and description tags to match your channel.</p>
+<p>Now add the individual news items to this channel -</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rss version=&quot;2.0&quot;&gt;
+    &lt;channel&gt;
+        &lt;title&gt;My Explosive News&lt;/title&gt;
+        &lt;link&gt;http://www.mysite.com&lt;/link&gt;
+        &lt;description&gt;News and articles written by me&lt;/description&gt;
+        &lt;language&gt;en-us&lt;/language&gt;
+        &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+
+        &lt;item&gt;
+            &lt;title&gt;My Second News&lt;/title&gt;
+            &lt;link&gt;http://www.mysite.com/breaking/my-second-news.html&lt;/link&gt;
+            &lt;description&gt;This is my second news item.&lt;/description&gt;
+            &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+        &lt;/item&gt;
+
+        &lt;item&gt;
+            &lt;title&gt;My First News&lt;/title&gt;
+            &lt;link&gt;http://www.mysite.com/my-first-news.html&lt;/link&gt;
+            &lt;description&gt;This is my first news item.&lt;/description&gt;
+            &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+        &lt;/item&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;
+</code></pre><p>We have added two recent news items that were published.<br/>
+Try visiting this <em>rss.xml</em> page in your browser or a news aggregator and the feed should come up without a hitch.</p>
+<p>RSS (Really Simple Syndication) seems to be really simple after all.<br/>
+However, manually adding every new news item published to the feed will be a painful chore.<br/>
+We&#39;ll now retrofit Couch into this feed to publish news items automatically.</p>
+<p>We&#39;ll suppose that the news items are cloned pages of a <em>news.php</em> template in Couch.<br/>
+Rename the <em>rss.xml</em> file to <em>rss.php</em> and add the usual PHP code that hooks Couch into this template.</p>
+<p>This conversion of the xml file to a php file is essential for Couch but it will raise two problems that we&#39;ll need to solve before going ahead -</p>
+<ol>
+<li>The &#39;&lt;?&#39; and &#39;?&gt; in the line &lt;?xml version=&quot;1.0&quot;?&gt; will cause PHP to throw a parsing error because those characters mislead PHP into believing that the line is a php statement, which it is not.</li>
+<li>The web server always sends back to the browser the mime-type of any file that it is serving to fulfill the browser&#39;s request. The mime-type of an XML file should be <em>text/xml</em> but the new &#39;.php&#39; extension causes the web server to send back the default <em>text/html</em> mime-type, which will be rejected by the browser.</li>
+</ol>
+<p>The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.<br/>
+The following snippet using Couch&#39;s <a href="../tags-reference/concat.html"><em><strong>concat</strong></em></a> tag will output exactly the same statement but because the &#39;&lt;?&#39; characters are now split up, PHP will have no problems.</p>
+<pre><code>&lt;cms:concat &#39;&lt;&#39; &#39;?xml version=&quot;1.0&quot; encoding=&quot;&#39; k_site_charset &#39;&quot;?&#39; &#39;&gt;&#39; /&gt;
+</code></pre><p class="notice">The <em>k_site_charset</em> variable contains the value set in <em>config.php</em> for the character set used by your web-site.</p>
+
+<p>The second problem can be rectified by using the Couch&#39;s <a href="../tags-reference/content_type.html"><em><strong>content_type</strong></em></a> tag. This tag instructs the web server to output the desired mime-type. We&#39;ll use it to output <em>text/xml</em>.</p>
+<p>The modified snippet should now look like this -</p>
+<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
+&lt;cms:content_type &#39;text/xml&#39; /&gt;&lt;cms:concat &#39;&lt;&#39; &#39;?xml version=&quot;1.0&quot; encoding=&quot;&#39; k_site_charset &#39;&quot;?&#39; &#39;&gt;&#39; /&gt;
+&lt;rss version=&quot;2.0&quot;&gt;
+  &lt;channel&gt;
+    &lt;title&gt;My Explosive News&lt;/title&gt;
+    &lt;link&gt;http://www.mysite.com&lt;/link&gt;
+    &lt;description&gt;News and articles written by me&lt;/description&gt;
+    &lt;language&gt;en-us&lt;/language&gt;
+    &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+
+    &lt;item&gt;
+        &lt;title&gt;My Second News&lt;/title&gt;
+        &lt;link&gt;http://www.mysite.com/breaking/my-second-news.html&lt;/link&gt;
+        &lt;description&gt;This is my second news item.&lt;/description&gt;
+        &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+    &lt;/item&gt;
+
+    &lt;item&gt;
+        &lt;title&gt;My First News&lt;/title&gt;
+        &lt;link&gt;http://www.mysite.com/my-first-news.html&lt;/link&gt;
+        &lt;description&gt;This is my first news item.&lt;/description&gt;
+        &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
+    &lt;/item&gt;
+  &lt;/channel&gt;
+&lt;/rss&gt;
+&lt;?php COUCH::invoke(); ?&gt;
+</code></pre><p class="notice"><strong>IMP.</strong> Do not split the <a href="../tags-reference/content_type.html"><em><strong>content_type</strong></em></a> statement and the <a href="../tags-reference/concat.html"><em><strong>concat</strong></em></a> statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
+
+<p>We can now fetch the news items from the <em>news.php</em> template by using <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag and add it to our feed to make it dynamic -</p>
+<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
+&lt;cms:content_type &#39;text/xml&#39; /&gt;&lt;cms:concat &#39;&lt;&#39; &#39;?xml version=&quot;1.0&quot; encoding=&quot;&#39; k_site_charset &#39;&quot;?&#39; &#39;&gt;&#39; /&gt;
+&lt;rss version=&quot;2.0&quot;&gt;
+  &lt;channel&gt;
+    &lt;title&gt;My News Channel&lt;/title&gt;
+    &lt;link&gt;&lt;cms:show k_site_link /&gt;&lt;/link&gt;
+    &lt;description&gt;Description of this channel.&lt;/description&gt;
+    &lt;language&gt;en-us&lt;/language&gt;
+    &lt;pubDate&gt;&lt;cms:date format=&#39;D, d M Y H:i:s&#39; gmt=&#39;1&#39;/&gt; GMT&lt;/pubDate&gt;
+    &lt;generator&gt;Couch CMS&lt;/generator&gt;
+
+    &lt;cms:pages masterpage=&#39;property.php&#39; limit=&quot;10&quot;&gt;
+    &lt;item&gt;
+        &lt;title&gt;&lt;cms:show k_page_title /&gt;&lt;/title&gt;
+        &lt;link&gt;&lt;cms:show k_page_link /&gt;&lt;/link&gt;
+        &lt;description&gt;
+            &lt;cms:html_encode&gt;
+                &lt;cms:excerptHTML&gt;&lt;cms:show my_news_text /&gt;&lt;/cms:excerptHTML&gt;
+            &lt;/cms:html_encode&gt;
+        &lt;/description&gt;
+
+        &lt;pubDate&gt;&lt;cms:date k_page_date format=&#39;D, d M Y H:i:s&#39; gmt=&#39;1&#39;/&gt; GMT&lt;/pubDate&gt;
+    &lt;/item&gt;
+    &lt;/cms:pages&gt;
+ &lt;/channel&gt;
+&lt;/rss&gt;
+&lt;?php COUCH::invoke(); ?&gt;
+</code></pre><p>We are assuming that an editable field named <em>my_news_text</em> contains the news text.<br/>
+The <a href="../tags-reference/excerpthtml.html"><em><strong>excerptHTML</strong></em></a> tag can be used to output only an excerpt of your page.<br/>
+We need to wrap the output within <a href="../tags-reference/html_encode.html"><em><strong>html_encode</strong></em></a> to encode certain characters that are not valid in XML.</p>
+<p>And that is it. Your automated RSS feed is ready.<br/>
+Modify the snippet to suit your web-site&#39;s needs.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

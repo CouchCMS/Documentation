@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>Events Calendar - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="Events Calendar" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/events-calendar.html" itemprop="item"><span itemprop="name">Events Calendar</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="events-calendar">Events Calendar</h1>
+<p>Couch has a handy tag named calendar that can be used to quickly display the traditional matrix of weeks and days belonging to a month. Additionaly, we can associate a clonable template with this tag to make it display the pages cloned from the template as entries of the calendar.</p>
+<p>It shouldn&#39;t be difficult to see that to build an Events Calendar, we can create a regular clonable template (let us call it <em>events.php</em>). Each cloned page will then represent an event. The publish date of a cloned page can represent the scheduled date for the event it represents. For all the other data that needs to be displayed for an event, editable regions can be created the usual way.</p>
+<p>This <em>events.php</em> template then can be associated with a calendar to display the events (cloned pages) on the dates they are to fall on.</p>
+<p class="notice">If you need an end date for your events, you can create an editable region of type <em>text</em> and set an appropriate regex validator on it to capture date in the proper format. Please see the last example on this page.</p>
+
+<h3 id="displaying-the-calendar">Displaying the calendar</h3>
+<p>The calender tag we mentioned has three auxillary tags associated with it - weeks, days and entries.<br/>
+These three tags are slightly different from all the other Couch tags we have seen so far in that they are meant to be used only within certain tags. The weeks tag will work only when nested within a calendar tag, the days tag is meant to be used only within the weeks tag and finally the entries tag is expected to be placed only within the days tag.</p>
+<p>The following example will make the relationship clear where we are displaying a calendar for the current month -</p>
+<pre><code>&lt;cms:calendar &gt;
+    &lt;table class=&quot;calendar_small&quot;&gt;
+        &lt;cms:weeks&gt;
+            &lt;tr&gt;
+            &lt;cms:days &gt;
+                &lt;td &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+            &lt;/cms:days&gt;
+            &lt;/tr&gt;
+        &lt;/cms:weeks&gt;
+    &lt;/table&gt;
+&lt;/cms:calendar&gt;
+</code></pre><p class="notice">For all the examples of calendar on this page, we&#39;ll use <em>calendar.css</em> to format the display. You can use the same CSS for your work or create your own CSS [<a href="http://www.couchcms.com/docs/code/calendar.css">Download</a>].</p>
+
+<p>Executing the code given above should result in the following -</p>
+<p><img src="../assets/img/contents/calendar-1.png" alt=""></p>
+<p>As you can see, the generated calendar is an HTML table, where the weeks tag was used within the calendar tag to produce the rows of the table and the days tag was used within each row to produce seven cells each representing a day.</p>
+<p>Depending on the month of the calendar, the weeks tag will repeat as many times as there are weeks in that month (will range from 4 to 6). The days tag will always repeat seven times within each week. Each of the iterated day can belong to either the previous month, the month being displayed or the next month.</p>
+<p>As with the other Couch tags, these tags too set up variables to provide more information about the objects they represent.<br/>
+Some of the variables that can be used are -</p>
+<h4 id="calendar">calendar</h4>
+<p><em>k_count_weeks</em> - Number of weeks in the month<br/>
+<em>k_calendar_date</em> - The month being displayed in yyyy-mm-dd format (e.g. 2010-10-01 for October, 2010)<br/>
+<em>k_next_calendar_date</em> - The month that comes after the one being displayed<br/>
+<em>k_prev_calendar_date</em> - The month that came before the one being displayed</p>
+<h4 id="weeks">weeks</h4>
+<p><em>k_week_num</em> - Number of the week being iterated</p>
+<h4 id="days">days</h4>
+<p><em>k_date</em> - date of the day being iterated<br/>
+<em>k_day</em> - Number representing the day<br/>
+<em>k_month</em> - Number representing the month of the day<br/>
+<em>k_year</em> - Number representing the year of the day<br/>
+<em>k_day_of_week</em> - Number representing the day of the week the day falls on<br/>
+<em>k_position</em> - One of these three values: <em>previous_month</em>, <em>current_month</em> or <em>next_month</em><br/>
+<em>k_timeline_position</em> - One of these three values: <em>past</em>, <em>present</em> or <em>future</em></p>
+<p>We can use these variables to format the display of the calendar more finely.</p>
+<p>Let us start by adding a few headers</p>
+<pre><code>&lt;cms:calendar &gt;
+    &lt;table class=&quot;calendar_small&quot;&gt;
+        &lt;tr&gt;
+            &lt;th colspan=&quot;7&quot;&gt;&lt;cms:date k_calendar_date format=&#39;F Y&#39; /&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;cms:repeat count=&#39;7&#39;&gt;
+            &lt;td class=&quot;months_heading&quot;&gt;&lt;cms:zebra &#39;Su&#39; &#39;M&#39; &#39;T&#39; &#39;W&#39; &#39;Th&#39; &#39;F&#39; &#39;S&#39;/&gt;&lt;/td&gt;
+            &lt;/cms:repeat&gt;
+        &lt;/tr&gt;
+
+        &lt;cms:weeks&gt;
+            &lt;tr&gt;
+            &lt;cms:days &gt;
+                &lt;td &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+            &lt;/cms:days&gt;
+            &lt;/tr&gt;
+        &lt;/cms:weeks&gt;
+    &lt;/table&gt;
+&lt;/cms:calendar&gt;
+</code></pre><p>The result of the changes -</p>
+<p><img src="../assets/img/contents/calendar-2.png" alt=""></p>
+<p>Next we&#39;ll format the table cells to indicate whether the day represented by a cell lies in the past, present or future.<br/>
+The modified code of our calendar -</p>
+<pre><code>&lt;cms:calendar &gt;
+    &lt;table class=&quot;calendar_small&quot;&gt;
+        &lt;tr&gt;
+            &lt;th colspan=&quot;7&quot;&gt;&lt;cms:date k_calendar_date format=&#39;F Y&#39; /&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;cms:repeat count=&#39;7&#39;&gt;
+            &lt;td class=&quot;months_heading&quot;&gt;&lt;cms:zebra &#39;Su&#39; &#39;M&#39; &#39;T&#39; &#39;W&#39; &#39;Th&#39; &#39;F&#39; &#39;S&#39;/&gt;&lt;/td&gt;
+            &lt;/cms:repeat&gt;
+        &lt;/tr&gt;
+
+        &lt;cms:weeks&gt;
+            &lt;tr&gt;
+            &lt;cms:days &gt;
+              &lt;cms:if k_timeline_position=&#39;present&#39;&gt;
+                   &lt;cms:set tdclass=&#39;today&#39; /&gt;
+              &lt;cms:else /&gt;
+                   &lt;cms:set tdclass=&#39;&#39; /&gt;
+              &lt;/cms:if&gt;
+
+              &lt;cms:if k_position=&#39;current_month&#39; &gt;
+                   &lt;td class=&#39;&lt;cms:show tdclass /&gt;&#39; &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+              &lt;cms:else /&gt;
+                   &lt;td class=&#39;other_month&#39;&gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+              &lt;/cms:if&gt;
+            &lt;/cms:days&gt;
+            &lt;/tr&gt;
+        &lt;/cms:weeks&gt;
+    &lt;/table&gt;
+&lt;/cms:calendar&gt;
+</code></pre><p><img src="../assets/img/contents/calendar-3.png" alt=""></p>
+<p>Notice how for days that belong to previous and next months we set up a class named &#39;other_month&#39;. Also note how for the current day amongst the days of the month being shown, we mark the cell with a &#39;today&#39; class.</p>
+<p>The calendar generated is for the current date. To generate one for any arbitrary date, use the calendar tag&#39;s <em>date</em> parameter.<br/>
+For example, the following addition to our code will display the calendar for month of September, 2010 -</p>
+<pre><code>&lt;cms:calendar date=&#39;2010-09-01&#39; &gt;
+    ...
+&lt;/cms:calendar&gt;
+</code></pre><h3 id="attaching-a-template-to-the-calendar">Attaching a template to the calendar</h3>
+<p>A clonable template can be attached to a calendar, like the one we have created so far, by setting the <em>masterpage</em> parameter.<br/>
+Once a template gets associated with a calendar, the days tag starts supporting another tag named entries within it.<br/>
+The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through.<br/>
+The days tag also sets a variable named <em>k_count_entries</em> to indicate the number of entries (i.e. cloned pages) present for each day.</p>
+<pre><code>&lt;cms:calendar date=&#39;2010-09-01&#39; masterpage=&#39;events.php&#39;&gt;
+    &lt;table class=&quot;calendar_small&quot;&gt;
+        &lt;tr&gt;
+            &lt;th colspan=&quot;7&quot;&gt;&lt;cms:date k_calendar_date format=&#39;F Y&#39; /&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;cms:repeat count=&#39;7&#39;&gt;
+            &lt;td class=&quot;months_heading&quot;&gt;&lt;cms:zebra &#39;Su&#39; &#39;M&#39; &#39;T&#39; &#39;W&#39; &#39;Th&#39; &#39;F&#39; &#39;S&#39;/&gt;&lt;/td&gt;
+            &lt;/cms:repeat&gt;
+        &lt;/tr&gt;
+
+        &lt;cms:weeks&gt;
+            &lt;tr&gt;
+            &lt;cms:days &gt;
+                &lt;cms:if k_timeline_position=&#39;present&#39;&gt;
+                    &lt;cms:set tdclass=&#39;today&#39; /&gt;
+                &lt;cms:else /&gt;
+                    &lt;cms:set tdclass=&#39;&#39; /&gt;
+                &lt;/cms:if&gt;
+
+                &lt;cms:if k_position=&#39;current_month&#39; &gt;
+                    &lt;cms:if k_count_entries &gt;
+                        &lt;td class=&#39;entries &lt;cms:show tdclass /&gt;&#39; &gt;
+                            &lt;a href=&quot;&lt;cms:link masterpage=&#39;events.php&#39; year=k_year month=k_month day=k_day /&gt;&quot;&gt;&lt;cms:show k_day /&gt;&lt;/a&gt;
+                        &lt;/td&gt;
+                    &lt;cms:else /&gt;
+                        &lt;td class=&#39;&lt;cms:show tdclass /&gt;&#39; &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                    &lt;/cms:if&gt;
+                &lt;cms:else /&gt;
+                    &lt;td class=&#39;other_month&#39;&gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                &lt;/cms:if&gt;
+            &lt;/cms:days&gt;
+            &lt;/tr&gt;
+        &lt;/cms:weeks&gt;
+    &lt;/table&gt;
+&lt;/cms:calendar&gt;
+</code></pre><p>Result of the changes -</p>
+<p><img src="../assets/img/contents/calendar-4.png" alt=""></p>
+<p>The calendar above is well suited to be placed in a sidebar.<br/>
+Notice how we are displaying the dates that have cloned pages in a different color and how that cell is linked to an archive_view (daily archive) of the template that can be used to display all pages belonging to a particular day in a list-view.</p>
+<p>If we wish, we can display the names and links of pages right within the table cell they fall in by creating a bigger table.</p>
+<pre><code>&lt;cms:calendar date=&#39;2010-09-01&#39; masterpage=&#39;events.php&#39;&gt;
+    &lt;table class=&quot;calendar_big&quot;&gt;
+        &lt;tr&gt;
+            &lt;th colspan=&quot;7&quot;&gt;&lt;cms:date k_calendar_date format=&#39;F Y&#39; /&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;cms:repeat count=&#39;7&#39;&gt;
+            &lt;td class=&quot;months_heading&quot;&gt;&lt;cms:zebra &#39;Su&#39; &#39;M&#39; &#39;T&#39; &#39;W&#39; &#39;Th&#39; &#39;F&#39; &#39;S&#39;/&gt;&lt;/td&gt;
+            &lt;/cms:repeat&gt;
+        &lt;/tr&gt;
+
+        &lt;cms:weeks&gt;
+            &lt;tr&gt;
+            &lt;cms:days pad_with_zeroes=&#39;0&#39; &gt;
+                &lt;cms:if k_timeline_position=&#39;present&#39;&gt;
+                    &lt;cms:set tdclass=&#39;today&#39; /&gt;
+                &lt;cms:else /&gt;
+                    &lt;cms:set tdclass=&#39;&#39; /&gt;
+                &lt;/cms:if&gt;
+
+                &lt;cms:if k_position=&#39;current_month&#39; &gt;
+                    &lt;cms:if k_count_entries &gt;
+                        &lt;td class=&#39;entries &lt;cms:show tdclass /&gt;&#39; align=&#39;center&#39;&gt;
+                            &lt;a href=&quot;#&quot;&gt;&lt;cms:show k_day /&gt;&lt;/a&gt;
+                            &lt;ul&gt;
+                                &lt;cms:entries limit=&#39;2&#39; skip_custom_fields=&#39;1&#39;&gt;
+                                &lt;li&gt;
+                                    &lt;a href=&quot;&lt;cms:show k_page_link /&gt;&quot;&gt;&lt;cms:show k_page_title /&gt;&lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;/cms:entries&gt;
+                            &lt;/ul&gt;
+                        &lt;/td&gt;
+                    &lt;cms:else /&gt;
+                        &lt;td class=&#39;&lt;cms:show tdclass /&gt;&#39; &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                    &lt;/cms:if&gt;
+                &lt;cms:else /&gt;
+                    &lt;td class=&#39;other_month&#39;&gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                &lt;/cms:if&gt;
+            &lt;/cms:days&gt;
+            &lt;/tr&gt;
+        &lt;/cms:weeks&gt;
+    &lt;/table&gt;
+&lt;/cms:calendar&gt;
+</code></pre><p>The changes will result in the following -</p>
+<p><img src="../assets/img/contents/calendar-5.png" alt=""></p>
+<p>Notice how we used the class &#39;calendar_big&#39; with the table.<br/>
+Also notice how we used the entries tag to enumerate two of the cloned pages available within a day.<br/>
+The &#39;skip_custom_fields&#39; parameter is set to &#39;1&#39; to avoid the overhead of fetching in all the values contained within the editable regions of the cloned pages, as we won&#39;t be needing them here.</p>
+<p>The date of the calendar shown is still hard-coded. As final modification, let us change that by providing the date via the querystring via a parameter named cal.</p>
+<h3 id="a-complete-working-example">A complete working example</h3>
+<p>Following is a real-world template that uses the concepts discussed above to build a working events calendar. You can use it as the starting point for your events calendar -</p>
+<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
+&lt;cms:template title=&#39;Events&#39; clonable=&#39;1&#39;&gt;
+    &lt;cms:editable name=&#39;desc&#39; label=&#39;Description&#39; type=&#39;textarea&#39; /&gt;
+    &lt;cms:editable name=&#39;location&#39; label=&#39;Location&#39; type=&#39;text&#39; /&gt;
+
+    &lt;cms:editable name=&quot;start_time&quot; label=&quot;Time From (24 Hrs)&quot;
+      opt_values=&#39; Unspecified |
+                  00:00 | 00:30 | 01:00 | 01:30 | 02:00 | 02:30 | 03:00 | 03:30 |
+                  04:00 | 04:30 | 05:00 | 05:30 | 06:00 | 06:30 | 07:00 | 07:30 |
+                  08:00 | 08:30 | 09:00 | 09:30 | 10:00 | 10:30 | 11:00 | 11:30 |
+                  12:00 | 12:30 | 13:00 | 13:30 | 14:00 | 14:30 | 15:00 | 15:30 |
+                  16:00 | 16:30 | 17:00 | 17:30 | 18:00 | 18:30 | 19:00 | 19:30 |
+                  20:00 | 20:30 | 21:00 | 21:30 | 22:00 | 22:30 | 23:00 | 23:30 |&#39;
+      type=&#39;dropdown&#39;
+    /&gt;
+
+    &lt;cms:editable name=&quot;end_time&quot; label=&quot;Time Until (24 Hrs)&quot;
+      opt_values=&#39; Unspecified |
+                  00:00 | 00:30 | 01:00 | 01:30 | 02:00 | 02:30 | 03:00 | 03:30 |
+                  04:00 | 04:30 | 05:00 | 05:30 | 06:00 | 06:30 | 07:00 | 07:30 |
+                  08:00 | 08:30 | 09:00 | 09:30 | 10:00 | 10:30 | 11:00 | 11:30 |
+                  12:00 | 12:30 | 13:00 | 13:30 | 14:00 | 14:30 | 15:00 | 15:30 |
+                  16:00 | 16:30 | 17:00 | 17:30 | 18:00 | 18:30 | 19:00 | 19:30 |
+                  20:00 | 20:30 | 21:00 | 21:30 | 22:00 | 22:30 | 23:00 | 23:30 |&#39;
+      type=&#39;dropdown&#39;
+    /&gt;
+
+    &lt;cms:editable name=&#39;end_date&#39;
+        label=&#39;Event End Date (if multi-days event)&#39;
+        desc=&#39;Enter date in yyyy-mm-dd format e.g. 2010-12-31&#39;
+        type=&#39;text&#39;
+        validator=&#39;regex=/(?:19|20)\d\d-(?:0[1-9]|1[012])-(?:0[1-9]|[12][0-9]|3[01])/&#39;
+        separator=&#39;#&#39;
+        validator_msg=&#39;regex=Incorrect date format&#39;
+    /&gt;
+
+&lt;/cms:template&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;&lt;/TITLE&gt;
+&lt;link href=&quot;&lt;cms:show k_site_link /&gt;calendar.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+    &lt;cms:if k_is_page &gt;
+        &lt;!-- Page View --&gt;
+        &lt;b&gt;Event:&lt;/b&gt; &lt;cms:show k_page_title /&gt;&lt;br&gt;
+        &lt;b&gt;Description:&lt;/b&gt; &lt;cms:show desc /&gt;&lt;br&gt;
+        &lt;b&gt;Location:&lt;/b&gt; &lt;cms:show location /&gt;&lt;br&gt;
+        &lt;b&gt;Date:&lt;/b&gt; &lt;cms:date k_page_date format=&#39;F j, Y&#39; /&gt;&lt;br&gt;
+        &lt;cms:if start_time!=&#39;Unspecified&#39; &gt;
+            &lt;b&gt;From:&lt;/b&gt; &lt;cms:show start_time /&gt;&lt;br&gt;
+        &lt;/cms:if&gt;
+        &lt;cms:if &quot;&lt;cms:not_empty end_date /&gt;&quot; &gt;
+            &lt;b&gt;End Date:&lt;/b&gt; &lt;cms:date end_date format=&#39;F j, Y&#39; /&gt;&lt;br&gt;
+        &lt;/cms:if&gt;
+        &lt;cms:if end_time!=&#39;Unspecified&#39; &gt;
+            &lt;b&gt;Till:&lt;/b&gt; &lt;cms:show end_time /&gt;&lt;br&gt;
+        &lt;/cms:if&gt;
+
+    &lt;cms:else /&gt;
+        &lt;!-- List view --&gt;
+        &lt;cms:calendar date=&quot;&lt;cms:gpc &#39;cal&#39; /&gt;&quot; masterpage=k_template_name show_future_entries=&#39;1&#39; &gt;
+            &lt;table class=&quot;calendar_big&quot;&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;&lt;a href=&quot;&lt;cms:concat k_page_link &#39;?cal=&#39; k_prev_calendar_date /&gt;&quot;&gt; &lt;&lt; &lt;/a&gt;&lt;/th&gt;
+                    &lt;th colspan=&quot;5&quot;&gt;&lt;cms:date k_calendar_date format=&#39;F Y&#39; /&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;a href=&quot;&lt;cms:concat k_page_link &#39;?cal=&#39; k_next_calendar_date /&gt;&quot;&gt; &gt;&gt; &lt;/a&gt;&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;cms:repeat count=&#39;7&#39;&gt;
+                    &lt;td class=&quot;months_heading&quot;&gt;&lt;cms:zebra &#39;Su&#39; &#39;M&#39; &#39;T&#39; &#39;W&#39; &#39;Th&#39; &#39;F&#39; &#39;S&#39;/&gt;&lt;/td&gt;
+                    &lt;/cms:repeat&gt;
+                &lt;/tr&gt;
+
+                &lt;cms:weeks&gt;
+                    &lt;tr&gt;
+                    &lt;cms:days &gt;
+                        &lt;cms:if k_timeline_position=&#39;present&#39;&gt;
+                            &lt;cms:set tdclass=&#39;today&#39; /&gt;
+                        &lt;cms:else /&gt;
+                            &lt;cms:set tdclass=&#39;&#39; /&gt;
+                        &lt;/cms:if&gt;
+
+                        &lt;cms:if k_position=&#39;current_month&#39; &gt;
+                            &lt;cms:if k_count_entries &gt;
+                                &lt;td class=&#39;entries &lt;cms:show tdclass /&gt;&#39; align=&#39;center&#39;&gt;
+                                    &lt;a href=&quot;#&quot;&gt;&lt;cms:show k_day /&gt;&lt;/a&gt;
+                                    &lt;ul&gt;
+                                    &lt;cms:entries limit=&#39;2&#39; skip_custom_fields=&#39;1&#39;&gt;
+                                        &lt;li&gt;
+                                            &lt;a href=&quot;&lt;cms:show k_page_link /&gt;&quot;&gt;&lt;cms:show k_page_title /&gt;&lt;/a&gt;
+                                        &lt;/li&gt;
+                                    &lt;/cms:entries&gt;
+                                    &lt;/ul&gt;
+                                &lt;/td&gt;
+                            &lt;cms:else /&gt;
+                                &lt;td class=&#39;&lt;cms:show tdclass /&gt;&#39; &gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                            &lt;/cms:if&gt;
+                        &lt;cms:else /&gt;
+                            &lt;td class=&#39;other_month&#39;&gt;&lt;cms:show k_day /&gt;&lt;/td&gt;
+                        &lt;/cms:if&gt;
+                    &lt;/cms:days&gt;
+                    &lt;/tr&gt;
+                &lt;/cms:weeks&gt;
+            &lt;/table&gt;
+        &lt;/cms:calendar&gt;
+    &lt;/cms:if&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+&lt;?php COUCH::invoke(); ?&gt;
+</code></pre><p>Points to note in the code above -</p>
+<ol>
+<li>We have defined editable regions to capture details about events.</li>
+<li>In the page-view of this template we display the details of the event in question.</li>
+<li>In the list-view we display the calendar. The events show up as calendar entries and are linked to their page-views.</li>
+<li>We are using a querystring variable named &#39;cal&#39; to set the <em>date</em> parameter of calendar tag.<br/>
+The Couch gpc tag is used to get the value of this variable from the querystring.<br/>
+When this variable is not present in the querystring and hence the <em>date</em> parameter turns up empty, the calendar tag uses the current date instead.</li>
+<li>We have set a link to the previous month and another to the next month by using the <em>k_prev_calendar_date</em> and <em>k_next_calendar_date</em> variables that are set by the calendar tag.</li>
+<li>The calendar tag accepts all the parameters that are normally used with the pages tag. Similar to the pages tag, this tag too does not fetch pages that have their publication dates set in the future.<br/>
+Since events will normally be for the future, we have set the <em>show_future_entries</em> parameter to &#39;1&#39; to prevent the calendar tag from skipping future entries.</li>
+</ol>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>

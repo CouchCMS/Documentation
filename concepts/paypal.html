@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <title>PayPal - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="../favicon.ico" rel="shortcut icon"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
+    <script src="../assets/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="docs" id="container">
+        <header>
+            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="http://www.couchcms.com/">Home</a></li>
+                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
+                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
+                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
+                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <a class="report-bug" data-title="PayPal" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
+
+        <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/paypal.html" itemprop="item"><span itemprop="name">PayPal</span><meta content="3" itemprop="position"/></a></li>
+                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
+                <label for="search"><strong>Search</strong></label>
+                <input id="search_input" name="q" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="paypal">PayPal</h1>
+<p>Couch makes it very easy for you to sell single digital products (ebooks, software, images etc) online using PayPal.</p>
+<p class="success">
+    Paypal can be used to accept <em>single-item purchase</em> payments (the ones with Buy Now buttons), <em>contribution</em> payments (Donate buttons), <em>recurring</em> payments (Subscribe buttons) and <em>multi-items purchase</em> payments (shopping cart buttons).<br/>
+    <br/>
+    The current version of Couch supports only accepting <em>single-item purchase</em> payments.<br/>
+    <br/>
+    Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch&#39;s method cannot be used.
+</p>
+
+<h3 id="an-overview-of-paypal-ipn">AN OVERVIEW OF PAYPAL IPN</h3>
+<p>To understand how Couch makes the process easy, let us first review how PayPal is normally integrated into a website selling several digital products.</p>
+<ul>
+<li>The process starts by placing a specially coded &#39;Buy Now&#39; button for each item on the website. The code of each button has to be given data about the item associated with it i.e. the product&#39;s name, id, price etc.</li>
+<li>Clicking on a button takes the visitor to PayPal&#39;s website where, after adjusting the number of units he is buying, he makes the payment.</li>
+<li>PayPal immediately intimates the seller about the payment using IPN (Instant Payment Notification). IPN contains all the relevant data about the transaction, i.e. the item that was paid for, the number of units bought, the payment amount, the buyer&#39;s email etc.<br/>
+To receive PayPal&#39;s IPN, the seller needs to place a specially coded script on his website that can decipher the incoming IPN and take necessary actions. The URL (address) of this script has to be provided beforehand to PayPal (normally this is placed in the button code mentioned in the first step above).</li>
+<li>Once the script receives the IPN, it is supposed to first of all verify that the IPN is arriving genuinely from PayPal and has not been spoofed by someone. Once this is verified, the script then goes on to validate the details of the transaction being reported - if the correct amount has been paid for the item sold, the amount has been deposited in the right account etc.</li>
+<li>Once everything checks out fine, it is now that the product is finally delivered to the buyer. This could be done by using the email.</li>
+</ul>
+<h3 id="how-couch-integrates-with-paypal">HOW COUCH INTEGRATES WITH PAYPAL</h3>
+<p>As should be evident from the discussion above, the seemingly simple procedure of delivering a digital product to a buyer upon payment requires quite a bit of work. Specifically, out of the steps outlined above, placing the appropriately coded button and (more extensively) handling the incoming IPN require custom coding.<br/>
+Couch takes away the complexity from both the steps by making it as simple as placing a Couch tag for each in your template.</p>
+<p>In the following paragraphs we&#39;ll discuss how we can use Couch to do all the heavy lifting for us - but before we can do that, a little groundwork needs to be done.<br/>
+First we need to inform Couch about some of our PayPal details. Open <em>config.php</em> and set the following three values to that of yours.</p>
+<pre><code>// Set the following if you use PayPal buttons to sell products.
+// 17.
+// Set this to zero once you are ready to go live
+define( &#39;K_PAYPAL_USE_SANDBOX&#39;, 1 );
+// 18.
+// Email address of your PayPal &#39;business&#39; account selling the item
+define( &#39;K_PAYPAL_EMAIL&#39;, &#39;seller_3272492192_biz@gmail.com&#39; );
+// 19.
+// A three letter code for the currency you do your business in
+// Some valid values are: AUD (Australian Dollar), CAD (Canadian Dollar), EUR (Euro),
+// GBP (Pound Sterling), JPY (Japanese Yen) and USD (U.S. Dollar).
+// Please check PayPal to find yours.
+define( &#39;K_PAYPAL_CURRENCY&#39;, &#39;USD&#39; );
+</code></pre><p class="notice">
+    Usually while testing you&#39;ll be using PayPal&#39;s Sandbox.<br/>
+    Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K_PAYPAL_USE_SANDBOX to 1 and K_PAYPAL_EMAIL to the fictitious seller&#39;s account, in <em>config.php</em> mentioned above).
+</p>
+
+<p>For the next step, it is necessary to understand that each saleable item in Couch is represented by a separate cloned page.<br/>
+For our example, let us say we use a template named <em>product.php</em> for this purpose.<br/>
+Make this template clonable and define in it all <a href="editable-regions.html"><strong>editable regions</strong></a> that are relevant to your products (e.g. ISBN number, Author, Link to the downloadable file etc.)</p>
+<p>Two fields are mandatory and need your special attention -</p>
+<ol>
+<li><strong>Item&#39;s name</strong> - every saleable item needs to have a name. However, you don&#39;t have to create a separate editable region for this because Couch expects the <em>Title</em> field (present by default in all clonable pages and accessible via <em>k_page_title</em> variable) to be the item&#39;s name. Hence always input the item&#39;s name as the title of the page representing the item.</li>
+<li><strong>Item&#39;s price</strong> - this is an important one.<br/>
+PayPal does not allow zero value transactions, hence it is mandatory for each saleable item to have a non-zero price.<br/>
+We&#39;ll have to create an editable region to hold the item&#39;s price.<br/>
+The important point is that - Couch requires this editable region to be named <em>pp_price</em>.</li>
+</ol>
+<p>As an example, the following snippet can be used to create such a field (as a good practice, we have added the vaiidations normally required for a price field) -</p>
+<pre><code>&lt;cms:editable name=&#39;pp_price&#39; label=&#39;Price&#39; desc=&#39;Amount in USD (correct upto 2 decimal points)&#39;
+    maxlength=&#39;10&#39;
+    search_type=&#39;decimal&#39;
+    validator=&#39;non_negative_decimal&#39;
+    type=&#39;text&#39; /&gt;
+</code></pre><p>With the groundwork behind us, rest is easy.</p>
+<h4 id="creating-paypal-button">CREATING PAYPAL BUTTON</h4>
+<p>To create the PayPal &#39;Buy Button&#39; simply place the following couch tag it your <em>product.php</em> template -</p>
+<pre><code>&lt;cms:paypal_button /&gt;
+</code></pre><p>The image used as the button can be changed by setting the <em>image</em> parameter of the tag (See <a href="../tags-reference/paypal_button.html"><strong>Tags Reference - PayPal Button</strong></a>).</p>
+<p class="error">Remember: If the <strong>paypal_button</strong> tag fails to find a variable named <em>pp_price</em>, that we mentioned in the previous section, it will not display any button at all.</p>
+
+<p>Create a few items and visit their pages to try out the buttons.<br/>
+Clicking any item&#39;s button should lead to PayPal&#39;s site with the item&#39;s name and price correctly supplied.<br/>
+Clicking the return link on PayPal&#39;s site should lead one back to the item&#39;s page.</p>
+<p>Now we only need to handle the incoming IPN notification.</p>
+<h4 id="processing-paypal-ipn">PROCESSING PAYPAL IPN</h4>
+<p><a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> is the tag that will handle IPNs for you.</p>
+<p>To see how it works, place the following snippet somewhere at the top of your <em>product.php</em> template -</p>
+<pre><code>&lt;cms:paypal_processor debug=&#39;1&#39; /&gt;
+</code></pre><p>In the snippet above we have set the <em>debug</em> parameter to &#39;1&#39;. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website&#39;s root.</p>
+<p class="success">
+    By default the name of the log file is <em>log.txt</em>. However you can set it to any other by setting the <em>logfile</em> parameter -<br/>
+    <br/>
+    <code>&lt;cms:paypal_processor debug=&#39;1&#39; logfile=&#39;paypal.log&#39; /&gt;</code>
+    The snippet given above will make <em>paypal_processor</em> use a log file named <em>paypal.log</em>.
+</p>
+
+<p>Try clicking an item&#39;s &#39;Buy Now&#39; button and upon reaching the PayPal&#39;s site, complete the transaction by logging in and buying the item. Once the transaction completes, check in your website&#39;s root for the aforesaid log file.</p>
+<p class="notice">
+    If you cannot find the log file, either something is wrong and PayPal&#39;s IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
+    Try creating a file named <em>log.txt</em> (or whatever you have set using <em>logfile</em> parameter) manually, make it writable and try once again.
+</p>
+
+<p>You&#39;ll find something like this in the log file -</p>
+<pre><code>=======================[25-Jul-2010 10:08:22 PM]=======================
+Received paypal IPN:
+
+mc_gross = 13.68
+protection_eligibility = Ineligible
+payer_id = 38UYXKJAJW7VJ
+tax = 0.00
+payment_date = 22:08:18 Jul 25, 2010 PDT
+payment_status = Completed
+charset = windows-1252
+first_name = Test
+mc_fee = 0.70
+notify_version = 3.0
+custom =
+payer_status = verified
+business = seller_3272492192_biz@gmail.com
+quantity = 3
+verify_sign = AFcWxV21C7fd0v3bYYYRCpSSRl31AmmFHoB9fY1YRiGSb9s-pX-wTi.c
+payer_email = buyer_3272492155_per@gmail.com
+txn_id = 8HA76708L29474809
+payment_type = instant
+last_name = User
+receiver_email = seller_3272492192_biz@gmail.com
+payment_fee = 0.70
+receiver_id = H2D8CMM9EY86G
+txn_type = web_accept
+item_name = My First Product
+mc_currency = USD
+item_number = 1
+residence_country = US
+test_ipn = 1
+handling_amount = 0.00
+transaction_subject = My First Product
+payment_gross = 13.68
+shipping = 0.00
+
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+Connecting to paypal for verification..
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+Connected
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+VERIFIED
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+Couch validating transaction..
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+Transaction OK
+
+=======================[25-Jul-2010 10:08:23 PM]=======================
+Exiting
+</code></pre><p>The snippet above shows a successful transaction. If you find any error being reported in the log, you&#39;ll need to investigate it further.<br/>
+This should give you a fair idea as to what PayPal sends back as details of the transaction and what goes on while processing an IPN.</p>
+<p>Once we are sure that the IPN is being handled properly, we can now go ahead and make <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> do whatever is supposed to be done on successfully getting paid for a product. We&#39;ll assume we are to send the buyer an email with a link to the item he bought.</p>
+<p>Once <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> verifies that the IPN is indeed from PayPal, it sets the following variables for use in your script -</p>
+<ul>
+<li>pp_item_name</li>
+<li>pp_item_number</li>
+<li>pp_quantity</li>
+<li>pp_mc_gross</li>
+<li>pp_mc_currency</li>
+<li>pp_txn_id</li>
+<li>pp_receiver_email</li>
+<li>pp_payer_email</li>
+<li>pp_first_name</li>
+<li>pp_last_name</li>
+<li>pp_payer_business_name</li>
+</ul>
+<p class="notice">As should be obvious, these variables represent the values that PayPal provided through the IPN. We can use these values to take further actions.</p>
+
+<p><a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch&#39;s database. Thus it makes sure that the amount paid is not less than the item&#39;s price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.<br/>
+If the transaction is valid, it sets another variable named <em>k_paypal_success</em> else it sets a variable named <em>k_paypal_error</em> and places the error message into it. Additionaly, it also makes available all the variables associated with the page representing the item.</p>
+<p>A skeletal snippet will look like the following -</p>
+<pre><code>&lt;cms:paypal_processor&gt;
+    &lt;cms:if k_paypal_success&gt;
+
+        &lt;!-- All PayPal variables and variables of the item&#39;s page are available here --&gt;
+
+    &lt;/cms:if&gt;
+
+    &lt;cms:if k_paypal_error&gt;
+
+        &lt;!-- All PayPal variables and the error message is available here --&gt;
+
+    &lt;/cms:if&gt;
+&lt;/cms:paypal_processor&gt;
+</code></pre><p>A real world example could be -</p>
+<pre><code>&lt;cms:paypal_processor&gt;
+    &lt;cms:if k_paypal_success&gt;
+        &lt;cms:send_mail from=pp_receiver_email to=pp_payer_email subject=&#39;Thank you for your purchase!&#39; &gt;
+            Dear &lt;cms:show pp_first_name /&gt; &lt;cms:show pp_last_name /&gt;,
+
+            Thank you for buying &lt;cms:show pp_item_name /&gt;.
+
+            You may download your file from the following link:
+            &lt;cms:cloak_url link=downloadable_file force_download=&#39;1&#39; /&gt;&quot;
+
+        &lt;/cms:send_mail&gt;
+    &lt;/cms:if&gt;
+
+    &lt;cms:if k_paypal_error&gt;
+        &lt;cms:set msg=&quot;ERROR: &lt;cms:show k_paypal_error/&gt;&quot; /&gt;
+        &lt;cms:log msg /&gt;
+    &lt;/cms:if&gt;
+&lt;/cms:paypal_processor&gt;
+</code></pre><p>In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> are being used in the <a href="../tags-reference/send_mail.html"><em><strong>send_mail</strong></em></a> tag.<br/>
+The email contains a link to the downloadable item (the variable <em>downloadable_file</em> is an editable region of type file within the template and contains the item&#39;s link).<br/>
+The <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag is used to conceal the real path of the item.</p>
+</article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrapper">
+            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
+            <ul class="credits">
+                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
+                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
+            </ul>
+            <ul class="footnav">
+                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
+                <li><a class="backtotop"><i>Top</i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ga.js"></script>
+</body>
+</html>
