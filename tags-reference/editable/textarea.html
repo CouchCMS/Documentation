@@ -47,20 +47,20 @@
 For this type, Couch creates a multi-line textbox for data input.</p>
 <p>An editable region of <em>textarea</em> type can be defined this way -</p>
 <pre><code>&lt;cms:editable
- name=&#39;prop_desc&#39;
- label=&#39;Description&#39;
- desc=&#39;Enter description of property here&#39;
- type=&#39;textarea&#39;&gt;
+  name=&#39;prop_desc&#39;
+  label=&#39;Description&#39;
+  desc=&#39;Enter description of property here&#39;
+  type=&#39;textarea&#39;&gt;
     Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
     Signature Golf Course.
 &lt;/cms:editable&gt;
 </code></pre><p>The code above will result in -</p>
 <p><img src="../../assets/img/contents/editable-textarea.gif" alt=""></p>
-<p>The default type of an editable region is <em>text</em>. Hence if the code example given above were to be written without explicitly setting the <em>type</em> parameter, the result would have been just the same. Thus -</p>
+<p>The default type of an editable region is <em>textarea</em>. Hence if the code example given above were to be written without explicitly setting the <em>type</em> parameter, the result would have been just the same. Thus -</p>
 <pre><code>&lt;cms:editable
- name=&#39;prop_desc&#39;
- label=&#39;Description&#39;
- desc=&#39;Enter description of property here&#39; &gt;
+  name=&#39;prop_desc&#39;
+  label=&#39;Description&#39;
+  desc=&#39;Enter description of property here&#39;&gt;
     Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
     Signature Golf Course.
 &lt;/cms:editable&gt;
@@ -84,9 +84,10 @@ For this type, Couch creates a multi-line textbox for data input.</p>
 <h3 id="height">height</h3>
 <p>The dimensions of the textarea can be changed by setting the <em>width</em> and <em>height</em> parameters. For example, the following will make it 400px wide and 200px high -</p>
 <pre><code>&lt;cms:editable name=&#39;prop_desc&#39; label=&#39;Description&#39;
- desc=&#39;Enter description of property here&#39;
- width=&#39;400&#39;
- height=&#39;200&#39;
+    desc=&#39;Enter description of property here&#39;
+    width=&#39;400&#39;
+    height=&#39;200&#39;
+    type=&#39;textarea&#39;
 /&gt;
 </code></pre><h3 id="no_xss_check">no_xss_check</h3>
 <p>XSS (Cross Site Scripting) is a type of Web Application vulnerability which is caused by user managing to inject malicious script code into a webpage. Couch, by default, sanitizes all user input and that includes all inputs through all types of editable regions.</p>
@@ -94,7 +95,7 @@ For this type, Couch creates a multi-line textbox for data input.</p>
 <pre><code>&lt;cms:editable name=&#39;my_adsense&#39; label=&quot;Adsense Code&quot; desc=&quot;Enter your Adsense code here&quot;
     height=&#39;100&#39;
     no_xss_check=&#39;1&#39;
-    type=&quot;textarea&quot;
+    type=&#39;textarea&#39;
 /&gt;
 </code></pre><p>Without the <em>no_xss_check</em> explicitly set, Couch would disable all Javascript code contained within the AdSense code and thus make it useless.</p>
 <h2 id="related-tags">Related Tags</h2>

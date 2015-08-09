@@ -14,10 +14,10 @@ An editable region of _textarea_ type can be defined this way -
 
 ```
 <cms:editable
- name='prop_desc'
- label='Description'
- desc='Enter description of property here'
- type='textarea'>
+  name='prop_desc'
+  label='Description'
+  desc='Enter description of property here'
+  type='textarea'>
     Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
     Signature Golf Course.
 </cms:editable>
@@ -27,13 +27,13 @@ The code above will result in -
 
 ![](../../../../assets/img/contents/editable-textarea.gif)
 
-The default type of an editable region is _text_. Hence if the code example given above were to be written without explicitly setting the _type_ parameter, the result would have been just the same. Thus -
+The default type of an editable region is _textarea_. Hence if the code example given above were to be written without explicitly setting the _type_ parameter, the result would have been just the same. Thus -
 
 ```
 <cms:editable
- name='prop_desc'
- label='Description'
- desc='Enter description of property here' >
+  name='prop_desc'
+  label='Description'
+  desc='Enter description of property here'>
     Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
     Signature Golf Course.
 </cms:editable>
@@ -71,9 +71,10 @@ The dimensions of the textarea can be changed by setting the _width_ and _height
 
 ```
 <cms:editable name='prop_desc' label='Description'
- desc='Enter description of property here'
- width='400'
- height='200'
+    desc='Enter description of property here'
+    width='400'
+    height='200'
+    type='textarea'
 />
 ```
 
@@ -87,7 +88,7 @@ In some cases though, you'll wish to allow your user to input Javascript code, o
 <cms:editable name='my_adsense' label="Adsense Code" desc="Enter your Adsense code here"
     height='100'
     no_xss_check='1'
-    type="textarea"
+    type='textarea'
 />
 ```
 
