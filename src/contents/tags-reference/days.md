@@ -16,7 +16,7 @@ Please see [**Core Concepts - Events Calendar**](../../concepts/events-calendar.
 
 ### pad_with_zeroes
 
-If set to '1' will pad all single digit days in variable _k\_day_ with a leading zero.
+If set to '1' will pad all single digit days in variable *k\_day* with a leading zero.
 
 ## Variables
 

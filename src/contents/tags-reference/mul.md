@@ -13,7 +13,7 @@ The parameters may be literal strings, variables or output of other tags.
 <cms:mul my_count '5' />
 ```
 
-The snippet multiplies by 5 whatever value is contained within _my\_count_ variable and outputs the resulting value.
+The snippet multiplies by 5 whatever value is contained within *my\_count* variable and outputs the resulting value.
 
 ## Parameters
 

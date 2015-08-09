@@ -22,7 +22,7 @@ The **repeat** tag can be used to unconditionaly repeat all contents contained w
 </TABLE>
 ```
 
-In the example above, we are using the **repeat** tag twice to create a table with 4 rows each having 6 cells. The _startcount_ parameter is used to make the _k\_count_ variable, set by this tag to denote the number of the current iteration, to start from 1 instead of the default 0\.
+In the example above, we are using the **repeat** tag twice to create a table with 4 rows each having 6 cells. The _startcount_ parameter is used to make the *k\_count* variable, set by this tag to denote the number of the current iteration, to start from 1 instead of the default 0\.
 
 ## Parameters
 
@@ -35,7 +35,7 @@ Sets the number of times this tag repeats
 
 ### startcount
 
-This tag sets a variable named _k\_count_ that increases with each iteration. By default, the first iteration is numbered 0\. The _startcount_ parameter can be used to make _k\_count_ begin from any arbitrary number.
+This tag sets a variable named *k\_count* that increases with each iteration. By default, the first iteration is numbered 0\. The _startcount_ parameter can be used to make *k\_count* begin from any arbitrary number.
 
 ## Variables
 

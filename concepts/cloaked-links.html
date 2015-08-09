@@ -47,11 +47,11 @@
 This file, for example, could be a digital product that resides on your server. After someone has made the neccessary payment, you&#39;d want to provide him access to this file without disclosing the file&#39;s real location to him.<br/>
 In such cases, you&#39;d additionaly also wish to make this access temporary i.e. the link provided to the user should be valid for only a limited period of time.</p>
 <p>A similar requirement is as follows - You have a eBay affiliate website which lists several eBay products. A visitor upon clicking a product link is redirected to the eBay site. However, you do not wish the links displayed on your website to reveal to anyone, prima-fascie, that they&#39;ll lead to eBay.</p>
-<p>You can use Couch&#39;s <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag to do all the above very easily.</p>
+<p>You can use Couch&#39;s <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag to do all the above very easily.</p>
 <p class="notice">This feature was added to augment the <a href="paypal.html"><strong>PayPal button</strong></a> functionality by providing secure and controlled access to the downloadable digital products being sold. However it can be used with any other links that have similar needs.</p>
 
 <h3 id="cloaking-links-to-webpages">CLOAKING LINKS TO WEBPAGES</h3>
-<p>To get a gist of <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a>, suppose following is a link in your template -</p>
+<p>To get a gist of <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a>, suppose following is a link in your template -</p>
 <pre><code>&lt;a href=&quot;http://www.google.com&quot; &gt;Visit Site&lt;/a&gt;
 </code></pre><p>A visitor to your site will only see &#39;Visit Site&#39; displayed but it cannot be made hidden from him that this link leads to Google (hovering over the link will show Goolgle in the status bar, the source code will have Google&#39;s link etc.)</p>
 <p>Now consider the following modification made to the link above -</p>
@@ -59,9 +59,9 @@ In such cases, you&#39;d additionaly also wish to make this access temporary i.e
 </code></pre><p>Take a look at the generated url and how clicking it still leads to Google. This is classic &#39;URL cloaking&#39;.</p>
 <p>In the snippet above we set the <em>redirect</em> parameter to &#39;1&#39; because the link being cloaked was that of a webpage and not of a physical file.</p>
 <h3 id="cloaking-links-of-files">CLOAKING LINKS OF FILES</h3>
-<p>Let us now see how to make <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> work with physical files.</p>
+<p>Let us now see how to make <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> work with physical files.</p>
 <p class="notice">
-    <strong>IMP.</strong> - While the use of <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> with files will hide their real locations by obfuscating the links, you&#39;ll also want to ensure that the files are not directly accessible to anyone who happens to know their real locations (e.g. by intelligent guesswork)- one way of doing this would be by using the .htaccess file.<br/>
+    <strong>IMP.</strong> - While the use of <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> with files will hide their real locations by obfuscating the links, you&#39;ll also want to ensure that the files are not directly accessible to anyone who happens to know their real locations (e.g. by intelligent guesswork)- one way of doing this would be by using the .htaccess file.<br/>
     Create a file named .htaccess, put the following lines into it and place it within the folder that will house the protected files.<br/>
     <br/>
     <code>Options All -Indexes
@@ -82,7 +82,7 @@ Placing the following snippet in your template -</p>
 
 <h3 id="forcing-download">FORCING DOWNLOAD</h3>
 <p>If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location.<br/>
-This is because <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.</p>
+This is because <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.</p>
 <p>If you&#39;d rather have the download box shown for all types of files, set the <em>force_download</em> parameter to &#39;1&#39;.<br/>
 Thus the following link will always force the user to download the image file -</p>
 <pre><code>&lt;a href=&quot;

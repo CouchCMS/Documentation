@@ -114,7 +114,7 @@ Clicking any item&#39;s button should lead to PayPal&#39;s site with the item&#3
 Clicking the return link on PayPal&#39;s site should lead one back to the item&#39;s page.</p>
 <p>Now we only need to handle the incoming IPN notification.</p>
 <h4 id="processing-paypal-ipn">PROCESSING PAYPAL IPN</h4>
-<p><a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> is the tag that will handle IPNs for you.</p>
+<p><a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> is the tag that will handle IPNs for you.</p>
 <p>To see how it works, place the following snippet somewhere at the top of your <em>product.php</em> template -</p>
 <pre><code>&lt;cms:paypal_processor debug=&#39;1&#39; /&gt;
 </code></pre><p>In the snippet above we have set the <em>debug</em> parameter to &#39;1&#39;. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website&#39;s root.</p>
@@ -188,8 +188,8 @@ Transaction OK
 Exiting
 </code></pre><p>The snippet above shows a successful transaction. If you find any error being reported in the log, you&#39;ll need to investigate it further.<br/>
 This should give you a fair idea as to what PayPal sends back as details of the transaction and what goes on while processing an IPN.</p>
-<p>Once we are sure that the IPN is being handled properly, we can now go ahead and make <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> do whatever is supposed to be done on successfully getting paid for a product. We&#39;ll assume we are to send the buyer an email with a link to the item he bought.</p>
-<p>Once <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> verifies that the IPN is indeed from PayPal, it sets the following variables for use in your script -</p>
+<p>Once we are sure that the IPN is being handled properly, we can now go ahead and make <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> do whatever is supposed to be done on successfully getting paid for a product. We&#39;ll assume we are to send the buyer an email with a link to the item he bought.</p>
+<p>Once <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> verifies that the IPN is indeed from PayPal, it sets the following variables for use in your script -</p>
 <ul>
 <li>pp_item_name</li>
 <li>pp_item_number</li>
@@ -205,7 +205,7 @@ This should give you a fair idea as to what PayPal sends back as details of the 
 </ul>
 <p class="notice">As should be obvious, these variables represent the values that PayPal provided through the IPN. We can use these values to take further actions.</p>
 
-<p><a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch&#39;s database. Thus it makes sure that the amount paid is not less than the item&#39;s price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.<br/>
+<p><a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch&#39;s database. Thus it makes sure that the amount paid is not less than the item&#39;s price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.<br/>
 If the transaction is valid, it sets another variable named <em>k_paypal_success</em> else it sets a variable named <em>k_paypal_error</em> and places the error message into it. Additionaly, it also makes available all the variables associated with the page representing the item.</p>
 <p>A skeletal snippet will look like the following -</p>
 <pre><code>&lt;cms:paypal_processor&gt;
@@ -240,9 +240,9 @@ If the transaction is valid, it sets another variable named <em>k_paypal_success
         &lt;cms:log msg /&gt;
     &lt;/cms:if&gt;
 &lt;/cms:paypal_processor&gt;
-</code></pre><p>In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by <a href="../tags-reference/paypal_processor.html"><em><strong>paypal_processor</strong></em></a> are being used in the <a href="../tags-reference/send_mail.html"><em><strong>send_mail</strong></em></a> tag.<br/>
+</code></pre><p>In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> are being used in the <a href="../tags-reference/send_mail.html"><strong><em>send_mail</em></strong></a> tag.<br/>
 The email contains a link to the downloadable item (the variable <em>downloadable_file</em> is an editable region of type file within the template and contains the item&#39;s link).<br/>
-The <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag is used to conceal the real path of the item.</p>
+The <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag is used to conceal the real path of the item.</p>
 </article>
         </div>
     </div>

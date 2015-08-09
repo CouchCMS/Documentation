@@ -43,7 +43,7 @@
             </form>
 
             <article><h1 id="listing-pages">Listing Pages</h1>
-<p>Couch has a powerful tag named <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> that can be used to list all pages belonging to a template.<br/>
+<p>Couch has a powerful tag named <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> that can be used to list all pages belonging to a template.<br/>
 For example -</p>
 <pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39;&gt;
      &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
@@ -52,7 +52,7 @@ For example -</p>
 </code></pre><p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.<br/>
 The <em>masterpage</em> parameter stands for the template&#39;s name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.</p>
 <p>This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its page-view).</p>
-<p><a href="../tags-reference/pages.html"><em><strong>Pages</strong></em></a> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
+<p><a href="../tags-reference/pages.html"><strong><em>Pages</em></strong></a> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
 Please see the <a href="../tags-reference/pages.html#parameters"><strong>parameters</strong></a> section for a comprehensive list.</p>
 <h3 id="listing-pages-in-the-list-views-home-view-folder-view-and-archive-view-">LISTING PAGES IN THE LIST-VIEWS (HOME-VIEW, FOLDER-VIEW AND ARCHIVE-VIEW)</h3>
 <p>As shown in the previous chapter, for clonable templates, Couch considers certain URLS as those meant for listing pages cloned out of the template being accessed.</p>
@@ -67,21 +67,21 @@ Please see the <a href="../tags-reference/pages.html#parameters"><strong>paramet
 See: <a href="variables-in-views.html"><strong>Variables available in views</strong></a>.<br/>
 It is ultimately upto you whether or not you choose to list pages in the expected manner.</p>
 <h3 id="handling-home-view">Handling home-view</h3>
-<p>The <em>k_is_home</em> variable can be used to recognize this view and then the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag can be used to list all pages cloned from the template being accessed.</p>
+<p>The <em>k_is_home</em> variable can be used to recognize this view and then the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag can be used to list all pages cloned from the template being accessed.</p>
 <pre><code>&lt;cms:if k_is_home &gt;
     &lt;cms:pages&gt;
         &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
     &lt;/cms:pages&gt;
 &lt;/cms:if&gt;
 </code></pre><h3 id="handling-folder-view">Handling folder-view</h3>
-<p>The <em>k_is_folder</em> variable can be used to recognize this view. The <em>k_folder_name</em> variable made available by Couch in this view can then be used as a parameter of the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag to list pages belonging to that folder -</p>
+<p>The <em>k_is_folder</em> variable can be used to recognize this view. The <em>k_folder_name</em> variable made available by Couch in this view can then be used as a parameter of the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag to list pages belonging to that folder -</p>
 <pre><code>&lt;cms:if k_is_folder &gt;
     &lt;cms:pages folder=k_folder_name include_subfolders=&#39;1&#39; &gt;
         &lt;!-- All the variables of each page in this folder are available here --&gt;
     &lt;/cms:pages&gt;
 &lt;/cms:if&gt;
 </code></pre><h3 id="handling-archive-view">Handling archive-view</h3>
-<p>The <em>k_is_archive</em> can be used to recognize this view. In this view, Couch makes available the <em>k_archive_date</em> and <em>k_next_archive_date</em> variables that denote the boundries of the archive&#39;s period. These two variables can then be used as parameters of the <a href="../tags-reference/pages.html"><em><strong>pages</strong></em></a> tag to list pages belonging to that time period -</p>
+<p>The <em>k_is_archive</em> can be used to recognize this view. In this view, Couch makes available the <em>k_archive_date</em> and <em>k_next_archive_date</em> variables that denote the boundries of the archive&#39;s period. These two variables can then be used as parameters of the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag to list pages belonging to that time period -</p>
 <pre><code>&lt;cms:if k_is_archive &gt;
     &lt;cms:pages start_on=k_archive_date stop_before=k_next_archive_date &gt;
         &lt;!-- All the variables of each page belonging to this archive period are available here --&gt;

@@ -63,7 +63,7 @@ The following is the HTML code one would use to create a simple form. Note how a
     &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
 &lt;/cms:form&gt;
 </code></pre><p>Note how with just a little modification, an existing HTML form was transformed into a Couch managed form.</p>
-<p>The <a href="../tags-reference/form.html"><em><strong>form</strong></em></a> and <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tags were converted to their Couch equivalents by simply adding &#39;cms:&#39; prefix.<br/>
+<p>The <a href="../tags-reference/form.html"><strong><em>form</em></strong></a> and <a href="../tags-reference/input.html"><strong><em>input</em></strong></a> tags were converted to their Couch equivalents by simply adding &#39;cms:&#39; prefix.<br/>
 Couch expects its single tags to be properly self-closed hence the two input tags were fitted with the closing slashes.<br/>
 The <em>name</em> parameter is mandatory for an input tag in Couch hence the submit type was given a name.<br/>
 Finally, since now Couch will be handling all the validation chores, the <em>action</em> attribute is removed.</p>
@@ -86,7 +86,7 @@ Additionaly, the names of each failed fields along with their error messages are
 The most common validation that is required is making sure that a field has not been left empty. This can be done by setting the <em>required</em> parameter to &#39;1&#39;.</p>
 <p class="notice">
     For a <em>required</em> field further several kinds of validations can be enforced.<br/>
-    The input tags use the same validators that are used by the <a href="editable-regions.html"><strong>editable regions</strong></a>. Please see the <a href="../tags-reference/editable.html#validator"><strong>validators</strong></a> section of <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tag for a list of all the validators that can be used.
+    The input tags use the same validators that are used by the <a href="editable-regions.html"><strong>editable regions</strong></a>. Please see the <a href="../tags-reference/editable.html#validator"><strong>validators</strong></a> section of <a href="../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag for a list of all the validators that can be used.
 </p>
 
 <p>For our example we&#39;ll make both the fields required and futher ensure that a valid email is always inputted in the email field by setting the <em>email</em> validator. Modify the input fields as follows -</p>
@@ -164,12 +164,12 @@ Usually you&#39;ll wish to do something more substantial - like emailing the val
 
     &lt;cms:input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
 &lt;/cms:form&gt;
-</code></pre><p>Notice how we are using the <em>k_success</em> variable to email the submitted data via <a href="../tags-reference/send_mail.html"><em><strong>send_mail</strong></em></a> tag.</p>
+</code></pre><p>Notice how we are using the <em>k_success</em> variable to email the submitted data via <a href="../tags-reference/send_mail.html"><strong><em>send_mail</em></strong></a> tag.</p>
 <h3 id="input-types">INPUT TYPES</h3>
-<p>As seen in the snippets above, Couch employs its own variations of the <a href="../tags-reference/form.html"><em><strong>form</strong></em></a> tag and the <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tags to create and validate forms.<br/>
+<p>As seen in the snippets above, Couch employs its own variations of the <a href="../tags-reference/form.html"><strong><em>form</em></strong></a> tag and the <a href="../tags-reference/input.html"><strong><em>input</em></strong></a> tags to create and validate forms.<br/>
 Most (but not all) of the input types of Couch have one to one correlation with their HTML counterparts.<br/>
 The types of input tags that are currently supported by Couch and how they relate with the HTML equivalents are given below.</p>
-<p class="notice">For a full list of all the parameters accepted by the <a href="../tags-reference/input.html"><em><strong>input</strong></em></a> tag, please see its <a href="../tags-reference/input.html#parameters"><strong>parameters</strong></a> section.</p>
+<p class="notice">For a full list of all the parameters accepted by the <a href="../tags-reference/input.html"><strong><em>input</em></strong></a> tag, please see its <a href="../tags-reference/input.html#parameters"><strong>parameters</strong></a> section.</p>
 
 <p><strong>The following four input types are almost identical to the HTML types.</strong></p>
 <p>Porting these HTML tags to Couch tags requires only the addition of the &#39;cms:&#39; prefix as we have seen in the snippets above. These tags are self-closing hence the end-slash is required - and so is the &#39;name&#39; attribute.</p>
@@ -299,7 +299,7 @@ The <em>width</em> parameter can be used to set the width of the text box.</p>
 
 <h3 id="using-fieldset">USING FIELDSET</h3>
 <p>As demonstrated so far, an easy way to create a working form in Couch is to start with an existing HTML coded form and convert the existing form and input tags to their Couch equivalents. This way you can add validation to any of your existing forms.</p>
-<p>However, if are required to code a form from scratch, you can use the <a href="../tags-reference/fieldset.html"><em><strong>fieldset</strong></em></a> tag of Couch to give you a helping hand. Couch&#39;s version of this tag is the exact equivalent of its HTML counterpart and serves the same purpose of grouping together related form elements. Additionaly it also outputs &lt;DL&gt;, &lt;DT&gt; and &lt;DD&gt; tags to wrap correctly the child input tags. This way you can quickly get a semantically correct form quite easily.</p>
+<p>However, if are required to code a form from scratch, you can use the <a href="../tags-reference/fieldset.html"><strong><em>fieldset</em></strong></a> tag of Couch to give you a helping hand. Couch&#39;s version of this tag is the exact equivalent of its HTML counterpart and serves the same purpose of grouping together related form elements. Additionaly it also outputs &lt;DL&gt;, &lt;DT&gt; and &lt;DD&gt; tags to wrap correctly the child input tags. This way you can quickly get a semantically correct form quite easily.</p>
 <p>The following Couch snippet -</p>
 <pre><code>&lt;cms:fieldset&gt;
     &lt;cms:input type=&quot;text&quot; size=&quot;10&quot; maxlength=&quot;40&quot; name=&quot;name&quot; required=&#39;1&#39; /&gt;
@@ -315,7 +315,7 @@ The <em>width</em> parameter can be used to set the width of the text box.</p>
         &lt;dd&gt;&lt;input type=&quot;password&quot; maxlength=&quot;10&quot; size=&quot;10&quot; value=&quot;&quot; id=&quot;password&quot; name=&quot;password&quot;/&gt;&lt;/dd&gt;
     &lt;/dl&gt;
 &lt;/fieldset&gt;
-</code></pre><p class="notice">For input tags that are wrapped within <a href="../tags-reference/fieldset.html"><em><strong>fieldset</strong></em></a> tags, you can set the <em>label</em> and <em>desc</em> parameters to properly label the fields.</p>
+</code></pre><p class="notice">For input tags that are wrapped within <a href="../tags-reference/fieldset.html"><strong><em>fieldset</em></strong></a> tags, you can set the <em>label</em> and <em>desc</em> parameters to properly label the fields.</p>
 
 <h3 id="example-of-a-full-form">EXAMPLE OF A FULL FORM</h3>
 <p>Following is an example of a real-world form</p>

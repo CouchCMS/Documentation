@@ -59,7 +59,7 @@ define( 'K_PRETTY_URLS', 0 );
 Set the K\_PRETTY\_URLS to 1\.
 
 **2\.** Fire up your browser and visit the following page (substitute the domain name with that of yours) -<br/>
-_http&#58;//www.yoursite.com/couch/gen\_htaccess.php_
+*http&#58;//www.yoursite.com/couch/gen\_htaccess.php*
 
 A list of rewrite rules should appear on the page.<br/>
 Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it into a file named '.htaccess' and place this file in your website's root.
@@ -72,11 +72,11 @@ Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it int
 
 Try visiting your cloned pages from the Admin Panel and the pretty urls should be now seen in action.
 
-The rules that are copied and pasted into the .htaccess file pertain to all your clonable templates. If you happen to add other clonable templates after you have taken the steps outlined above, you'll have to regenerate the rewrite rules (using _gen\_htaccess.php_) and replace the former contents of the _.htaccess_ file with these new rules.
+The rules that are copied and pasted into the .htaccess file pertain to all your clonable templates. If you happen to add other clonable templates after you have taken the steps outlined above, you'll have to regenerate the rewrite rules (using *gen\_htaccess.php*) and replace the former contents of the _.htaccess_ file with these new rules.
 
 This is the reason why it is advisable to turn on Pretty URLS after all the clonable templates are already in place.
 
-<p class="error">The rewrite rules created by _gen\_htaccess.php_ use PCRE flavor of Regular Expressions instead of the now deprecated (and much slower) POSIX type. Unfortunately, some very old versions of Apache 1.x have been reported to still be using POSIX and as such the PrettyURLs feature might not work on them. Placing the generated .htaccess file on such servers will usually result in an '_HTTP 500: Internal Server Error_'.</p>
+<p class="error">The rewrite rules created by *gen\_htaccess.php* use PCRE flavor of Regular Expressions instead of the now deprecated (and much slower) POSIX type. Unfortunately, some very old versions of Apache 1.x have been reported to still be using POSIX and as such the PrettyURLs feature might not work on them. Placing the generated .htaccess file on such servers will usually result in an '_HTTP 500: Internal Server Error_'.</p>
 
 ### TROUBLESHOOTING
 
@@ -84,7 +84,7 @@ There are two problems very commonly encountered once prettyURLs are turned on:
 
 #### 1. The pages throw 'Internal Server Error'.
 
-Please make sure that your server has the required _mod\_rewrite_ module enabled. As mentioned above, [you can use this utility for testing it](http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
+Please make sure that your server has the required *mod\_rewrite* module enabled. As mentioned above, [you can use this utility for testing it](http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
 
 #### 2. The pages do come up but all the CSS, JS or image links are broken.
 

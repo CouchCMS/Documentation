@@ -28,7 +28,7 @@ Thus the modified code of the menu (we are modifying _blog.php_) will become -
 
 That is a straightforward change. The _blog_ section will now display the correct menu.<br/>
 To make all the other templates do the same, we need to make the same modifications in all of them.<br/>
-That is a total of 7 places to do so (the five templates and the two embedded list-views - _blog\_list.html_ and _portfolio\_list.html_.
+That is a total of 7 places to do so (the five templates and the two embedded list-views - *blog\_list.html* and *portfolio\_list.html*.
 
 A cleaner approach would be to place the code for menu in a separate snippet and then embed the snippet at all the required places.<br/>
 We'll take this approach.
@@ -45,7 +45,7 @@ That is not surprising as the code we embedded had the _class="current"_ string 
 
 To rectify the situation, let us now modify the embedded _header.html_.<br/>
 We'll place some simple conditional tags to check for the current template and then output the _class="current"_ within the right menu item.<br/>
-The variable to check is the _k\_template\_name_ that is always set by Couch to indicate the template being used.<br/>
+The variable to check is the *k\_template\_name* that is always set by Couch to indicate the template being used.<br/>
 The modified code -
 
 ![](../../../../assets/img/contents/portfolio-site-193.png)
@@ -110,7 +110,7 @@ Somewhere at the start of a template, use the pages tag and specify _globals.php
 
 The variables set by the pages tag are available for use only within the opening and closing components of the pages tag. We want to use them at other parts of the template and hence we copy their values to new variables. These new variables are specified to have a global scope, which makes them available everywhere on the page.
 
-Notice in the code above how we are copying the value of the variable _site\_name_, containing the value of the editable region by the same name, into a variable named _g\_site\_name_ (we can use any arbitrary name). The _g\_site\_name_ has been specified to have a global scope hence, unlike variable _site\_name_, can be used even outside the pages tag anywhere in the template.
+Notice in the code above how we are copying the value of the variable *site\_name*, containing the value of the editable region by the same name, into a variable named *g\_site\_name* (we can use any arbitrary name). The *g\_site\_name* has been specified to have a global scope hence, unlike variable *site\_name*, can be used even outside the pages tag anywhere in the template.
 
 The new global variable can now be in the regular manner.<br/>
 For example, the following code in the embedded _header.html_
@@ -193,7 +193,7 @@ The reason lies in the original code of Aurelius -
 ![](../../../../assets/img/contents/portfolio-site-212.png)
 
 As you can see, the hrefs of the stylesheets are given in relative format. With prettyurls turned on, once the URL of any containing page changes, so do these links.<br/>
-We need to make the hrefs absolute. To do so, modify the code shown above to the following in all the templates (don't forget the embedded _blog\_list.html_ and _portfolio\_list.html_ -
+We need to make the hrefs absolute. To do so, modify the code shown above to the following in all the templates (don't forget the embedded *blog\_list.html* and *portfolio\_list.html* -
 
 ![](../../../../assets/img/contents/portfolio-site-213.png)
 

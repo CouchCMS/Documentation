@@ -7,8 +7,8 @@ template: default.html
 # Comments
 
 Couch allows the submission of comments on pages created by it but this must first be permitted by you.<br/>
-To do so, the _commentable_ parameter of the [_**template**_](../../tags-reference/template.html) tag has to be set to '1' for each template that you wish to allow comments for.<br/>
-Thus if, for example, comments are to be turned on for pages cloned out of _blog.php_, the following change needs to be done to the [_**template**_](../../tags-reference/template.html) tag (usually placed in the HTML head tag) within blog.php -
+To do so, the _commentable_ parameter of the [__*template*__](../../tags-reference/template.html) tag has to be set to '1' for each template that you wish to allow comments for.<br/>
+Thus if, for example, comments are to be turned on for pages cloned out of _blog.php_, the following change needs to be done to the [__*template*__](../../tags-reference/template.html) tag (usually placed in the HTML head tag) within blog.php -
 
 ```
 <cms:template title='Blog' clonable='1' commentable='1'>
@@ -39,15 +39,15 @@ define( 'K_COMMENTS_INTERVAL', 5 * 60 );
 
 Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.
 
-<p class="error">The following discussion about the comment form assumes that you are already familiar with the [_**form**_](../../tags-reference/form.html) tag which is used to create it.</p>
+<p class="error">The following discussion about the comment form assumes that you are already familiar with the [__*form*__](../../tags-reference/form.html) tag which is used to create it.</p>
 
 ### COMMENT SUBMISSION
 
-Roughly speaking, a comment form needs to have three inputs (of type text) named _k\_author_, _k\_email_ and _k\_link_. These are used to input the commentator's name, his email and a link to his site. The form also needs to have a textarea named _k\_comment_ for inputting the actual comment.
+Roughly speaking, a comment form needs to have three inputs (of type text) named *k\_author*, *k\_email* and *k\_link*. These are used to input the commentator's name, his email and a link to his site. The form also needs to have a textarea named *k\_comment* for inputting the actual comment.
 
-Only the _k\_comment_ field is mandatory for Couch to save the comments. However, if needed, you can make any of the other fields mandatory too by setting their _required_ parameter.
+Only the *k\_comment* field is mandatory for Couch to save the comments. However, if needed, you can make any of the other fields mandatory too by setting their _required_ parameter.
 
-On successful submission of the form, the [_**process\_comment**_](../../tags-reference/process_comment.html) Couch tag can be invoked to process the submitted comment and save it into the database.
+On successful submission of the form, the [__*process\_comment*__](../../tags-reference/process_comment.html) Couch tag can be invoked to process the submitted comment and save it into the database.
 
 Following is a complete snippet that generates such a form -
 
@@ -150,26 +150,26 @@ Following is a complete snippet that generates such a form -
 ```
 
 <p class="success">
-    **TIP:** The above snippet can be saved into a file named, for example, _comment-form.inc_ within the snippets folder and then be used in any template by using the [_**embed**_](../../tags-reference/embed.html) tag -<br/>
+    **TIP:** The above snippet can be saved into a file named, for example, _comment-form.inc_ within the snippets folder and then be used in any template by using the [__*embed*__](../../tags-reference/embed.html) tag -<br/>
     <br/>
     ```
 <cms:embed 'comment-form.inc' />
     ```
 </p>
 
-If you have been through the [_**form**_](../forms.html) tag discussion, the code above should look familiar. We'll discuss a few features of the snippet though -<br/>
-The form consists of the four aforementioned input tags - _k\_author_, _k\_email_, _k\_link_, _k\_comment_. A fifth in the form of **captcha** has also been added. Please never omit the captcha from any of your forms or you risk facing a deluge of spam.
+If you have been through the [__*form*__](../forms.html) tag discussion, the code above should look familiar. We'll discuss a few features of the snippet though -<br/>
+The form consists of the four aforementioned input tags - *k\_author*, *k\_email*, *k\_link*, *k\_comment*. A fifth in the form of **captcha** has also been added. Please never omit the captcha from any of your forms or you risk facing a deluge of spam.
 
 <p class="notice">
     To fight spam always use a captcha during comment submission and always require approval of comments before publishing them.<br/>
     As a way of warding off spam, Couch also rejects duplicate comments and multiple comments that originate from the same place too quickly.
 </p>
 
-Note that we first check that no registered user is logged in (_k\_logged\_out_) before showing the input fields for name, email, link and the captcha. If a user is already logged in, the values for these inputs can be had from his registration profile and hence only the textbox for inputting comments needs to be displayed to him.
+Note that we first check that no registered user is logged in (*k\_logged\_out*) before showing the input fields for name, email, link and the captcha. If a user is already logged in, the values for these inputs can be had from his registration profile and hence only the textbox for inputting comments needs to be displayed to him.
 
-On successful submission of the form (_k\_success_), we simply invoke the [_**process\_comment**_](../../tags-reference/process_comment.html) tag.<br/>
-This tag processes the submitted values and attempts to save the comment into the database. If it succeeds, it sets the _k\_process\_comment\_success_ variable else the _k\_process\_comment\_error_ is set.<br/>
-Upon finding the _k\_process\_comment\_success_ set, an email is sent to the admin informing him about the pending comment that awaits his approval.
+On successful submission of the form (*k\_success*), we simply invoke the [__*process\_comment*__](../../tags-reference/process_comment.html) tag.<br/>
+This tag processes the submitted values and attempts to save the comment into the database. If it succeeds, it sets the *k\_process\_comment\_success* variable else the *k\_process\_comment\_error* is set.<br/>
+Upon finding the *k\_process\_comment\_success* set, an email is sent to the admin informing him about the pending comment that awaits his approval.
 
 Use the _comments_ tab of the Couch admin panel to administrate the submitted comments.
 
@@ -178,8 +178,8 @@ Use the _comments_ tab of the Couch admin panel to administrate the submitted co
 Once the submission of comments is in its place as explained above, one would now like to list all the submitted comments.<br/>
 Usually only the comments belonging to a particular page need to be listed on that page. However, we can list comments belonging to all (or any) of the commentable pages or belonging to only pages cloned out of some of the templates etc (e.g. the latest 5 comments that are routinely displayed on the home pages of sites) on any page.
 
-The [_**comments**_](../../tags-reference/comments.html) tag is used to list comments based on the parameters passed to it.<br/>
-It is closely related to the [_**pages**_](../../tags-reference/pages.html) tag and hence shares several of the [**parameters**](../../tags-reference/pages.html#parameters) accepted by the pages tag.
+The [__*comments*__](../../tags-reference/comments.html) tag is used to list comments based on the parameters passed to it.<br/>
+It is closely related to the [__*pages*__](../../tags-reference/pages.html) tag and hence shares several of the [**parameters**](../../tags-reference/pages.html#parameters) accepted by the pages tag.
 
 ```
 <cms:comments limit='5'>
@@ -212,16 +212,16 @@ In addition to these variables, the pagination related variables that describe t
 
 #### PARAMETERS
 
-Normally [_**comments**_](../../tags-reference/comments.html) tag will fetch all the available approved comments.<br/>
-It can be constrained into fetching comments from only certain pages by setting the _masterpage_, _page\_id_ and _page\_name_ parameters.
+Normally [__*comments*__](../../tags-reference/comments.html) tag will fetch all the available approved comments.<br/>
+It can be constrained into fetching comments from only certain pages by setting the _masterpage_, *page\_id* and *page\_name* parameters.
 
 Please see: [**Tags Reference - Comments**](../../tags-reference/comments.html#parameters) for a complete list of parameters that are accepted by this tag and how they can be used.
 
 ### EXAMPLE
 
-As an example of the [_**comments**_](../../tags-reference/comments.html) tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.<br/>
-Notice the use of the variable _k\_page\_id_ (always set by Couch to the id of the current page in _page-view_) to constrain the _comments_ tag to fetch only comments belonging to the current page.<br/>
-Also notice the use of the [_**gravatar**_](../../tags-reference/gravatar.html) tag.
+As an example of the [__*comments*__](../../tags-reference/comments.html) tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.<br/>
+Notice the use of the variable *k\_page\_id* (always set by Couch to the id of the current page in _page-view_) to constrain the _comments_ tag to fetch only comments belonging to the current page.<br/>
+Also notice the use of the [__*gravatar*__](../../tags-reference/gravatar.html) tag.
 
 ```
 <cms:if k_is_page >

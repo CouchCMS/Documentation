@@ -26,7 +26,7 @@ Set the separator to show between each item in the breadcrumbs. The default sepa
 ### include_template
 
 By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to '1'.<br/>
-If this parameter is set, remember to check that the current view is either _folder-view_ or _page-view_ before invoking this tag, because for any other views the folder hierarchy is irrelevant and **breadcrumbs** tag rightly does not output any folder names, however the _include\_template_ parameter will cause the template's name to appear which might not be desirable.
+If this parameter is set, remember to check that the current view is either _folder-view_ or _page-view_ before invoking this tag, because for any other views the folder hierarchy is irrelevant and **breadcrumbs** tag rightly does not output any folder names, however the *include\_template* parameter will cause the template's name to appear which might not be desirable.
 
 ```
 <cms:if k_is_page || k_is_folder >

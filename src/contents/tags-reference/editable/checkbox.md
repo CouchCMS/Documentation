@@ -107,7 +107,7 @@ opt_values='Entertainment=0 | | Computers=1 | | Sports=2 | | Health=3'
 
 ### opt_selected
 
-You can show any option as selected by setting _opt\_selected_ to the value of that option. For example -
+You can show any option as selected by setting *opt\_selected* to the value of that option. For example -
 
 ```
 <cms:editable name="my_categories" label="Categories" desc="Check all applicable"
@@ -139,7 +139,7 @@ The above will show _Entertainment_ and _Sports_ selected by default.
 
 ### separator
 
-As seen in the examples above, the list provided to _opt\_values_ parameter consists of the options separated by a '|' (pipe) character and so are the values provided to _opt\_selected_.<br/>
+As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character and so are the values provided to *opt\_selected*.<br/>
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -
 
 ```
@@ -151,7 +151,7 @@ This is the default separator used by Couch. For some reason if you do not wish 
 />
 ```
 
-Note how the _opt\_values_ and _opt\_selected_ are separated by '\*'.
+Note how the *opt\_values* and *opt\_selected* are separated by '\*'.
 
 ### val_separator
 

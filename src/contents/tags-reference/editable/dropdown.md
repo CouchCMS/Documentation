@@ -111,7 +111,7 @@ will show **Rental** as the option selected by default.
 
 ### separator
 
-As seen in the examples above, the list provided to _opt\_values_ parameter consists of the options separated by a '|' (pipe) character<br/>
+As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character<br/>
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -
 
 ```
@@ -140,7 +140,7 @@ Can be set to the following valid values -
 *   integer
 *   decimal
 
-The default _search\_type_ is (as with all other types of editable regions) _text_.<br/>
+The default *search\_type* is (as with all other types of editable regions) _text_.<br/>
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either _numeric_ or _decimal_ (if the value can be fractional).
 
 <p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../../../pages.html#custom_field).</p>

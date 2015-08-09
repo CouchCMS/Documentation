@@ -22,8 +22,8 @@ The advantage of using embedding is that if the code snippet is used in several 
 <p class="notice">
     **Embed** tag, when looking for the embedded file, searches along a path relative to the 'couch/snippets' folder. Thus in the example above, the 'header.inc' file should reside directly in 'snippets' folder for Couch to find it. Had the passed parameter been 'common/header.inc', Couch would have looked for the file within a sub-folder named 'common' within 'couch/snippets'. Similarly if the parameter passed was '../../common/header.inc', Couch would have gone up in the folder hierarchy twice (first time landing in the 'couch' folder and next time in the folder where your website resides) and then looked for the embedded file within a subfolder named 'common'.<br/>
     <br/>
-    **UPDATE:** From version 1.1.1, the base path relative to which Couch searches for embedded files can be changed from the default 'couch/snippets' folder to any folder **relatve to your main site**. This can be done by setting the _12b. K\_SNIPPETS\_DIR_ configuration item within your _config.php_ file.<br/>
-    This is convenient when you choose to use a subfolder within your main site to store embedded snippets instead of storing them within 'couch/snippets' folder. For example if _K\_SNIPPETS\_DIR_ is set to 'common', &lt;cms:embed 'header.inc' /&gt; will now cause Couch to look for 'header.inc' within the 'common' subfolder that resides in the root folder of your website.<br/>
+    **UPDATE:** From version 1.1.1, the base path relative to which Couch searches for embedded files can be changed from the default 'couch/snippets' folder to any folder **relatve to your main site**. This can be done by setting the *12b. K\_SNIPPETS\_DIR* configuration item within your _config.php_ file.<br/>
+    This is convenient when you choose to use a subfolder within your main site to store embedded snippets instead of storing them within 'couch/snippets' folder. For example if *K\_SNIPPETS\_DIR* is set to 'common', &lt;cms:embed 'header.inc' /&gt; will now cause Couch to look for 'header.inc' within the 'common' subfolder that resides in the root folder of your website.<br/>
     <br/>
     **IMP.** If you choose to place your snippets in any folder other than the default 'couch/snippets' folder or any of its subfolders, do take care to prevent the snippets from being directly downloadable. 'couch/snippets' folder is protected from this problem by a .htaccess file present within it. You can copy this file into your folder to disallow everybody from directly accessing your snippets.
 </p>
@@ -73,7 +73,7 @@ For example, in the template code mentioned above, we can use
 Per se, this does not seem to be of much use, but this ability of **embed** tag to execute code contained within a variable can be a very powerful thing if that variable happens to be a custom field (i.e. an editable area defined by you within a template).<br/>
 Clearly we can now store snippets or even complete templates as editable regions that can be tweaked within the browser itself instead of manipulating a physical file and FTP'ing it back to the server.
 
-<p class="error">Make sure that the type of the editable region is _textarea_ and that its _no\_xss\_check_ parameter is set to '1' (this will prevent Couch from mangling up the &lt; and &gt; tags the way it usually does to stop XSS attacks).</p>
+<p class="error">Make sure that the type of the editable region is _textarea_ and that its *no\_xss\_check* parameter is set to '1' (this will prevent Couch from mangling up the &lt; and &gt; tags the way it usually does to stop XSS attacks).</p>
 
 ## Parameters
 

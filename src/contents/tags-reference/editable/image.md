@@ -11,7 +11,7 @@ Editable region of type **image** is primarily used to allow the user to upload 
 Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.
 
 <p class="notice">
-    **NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (_K\_UPLOAD\_DIR_) in _config.php_ and changing it to the desired location.<br/>
+    **NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
     <br/>
     ```
 // 12.
@@ -69,7 +69,7 @@ As mentioned above, when a user uploads an image, Couch saves it in a particular
 These dimensions (in pixels) are represented by the _width_ and _height_ parameter.
 
 How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -<br/>
-_enforce\_max_ and _crop_.
+*enforce\_max* and _crop_.
 
 <p class="notice">
     **NOTE:** If **none** of the two dimensions are specified, e.g.<br/>
@@ -77,18 +77,18 @@ _enforce\_max_ and _crop_.
     ```
 <cms:editable name='prop_image' type='image' />
     ```
-    regardless of any settings of _enforce\_max_ and _crop_, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).
+    regardless of any settings of *enforce\_max* and _crop_, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).
 </p>
 
 ### enforce_max
 
-With _enforce\_max_ set to _1_ (the default), the _width_ and _height_ parameters are interpreted as being the maximum permitted values of the saved image's width and height.
+With *enforce\_max* set to _1_ (the default), the _width_ and _height_ parameters are interpreted as being the maximum permitted values of the saved image's width and height.
 
 If any of the dimensions of an uploaded image exceeds the provided value, Couch resizes the image (preserving the existing proportion between width and height) till that dimension is reduced to the supplied value.
 
 If both height and width are specified, enforcing the limit of one dimension might end up making the other dimension smaller than what was specified (_see examples below_).
 
-<p class="notice">**By default _enforce\_max_ is always on so you do not have to explicitly set it.** It can be turned off either by specifically setting it to _0_ (enforce\_max='0') or by turnng on _crop_ (crop='1').</p>
+<p class="notice">**By default *enforce\_max* is always on so you do not have to explicitly set it.** It can be turned off either by specifically setting it to _0_ (enforce\_max='0') or by turnng on _crop_ (crop='1').</p>
 
 #### Examples:
 
@@ -135,7 +135,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 #### SIDENOTE:
 
-A short discussion is necessary about what happens if _enforce\_max_ is explicitly set to '0' instead of implicitly doing it by setting _crop_ - e.g..
+A short discussion is necessary about what happens if *enforce\_max* is explicitly set to '0' instead of implicitly doing it by setting _crop_ - e.g..
 
 ```
 <cms:editable name='prop_image' label='Image' desc='Upload main image of property here'
@@ -159,7 +159,7 @@ If any of the dimensions of an uploaded image is lesser or greater than the valu
 
 If both width and height are specified, very often while matching one dimension the other dimension overshoots the given value. In such cases, the overflowing part of it is cropped.
 
-<p class="notice">By setting this parameter to _1_ we also implicitly turn off _enforce\_max_.</p>
+<p class="notice">By setting this parameter to _1_ we also implicitly turn off *enforce\_max*.</p>
 
 #### Examples:
 
@@ -176,15 +176,15 @@ If both width and height are specified, very often while matching one dimension 
 
 | Uploaded Image (300 x 200) | Saved Image (150 x 100) | Remarks |
 | :------------------------- | :---------------------- | :------ |
-| ![](../../../../assets/img/contents/editable-image-16.jpg) | ![](../../../../assets/img/contents/editable-image-17.jpg) | The required width (150px) is smaller than the actual (300px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with _enforce\_max_ on one dimension. |
+| ![](../../../../assets/img/contents/editable-image-16.jpg) | ![](../../../../assets/img/contents/editable-image-17.jpg) | The required width (150px) is smaller than the actual (300px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with *enforce\_max* on one dimension. |
 
 | Uploaded Image (200 x 300) | Saved Image (150 x 225) | Remarks |
 | :------------------------- | :---------------------- | :------ |
-| ![](../../../../assets/img/contents/editable-image-18.jpg) | ![](../../../../assets/img/contents/editable-image-19.jpg) | The required width (150px) is smaller than the actual (200px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with _enforce\_max_ on one dimension. |
+| ![](../../../../assets/img/contents/editable-image-18.jpg) | ![](../../../../assets/img/contents/editable-image-19.jpg) | The required width (150px) is smaller than the actual (200px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with *enforce\_max* on one dimension. |
 
 | Uploaded Image (100 x 75) | Saved Image (150 x 112) | Remarks |
 | :------------------------ | :---------------------- | :------ |
-| ![](../../../../assets/img/contents/editable-image-20.jpg) | ![](../../../../assets/img/contents/editable-image-21.jpg) | The required width (150px) is larger than the actual (100px), hence the width was increased to 150px while also increasing the height proportionately. Note how the result differs from _enforce\_max_ on one dimension. |
+| ![](../../../../assets/img/contents/editable-image-20.jpg) | ![](../../../../assets/img/contents/editable-image-21.jpg) | The required width (150px) is larger than the actual (100px), hence the width was increased to 150px while also increasing the height proportionately. Note how the result differs from *enforce\_max* on one dimension. |
 
 #### Specifying both dimensions
 
@@ -227,11 +227,11 @@ You can set _quality_ from 0 (worst quality, smaller file) to 100 (best quality,
     type='image' />
 ```
 
-Setting _show\_preview_ to '1' makes Couch display a preview of the selected image above the upload control.
+Setting *show\_preview* to '1' makes Couch display a preview of the selected image above the upload control.
 
 ![](../../../../assets/img/contents/editable-image-28.jpg)
 
-If _show\_preview_ is not set at all or is set to '0', upon selecting an image a link is added below the upload control for previewing the selected image.
+If *show\_preview* is not set at all or is set to '0', upon selecting an image a link is added below the upload control for previewing the selected image.
 
 ![](../../../../assets/img/contents/editable-image-29.jpg)
 
@@ -239,7 +239,7 @@ If _show\_preview_ is not set at all or is set to '0', upon selecting an image a
 
 ### preview_height
 
-As illustrated above, setting _show\_preview_ to '1' causes a preview of the selected image to appear. The dimensions of this preview can be set by using _preview\_width_ and _preview\_height_ (needless to say, these two parameters take effect only with _show\_preview_ set to '1').
+As illustrated above, setting *show\_preview* to '1' causes a preview of the selected image to appear. The dimensions of this preview can be set by using *preview\_width* and *preview\_height* (needless to say, these two parameters take effect only with *show\_preview* set to '1').
 
 ```
 <cms:editable name='prop_image' label='Image' desc='Upload main image of property here'
@@ -250,7 +250,7 @@ As illustrated above, setting _show\_preview_ to '1' causes a preview of the sel
 
 ![](../../../../assets/img/contents/editable-image-30.jpg)
 
-<p class="success">It is always a good idea to set at least one of the two dimensions while using _show\_preview_.</p>
+<p class="success">It is always a good idea to set at least one of the two dimensions while using *show\_preview*.</p>
 
 ## Related Tags
 

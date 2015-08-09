@@ -232,7 +232,7 @@ Edit the nested 'portfolio' page we used above. This time, instead of the previo
 Remember that the canonical URL of this nested-page is _http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/_ and we are making it point to a separate portfolio section with the canonical URL of _http&#58;//www.yoursite.com/portfolio/_ (with prettyURLs enabled).
 
 Save your changes and visit the nested page _http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/_.<br/>
-You'll find that this time, instead of redirecting to _http&#58;//www.yoursite.com/portfolio/, _the nested-page itself shows the same content that you would have seen had you visited _http&#58;//www.yoursite.com/portfolio/_.
+You'll find that this time, instead of redirecting to _http&#58;//www.yoursite.com/portfolio/_, the nested-page itself shows the same content that you would have seen had you visited _http&#58;//www.yoursite.com/portfolio/_.
 
 If the portfolio section has links to its cloned pages and to its various views (i.e. page-view, folder-view, archive-view etc.), try clicking on them and you'll find that all the links of the portfolio section have now changed automatically and appear as _http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/somepagename.html_, _http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/some-folder/_ etc. instead of the original _http&#58;//www.yoursite.com/portfolio/somepagename.html_, _http&#58;//www.yoursite.com/portfolio/some-folder/_ etc.
 
@@ -348,7 +348,7 @@ We now have the requisite HTML structure for our menu.<br/>
 What remains now is putting in some CSS styling and we are done.
 
 We could code up all the CSS required to shape up a good-looking dropdown menu ourselves or use any of the several very good off-the-shelf scripts that do the job for us.<br/>
-For our example, we'll make use of a jQuery plugin - [Superfish ](http://users.tpg.com.au/j_birch/plugins/superfish/) (http&#58;//users.tpg.com.au/j\_birch/plugins/superfish/).
+For our example, we'll make use of a jQuery plugin - [Superfish](http://users.tpg.com.au/j_birch/plugins/superfish/) (http&#58;//users.tpg.com.au/j\_birch/plugins/superfish/).
 
 Superfish is a set of CSS and JavaScript files that need to be included within our templates.<br/>
 You can choose to either download the files from Superfish's site or [use the slightly modified version that we used for this example](http://www.couchcms.com/docs/code/superfish.zip) - \[[Download superfish.zip](http://www.couchcms.com/docs/code/superfish.zip)\].<br/>

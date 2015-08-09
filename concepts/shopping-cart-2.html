@@ -196,7 +196,7 @@ If you are using the editable region definitions contained in our sample templat
 <pre><code>[ 5=10 | 10=15 ]%
 </code></pre><p>where the scale now becomes &#39;reduce product&#39;s base-price by 10% if customer buys more than 5 units of it, by 15% if buys more than 10&#39;.</p>
 <p class="notice">
-    If a product&#39;s base price gets reduced by this method, two custom variables are made available within &#39;<em><strong>pp_cart_items</strong></em>&#39; tag (the tag used to display the cart) -<br/>
+    If a product&#39;s base price gets reduced by this method, two custom variables are made available within &#39;<strong><em>pp_cart_items</em></strong>&#39; tag (the tag used to display the cart) -<br/>
     <br/>
     <strong>line_discount</strong>: this shows the discounted value<br/>
     <strong>orig_price</strong>: this shows the original base price without the discount applied.<br/>
@@ -260,7 +260,7 @@ You can simply copy the entire form code (every thing between the <em>&lt;!-- ST
    &lt;/cms:pages&gt;
 &lt;/cms:if&gt;</code>
     If one is found, the inputted coupon is valid. Now comes the important technique. As we know, it is &#39;<em>cart_ex.php</em>&#39; that does all the calculations for discounts and shipping. We provide &#39;<em>cart_ex.php</em>&#39; all the coupon data we fetched via cms:pages by using &#39;<strong>session variables</strong>&#39; (these variables can be accessed site-wide. The shopping cart itself is internally implemented as a session variable).<br/>
-    Note the last statement &#39;<em><strong>pp_refresh_cart</strong></em>&#39;. By refreshing the cart, we make &#39;<em>cart_ex.php</em>&#39; redo all the calculations (which now will take into account the coupon data we provided)<br/>
+    Note the last statement &#39;<strong><em>pp_refresh_cart</em></strong>&#39;. By refreshing the cart, we make &#39;<em>cart_ex.php</em>&#39; redo all the calculations (which now will take into account the coupon data we provided)<br/>
     <br/>
     <code>&lt;cms:if k_success &gt;
    &lt;cms:pages masterpage=&quot;&lt;cms:pp_config &#39;tpl_coupons&#39; /&gt;&quot; custom_field=&quot;code==&lt;cms:show frm_coupon_code /&gt; | end_date&gt;=&lt;cms:date format=&#39;Y-m-d&#39; /&gt;&quot; limit=&#39;1&#39;&gt;

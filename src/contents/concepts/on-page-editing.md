@@ -58,7 +58,7 @@ Following is the HTML markup behind the section (with the four possible editable
 
 One point I'd like to emphasize here is that **implementing onpage editing requires no changes, whatsoever, to the way you normally implement a site using Couch**. That is to say, you create your templates, define the editable-regions etc. exactly the way you'd normally do and once the site is ready we can bolt on the onpage editing component to the functioning site.
 
-Taking the example of the section we are working with, if you take a look at the attached source files, you'll find that it required defining 4 editable regions - _intro\_image_ (type image), _intro\_title_ (type nicedit), _intro\_text_ (type richtext) and _intro\_button_ (type text).
+Taking the example of the section we are working with, if you take a look at the attached source files, you'll find that it required defining 4 editable regions - *intro\_image* (type image), *intro\_title* (type nicedit), *intro\_text* (type richtext) and *intro\_button* (type text).
 
 The modified HTML markup with Couch's editable regions added in now looks like this -
 
@@ -127,7 +127,7 @@ Saving the template and visiting it as admin will show the following change
 Notice the 'Edit' link where we placed the **popup\_edit** tag.
 
 <p class="notice">
-    The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '_link\_text_' parameter of the **popup\_edit** tag.<br/>
+    The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '*link\_text*' parameter of the **popup\_edit** tag.<br/>
     You can also style this link anyway you like - it is a regular anchor element with its class set as 'k\_inline'. You can add you own classes using the '_class_' parameter.  This can be used, for example, to show a pencil icon instead of the text.
 </p>
 
@@ -308,7 +308,7 @@ This tag needs to be placed in the &lt;HEAD&gt; to load the js/css libraries req
 <cms:load_edit />
 ```
 
-The _load\_edit_ tag supports the following optional parameters:
+The *load\_edit* tag supports the following optional parameters:
 
 #### skip_ckeditor
 
@@ -336,11 +336,11 @@ Multiple editable regions may be specified by using the 'pipe' separator between
 <cms:popup_edit 'my_text|my_richtext|k_page_folder_id' />
 ```
 
-Please note in the examples above that we have specified only the field-names. There is no mention about the template or (if the template is clonable) the page to which the field(s) belong. This is because the _popup\_edit_ tag picks up the information about template and page from the context in which the tag is used.
+Please note in the examples above that we have specified only the field-names. There is no mention about the template or (if the template is clonable) the page to which the field(s) belong. This is because the *popup\_edit* tag picks up the information about template and page from the context in which the tag is used.
 
-So, for example, if the _popup\_edit_ tag is used within the page\_view of a template, it'll use the current template and the page in context.
+So, for example, if the *popup\_edit* tag is used within the page\_view of a template, it'll use the current template and the page in context.
 
-If, however, you wish to edit regions belonging to a different template or page than the one where this tag is being used (e.g. editing regions belonging to 'globals.php' with the link placed on 'blog.php'), the right context needs to be specifically provided. This can be done by wrapping the _popup\_edit_ tag around by a _pages_ tag block that fetches the template/page containing the editable regions being edited e.g.
+If, however, you wish to edit regions belonging to a different template or page than the one where this tag is being used (e.g. editing regions belonging to 'globals.php' with the link placed on 'blog.php'), the right context needs to be specifically provided. This can be done by wrapping the *popup\_edit* tag around by a _pages_ tag block that fetches the template/page containing the editable regions being edited e.g.
 
 ```
 <cms:pages masterpage='globals.php' >
@@ -356,7 +356,7 @@ or
 </cms:pages>
 ```
 
-The _popup\_edit_ tag supports the following parameters:
+The *popup\_edit* tag supports the following parameters:
 
 #### fields
 
@@ -396,9 +396,9 @@ For example, suppose a template has a richtext editable region named 'my\_descri
 </div>
 ```
 
-<p class="notice">Please notice that we need to add the _inline\_edit_ tag as if it were an unnamed parameter of the element being converted.</p>
+<p class="notice">Please notice that we need to add the *inline\_edit* tag as if it were an unnamed parameter of the element being converted.</p>
 
-The _inline\_edit_ tag supports the following parameters:
+The *inline\_edit* tag supports the following parameters:
 
 #### fields
 

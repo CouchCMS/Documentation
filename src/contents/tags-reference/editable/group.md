@@ -34,7 +34,7 @@ This is how they look like in the admin panel -
 
 ![](../../../../assets/img/contents/editable-group-1.gif)
 
-Of the four regions, three are closely related (_prop\_image_, _prop\_image\_thumb_ and _prop\_document_) since they need the user to upload something from his machine to the server.
+Of the four regions, three are closely related (*prop\_image*, *prop\_image\_thumb* and *prop\_document*) since they need the user to upload something from his machine to the server.
 
 To visually convey this relation we can group them together. For this first we create an editable region of _group_ type -
 

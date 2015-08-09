@@ -166,18 +166,18 @@ Custom Text[*TEXT*]
 <h2 id="listing-products">Listing products</h2>
 <p>If you&#39;ve had any prior experience with Couch, you&#39;ll know that listing the products is an absolute no-brainer.<br/>
 In our template, we&#39;ll simply isolate the markup for one single product and then enclose it with the <em><strong>pages</strong></em> tag to create a dynamic listing of all the products. The hard-coded values like the product name, images, price etc. will be substituted with the Couch variables made available by <em><strong>pages</strong></em> tag.</p>
-<p>This is all routine stuff. The display of the product options (variants) will, however, require the use of a new tag - <em><strong>pp_product_options</strong></em>.<br/>
-Used alone it will simply list off the names of the product&#39;s options (e.g. &#39;Color&#39;, &#39;Size&#39;). To show the dropdowns (or radio-buttons or text-boxes) representing the option-values (e.g. &#39;Red&#39;, &#39;Green&#39;, &#39;Blue&#39; for &#39;Color&#39;), we make use of another tag named <em><strong>pp_option_values</strong></em>. Tag <em><strong>pp_option_values</strong></em> can only be used as a child tag of <em><strong>pp_product_options</strong></em> which provides it with all the information required by it to display the option-values.</p>
+<p>This is all routine stuff. The display of the product options (variants) will, however, require the use of a new tag - <strong><em>pp_product_options</em></strong>.<br/>
+Used alone it will simply list off the names of the product&#39;s options (e.g. &#39;Color&#39;, &#39;Size&#39;). To show the dropdowns (or radio-buttons or text-boxes) representing the option-values (e.g. &#39;Red&#39;, &#39;Green&#39;, &#39;Blue&#39; for &#39;Color&#39;), we make use of another tag named <strong><em>pp_option_values</em></strong>. Tag <strong><em>pp_option_values</em></strong> can only be used as a child tag of <strong><em>pp_product_options</em></strong> which provides it with all the information required by it to display the option-values.</p>
 <p>This is the portion of the original HTML showing the options:</p>
 <p><img src="../assets/img/contents/shopping-cart-11.png" alt=""></p>
 <p>This is what the modified template looks like:</p>
 <p><img src="../assets/img/contents/shopping-cart-12.png" alt=""></p>
 <p class="success">Incidentally, this has been our first encounter with tags provide by CouchCart. If at this point you get an error saying &#39;Unknown tag&#39;, you have missed enabling the CouchCart component (as discussed somewhere above). Please do so before continuing.</p>
 
-<p>You&#39;ll notice that <em><strong>pp_option_values</strong></em> faithfully outputs the option-values as dropdowns, radio-buttons or text-boxes in accordance to whatever you specified in the string inputted via <em>pp_options</em> editable region above.</p>
-<p>This <em><strong>pp_option_values</strong></em> tag is an interesting one. When used as a self-closing tag (as we did above), it goes ahead and outputs the complete HTML markup for the option-values (which could create a dropdown or radio-buttons etc.). For most cases this should be adequate, requiring only some trivial tweaking of the site&#39;s CSS to style the auto-generated elements.</p>
-<p>If, however, you need absolute control over every byte of the markup being generated, you can make <em><strong>pp_option_values</strong></em> switch off its &#39;auto-pilot&#39; mode and hand over the control to you. This can be done by using <em><strong>pp_option_values</strong></em> tag in the opening/closing pair form (instead of a self-closing one). Used in this manner, the tag simply iterates through all the option-values and makes available (as variables) all the information required to render the values manually.</p>
-<p>As an example, the following snippet of code outputs exactly the same HTML as that by the self-closing version of <em><strong>pp_option_values</strong></em>:</p>
+<p>You&#39;ll notice that <strong><em>pp_option_values</em></strong> faithfully outputs the option-values as dropdowns, radio-buttons or text-boxes in accordance to whatever you specified in the string inputted via <em>pp_options</em> editable region above.</p>
+<p>This <strong><em>pp_option_values</em></strong> tag is an interesting one. When used as a self-closing tag (as we did above), it goes ahead and outputs the complete HTML markup for the option-values (which could create a dropdown or radio-buttons etc.). For most cases this should be adequate, requiring only some trivial tweaking of the site&#39;s CSS to style the auto-generated elements.</p>
+<p>If, however, you need absolute control over every byte of the markup being generated, you can make <strong><em>pp_option_values</em></strong> switch off its &#39;auto-pilot&#39; mode and hand over the control to you. This can be done by using <strong><em>pp_option_values</em></strong> tag in the opening/closing pair form (instead of a self-closing one). Used in this manner, the tag simply iterates through all the option-values and makes available (as variables) all the information required to render the values manually.</p>
+<p>As an example, the following snippet of code outputs exactly the same HTML as that by the self-closing version of <strong><em>pp_option_values</em></strong>:</p>
 <pre><code>&lt;div class=&quot;product-options&quot;&gt;
    &lt;cms:pp_product_options &gt;
       &lt;cms:if option_type=&#39;list&#39;&gt;
@@ -235,7 +235,7 @@ Time now to put core actions of the shopping cart in effect.</p>
 <h3 id="add-item-to-cart">Add item to cart</h3>
 <p>If you take a look at the original HTML markup, you&#39;ll find that each product&#39;s entry is enclosed within a FORM element.<br/>
 This seems to be a universal way of adding items to cart. The form submission posts back data, pertaining to the item being added, to a server-side script that in turn use the data to effect the item&#39;s insertion into the cart.</p>
-<p>CouchCart simplifies this task for you by providing a handy tag named <em><strong>pp_product_form</strong></em> that takes care of all the nitty-gritty.<br/>
+<p>CouchCart simplifies this task for you by providing a handy tag named <strong><em>pp_product_form</em></strong> that takes care of all the nitty-gritty.<br/>
 Simply replace the original <strong>form</strong> element (both the opening as well as the closing tag)</p>
 <pre><code>&lt;form class=&quot;cart-form&quot; action=&quot;cart.html&quot; method=&quot;post&quot; accept-charset=&quot;utf-8&quot;&gt;
     &lt;div class=&quot;product-top-box&quot;&gt;
@@ -244,7 +244,7 @@ Simply replace the original <strong>form</strong> element (both the opening as w
 
     &lt;/div&gt;
 &lt;/form&gt;
-</code></pre><p>with <em><strong>pp_product_form</strong></em> to make it</p>
+</code></pre><p>with <strong><em>pp_product_form</em></strong> to make it</p>
 <pre><code>&lt;cms:pp_product_form class=&quot;cart-form&quot;&gt;
     &lt;div class=&quot;product-top-box&quot;&gt;
 
@@ -252,7 +252,7 @@ Simply replace the original <strong>form</strong> element (both the opening as w
 
     &lt;/div&gt;
 &lt;/cms:pp_product_form&gt;
-</code></pre><p>Note that the &#39;action&#39;, &#39;method&#39; and &#39;accept-charset&#39; parameters are not needed now because <em><strong>pp_product_form</strong></em> will handle those.<br/>
+</code></pre><p>Note that the &#39;action&#39;, &#39;method&#39; and &#39;accept-charset&#39; parameters are not needed now because <strong><em>pp_product_form</em></strong> will handle those.<br/>
 Except for these parameters, any other parameter specified with the tag will be output back without any change (this can be used to pass on the &#39;class&#39; or &#39;id&#39; of the original markup, as we do in our example above).</p>
 <p>One last modification is required and our &#39;add to cart&#39; function is complete.<br/>
 The data that the form posts back to the server, of other things, also includes the quantity of the item being added.<br/>
@@ -285,9 +285,9 @@ The cart that gets displayed will, of course, NOT show the product we just added
 Let us now retrofit some CouchCart tags into this cart HTML to make it show dynamically the current state of the cart.</p>
 <h3 id="listing-cart-items">Listing cart items</h3>
 <p>Listing cart items is very similar to listing pages, folders etc. in Couch.<br/>
-CouchCart gives us a tag named <em><strong>pp_cart_items</strong></em> that can iterate through all the items currently in the cart and provide us details about each item by setting certain variables (very similar to, for example, what <em><strong>pages</strong></em> tag does).</p>
+CouchCart gives us a tag named <strong><em>pp_cart_items</em></strong> that can iterate through all the items currently in the cart and provide us details about each item by setting certain variables (very similar to, for example, what <em><strong>pages</strong></em> tag does).</p>
 <p>To create a listing of all the items in the cart, simply modify the original markup showing several rows of items to end up with only one row in the table.<br/>
-Enclose this solitary row within the <em><strong>pp_cart_items</strong></em> tag pair and then substitute the hard-coded data about the item with the variables set by this tag. Regular stuff.</p>
+Enclose this solitary row within the <strong><em>pp_cart_items</em></strong> tag pair and then substitute the hard-coded data about the item with the variables set by this tag. Regular stuff.</p>
 <p>Following is the original HTML showing a single row of the cart:</p>
 <pre><code>&lt;tr&gt;
     &lt;td class=&quot;col-remove&quot;&gt;&lt;a href=&quot;cart.html?action=remove&quot; class=&quot;cart-remove&quot; title=&quot;Remove&quot;&gt;&amp;times;&lt;span class=&quot;screen-reader&quot;&gt;Remove&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
@@ -325,7 +325,7 @@ Enclose this solitary row within the <em><strong>pp_cart_items</strong></em> tag
         &lt;td class=&quot;col-subtotal&quot;&gt;$&lt;cms:number_format line_total /&gt;&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/cms:pp_cart_items&gt;
-</code></pre><p>This is a list of core variables that <em><strong>pp_cart_items</strong></em> sets to provide info about each item in the cart:</p>
+</code></pre><p>This is a list of core variables that <strong><em>pp_cart_items</em></strong> sets to provide info about each item in the cart:</p>
 <ul>
 <li>line_id</li>
 <li>id</li>
@@ -340,8 +340,8 @@ Enclose this solitary row within the <em><strong>pp_cart_items</strong></em> tag
 <p>A couple of points in the code snippet shown above are worth noting.<br/>
 As you&#39;ll recall, our products can consist of variants (options) too. So, an item in the cart can possibly consist of several lines of description representing all the options selected by the buyer e.g.</p>
 <p><img src="../assets/img/contents/shopping-cart-13.png" alt=""></p>
-<p>To make it easy for us to display this information, CouchCart has a tag named <em><strong>pp_selected_options</strong></em>.<br/>
-Like its counterpart tag <em><strong>pp_product_options</strong></em> that we discussed before, the <em><strong>pp_selected_options</strong></em> tag can also be used in <strong>two</strong> ways -</p>
+<p>To make it easy for us to display this information, CouchCart has a tag named <strong><em>pp_selected_options</em></strong>.<br/>
+Like its counterpart tag <strong><em>pp_product_options</em></strong> that we discussed before, the <strong><em>pp_selected_options</em></strong> tag can also be used in <strong>two</strong> ways -</p>
 <p><strong>1. As a self-closing tag.</strong> When used this way, it simply outputs a single line containing all the selected options separated by commas. You can specify any another separator by using its &#39;separator&#39; parameter (as we do in the snippet above where we use &lt;BR&gt;). e.g.</p>
 <pre><code>&lt;cms:pp_selected_options separator=&#39;&lt;br&gt;&#39; /&gt;
 </code></pre><p><strong>2. As a tag-pair.</strong> When used this way, the tag simply iterates through all the selected options and makes data about them available as variables.<br/>
@@ -353,7 +353,7 @@ We can now output the options in any desired manner, for example as follows -</p
 <p>Sometimes, we need more information about line-items than that provided by the default variables listed above.<br/>
 For example, take a look at the list above and you&#39;ll find that it does not consist of a thumbnail image that we can show in the cart.<br/>
 CouchCart makes it super-easy for us to add any custom data we want to the line-items.</p>
-<p>Basically, any editable region defined for the products that begins with a &#39;<strong>pp_</strong>&#39; in its name will be automatically made available by <em><strong>pp_cart_items</strong></em> as a variable with the same name (but the &#39;<em>pp_</em>&#39; removed).</p>
+<p>Basically, any editable region defined for the products that begins with a &#39;<strong>pp_</strong>&#39; in its name will be automatically made available by <strong><em>pp_cart_items</em></strong> as a variable with the same name (but the &#39;<em>pp_</em>&#39; removed).</p>
 <p>If you take a look at the editable regions we defined for our products (in template &#39;index.php&#39; of the finished version), you&#39;ll see a thumbnail region defined with the name of &#39;<em>pp_product_thumb</em>&#39;.</p>
 <p><img src="../assets/img/contents/shopping-cart-14.png" alt=""></p>
 <p>The &#39;<em>pp_</em>&#39; prefixed to its name will make its value available as a variable named &#39;<strong>product_thumb</strong>&#39;. This is how we are using it in the snippet shown:</p>
@@ -392,19 +392,19 @@ This is the original HTML markup</p>
 <pre><code>&lt;td class=&quot;col-remove&quot;&gt;&lt;a href=&quot;cart.html?action=remove&quot; class=&quot;cart-remove&quot; title=&quot;Remove&quot;&gt;&amp;times;&lt;span class=&quot;screen-reader&quot;&gt;Remove&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
 </code></pre><p>Modify it to make it:</p>
 <pre><code>&lt;td class=&quot;col-remove&quot;&gt;&lt;a href=&quot;&lt;cms:pp_remove_item_link /&gt;&quot; class=&quot;cart-remove&quot; title=&quot;Remove&quot;&gt;&amp;times;&lt;span class=&quot;screen-reader&quot;&gt;Remove&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
-</code></pre><p>Notice how we simply use the <em><strong>pp_remove_item_link</strong></em> tag to output the &#39;href&#39; attribute&#39;s value.</p>
+</code></pre><p>Notice how we simply use the <strong><em>pp_remove_item_link</em></strong> tag to output the &#39;href&#39; attribute&#39;s value.</p>
 <p>Refresh the cart page and try removing items from the cart.</p>
 <h3 id="displaying-global-cart-values">Displaying global cart values</h3>
 <p>With the last step in place, we should now be able to click on the &#39;X&#39; icon to remove an item from the cart.<br/>
 Keep removing the items from the cart until the last item gets removed. At this point an empty table gets displayed.<br/>
 Ideally we should show a polite message here informing the buyer that there are no items in his cart.</p>
 <p>A simple cms:if tag checking the number of items currently in the cart should be sufficient to handle this empty cart situation.<br/>
-CouchCart provides a tag named <em><strong>pp_count_items</strong></em> that gives us this number.<br/>
+CouchCart provides a tag named <strong><em>pp_count_items</em></strong> that gives us this number.<br/>
 In fact, CouchCart provides quite a few other tags that show us the current state of the cart, for example, the number of items within it, the total value of all the items, the discount value etc.</p>
 <p>Here is a list of all such tags that can be used absolutely anywhere on your site (i.e. in any template) to show the current state of the cart:</p>
 <h4 id="pp_count_items">pp_count_items</h4>
 <p>Shows the total number of items in the cart. e.g. if there are 4 units of Product A and 1 unit of Product B, this tag will output &#39;5&#39;</p>
-<h4 id="pp_count-_unique_items">pp_count_unique_items</h4>
+<h4 id="pp_count_unique_items">pp_count_unique_items</h4>
 <p>Shows the total number of unique items in the cart. e.g. if there are 4 units of Product A and 1 unit of Product B, this tag will output &#39;2&#39;</p>
 <h4 id="pp_count_shippable_items">pp_count_shippable_items</h4>
 <p>Shows the total number of items in the cart that require shipping (this is set using an editable region named <em>pp_requires_shipping</em>)</p>
@@ -420,7 +420,7 @@ In fact, CouchCart provides quite a few other tags that show us the current stat
 <p>Shows the shipping amount applied to the cart</p>
 <h4 id="pp_total">pp_total</h4>
 <p>Shows the actual amount of the cart that would be payable by the buyer (after applying all discounts, shipping and taxes)</p>
-<h4 id="pp_currency-_symbol">pp_currency_symbol</h4>
+<h4 id="pp_currency_symbol">pp_currency_symbol</h4>
 <p>Shows the currency symbol set by the user in <em>addons/cart/config.php</em></p>
 <h4 id="pp_config">pp_config</h4>
 <p>Shows the value of any key set by the user in addons/cart/config.php. e.g. <strong>&lt;cms:pp_config &#39;paypal_email&#39; /&gt;</strong> will show the PayPal email address set in the config file.</p>
@@ -446,7 +446,7 @@ Change the following</p>
 <pre><code>&lt;td class=&quot;col-total&quot;&gt;$230.00&lt;/td&gt;
 </code></pre><p>to</p>
 <pre><code>&lt;td class=&quot;col-total&quot;&gt;$&lt;cms:number_format &quot;&lt;cms:pp_total /&gt;&quot; /&gt;&lt;/td&gt;
-</code></pre><p>Notice that we have nested the <em><strong>pp_total</strong></em> tag within the <em><strong>number_format</strong></em> tag to be able to format the value in whatever format we desire (please see <a href="../tags-reference/number_format.html"><em><strong>number_format</strong></em></a> for details).</p>
+</code></pre><p>Notice that we have nested the <strong><em>pp_total</em></strong> tag within the <strong><em>number_format</em></strong> tag to be able to format the value in whatever format we desire (please see <a href="../tags-reference/number_format.html"><strong><em>number_format</em></strong></a> for details).</p>
 <p>Same thing needs to be done with the other price components of the cart, namely, <em>Subtotal</em>, <em>Discount</em>, <em>Shipping</em> and <em>Taxes</em>.</p>
 <pre><code>&lt;cms:if &quot;&lt;cms:pp_discount /&gt;&quot; || &quot;&lt;cms:pp_shipping /&gt;&quot; || &quot;&lt;cms:pp_taxes /&gt;&quot; &gt;
     &lt;tr class=&quot;row-extras&quot;&gt;
@@ -510,7 +510,7 @@ This is what our template looks like</p>
 <pre><code>&lt;?php require_once &#39;couch/cms.php&#39;; ?&gt;
     &lt;cms:no_cache /&gt;
 &lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p>The only additional bit of code is the <em><strong>no_cache</strong></em> tag to make sure Couch never caches the output of this template.<br/>
+</code></pre><p>The only additional bit of code is the <strong><em>no_cache</em></strong> tag to make sure Couch never caches the output of this template.<br/>
 Add this one final tag to the template and it is ready to execute the checkout action</p>
 <pre><code>&lt;?php require_once &#39;couch/cms.php&#39;; ?&gt;
     &lt;cms:no_cache /&gt;
@@ -519,9 +519,9 @@ Add this one final tag to the template and it is ready to execute the checkout a
        empty_cart=&#39;0&#39;
     /&gt;
 &lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p>The <em><strong>pp_payment_gateway</strong></em> tag uses the current state of the cart, formats it in a manner stipulated by PayPal and finally simply redirects the buyer to PayPal where he can complete the transaction by making the payment.</p>
+</code></pre><p>The <strong><em>pp_payment_gateway</em></strong> tag uses the current state of the cart, formats it in a manner stipulated by PayPal and finally simply redirects the buyer to PayPal where he can complete the transaction by making the payment.</p>
 <div class="notice">
-    The <em><strong>pp_payment_gateway</strong></em> tag accepts the following parameters:
+    The <strong><em>pp_payment_gateway</em></strong> tag accepts the following parameters:
 
     <ul>
         <li><strong>shipping_address</strong>
@@ -544,10 +544,10 @@ Add this one final tag to the template and it is ready to execute the checkout a
 <p><br/></p>
 <p class="notice">The seller&#39;s email shown at PayPal can be set in the &#39;<em>addons/cart/config.php</em>&#39; file.</p>
 
-<p>To explain the code above, the <em><strong>pp_payment_gateway</strong></em> tag, by default, empties the cart before redirecting to PayPal. As we are still in the phase of testing the cart, it might be a good idea to prevent it from doing so. The &#39;empty_cart&#39; parameter set to &#39;0&#39; switches off this behaviour.<br/>
-As for the &#39;shipping_address&#39; parameter, if there are any shippable items in the cart (the <em><strong>pp_count_shippable_items</strong></em> tag gives us this count), we set it to &#39;1&#39;. Else, we set it to &#39;0&#39;. This makes PayPal allow the buyer to set the shipping address, when required.</p>
+<p>To explain the code above, the <strong><em>pp_payment_gateway</em></strong> tag, by default, empties the cart before redirecting to PayPal. As we are still in the phase of testing the cart, it might be a good idea to prevent it from doing so. The &#39;empty_cart&#39; parameter set to &#39;0&#39; switches off this behaviour.<br/>
+As for the &#39;shipping_address&#39; parameter, if there are any shippable items in the cart (the <strong><em>pp_count_shippable_items</em></strong> tag gives us this count), we set it to &#39;1&#39;. Else, we set it to &#39;0&#39;. This makes PayPal allow the buyer to set the shipping address, when required.</p>
 <p>Try clicking the checkout button to test if the cart&#39;s current data gets transmitted to PayPal as expected.<br/>
-One little modification that we can do to our checkout.php template is to first make sure that the cart in not empty before invoking the <em><strong>pp_payment_gateway</strong></em> tag. The <em><strong>if</strong></em> tag coupled with <em><strong>pp_count_items</strong></em> tag will see to this -</p>
+One little modification that we can do to our checkout.php template is to first make sure that the cart in not empty before invoking the <strong><em>pp_payment_gateway</em></strong> tag. The <em><strong>if</strong></em> tag coupled with <strong><em>pp_count_items</em></strong> tag will see to this -</p>
 <pre><code>&lt;?php require_once &#39;couch/cms.php&#39;; ?&gt;
     &lt;cms:no_cache /&gt;
 
@@ -586,7 +586,7 @@ With the principle understood, any JS library can be used to create the AJAXifie
 &lt;/script&gt;
 &lt;script src=&quot;js/cart-modal.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 </code></pre><p>Please notice that we are setting some global variables for the JS code in &#39;cart-modal.js&#39; to make use of. We do so here in index.php because we use Couch tags to get the values and these tags can only be used within Couch-managed templates.<br/>
-These global variables are the URLs of the checkout template and a template (we&#39;ll come to it a little later) used to display the cart in the pop-up window. The name of this template has been set in the config file as &#39;cart-modal.php&#39;. The <em><strong>pp_config</strong></em> tag is being used in the code above to fetch this name from the config file.</p>
+These global variables are the URLs of the checkout template and a template (we&#39;ll come to it a little later) used to display the cart in the pop-up window. The name of this template has been set in the config file as &#39;cart-modal.php&#39;. The <strong><em>pp_config</em></strong> tag is being used in the code above to fetch this name from the config file.</p>
 <p><strong>2.</strong> As we&#39;ve seen, both the &#39;Add&#39; as well as the &#39;Update&#39; actions make use of HTML forms. The &#39;Remove&#39; action, on the other hand, is link based. The &#39;Checkout&#39; action may be form based or may be a link.<br/>
 The code in &#39;cart-modal.js&#39; &#39;hooks&#39; into the &#39;submit&#39; event of the two above-mentioned forms and the &#39;click&#39; events of the two links</p>
 <pre><code>// Handle &#39;Add Item&#39; &amp; &#39;Update Cart&#39; form submissions

@@ -65,7 +65,7 @@ The code above has two parts. First where we register our shortcode with Couch:
 $FUNCS->register_shortcode( 'hello', 'hello_handler' );
 ```
 
-By using the code above we are letting Couch know that it will now have to keep a look out for a shortcode named _hello_ and that anywhere it encounters this shortcode, Couch should invoke a function named _hello\_handler_.
+By using the code above we are letting Couch know that it will now have to keep a look out for a shortcode named _hello_ and that anywhere it encounters this shortcode, Couch should invoke a function named *hello\_handler*.
 
 ```
 function hello_handler( $params, $content=null ){
@@ -73,9 +73,9 @@ function hello_handler( $params, $content=null ){
 }
 ```
 
-The code above is the _hello\_handler_ function that we instructed Couch to execute anytime it finds our shortcode named _hello_.
+The code above is the *hello\_handler* function that we instructed Couch to execute anytime it finds our shortcode named _hello_.
 
-Couch upon encountering a shortcode, executes the handler function associated with it and then **replaces the shortcode with the return value** of that function. Thus, in our shortcode the _\[hello\]_ anywhere in the content will be replaced by the return value of _hello\_handler_ function and that is _&lt;h1&gt;Hello from a shortcode!&lt;/h1&gt;_.
+Couch upon encountering a shortcode, executes the handler function associated with it and then **replaces the shortcode with the return value** of that function. Thus, in our shortcode the _\[hello\]_ anywhere in the content will be replaced by the return value of *hello\_handler* function and that is _&lt;h1&gt;Hello from a shortcode!&lt;/h1&gt;_.
 
 This is a trivial example but it illustrates clearly the logic behind shortcodes. You can make the handler function return any HTML code you wish.<br/>
 At the end of this page you'll find some serious real world examples of shortcodes that you can use in your code.
@@ -84,8 +84,8 @@ At the end of this page you'll find some serious real world examples of shortcod
 
 Couch, unlike most other CMSes, can have any number of editable regions. Therefore, it would have been too taxing to make it keep a watch for the registered shortcodes in all of them automatically. For Couch to search and replace any registered shortcode present within an editable region, you'll have to explicitly instruct it to do so.
 
-Suppose a template has an editable region of richtext type named _my\_content_.<br/>
-This is how you'd probably be displaying the value contained within _my\_content_ in your template:
+Suppose a template has an editable region of richtext type named *my\_content*.<br/>
+This is how you'd probably be displaying the value contained within *my\_content* in your template:
 
 ```
 <cms:show my_content />
@@ -99,7 +99,7 @@ If the end user is supposed to be inserting shortcodes within this editable regi
 
 In the code above we are wrapping the **show** tag with the newly introduced **do\_shortcodes** tag. The **do\_shortcodes** tag actually does all the heavy lifting associated with shortcodes. It parses out the content enclosed within it, searches out all registered shortcodes and replaces them with their associated values by executing their handler functions.
 
-And that's it. Now if the user places the following shortcode anywhere within the _my\_content_ editable region:
+And that's it. Now if the user places the following shortcode anywhere within the *my\_content* editable region:
 
 ```
 [hello]
@@ -211,7 +211,7 @@ e.g. the following shortcode is exactly the same as above:
 
 Couch delivers all the parameters that are provided to a shortcode to the relevant handler function as its first parameter (the one named _$params_ in all the examples above) in the form of an array.
 
-Instead of dealing directly with the raw array, a helper function provided by Couch - _$FUNCS-\>get\_named\_vars()_ - should be used.<br/>
+Instead of dealing directly with the raw array, a helper function provided by Couch - *$FUNCS-\>get\_named\_vars()* - should be used.<br/>
 An example of how the parameters should ideally be handled is as follows:
 
 ```
@@ -232,7 +232,7 @@ function googlemap_handler( $params, $content=null ){
 
 The code given above creates a shortcode named **\[googlemap\]** that can be used to easily insert a Google map anywhere within an editable region's contents.
 
-Notice how by using _$FUNCS-\>get\_named\_vars()_ we are explicitly specifying the parameters our shortcode expects. Also notice how we provide default values for some of the parameters, which effectively makes them optional parameters.
+Notice how by using *$FUNCS-\>get\_named\_vars()* we are explicitly specifying the parameters our shortcode expects. Also notice how we provide default values for some of the parameters, which effectively makes them optional parameters.
 
 The PHP _extract()_ function creates local variables for us with the same names as that of the parameters we specified. This makes it very easy to use the parameters in the function's logic - usually for constructing the return value. Notice in the code above how PHP variables _$width_, _$height_ and _$src_ become available for our use.
 

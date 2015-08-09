@@ -18,11 +18,11 @@ Given a single word or several words, Couch supports searching for them through 
     Also fulltext search does not match partial words.
 </p>
 
-The tag that Couch uses to find pages containing the searched word/words is the [_**search**_](../../tags-reference/search.html) tag.<br/>
-This tag is very similar to the [_**pages**_](../../tags-reference/pages.html) tag discussed before in the way it fetches the relevant pages and then steps through each of them setting up variables that describe the current page.
+The tag that Couch uses to find pages containing the searched word/words is the [__*search*__](../../tags-reference/search.html) tag.<br/>
+This tag is very similar to the [__*pages*__](../../tags-reference/pages.html) tag discussed before in the way it fetches the relevant pages and then steps through each of them setting up variables that describe the current page.
 
 Two of the parameters supported by this tag are - _masterpage_ and _limit_.<br/>
-By default, the [_**search**_](../../tags-reference/search.html) tag searches through pages of all the available templates. If you wish to set up search for only a section of your website, use the _masterpage_ parameter to make Couch search only certain templates or exclude certain templates.
+By default, the [__*search*__](../../tags-reference/search.html) tag searches through pages of all the available templates. If you wish to set up search for only a section of your website, use the _masterpage_ parameter to make Couch search only certain templates or exclude certain templates.
 
 _Limit_ parameter can be set to display only a limited number of pages that were found. The rest of the pages can be displayed in a paginated manner (See [**Pagination**](../pagination.html)).
 
@@ -43,15 +43,15 @@ For each page all the variables normally available in its _page-view_ will be av
 *   k\_search\_content
 *   k\_search\_excerpt
 
-_k\_search\_content_ is the the entire content of the page that was searched while _k\_search\_excerpt_ consists of very short snippets from various parts of the page where each searched word was found.<br/>
-You'll normally be displaying the _k\_search\_excerpt_ as search results because it also has the additional feature of showing all the searched words in a highlighted state.<br/>
-_k\_search\_title_ also shows the searched word/words (if any present in it) in a highlighted manner and hence is preferable to use instead of the regular _k\_page\_title_ variable.
+*k\_search\_content* is the the entire content of the page that was searched while *k\_search\_excerpt* consists of very short snippets from various parts of the page where each searched word was found.<br/>
+You'll normally be displaying the *k\_search\_excerpt* as search results because it also has the additional feature of showing all the searched words in a highlighted state.<br/>
+*k\_search\_title* also shows the searched word/words (if any present in it) in a highlighted manner and hence is preferable to use instead of the regular *k\_page\_title* variable.
 
 Which brings up the question - what exactly was being searched above?
 
 There are two different ways of indicating this to the **search** tag
 
-**1\.** [_**Search**_](../../tags-reference/search.html) tag is hardwired to get the search terms from a parameter named 's' in the querystring (the part after the '?' in the URL) of the page the tag is invoked from.<br/>
+**1\.** [__*Search*__](../../tags-reference/search.html) tag is hardwired to get the search terms from a parameter named 's' in the querystring (the part after the '?' in the URL) of the page the tag is invoked from.<br/>
 In the code snippet given above, the **search** tag is expecting the search terms to be passed to it via the querystring.<br/>
 Thus if the following URL is used to invoke the page the search snippet was placed on, two words - 'hello' and 'world' will be searched by the **search** tag -<br/>
 _http&#58;//www.yoursite.com/search.php?s=hello+world_
@@ -73,21 +73,21 @@ Of the two different ways of specifying the search terms to the search tag, that
 
 We can set this parameter in the querystring by using a HTML form that has a textfield named 's'. Upon submission of this form, any content of the textfield will be automatically added to the querystring and passed on to the page handling the submission.
 
-Couch has a simple tag named [_**search\_form**_](../../tags-reference/search_form.html) that generates such a form for you that has a textfield named 's' -
+Couch has a simple tag named [__*search\_form*__](../../tags-reference/search_form.html) that generates such a form for you that has a textfield named 's' -
 
 ```
 <cms:search_form />
 ```
 
 The snippet above will generate a search form that when submitted will invoke the same page the snippet was called from, after putting the searched terms in the querystring.<br/>
-Of course you are expected to place a [_**search**_](../../tags-reference/search.html) tag on the same page to handle the search.
+Of course you are expected to place a [__*search*__](../../tags-reference/search.html) tag on the same page to handle the search.
 
-<p class="success">You can create and use your own form instead of using the one created by [_**search\_form**_](../../tags-reference/search_form.html) tag. Just make sure that the textbox, within which the keywords will be inputted by the users, is named 's'.</p>
+<p class="success">You can create and use your own form instead of using the one created by [__*search\_form*__](../../tags-reference/search_form.html) tag. Just make sure that the textbox, within which the keywords will be inputted by the users, is named 's'.</p>
 
 Sometimes one wishes to initiate the search from one page and display the results in another page.<br/>
 For example you might wish to place the search form on the homepage (_index.php_) of the website but want that on submitting this form the user is taken to another page (_search.php_) that then displays the result of the search.<br/>
-You can do this by placing the [_**search\_form**_](../../tags-reference/search_form.html) tag within _index.php_ and placing the [_**search**_](../../tags-reference/search.html) tag snippet within _search.php_.<br/>
-To make the [_**search\_form**_](../../tags-reference/search_form.html) tag invoke _search.php_ (instead of _index.php_) upon form submssion, its _processor_ parameter can be set in the following manner -
+You can do this by placing the [__*search\_form*__](../../tags-reference/search_form.html) tag within _index.php_ and placing the [__*search*__](../../tags-reference/search.html) tag snippet within _search.php_.<br/>
+To make the [__*search\_form*__](../../tags-reference/search_form.html) tag invoke _search.php_ (instead of _index.php_) upon form submssion, its _processor_ parameter can be set in the following manner -
 
 ```
 <cms:search_form msg='Enter keywords' processor="<cms:show k_site_link />search.php" />

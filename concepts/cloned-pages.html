@@ -44,7 +44,7 @@
 
             <article><h1 id="cloned-pages">Cloned Pages</h1>
 <p>Some templates represent one single page of a website, e.g. <em>about-us.php</em> and <em>contact-us.php</em>.<br/>
-To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the <a href="../tags-reference/editable.html"><em><strong>editable</strong></em></a> tags and Couch will make them editable.</p>
+To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the <a href="../tags-reference/editable.html"><strong><em>editable</em></strong></a> tags and Couch will make them editable.</p>
 <p>Some other templates, e.g. <em>blog.php</em> or <em>property.php</em>, cannot possibly represent one single page.<br/>
 A website will have several blog pages, each page representing a single blog entry. Similarly, there will be several property pages where each page would stand for a single property.</p>
 <p>We&#39;ll take the example of <em>blog.php</em> to illustrate the point we are trying to make.<br/>
@@ -57,7 +57,7 @@ How can he create a second blog page that is identical to this page in all respe
 <p>Couch&#39;s answer is to &#39;clone&#39; the new page out of the original <em>blog.php</em> template.</p>
 <h3 id="clonable-template-for-cloned-pages">CLONABLE TEMPLATE FOR CLONED PAGES</h3>
 <p>To create cloned pages out of a template, the template first needs to be marked as being <em>clonable</em>.</p>
-<p>A template can be marked as being clonable by using the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag somewhere within it and setting its <em>clonable</em> parameter to &#39;1&#39;.<br/>
+<p>A template can be marked as being clonable by using the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag somewhere within it and setting its <em>clonable</em> parameter to &#39;1&#39;.<br/>
 Place the following snippet somewhere at the begining of the template (within the HEAD tag will do just fine) -</p>
 <pre><code>&lt;cms:template clonable=&#39;1&#39; &gt; &lt;/cms:template&gt;
 </code></pre><p>As always, persist your changes by visiting <em>blog.php</em> in your browser (needless to repeat that you must be logged on as super-admin).</p>

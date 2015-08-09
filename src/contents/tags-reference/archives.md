@@ -49,7 +49,7 @@ The type of the archives created - valid values are _yearly_, _monthly_ or _dail
 
 ### startcount
 
-As this tag enumerates the archives, it sets a variable named _k\_count_ to the number of the current iteration. _k\_count_ begins from '0' by default. It can be set to start from any other number by setting this parameter.
+As this tag enumerates the archives, it sets a variable named *k\_count* to the number of the current iteration. *k\_count* begins from '0' by default. It can be set to start from any other number by setting this parameter.
 
 ## Variables
 

@@ -19,7 +19,7 @@ In contrast, when executed in a _list-view_, it is not any single page that is a
 
 A complete list of all the variables that become available during the above mentioned conditions are listed below.
 
-For the sake of this example we make use of a template named _blog.php_ that has three editable regions defined within it - _my\_blog\_text_, _my\_blog\_image_ and _my\_blog\_author_ (these will be made available as variables with the same names. They are shown highlighted below).
+For the sake of this example we make use of a template named _blog.php_ that has three editable regions defined within it - *my\_blog\_text*, *my\_blog\_image* and *my\_blog\_author* (these will be made available as variables with the same names. They are shown highlighted below).
 
 The following variables are available in ALL the cases, irrespective of the clonable status of the template and the current view -
 
@@ -59,7 +59,7 @@ If _blog.php_ is made clonable, the different views it can be accessed in and th
 
 #### PAGE VIEW
 
-e.g. _http&#58;//www.mysite.com/blog/some\_page\_name.html_<br/>
+e.g. *http&#58;//www.mysite.com/blog/some\_page\_name.html*<br/>
 In this view, variables giving information about the current page, the containing folder (if the page resides in one) and the contents of the page's editable regions are made available.
 
 The folowing variables carry information about the page in question -
@@ -89,7 +89,7 @@ Finally the contents of editable regions -
 
 #### FOLDER VIEW
 
-e.g. _http&#58;//www.mysite.com/blog/some\_subfolder/_<br/>
+e.g. *http&#58;//www.mysite.com/blog/some\_subfolder/*<br/>
 In this view, variables giving information about the folder mentioned in the URL are set.
 
 *   k\_is\_list
@@ -126,6 +126,6 @@ e.g. _http&#58;//www.mysite.com/blog/_
 
 <p class="notice">**IMP.** Notice that for cloneable templates, the contents of the editable regions associated with a page are made available only in page view.</p>
 
-<p class="success">**TIP:** You can use the Couch tags - [_**dump**_](../../tags-reference/dump.html) and [_**dump\_all**_](../../tags-reference/dump_all.html) to see for youself all the variables with their current values.</p>
+<p class="success">**TIP:** You can use the Couch tags - [__*dump*__](../../tags-reference/dump.html) and [__*dump\_all*__](../../tags-reference/dump_all.html) to see for youself all the variables with their current values.</p>
 
 Next is [**Listing Pages**](../listing-pages.html)

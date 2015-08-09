@@ -58,11 +58,11 @@ Set this to '1' to make this field mandatory.
 
 ### validator
 
-The **input** tag shares this parameter with the **editable** tag. Please see the [**validators**](../editable.html#validator) section of [_**editable**_](../editable.html) tag for a list of all the validators that can be used.
+The **input** tag shares this parameter with the **editable** tag. Please see the [**validators**](../editable.html#validator) section of [__*editable*__](../editable.html) tag for a list of all the validators that can be used.
 
 ### validator_msg
 
-The **input** tag shares this parameter with the **editable** tag. Please see the [**validators**](../editable.html#validator) section of [_**editable**_](../editable.html) tag for a description of this parameter.
+The **input** tag shares this parameter with the **editable** tag. Please see the [**validators**](../editable.html#validator) section of [__*editable*__](../editable.html) tag for a description of this parameter.
 
 ### separator
 
@@ -72,7 +72,7 @@ The **input** tag shares this parameter with the **editable** tag. Please see th
 
 ### opt_selected
 
-The _separator_, _val\_separator_, _opt\_values_ and _opt\_selected_ parameters are valid for only _radio_, _checkbox_ and _dropdown_ input types.<br/>
+The _separator_, *val\_separator*, *opt\_values* and *opt\_selected* parameters are valid for only _radio_, _checkbox_ and _dropdown_ input types.<br/>
 The **input** tag shares these parameters with the **editable** tag. Please see the parameters of [**radio**](../editable/radio.html#parameters), [**checkbox**](../editable/checkbox.html#parameters) and [**dropdown**](../editable/dropdown.html#parameters) types of editable regions for details of these.
 
 ### width
@@ -91,7 +91,7 @@ Inline CSS styling.
 
 ### reload_text
 
-The _format_ and _reload\_text_ parameters pertain exclusively to input of _captcha_ type. Please see [**Core Concepts - Form**](../../concepts/forms.html) where the _captcha_ type of input, along with its parameters, is described in detail.
+The _format_ and *reload\_text* parameters pertain exclusively to input of _captcha_ type. Please see [**Core Concepts - Form**](../../concepts/forms.html) where the _captcha_ type of input, along with its parameters, is described in detail.
 
 ## Variables
 

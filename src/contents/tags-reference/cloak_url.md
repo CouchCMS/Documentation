@@ -33,7 +33,7 @@ If an access level is set by this parameter, only authenticated users with the r
 
 ### prompt_login
 
-This parameter works in tandem with the _access\_level_ parameter above. With this parameter set to '1', if a link that has an access level set on it is accessed by someone who is not privileged enough, a login box is shown to hime thus promting him to login for accessing the link.<br/>
+This parameter works in tandem with the *access\_level* parameter above. With this parameter set to '1', if a link that has an access level set on it is accessed by someone who is not privileged enough, a login box is shown to hime thus promting him to login for accessing the link.<br/>
 By default, this parameter is '0' and unauthorized users are simply served a blank page.
 
 ### redirect

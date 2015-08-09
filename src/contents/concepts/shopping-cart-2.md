@@ -49,7 +49,7 @@ In case it is not, feel free to tweak, modify heavily or even discard this imple
 
 <p class="success">If it comes down to having to use your own custom implementation and you are not conversant with PHP, it is likely that you'll require the services of a competent PHP developer. In which case, my implementation can at least serve as sample code to guide the developer. All the functions are profusely commented for this very purpose.</p>
 
-**All the calculation methods discussed below assume that you've decided to use my implementation** (by renaming '_cart\_ex.example.php_' to '_cart\_ex.php_').
+**All the calculation methods discussed below assume that you've decided to use my implementation** (by renaming '*cart\_ex.example.php*' to '*cart\_ex.php*').
 
 <p class="notice">
     Before we delve into the details of available calculations, however, a little concept (used both by shipping and by discount calculations that follow) requires some explanation.<br/>
@@ -139,7 +139,7 @@ where the string above stands for '3 for more than 0, 7 for more than 5, 10 for 
 
 ### Item level charges
 
-To enable specifying shipping charges on individual products, **an editable region named '_pp\_shipping\_scale_' needs to be defined** in the product template.<br/>
+To enable specifying shipping charges on individual products, **an editable region named '*pp\_shipping\_scale*' needs to be defined** in the product template.<br/>
 If you are using the editable region definitions contained in our sample template, this region is already defined and you can enter the shipping scale for each product in the following panel:
 
 ![](../../assets/img/contents/shopping-cart-16.png)
@@ -153,7 +153,7 @@ For example, if you charge $3 to deliver one to five units, $7 to ship six to 15
 
 where the string above stands for '3 for more than 0, 7 for more than 5, 10 for more than 15'.
 
-<p class="notice">The shipping charges will be **calculated for only** those items that have their '_pp\_requires\_shipping_' editable region set to 'Yes'.</p>
+<p class="notice">The shipping charges will be **calculated for only** those items that have their '*pp\_requires\_shipping*' editable region set to 'Yes'.</p>
 
 ![](../../assets/img/contents/shopping-cart-17.png)
 
@@ -214,11 +214,11 @@ where the string above stands for '10 for more than 4 items'.
 ### Item level discounts
 
 Similar to setting item-level shipping charges, we can also set item level discounts (i.e. discounts **set directly over individual products**).<br/>
-However, unlike shipping, item level discounts **don't appear in the 'Discounts' total of the cart** (the one output by _&lt;cms:pp\_discount /&gt;_), as do the two cart level discounts discussed above. Rather, these discounts **serve to decrease the base-price of the product**.
+However, unlike shipping, item level discounts **don't appear in the 'Discounts' total of the cart** (the one output by *&lt;cms:pp\_discount /&gt;*), as do the two cart level discounts discussed above. Rather, these discounts **serve to decrease the base-price of the product**.
 
 This property can be used to implement **Quantity based pricing** (also known as "**tiered pricing**") where the product's base price varies based on the quantity of it purchased (useful for bulk purchases).
 
-This method **requires defining an editable region named '_pp\_discount\_scale_'** in the products template.<br/>
+This method **requires defining an editable region named '*pp\_discount\_scale*'** in the products template.<br/>
 If you are using the editable region definitions contained in our sample template, this region is already defined and you can enter the discount scale for each product in the following panel:
 
 ![](../../assets/img/contents/shopping-cart-18.png)
@@ -240,7 +240,7 @@ To setup price-reductions (discounts) as a **percentage** of the product's base 
 where the scale now becomes 'reduce product's base-price by 10% if customer buys more than 5 units of it, by 15% if buys more than 10'.
 
 <p class="notice">
-    If a product's base price gets reduced by this method, two custom variables are made available within '_**pp\_cart\_items**_' tag (the tag used to display the cart) -<br/>
+    If a product's base price gets reduced by this method, two custom variables are made available within '__*pp\_cart\_items*__' tag (the tag used to display the cart) -<br/>
     <br/>
     **line\_discount**: this shows the discounted value<br/>
     **orig\_price**: this shows the original base price without the discount applied.<br/>
@@ -331,7 +331,7 @@ You can simply copy the entire form code (every thing between the _&lt;!-- START
 <p class="notice">
     You can use the code as it is but a little understanding of what it does will do no harm (feel free to skip this section if it does not interest you).<br/>
     <br/>
-    The logic is pretty simple - successful submission of the form will trigger the _k\_success_ condition.<br/>
+    The logic is pretty simple - successful submission of the form will trigger the *k\_success* condition.<br/>
     In this condition, we use _**pages**_ tag to fetch the cloned page (i.e. the coupon) that contains the submitted coupon code as value of its edtitable region named '_code_'.<br/>
     <br/>
     ```
@@ -341,8 +341,8 @@ You can simply copy the entire form code (every thing between the _&lt;!-- START
    </cms:pages>
 </cms:if>
     ```
-    If one is found, the inputted coupon is valid. Now comes the important technique. As we know, it is '_cart\_ex.php_' that does all the calculations for discounts and shipping. We provide '_cart\_ex.php_' all the coupon data we fetched via cms:pages by using '**session variables**' (these variables can be accessed site-wide. The shopping cart itself is internally implemented as a session variable).<br/>
-    Note the last statement '_**pp\_refresh\_cart**_'. By refreshing the cart, we make '_cart\_ex.php_' redo all the calculations (which now will take into account the coupon data we provided)<br/>
+    If one is found, the inputted coupon is valid. Now comes the important technique. As we know, it is '*cart\_ex.php*' that does all the calculations for discounts and shipping. We provide '*cart\_ex.php*' all the coupon data we fetched via cms:pages by using '**session variables**' (these variables can be accessed site-wide. The shopping cart itself is internally implemented as a session variable).<br/>
+    Note the last statement '__*pp\_refresh\_cart*__'. By refreshing the cart, we make '*cart\_ex.php*' redo all the calculations (which now will take into account the coupon data we provided)<br/>
     <br/>
     ```
 <cms:if k_success >

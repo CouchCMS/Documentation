@@ -13,7 +13,7 @@ The parameters may be literal strings, variables or output of other tags.
 <cms:sub my_count '1' />
 ```
 
-The snippet above subtracts 1 from what ever value is contained within _my\_count_ variable and outputs the resulting value.
+The snippet above subtracts 1 from what ever value is contained within *my\_count* variable and outputs the resulting value.
 
 ## Parameters
 

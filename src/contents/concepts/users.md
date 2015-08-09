@@ -19,7 +19,7 @@ A Super Admin can do everything that a user possibly can in Couch. Specifically,
 *   Create/manage any number of lower level user accounts.
 *   Access the website.
 
-Usually it is the designer/coder building the site that uses this _super-admin_ account. If you've gone through the creation of [**editable regions**](../editable-regions.html) and some other tags like the [_**folder**_](../../tags-reference/folder.html) tag, you'll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
+Usually it is the designer/coder building the site that uses this _super-admin_ account. If you've gone through the creation of [**editable regions**](../editable-regions.html) and some other tags like the [__*folder*__](../../tags-reference/folder.html) tag, you'll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
 Hence this account is used by someone who makes structural changes to the web-site.
 
 #### 2. Administrator
@@ -77,10 +77,10 @@ Upon the execution of every page, the following variables are set by Couch to gi
 *   k\_login\_link
 *   k\_logout\_link
 
-The _k\_logged\_in_ or _k\_logged\_out_ variable can be used to figure out if the visitor is currently logged in and hence possesses an account on the website.<br/>
-If he is logged-in, the _k\_user\_id_, _k\_user\_name_, _k\_user\_title_, _k\_user\_email_ and _k\_user\_access\_level_ can be used to get details about him.
+The *k\_logged\_in* or *k\_logged\_out* variable can be used to figure out if the visitor is currently logged in and hence possesses an account on the website.<br/>
+If he is logged-in, the *k\_user\_id*, *k\_user\_name*, *k\_user\_title*, *k\_user\_email* and *k\_user\_access\_level* can be used to get details about him.
 
-The _k\_user\_access\_level_ is an important variable and indicates the 'group' of the user by the following numeric values -
+The *k\_user\_access\_level* is an important variable and indicates the 'group' of the user by the following numeric values -
 
 *   Super Admin: 10
 *   Administrator: 7
@@ -92,7 +92,7 @@ As can be seen, the higher the number, the more powerful an account is deemed to
 
 ### Template level access
 
-All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the _access\_level_ parameter of the [_**template**_](../../tags-reference/template.html) tag to the minimum level required. Thus -
+All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the *access\_level* parameter of the [__*template*__](../../tags-reference/template.html) tag to the minimum level required. Thus -
 
 ```
 <cms:template title='News' clonable='1' access_level='2'>
@@ -134,10 +134,10 @@ The most fine-grained access control can be achieved by restricting access to ce
 
 In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.<br/>
 If it is not, it could either be that the user is not logged-in or that he is logged-in but the access level of his account is lesser than the required level.<br/>
-We check this by the _k\_logged\_out_ variable and then show the appropriate message.<br/>
-Note how we use the _k\_login\_link_ and _k\_logout\_link_ to diplay the links that the user can click to either login or logout.
+We check this by the *k\_logged\_out* variable and then show the appropriate message.<br/>
+Note how we use the *k\_login\_link* and *k\_logout\_link* to diplay the links that the user can click to either login or logout.
 
 ### Access control of discrete files
 
-Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the [_**cloak\_url**_](../../tags-reference/cloak_url.html) tag.<br/>
+Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the [__*cloak\_url*__](../../tags-reference/cloak_url.html) tag.<br/>
 Please see [**Cloaked links - Allowing only registered users to a access links**](../cloaked-links.html#allowing-only-registered-users-to-access-links) section for a full discussion of this.

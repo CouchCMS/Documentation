@@ -6,7 +6,7 @@ template: default.html
 
 # Listing Pages
 
-Couch has a powerful tag named [_**pages**_](../../tags-reference/pages.html) that can be used to list all pages belonging to a template.<br/>
+Couch has a powerful tag named [__*pages*__](../../tags-reference/pages.html) that can be used to list all pages belonging to a template.<br/>
 For example -
 
 ```
@@ -21,7 +21,7 @@ The _masterpage_ parameter stands for the template's name. If this parameter is 
 
 This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its page-view).
 
-[_**Pages**_](../../tags-reference/pages.html) tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
+[__*Pages*__](../../tags-reference/pages.html) tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
 Please see the [**parameters**](../../tags-reference/pages.html#parameters) section for a comprehensive list.
 
 ### LISTING PAGES IN THE LIST-VIEWS (HOME-VIEW, FOLDER-VIEW AND ARCHIVE-VIEW)
@@ -44,7 +44,7 @@ It is ultimately upto you whether or not you choose to list pages in the expecte
 
 ### Handling home-view
 
-The _k\_is\_home_ variable can be used to recognize this view and then the [_**pages**_](../../tags-reference/pages.html) tag can be used to list all pages cloned from the template being accessed.
+The *k\_is\_home* variable can be used to recognize this view and then the [__*pages*__](../../tags-reference/pages.html) tag can be used to list all pages cloned from the template being accessed.
 
 ```
 <cms:if k_is_home >
@@ -56,7 +56,7 @@ The _k\_is\_home_ variable can be used to recognize this view and then the [_**p
 
 ### Handling folder-view
 
-The _k\_is\_folder_ variable can be used to recognize this view. The _k\_folder\_name_ variable made available by Couch in this view can then be used as a parameter of the [_**pages**_](../../tags-reference/pages.html) tag to list pages belonging to that folder -
+The *k\_is\_folder* variable can be used to recognize this view. The *k\_folder\_name* variable made available by Couch in this view can then be used as a parameter of the [__*pages*__](../../tags-reference/pages.html) tag to list pages belonging to that folder -
 
 ```
 <cms:if k_is_folder >
@@ -68,7 +68,7 @@ The _k\_is\_folder_ variable can be used to recognize this view. The _k\_folder\
 
 ### Handling archive-view
 
-The _k\_is\_archive_ can be used to recognize this view. In this view, Couch makes available the _k\_archive\_date_ and _k\_next\_archive\_date_ variables that denote the boundries of the archive's period. These two variables can then be used as parameters of the [_**pages**_](../../tags-reference/pages.html) tag to list pages belonging to that time period -
+The *k\_is\_archive* can be used to recognize this view. In this view, Couch makes available the *k\_archive\_date* and *k\_next\_archive\_date* variables that denote the boundries of the archive's period. These two variables can then be used as parameters of the [__*pages*__](../../tags-reference/pages.html) tag to list pages belonging to that time period -
 
 ```
 <cms:if k_is_archive >
@@ -90,4 +90,4 @@ The three list views can be handled separately if the way the pages and their co
 </cms:if>
 ```
 
-<p class="success">The snippet given above can handle all the list-views because if the current view is a _home-view_, the _k\_folder\_name_, _k\_archive\_date_ and _k\_next\_archive\_date_ will not be set and hence these parameters will have no effect on the pages fetched. Similarly in the _folder-view_ the _k\_archive\_date_ and _k\_next\_archive\_date_ will not be set and in the archive-view the _k\_folder\_name_ will not be set.</p>
+<p class="success">The snippet given above can handle all the list-views because if the current view is a _home-view_, the *k\_folder\_name*, *k\_archive\_date* and *k\_next\_archive\_date* will not be set and hence these parameters will have no effect on the pages fetched. Similarly in the *folder-view* the *k\_archive\_date* and *k\_next\_archive\_date* will not be set and in the archive-view the *k\_folder\_name* will not be set.</p>

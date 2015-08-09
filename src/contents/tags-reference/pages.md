@@ -126,7 +126,7 @@ This example would fetch pages cloned from blog.php after skipping the first two
 <cms:pages masterpage='blog.php' startcount='0'></cms:pages>
 ```
 
-The _k\_count_, _k\_record\_from_, _k\_current\_record_ and _k\_record\_to_ variables (see [**Pagination**](../../concepts/pagination.html)) start by default from '1'. This can be changed to any other value by setting this parameter.
+The *k\_count*, *k\_record\_from*, *k\_current\_record* and *k\_record\_to* variables (see [**Pagination**](../../concepts/pagination.html)) start by default from '1'. This can be changed to any other value by setting this parameter.
 
 ### folder
 
@@ -149,10 +149,10 @@ This example would fetch pages cloned from blog.php and belonging to folders nam
 This example would fetch all pages cloned from blog.php except those belonging to folders named 'classic-bikes' or 'super-bikes'.
 
 By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).<br/>
-To include the pages that are within the subfolders of the given folder(s), set the _include\_subfolders_ parameter as well.<br/>
+To include the pages that are within the subfolders of the given folder(s), set the *include\_subfolders* parameter as well.<br/>
 See below.
 
-In the _folder-view_ (see [**Views**](../../concepts/views.html)), the _k\_folder\_name_ variable is set to the name of the current folder. It can be used to list the right pages -
+In the _folder-view_ (see [**Views**](../../concepts/views.html)), the *k\_folder\_name* variable is set to the name of the current folder. It can be used to list the right pages -
 
 ```
 <cms:pages folder=k_folder_name include_subfolders='1'></cms:pages>
@@ -184,7 +184,7 @@ This example would fetch all pages cloned from blog.php that have been published
 
 This example would fetch all pages cloned from blog.php that have been published before the first of March, 2010\.
 
-The parameters _start\_on_ and _stop\_before_ can be combined to fetch pages published betwen a particular time period. Thus -
+The parameters *start\_on* and *stop\_before* can be combined to fetch pages published betwen a particular time period. Thus -
 
 ```
 <cms:pages masterpage='blog.php' start_on='2010-02-01' stop_before='2010-03-01'></cms:pages>
@@ -192,7 +192,7 @@ The parameters _start\_on_ and _stop\_before_ can be combined to fetch pages pub
 
 This example would fetch all pages cloned from blog.php that have been published on or after the first of February, 2010 but before the first of March, 2010\. (i.e. only during the month of February of 2010)
 
-In the _archive-view_ (see [**Views**](../../concepts/views.html)), the _k\_archive\_date_ and the _k\_next\_archive\_date_ are set to the first day of the archive and the first day of the next archive (month). These can be used to easily fetch pages that belong to only that archive period -
+In the _archive-view_ (see [**Views**](../../concepts/views.html)), the *k\_archive\_date* and the *k\_next\_archive\_date* are set to the first day of the archive and the first day of the next archive (month). These can be used to easily fetch pages that belong to only that archive period -
 
 ```
 <cms:pages start_on=k_archive_date stop_before=k_next_archive_date ></cms:pages>
@@ -223,7 +223,7 @@ Thus -
 <cms:pages masterpage='blog.php' orderby='page_name'></cms:pages>
 ```
 
-Apart from the three fields mentioned above, any of the custom field defined in the template (i.e. the editable regions contained within the template) may be used for sorting the fetched pages. Thus, for example if the template 'blog.php' has three editable regions - _my\_blog\_text_, _my\_blog\_image_ and _my\_blog\_author_, the following snippet -
+Apart from the three fields mentioned above, any of the custom field defined in the template (i.e. the editable regions contained within the template) may be used for sorting the fetched pages. Thus, for example if the template 'blog.php' has three editable regions - *my\_blog\_text*, *my\_blog\_image* and *my\_blog\_author*, the following snippet -
 
 ```
 <cms:pages masterpage='blog.php' orderby='my_blog_author'></cms:pages>
@@ -352,7 +352,7 @@ For example, we can fetch pages that have the value of a certain editable region
     Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -<br/>
     telephone\_number &lt; 234567878<br/>
     <br/>
-    For all such cases where the values will be numbers and you'd want to use them in the _custom\_field_ parameter, MAKE SURE to set the _search\_type_ parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
+    For all such cases where the values will be numbers and you'd want to use them in the *custom\_field* parameter, MAKE SURE to set the *search\_type* parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
     <br/>
     Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search\_type.
 </p>

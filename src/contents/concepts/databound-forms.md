@@ -9,7 +9,7 @@ template: default.html
 Any database driven application (and Couch happens to be one), essentially constitutes of just four basic operations -<br/>
 **Create**, **Read**, **Update** & **Delete** (CRUD as it is known).
 
-Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the 'Read' operation through its [_**cms:pages**_](../../tags-reference/pages.html) tag.<br/>
+Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the 'Read' operation through its [__*cms:pages*__](../../tags-reference/pages.html) tag.<br/>
 The rest mandated the use of the back-end (i.e. the admin-panel) and thus were limited to only admins and super-admins.<br/>
 So, for example, to create, modify or delete a cloned-page one had to be logged-in as admin and then make use of the back-end to do so.
 
@@ -48,7 +48,7 @@ To enable this module, please edit the 'kfunctions.php' file found in 'couch/add
 require_once( K_COUCH_DIR.'addons/data-bound-form/data-bound-form.php' );
 ```
 
-The code in our tutorial will also utilize the _cms:set\_flash_ tag to set flash messages signifying successful form submission. This will require the 'sessions' module to be enabled so uncomment the following line too (if not already so)
+The code in our tutorial will also utilize the *cms:set\_flash* tag to set flash messages signifying successful form submission. This will require the 'sessions' module to be enabled so uncomment the following line too (if not already so)
 
 ```
 require_once( K_COUCH_DIR.'addons/cart/session.php' );
@@ -70,8 +70,8 @@ There are clearly two elements in the requirements -
 
 If, for a moment, we ignore the requirement of persisting the submitted front-end data, we can see that Couch can already be used to implement each of these two parts independently.
 
-1.  The [_**cms:form**_](../../tags-reference/form.html) and [_**cms:input**_](../../tags-reference/input.html) tags to implement the front-end form.
-2.  A clonable template with [_**cms:editable**_](../../tags-reference/editable.html) tags to hold data.
+1.  The [__*cms:form*__](../../tags-reference/form.html) and [__*cms:input*__](../../tags-reference/input.html) tags to implement the front-end form.
+2.  A clonable template with [__*cms:editable*__](../../tags-reference/editable.html) tags to hold data.
 
 The obvious problem would be that there is no connection between the two.<br/>
 I mean, though the form can be used to submit data and the editable regions can be used to save data, there is no direct way of saving the form's data into the editable regions.
@@ -342,7 +342,7 @@ So, actually what we are seeing on the front-end form are the very editable regi
 
 Test the form out. All the validations, requirements etc. that we defined for the editable regions will be enforced on the front-end too (not surprising as these actually \*are\* the editable regions).
 
-When all the inputs are filled with proper data, the form submission succeeds and the _&lt;cms:if k\_success &gt;_ block executes.<br/>
+When all the inputs are filled with proper data, the form submission succeeds and the *&lt;cms:if k\_success &gt;* block executes.<br/>
 However, we haven't placed anything there. Let us do that in the final modification
 
 #### c. Persist submitted values on successful form submission
@@ -462,7 +462,7 @@ This is how our form stands right now:
 ```
 
 <p class="success">
-    The '\_auto\_title' parameter of _cms:db\_persist\_form_ tag merits some discussion.<br/>
+    The '\_auto\_title' parameter of *cms:db\_persist\_form* tag merits some discussion.<br/>
     Take a look at the edit screen of any cloned page in the back-end and you'll find that it has two default fields - name & title.<br/>
     Of the two, only the 'name' is mandatory. This is the unique id by which a cloned page is known internally by the system.<br/>
     However, you are permitted to leave it blank as long as you fill the 'title' field. This is because if the 'name' is not supplied, Couch automatically generates a 'name' from the 'title'. If, however, even the 'title' is left empty this results in an error.<br/>
@@ -582,7 +582,7 @@ The service responds back with whether or not the email, username and IP address
 The idea is simple but I can vouch for its effectiveness as I've seen it cut the, literally, hundreds of daily spam registrations on our forum to nearly zero.
 
 Incorporating this spam-check in our form couldn't be any simpler. We have a new tag named 'check\_spam' to handle that.<br/>
-Just before we persist a successful form submission in the database by using '_cms:db\_persist\_form_', we place the '_check\_spam_' tag like this -
+Just before we persist a successful form submission in the database by using '*cms:db\_persist\_form*', we place the '*check\_spam*' tag like this -
 
 Before:
 

@@ -35,7 +35,7 @@ Unzip and upload all the files of Aurelius to your web server.
     For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.
 </p>
 
-If you are using the files downloaded from _http&#58;//net.tutsplus.com/_, remove the _Documentation_ and _psd_ folders as well as the _config.php_, _send\_email.php_ and _full\_width.html_ files as these will no longer be needed by us (this won't be necessary if you downloaded the template from our site).
+If you are using the files downloaded from _http&#58;//net.tutsplus.com/_, remove the _Documentation_ and _psd_ folders as well as the _config.php_, *send\_email.php* and *full\_width.html* files as these will no longer be needed by us (this won't be necessary if you downloaded the template from our site).
 
 The resulting folder structure should look like this -
 

@@ -8,7 +8,7 @@ template: default.html
 
 It is common now to find websites integrating with Google Maps. The 'Contact Us' page usually displays one although maps are often also found associated with individual items being represented by pages e.g. properties, members etc.
 
-Couch abstracts away the complexity of creating a Google map behind a simple tag - the [_**google\_map**_](../../tags-reference/google_map.html) tag.
+Couch abstracts away the complexity of creating a Google map behind a simple tag - the [__*google\_map*__](../../tags-reference/google_map.html) tag.
 
 You'll need a key from Google to use its API. If you don't have one, get one free from the site mentioned below and set it at the following location _config.php_ -
 
@@ -39,4 +39,4 @@ You can use the latitude and the longitude of a place instead of its address -
 />
 ```
 
-For a list of all the parameters supported by the _google\_map_ tag, please see the [**Tags reference - google\_map**](../../tags-reference/google_map.html).
+For a list of all the parameters supported by the *google\_map* tag, please see the [**Tags reference - google\_map**](../../tags-reference/google_map.html).

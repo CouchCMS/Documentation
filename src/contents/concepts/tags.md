@@ -43,13 +43,13 @@ Depending upon the parameters and the input, a tag executes some function (e.g. 
 
 ### PARAMETERS
 
-Parameters are used to modify a tag's behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, 'Hello World' is a parameter and is the message that [_**show**_](../../tags-reference/show.html) tag is supposed to display.
+Parameters are used to modify a tag's behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, 'Hello World' is a parameter and is the message that [__*show*__](../../tags-reference/show.html) tag is supposed to display.
 
 ```
 <cms:show 'Hello World' />
 ```
 
-In the following example, '4' is the parameter and it is the number of times that the [_**repeat**_](../../tags-reference/repeat.html) tag will repeat the contents enclosed by it.
+In the following example, '4' is the parameter and it is the number of times that the [__*repeat*__](../../tags-reference/repeat.html) tag will repeat the contents enclosed by it.
 
 ```
 <cms:repeat count='4'>
@@ -61,7 +61,7 @@ In the following example, '4' is the parameter and it is the number of times tha
 
 Please notice that in the second example above, we are explicitly naming the parameter (_count='4'_ - where 'count' is the name and '4' is the value of the parameter), whereas in the first example the parameter was passed unnamed.
 
-In Couch, naming the parameters is entirely optional but then you'll have to make sure that you pass the parameters in the exact sequence the tag expects them in. Thus, for example, [_**repeat**_](../../tags-reference/repeat.html) tag can take two parameters 'count' and 'startcount' where 'startcount' is expected to be the second parameter. If we explicitly name the parameters, e.g. -
+In Couch, naming the parameters is entirely optional but then you'll have to make sure that you pass the parameters in the exact sequence the tag expects them in. Thus, for example, [__*repeat*__](../../tags-reference/repeat.html) tag can take two parameters 'count' and 'startcount' where 'startcount' is expected to be the second parameter. If we explicitly name the parameters, e.g. -
 
 ```
 <cms:repeat count='4' startcount='1'></cms:repeat>
@@ -77,7 +77,7 @@ In Couch, naming the parameters is entirely optional but then you'll have to mak
 \- the above will be interpreted as count=1 and startcount=4, which is not what was meant.
 
 <p class="success">
-    It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [_**show**_](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [_**show**_](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
+    It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
     <br/>
     ```
 <cms:show 'Hello' />

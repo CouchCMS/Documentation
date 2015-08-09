@@ -66,7 +66,7 @@ Please notice that <strong>any value that is NOT enclosed by quotes is considere
 This feature can be utilized to set a tag&#39;s parameter by using the output of another tag.</p>
 <pre><code>&lt;cms:set message=&quot;&lt;cms:show &#39;Hello World&#39; /&gt;&quot; /&gt;
 &lt;cms:show message /&gt;
-</code></pre><p>In the snippet above, message will be set to &#39;Hello World&#39; which was the output of the nested <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.<br/>
+</code></pre><p>In the snippet above, message will be set to &#39;Hello World&#39; which was the output of the nested <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag.<br/>
 Please notice that <strong>the nested tag is ALWAYS enclosed within DOUBLE quotes</strong>.</p>
 <p class="notice">
     <strong>V.IMP -</strong><br/>
@@ -78,7 +78,7 @@ Please notice that <strong>the nested tag is ALWAYS enclosed within DOUBLE quote
     <code>&lt;cms:repeat count=4&gt;&lt;/cms:repeat&gt;</code>
     - in the snippet above the value being passed to <em>count</em> is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value &#39;4&#39;, will consider it to be a variable named 4 and try and use the value of a variable named &#39;4&#39; as the parameter. Incidently, it is illegal to begin a variable&#39;s name with a number and so Couch will throw an error. But had this value been a text string e.g.<br/><br/>
     <code>&lt;cms:show var=Hello /&gt;</code>
-    Couch would have used the value of an non-existent variable <em>Hello</em> as parameter for <a href="../tags-reference/show.html"><em><strong>show</strong></em></a>, which would then have printed nothing.
+    Couch would have used the value of an non-existent variable <em>Hello</em> as parameter for <a href="../tags-reference/show.html"><strong><em>show</em></strong></a>, which would then have printed nothing.
 </p>
 
 <h3 id="nesting-parameters">NESTING PARAMETERS</h3>
@@ -98,33 +98,33 @@ Begin from the innermost nested tag and try mentally replacing it with its outpu
     &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre><p>Don&#39;t worry, we&#39;ll replace the tags by their outputs and everything will start making perfect sense.<br/>
-The above snippet uses three new tags - <a href="../tags-reference/if.html"><em><strong>if</strong></em></a>, <a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> and <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a>.<br/>
+The above snippet uses three new tags - <a href="../tags-reference/if.html"><strong><em>if</em></strong></a>, <a href="../tags-reference/exists.html"><strong><em>exists</em></strong></a> and <a href="../tags-reference/embed.html"><strong><em>embed</em></strong></a>.<br/>
 You can find more about them in the documentation but for now a brief word about these tags will do.</p>
-<p>If the parameter passed to <a href="../tags-reference/if.html"><em><strong>if</strong></em></a> tag is &#39;1&#39;, it outputs anything contained between its start_tag and end_tag else it does not.<br/>
-<a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> expects the parameter passed to it to be a file&#39;s (or folder&#39;s) name. It tests if the given file/folder is actually present and if it is, it outputs &#39;1&#39;, else it outputs &#39;0&#39;.<br/>
-Finally, the <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a> tag expects the parameter passed to it to be a file&#39;s name. It then simply reads the file and returns back its contents as its own output.</p>
+<p>If the parameter passed to <a href="../tags-reference/if.html"><strong><em>if</em></strong></a> tag is &#39;1&#39;, it outputs anything contained between its start_tag and end_tag else it does not.<br/>
+<a href="../tags-reference/exists.html"><strong><em>exists</em></strong></a> expects the parameter passed to it to be a file&#39;s (or folder&#39;s) name. It tests if the given file/folder is actually present and if it is, it outputs &#39;1&#39;, else it outputs &#39;0&#39;.<br/>
+Finally, the <a href="../tags-reference/embed.html"><strong><em>embed</em></strong></a> tag expects the parameter passed to it to be a file&#39;s name. It then simply reads the file and returns back its contents as its own output.</p>
 <p>With this background, let us try replacing the tags with their respective outputs.<br/>
-Always begin from the innermost tag, which here happens to be the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.<br/>
-We are already familiar with the <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag.</p>
+Always begin from the innermost tag, which here happens to be the <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag.<br/>
+We are already familiar with the <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag.</p>
 <pre><code>&lt;cms:show k_page_name/&gt;
 </code></pre><p>- the parameter being passed to it has no quotes around it so it must be a variable.<br/>
 The <em>k_page_name</em> variable is set by Couch everytime a page (see <a href="cloned-pages.html"><strong>pages</strong></a>) is executed to hold the page&#39;s name. Thus if the page being currently executed is <em>about-us</em>, the value of <em>k_page_name</em> will be <em>about_us</em> while if the page being executed is <em>contact-us</em>, <em>k_page_name</em> will be set to <em>contact-us</em>.</p>
-<p>Assuming that the current page is <em>about-us</em>, substituting <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> tag with its output will result in -</p>
+<p>Assuming that the current page is <em>about-us</em>, substituting <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag with its output will result in -</p>
 <pre><code>&lt;cms:if &quot;&lt;cms:exists &quot;about-us.inc&quot; /&gt;&quot; &gt;
     &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
 &lt;/cms:if&gt;
-</code></pre><p>Assume that file named &#39;about-us.inc&#39; does exist. In this case the output of <a href="../tags-reference/exists.html"><em><strong>exists</strong></em></a> tag will be &#39;1&#39;. Substituting exists with its output results in -</p>
+</code></pre><p>Assume that file named &#39;about-us.inc&#39; does exist. In this case the output of <a href="../tags-reference/exists.html"><strong><em>exists</em></strong></a> tag will be &#39;1&#39;. Substituting exists with its output results in -</p>
 <pre><code>&lt;cms:if &quot;1&quot; &gt;
     &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre><p>Since the parameter being passed to <em>if</em> is &#39;1&#39;, it will go ahead and execute the contents within it and return the output.<br/>
-- Resolve the contents of <a href="../tags-reference/if.html"><em><strong>if</strong></em></a>, using our substitution method -</p>
+- Resolve the contents of <a href="../tags-reference/if.html"><strong><em>if</em></strong></a>, using our substitution method -</p>
 <pre><code>&lt;cms:if &quot;1&quot; &gt;
     &lt;cms:embed &quot;about-us.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre><p>Suppose the sole content of <em>about-us.inc</em> is -<br/>
 &lt;h1&gt;Hello I am About Us&lt;/h1&gt;,<br/>
-this will be the output of the <a href="../tags-reference/embed.html"><em><strong>embed</strong></em></a> tag, so we end up being -</p>
+this will be the output of the <a href="../tags-reference/embed.html"><strong><em>embed</em></strong></a> tag, so we end up being -</p>
 <pre><code>&lt;cms:if &quot;1&quot; &gt;
     &lt;h1&gt;Hello I am About Us&lt;/h1&gt;
 &lt;/cms:if&gt;

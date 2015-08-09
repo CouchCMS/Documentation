@@ -71,15 +71,15 @@ This conversion of the xml file to a php file is essential for Couch but it will
 2.  The web server always sends back to the browser the mime-type of any file that it is serving to fulfill the browser's request. The mime-type of an XML file should be _text/xml_ but the new '.php' extension causes the web server to send back the default _text/html_ mime-type, which will be rejected by the browser.
 
 The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.<br/>
-The following snippet using Couch's [_**concat**_](../../tags-reference/concat.html) tag will output exactly the same statement but because the '&lt;?' characters are now split up, PHP will have no problems.
+The following snippet using Couch's [__*concat*__](../../tags-reference/concat.html) tag will output exactly the same statement but because the '&lt;?' characters are now split up, PHP will have no problems.
 
 ```
 <cms:concat '<' '?xml version="1.0" encoding="' k_site_charset '"?' '>' />
 ```
 
-<p class="notice">The _k\_site\_charset_ variable contains the value set in _config.php_ for the character set used by your web-site.</p>
+<p class="notice">The *k\_site\_charset* variable contains the value set in _config.php_ for the character set used by your web-site.</p>
 
-The second problem can be rectified by using the Couch's [_**content\_type**_](../../tags-reference/content_type.html) tag. This tag instructs the web server to output the desired mime-type. We'll use it to output _text/xml_.
+The second problem can be rectified by using the Couch's [__*content\_type*__](../../tags-reference/content_type.html) tag. This tag instructs the web server to output the desired mime-type. We'll use it to output _text/xml_.
 
 The modified snippet should now look like this -
 
@@ -112,9 +112,9 @@ The modified snippet should now look like this -
 <?php COUCH::invoke(); ?>
 ```
 
-<p class="notice">**IMP.** Do not split the [_**content\_type**_](../../tags-reference/content_type.html) statement and the [_**concat**_](../../tags-reference/concat.html) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
+<p class="notice">**IMP.** Do not split the [__*content\_type*__](../../tags-reference/content_type.html) statement and the [__*concat*__](../../tags-reference/concat.html) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
 
-We can now fetch the news items from the _news.php_ template by using [_**pages**_](../../tags-reference/pages.html) tag and add it to our feed to make it dynamic -
+We can now fetch the news items from the _news.php_ template by using [__*pages*__](../../tags-reference/pages.html) tag and add it to our feed to make it dynamic -
 
 ```
 <?php require_once( 'couch/cms.php' ); ?>
@@ -146,9 +146,9 @@ We can now fetch the news items from the _news.php_ template by using [_**pages*
 <?php COUCH::invoke(); ?>
 ```
 
-We are assuming that an editable field named _my\_news\_text_ contains the news text.<br/>
-The [_**excerptHTML**_](../../tags-reference/excerpthtml.html) tag can be used to output only an excerpt of your page.<br/>
-We need to wrap the output within [_**html\_encode**_](../../tags-reference/html_encode.html) to encode certain characters that are not valid in XML.
+We are assuming that an editable field named *my\_news\_text* contains the news text.<br/>
+The [__*excerptHTML*__](../../tags-reference/excerpthtml.html) tag can be used to output only an excerpt of your page.<br/>
+We need to wrap the output within [__*html\_encode*__](../../tags-reference/html_encode.html) to encode certain characters that are not valid in XML.
 
 And that is it. Your automated RSS feed is ready.<br/>
 Modify the snippet to suit your web-site's needs.

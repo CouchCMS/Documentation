@@ -29,7 +29,7 @@ In the snippet above the string 'my\_multiple\_images' is the name of a [**repea
 
 ### startcount
 
-One of the variables set by this tag is _k\_count_. The value of this variable increases with each iteration. By default, the first iteration is numbered 1\. The _startcount_ parameter can be used to make _k\_count_ begin from any arbitrary number.
+One of the variables set by this tag is *k\_count*. The value of this variable increases with each iteration. By default, the first iteration is numbered 1\. The _startcount_ parameter can be used to make *k\_count* begin from any arbitrary number.
 
 ## Variables
 

@@ -54,7 +54,7 @@ A Super Admin can do everything that a user possibly can in Couch. Specifically,
 <li>Create/manage any number of lower level user accounts.</li>
 <li>Access the website.</li>
 </ul>
-<p>Usually it is the designer/coder building the site that uses this <em>super-admin</em> account. If you&#39;ve gone through the creation of <a href="editable-regions.html"><strong>editable regions</strong></a> and some other tags like the <a href="../tags-reference/folder.html"><em><strong>folder</strong></em></a> tag, you&#39;ll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
+<p>Usually it is the designer/coder building the site that uses this <em>super-admin</em> account. If you&#39;ve gone through the creation of <a href="editable-regions.html"><strong>editable regions</strong></a> and some other tags like the <a href="../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag, you&#39;ll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
 Hence this account is used by someone who makes structural changes to the web-site.</p>
 <h4 id="2-administrator">2. Administrator</h4>
 <p>The <em>super-admin</em> can create any number of administrator level accounts.<br/>
@@ -114,7 +114,7 @@ If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_tit
 </ul>
 <p>As can be seen, the higher the number, the more powerful an account is deemed to be.</p>
 <h3 id="template-level-access">Template level access</h3>
-<p>All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the <em>access_level</em> parameter of the <a href="../tags-reference/template.html"><em><strong>template</strong></em></a> tag to the minimum level required. Thus -</p>
+<p>All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the <em>access_level</em> parameter of the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag to the minimum level required. Thus -</p>
 <pre><code>&lt;cms:template title=&#39;News&#39; clonable=&#39;1&#39; access_level=&#39;2&#39;&gt;
     &lt;!-- Editable regions and Folders are usually defined here --&gt;
 &lt;/cms:template&gt;
@@ -146,7 +146,7 @@ If it is not, it could either be that the user is not logged-in or that he is lo
 We check this by the <em>k_logged_out</em> variable and then show the appropriate message.<br/>
 Note how we use the <em>k_login_link</em> and <em>k_logout_link</em> to diplay the links that the user can click to either login or logout.</p>
 <h3 id="access-control-of-discrete-files">Access control of discrete files</h3>
-<p>Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the <a href="../tags-reference/cloak_url.html"><em><strong>cloak_url</strong></em></a> tag.<br/>
+<p>Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag.<br/>
 Please see <a href="cloaked-links.html#allowing-only-registered-users-to-access-links"><strong>Cloaked links - Allowing only registered users to a access links</strong></a> section for a full discussion of this.</p>
 </article>
         </div>

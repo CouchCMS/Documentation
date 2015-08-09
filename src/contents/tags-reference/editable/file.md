@@ -11,7 +11,7 @@ Editable region of type **file** is primarily used to allow the user to upload a
 Once a file has been selected, this editable region then holds a fully qualified URL of the uploaded file.
 
 <p class="notice">
-    **NOTE:** By default, all uploaded files will be saved within the _**couch/uploads/file**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (_K\_UPLOAD\_DIR_) in _config.php_ and changing it to the desired location.<br/>
+    **NOTE:** By default, all uploaded files will be saved within the _**couch/uploads/file**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
     <br/>
     ```
 // 12.

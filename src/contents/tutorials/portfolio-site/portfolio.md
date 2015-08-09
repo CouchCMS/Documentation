@@ -11,12 +11,12 @@ template: default.html
 
 Having already built the _blog_ section, building the _portfolio_ section will see us only repeating what we have already done. As such, we'll go into the details of only those steps that are new for this section.
 
-Aurelius provides us with two files - _portfolio.html_ and _portfolio\_single.html_.<br/>
-_portfolio\_single.html_ is a single portfolio entry while _portfolio.html _only lists the existing portfolio entries.<br/>
-It should be readily apparent that _portfolio\_single.html_ will represent the page-view of this section while _portfolio.html_ will represent the list-view.<br/>
-As with the blog, we'll use the _portfolio\_single.html_ as the main template for the portfolio section. This is because this view will define all the editable regions that we'll need to create in order to capture all relevant information about one single portfolio entry.
+Aurelius provides us with two files - _portfolio.html_ and *portfolio\_single.html*.<br/>
+*portfolio\_single.html* is a single portfolio entry while _portfolio.html_ only lists the existing portfolio entries.<br/>
+It should be readily apparent that *portfolio\_single.html* will represent the page-view of this section while _portfolio.html_ will represent the list-view.<br/>
+As with the blog, we'll use the *portfolio\_single.html* as the main template for the portfolio section. This is because this view will define all the editable regions that we'll need to create in order to capture all relevant information about one single portfolio entry.
 
-Begin by renaming _portfolio.html_ to _portfolio\_list.html_ and the _portfolio\_single.html_ to _portfolio.php_.<br/>
+Begin by renaming _portfolio.html_ to *portfolio\_list.html* and the *portfolio\_single.html* to _portfolio.php_.<br/>
 Enclose the entire contents of _portfolio.php_ with the boilerplate PHP code -<br/>
 Place
 
@@ -107,24 +107,24 @@ Let us move on to the list-view.
 
 ### The List View
 
-As we had already decided, the _portfolio\_list.html_ will serve as the list view.<br/>
-Move _portfolio\_list.html_ to the snippets folder and it is ready to be embedded within _portfolio.php_.
+As we had already decided, the *portfolio\_list.html* will serve as the list view.<br/>
+Move *portfolio\_list.html* to the snippets folder and it is ready to be embedded within _portfolio.php_.
 
 Just the way we handled list-view in _blog.php_, add conditional Couch tags to check for page-view and list-view and display the relevant content.<br/>
-Display the existing content of _portfolio.php_ if variable _k\_is\_page_ is set (i.e. we are handling page-view) -
+Display the existing content of _portfolio.php_ if variable *k\_is\_page* is set (i.e. we are handling page-view) -
 
 ![](../../../../assets/img/contents/portfolio-site-128.png)
 
-else display the embedded _portfolio\_list.html_ (this has to be the list-view) -
+else display the embedded *portfolio\_list.html* (this has to be the list-view) -
 
 ![](../../../../assets/img/contents/portfolio-site-129.png)
 
-Access _http&#58;//www.mytestsite.com/portfolio.php_ (it is the list-view because no page information is appended to the template name) and the contents of _portfolio\_list.html_ should appear -
+Access _http&#58;//www.mytestsite.com/portfolio.php_ (it is the list-view because no page information is appended to the template name) and the contents of *portfolio\_list.html* should appear -
 
 ![](../../../../assets/img/contents/portfolio-site-130.png)
 
-This, of course, is the static HTML contained within the embedded snippet and does not reflect the portfolio items (cloned pages) currently existing. To make this listing dynamic, we'll need to add some Couch tags to _portfolio\_list.html_.<br/>
-Open _portfolio\_list.html_ in your text editor for some modifications.
+This, of course, is the static HTML contained within the embedded snippet and does not reflect the portfolio items (cloned pages) currently existing. To make this listing dynamic, we'll need to add some Couch tags to *portfolio\_list.html*.<br/>
+Open *portfolio\_list.html* in your text editor for some modifications.
 
 If we take a look at the static listing shown above, it can be seen that Aurelius is displaying portfolio items grouped together into three separate categories.<br/>
 Categories, as we have seen in _blog.php_, can be simulated in Couch by the virtual folders.<br/>
@@ -148,11 +148,11 @@ We'll tackle the categories first.
 
 ### Listing Categories
 
-If you take a look at _portfolio\_list.html_, you'll find the following block of code being repeated, with very minor modifications, thrice. This is a category block displaying all pages belonging to that category.
+If you take a look at *portfolio\_list.html*, you'll find the following block of code being repeated, with very minor modifications, thrice. This is a category block displaying all pages belonging to that category.
 
 ![](../../../../assets/img/contents/portfolio-site-134.png)
 
-Following the pattern we set for using any enumerator tag in Couch, we'll delete two of the three blocks from _portfolio\_list.html_ to be left with only one block.<br/>
+Following the pattern we set for using any enumerator tag in Couch, we'll delete two of the three blocks from *portfolio\_list.html* to be left with only one block.<br/>
 Then we enclose this remaining solitary block within the enumerator folders tag.<br/>
 This will cause the block to be output as many times as there are folders in this template.<br/>
 Finally, we make use of the variables set by the folders tag that describe each folder -
@@ -185,7 +185,7 @@ Take the usual steps of deploying the pages tag and use the zebra tag with the t
 This should result in the folders tag outputting three category blocks and, within each of those blocks, the pages tag outputting the cloned pages. Thus we are using the pages tag nested within the folders tag.<br/>
 The problem is that the pages tag in each of the category block is displaying all the cloned pages available and not just the pages that belong to the category in question.<br/>
 We know from the blog section that the pages tag supports a parameter named folder that can be used to make it fetch pages that belong to only that folder.<br/>
-The problem we have can be easily resolved by setting this folder parameter to the name of the folder being iterated. One of the variables that the folders tag sets for each folder, as it iterates through them, is the _k\_folder\_name_ variable.<br/>
+The problem we have can be easily resolved by setting this folder parameter to the name of the folder being iterated. One of the variables that the folders tag sets for each folder, as it iterates through them, is the *k\_folder\_name* variable.<br/>
 By using this variable to set the folder parameter of pages tag that was mentioned above, we can dynamically link together the folders and pages tags -
 
 ![](../../../../assets/img/contents/portfolio-site-139.png)
@@ -207,7 +207,7 @@ We'll create a separate new template containing the desired editable regions. Fo
 Finally, while listing the folders, we'll fetch back the data from each associated page and display it.<br/>
 This technique does entail the maintenance of a separate set of pages that need to be kept synchronized with the original objects, however, it will get the job done quite well.
 
-So let us now create a new file named _portfolio\_desc.php_. Place the mandatory Couch boilerplate code at the start and end of this file and then define the two editable regions to hold the description and blurb of the folders.<br/>
+So let us now create a new file named *portfolio\_desc.php*. Place the mandatory Couch boilerplate code at the start and end of this file and then define the two editable regions to hold the description and blurb of the folders.<br/>
 The finished code should be something like this -
 
 ![](../../../../assets/img/contents/portfolio-site-142.png)
@@ -222,19 +222,19 @@ The finished code should be something like this -
     <br/>
     Normally when we create any cloned template, the template serves all the three mentioned purposes. However, this is not mandatory and a template could be used to fulfill only some of these functions.<br/>
     <br/>
-    The _portfolio\_desc.php_ template that we created is meant to serve only the second purpose mentioned in the list above.<br/>
+    The *portfolio\_desc.php* template that we created is meant to serve only the second purpose mentioned in the list above.<br/>
     Its only purpose is to define the two editable regions that will then be used to store data pertaining to the folders.<br/>
     The pages cloned out of it are not meant to be accessed directly in a browser through a URL. As such, it also does not contain any HTML code whatsoever.<br/>
     <br/>
     By declaring this template as non-executable (executable='0'), we are signaling to Couch that this template is not meant to be accessed directly via a URL.<br/>
-    When you are logged-in as the super-admin and access _http&#58;//www.mytestsite.com/portfolio\_desc.php_, Couch loads up this template as a normal template (because without doing this the changes you made will not take effect). However, try accessing the same URL without being logged-in as the super-admin and you'll receive a 'HTTP 404 Page not found' error.
+    When you are logged-in as the super-admin and access *http&#58;//www.mytestsite.com/portfolio\_desc.php*, Couch loads up this template as a normal template (because without doing this the changes you made will not take effect). However, try accessing the same URL without being logged-in as the super-admin and you'll receive a 'HTTP 404 Page not found' error.
 </p>
 
-Access _http&#58;//www.mytestsite.com/portfolio\_desc.php_ while being logged-in as the super-admin. You'll get a blank page because the template contains no HTML. However, the purpose of this visit was to execute the Couch tags contained within the template. To verify that, visit the admin section and you should find that Couch has created the default cloned page for this template and has also created the two editable regions.
+Access *http&#58;//www.mytestsite.com/portfolio\_desc.php* while being logged-in as the super-admin. You'll get a blank page because the template contains no HTML. However, the purpose of this visit was to execute the Couch tags contained within the template. To verify that, visit the admin section and you should find that Couch has created the default cloned page for this template and has also created the two editable regions.
 
 ![](../../../../assets/img/contents/portfolio-site-143.png)
 
-Rename the default page to one of the folders of _portfolio.php_ and create two new pages with the same names as that of the remaining two folders. Be careful - the names, not the titles, of the pages need to match that of the folders. The names of the folders, for this tutorial, were _cat\_1_, _cat\_2_ and _cat\_3_. We'll give the same names to the cloned pages of _portfolio\_desc.php_.
+Rename the default page to one of the folders of _portfolio.php_ and create two new pages with the same names as that of the remaining two folders. Be careful - the names, not the titles, of the pages need to match that of the folders. The names of the folders, for this tutorial, were *cat\_1*, *cat\_2* and *cat\_3*. We'll give the same names to the cloned pages of *portfolio\_desc.php*.
 
 ![](../../../../assets/img/contents/portfolio-site-144.png)
 
@@ -249,10 +249,10 @@ We'll make the following modifications -
 
 Notice how we have used the pages tag to enclose the section highlighted previously.<br/>
 The pages tag, as usual, is used to fetch the cloned pages.<br/>
-This time we have set the masterpage to _portfolio\_desc.php_ so only pages cloned from this template will be fetched. Most importantly, we have also set the _page\_name_ parameter to the variable _k\_folder\_name_. This variable, as we know, is set by the folders tag to the name of the folder being currently enumerated. Using this as the _page\_name_ parameter causes the pages tag to fetch only the page that has the same name as the current folder.<br/>
+This time we have set the masterpage to *portfolio\_desc.php* so only pages cloned from this template will be fetched. Most importantly, we have also set the *page\_name* parameter to the variable *k\_folder\_name*. This variable, as we know, is set by the folders tag to the name of the folder being currently enumerated. Using this as the *page\_name* parameter causes the pages tag to fetch only the page that has the same name as the current folder.<br/>
 Since there can be only one page for the given name, the contents enclosed by the pages tag are output only once. Once we get the right page, we use the variables representing the two editable regions the usual way.
 
-Accessing _http&#58;//www.mytestsite.com/portfolio.php_ will now show the category description and blurb as entered into _portfolio\_desc.php_ pages -
+Accessing _http&#58;//www.mytestsite.com/portfolio.php_ will now show the category description and blurb as entered into *portfolio\_desc.php* pages -
 
 ![](../../../../assets/img/contents/portfolio-site-147.png)
 

@@ -17,7 +17,7 @@ This property makes it possible to use it with conditional tags, like **if** and
 </cms:if>
 ```
 
-The snippet above, where we are checking if the editable region named _my\_content_ contains any value,  could have been written in the following simpler manner -
+The snippet above, where we are checking if the editable region named *my\_content* contains any value,  could have been written in the following simpler manner -
 
 ```
 <cms:if my_content >

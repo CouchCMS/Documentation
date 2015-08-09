@@ -22,7 +22,7 @@ Examples -
 </cms:php>" />
 ```
 
-Notice how in the last snippet above, we are using the **php** tag as a parameter of the **set** tag and how we are using the Couch **show** tag as a parameter of the PHP _str\_replace_ function.
+Notice how in the last snippet above, we are using the **php** tag as a parameter of the **set** tag and how we are using the Couch **show** tag as a parameter of the PHP *str\_replace* function.
 
 ## Parameters
 

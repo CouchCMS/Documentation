@@ -107,14 +107,14 @@ Enclose the _profiles_ section we are working on within the capture tag like thi
 
 ![](../../../../assets/img/contents/portfolio-site-161.png)
 
-Notice that we are instructing the capture tag to buffer all output of its enclosed content into a variable named _profiles\_output_. Also note that at the end we are showing this _profiles\_output_ variable.<br/>
+Notice that we are instructing the capture tag to buffer all output of its enclosed content into a variable named *profiles\_output*. Also note that at the end we are showing this *profiles\_output* variable.<br/>
 Try removing this show statement and the entire profiles block will disappear.
 
 The value of buffering everything into one variable and then outputting the single variable is that now we can conditionally output the single variable.
 
 What we'll do is, within the block enclosed by the capture tag, everyplace where we check whether or not a social link variable is present, if the variable is indeed present we set a variable named has\_profile to 1\.<br/>
-If even one social link variable is present, the _has\_profile_ variable will be set to 1 else this variable will simply not be present.<br/>
-Finally, we'll check for this variable as the condition to output the contents buffered within _profiles\_output_.
+If even one social link variable is present, the *has\_profile* variable will be set to 1 else this variable will simply not be present.<br/>
+Finally, we'll check for this variable as the condition to output the contents buffered within *profiles\_output*.
 
 ![](../../../../assets/img/contents/portfolio-site-162.png)
 
@@ -196,18 +196,18 @@ Don't worry though. We'll now make Couch display these messages upon validation 
 
 To make Couch validate the submitted values, the input tags need to have validation constrains placed upon them.<br/>
 The most common constrain is to make sure an input is not left empty. This can be enforced by setting the _required_ parameter of input tag to 1\.<br/>
-There are several other kinds of validations available (e.g. _min\_len_, _max\_len_ etc.) which are set using the _validator_ parameter (see Forms).<br/>
+There are several other kinds of validations available (e.g. *min\_len*, *max\_len* etc.) which are set using the _validator_ parameter (see Forms).<br/>
 We'll use the _validator='email'_ with the input meant for email address.<br/>
 The modified code with the validation constrains in place -
 
 ![](../../../../assets/img/contents/portfolio-site-173.png)
 
 Once the validation constrains are imposed, Couch validates the submitted values accordingly at each form submission.<br/>
-If any of the constrains are violated, the form tag sets up a variable named _k\_error_ to indicate this.<br/>
-Additionally, it also sets up variables named after the input tags that failed the validation, prefixing their names with a 'k\_error\_' string. Thus for example, in the case of our form here, if the input tag named 'email' fails to validate, a variable named _k\_error\_email_ will be set up.<br/>
+If any of the constrains are violated, the form tag sets up a variable named *k\_error* to indicate this.<br/>
+Additionally, it also sets up variables named after the input tags that failed the validation, prefixing their names with a 'k\_error\_' string. Thus for example, in the case of our form here, if the input tag named 'email' fails to validate, a variable named *k\_error\_email* will be set up.<br/>
 We can test for the presence of these variables to find whether a validation error has occurred and take actions accordingly.
 
-On the flip side of it, if all the inputs pass the validation constrains successfully, the form tag also signals this by setting up similar variables. On successful submission of form a variable named _k\_success_ gets set up. In addition to it, variables named after all the input tags, with 'frm\_' prefixed to their names, are set up. These variables contain the respective submitted values.
+On the flip side of it, if all the inputs pass the validation constrains successfully, the form tag also signals this by setting up similar variables. On successful submission of form a variable named *k\_success* gets set up. In addition to it, variables named after all the input tags, with 'frm\_' prefixed to their names, are set up. These variables contain the respective submitted values.
 
 For the form we are configuring, we'll use the 'k\_error\_tagname' variables to detect validation failures and then conditionally output the error reporting paragraphs we made visible above -
 
@@ -216,12 +216,12 @@ For the form we are configuring, we'll use the 'k\_error\_tagname' variables to 
 Try using the form by leaving some inputs empty and placing malformed email address. The error messages should display correctly.
 
 Now to handle the success condition.<br/>
-We'll make use of the _k\_success_ variable to detect this condition and take appropriate action.<br/>
+We'll make use of the *k\_success* variable to detect this condition and take appropriate action.<br/>
 The form already has a message for successful condition -
 
 ![](../../../../assets/img/contents/portfolio-site-175.png)
 
-We'll display it conditionally only when _k\_success_ variable is found set -
+We'll display it conditionally only when *k\_success* variable is found set -
 
 ![](../../../../assets/img/contents/portfolio-site-176.png)
 
@@ -236,9 +236,9 @@ In the case of this form, we'd wish to send an email to the site owner, informin
 
 ![](../../../../assets/img/contents/portfolio-site-177.png)
 
-We'll use the Couch email tag to send an email to the site owner. Anything enclosed within the email tags will form the body of the email to be sent. Notice how we are using the _k\_success_ variable (contains submitted values of all the inputs) to inform him of the submitted values.
+We'll use the Couch email tag to send an email to the site owner. Anything enclosed within the email tags will form the body of the email to be sent. Notice how we are using the *k\_success* variable (contains submitted values of all the inputs) to inform him of the submitted values.
 
-The _k\_email\_from_ and the _k\_email\_to_ contain these values set in _config.php_ -
+The *k\_email\_from* and the *k\_email\_to* contain these values set in _config.php_ -
 
 ![](../../../../assets/img/contents/portfolio-site-178.png)
 

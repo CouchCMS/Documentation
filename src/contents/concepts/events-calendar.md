@@ -50,24 +50,24 @@ Some of the variables that can be used are -
 
 #### calendar
 
-_k\_count\_weeks_ - Number of weeks in the month<br/>
-_k\_calendar\_date_ - The month being displayed in yyyy-mm-dd format (e.g. 2010-10-01 for October, 2010)<br/>
-_k\_next\_calendar\_date_ - The month that comes after the one being displayed<br/>
-_k\_prev\_calendar\_date_ - The month that came before the one being displayed
+*k\_count\_weeks* - Number of weeks in the month<br/>
+*k\_calendar\_date* - The month being displayed in yyyy-mm-dd format (e.g. 2010-10-01 for October, 2010)<br/>
+*k\_next\_calendar\_date* - The month that comes after the one being displayed<br/>
+*k\_prev\_calendar\_date* - The month that came before the one being displayed
 
 #### weeks
 
-_k\_week\_num_ - Number of the week being iterated
+*k\_week\_num* - Number of the week being iterated
 
 #### days
 
-_k\_date_ - date of the day being iterated<br/>
-_k\_day_ - Number representing the day<br/>
-_k\_month_ - Number representing the month of the day<br/>
-_k\_year_ - Number representing the year of the day<br/>
-_k\_day\_of\_week_ - Number representing the day of the week the day falls on<br/>
-_k\_position_ - One of these three values: _previous\_month_, _current\_month_ or _next\_month_<br/>
-_k\_timeline\_position_ - One of these three values: _past_, _present_ or _future_
+*k\_date* - date of the day being iterated<br/>
+*k\_day* - Number representing the day<br/>
+*k\_month* - Number representing the month of the day<br/>
+*k\_year* - Number representing the year of the day<br/>
+*k\_day\_of\_week* - Number representing the day of the week the day falls on<br/>
+*k\_position* - One of these three values: *previous\_month*, *current\_month* or *next\_month*<br/>
+*k\_timeline\_position* - One of these three values: _past_, _present_ or _future_
 
 We can use these variables to format the display of the calendar more finely.
 
@@ -154,7 +154,7 @@ For example, the following addition to our code will display the calendar for mo
 A clonable template can be attached to a calendar, like the one we have created so far, by setting the _masterpage_ parameter.<br/>
 Once a template gets associated with a calendar, the days tag starts supporting another tag named entries within it.<br/>
 The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through.<br/>
-The days tag also sets a variable named _k\_count\_entries_ to indicate the number of entries (i.e. cloned pages) present for each day.
+The days tag also sets a variable named *k\_count\_entries* to indicate the number of entries (i.e. cloned pages) present for each day.
 
 ```
 <cms:calendar date='2010-09-01' masterpage='events.php'>
@@ -385,6 +385,6 @@ Points to note in the code above -
 4.  We are using a querystring variable named 'cal' to set the _date_ parameter of calendar tag.<br/>
     The Couch gpc tag is used to get the value of this variable from the querystring.<br/>
     When this variable is not present in the querystring and hence the _date_ parameter turns up empty, the calendar tag uses the current date instead.
-5.  We have set a link to the previous month and another to the next month by using the _k\_prev\_calendar\_date_ and _k\_next\_calendar\_date_ variables that are set by the calendar tag.
+5.  We have set a link to the previous month and another to the next month by using the *k\_prev\_calendar\_date* and *k\_next\_calendar\_date* variables that are set by the calendar tag.
 6.  The calendar tag accepts all the parameters that are normally used with the pages tag. Similar to the pages tag, this tag too does not fetch pages that have their publication dates set in the future.<br/>
-    Since events will normally be for the future, we have set the _show\_future\_entries_ parameter to '1' to prevent the calendar tag from skipping future entries.
+    Since events will normally be for the future, we have set the *show\_future\_entries* parameter to '1' to prevent the calendar tag from skipping future entries.

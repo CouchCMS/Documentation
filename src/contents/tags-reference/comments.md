@@ -19,7 +19,7 @@ Please see [**Core Concepts - Comments**](../../concepts/using-comments.html) fo
 *   order
 
 Normally _comments_ tag will fetch all the available approved comments.<br/>
-It can be constrained into fetching comments from only certain pages by setting the _masterpage_, _page\_id_ and _page\_name_ parameters.
+It can be constrained into fetching comments from only certain pages by setting the _masterpage_, *page\_id* and *page\_name* parameters.
 
 ### masterpage
 

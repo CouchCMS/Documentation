@@ -28,7 +28,7 @@ In the snippet given above, if we substitute the **get** tag with the **show** t
 
 \- the output would be 'my\_var' and not '10'.
 
-The snippet has to be written in the following manner to make it show the value contained within variable _my\_var_ -
+The snippet has to be written in the following manner to make it show the value contained within variable *my\_var* -
 
 ```
 <cms:set my_var='10' />

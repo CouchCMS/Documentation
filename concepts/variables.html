@@ -44,20 +44,20 @@
 
             <article><h1 id="variables">Variables</h1>
 <p>Don&#39;t get put off by that programming term. Variable is simply a place that can hold different values at different times.</p>
-<p>You can use the Couch tag named <a href="../tags-reference/set.html"><em><strong>set</strong></em></a> to place values within variables. For example the following snippet -</p>
+<p>You can use the Couch tag named <a href="../tags-reference/set.html"><strong><em>set</em></strong></a> to place values within variables. For example the following snippet -</p>
 <pre><code>&lt;cms:set my_message=&#39;Hello World&#39; /&gt;
 </code></pre><p>- will place value &#39;Hello World&#39; within a variable named <em>my_message</em> (i.e. set <em>my_message</em> to &#39;Hello World&#39;).<br/>
 This variable (<em>my_message</em>) can then be used elsewhere.</p>
 <p>For example, in the following snippet -</p>
 <pre><code>&lt;cms:show &#39;Hello&#39; /&gt;
-</code></pre><p>- we are passing &#39;Hello&#39; as the parameter for <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> to display. If instead we do the following -</p>
+</code></pre><p>- we are passing &#39;Hello&#39; as the parameter for <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> to display. If instead we do the following -</p>
 <pre><code>&lt;cms:show my_message /&gt;
 </code></pre><p>- instead of explicitly passing &#39;Hello&#39; as parameter, we are passing the value CONTAINED within <em>my_message</em> as the parameter. In this case &#39;Hello World&#39; will get displayed.</p>
 <p>Thus we see that variables act as simple containers for values.<br/>
 The value can be changed anytime, thus -</p>
 <pre><code>&lt;cms:set my_message=&#39;Salut!&#39; /&gt;
 &lt;cms:show my_message /&gt;
-</code></pre><p>- <a href="../tags-reference/show.html"><em><strong>show</strong></em></a> will now display &#39;Salut!&#39;.</p>
+</code></pre><p>- <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> will now display &#39;Salut!&#39;.</p>
 <p>In the examples above, we set the variable ourselves manually.<br/>
 However, the variables that we&#39;ll be dealing with more often are those that we&#39;ll find automatically set for us. e.g. -</p>
 <ol>
@@ -74,7 +74,7 @@ In the examples above, <em>k_template_name</em> and <em>k_page_link</em> are var
 See: <a href="variables-in-views.html">Variables available in Views</a><br/><br/></li>
 <li>A Paired tag usually sets certain variables that pertain to the task the tag does. These variables remain available only within the start-tag and the end-tag.<br/>
 <br/>
-For example - we have already seen how the <a href="../tags-reference/repeat.html"><em><strong>repeat</strong></em></a> tag simply repeats the contents enclosed within it the number of times specified by the <em>count</em> parameter. At each iteration, the <a href="../tags-reference/repeat.html"><em><strong>repeat</strong></em></a> tag sets a variable named <em>k_count</em> that is set to the count of the current iteration.<br/>
+For example - we have already seen how the <a href="../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag simply repeats the contents enclosed within it the number of times specified by the <em>count</em> parameter. At each iteration, the <a href="../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag sets a variable named <em>k_count</em> that is set to the count of the current iteration.<br/>
 <br/><pre><code>&lt;cms:repeat count=&#39;4&#39;&gt;
     &lt;cms:show k_count /&gt;&lt;br&gt;
 &lt;/cms:repeat&gt;

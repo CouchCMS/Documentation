@@ -13,7 +13,7 @@ The parameters may be literal strings, variables or output of other tags.
 <cms:div my_count '5' />
 ```
 
-The snippet divides by 5 whatever value is contained within _my\_count_ variable and outputs the resulting value.
+The snippet divides by 5 whatever value is contained within *my\_count* variable and outputs the resulting value.
 
 ## Parameters
 

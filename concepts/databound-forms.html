@@ -45,7 +45,7 @@
             <article><h1 id="databound-forms">DataBound Forms</h1>
 <p>Any database driven application (and Couch happens to be one), essentially constitutes of just four basic operations -<br/>
 <strong>Create</strong>, <strong>Read</strong>, <strong>Update</strong> &amp; <strong>Delete</strong> (CRUD as it is known).</p>
-<p>Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the &#39;Read&#39; operation through its <a href="../tags-reference/pages.html"><em><strong>cms:pages</strong></em></a> tag.<br/>
+<p>Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the &#39;Read&#39; operation through its <a href="../tags-reference/pages.html"><strong><em>cms:pages</em></strong></a> tag.<br/>
 The rest mandated the use of the back-end (i.e. the admin-panel) and thus were limited to only admins and super-admins.<br/>
 So, for example, to create, modify or delete a cloned-page one had to be logged-in as admin and then make use of the back-end to do so.</p>
 <p>This arrangement works well and is very secure, however, there are situations where it becomes necessary to allow the Create/Update/Delete operations to happen beyond these usual constrains. That is to say, allow ordinary users (non-admins) to do so and that too from the front-end.<br/>
@@ -89,8 +89,8 @@ There are clearly two elements in the requirements -</p>
 </ol>
 <p>If, for a moment, we ignore the requirement of persisting the submitted front-end data, we can see that Couch can already be used to implement each of these two parts independently.</p>
 <ol>
-<li>The <a href="../tags-reference/form.html"><em><strong>cms:form</strong></em></a> and <a href="../tags-reference/input.html"><em><strong>cms:input</strong></em></a> tags to implement the front-end form.</li>
-<li>A clonable template with <a href="../tags-reference/editable.html"><em><strong>cms:editable</strong></em></a> tags to hold data.</li>
+<li>The <a href="../tags-reference/form.html"><strong><em>cms:form</em></strong></a> and <a href="../tags-reference/input.html"><strong><em>cms:input</em></strong></a> tags to implement the front-end form.</li>
+<li>A clonable template with <a href="../tags-reference/editable.html"><strong><em>cms:editable</em></strong></a> tags to hold data.</li>
 </ol>
 <p>The obvious problem would be that there is no connection between the two.<br/>
 I mean, though the form can be used to submit data and the editable regions can be used to save data, there is no direct way of saving the form&#39;s data into the editable regions.</p>
