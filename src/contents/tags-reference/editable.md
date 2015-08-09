@@ -246,6 +246,14 @@ validator='email'
 
 In the example above only a valid email address is allowed.
 
+#### url
+
+```
+validator='url'
+```
+
+In the example above only a valid URL is allowed.
+
 #### matches_field
 
 This is used to ensure that the user has input identical contents into two ediatble regions (e.g. Password and Confirm Password).
