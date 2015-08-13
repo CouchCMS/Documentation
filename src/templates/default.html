@@ -42,7 +42,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
+    <meta content="{% if page.metadata.desc %}{{page.metadata.desc}}{% else %}CouchCMS - A simple, light-weight and open-source CMS for web designers{% endif %}" name="description"/>
     <title>{% if page.title != 'Untitled' %}{{page.title|escape}} - {% endif %}Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
 
     <link href="{{base}}assets/css/style.css" rel="stylesheet" type="text/css"/>
