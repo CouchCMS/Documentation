@@ -43,7 +43,7 @@ As the final step, paste the following to _about.php_ as the last line of the fi
 
 ![](../../../../assets/img/contents/portfolio-site-10.png)
 
-These two boilerplate lines of code is the only PHP that you should ever need to write to work with couch.
+These two boilerplate lines of code are the only PHP that you should ever need to write to work with Couch.
 
 Refresh the template within your browser by revisiting _about.php_ and now visit the admin section once again.
 

@@ -166,7 +166,7 @@ Access _http&#58;//www.mytestsite.com/contact.php_ and the form should appear, a
 Uptil now we've used the Couch tags to simply generate the form. The real power of these tags, however, lies in processing the submitted form.<br/>
 The form, as it was originally built, makes use of JavaScript to validate the inputs and display the errors (try submitting the form with empty fields to see it in action).<br/>
 JavaScript is, of course, a client-side technology and cannot be relied upon for validating forms because it is only trivial to turn off JavaScript in a browser.<br/>
-Server-side validation is an absolute must for validating forms. The couch tags we used provide this server-side validation. To see this in action we'll first have to remove the existing JavaScript validation.<br/>
+Server-side validation is an absolute must for validating forms. The Couch tags we used provide this server-side validation. To see this in action we'll first have to remove the existing JavaScript validation.<br/>
 To do so, scroll up the _contact.php_ template and you'll find the following script tags -
 
 ![](../../../../assets/img/contents/portfolio-site-168.png)

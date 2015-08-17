@@ -78,11 +78,11 @@ As an example, the following snippet can be used to create such a field (as a go
     type='text' />
 ```
 
-With the groundwork behind us, rest is easy.
+With the groundwork behind us, the rest is easy.
 
 #### CREATING PAYPAL BUTTON
 
-To create the PayPal 'Buy Button' simply place the following couch tag it your _product.php_ template -
+To create the PayPal 'Buy Button' simply place the following Couch tag in your _product.php_ template -
 
 ```
 <cms:paypal_button />
