@@ -17,7 +17,7 @@ or a variable (both system variables as well as all the editable regions on the 
 
 ```
 <cms:show k_page_title />
-<cms show my_intro />
+<cms:show my_intro />
 ```
 
 ## Parameters
