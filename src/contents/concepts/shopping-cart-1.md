@@ -6,18 +6,18 @@ template: default.html
 
 # Shopping Cart (Part I)
 
-*   [Creating products](../shopping-cart-1.html#creating-the-products)
-*   [Creating product variants (or Options)](../shopping-cart-1.html#product-options-or-variants-)
-*   [Listing products](../shopping-cart-1.html#listing-products)
-*   [The Cart](../shopping-cart-1.html#core-actions-of-cart)
-    *   [Adding item to cart](../shopping-cart-1.html#add-item-to-cart)
-    *   [Listing cart items](../shopping-cart-1.html#listing-cart-items)
-    *   [Updating item quantity](../shopping-cart-1.html#update-quantity-of-item-in-cart)
-    *   [Removing item from cart](../shopping-cart-1.html#remove-item-from-cart)
-    *   [Displaying global cart values](../shopping-cart-1.html#displaying-global-cart-values)
-    *   [Checking out](../shopping-cart-1.html#checkout)
-*   [AJAXifying the cart](../shopping-cart-1.html#ajaxifying-the-cart)
-*   [List of all tags](../shopping-cart-1.html#appendix)
+*   [Creating products](#creating-the-products)
+*   [Creating product variants (or Options)](#product-options-or-variants-)
+*   [Listing products](#listing-products)
+*   [The Cart](#core-actions-of-cart)
+    *   [Adding item to cart](#add-item-to-cart)
+    *   [Listing cart items](#listing-cart-items)
+    *   [Updating item quantity](#update-quantity-of-item-in-cart)
+    *   [Removing item from cart](#remove-item-from-cart)
+    *   [Displaying global cart values](#displaying-global-cart-values)
+    *   [Checking out](#checkout)
+*   [AJAXifying the cart](#ajaxifying-the-cart)
+*   [List of all tags](#appendix)
 
 --------------------------------
 
@@ -292,13 +292,13 @@ Time now to put core actions of the shopping cart in effect.
 
 The shopping cart provided by CouchCart (as is true for any other shopping cart script) supports the following core actions:
 
-*   [Add item to cart](../shopping-cart-1.html#add-item-to-cart)
-*   [List items in cart](../shopping-cart-1.html#listing-cart-items)
-*   [Update quantity of item in cart](../shopping-cart-1.html#update-quantity-of-item-in-cart)
-*   [Remove item from cart](../shopping-cart-1.html#remove-item-from-cart)
-*   [Display global cart values](../shopping-cart-1.html#displaying-global-cart-values)
+*   [Add item to cart](#add-item-to-cart)
+*   [List items in cart](#listing-cart-items)
+*   [Update quantity of item in cart](#update-quantity-of-item-in-cart)
+*   [Remove item from cart](#remove-item-from-cart)
+*   [Display global cart values](#displaying-global-cart-values)
 *   Empty cart
-*   [Checkout](../shopping-cart-1.html#checkout)
+*   [Checkout](#checkout)
 
 Let us implement each of those in our site.
 
