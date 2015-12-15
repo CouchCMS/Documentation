@@ -268,7 +268,8 @@ We'll display this in the list-view.
 Couch has a very powerful feature that allows us to keep chunks of HTML code (along with any Couch tags that might be within them) in separate files as snippets, and then use these snippets anywhere using the Couch embed tag.
 
 We'll use the embed tag to display *blog\_list.html* in the list-view.<br/>
-Move *blog\_list.html* into the snippets folder found within the couch folder (this is not mandatory but files kept in this folder are kept safe from being accessed directly by the _.htaccess_ file present within the folder and hence is desirable).<br/>
+Move *blog\_list.html* into the snippets folder found within the couch folder (this is not mandatory, but files kept in this folder are kept safe from being accessed directly by the _.htaccess_ file present within the folder and hence is desirable).<br/>
+See [embed](../../../../tags-reference/embed.html) tag for snippets folder customization instructions.<br/>
 Now replace the silly message we were displaying in list-view with the following embed tag -
 
 ![](../../../../assets/img/contents/portfolio-site-47.png)
