@@ -1,48 +1,69 @@
-<!DOCTYPE html>
-<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
-<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
-<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="CouchCMS - A simple, light-weight and open-source CMS for web designers" name="description"/>
-    <title>comments - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
 
-    <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-    <link href="../favicon.ico" rel="shortcut icon"/>
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>comments - Documentation | CouchCMS - A simple and Open-Source CMS for web designers</title>
+	<meta name="description" content="CouchCMS - A simple, light-weight and open-source CMS for web designers">
+	<meta name="keywords" content="">
+	<link rel="shortcut icon" href="../assets/img/favicon.ico">
+	<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.jpg">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/img/apple-touch-icon-72x72.jpg">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/img/apple-touch-icon-114x114.jpg">
+    <link rel="stylesheet" type="text/css" href="../assets/css/custom-animations.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/lib/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 
-    <!--[if lt IE 9]><script src="../assets/js/IE9.js"></script><![endif]-->
-    <script src="../assets/js/modernizr.custom.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/docs-style.css" />
+
+	<!--[if lt IE 9]>
+		<script src="../assets/js/html5shiv.js"></script>
+		<script src="../assets/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
-    <div class="docs" id="container">
-        <header>
-            <a class="logo" href="http://www.couchcms.com/" title="Back to homepage"><img alt="A simple and Open-Source CMS for designers" src="../assets/img/logo.png"/></a>
-            <nav>
-                <ul>
-                    <li><a href="http://www.couchcms.com/">Home</a></li>
-                    <li><a href="http://www.couchcms.com/products/">Downloads &amp; License</a></li>
-                    <li><a class="active" href="http://docs.couchcms.com/">Documentation</a></li>
-                    <li><a href="http://www.couchcms.com/forum/">Forum</a></li>
-                    <li><a href="http://www.couchcms.com/hire-us/">Hire Us</a></li>
-                    <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
-                </ul>
-            </nav>
-        </header>
+	<!-- Header -->
+	<header>
+		<nav class="navigation navigation-header relative-header background-header">
+			<div class="container">
+				<div class="navigation-brand">
+					<div class="brand-logo">
+						<a href="http://www.couchcms.com/" class="logo"></a><a href="http://www.couchcms.com/" class="logo logo-alt"></a>
+					</div>
+				</div>
+				<button class="navigation-toggle">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navigation-navbar collapsed">
+					<ul class="navigation-bar navigation-bar-left">
+						<li><a href="http://www.couchcms.com/">Home</a></li>
+                        <li><a href="http://www.couchcms.com/products/">Downloads & License</a></li>
+                        <li class="active"><a href="http://docs.couchcms.com/">Documentation</a></li>
+						<li><a href="http://www.couchcms.com/forum/">Forum</a></li>
+                        <li><a href="http://www.couchcms.com/contact/">Contact Us</a></li>
+					</ul>
+					<ul class="navigation-bar navigation-bar-right">
+						<li class="featured"><a class="btn btn-sm btn-outline-color" href="https://github.com/CouchCMS/CouchCMS">GitHub Repository</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 
+	<section class="section dark-text" >
+		<div class="container">
+        <!-- start -->
         <a class="report-bug" data-title="comments" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/comments.html" itemprop="item"><span itemprop="name">comments</span><meta content="3" itemprop="position"/></a></li>
-                </ul><form action="../search.html" class="search_form" method="get" name="search_form">
-                <label for="search"><strong>Search</strong></label>
-                <input id="search_input" name="q" required type="text" value=""/>
-                <input id="search_submit" type="submit" value="Go"/>
-            </form>
-
-            <article><h1 id="comments">comments</h1>
+                </ul><article><h1 id="comments">comments</h1>
 <p>Please see <a href="../concepts/using-comments.html"><strong>Core Concepts - Comments</strong></a> for a full discussion of the Comments tag.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
@@ -116,24 +137,37 @@ It can be constrained into fetching comments from only certain pages by setting 
 </ul>
 </article>
         </div>
-    </div>
+        <!-- end -->
+		</div>
+	</section>
 
-    <footer>
-        <div class="wrapper">
-            <p>&copy; 2010-2013 Webzyme Softwares Pvt. Ltd. All Rights Reserved</p>
-            <ul class="credits">
-                <li>Website designed by <a href="http://davortomic.com">Davor Tomic</a></li>
-                <li>Icons by <a href="http://famfamfam.com/lab/icons/silk/">FamFamFam</a></li>
-            </ul>
-            <ul class="footnav">
-                <li><a class="twitter" href="http://twitter.com/CouchCMS" target="_blank"><i><strong>follow us</strong> on twitter</i></a></li>
-                <li><a class="backtotop"><i>Top</i></a></li>
-            </ul>
-        </div>
-    </footer>
+    <section>&nbsp;</section>
 
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/ga.js"></script>
+	<footer id="footer" class="footer light-text">
+		<div class="container">
+			<div class="footer-content row">
+				<div class="col-sm-12 social-wrap col-xs-12">
+					<strong class="heading">Follow us on Twitter</strong>
+					<ul class="list-inline socials">
+						<li><a href="http://twitter.com/CouchCMS"><span class="icon icon-socialmedia-07"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">&copy; 2010-2017 Webzyme Softwares Pvt. Ltd. All Rights Reserved</div>
+	</footer>
+
+	<div class="back-to-top"><i class="fa fa-angle-up fa-3x"></i></div>
+
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="../assets/js/jquery-1.11.3.min.js?ver=1"></script>
+	<![endif]-->
+	<!--[if (gte IE 9) | (!IE)]><!-->
+		<script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js?ver=1"></script>
+	<!--<![endif]-->
+
+	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/startuply.js"></script>
+    <script type="text/javascript" src="../assets/js/ga.js"></script>
 </body>
 </html>

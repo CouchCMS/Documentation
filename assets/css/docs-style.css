@@ -1,0 +1,80 @@
+/*
+***********************************************************
+*
+* Title:		main.css
+* Website:		couchcms.com
+* Browser(s): 	All (except IE)
+*
+* Author: 		Davor Tomic, Atomic Pixel
+* Copyright:	Webzyme Softwares Pvt. Ltd. 2011
+* Created: 		2011/11/02
+*
+* This code is not in the public domain and must not be
+* copied or modified without authorisation by the author
+* and copyright holders.
+*
+***********************************************************
+*/
+/* ------------------
+    BASIC TYPOGRAPHY
+   ------------------ */
+
+h1 { font-size:1.97em; font-weight:bold; line-height:1; margin-bottom:13.28px /* 44.8 px - 31.52 px */; text-shadow:0 2px 0 #fff }
+h2 { font-size:1.618em; font-weight:bold; line-height:1.4; margin-bottom:8.56px }
+h3 { font-size:1.218em; font-weight:bold; margin-bottom:0.5em }
+h4 { font-size:1.0em; font-weight:bold; margin-bottom:2px }
+
+p, ul { margin-bottom:1.4em }
+li { list-style:disc outside; margin:0 0 0.3em 1em }
+ul.navigation-bar, ul.navigation-bar li{ margin:0 }
+form li { list-style:none }
+footer p { margin-bottom:0 }
+small { font-size:0.753em; text-transform:uppercase }
+article img { border:1px solid #ccc; display:block; margin-bottom:1em; padding:6px; max-width: 100%; height: auto;}
+
+a { color:#8c0000; text-decoration:none }
+a:hover { border-bottom:1px dotted #888 }
+/* exceptions */
+.logo:hover, .button:hover { border-bottom:none }
+
+ul ul { margin-bottom: 0; margin-left: 1.4em; margin-top: 0.5em;}
+
+/* TRANSITIONS
+a { -moz-transition:all 0.2s ease-out; -webkit-transition:all 0.2s ease-out; -o-transition:all 0.2s ease-out; transition:all 0.2s ease-out }*/
+
+/* ===== CONTENT ===== */
+
+.dne > h1 { padding-top:1.5em; margin-bottom:0.5em; font-size:4em; text-align:center; }
+.dne > h2 { margin-bottom:0.5em; font-size:1.75em; text-align:center; color:#444; }
+.dne > p { text-align:center; }
+
+/* DOCUMENTATION */
+
+.report-bug { display:block; position:fixed; right:0; bottom:111px; z-index:1; width:32px; height:32px; padding:8px 12px; border-width:1px 0 1px 1px; border-style:solid; border-color:#c8c8c8; border-radius:6px 0 0 6px; background-color:#ebebeb; box-shadow:0 1px 2px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.75) inset; }
+.report-bug:hover { border-bottom:1px solid #c8c8c8; background-color:#e5e5e5; }
+.report-bug > img { vertical-align:top; }
+
+.docs article li { list-style:inside circle; margin:0.5em 0 0.5em 0.5em }
+
+.breadcrumbs { margin:0 0 1em; overflow:hidden; padding-bottom:0.1em; max-width:700px }
+.breadcrumbs li { float:left; list-style:none; margin:0 }
+.breadcrumbs li:after { content:">"; margin:0 0.5em }
+.breadcrumbs li:last-child:after { content:"" }
+	.ie8 .breadcrumbs li { margin-right:0.5em }
+	.ie8 .breadcrumbs li:after { content:""; margin:0 }
+	.ie8 .breadcrumbs a:after { content:">"; margin:0 0 0 0.5em }
+	.ie8 .breadcrumbs li:last-child a:after { content:""; margin:0 }
+.text-link { color:inherit; cursor:default; }
+.text-link:hover { border-bottom:0; }
+
+.error, .notice, .success, pre, .error > code, .notice > code, .success > code, li > code, div.gs-no-results-result > .gs-snippet { display:block; border:1px solid; -moz-border-radius:6px; -webkit-border-radius:6px; -o-border-radius:6px; border-radius:6px; padding:0.5em 1em }
+.error { background:#fbe3e4; border-color:#fbc2c4; color:#8a1f11 }
+.notice, div.gs-no-results-result > .gs-snippet { background:#fff6bf; border-color:#ffd324; color:#514721 }
+.success { background:#e6efc2; border-color:#c6d880; color:#264409 }
+pre, .error > code, .notice > code, .success > code, li > code { background:#f9f9f8; border-color:#e6e6e3; color:#555; margin-bottom:1.4em; overflow-x:auto; overflow-y:hidden; white-space:pre }
+.error > code, .notice > code, .success > code { margin-bottom:0.4em; white-space:pre-wrap; }
+div.gs-no-results-result > .gs-snippet { margin:32px 0 0; }
+
+article > table > tbody > tr > td, article > table > thead > tr > th, article > table > caption { vertical-align:top; padding:4px 10px 4px 5px; }
+article > table > thead > tr > th { white-space:nowrap; }
+article > table{ margin-bottom:1.4em; }
