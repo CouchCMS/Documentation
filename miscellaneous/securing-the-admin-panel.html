@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../miscellaneous.html" itemprop="item"><span itemprop="name">Miscellaneous</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../miscellaneous/securing-the-admin-panel.html" itemprop="item"><span itemprop="name">Securing the Admin Panel</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="securing-the-admin-panel">Securing the Admin Panel</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="securing-the-admin-panel">Securing the Admin Panel</h1>
 <p>The &#39;couch&#39; folder placed within your site is the sole entry into the admin panel.<br/>
 Understandably, access to the &#39;couch&#39; folder should be restricted to dissuade malicious users from trying to break into it (although there are steps in place to prevent this from happening).</p>
 <p>Prior to version 1.1, one way of doing so was renaming the &#39;couch&#39; folder to anything else.<br/>

@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/pagination.html" itemprop="item"><span itemprop="name">Pagination</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="pagination">Pagination</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="pagination">Pagination</h1>
 <p><a href="../tags-reference/pages.html"><strong><em>Pages</em></strong></a>, <a href="../tags-reference/search.html"><strong><em>search</em></strong></a> and <a href="../tags-reference/comments.html"><strong><em>comments</em></strong></a> tags can fetch many more items than that set by the <em>limit</em> parameter.<br/>
 In such cases, it is normal to display the items in a paginated manner i.e. split across several pages with navigational buttons provided to access the pages.<br/>
 These tags, apart from the variables set to describe the current item being iterated through, set several variables that provide information about the current status of the tag&#39;s loop. Many of these variables can be used to display the fetched items in a paginated fashion.</p>

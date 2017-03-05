@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/events-calendar.html" itemprop="item"><span itemprop="name">Events Calendar</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="events-calendar">Events Calendar</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="events-calendar">Events Calendar</h1>
 <p>Couch has a handy tag named calendar that can be used to quickly display the traditional matrix of weeks and days belonging to a month. Additionaly, we can associate a clonable template with this tag to make it display the pages cloned from the template as entries of the calendar.</p>
 <p>It shouldn&#39;t be difficult to see that to build an Events Calendar, we can create a regular clonable template (let us call it <em>events.php</em>). Each cloned page will then represent an event. The publish date of a cloned page can represent the scheduled date for the event it represents. For all the other data that needs to be displayed for an event, editable regions can be created the usual way.</p>
 <p>This <em>events.php</em> template then can be associated with a calendar to display the events (cloned pages) on the dates they are to fall on.</p>

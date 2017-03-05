@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/gravatar.html" itemprop="item"><span itemprop="name">gravatar</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="gravatar">gravatar</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="gravatar">gravatar</h1>
 <p>Given an email address, the <strong>gravatar</strong> tag outputs an HTML &lt;img&gt; tag (or link only). The source of this image is set to the Gravatar image registered for this email at <em>gravatar.com</em>. If the email is not registered, the default image is output.</p>
 <pre><code>&lt;cms:gravatar email=&quot;johndoe@gmail.com&quot; size=&quot;60&quot; /&gt;
 </code></pre><h2 id="parameters">Parameters</h2>

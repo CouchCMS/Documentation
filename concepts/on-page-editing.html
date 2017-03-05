@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/on-page-editing.html" itemprop="item"><span itemprop="name">On Page Editing</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="on-page-editing">On Page Editing</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="on-page-editing">On Page Editing</h1>
 <p>When a site-owner notices some content on her website that needs alteration, the current workflow in Couch (as in most other CMSes) dictates that she leave the page being currently viewed to enter the admin-panel. Once in the admin-panel, she needs to hunt down the page in question, find the relevant editable region, make the desired changes to it and finally save the page for the changes to appear on the front-end.</p>
 <p>Apart form the obvious disconnect between the place where change is required and where the change needs to be done, there is one more issue with this approach - usually the way the text being edited appears in the admin-panel is nothing like how it does on the front-end (the typography, the colors etc. seldom match). This necessitates a jumping back and forth between the admin-panel and the front-end to make sure the changes turn up displaying as expected.</p>
 <p>An alternative to the mentioned dedicated admin-panel paradigm could be where the user simply clicks right on the place that requires changes (or on a nearby link), edits the content on the page itself and saves. This is &#39;On Page&#39; editing. Hardly a new concept really, and with the obvious benefits discussed so far you might well ask why most CMSes (including Couch) do not use it?</p>

@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/forms.html" itemprop="item"><span itemprop="name">Forms</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="forms">Forms</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="forms">Forms</h1>
 <p>Forms are an essential part of any website and even the simplest of website is likely to have atleast one form - the contact form.<br/>
 Creating a form in HTML is a relatively simple affair. What is not so simple is creating a validation routine that allows only a properly filled up form to be submitted. This usually entails coding up a PHP script that does all the validations upon form submission and takes necessary actions on successful validation or otherwise.</p>
 <p>Couch takes away this pain of coding validation routines for your forms by doing this automatically for you.<br/>

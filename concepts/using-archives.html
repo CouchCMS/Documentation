@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/using-archives.html" itemprop="item"><span itemprop="name">Archives</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="archives">Archives</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="archives">Archives</h1>
 <p>For some types of templates, like <em>blog</em> and <em>news</em>, it is useful to archive the cloned pages by certain time periods e.g. group together pages by years, months or days.<br/>
 <a href="../tags-reference/archives.html"><strong><em>Archives</em></strong></a> tag is used to find out all the past time periods (years, months and days) during which atleast one page has been published.</p>
 <p>The following snippet will simply list all the monthly periods that contain alleast one published page -</p>

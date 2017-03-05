@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/page_exists.html" itemprop="item"><span itemprop="name">page_exists</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="page_exists">page_exists</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="page_exists">page_exists</h1>
 <p>The <strong>page_exists</strong> tag checks whether or not a cloned page, the name of which is given to it as a parameter, exists.<br/>
 It returns a &#39;1&#39; if the page exists else it returns a &#39;0&#39;.</p>
 <pre><code>&lt;cms:page_exists &#39;contact-us&#39; masterpage=&#39;index.php&#39; /&gt;

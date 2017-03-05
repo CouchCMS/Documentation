@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../miscellaneous.html" itemprop="item"><span itemprop="name">Miscellaneous</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../miscellaneous/smart_embed.html" itemprop="item"><span itemprop="name">Smart embed - an alternative method of structuring sites</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="smart-embed-an-alternative-method-of-structuring-sites">Smart embed - an alternative method of structuring sites</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="smart-embed-an-alternative-method-of-structuring-sites">Smart embed - an alternative method of structuring sites</h1>
 <p>If you have been using Couch for anytime now, you are no doubt familiar with the various <a href="../concepts/views.html"><strong>views</strong></a> encountered while dealing with clonable pages.</p>
 <p>A typical (skeletal) code handling the views in a template could go something like this</p>
 <pre><code>&lt;cms:if k_is_page &gt;

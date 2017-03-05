@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/get_custom_field.html" itemprop="item"><span itemprop="name">get_custom_field</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="get_custom_field">get_custom_field</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="get_custom_field">get_custom_field</h1>
 <p>The <strong>get_custom_field</strong> tag can be used to fetch the value contained within any editable region defined within any template.</p>
 <p>It is an alternative method to using the <strong>pages</strong> tag and is well suited for fetching values from single fields (as opposed to the <strong>pages</strong> tag that fetches values of all the editable regions in a page).</p>
 <pre><code>&lt;cms:get_custom_field &#39;site_name&#39; masterpage=&#39;globals.php&#39; /&gt;

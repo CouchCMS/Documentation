@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/rss-feeds.html" itemprop="item"><span itemprop="name">RSS Feeds</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="rss-feeds">RSS Feeds</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="rss-feeds">RSS Feeds</h1>
 <p>Let us first see how a RSS feed is created manually (i.e. without using Couch or any other CMS) and then we&#39;ll see how to automate the task by retrofitting Couch into it.</p>
 <p>For our example, we&#39;ll suppose you publish news items on your website and wish to offer these news items as a RSS feed.<br/>
 Place the following snippet within a plain text file and name it, say, <em>rss.xml</em> (make sure there is no space between the beginning of the file and the <em>&lt;?xml version=&quot;1.0&quot;?&gt;</em> statement).</p>

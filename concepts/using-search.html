@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/using-search.html" itemprop="item"><span itemprop="name">Search</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="search">Search</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="search">Search</h1>
 <p>Given a single word or several words, Couch supports searching for them through all the defined <a href="editable-regions.html"><strong>editable regions</strong></a> of your templates (and a few of the system fields - namely the <em>title</em> and <em>name</em> fields) and give back all the pages that contain these words.</p>
 <p class="notice">
     Couch uses MySQL&#39;s <strong>Fulltext search</strong> for this purpose. An advantage of this is that Couch can assign different weightages to words apprearing at different places in a page and fetch back pages ordered according to their calculated relevance.<br/>

@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/cloned-pages.html" itemprop="item"><span itemprop="name">Cloned Pages</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="cloned-pages">Cloned Pages</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="cloned-pages">Cloned Pages</h1>
 <p>Some templates represent one single page of a website, e.g. <em>about-us.php</em> and <em>contact-us.php</em>.<br/>
 To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the <a href="../tags-reference/editable.html"><strong><em>editable</em></strong></a> tags and Couch will make them editable.</p>
 <p>Some other templates, e.g. <em>blog.php</em> or <em>property.php</em>, cannot possibly represent one single page.<br/>

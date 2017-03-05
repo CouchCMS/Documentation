@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../miscellaneous.html" itemprop="item"><span itemprop="name">Miscellaneous</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../miscellaneous/migrating-from-development-to-deployment-server.html" itemprop="item"><span itemprop="name">Migrating from development to deployment server</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="migrating-from-development-to-deployment-server">Migrating from development to deployment server</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="migrating-from-development-to-deployment-server">Migrating from development to deployment server</h1>
 <p>Two additions have been made to Couch 1.1 that will ease the task of a designer who develops a client&#39;s site on his own (usually local) machine and then finally deploys it onto his client&#39;s host.</p>
 <p><strong>1.</strong> The first change that has been made is that the editable regions of type &#39;image&#39;, &#39;thumbnail&#39; and &#39;file&#39; no longer store the full path of their contents. As an example, suppose the designer sets up a page and uploads an image to show up on it. Prior to version 1.1, Couch would have stored the full path of the image in the database. Since the machine the designer is working on is his local one, this path also references his local machine. It is not difficult to see that after he migrates this site to the deployment server, these paths will still continue to point to his local machine and he&#39;ll be required to rectify them all manually.<br/>
 With version 1.1, Couch internally stores all the paths relative to the server it is executing from. This completely solves the issue outlined above.</p>

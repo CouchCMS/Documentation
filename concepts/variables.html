@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/variables.html" itemprop="item"><span itemprop="name">Variables</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="variables">Variables</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="variables">Variables</h1>
 <p>Don&#39;t get put off by that programming term. Variable is simply a place that can hold different values at different times.</p>
 <p>You can use the Couch tag named <a href="../tags-reference/set.html"><strong><em>set</em></strong></a> to place values within variables. For example the following snippet -</p>
 <pre><code>&lt;cms:set my_message=&#39;Hello World&#39; /&gt;

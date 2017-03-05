@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/using-comments.html" itemprop="item"><span itemprop="name">Comments</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="comments">Comments</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="comments">Comments</h1>
 <p>Couch allows the submission of comments on pages created by it but this must first be permitted by you.<br/>
 To do so, the <em>commentable</em> parameter of the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag has to be set to &#39;1&#39; for each template that you wish to allow comments for.<br/>
 Thus if, for example, comments are to be turned on for pages cloned out of <em>blog.php</em>, the following change needs to be done to the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag (usually placed in the HTML head tag) within blog.php -</p>

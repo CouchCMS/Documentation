@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/embed.html" itemprop="item"><span itemprop="name">embed</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="embed">embed</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="embed">embed</h1>
 <p>The <strong>Embed</strong> tag can be used to divide your templates into manageable chunks.<br/>
 Parts of the templates that are reused at several places can be placed in discrete files and the files then embedded via this tag.<br/>
 e.g. most of the templates share the same header code. This can be cut and pasted into a file named &#39;header.inc&#39; (the extension does not matter - it can be anything) and the file then saved into &#39;couch/snippets&#39; folder.</p>

@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/google-maps.html" itemprop="item"><span itemprop="name">Google Maps</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="google-maps">Google Maps</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="google-maps">Google Maps</h1>
 <p>It is common now to find websites integrating with Google Maps. The &#39;Contact Us&#39; page usually displays one although maps are often also found associated with individual items being represented by pages e.g. properties, members etc.</p>
 <p>Couch abstracts away the complexity of creating a Google map behind a simple tag - the <a href="../tags-reference/google_map.html"><strong><em>google_map</em></strong></a> tag.</p>
 <p>You&#39;ll need a key from Google to use its API. If you don&#39;t have one, get one free from the site mentioned below and set it at the following location <em>config.php</em> -</p>

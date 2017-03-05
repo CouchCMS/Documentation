@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/process_comment.html" itemprop="item"><span itemprop="name">process_comment</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="process_comment">process_comment</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="process_comment">process_comment</h1>
 <p>The <strong>process_comment</strong> tag is meant to be used at the successful submission of a comments form.<br/>
 It simply tries to insert the submitted comment into the database. If it is successful in inserting the comment, the tag sets the <em>k_process_comment_success</em> variable otherwise it sets the <em>k_process_comment_error</em> variable in the context of its parent tag.</p>
 <p>Please see <a href="../concepts/using-comments.html"><strong>Core Concepts - Comments</strong></a> for an example of this tag&#39;s usage.</p>

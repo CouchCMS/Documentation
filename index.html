@@ -61,7 +61,12 @@
         <!-- start -->
         <a class="report-bug" data-title="Untitled" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="./assets/img/bug.png"/></a>
 
-        <div id="content"><article><h1 id="documentation">Documentation</h1>
+        <div id="content"><form action="./search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="documentation">Documentation</h1>
 <ul>
 <li><a href="requirements.html">Requirements</a></li>
 <li><a href="concepts.html">Core Concepts</a></li>

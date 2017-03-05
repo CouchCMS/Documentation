@@ -63,7 +63,12 @@
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../miscellaneous.html" itemprop="item"><span itemprop="name">Miscellaneous</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../miscellaneous/dynamic-folders.html" itemprop="item"><span itemprop="name">Dynamic Folders</span><meta content="3" itemprop="position"/></a></li>
-                </ul><article><h1 id="dynamic-folders">Dynamic Folders</h1>
+                </ul><form action="../search.html" id="search_form" method="get" name="search_form">
+                <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
+                <input id="search_submit" type="submit" value="Go"/>
+            </form>
+
+            <article><h1 id="dynamic-folders">Dynamic Folders</h1>
 <p>Uptil now the only way of creating virtual folders for templates in Couch had been by using the &#39;folder&#39; tag e.g. -</p>
 <pre><code>&lt;cms:folder name=&quot;asia&quot; title=&quot;Asian News&quot;&gt;
     &lt;cms:folder name=&quot;china&quot; title=&quot;China News&quot; /&gt;
