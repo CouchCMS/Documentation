@@ -56,8 +56,8 @@ a { -moz-transition:all 0.2s ease-out; -webkit-transition:all 0.2s ease-out; -o-
 
 .docs article li { list-style:inside circle; margin:0.5em 0 0.5em 0.5em }
 
-.breadcrumbs { margin:0 0 1em; overflow:hidden; padding-bottom:0.1em; max-width:700px }
-.breadcrumbs li { float:left; list-style:none; margin:0 }
+.breadcrumbs { float:left; margin:0; overflow:hidden }
+.breadcrumbs li { float:left; list-style:none; line-height:46px; margin:0 }
 .breadcrumbs li:after { content:">"; margin:0 0.5em }
 .breadcrumbs li:last-child:after { content:"" }
 	.ie8 .breadcrumbs li { margin-right:0.5em }
@@ -65,7 +65,12 @@ a { -moz-transition:all 0.2s ease-out; -webkit-transition:all 0.2s ease-out; -o-
 	.ie8 .breadcrumbs a:after { content:">"; margin:0 0 0 0.5em }
 	.ie8 .breadcrumbs li:last-child a:after { content:""; margin:0 }
 .text-link { color:inherit; cursor:default; }
-.text-link:hover { border-bottom:0; }
+.text-link:hover { border-bottom:0; color:inherit; }
+
+#content > article { clear:both; }
+#search_form { float:right; margin-bottom:1em; }
+#search_input { width:160px; }
+#search_submit { min-width:auto; }
 
 .error, .notice, .success, pre, .error > code, .notice > code, .success > code, li > code, div.gs-no-results-result > .gs-snippet { display:block; border:1px solid; -moz-border-radius:6px; -webkit-border-radius:6px; -o-border-radius:6px; border-radius:6px; padding:0.5em 1em }
 .error { background:#fbe3e4; border-color:#fbc2c4; color:#8a1f11 }
