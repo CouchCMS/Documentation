@@ -104,7 +104,7 @@ Next we'll place the editable tags defining the two editable regions we identifi
 Notice how we are instructing the image tag to crop the uploaded image to fit a dimension of 610x150\.
 
 Refresh _blog.php_ in your browser (needless to say now that you must be logged in as the super-admin) and then visit the admin panel.<br/>
-Clicking the bog section should reveal that Couch has created the two editable regions for us -
+Clicking the blog section should reveal that Couch has created the two editable regions for us -
 
 ![](../../../../assets/img/contents/portfolio-site-25.png)
 
