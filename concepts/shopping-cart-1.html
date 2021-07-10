@@ -563,12 +563,12 @@ Add this one final tag to the template and it is ready to execute the checkout a
         <li><strong>logo</strong> The URL of merchant&#39;s 50 x 150 pixel logo that appears at PayPal.</li>
         <li><strong>return_url</strong> URL of the page where the buyer is prompted by PayPal to return after successful transaction.</li>
         <li><strong>cancel_url</strong> URL of the page where the buyer is prompted by PayPal to return after cancelling the transaction.</li>
-        <li><strong>empty_cart</strong> This tag empties the cart before redirecting to PayPal. Setting this parameter to &#39;0&#39; prevents this behaviour.</li>
+        <li><strong>empty_cart</strong> This parameter empties the cart before redirecting to PayPal. Setting this parameter to &#39;0&#39; prevents this behaviour.</li>
     </ul>
 </div>
 
 <p><br/></p>
-<p class="notice">The seller&#39;s email shown at PayPal can be set in the &#39;<em>addons/cart/config.php</em>&#39; file.</p>
+<p class="notice">The seller&#39;s email shown at PayPal can be set in the &#39;<em>couch/config.php</em>&#39; file.</p>
 
 <p>To explain the code above, the <strong><em>pp_payment_gateway</em></strong> tag, by default, empties the cart before redirecting to PayPal. As we are still in the phase of testing the cart, it might be a good idea to prevent it from doing so. The &#39;empty_cart&#39; parameter set to &#39;0&#39; switches off this behaviour.<br/>
 As for the &#39;shipping_address&#39; parameter, if there are any shippable items in the cart (the <strong><em>pp_count_shippable_items</em></strong> tag gives us this count), we set it to &#39;1&#39;. Else, we set it to &#39;0&#39;. This makes PayPal allow the buyer to set the shipping address, when required.</p>
