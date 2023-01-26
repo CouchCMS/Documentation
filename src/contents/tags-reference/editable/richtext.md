@@ -166,7 +166,7 @@ The toolbar above the editor contains a drop-down list that allows the user to a
 
 This is a very powerful technique to give the user access to a set of predefined styles that correspond to the styles used by your website and thus ensure that any formatting that he applies will be in concordance to your design.
 
-The method that [CKEditor](http://ckeditor.com/) provides requires you to create a JavaScript file defining the list elements in a particular (JSON) format. You can see a sample file provided by them [here](http://www.couchcms.com/docs/style/ckeditor_custom_styles.js). Even if you do not happen to be conversant with JavaScript, it shouldn't be too difficult to figure out how this sample script works.
+The method that [CKEditor](http://ckeditor.com/) provides requires you to create a JavaScript file defining the list elements in a particular (JSON) format. You can see a sample file provided by them [here](https://www.couchcms.com/docs/style/ckeditor_custom_styles.js). Even if you do not happen to be conversant with JavaScript, it shouldn't be too difficult to figure out how this sample script works.
 
 As an example, suppose that the websites stylesheet has certain **classes** defined that set the background and border to specific colors
 

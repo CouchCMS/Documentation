@@ -274,7 +274,7 @@ Coupons can be used to provide **cart level discount** and/or **free shipping** 
 This simple implementation of the coupon feature is an example of using Couch's cloned pages in tandem with CouchCart to add features not originally available.<br/>
 The finished version of our sample site contains a template named '_coupons.php'_. It is a regular Couch template defining a set of editable regions. Execute it as super-admin to register it with Couch. In the admin-panel, we can now create coupons as cloned pages of this template.
 
-<p class="notice">**NOTE:** The '_End Date_' field defined by this template makes use of the [**Date-Picker addon**](http://www.couchcms.com/forum/viewtopic.php?f=8&t=7126) for ease in inputting dates. If you don't wish to use the addon, you may safely remove the _editable name='datepicker'_ region from the template.</p>
+<p class="notice">**NOTE:** The '_End Date_' field defined by this template makes use of the [**Date-Picker addon**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=7126) for ease in inputting dates. If you don't wish to use the addon, you may safely remove the _editable name='datepicker'_ region from the template.</p>
 
 ### Creating coupons
 

@@ -7,7 +7,7 @@ template: default.html
 
 # Contact Form
 
-[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](http://www.couchcms.com/docs/code/contact.zip)
+[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](https://www.couchcms.com/docs/code/contact.zip)
 
 The _contact.html_ that comes with Aurelius provides a contact form as well as some contact details.
 

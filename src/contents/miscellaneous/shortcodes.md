@@ -252,7 +252,7 @@ We end this section by providing some very useful (and real world) examples of s
 ## Ready to use examples of shortcodes
 
 Following is a sample _kfunctions.php_ file, defining some useful shortcodes, which you can use directly within your projects:<br/>
-\[[**Download kfunctions.php**](http://www.couchcms.com/docs/code/kfunctions.zip)\]
+\[[**Download kfunctions.php**](https://www.couchcms.com/docs/code/kfunctions.zip)\]
 
 ```
 <?php

@@ -120,7 +120,7 @@ You'll see Couch uploading and processing the images one after another.
 <p class="error">
     You might receive errors at this point stating something like 'Access not allowed' or 'Failed to open stream' etc. This can happen if your server is running under **SAFE MODE restrictions** (this mode has been deprecated but you still might run into some paranoid hosts insisting on using it).<br/>
     To by-pass these restrictions you'll have to lend a helping hand to PHP by creating some folders and setting their permissions manually.<br/>
-    This thread of our forum discusses the procedure in detail - [**http&#58;//www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703**](http://www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703).
+    This thread of our forum discusses the procedure in detail - [**http&#58;//www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703**](https://www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703).
 </p>
 
 Once all the images are successfully uploaded, the admin-panel you were on will refresh and there you have it -
@@ -261,8 +261,8 @@ As can be seen, the 'exif' tag makes available all the Exif data within its open
 
 To jump-start your development, here is a complete sample gallery template that can be used as a guide (or even 'as-is' if you are in a hurry - the markup is neutral enough to go with almost any design).
 
-[**Download the template here**](http://www.couchcms.com/docs/code/gallery.zip).<br/>
-[**Download the Slimbox version here**](http://www.couchcms.com/docs/code/gallery_using_slimbox.zip) (this is another version of the same template using JavaScript (Slimbox) to display the images).
+[**Download the template here**](https://www.couchcms.com/docs/code/gallery.zip).<br/>
+[**Download the Slimbox version here**](https://www.couchcms.com/docs/code/gallery_using_slimbox.zip) (this is another version of the same template using JavaScript (Slimbox) to display the images).
 
 ![](../../assets/img/contents/photo-gallery-6.jpg)
 

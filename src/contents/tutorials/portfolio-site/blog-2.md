@@ -333,7 +333,7 @@ Within _blog.php_, find the form that is meant to submit comments -
 ![](../../../../assets/img/contents/portfolio-site-108.png)
 
 We could modify this form to make Couch fit into it. However, since a comments submission form is such a standard component of a blog, in this case we can save some time by reusing the submission form that is described in Couch documentation of [comments](../../../../concepts/using-comments.html).<br/>
-Copy and save that sample form into a file named *comments\_form.html* [\[download it\]](http://www.couchcms.com/docs/code/blog.zip) and save this into the snippet folder of Couch.<br/>
+Copy and save that sample form into a file named *comments\_form.html* [\[download it\]](https://www.couchcms.com/docs/code/blog.zip) and save this into the snippet folder of Couch.<br/>
 Replace the original form block in _blog.php_ shown above with -
 
 ![](../../../../assets/img/contents/portfolio-site-109.png)

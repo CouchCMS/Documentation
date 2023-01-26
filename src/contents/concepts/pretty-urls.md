@@ -37,7 +37,7 @@ Not only do they appear friendlier to the visitors but they also offer immense b
 
 <p class="notice">
     For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod\_rewrite' module enabled.<br/>
-    To make sure this module is indeed available at your server, [please use this utility available at our forums](http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
+    To make sure this module is indeed available at your server, [please use this utility available at our forums](https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
 </p>
 
 ### ENABLING PRETTY URLS
@@ -84,7 +84,7 @@ There are two problems very commonly encountered once prettyURLs are turned on:
 
 #### 1. The pages throw 'Internal Server Error'.
 
-Please make sure that your server has the required *mod\_rewrite* module enabled. As mentioned above, [you can use this utility for testing it](http://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
+Please make sure that your server has the required *mod\_rewrite* module enabled. As mentioned above, [you can use this utility for testing it](https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
 
 #### 2. The pages do come up but all the CSS, JS or image links are broken.
 

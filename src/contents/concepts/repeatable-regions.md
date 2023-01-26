@@ -14,7 +14,7 @@ Each portfolio item will have, of other things, a number of images associated wi
 We know that we can define an editable region of type 'image' for each image however the problem here is that **we cannot know beforehand exactly how many images any portfolio item might have**.<br/>
 Some item might require only a single image while another one might require 20 images (or even more).
 
-The solution used up till now ([http&#58;//www.couchcms.com/forum/viewtopic.php?p=790\#p790](http://www.couchcms.com/forum/viewtopic.php?p=790#p790)) has been to work out the maximum number of images an item could possibly have and then define as many editable regions.<br/>
+The solution used up till now ([http&#58;//www.couchcms.com/forum/viewtopic.php?p=790\#p790](https://www.couchcms.com/forum/viewtopic.php?p=790#p790)) has been to work out the maximum number of images an item could possibly have and then define as many editable regions.<br/>
 This works but it is far from perfect -
 
 *   It clutters up the admin panel. If suppose we define twenty regions for the images - while editing, every single portfolio page will display all the twenty regions even if the page requires only one image.

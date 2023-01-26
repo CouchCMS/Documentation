@@ -506,4 +506,4 @@ The code above results in the following form -
 
 ![](../../assets/img/contents/forms-3.png)
 
-The form displayed above uses form .css for display \[[Download it](http://www.couchcms.com/docs/code/form.css)\].
+The form displayed above uses form .css for display \[[Download it](https://www.couchcms.com/docs/code/form.css)\].

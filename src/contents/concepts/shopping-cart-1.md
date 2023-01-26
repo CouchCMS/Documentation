@@ -28,12 +28,12 @@ CouchCMS now ships with a shopping cart component designed to fill this niche - 
 
 True to CouchCMS's philosophy where it is your design that always takes center-stage (the CMS always getting 'retrofitted' within the existing HTML markup), CouchCart simply provides a set of tags that can be added to any HTML shopping cart design to convert it into a fully functional e-store in no time.
 
-To demonstrate the use of these tags, we'll take a sample HTML template (kindly provided by [@cheesypoof](http://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) and convert it into a working e-commerce site.
+To demonstrate the use of these tags, we'll take a sample HTML template (kindly provided by [@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) and convert it into a working e-commerce site.
 
-[**Download original HTML version**](http://www.couchcms.com/docs/code/simple.zip)<br/>
-[**Download couchified version**](http://www.couchcms.com/docs/code/simple-couchified.zip)
+[**Download original HTML version**](https://www.couchcms.com/docs/code/simple.zip)<br/>
+[**Download couchified version**](https://www.couchcms.com/docs/code/simple-couchified.zip)
 
-Before commencing, you might want to take a look at what our finished site would look like - [**here is a demo of it**](http://www.couchcms.com/demo/simple/).<br/>
+Before commencing, you might want to take a look at what our finished site would look like - [**here is a demo of it**](https://www.couchcms.com/demo/simple/).<br/>
 Please keep in mind that the design has been kept intentionally simple to focus only on the specific functionality added by the cart component to CouchCMS. Coupled with the existing features of Couch (e.g. Categories, menus, Related Pages etc.) a much more full-featured site can easily be created.
 
 <p class="notice">CouchCart builds upon the existing features of Couch, as such a basic familiarity with Couch's core concepts is assumed for one to understand fully the discussion that follows. If you are new to Couch, please first take some time to explore how things work in Couch. Our [**step-by-step tutorial**](../../tutorials/portfolio-site.html) showing how to build a site from scratch using Couch is a good place to begin with.</p>
@@ -69,7 +69,7 @@ If the templates you use have other names, please modify the config file to indi
 <p class="error">Don't forget that a Couch template that is present in a subfolder will have the name of the subfolder appended to it. If in any doubt, hover your mouse over the template's entry in Couch admin-panel sidebar to see the template's name.</p>
 
 With the caveats out of the way, we can get down to work now.<br/>
-The original HTML design is [attached in zip form here](http://www.couchcms.com/docs/code/simple.zip). Extract all files and place them in your test site's root (or in a sub-folder if you so desire - just make sure to remember that the template names will now have the subfolder appended to them).
+The original HTML design is [attached in zip form here](https://www.couchcms.com/docs/code/simple.zip). Extract all files and place them in your test site's root (or in a sub-folder if you so desire - just make sure to remember that the template names will now have the subfolder appended to them).
 
 ## Creating the products
 
@@ -87,7 +87,7 @@ That is totally for you to decide and will really depend on the kind of products
 **One editable region is mandatory**, though. It is the one that is used to input the product's price and **has to be named '*pp\_price*'**.<br/>
 There are two other editable regions that, while not being mandatory (i.e. you can skip defining them if not required), carry special significance for CouchCart. The first amongst them is '*pp\_options*'. A region by this name is used with products that support 'variants' or 'options' e.g. colors, sizes etc. The other is '*pp\_requires\_shipping*'. This is used for physical products that need to be taken into account while calculating the shipping charges.
 
-In the couchified version of this site ([attached below in zip form](http://www.couchcms.com/docs/code/simple-couchified.zip)), you'll find the index.php containing definitions for a set of editable regions. You can use that as a starting point for defining your own. For now let us just copy/paste the entire _&lt;cms:template&gt;_ block containing the full set of definitions. This what the edit-panel for the products looks like once the regions have been defined:
+In the couchified version of this site ([attached below in zip form](https://www.couchcms.com/docs/code/simple-couchified.zip)), you'll find the index.php containing definitions for a set of editable regions. You can use that as a starting point for defining your own. For now let us just copy/paste the entire _&lt;cms:template&gt;_ block containing the full set of definitions. This what the edit-panel for the products looks like once the regions have been defined:
 
 ![](../../assets/img/contents/shopping-cart-1.png)
 
@@ -95,7 +95,7 @@ As you can see, there are a few groups of editable regions that we've not talked
 
 ## Product Options (or Variants)
 
-Take a look at the products listed on the [demo site](http://www.couchcms.com/demo/simple/).<br/>
+Take a look at the products listed on the [demo site](https://www.couchcms.com/demo/simple/).<br/>
 There are only three of them but each is available in several variants or options e.g. The 'Paper Clips' come in three different sizes - Large, Medium and Small.
 
 ![](../../assets/img/contents/shopping-cart-2.png)
@@ -902,14 +902,14 @@ These basically are the core steps. Notice that every action requires two Ajax c
 Rest of the functions in there simply serve auxiliary roles e.g. to show or hide the pop-up window etc.
 
 The JS file is there for you to see and it shouldn't be difficult to modify it to suit your design's need.<br/>
-As for the 'cart-modal.php', please take a look at it in the [couchified version](http://www.couchcms.com/docs/code/simple-couchified.zip) of our site and you'll find that it is almost an exact copy of 'cart.php' (with only the now not-required HTML elements like HEAD and BODY removed).
+As for the 'cart-modal.php', please take a look at it in the [couchified version](https://www.couchcms.com/docs/code/simple-couchified.zip) of our site and you'll find that it is almost an exact copy of 'cart.php' (with only the now not-required HTML elements like HEAD and BODY removed).
 
 ## A little break...
 
 So, there we have it. A fully functional shopping cart that required only minimal changes to our static HTML design.
 
-[**Download original HTML version**](http://www.couchcms.com/docs/code/simple.zip)<br/>
-[**Download couchified version**](http://www.couchcms.com/docs/code/simple-couchified.zip)
+[**Download original HTML version**](https://www.couchcms.com/docs/code/simple.zip)<br/>
+[**Download couchified version**](https://www.couchcms.com/docs/code/simple-couchified.zip)
 
 Of course, there is more to an e-commerce site than just a shopping cart :)<br/>
 No e-commerce site can do without functions like discounts, shipping charges and taxes.<br/>

@@ -9,7 +9,7 @@ template: default.html
 
 Before beginning this section, please allow us to clarify the distinction between two terms you'll come across very often in Couch - _page_ and _template_.
 
-[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](http://www.couchcms.com/docs/code/blog.zip)
+[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](https://www.couchcms.com/docs/code/blog.zip)
 
 The way we use both the terms, a page of a web site is what we access using a distinct address or URL. A template, on the other hand, is a physical php file (containing regular HTML and some Couch tags) that is used to generate a page.
 

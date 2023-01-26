@@ -9,7 +9,7 @@ template: default.html
 <br/>
 ### The Menu
 
-[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](http://www.couchcms.com/docs/code/final.zip)
+[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](https://www.couchcms.com/docs/code/final.zip)
 
 The links in the menu at the top of all the five templates are still pointing to the original files of Aurelius (those with the _.html_ extensions). We need to link them to our new templates.
 
@@ -205,7 +205,7 @@ With these changes, the CSS files should now load properly in all the templates.
 
 ### Parting words
 
-This brings us finally to the end of this tutorial ([Download the finished code](http://www.couchcms.com/docs/code/final.zip)).<br/>
+This brings us finally to the end of this tutorial ([Download the finished code](https://www.couchcms.com/docs/code/final.zip)).<br/>
 We started with a plain HTML template and transformed it into a dynamic, fully CMS enabled site that even the most tech-challenged client should be able to manage easily.<br/>
 The real beauty of all this was that we were able to accomplish it without writing any PHP at all (except for the two lines that remain the same for every template).<br/>
 There is a lot more that you can do with Couch. It is a highly flexible system and there are several ways of accomplishing the same thing in it. Please take a look at the [documentation](../../../../index.html) for a fuller treatment of all its features.

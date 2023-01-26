@@ -35,7 +35,7 @@ The following example will make the relationship clear where we are displaying a
 </cms:calendar>
 ```
 
-<p class="notice">For all the examples of calendar on this page, we'll use _calendar.css_ to format the display. You can use the same CSS for your work or create your own CSS \[[Download](http://www.couchcms.com/docs/code/calendar.css)\].</p>
+<p class="notice">For all the examples of calendar on this page, we'll use _calendar.css_ to format the display. You can use the same CSS for your work or create your own CSS \[[Download](https://www.couchcms.com/docs/code/calendar.css)\].</p>
 
 Executing the code given above should result in the following -
 

@@ -12,7 +12,7 @@ Apart form the obvious disconnect between the place where change is required and
 
 An alternative to the mentioned dedicated admin-panel paradigm could be where the user simply clicks right on the place that requires changes (or on a nearby link), edits the content on the page itself and saves. This is 'On Page' editing. Hardly a new concept really, and with the obvious benefits discussed so far you might well ask why most CMSes (including Couch) do not use it?
 
-The reason is that implementing on-page editing entails some very sticky technical issues that, almost always, out-weigh the expected advantages. This issue has been [discussed before on our forums](http://www.couchcms.com/forum/viewtopic.php?p=10146#p10146) as has been [done by others elsewhere](http://allinthehead.com/retro/357/the-lure-of-on-page-editing).
+The reason is that implementing on-page editing entails some very sticky technical issues that, almost always, out-weigh the expected advantages. This issue has been [discussed before on our forums](https://www.couchcms.com/forum/viewtopic.php?p=10146#p10146) as has been [done by others elsewhere](http://allinthehead.com/retro/357/the-lure-of-on-page-editing).
 
 Broadly speaking, the challenges are two-fold:
 
@@ -45,7 +45,7 @@ To demonstrate how onpage editing works in Couch, I've gone ahead and completely
 
 ![](../../assets/img/contents/on-page-editing-1.png)
 
-You can [**download the ported version**](http://www.couchcms.com/docs/code/miniport.zip) and take it for a spin to see for yourself how everything works.
+You can [**download the ported version**](https://www.couchcms.com/docs/code/miniport.zip) and take it for a spin to see for yourself how everything works.
 
 For this particular tutorial, I'll take you step-by-step through the process of adding onpage editing to only the first section of the template.<br/>
 Following is the section we'll be working with.
@@ -421,4 +421,4 @@ Please see the 'custom\_styles' parameter of [Editable region type: richtext](..
 
 This tag disables any of the three above-mentioned tags that come after it in a template.
 
-#### [**Download Sample Template**](http://www.couchcms.com/docs/code/miniport.zip)
+#### [**Download Sample Template**](https://www.couchcms.com/docs/code/miniport.zip)

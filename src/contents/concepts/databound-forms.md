@@ -80,7 +80,7 @@ This is where the new 'databound form' feature comes in.<br/>
 You see, this simply connects an existing front-end form with existing back-end editable regions (in other words - 'binds' a Couch form with Couch database i.e. editable regions. This, incidentally, also explains why we chose to call this feaure 'DataBound Forms').
 
 So, when working with databound forms, we always start off with two concepts that are already well known to us - [**form**](../forms.html) and [**editable regions**](../editable-regions.html).<br/>
-This is the form we'll be working on (kindly provided by [@cheesypoof](http://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) -
+This is the form we'll be working on (kindly provided by [@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) -
 
 ![](../../assets/img/contents/databound-forms-1.png)
 
@@ -517,7 +517,7 @@ The onus of securing up the form lies squarely on our shoulders.
 
 Since the form is Couch managed, the default security offered by the CMS against serious attacks like XSS, CSRF, SQL injection etc. covers the form as well. Nothing needs to be done on this front. Preventing spam submissions will require some work though.
 
-As discussed elsewhere on our forum (Fighting Spam - [http&#58;//www.couchcms.com/forum/viewtopic.php?f=8&t=7047](http://www.couchcms.com/forum/viewtopic.php?f=8&t=7047)), Captcha has long lost its efficacy in stopping spam. We have to look at other measures now. As discussed in the mentioned thread, there are two main sources of spam to contend with -
+As discussed elsewhere on our forum (Fighting Spam - [http&#58;//www.couchcms.com/forum/viewtopic.php?f=8&t=7047](https://www.couchcms.com/forum/viewtopic.php?f=8&t=7047)), Captcha has long lost its efficacy in stopping spam. We have to look at other measures now. As discussed in the mentioned thread, there are two main sources of spam to contend with -
 
 1.  Spambots
 2.  Human
@@ -880,4 +880,4 @@ So, in a sense, Couch then would become a 'CMS maker' instead of just a CMS.
 
 Keeping my fingers crossed :)
 
-#### [**Download Source Code**](http://www.couchcms.com/docs/code/db_code.zip)
+#### [**Download Source Code**](https://www.couchcms.com/docs/code/db_code.zip)

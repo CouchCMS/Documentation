@@ -7,7 +7,7 @@ template: default.html
 
 # Starting off simple - the About-Us page
 
-Of all the five sections that Aurelius has (i.e. _About-Us_, _Portfolio_, _Blog_, _Contact-Us_ and _Home_), the _Portfolio_ and _Blog_ sections will need the 'cloned pages' feature of Couch because they consist of multiple pages each cloned out of the same template.[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](http://www.couchcms.com/docs/code/about.zip)
+Of all the five sections that Aurelius has (i.e. _About-Us_, _Portfolio_, _Blog_, _Contact-Us_ and _Home_), the _Portfolio_ and _Blog_ sections will need the 'cloned pages' feature of Couch because they consist of multiple pages each cloned out of the same template.[<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](https://www.couchcms.com/docs/code/about.zip)
 
 We'll tackle the cloned pages in the next chapter. For now let us begin with a simpler section that doesn't require cloning. The _About Us_ page will serve our purpose.<br/>
 Before proceeding further, make sure that you are logged into Couch using the super-admin account that got created during installation.
