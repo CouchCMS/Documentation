@@ -69,25 +69,25 @@
             </form>
 
             <article><h1 id="contact-form">Contact Form</h1>
-<p><a href="http://www.couchcms.com/docs/code/contact.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p><a href="https://www.couchcms.com/docs/code/contact.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
 <p>The <em>contact.html</em> that comes with Aurelius provides a contact form as well as some contact details.</p>
 <p>Let us begin by attaching Couch to this template.<br/>
 Take the usual steps to do so -<br/>
-Change the extension of <em>contact.html</em> to make it <em>contact.php</em><br/>
+Change the extension of <em>contact.html</em> to make it _contact.php_<br/>
 Add the two lines of boilerplate PHP code to enclose the contents of this file and use the template tag to change the display-name of the template.</p>
 <p><img src="../../assets/img/contents/portfolio-site-148.png" alt=""></p>
 <p><img src="../../assets/img/contents/portfolio-site-149.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/contact.php</em> while logged on as the super-admin.<br/>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/contact.php">www.mytestsite.com/contact.php</a></em> while logged on as the super-admin.<br/>
 This will hook up Couch to the template.</p>
 <h3 id="defining-editable-regions">Defining editable regions</h3>
 <p>As can be seen, there are three distinct parts to this template - An introductory paragraph at the top, the contact form and a sidebar containing several contact details.</p>
 <p><img src="../../assets/img/contents/portfolio-site-150.png" alt=""></p>
-<p>Of these three, the contact form will be handled by the Couch form and input tags. The introductory top paragraph can be easily made into an editable region. The sidebar too can be turned into an editable region - we only need to decide how granular the division needs to be. We can, if needed, create an editable region each for the <em>Address</em>, <em>Email</em> and <em>Social Profiles</em> sections or create one single region for the entire sidebar.<br/>
+<p>Of these three, the contact form will be handled by the Couch form and input tags. The introductory top paragraph can be easily made into an editable region. The sidebar too can be turned into an editable region - we only need to decide how granular the division needs to be. We can, if needed, create an editable region each for the <em>Address_, _Email</em> and <em>Social Profiles</em> sections or create one single region for the entire sidebar.<br/>
 For the purpose of this tutorial, we&#39;ll create one editable region that will span both the <em>Address</em> as well as the <em>Email</em> section and will sub-divide the <em>Social Profiles</em> section into one editable region for each social site.</p>
 <p>Let us define the editable regions for the introductory paragraph and the address and email in the sidebar by directly enclosing these parts by Couch editable tags -</p>
 <p><img src="../../assets/img/contents/portfolio-site-151.png" alt=""></p>
 <p><img src="../../assets/img/contents/portfolio-site-152.png" alt=""></p>
-<p>Refreshing <em>http&#58;//www.mytestsite.com/contact.php</em> by revisiting it as super-admin will yield the following results for the changes made so far -</p>
+<p>Refreshing <em>http&#58;//<a href="http://www.mytestsite.com/contact.php">www.mytestsite.com/contact.php</a></em> by revisiting it as super-admin will yield the following results for the changes made so far -</p>
 <p><img src="../../assets/img/contents/portfolio-site-153.png" alt=""></p>
 <p>Editing any of these regions and saving the changes will cause the modifications to appear on the page immediately.</p>
 <p>As for the <em>Social Profiles</em> section, instead of defining its editable regions by enclosing the actual elements with the editable tags in-situ (the way we did for the previous sections), we&#39;ll define them within the template tag (the way we did in <em>blog</em> and <em>portfolio</em> sections) and use variables to display them.<br/>
@@ -95,7 +95,7 @@ The reason for this is that, as you&#39;ll soon see, we&#39;ll be outputting the
 <p>Make the following changes to the template tag at the top -</p>
 <p><img src="../../assets/img/contents/portfolio-site-154.png" alt=""></p>
 <p>Note how we have grouped the five text type editable regions by creating an editable region of type group and linking the other regions to it.<br/>
-Refresh <em>http&#58;//www.mytestsite.com/contact.php</em> and then visit the admin section. The following regions should appear -</p>
+Refresh <em>http&#58;//<a href="http://www.mytestsite.com/contact.php">www.mytestsite.com/contact.php</a></em> and then visit the admin section. The following regions should appear -</p>
 <p><img src="../../assets/img/contents/portfolio-site-155.png" alt=""></p>
 <p>Since we have defined these editable regions in the template tag, for their contents to appear on the web page we need to use the variables representing them at the required places.<br/>
 The original HTML code for the profiles section is -</p>
@@ -111,12 +111,12 @@ We can deploy simple conditional tags to handle this -</p>
 <p>We enclose each LI element representing an icon within Couch conditional if tag that tests for the result of Couch not_empty tag. The not_empty tag returns 1 only if the variable it is testing has any value within it. This way an icon is output only if the associated variable is not empty.</p>
 <p class="notice">
     In case you are wondering why we are using the construct<br/>
-    <strong>&lt;cms:if &quot;&lt;cms:not_empty flickr_id /&gt;&quot;&gt; Display this &lt;/cms:if&gt;</strong><br/>
+    **&lt;cms:if "&lt;cms:not\_empty flickr\_id /&gt;"&gt; Display this &lt;/cms:if&gt;**<br/>
     instead of the more straightforward<br/>
-    <strong>&lt;cms:if flickr_id &gt; Display this &lt;/cms:if&gt;</strong><br/>
-    The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some <strong>&lt;BR/&gt;</strong> or empty <strong>&lt;P&gt;</strong> elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.<br/>
+    **&lt;cms:if flickr\_id &gt; Display this &lt;/cms:if&gt;**<br/>
+    The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some **&lt;BR/&gt;** or empty **&lt;P&gt;** elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.<br/>
     <br/>
-    The not_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.<br/>
+    The not\_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.<br/>
     The editable regions in the case of profiles section above are not of richtext type, hence the simpler conditional check would have worked the same as the one we used.
 </p>
 
@@ -165,7 +165,7 @@ The original code -</p>
 <p><img src="../../assets/img/contents/portfolio-site-167.png" alt=""></p>
 <p>Note how all the HTML input tags simply needed the &#39;cms:&#39; prefix to convert them to their Couch equivalents.<br/>
 The textarea tag required a little more work. It had to be replaced by its Couch input tag that had a type of &#39;textarea&#39;.</p>
-<p>Access <em>http&#58;//www.mytestsite.com/contact.php</em> and the form should appear, as well as work, exactly the same as it did with the original HTML tags.<br/>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/contact.php">www.mytestsite.com/contact.php</a></em> and the form should appear, as well as work, exactly the same as it did with the original HTML tags.<br/>
 Uptil now we&#39;ve used the Couch tags to simply generate the form. The real power of these tags, however, lies in processing the submitted form.<br/>
 The form, as it was originally built, makes use of JavaScript to validate the inputs and display the errors (try submitting the form with empty fields to see it in action).<br/>
 JavaScript is, of course, a client-side technology and cannot be relied upon for validating forms because it is only trivial to turn off JavaScript in a browser.<br/>

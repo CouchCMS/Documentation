@@ -73,8 +73,7 @@
 <pre><code>&lt;cms:send_mail from=&#39;admin@mysite.com&#39; to=&#39;johndoe@gmail.com&#39; subject=&#39;Feedback from your site&#39;&gt;
 Anything here (between the opening and closing tags of send_mail)
 will form the body of the email that will be sent.
-&lt;/cms:send_mail&gt;
-</code></pre><p>Anything enclosed within the opening and closing tags will form the body of the message to be sent.<br/>
+&lt;/cms:send_mail&gt;</code></pre><p>Anything enclosed within the opening and closing tags will form the body of the message to be sent.<br/>
 Each line should be separated with a LF (\n). Lines should not be larger than 70 characters.</p>
 <p class="notice">There is no provision (yet) for attachments.</p>
 
@@ -94,10 +93,10 @@ Each line should be separated with a LF (\n). Lines should not be larger than 70
 <h3 id="to">to</h3>
 <p>Receiver, or receivers of the mail.</p>
 <p>The formatting of this string must comply with <a href="http://www.faqs.org/rfcs/rfc2822">» RFC 2822</a>. Some examples are:</p>
-<p>user@example.com<br/>
-user@example.com, anotheruser@example.com<br/>
-User &lt;user@example.com&gt;<br/>
-User &lt;user@example.com&gt;, Another User &lt;anotheruser@example.com&gt;</p>
+<p><a href="mailto:user@example.com">user@example.com</a><br/>
+<a href="mailto:user@example.com">user@example.com</a>, <a href="mailto:anotheruser@example.com">anotheruser@example.com</a><br/>
+User &lt;<a href="mailto:user@example.com">user@example.com</a>&gt;<br/>
+User &lt;<a href="mailto:user@example.com">user@example.com</a>&gt;, Another User &lt;<a href="mailto:anotheruser@example.com">anotheruser@example.com</a>&gt;</p>
 <h3 id="cc">cc</h3>
 <p>Carbon copy receivers.</p>
 <h3 id="bcc">bcc</h3>

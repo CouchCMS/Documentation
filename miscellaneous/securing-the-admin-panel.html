@@ -82,19 +82,17 @@ Couch 1.1 advances the method one step ahead and allows you to change the name o
 <pre><code>// 1b.
 // For security purpose, the &#39;index.php&#39; file of Couch can be renamed to anything else.
 // If you do so, uncomment the following line and enter the new name.
-//define( &#39;K_ADMIN_PAGE&#39;, &#39;kachua.php&#39; )
-</code></pre><p>Uncomment the &#39;define&#39; after adding our new name to it. Thus it will now become</p>
+//define( &#39;K_ADMIN_PAGE&#39;, &#39;kachua.php&#39; )</code></pre><p>Uncomment the &#39;define&#39; after adding our new name to it. Thus it will now become</p>
 <pre><code>// 1b.
 // For security purpose, the &#39;index.php&#39; file of Couch can be renamed to anything else.
 // If you do so, uncomment the following line and enter the new name.
-define( &#39;K_ADMIN_PAGE&#39;, &#39;prada78.php&#39; )
-</code></pre><p>(notice how we have removed the two slashes from the beginning of the &#39;define&#39;).</p>
-<p>From now on, your admin panel will be accessible only through <em>http&#58;//www.yoursite.com/couch/prada78.php</em></p>
-<p><strong>3.</strong> The two steps given above should be enough but anyone accessing <em>http&#58;//www.yoursite.com/couch/</em> will be shown a &#39;File not found&#39; error.<br/>
+define( &#39;K_ADMIN_PAGE&#39;, &#39;prada78.php&#39; )</code></pre><p>(notice how we have removed the two slashes from the beginning of the &#39;define&#39;).</p>
+<p>From now on, your admin panel will be accessible only through <em>http&#58;//<a href="http://www.yoursite.com/couch/prada78.php">www.yoursite.com/couch/prada78.php</a></em></p>
+<p><strong>3.</strong> The two steps given above should be enough but anyone accessing <em>http&#58;//<a href="http://www.yoursite.com/couch/">www.yoursite.com/couch/</a></em> will be shown a &#39;File not found&#39; error.<br/>
 This is not bad at all but will give a clue to someone looking for gaining entry that the index file has been renamed.<br/>
-To make our defense complete, you&#39;ll find a file named &#39;_index.php&#39; (that is an underscore before the &#39;index&#39;). Make a copy of it and rename the copy to &#39;index.php&#39; (i.e. remove the underscore). Upon accessing <em>http&#58;//www.yoursite.com/couch/</em> the usual login box will be shown, however this &#39;index.php&#39; is a specially crafted one and will NEVER allow a login to be successful. So any one trying to get in can try for as long as he wishes but will never be able to get it in.<br/>
+To make our defense complete, you&#39;ll find a file named &#39;_index.php&#39; (that is an underscore before the &#39;index&#39;). Make a copy of it and rename the copy to &#39;index.php&#39; (i.e. remove the underscore). Upon accessing <em>http&#58;//<a href="http://www.yoursite.com/couch/">www.yoursite.com/couch/</a></em> the usual login box will be shown, however this &#39;index.php&#39; is a specially crafted one and will NEVER allow a login to be successful. So any one trying to get in can try for as long as he wishes but will never be able to get it in.<br/>
 This completes the illusion and will make someone trying to get in to bark up a different tree altogether</p>
-<p class="success">Be sure to remember yourself that the admin panel is now accessed through <em>http&#58;//www.yoursite.com/couch/prada78.php</em> and not <em>http&#58;//www.yoursite.com/couch/</em> lest you find yourself wondering why you are unable to login :).</p>
+<p class="success">Be sure to remember yourself that the admin panel is now accessed through _http&#58;//www.yoursite.com/couch/prada78.php_ and not _http&#58;//www.yoursite.com/couch/_ lest you find yourself wondering why you are unable to login :).</p>
 </article>
         </div>
         <!-- end -->

@@ -94,8 +94,8 @@ An Administrator can -</p>
 <p>All the users belonging to the Administrator group have identical access permissions and can add/delete/modify each other&#39;s pages.</p>
 <h4 id="3-registered-users">3. Registered Users</h4>
 <p>The super-admin/administrators can create registered users by placing them in either of these two lower-level accounts -<br/>
-<em>Authenticated User (Special)</em><br/>
-<em>Authenticated User</em><br/>
+_Authenticated User (Special)_<br/>
+_Authenticated User_<br/>
 These two accounts are meant for visitors who are registered with the website.</p>
 <p>Registered users can -</p>
 <ul>
@@ -143,8 +143,7 @@ If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_tit
 <p>All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the <em>access_level</em> parameter of the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag to the minimum level required. Thus -</p>
 <pre><code>&lt;cms:template title=&#39;News&#39; clonable=&#39;1&#39; access_level=&#39;2&#39;&gt;
     &lt;!-- Editable regions and Folders are usually defined here --&gt;
-&lt;/cms:template&gt;
-</code></pre><p>- to access any of the pages cloned from the template above the user must atleast be an <em>Authenticated User</em>. None of the pages would be accessible without being logged in.</p>
+&lt;/cms:template&gt;</code></pre><p>- to access any of the pages cloned from the template above the user must atleast be an <em>Authenticated User</em>. None of the pages would be accessible without being logged in.</p>
 <h3 id="page-level-access">Page level access</h3>
 <p>Access to any individual page can be controlled by selecting the minimum access level required from the dropdown list visible while editing the page in Admin Panel -</p>
 <p><img src="../assets/img/contents/users.png" alt=""></p>
@@ -166,8 +165,7 @@ If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_tit
         You need to be logged in as an Authenticated User (Special) or higher.&lt;p&gt;
         Please &lt;a href=&quot;&lt;cms:show k_logout_link /&gt;&quot;&gt;Logout&lt;/a&gt; and login again with the right credentials.
     &lt;/cms:if&gt;
-&lt;/cms:if&gt;
-</code></pre><p>In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.<br/>
+&lt;/cms:if&gt;</code></pre><p>In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.<br/>
 If it is not, it could either be that the user is not logged-in or that he is logged-in but the access level of his account is lesser than the required level.<br/>
 We check this by the <em>k_logged_out</em> variable and then show the appropriate message.<br/>
 Note how we use the <em>k_login_link</em> and <em>k_logout_link</em> to diplay the links that the user can click to either login or logout.</p>

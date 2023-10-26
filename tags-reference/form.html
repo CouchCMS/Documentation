@@ -96,9 +96,9 @@ By setting the <em>anchor</em> parameter to &#39;1&#39;, Couch adds an HTML anch
 <li>k_success</li>
 <li>k_error</li>
 </ul>
-<h3 id="k-_success">k_success</h3>
+<h3 id="k_success">k_success</h3>
 <p>If the form successfully validates, the names and values of each fields are concatenated using a &#39;\n&#39; newline character to get a single string and this string is placed in a this variable.</p>
-<h3 id="k-_error">k_error</h3>
+<h3 id="k_error">k_error</h3>
 <p>If the form fails to validate, the names of each failed fields along with their error messages are concatenated using a &#39;|&#39; pipe character to get a single string and this string is placed in this variable.</p>
 <p>In addition to the two above mentioned variables, the values of the fields are also made available individually by setting discrete variables for each field. The names of the variables, however, differ between the success and error conditions.<br/>
 Suppose a form has two fields named <em>name</em> and <em>password</em>. Upon successful validation of both fields, two variables named after the two fields will get set - <em>frm_name</em> and <em>frm_password</em>. Each will contain the value submitted through them.<br/>

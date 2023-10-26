@@ -70,9 +70,7 @@
 
             <article><h1 id="log">log</h1>
 <p>The <strong>log</strong> tag can be used to save arbitrary text into a log file. This may be useful for debugging or for actually keeping a log of events.</p>
-<pre><code>&lt;cms:log &#39;Just a test message&#39; /&gt;
-</code></pre><pre><code>&lt;cms:log some_msg /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:log &#39;Just a test message&#39; /&gt;</code></pre><pre><code>&lt;cms:log some_msg /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>msg</li>
 <li>file</li>
@@ -82,9 +80,7 @@
 <h3 id="file">file</h3>
 <p>The log file into which the <em>msg</em> is to be logged. If this parameter is skipped, a log file named &#39;log.txt&#39; in your site&#39;s root is used (created if not already existing) for logging.<br/>
 You can specify a path with the file that is relative to the site&#39;s root.</p>
-<pre><code>&lt;cms:log some_msg file=&#39;mylog.txt&#39; /&gt;
-</code></pre><pre><code>&lt;cms:log k_page_title file=&#39;couch/uploads/file/secure/mylog.txt&#39; /&gt;
-</code></pre><p>In the last snippet we are saving the log file in a subfolder of Couch which has a .htaccess file protecting its contents from being directly downloaded.</p>
+<pre><code>&lt;cms:log some_msg file=&#39;mylog.txt&#39; /&gt;</code></pre><pre><code>&lt;cms:log k_page_title file=&#39;couch/uploads/file/secure/mylog.txt&#39; /&gt;</code></pre><p>In the last snippet we are saving the log file in a subfolder of Couch which has a .htaccess file protecting its contents from being directly downloaded.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 </article>

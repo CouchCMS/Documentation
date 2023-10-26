@@ -70,9 +70,9 @@
 
             <article><h1 id="events-calendar">Events Calendar</h1>
 <p>Couch has a handy tag named calendar that can be used to quickly display the traditional matrix of weeks and days belonging to a month. Additionaly, we can associate a clonable template with this tag to make it display the pages cloned from the template as entries of the calendar.</p>
-<p>It shouldn&#39;t be difficult to see that to build an Events Calendar, we can create a regular clonable template (let us call it <em>events.php</em>). Each cloned page will then represent an event. The publish date of a cloned page can represent the scheduled date for the event it represents. For all the other data that needs to be displayed for an event, editable regions can be created the usual way.</p>
+<p>It shouldn&#39;t be difficult to see that to build an Events Calendar, we can create a regular clonable template (let us call it _events.php_). Each cloned page will then represent an event. The publish date of a cloned page can represent the scheduled date for the event it represents. For all the other data that needs to be displayed for an event, editable regions can be created the usual way.</p>
 <p>This <em>events.php</em> template then can be associated with a calendar to display the events (cloned pages) on the dates they are to fall on.</p>
-<p class="notice">If you need an end date for your events, you can create an editable region of type <em>text</em> and set an appropriate regex validator on it to capture date in the proper format. Please see the last example on this page.</p>
+<p class="notice">If you need an end date for your events, you can create an editable region of type _text_ and set an appropriate regex validator on it to capture date in the proper format. Please see the last example on this page.</p>
 
 <h3 id="displaying-the-calendar">Displaying the calendar</h3>
 <p>The calender tag we mentioned has three auxillary tags associated with it - weeks, days and entries.<br/>
@@ -88,8 +88,7 @@ These three tags are slightly different from all the other Couch tags we have se
             &lt;/tr&gt;
         &lt;/cms:weeks&gt;
     &lt;/table&gt;
-&lt;/cms:calendar&gt;
-</code></pre><p class="notice">For all the examples of calendar on this page, we&#39;ll use <em>calendar.css</em> to format the display. You can use the same CSS for your work or create your own CSS [<a href="http://www.couchcms.com/docs/code/calendar.css">Download</a>].</p>
+&lt;/cms:calendar&gt;</code></pre><p class="notice">For all the examples of calendar on this page, we'll use _calendar.css_ to format the display. You can use the same CSS for your work or create your own CSS \[[Download](https://www.couchcms.com/docs/code/calendar.css)\].</p>
 
 <p>Executing the code given above should result in the following -</p>
 <p><img src="../assets/img/contents/calendar-1.png" alt=""></p>
@@ -111,7 +110,7 @@ Some of the variables that can be used are -</p>
 <em>k_year</em> - Number representing the year of the day<br/>
 <em>k_day_of_week</em> - Number representing the day of the week the day falls on<br/>
 <em>k_position</em> - One of these three values: <em>previous_month</em>, <em>current_month</em> or <em>next_month</em><br/>
-<em>k_timeline_position</em> - One of these three values: <em>past</em>, <em>present</em> or <em>future</em></p>
+<em>k_timeline_position</em> - One of these three values: <em>past_, _present</em> or <em>future</em></p>
 <p>We can use these variables to format the display of the calendar more finely.</p>
 <p>Let us start by adding a few headers</p>
 <pre><code>&lt;cms:calendar &gt;
@@ -133,8 +132,7 @@ Some of the variables that can be used are -</p>
             &lt;/tr&gt;
         &lt;/cms:weeks&gt;
     &lt;/table&gt;
-&lt;/cms:calendar&gt;
-</code></pre><p>The result of the changes -</p>
+&lt;/cms:calendar&gt;</code></pre><p>The result of the changes -</p>
 <p><img src="../assets/img/contents/calendar-2.png" alt=""></p>
 <p>Next we&#39;ll format the table cells to indicate whether the day represented by a cell lies in the past, present or future.<br/>
 The modified code of our calendar -</p>
@@ -167,15 +165,13 @@ The modified code of our calendar -</p>
             &lt;/tr&gt;
         &lt;/cms:weeks&gt;
     &lt;/table&gt;
-&lt;/cms:calendar&gt;
-</code></pre><p><img src="../assets/img/contents/calendar-3.png" alt=""></p>
+&lt;/cms:calendar&gt;</code></pre><p><img src="../assets/img/contents/calendar-3.png" alt=""></p>
 <p>Notice how for days that belong to previous and next months we set up a class named &#39;other_month&#39;. Also note how for the current day amongst the days of the month being shown, we mark the cell with a &#39;today&#39; class.</p>
 <p>The calendar generated is for the current date. To generate one for any arbitrary date, use the calendar tag&#39;s <em>date</em> parameter.<br/>
 For example, the following addition to our code will display the calendar for month of September, 2010 -</p>
 <pre><code>&lt;cms:calendar date=&#39;2010-09-01&#39; &gt;
     ...
-&lt;/cms:calendar&gt;
-</code></pre><h3 id="attaching-a-template-to-the-calendar">Attaching a template to the calendar</h3>
+&lt;/cms:calendar&gt;</code></pre><h3 id="attaching-a-template-to-the-calendar">Attaching a template to the calendar</h3>
 <p>A clonable template can be attached to a calendar, like the one we have created so far, by setting the <em>masterpage</em> parameter.<br/>
 Once a template gets associated with a calendar, the days tag starts supporting another tag named entries within it.<br/>
 The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through.<br/>
@@ -215,8 +211,7 @@ The days tag also sets a variable named <em>k_count_entries</em> to indicate the
             &lt;/tr&gt;
         &lt;/cms:weeks&gt;
     &lt;/table&gt;
-&lt;/cms:calendar&gt;
-</code></pre><p>Result of the changes -</p>
+&lt;/cms:calendar&gt;</code></pre><p>Result of the changes -</p>
 <p><img src="../assets/img/contents/calendar-4.png" alt=""></p>
 <p>The calendar above is well suited to be placed in a sidebar.<br/>
 Notice how we are displaying the dates that have cloned pages in a different color and how that cell is linked to an archive_view (daily archive) of the template that can be used to display all pages belonging to a particular day in a list-view.</p>
@@ -263,8 +258,7 @@ Notice how we are displaying the dates that have cloned pages in a different col
             &lt;/tr&gt;
         &lt;/cms:weeks&gt;
     &lt;/table&gt;
-&lt;/cms:calendar&gt;
-</code></pre><p>The changes will result in the following -</p>
+&lt;/cms:calendar&gt;</code></pre><p>The changes will result in the following -</p>
 <p><img src="../assets/img/contents/calendar-5.png" alt=""></p>
 <p>Notice how we used the class &#39;calendar_big&#39; with the table.<br/>
 Also notice how we used the entries tag to enumerate two of the cloned pages available within a day.<br/>
@@ -381,8 +375,7 @@ The &#39;skip_custom_fields&#39; parameter is set to &#39;1&#39; to avoid the ov
     &lt;/cms:if&gt;
 &lt;/BODY&gt;
 &lt;/HTML&gt;
-&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p>Points to note in the code above -</p>
+&lt;?php COUCH::invoke(); ?&gt;</code></pre><p>Points to note in the code above -</p>
 <ol>
 <li>We have defined editable regions to capture details about events.</li>
 <li>In the page-view of this template we display the details of the event in question.</li>

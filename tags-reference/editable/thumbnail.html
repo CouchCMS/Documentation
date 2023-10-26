@@ -69,14 +69,13 @@
             </form>
 
             <article><h1 id="type-thumbnail-">type = &#39;thumbnail&#39;</h1>
-<p>Editable region of type <em>thumbnail</em>, as the name suggests, is used to automatically create thumbnail images.</p>
+<p>Editable region of type _thumbnail_, as the name suggests, is used to automatically create thumbnail images.</p>
 <p><em>Thumbnail</em> type is different from all other types of editable regions in that the user does not directly edit anything within it. Instead it is attached to an existing editable region of type <em>image</em> which then becomes the source for the thumbnail. Any time the content of the <em>image</em> type is edited, the thumbnail attached to it also gets automatically updated.</p>
 <p>Once the thumbnail has been created, this editable region then holds its fully qualified URL.</p>
 <p class="notice">The thumbnail gets created in the same folder as that of the main image.</p>
 
 <p>Suppose we have an editable region, named <em>my_image</em>, of type <em>image</em> -</p>
-<pre><code>&lt;cms:editable name=&#39;my_image&#39; label=&#39;Image&#39; desc=&#39;Upload main image here&#39; type=&quot;image&quot; /&gt;
-</code></pre><p>To create a thumbnail automatically for any image that gets selected into it, we can define a new editable region of type <em>thumbnail</em> and associate it with the region above by using the <em>assoc_field</em> parameter -</p>
+<pre><code>&lt;cms:editable name=&#39;my_image&#39; label=&#39;Image&#39; desc=&#39;Upload main image here&#39; type=&quot;image&quot; /&gt;</code></pre><p>To create a thumbnail automatically for any image that gets selected into it, we can define a new editable region of type <em>thumbnail</em> and associate it with the region above by using the <em>assoc_field</em> parameter -</p>
 <pre><code>&lt;cms:editable
     name=&#39;my_image_thumb&#39;
     label=&#39;Image Thumbnail&#39;
@@ -85,8 +84,7 @@
     show_preview=&#39;1&#39;
     assoc_field=&#39;my_image&#39;
     type=&#39;thumbnail&#39;
-/&gt;
-</code></pre><p>The code above will result in something like this below the parent <em>image</em> type editable region -</p>
+/&gt;</code></pre><p>The code above will result in something like this below the parent <em>image</em> type editable region -</p>
 <p><img src="../../assets/img/contents/editable-thumbnail-1.jpg" alt=""></p>
 <p>Once the user selects an image into the main image region (and saves the page), the thumbnail gets created automatically -</p>
 <p><img src="../../assets/img/contents/editable-thumbnail-2.jpg" alt=""></p>
@@ -94,8 +92,7 @@
 <p class="success">To create multiple thumbnail images of the same image (one might be square, the other rectangular, perhaps), define multiple regions and associate them all with the same parent image.</p>
 
 <p>The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -</p>
-<pre><code>&lt;img src=&quot;&lt;cms:show my_image_thumb /&gt;&quot; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;img src=&quot;&lt;cms:show my_image_thumb /&gt;&quot; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <p>Apart from the parameters common to all types of editable regions, the regions of <em>thumbnail</em> type can take the following parameters -</p>
 <ul>
 <li>width</li>
@@ -115,46 +112,40 @@ If neither <em>width</em> nor <em>height</em> are specified, the resulting thumb
     width=&#39;100&#39;
     show_preview=&#39;1&#39;
     assoc_field=&#39;my_image&#39;
-    type=&#39;thumbnail&#39; /&gt;
-</code></pre><table>
+    type=&#39;thumbnail&#39; /&gt;</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:left">Parent Image (200 x 300)</th>
-<th style="text-align:left">Thumbnail (100 x 150)</th>
-<th style="text-align:left">Remarks</th>
+<th align="left">Parent Image (200 x 300)</th>
+<th align="left">Thumbnail (100 x 150)</th>
+<th align="left">Remarks</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-3.jpg" alt=""></td>
-<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-4.jpg" alt=""></td>
-<td style="text-align:left">The width was made 100px and the height was proportionately scaled to 150px so that the original proportion between the dimensions is retained.</td>
+<tbody><tr>
+<td align="left"><img src="../../assets/img/contents/editable-thumbnail-3.jpg" alt=""></td>
+<td align="left"><img src="../../assets/img/contents/editable-thumbnail-4.jpg" alt=""></td>
+<td align="left">The width was made 100px and the height was proportionately scaled to 150px so that the original proportion between the dimensions is retained.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>Specifying both the dimensions will create a thumbnail with each dimension of the specified values. The original proportion between the dimensions is preserved and hence this could lead to cropping off of any dimension that overshoots the specified value in the attempt to retain proportion. e.g.</p>
 <pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
     width=&#39;100&#39;
     height=&#39;80&#39;
     show_preview=&#39;1&#39;
     assoc_field=&#39;my_image&#39;
-    type=&#39;thumbnail&#39; /&gt;
-</code></pre><table>
+    type=&#39;thumbnail&#39; /&gt;</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:left">Parent Image (200 x 300)</th>
-<th style="text-align:left">Thumbnail (100 x 80)</th>
-<th style="text-align:left">Remarks</th>
+<th align="left">Parent Image (200 x 300)</th>
+<th align="left">Thumbnail (100 x 80)</th>
+<th align="left">Remarks</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-5.jpg" alt=""></td>
-<td style="text-align:left"><img src="../../assets/img/contents/editable-thumbnail-6.jpg" alt=""></td>
-<td style="text-align:left">The width was made 100px and the height was proportionately scaled resulting in a dimension of 150px. Since a height of only 80px was asked for, the surplus 70px were cropped off (35px equally from both sides with the two images aligned in the center).</td>
+<tbody><tr>
+<td align="left"><img src="../../assets/img/contents/editable-thumbnail-5.jpg" alt=""></td>
+<td align="left"><img src="../../assets/img/contents/editable-thumbnail-6.jpg" alt=""></td>
+<td align="left">The width was made 100px and the height was proportionately scaled resulting in a dimension of 150px. Since a height of only 80px was asked for, the surplus 70px were cropped off (35px equally from both sides with the two images aligned in the center).</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>As is obvious from the second example above, if both the dimensions are specified and the thumbnail&#39;s ratio does not match that of the parent image, the cropping that inevitably occurs can sometimes lead to unacceptable results. In the thumbnail above the most important part of the image has been cropped off. This can be rectified by asking Couch to recreate the thumbnail but this time aligning it to the top of the parent image instead of the default center.</p>
 <p><img src="../../assets/img/contents/editable-thumbnail-7.jpg" alt=""></p>
 <p>The following is the resulting thumbnail -</p>
@@ -167,15 +158,13 @@ If neither <em>width</em> nor <em>height</em> are specified, the resulting thumb
     show_preview=&#39;1&#39;
     quality=&#39;50&#39;
     assoc_field=&#39;my_image&#39;
-    type=&#39;thumbnail&#39; /&gt;
-</code></pre><p>You can set <em>quality</em> from 0 (worst quality, smaller file) to 100 (best quality, biggest file). The default value is 80.</p>
+    type=&#39;thumbnail&#39; /&gt;</code></pre><p>You can set <em>quality</em> from 0 (worst quality, smaller file) to 100 (best quality, biggest file). The default value is 80.</p>
 <h3 id="show_preview">show_preview</h3>
 <pre><code>&lt;cms:editable name=&#39;my_image_thumb&#39; label=&#39;Image Thumbnail&#39; desc=&#39;Thumbnail of main image&#39;
     width=&#39;100&#39;
     show_preview=&#39;1&#39;
     assoc_field=&#39;my_image&#39;
-    type=&#39;thumbnail&#39; /&gt;
-</code></pre><p>Setting show_preview to &#39;1&#39; makes Couch display a preview of the created thumbnail (as visible in the examples above). Omitting this parameter or explicitly setting it to &#39;0&#39; will make Couch display only a link to the thumbnail instead of the preview image.</p>
+    type=&#39;thumbnail&#39; /&gt;</code></pre><p>Setting show_preview to &#39;1&#39; makes Couch display a preview of the created thumbnail (as visible in the examples above). Omitting this parameter or explicitly setting it to &#39;0&#39; will make Couch display only a link to the thumbnail instead of the preview image.</p>
 <p><img src="../../assets/img/contents/editable-thumbnail-9.gif" alt=""></p>
 <h3 id="preview_width">preview_width</h3>
 <h3 id="preview_height">preview_height</h3>
@@ -185,8 +174,7 @@ If neither <em>width</em> nor <em>height</em> are specified, the resulting thumb
     show_preview=&#39;1&#39;
     preview_width=&#39;80&#39;
     assoc_field=&#39;my_image&#39;
-    type=&#39;thumbnail&#39; /&gt;
-</code></pre><p class="success">If both <em>preview_width</em> and <em>preview_height</em> are omitted, the thumbnail preview is of exactly the same dimensions as the thumbnail. Usually this is what you&#39;d want and you won&#39;t find yourself setting <em>preview_width</em> or <em>preview_height</em> too often.</p>
+    type=&#39;thumbnail&#39; /&gt;</code></pre><p class="success">If both *preview\_width* and *preview\_height* are omitted, the thumbnail preview is of exactly the same dimensions as the thumbnail. Usually this is what you'd want and you won't find yourself setting *preview\_width* or *preview\_height* too often.</p>
 
 <h2 id="related-tags">Related Tags</h2>
 <ul>

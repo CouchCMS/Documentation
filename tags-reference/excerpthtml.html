@@ -72,11 +72,9 @@
 <p>The <strong>excerptHTML</strong> tag can be used to create an excerpt of any HTML content that is enclosed within its opening and closing tags.<br/>
 Unlike the <strong>excerpt</strong> tag,  excerptHTML preserves the HTML formatting of the truncated contents (except for the HTML tags specified in its <em>ignore</em> parameter).</p>
 <p>Examples -</p>
-<pre><code>&lt;cms:excerptHTML&gt;&lt;cms:show content /&gt;&lt;/cms:excerptHTML&gt;
-</code></pre><pre><code>&lt;cms:excerptHTML count=&#39;130&#39; ignore=&#39;img&#39;&gt;
+<pre><code>&lt;cms:excerptHTML&gt;&lt;cms:show content /&gt;&lt;/cms:excerptHTML&gt;</code></pre><pre><code>&lt;cms:excerptHTML count=&#39;130&#39; ignore=&#39;img&#39;&gt;
     &lt;cms:show content /&gt;
-&lt;/cms:excerptHTML&gt;
-</code></pre><p>The snippets are outputting an excerpt of the value contained within the <em>content</em> variable.</p>
+&lt;/cms:excerptHTML&gt;</code></pre><p>The snippets are outputting an excerpt of the value contained within the <em>content</em> variable.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>count</li>
@@ -88,11 +86,9 @@ Unlike the <strong>excerpt</strong> tag,  excerptHTML preserves the HTML formatt
 <h3 id="ignore">ignore</h3>
 <p>The HTML elements to weed out of the excerpt. For example, you might not want to have any images in the excerpt.<br/>
 If you wish to ignore multiple tags, separate the tagnames by using comma e.g.</p>
-<pre><code>ignore=&#39;img, table&#39;
-</code></pre><h3 id="trail">trail</h3>
+<pre><code>ignore=&#39;img, table&#39;</code></pre><h3 id="trail">trail</h3>
 <p>By default the produced excerpt is appended with &#39;...&#39; (three ellipses). You can change this by using this parameter.</p>
-<pre><code>&lt;cms:excerptHTML trail=&quot;&amp;nbsp;(&lt;a href=\&quot;&lt;cms:show k_page_link /&gt;\&quot;&gt;read more..&lt;/a&gt;)&quot;&gt;&lt;cms:show blog_content /&gt;&lt;/cms:excerptHTML&gt;
-</code></pre><p>The snippet above will append a &#39;<em>read more..</em>&#39; link leading to the page-view of the item being shown in excerpted form.</p>
+<pre><code>&lt;cms:excerptHTML trail=&quot;&amp;nbsp;(&lt;a href=\&quot;&lt;cms:show k_page_link /&gt;\&quot;&gt;read more..&lt;/a&gt;)&quot;&gt;&lt;cms:show blog_content /&gt;&lt;/cms:excerptHTML&gt;</code></pre><p>The snippet above will append a &#39;_read more.._&#39; link leading to the page-view of the item being shown in excerpted form.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>

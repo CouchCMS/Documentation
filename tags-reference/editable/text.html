@@ -76,20 +76,20 @@ For this type, Couch creates a single line textbox for data input.</p>
  name=&#39;prop_title&#39;
  label=&#39;Title&#39;
  desc=&#39;Enter title of property here&#39;
- type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
-</code></pre><p>The code above will result in -</p>
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;</code></pre><p>The code above will result in -</p>
 <p><img src="../../assets/img/contents/editable-text.gif" alt=""></p>
 <p class="notice">
-    Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the <strong>Editable</strong> tag self-closing e.g.<br/>
+    Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
     <br/>
-    <code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
- desc=&#39;Enter title of property here&#39;
- type=&#39;text&#39; /&gt;</code>
+    ```
+<cms:editable name='prop_title' label='Title'
+ desc='Enter title of property here'
+ type='text' />
+    ```
 </p>
 
 <p>The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -</p>
-<pre><code>&lt;cms:show prop_title /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:show prop_title /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <p>In addition to the parameters common to all the types of editable regions, <em>text</em> accepts the following parameters</p>
 <ul>
 <li>width</li>
@@ -101,14 +101,12 @@ For this type, Couch creates a single line textbox for data input.</p>
 <pre><code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
  desc=&#39;Enter title of property here&#39;
  width=&#39;200&#39;
- type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
-</code></pre><h3 id="maxlength">maxlength</h3>
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;</code></pre><h3 id="maxlength">maxlength</h3>
 <p>The maximum number of characters that can be inputted by the user in this textbox can be constrained by setting this parameter. For example, the following code will prevent the user from entering more than 40 characters -</p>
 <pre><code>&lt;cms:editable name=&#39;prop_title&#39; label=&#39;Title&#39;
  desc=&#39;Enter title of property here&#39;
  maxlength=&#39;40&#39;
- type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;
-</code></pre><h3 id="search_type">search_type</h3>
+ type=&#39;text&#39;&gt;Awesome property!&lt;/cms:editable&gt;</code></pre><h3 id="search_type">search_type</h3>
 <p>Can be set to the following valid values -</p>
 <ul>
 <li>text</li>
@@ -117,7 +115,7 @@ For this type, Couch creates a single line textbox for data input.</p>
 </ul>
 <p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.<br/>
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either <em>integer</em> or <em>decimal</em> (if the value can be fractional).</p>
-<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See <a href="../pages.html#custom_field"><strong>Pages</strong></a>.</p>
+<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../../../pages.html#custom_field).</p>
 
 <h2 id="related-tags">Related Tags</h2>
 <ul>

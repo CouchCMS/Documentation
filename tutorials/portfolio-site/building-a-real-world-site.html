@@ -70,7 +70,7 @@
 
             <article><h1 id="building-a-real-world-site">Building a real-world site</h1>
 <p>To demonstrate the power and ease of Couch, we&#39;ll build a complete real world site from scratch using it.</p>
-<p>The template we have chosen to do so is Aurelius.<a href="http://www.couchcms.com/docs/code/Aurelius.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a><br/>
+<p>The template we have chosen to do so is Aurelius.<a href="https://www.couchcms.com/docs/code/Aurelius.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a><br/>
 It was originally created to be sold commercially at Themeforest. However the author later on changed his mind and very graciously released it as a free template.</p>
 <p>We chose this template because it has almost all the sections that you&#39;ll come across while building a similar site -</p>
 <ul>
@@ -80,19 +80,19 @@ It was originally created to be sold commercially at Themeforest. However the au
 <li>Contact Us</li>
 <li>Home</li>
 </ul>
-<p>It can be found at <a href="http://net.tutsplus.com/articles/news/free-website-template/"><em>http&#58;//net.tutsplus.com/articles/news/free-website-template/</em></a>. You can choose to download it from the aforesaid link or get it from <a href="http://www.couchcms.com/docs/code/Aurelius.zip">here</a> (our version has all unnecessary files removed).</p>
+<p>It can be found at <a href="http://net.tutsplus.com/articles/news/free-website-template/"><em>http&#58;//net.tutsplus.com/articles/news/free-website-template/</em></a>. You can choose to download it from the aforesaid link or get it from <a href="https://www.couchcms.com/docs/code/Aurelius.zip">here</a> (our version has all unnecessary files removed).</p>
 <h3 id="installing-aurelius">Installing Aurelius</h3>
 <p>Couch works by retrofitting within an existing working site. As such, our first step will be to get the static Aurelius site working.<br/>
 Unzip and upload all the files of Aurelius to your web server.</p>
 <p class="notice">
-    You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP&#39;ing the modified files back to the server every time you make any changes.<br/>
+    You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP'ing the modified files back to the server every time you make any changes.<br/>
     <br/>
-    A more pragmatic approach would be to use <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> or <a href="http://www.wampserver.com/en/">WampServer</a> on your local machine. This way you can directly make changes to local files.<br/>
+    A more pragmatic approach would be to use [XAMPP](http://www.apachefriends.org/en/xampp.html) or [WampServer](http://www.wampserver.com/en/) on your local machine. This way you can directly make changes to local files.<br/>
     <br/>
-    For this tutorial, we&#39;ll assume that your web server is hosted locally and hence will simply say &#39;edit this file and save it&#39; instead of &#39;edit this file locally and FTP it back to your server&#39;.
+    For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.
 </p>
 
-<p>If you are using the files downloaded from <em>http&#58;//net.tutsplus.com/</em>, remove the <em>Documentation</em> and <em>psd</em> folders as well as the <em>config.php</em>, <em>send_email.php</em> and <em>full_width.html</em> files as these will no longer be needed by us (this won&#39;t be necessary if you downloaded the template from our site).</p>
+<p>If you are using the files downloaded from <em>http&#58;//net.tutsplus.com/_, remove the _Documentation</em> and <em>psd</em> folders as well as the _config.php_, <em>send_email.php</em> and <em>full_width.html</em> files as these will no longer be needed by us (this won&#39;t be necessary if you downloaded the template from our site).</p>
 <p>The resulting folder structure should look like this -</p>
 <p><img src="../../assets/img/contents/portfolio-site-1.gif" alt=""></p>
 <p>Confirm that all the pages of this template are now accessible through the browser.<br/>
@@ -104,29 +104,29 @@ With the website in place, we can now move on to install Couch within it.</p>
 Open it in your text editor and find the following lines -</p>
 <p><img src="../../assets/img/contents/portfolio-site-3.png" alt=""></p>
 <p>Change the values to match those of your MySQL database.</p>
-<p>Upload the entire <em>couch</em> folder, along with the modified <em>config.php</em>, to your web server, which already contains the Aurelius files.<br/>
-The resulting site structure should now look like this with the <em>couch</em> folder appearing as a subfolder of your existing site -</p>
+<p>Upload the entire <em>couch</em> folder, along with the modified <em>config.php_, to your web server, which already contains the Aurelius files.<br/>
+The resulting site structure should now look like this with the _couch</em> folder appearing as a subfolder of your existing site -</p>
 <p><img src="../../assets/img/contents/portfolio-site-4.png" alt=""></p>
 <p class="notice">
-    The uploaded <em>couch</em> folder is your site&#39;s admin section.<br/>
-    It is a good security measure to rename this folder to anything else you wish. This way you&#39;ll make it more difficult for unwanted visitors to try and access your admin section.<br/>
-    For this tutorial we&#39;ll assume you have chosen to go with the default name.
+    The uploaded _couch_ folder is your site's admin section.<br/>
+    It is a good security measure to rename this folder to anything else you wish. This way you'll make it more difficult for unwanted visitors to try and access your admin section.<br/>
+    For this tutorial we'll assume you have chosen to go with the default name.
 </p>
 
-<p>Access the admin section through your browser - <em>http&#58;//www.mytestsite.com/couch/</em></p>
-<p class="success">For the rest of this tutorial we&#39;ll assume the site&#39;s address to be <em>http&#58;//www.mytestsite.com/</em>. Replace it with your site&#39;s address for all examples.</p>
+<p>Access the admin section through your browser - <em>http&#58;//<a href="http://www.mytestsite.com/couch/">www.mytestsite.com/couch/</a></em></p>
+<p class="success">For the rest of this tutorial we'll assume the site's address to be _http&#58;//www.mytestsite.com/_. Replace it with your site's address for all examples.</p>
 
 <p>Couch will sense that installation is required and will display the following form for you to fill -</p>
 <p><img src="../../assets/img/contents/portfolio-site-5.jpg" alt=""></p>
-<p class="notice">If, however, at this point you get an &#39;500 Internal Server Error&#39;, please try deleting the .htaccess file present in the &#39;couch&#39; installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file.</p>
+<p class="notice">If, however, at this point you get an '500 Internal Server Error', please try deleting the .htaccess file present in the 'couch' installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file.</p>
 
 <p>Enter your desired name, password and email address. Press install and in a little while you should be prompted with the following screen -</p>
 <p><img src="../../assets/img/contents/portfolio-site-6.jpg" alt=""></p>
 <p>Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.</p>
 <p class="error">
-    <strong>V. Imp:</strong> This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any &#39;structural&#39; changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
+    **V. Imp:** This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any 'structural' changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
     <br/>
-    Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account&#39;s password.
+    Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account's password.
 </p>
 
 <p>Login using the super-admin account you created and brace yourself for facing the most &#39;barren&#39; admin section you&#39;ll ever come across -</p>

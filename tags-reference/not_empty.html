@@ -74,12 +74,10 @@
 This property makes it possible to use it with conditional tags, like <strong>if</strong> and <strong>else</strong>.</p>
 <pre><code>&lt;cms:if &quot;&lt;cms:not_empty my_content /&gt;&quot; &gt;
    .. do something..
-&lt;/cms:if&gt;
-</code></pre><p>The snippet above, where we are checking if the editable region named <em>my_content</em> contains any value,  could have been written in the following simpler manner -</p>
+&lt;/cms:if&gt;</code></pre><p>The snippet above, where we are checking if the editable region named <em>my_content</em> contains any value,  could have been written in the following simpler manner -</p>
 <pre><code>&lt;cms:if my_content &gt;
    .. do something..
-&lt;/cms:if&gt;
-</code></pre><p>- however, if the editable region is of type <em>richtext</em>, the CKEditor sometimes inserts some spurious &lt;BR /&gt; or empty &lt;P&gt; tags into it even if nothing is entered into the editable region by the user. This will cause the simple test above to fail with <em>richtext</em> types. The <strong>not_empty</strong> strips off all HTML tags from the variable it is testing and then returns the result, thus making it useful for such cases.</p>
+&lt;/cms:if&gt;</code></pre><p>- however, if the editable region is of type <em>richtext_, the CKEditor sometimes inserts some spurious &lt;BR /&gt; or empty &lt;P&gt; tags into it even if nothing is entered into the editable region by the user. This will cause the simple test above to fail with _richtext</em> types. The <strong>not_empty</strong> strips off all HTML tags from the variable it is testing and then returns the result, thus making it useful for such cases.</p>
 <h2 id="parameters">Parameters</h2>
 <p>This tag takes no parameters.</p>
 <h2 id="variables">Variables</h2>

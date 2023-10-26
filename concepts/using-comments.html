@@ -71,13 +71,12 @@
             <article><h1 id="comments">Comments</h1>
 <p>Couch allows the submission of comments on pages created by it but this must first be permitted by you.<br/>
 To do so, the <em>commentable</em> parameter of the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag has to be set to &#39;1&#39; for each template that you wish to allow comments for.<br/>
-Thus if, for example, comments are to be turned on for pages cloned out of <em>blog.php</em>, the following change needs to be done to the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag (usually placed in the HTML head tag) within blog.php -</p>
+Thus if, for example, comments are to be turned on for pages cloned out of _blog.php_, the following change needs to be done to the <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag (usually placed in the HTML head tag) within blog.php -</p>
 <pre><code>&lt;cms:template title=&#39;Blog&#39; clonable=&#39;1&#39; commentable=&#39;1&#39;&gt;
     &lt;!-- The editable and folder tags can go here --&gt;
-&lt;/cms:template&gt;
-</code></pre><p>Once commenting is turned on for a template, each of the page created out of it will have the following option available as its advanced setting in the admin panel while editing it -</p>
+&lt;/cms:template&gt;</code></pre><p>Once commenting is turned on for a template, each of the page created out of it will have the following option available as its advanced setting in the admin panel while editing it -</p>
 <p><img src="../assets/img/contents/comments.png" alt=""></p>
-<p>By default, &#39;<em>Allow users to comment</em>&#39; is checked for every new page. You can check this option off to disallow comments on a particular page. If you turn this off after a page has already had some comments, the existing comments will be retained but any further comments will be disallowed.</p>
+<p>By default, &#39;_Allow users to comment_&#39; is checked for every new page. You can check this option off to disallow comments on a particular page. If you turn this off after a page has already had some comments, the existing comments will be retained but any further comments will be disallowed.</p>
 <p>You&#39;ll find the following two settings in <em>config.php</em> file which are worth noting -</p>
 <pre><code>// 20.
 // A setting of &#39;1&#39; will necessitate the admin to approve comments before they get published.
@@ -88,9 +87,8 @@ define( &#39;K_COMMENTS_REQUIRE_APPROVAL&#39;, 1 );
 // 21.
 // Minimum time interval required between two comments posted by the same user (in seconds).
 // Prevents comment flooding. A setting of 5 minutes (300 seconds) is recommended.
-define( &#39;K_COMMENTS_INTERVAL&#39;, 5 * 60 );
-</code></pre><p>Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.</p>
-<p class="error">The following discussion about the comment form assumes that you are already familiar with the <a href="../tags-reference/form.html"><strong><em>form</em></strong></a> tag which is used to create it.</p>
+define( &#39;K_COMMENTS_INTERVAL&#39;, 5 * 60 );</code></pre><p>Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.</p>
+<p class="error">The following discussion about the comment form assumes that you are already familiar with the [__*form*__](../../tags-reference/form.html) tag which is used to create it.</p>
 
 <h3 id="comment-submission">COMMENT SUBMISSION</h3>
 <p>Roughly speaking, a comment form needs to have three inputs (of type text) named <em>k_author</em>, <em>k_email</em> and <em>k_link</em>. These are used to input the commentator&#39;s name, his email and a link to his site. The form also needs to have a textarea named <em>k_comment</em> for inputting the actual comment.</p>
@@ -191,11 +189,12 @@ define( &#39;K_COMMENTS_INTERVAL&#39;, 5 * 60 );
     &lt;/cms:form&gt;
 
 &lt;/div&gt;
-&lt;/cms:if&gt;
-</code></pre><p class="success">
-    <strong>TIP:</strong> The above snippet can be saved into a file named, for example, <em>comment-form.inc</em> within the snippets folder and then be used in any template by using the <a href="../tags-reference/embed.html"><strong><em>embed</em></strong></a> tag -<br/>
+&lt;/cms:if&gt;</code></pre><p class="success">
+    **TIP:** The above snippet can be saved into a file named, for example, _comment-form.inc_ within the snippets folder and then be used in any template by using the [__*embed*__](../../tags-reference/embed.html) tag -<br/>
     <br/>
-    <code>&lt;cms:embed &#39;comment-form.inc&#39; /&gt;</code>
+    ```
+<cms:embed 'comment-form.inc' />
+    ```
 </p>
 
 <p>If you have been through the <a href="forms.html"><strong><em>form</em></strong></a> tag discussion, the code above should look familiar. We&#39;ll discuss a few features of the snippet though -<br/>
@@ -217,14 +216,13 @@ Usually only the comments belonging to a particular page need to be listed on th
 It is closely related to the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag and hence shares several of the <a href="../tags-reference/pages.html#parameters"><strong>parameters</strong></a> accepted by the pages tag.</p>
 <pre><code>&lt;cms:comments limit=&#39;5&#39;&gt;
     &lt;!-- sets comment related variables here --&gt;
-&lt;/cms:comments&gt;
-</code></pre><p>The above snippet will loop through the latest five comments, regardless of the templates their pages belong to.<br/>
+&lt;/cms:comments&gt;</code></pre><p>The above snippet will loop through the latest five comments, regardless of the templates their pages belong to.<br/>
 At each iteration of the loop, this tag makes available the data associated with the comment being currently iterated by setting the variables listed below.</p>
 <h4 id="variables">VARIABLES</h4>
 <p>For each comment, the following variables (containing the data submitted by the user and the parent page) are made available by Couch -</p>
 <ul>
 <li>k_comment_id</li>
-<li>k_comment (<em>the actual comment text</em>)</li>
+<li>k_comment (_the actual comment text_)</li>
 <li>k_comment_author_id</li>
 <li>k_comment_author</li>
 <li>k_comment_author_email</li>
@@ -240,11 +238,11 @@ At each iteration of the loop, this tag makes available the data associated with
 <p>In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see <a href="pagination.html"><strong>pagination</strong></a> for details.</p>
 <h4 id="parameters">PARAMETERS</h4>
 <p>Normally <a href="../tags-reference/comments.html"><strong><em>comments</em></strong></a> tag will fetch all the available approved comments.<br/>
-It can be constrained into fetching comments from only certain pages by setting the <em>masterpage</em>, <em>page_id</em> and <em>page_name</em> parameters.</p>
+It can be constrained into fetching comments from only certain pages by setting the _masterpage_, <em>page_id</em> and <em>page_name</em> parameters.</p>
 <p>Please see: <a href="../tags-reference/comments.html#parameters"><strong>Tags Reference - Comments</strong></a> for a complete list of parameters that are accepted by this tag and how they can be used.</p>
 <h3 id="example">EXAMPLE</h3>
 <p>As an example of the <a href="../tags-reference/comments.html"><strong><em>comments</em></strong></a> tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.<br/>
-Notice the use of the variable <em>k_page_id</em> (always set by Couch to the id of the current page in <em>page-view</em>) to constrain the <em>comments</em> tag to fetch only comments belonging to the current page.<br/>
+Notice the use of the variable <em>k_page_id</em> (always set by Couch to the id of the current page in <em>page-view_) to constrain the _comments</em> tag to fetch only comments belonging to the current page.<br/>
 Also notice the use of the <a href="../tags-reference/gravatar.html"><strong><em>gravatar</em></strong></a> tag.</p>
 <pre><code>&lt;cms:if k_is_page &gt;
     &lt;cms:comments page_id=k_page_id limit=&#39;5&#39; order=&#39;asc&#39; paginate=&#39;1&#39;&gt;
@@ -283,8 +281,7 @@ Also notice the use of the <a href="../tags-reference/gravatar.html"><strong><em
         &lt;cms:paginator /&gt;
 
     &lt;/cms:comments&gt;
-&lt;/cms:if&gt;
-</code></pre></article>
+&lt;/cms:if&gt;</code></pre></article>
         </div>
         <!-- end -->
 		</div>

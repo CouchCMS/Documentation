@@ -71,11 +71,11 @@
             <article><h1 id="paypal">PayPal</h1>
 <p>Couch makes it very easy for you to sell single digital products (ebooks, software, images etc) online using PayPal.</p>
 <p class="success">
-    Paypal can be used to accept <em>single-item purchase</em> payments (the ones with Buy Now buttons), <em>contribution</em> payments (Donate buttons), <em>recurring</em> payments (Subscribe buttons) and <em>multi-items purchase</em> payments (shopping cart buttons).<br/>
+    Paypal can be used to accept _single-item purchase_ payments (the ones with Buy Now buttons), _contribution_ payments (Donate buttons), _recurring_ payments (Subscribe buttons) and _multi-items purchase_ payments (shopping cart buttons).<br/>
     <br/>
-    The current version of Couch supports only accepting <em>single-item purchase</em> payments.<br/>
+    The current version of Couch supports only accepting _single-item purchase_ payments.<br/>
     <br/>
-    Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch&#39;s method cannot be used.
+    Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch's method cannot be used.
 </p>
 
 <h3 id="an-overview-of-paypal-ipn">AN OVERVIEW OF PAYPAL IPN</h3>
@@ -105,10 +105,9 @@ define( &#39;K_PAYPAL_EMAIL&#39;, &#39;seller_3272492192_biz@gmail.com&#39; );
 // Some valid values are: AUD (Australian Dollar), CAD (Canadian Dollar), EUR (Euro),
 // GBP (Pound Sterling), JPY (Japanese Yen) and USD (U.S. Dollar).
 // Please check PayPal to find yours.
-define( &#39;K_PAYPAL_CURRENCY&#39;, &#39;USD&#39; );
-</code></pre><p class="notice">
-    Usually while testing you&#39;ll be using PayPal&#39;s Sandbox.<br/>
-    Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K_PAYPAL_USE_SANDBOX to 1 and K_PAYPAL_EMAIL to the fictitious seller&#39;s account, in <em>config.php</em> mentioned above).
+define( &#39;K_PAYPAL_CURRENCY&#39;, &#39;USD&#39; );</code></pre><p class="notice">
+    Usually while testing you'll be using PayPal's Sandbox.<br/>
+    Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K\_PAYPAL\_USE\_SANDBOX to 1 and K\_PAYPAL\_EMAIL to the fictitious seller's account, in _config.php_ mentioned above).
 </p>
 
 <p>For the next step, it is necessary to understand that each saleable item in Couch is represented by a separate cloned page.<br/>
@@ -127,13 +126,11 @@ The important point is that - Couch requires this editable region to be named <e
     maxlength=&#39;10&#39;
     search_type=&#39;decimal&#39;
     validator=&#39;non_negative_decimal&#39;
-    type=&#39;text&#39; /&gt;
-</code></pre><p>With the groundwork behind us, the rest is easy.</p>
+    type=&#39;text&#39; /&gt;</code></pre><p>With the groundwork behind us, the rest is easy.</p>
 <h4 id="creating-paypal-button">CREATING PAYPAL BUTTON</h4>
 <p>To create the PayPal &#39;Buy Button&#39; simply place the following Couch tag in your <em>product.php</em> template -</p>
-<pre><code>&lt;cms:paypal_button /&gt;
-</code></pre><p>The image used as the button can be changed by setting the <em>image</em> parameter of the tag (See <a href="../tags-reference/paypal_button.html"><strong>Tags Reference - PayPal Button</strong></a>).</p>
-<p class="error">Remember: If the <strong>paypal_button</strong> tag fails to find a variable named <em>pp_price</em>, that we mentioned in the previous section, it will not display any button at all.</p>
+<pre><code>&lt;cms:paypal_button /&gt;</code></pre><p>The image used as the button can be changed by setting the <em>image</em> parameter of the tag (See <a href="../tags-reference/paypal_button.html"><strong>Tags Reference - PayPal Button</strong></a>).</p>
+<p class="error">Remember: If the **paypal\_button** tag fails to find a variable named *pp\_price*, that we mentioned in the previous section, it will not display any button at all.</p>
 
 <p>Create a few items and visit their pages to try out the buttons.<br/>
 Clicking any item&#39;s button should lead to PayPal&#39;s site with the item&#39;s name and price correctly supplied.<br/>
@@ -142,19 +139,20 @@ Clicking the return link on PayPal&#39;s site should lead one back to the item&#
 <h4 id="processing-paypal-ipn">PROCESSING PAYPAL IPN</h4>
 <p><a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> is the tag that will handle IPNs for you.</p>
 <p>To see how it works, place the following snippet somewhere at the top of your <em>product.php</em> template -</p>
-<pre><code>&lt;cms:paypal_processor debug=&#39;1&#39; /&gt;
-</code></pre><p>In the snippet above we have set the <em>debug</em> parameter to &#39;1&#39;. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website&#39;s root.</p>
+<pre><code>&lt;cms:paypal_processor debug=&#39;1&#39; /&gt;</code></pre><p>In the snippet above we have set the <em>debug</em> parameter to &#39;1&#39;. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website&#39;s root.</p>
 <p class="success">
-    By default the name of the log file is <em>log.txt</em>. However you can set it to any other by setting the <em>logfile</em> parameter -<br/>
+    By default the name of the log file is _log.txt_. However you can set it to any other by setting the _logfile_ parameter -<br/>
     <br/>
-    <code>&lt;cms:paypal_processor debug=&#39;1&#39; logfile=&#39;paypal.log&#39; /&gt;</code>
-    The snippet given above will make <em>paypal_processor</em> use a log file named <em>paypal.log</em>.
+    ```
+<cms:paypal_processor debug='1' logfile='paypal.log' />
+    ```
+    The snippet given above will make *paypal\_processor* use a log file named _paypal.log_.
 </p>
 
 <p>Try clicking an item&#39;s &#39;Buy Now&#39; button and upon reaching the PayPal&#39;s site, complete the transaction by logging in and buying the item. Once the transaction completes, check in your website&#39;s root for the aforesaid log file.</p>
 <p class="notice">
-    If you cannot find the log file, either something is wrong and PayPal&#39;s IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
-    Try creating a file named <em>log.txt</em> (or whatever you have set using <em>logfile</em> parameter) manually, make it writable and try once again.
+    If you cannot find the log file, either something is wrong and PayPal's IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
+    Try creating a file named _log.txt_ (or whatever you have set using _logfile_ parameter) manually, make it writable and try once again.
 </p>
 
 <p>You&#39;ll find something like this in the log file -</p>
@@ -211,8 +209,7 @@ Couch validating transaction..
 Transaction OK
 
 =======================[25-Jul-2010 10:08:23 PM]=======================
-Exiting
-</code></pre><p>The snippet above shows a successful transaction. If you find any error being reported in the log, you&#39;ll need to investigate it further.<br/>
+Exiting</code></pre><p>The snippet above shows a successful transaction. If you find any error being reported in the log, you&#39;ll need to investigate it further.<br/>
 This should give you a fair idea as to what PayPal sends back as details of the transaction and what goes on while processing an IPN.</p>
 <p>Once we are sure that the IPN is being handled properly, we can now go ahead and make <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> do whatever is supposed to be done on successfully getting paid for a product. We&#39;ll assume we are to send the buyer an email with a link to the item he bought.</p>
 <p>Once <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> verifies that the IPN is indeed from PayPal, it sets the following variables for use in your script -</p>
@@ -246,8 +243,7 @@ If the transaction is valid, it sets another variable named <em>k_paypal_success
         &lt;!-- All PayPal variables and the error message is available here --&gt;
 
     &lt;/cms:if&gt;
-&lt;/cms:paypal_processor&gt;
-</code></pre><p>A real world example could be -</p>
+&lt;/cms:paypal_processor&gt;</code></pre><p>A real world example could be -</p>
 <pre><code>&lt;cms:paypal_processor&gt;
     &lt;cms:if k_paypal_success&gt;
         &lt;cms:send_mail from=pp_receiver_email to=pp_payer_email subject=&#39;Thank you for your purchase!&#39; &gt;
@@ -265,8 +261,7 @@ If the transaction is valid, it sets another variable named <em>k_paypal_success
         &lt;cms:set msg=&quot;ERROR: &lt;cms:show k_paypal_error/&gt;&quot; /&gt;
         &lt;cms:log msg /&gt;
     &lt;/cms:if&gt;
-&lt;/cms:paypal_processor&gt;
-</code></pre><p>In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> are being used in the <a href="../tags-reference/send_mail.html"><strong><em>send_mail</em></strong></a> tag.<br/>
+&lt;/cms:paypal_processor&gt;</code></pre><p>In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by <a href="../tags-reference/paypal_processor.html"><strong><em>paypal_processor</em></strong></a> are being used in the <a href="../tags-reference/send_mail.html"><strong><em>send_mail</em></strong></a> tag.<br/>
 The email contains a link to the downloadable item (the variable <em>downloadable_file</em> is an editable region of type file within the template and contains the item&#39;s link).<br/>
 The <a href="../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag is used to conceal the real path of the item.</p>
 </article>

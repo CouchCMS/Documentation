@@ -71,15 +71,13 @@
             <article><h1 id="search_form">search_form</h1>
 <p>The <strong>search_form</strong> is a simple tag that creates a form that could be used with the <strong>search</strong> tag.</p>
 <p>Examples -</p>
-<pre><code>&lt;cms:search_form /&gt;
-</code></pre><pre><code>&lt;cms:search_form msg=&#39;Search&#39; processor=&quot;&lt;cms:show k_site_link/&gt;search.php&quot; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:search_form /&gt;</code></pre><pre><code>&lt;cms:search_form msg=&#39;Search&#39; processor=&quot;&lt;cms:show k_site_link/&gt;search.php&quot; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>msg</li>
 <li>processor</li>
 </ul>
 <h3 id="msg">msg</h3>
-<p>This parameter sets the message displayed within the search textbox. By default the string &#39;<em>Search..</em>&#39; gets displayed.</p>
+<p>This parameter sets the message displayed within the search textbox. By default the string &#39;_Search.._&#39; gets displayed.</p>
 <h3 id="processor">processor</h3>
 <p>This parameter sets the <em>action</em> parameter of the generated form. This needs to be set to the URL of the page that has the <strong>pages</strong> tag on it.<br/>
 If left empty, the <strong>pages</strong> tag is expected to be on the same page as the <strong>search_form</strong> tag.</p>

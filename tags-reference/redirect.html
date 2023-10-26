@@ -70,9 +70,7 @@
 
             <article><h1 id="redirect">redirect</h1>
 <p>The <strong>redirect</strong> tag can be used to redirect the user to a new location.</p>
-<pre><code>&lt;cms:redirect url=&#39;http://www.google.com/&#39; /&gt;
-</code></pre><pre><code>&lt;cms:redirect url=&quot;&lt;cms:link masterpage=k_template_name page=&#39;test&#39; /&gt;&quot; /&gt;
-</code></pre><p>In the last example above, the user is being redirected to a page named <em>test</em> that is a cloned page of the same template as the page this code is executed from (the <strong>link</strong> tag is being used to get the target URL).</p>
+<pre><code>&lt;cms:redirect url=&#39;http://www.google.com/&#39; /&gt;</code></pre><pre><code>&lt;cms:redirect url=&quot;&lt;cms:link masterpage=k_template_name page=&#39;test&#39; /&gt;&quot; /&gt;</code></pre><p>In the last example above, the user is being redirected to a page named <em>test</em> that is a cloned page of the same template as the page this code is executed from (the <strong>link</strong> tag is being used to get the target URL).</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>url</li>
@@ -82,8 +80,7 @@
 <p>This is the URL of the location being redirected to.</p>
 <h3 id="permanently">permanently</h3>
 <p>By default, the <strong>redirect</strong> tag causes the server to send back a HTTP 302 redirection code. Setting this parameter to 1 will cause it to send back HTTP 301 (moved permanently) code instead.</p>
-<pre><code>&lt;cms:redirect url=&quot;&lt;cms:link masterpage=k_template_name page=&#39;test&#39; /&gt;&quot; permanently=&#39;1&#39; /&gt;
-</code></pre><h2 id="variables">Variables</h2>
+<pre><code>&lt;cms:redirect url=&quot;&lt;cms:link masterpage=k_template_name page=&#39;test&#39; /&gt;&quot; permanently=&#39;1&#39; /&gt;</code></pre><h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 </article>
         </div>

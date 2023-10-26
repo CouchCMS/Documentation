@@ -73,8 +73,8 @@
 A <em>clonable</em> template will necessarily have cloned pages associated with it hence it is said to be executing within a <em>page-view</em> when a cloned page of it is accessed while it is said to be executing within a <em>list-view</em> if it is accessed in a stand alone manner.</p>
 <p>A <em>non-clonable</em> template always represents one single page and hence it has no such views associated with it.</p>
 <p>Depending on whether a template is clonable or non-clonable and upon the view it is being executed in, each time a template is accessed, Couch makes available certain variables that are relevant to the template&#39;s state.</p>
-<p>For example, when executed in a <em>page-view</em>, a template is used to access a cloned page and hence all that cloned page&#39;s data (including all its editable region&#39;s contents) are made available by Couch for use by your script.</p>
-<p>In contrast, when executed in a <em>list-view</em>, it is not any single page that is accessed and hence no such page specific data is made available. Instead, certain variables that describe the &#39;list-view&#39; and make it easy for your script to actually &#39;list&#39; the pages pertaining to the view, are made available.</p>
+<p>For example, when executed in a _page-view_, a template is used to access a cloned page and hence all that cloned page&#39;s data (including all its editable region&#39;s contents) are made available by Couch for use by your script.</p>
+<p>In contrast, when executed in a _list-view_, it is not any single page that is accessed and hence no such page specific data is made available. Instead, certain variables that describe the &#39;list-view&#39; and make it easy for your script to actually &#39;list&#39; the pages pertaining to the view, are made available.</p>
 <p>A complete list of all the variables that become available during the above mentioned conditions are listed below.</p>
 <p>For the sake of this example we make use of a template named <em>blog.php</em> that has three editable regions defined within it - <em>my_blog_text</em>, <em>my_blog_image</em> and <em>my_blog_author</em> (these will be made available as variables with the same names. They are shown highlighted below).</p>
 <p>The following variables are available in ALL the cases, irrespective of the clonable status of the template and the current view -</p>
@@ -96,7 +96,7 @@ A <em>clonable</em> template will necessarily have cloned pages associated with 
 </ul>
 <h3 id="non-clonable-template-">NON-CLONABLE TEMPLATE -</h3>
 <p>If <em>blog.php</em> is non-clonable, the only way it can be accessed is -<br/>
-<em>http&#58;//www.mysite.com/blog.php</em></p>
+<em>http&#58;//<a href="http://www.mysite.com/blog.php">www.mysite.com/blog.php</a></em></p>
 <p>- and the available variables are -</p>
 <ul>
 <li>k_is_list_page</li>
@@ -110,7 +110,7 @@ A <em>clonable</em> template will necessarily have cloned pages associated with 
 <h3 id="clonable-template-">CLONABLE TEMPLATE -</h3>
 <p>If <em>blog.php</em> is made clonable, the different views it can be accessed in and the variables made available in each view are -</p>
 <h4 id="page-view">PAGE VIEW</h4>
-<p>e.g. <em>http&#58;//www.mysite.com/blog/some_page_name.html</em><br/>
+<p>e.g. <em>http&#58;//<a href="http://www.mysite.com/blog/some%5C_page%5C_name.html">www.mysite.com/blog/some\_page\_name.html</a></em><br/>
 In this view, variables giving information about the current page, the containing folder (if the page resides in one) and the contents of the page&#39;s editable regions are made available.</p>
 <p>The folowing variables carry information about the page in question -</p>
 <ul>
@@ -138,7 +138,7 @@ In this view, variables giving information about the current page, the containin
 <li><strong>my_blog_author</strong></li>
 </ul>
 <h4 id="folder-view">FOLDER VIEW</h4>
-<p>e.g. <em>http&#58;//www.mysite.com/blog/some_subfolder/</em><br/>
+<p>e.g. <em>http&#58;//<a href="http://www.mysite.com/blog/some%5C_subfolder/">www.mysite.com/blog/some\_subfolder/</a></em><br/>
 In this view, variables giving information about the folder mentioned in the URL are set.</p>
 <ul>
 <li>k_is_list</li>
@@ -147,11 +147,11 @@ In this view, variables giving information about the folder mentioned in the URL
 <li>k_folder_name</li>
 <li>k_folder_title</li>
 <li>k_folder_link</li>
-<li>k_folder_pagecount (<em>Number of pages in the folder</em>)</li>
-<li>k_folder_totalpagecount (<em>Total number of pages, including pages in subfolders</em>)</li>
+<li>k_folder_pagecount (_Number of pages in the folder_)</li>
+<li>k_folder_totalpagecount (_Total number of pages, including pages in subfolders_)</li>
 </ul>
 <h4 id="archive-view">ARCHIVE VIEW</h4>
-<p>e.g. <em>http&#58;//www.mysite.com/blog/2010/05/</em><br/>
+<p>e.g. _http&#58;//<a href="http://www.mysite.com/blog/2010/05/">www.mysite.com/blog/2010/05/</a>_<br/>
 In this view, variables giving information about the archive&#39;s time period (as given in the URL) are set.</p>
 <ul>
 <li>k_is_list</li>
@@ -164,16 +164,16 @@ In this view, variables giving information about the archive&#39;s time period (
 <li>k_year</li>
 </ul>
 <h4 id="home-view">HOME VIEW</h4>
-<p>e.g. <em>http&#58;//www.mysite.com/blog/</em></p>
+<p>e.g. <em>http&#58;//<a href="http://www.mysite.com/blog/">www.mysite.com/blog/</a></em></p>
 <ul>
 <li>k_is_list</li>
 <li>k_is_home</li>
-<li>k_folder_pagecount (<em>Number of pages. Remember home view is also the root folder</em>)</li>
-<li>k_folder_totalpagecount (<em>Total number of cloned pages, including pages in subfolders</em>)</li>
+<li>k_folder_pagecount (_Number of pages. Remember home view is also the root folder_)</li>
+<li>k_folder_totalpagecount (_Total number of cloned pages, including pages in subfolders_)</li>
 </ul>
-<p class="notice"><strong>IMP.</strong> Notice that for cloneable templates, the contents of the editable regions associated with a page are made available only in page view.</p>
+<p class="notice">**IMP.** Notice that for cloneable templates, the contents of the editable regions associated with a page are made available only in page view.</p>
 
-<p class="success"><strong>TIP:</strong> You can use the Couch tags - <a href="../tags-reference/dump.html"><strong><em>dump</em></strong></a> and <a href="../tags-reference/dump_all.html"><strong><em>dump_all</em></strong></a> to see for youself all the variables with their current values.</p>
+<p class="success">**TIP:** You can use the Couch tags - [__*dump*__](../../tags-reference/dump.html) and [__*dump\_all*__](../../tags-reference/dump_all.html) to see for youself all the variables with their current values.</p>
 
 <p>Next is <a href="listing-pages.html"><strong>Listing Pages</strong></a></p>
 </article>

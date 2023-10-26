@@ -72,8 +72,7 @@
 <p>Purchasing a commercial license permits you to replace CouchCMS logo and copyright information in the admin-panel with your own. This is white-labeling or rebranding. Your clients will never even know that you are using CouchCMS.</p>
 <p>Once you have received our email confirming your purchase, there are two places where you need to make slight modifications to effect this white-labeling:</p>
 <p><strong>1.</strong> In <strong>couch/config.php</strong>, scroll down and find the following line. Change the <strong>0</strong> to <strong>1</strong>.</p>
-<pre><code>define( &#39;K_PAID_LICENSE&#39;, 0 );
-</code></pre><p>Immediately below the above setting you&#39;ll find the following lines.<br/>
+<pre><code>define( &#39;K_PAID_LICENSE&#39;, 0 );</code></pre><p>Immediately below the above setting you&#39;ll find the following lines.<br/>
 Uncomment the ones containing &#39;define&#39; (i.e. remove the &#39;//&#39; prefixed to &#39;define&#39;) and add your own info -</p>
 <pre><code>// Rebranding. Uncomment the following defines and add your info.
 
@@ -84,15 +83,13 @@ Uncomment the ones containing &#39;define&#39; (i.e. remove the &#39;//&#39; pre
 //define( &#39;K_LOGO_DARK&#39;, &#39;couch_dark.gif&#39; );
 
 // 99c. Footer content (Company name and link)
-//define( &#39;K_ADMIN_FOOTER&#39;, &#39;&lt;a href=&quot;http://www.yourcompany.com&quot;&gt;COMPANY NAME&lt;/a&gt;&#39; );
-</code></pre><p><strong>2.</strong> In the <strong>language file</strong> being used by your site (default being <strong>EN.php</strong>) found in the &#39;couch/lang&#39; folder, find the following lines and modify them to suit your needs. This will change the title of the admin-panel and login box.</p>
+//define( &#39;K_ADMIN_FOOTER&#39;, &#39;&lt;a href=&quot;http://www.yourcompany.com&quot;&gt;COMPANY NAME&lt;/a&gt;&#39; );</code></pre><p><strong>2.</strong> In the <strong>language file</strong> being used by your site (default being <strong>EN.php</strong>) found in the &#39;couch/lang&#39; folder, find the following lines and modify them to suit your needs. This will change the title of the admin-panel and login box.</p>
 <pre><code>// Addendum to Version 1.1 /////////////////////////////////////
 // Admin Panel
 $t[&#39;admin_panel&#39;] = &#39;Admin Panel&#39;;
-$t[&#39;login_title&#39;] = &#39;CouchCMS&#39;;
-</code></pre><p class="error">
-    <strong>IMP.</strong> Rebranding <strong>DOES NOT</strong> however permit you to remove copyright notices in the source code of the Software.<br/>
-    These copyright notices must remain intact <strong>under any circumstances</strong>.
+$t[&#39;login_title&#39;] = &#39;CouchCMS&#39;;</code></pre><p class="error">
+    **IMP.** Rebranding **DOES NOT** however permit you to remove copyright notices in the source code of the Software.<br/>
+    These copyright notices must remain intact **under any circumstances**.
 </p>
 </article>
         </div>

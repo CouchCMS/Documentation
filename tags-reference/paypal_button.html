@@ -80,11 +80,9 @@
 <p>This parameter is used to set the image used as the button.<br/>
 You can either choose to use an image of your own or you may use one of the buttons made available by PayPal.</p>
 <p><strong>Using your own image -</strong></p>
-<pre><code>&lt;cms:paypal_button image=&quot;&lt;cms:show k_site_link /&gt;/images/my_button.gif&quot; /&gt;
-</code></pre><p><strong>Using PayPal provided images -</strong></p>
+<pre><code>&lt;cms:paypal_button image=&quot;&lt;cms:show k_site_link /&gt;/images/my_button.gif&quot; /&gt;</code></pre><p><strong>Using PayPal provided images -</strong></p>
 <p>To use these images, set the <em>image</em> parameter to a number ranging from 0 to 8.</p>
-<pre><code>&lt;cms:paypal_button image=&#39;3&#39; /&gt;
-</code></pre><p>The numbers represent the folllowing images -</p>
+<pre><code>&lt;cms:paypal_button image=&#39;3&#39; /&gt;</code></pre><p>The numbers represent the folllowing images -</p>
 <p><img src="../assets/img/contents/paypal_button.png" alt=""></p>
 <h3 id="processor">processor</h3>
 <p>The generated button provides PayPal with a link to the page that will process the IPN sent by it. By default this will be the link of the page the button is located on. If you have placed the <strong>paypal_processor</strong> tag, that handles the IPN, on some other page, set that pages link as this parameter.</p>

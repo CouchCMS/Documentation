@@ -73,8 +73,7 @@
 The enclosed contents can be regular HTML code as well as the Couch tags.</p>
 <pre><code>&lt;cms:capture into=&#39;my_variable&#39; scope=&#39;global&#39;&gt;
     ...everything executed here will get stored in variable &#39;my_variable&#39; at the requested scope...
-&lt;/cms:capture&gt;
-</code></pre><p>This tag is very helpful when you want to execute a portion of the code but wish to display the resulting output based on some other condition that is unknown at the point of execution of this code e.g. present in the page somewhere after the block of code in question.</p>
+&lt;/cms:capture&gt;</code></pre><p>This tag is very helpful when you want to execute a portion of the code but wish to display the resulting output based on some other condition that is unknown at the point of execution of this code e.g. present in the page somewhere after the block of code in question.</p>
 <p>This situation can be tackled by storing the output of the block of code in a variable for the time being. When we reach the required condition and if it evaluates to be true, we can display the output by showing the variable. However, if the condition fails, we can simply ignore the variable.</p>
 <p>You&#39;ll find an interesting example of this tag&#39;s use in <a href="../tutorials/portfolio-site/contact-form.html"><strong>Sample Portfolio Site - Contact Form</strong></a></p>
 <h2 id="parameters">Parameters</h2>
@@ -86,7 +85,7 @@ The enclosed contents can be regular HTML code as well as the Couch tags.</p>
 <p>Name of the variable to store the output in.</p>
 <h3 id="scope">scope</h3>
 <p>Scope of the aforesaid variable. Can be either <em>global</em> or <em>parent</em>.<br/>
-If set to <em>global</em>, the variable will be available anywhere throughout the page. If set to <em>parent</em>, the variable will only be available only within the  scope of the parent tag (if any) that is nesting the <strong>capture</strong> tag.</p>
+If set to _global_, the variable will be available anywhere throughout the page. If set to _parent_, the variable will only be available only within the  scope of the parent tag (if any) that is nesting the <strong>capture</strong> tag.</p>
 <h2 id="variables">Variables</h2>
 <p>Sets only the variable specified by the <em>into</em> parameter within the specified scope. Sets no variables of its own that can be used within its opening and closing tags.</p>
 </article>

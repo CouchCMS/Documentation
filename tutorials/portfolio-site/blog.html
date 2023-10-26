@@ -70,9 +70,9 @@
 
             <article><h1 id="diving-deep-the-blog-part-1-">Diving deep - the Blog (Part 1)</h1>
 <p>Before beginning this section, please allow us to clarify the distinction between two terms you&#39;ll come across very often in Couch - <em>page</em> and <em>template</em>.</p>
-<p><a href="http://www.couchcms.com/docs/code/blog.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p><a href="https://www.couchcms.com/docs/code/blog.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
 <p>The way we use both the terms, a page of a web site is what we access using a distinct address or URL. A template, on the other hand, is a physical php file (containing regular HTML and some Couch tags) that is used to generate a page.</p>
-<p>Thus, taking the example of the <em>about us</em> page that we built in the previous section, page is what gets displayed in the browser when we access the URL <em>http&#58;//www.mytestsite.com/about.php</em>. The template in this case is the <em>about.php</em> file, which is used to generate the page.<br/>
+<p>Thus, taking the example of the <em>about us</em> page that we built in the previous section, page is what gets displayed in the browser when we access the URL <em>http&#58;//<a href="http://www.mytestsite.com/about.php">www.mytestsite.com/about.php</a></em>. The template in this case is the <em>about.php</em> file, which is used to generate the page.<br/>
 Since in this case, the template is associated with only one page, the distinction might seem superfluous. However a template can be used to create any number of pages, which is when it becomes necessary to make a distinction between the two.<br/>
 The blog section of any web site, for example, comprises of several blog entries. Each blog entry is usually a page in itself (i.e. has a distinct URL).<br/>
 To build such a blog section using Couch, we can use a single php file as a template and then use it to generate as many pages as desired. In Couch terminology, this is known as &#39;<strong>cloning</strong>&#39; the template.</p>
@@ -82,7 +82,7 @@ The <em>single.html</em> represents a discrete blog entry while the <em>blog.htm
 <h3 id="the-template">The template</h3>
 <p>Since <em>single.html</em> is the actual blog entry, we&#39;ll use it as the template to define the editable regions required for capturing the data for each blog entry and for displaying each entry.</p>
 <p>Rename <em>blog.html</em> to <em>blog_list.html</em> and then rename <em>single.html</em> to <em>blog.html</em>.<br/>
-Access <em>http&#58;//www.mytestsite.com/blog.html</em>.<br/>
+Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.html">www.mytestsite.com/blog.html</a></em>.<br/>
 Note the various components that we&#39;ll have to build -</p>
 <p><img src="../../assets/img/contents/portfolio-site-20.png" alt=""></p>
 <p><strong>a.</strong> The blog entry itself, comprising of its title, content, categories, date and number of comments.<br/>
@@ -108,18 +108,16 @@ The following steps should now be familiar (we took them while creating the <em>
 Rename <em>blog.html</em> to <em>blog.php</em>.<br/>
 Enclose the entire contents of the file with the boilerplate PHP code -<br/>
 Place</p>
-<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
-</code></pre><p>at the very top and</p>
-<pre><code>&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p>at the very end.</p>
-<p>Access <em>http&#58;//www.mytestsite.com/blog.php</em> while logged on as the super-admin.<br/>
+<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;</code></pre><p>at the very top and</p>
+<pre><code>&lt;?php COUCH::invoke(); ?&gt;</code></pre><p>at the very end.</p>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> while logged on as the super-admin.<br/>
 Visit the admin section to find <em>blog.php</em> added to the list of templates managed by Couch.</p>
 <p><img src="../../assets/img/contents/portfolio-site-21.png" alt=""></p>
 <p>Clicking on <em>blog.php</em> in the sidebar will reveal the template has no editable regions defined so far.</p>
 <p><img src="../../assets/img/contents/portfolio-site-22.png" alt=""></p>
 <h3 id="creating-the-editable-regions">Creating the editable regions</h3>
 <p>In the previous chapter, we defined the editable regions in <em>about.php</em> by enclosing the relevant HTML blocks by Couch editable tags. While this approach will work for <em>blog.php</em> too, we&#39;ll take another tack for defining the editable regions in <em>blog.php</em>.<br/>
-The reason is that, unlike <em>about.php</em>, <em>blog.php</em> will eventually be used as a clonable template to create several pages. As such, as you&#39;ll see a little latter, it is going to be a tad more complex than the non-clonable <em>about.php</em>. For clonable templates it is better to use the following approach -</p>
+The reason is that, unlike <em>about.php_, _blog.php</em> will eventually be used as a clonable template to create several pages. As such, as you&#39;ll see a little latter, it is going to be a tad more complex than the non-clonable <em>about.php</em>. For clonable templates it is better to use the following approach -</p>
 <h4 id="defining-the-editable-regions-within-the-template-tag">Defining the editable regions within the Template tag</h4>
 <p>You&#39;ll recall using the template tag while building the <em>About Us</em> section where we used it to change the display name of the template.<br/>
 This tag can also be used to enclose structural Couch tags like editable, folder etc.</p>
@@ -132,22 +130,21 @@ This tag can also be used to enclose structural Couch tags like editable, folder
 Clicking the blog section should reveal that Couch has created the two editable regions for us -</p>
 <p><img src="../../assets/img/contents/portfolio-site-25.png" alt=""></p>
 <p>Try placing some content in the richtext editor and saving the page.<br/>
-Access <em>http&#58;//www.mytestsite.com/blog.php.</em><br/>
+Access _http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a>._<br/>
 Nothing will seem to change. The content you added in the editor will not appear on the page.<br/>
 The reason is that, unlike about.php where we defined the editable regions by placing the editable tags right where we wanted the edited content to appear, placing the editable tags within the template tag will only create the editable regions. To display the edited content we&#39;ll need to use the show tag with the name of the editable region as parameter.</p>
-<p>In <em>blog.php</em>, find the place where the blog entry&#39;s content is showed -</p>
+<p>In _blog.php_, find the place where the blog entry&#39;s content is showed -</p>
 <p><img src="../../assets/img/contents/portfolio-site-26.png" alt=""></p>
 <p>and replace the text shown as content by a show tag -</p>
 <p><img src="../../assets/img/contents/portfolio-site-27.png" alt=""></p>
 <p>Notice the<br/>
 <em>&lt;cms:show blog_content /&gt;</em></p>
 <p>Upload an image into the image type editable region.<br/>
-In <em>blog.php</em>, find the place where the image is showed -</p>
+In _blog.php_, find the place where the image is showed -</p>
 <p><img src="../../assets/img/contents/portfolio-site-28.png" alt=""></p>
 <p>and replace the src attribute of the image tag with the content of the editable region named <em>blog_image</em> using the show tag -</p>
-<pre><code>&lt;img class=&quot;thumb&quot; src=&quot;&lt;cms:show blog_image /&gt;&quot; alt=&quot;&quot;/&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-29.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/blog.php</em> again. Your edited contents should appear on the page now.</p>
+<pre><code>&lt;img class=&quot;thumb&quot; src=&quot;&lt;cms:show blog_image /&gt;&quot; alt=&quot;&quot;/&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-29.png" alt=""></p>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> again. Your edited contents should appear on the page now.</p>
 <p><img src="../../assets/img/contents/portfolio-site-30.png" alt=""></p>
 <h3 id="cloning-the-template">Cloning the template</h3>
 <p>What we have succeeded in doing so far is make a single page <em>blog.php</em> editable.<br/>
@@ -155,14 +152,14 @@ The <em>blog</em> section, however, will require several such pages - one for ea
 We can use the <em>blog.php</em> template to create more than one page by declaring it as clonable.<br/>
 The way to do so is setting the <em>clonable</em> parameter within the template tag -</p>
 <p><img src="../../assets/img/contents/portfolio-site-31.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/blog.php</em> as super-admin to refresh it and make your changes take effect.<br/>
-Visit the admin section - <em>http&#58;//www.mytestsite.com/couch/</em><br/>
-Click on <em>Blog</em> in the list of templates in the sidebar.<br/>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> as super-admin to refresh it and make your changes take effect.<br/>
+Visit the admin section - <em>http&#58;//<a href="http://www.mytestsite.com/couch/">www.mytestsite.com/couch/</a>_<br/>
+Click on _Blog</em> in the list of templates in the sidebar.<br/>
 Whereas previously clicking on the blog entry immediately showed the editable regions ready for editing in the right panel, once you declared it to be clonable the right panel will now show you a list of all the pages cloned from this template.<br/>
 Clicking on any of these pages will show the editable regions.</p>
 <p>For now notice that in the list of pages cloned from <em>blog.php</em> in the right panel, Couch is showing one cloned page that it has created automatically -</p>
 <p><img src="../../assets/img/contents/portfolio-site-32.png" alt=""></p>
-<p>It has named this page &#39;<em>Default page for blog.php * PLEASE CHANGE THIS TITLE *</em>&#39;.<br/>
+<p>It has named this page &#39;_Default page for blog.php * PLEASE CHANGE THIS TITLE *_&#39;.<br/>
 Click on this new page -</p>
 <p><img src="../../assets/img/contents/portfolio-site-33.png" alt=""></p>
 <p>Notice how the two editable regions that we had defined for blog.php are present in the panel that opens up.<br/>
@@ -170,7 +167,7 @@ Also notice that the two regions have the same data that we had entered into <em
 <p>Further notice that apart from these two editable regions, Couch has added two more regions - <em>Title</em> and <em>Name</em>.<br/>
 Since multiple pages can now be created from the clonable template, each cloned page needs to have a unique identification. The <em>Name</em> field is this unique id.<br/>
 Every cloned page will always have the <em>Name</em> and <em>Title</em> fields associated with it. Difference between the two is that the <em>Name</em> field has restrictions on the characters that you can use within it (only alpha-numeric, hyphen and underscore). The <em>Title</em> field, on the other hand, has no such restrictions.</p>
-<p class="success">If you fill the <em>Title</em> field, you can leave the <em>Name</em> field empty and Couch will generate a name for the page based on the title you entered.</p>
+<p class="success">If you fill the _Title_ field, you can leave the _Name_ field empty and Couch will generate a name for the page based on the title you entered.</p>
 
 <p>Change the <em>title</em> to something friendlier and leave the name blank -</p>
 <p><img src="../../assets/img/contents/portfolio-site-34.png" alt=""></p>
@@ -182,11 +179,11 @@ Every cloned page will always have the <em>Name</em> and <em>Title</em> fields a
 <p><img src="../../assets/img/contents/portfolio-site-37.png" alt=""></p>
 <p>Notice the address of the page in the address bar -</p>
 <p><img src="../../assets/img/contents/portfolio-site-38.png" alt=""></p>
-<p>It has an additional &#39;<em>?p-2</em>&#39; after the <em>blog.php</em><br/>
-<em>http&#58;//www.mytestsite.com/blog.php?p=2</em><br/>
-Compare it with how uptil now (that is uptil <em>blog.php</em> was not declared clonable), we accessed <em>blog.php</em> using the following address -<br/>
-<em>http&#58;//www.mytestsite.com/blog.php</em></p>
-<p>Every cloned page has the additional &#39;<em>?p=x</em>&#39; after the non-clonable URL where &#39;x&#39; is a unique number that denotes the cloned page that is being displayed.</p>
+<p>It has an additional &#39;<em>?p-2_&#39; after the _blog.php_<br/>
+_http&#58;//<a href="http://www.mytestsite.com/blog.php?p=2">www.mytestsite.com/blog.php?p=2</a>_<br/>
+Compare it with how uptil now (that is uptil _blog.php</em> was not declared clonable), we accessed <em>blog.php</em> using the following address -<br/>
+<em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em></p>
+<p>Every cloned page has the additional &#39;_?p=x_&#39; after the non-clonable URL where &#39;x&#39; is a unique number that denotes the cloned page that is being displayed.</p>
 <p>Let us create a second cloned page to illustrate the point further.<br/>
 Click on the button that has been added on the top that says &#39;Add New&#39; -</p>
 <p><img src="../../assets/img/contents/portfolio-site-39.png" alt=""></p>
@@ -195,16 +192,16 @@ Click on the button that has been added on the top that says &#39;Add New&#39; -
 <p>Press view and the second page should show up -</p>
 <p><img src="../../assets/img/contents/portfolio-site-41.png" alt=""></p>
 <p>Once again notice the address of this page -<br/>
-<em>http&#58;//www.mytestsite.com/blog.php?p=3</em></p>
-<p>Clearly, the &#39;<em>?p=2</em>&#39; and &#39;<em>?p=3</em>&#39; after the <em>blog.php</em> signal to Couch to generate a page using <em>blog.php</em> as template and filling in the editable regions with data associated with the page specified with the number given.<br/>
-So what happens if we access<em>blog.php</em> without any &#39;<em>?p=n</em>&#39; appended? Let us try.<br/>
-Access <em>http&#58;//www.mytestsite.com/blog.php</em> and the following page should appear -</p>
+<em>http&#58;//<a href="http://www.mytestsite.com/blog.php?p=3">www.mytestsite.com/blog.php?p=3</a></em></p>
+<p>Clearly, the &#39;<em>?p=2_&#39; and &#39;_?p=3_&#39; after the _blog.php</em> signal to Couch to generate a page using <em>blog.php</em> as template and filling in the editable regions with data associated with the page specified with the number given.<br/>
+So what happens if we access_blog.php_ without any &#39;<em>?p=n_&#39; appended? Let us try.<br/>
+Access _http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> and the following page should appear -</p>
 <p><img src="../../assets/img/contents/portfolio-site-42.png" alt=""></p>
 <p>As you can see, a page has been generated using <em>blog.php</em> as the template. However, since no cloned page was specified, the two editable regions come up empty.<br/>
-So if no page&#39;s data is associated with the address <em>http&#58;//www.mytestsite.com/blog.php</em>, is this address useless for clonable templates?<br/>
+So if no page&#39;s data is associated with the address _http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a>_, is this address useless for clonable templates?<br/>
 Not at all. We can use it to show a listing of all the pages cloned from the template or display information about this section or do whatever you wish.<br/>
 Couch, on its part, will signal to you whether or not a cloned page&#39;s data is available. This it does by setting up certain variables that you can test and take action accordingly.</p>
-<p>URLs of clonable templates that have the &#39;<em>?p=n</em>&#39; appended are considered by Couch to be the &#39;<em>page-views</em>&#39; (i.e. displaying cloned pages) while the URLs without this information are considered as being the &#39;<em>list-views</em>&#39; [see <a href="../../concepts/views.html">Views</a> in documentation].<br/>
+<p>URLs of clonable templates that have the &#39;_?p=n_&#39; appended are considered by Couch to be the &#39;_page-views_&#39; (i.e. displaying cloned pages) while the URLs without this information are considered as being the &#39;_list-views_&#39; [see <a href="../../concepts/views.html">Views</a> in documentation].<br/>
 In page-view, you&#39;ll find set a variable named <em>k_is_page</em> while in list-view a variable named <em>k_is_list</em> will be found set (see <a href="../../concepts/variables-in-views.html">Variables available in Views</a>).</p>
 <h3 id="using-the-conditionals">Using the conditionals</h3>
 <p>We can use Couch&#39;s conditional tags (if and else) to test the presence of the two variables mentioned above and then change the output of our template accordingly depending on the view we are in.</p>
@@ -215,16 +212,16 @@ Place the opening if tag <em>&lt;cms:if k_is_page &gt;</em> before the HTML part
 <p><img src="../../assets/img/contents/portfolio-site-44.png" alt=""></p>
 <p>What we are doing is checking if variable <em>k_is_page</em> is set (i.e. a cloned page is being viewed). If it is, we output the full template. Test it by accessing both the cloned pages.<br/>
 But what happens if <em>k_is_page</em> is not set (as when in the list-view)?<br/>
-Check it by accessing <em>http&#58;//www.mytestsite.com/blog.php</em> and you&#39;ll face a blank page. Not surprising because we were displaying the template only in page-view.<br/>
+Check it by accessing <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> and you&#39;ll face a blank page. Not surprising because we were displaying the template only in page-view.<br/>
 Let us handle the list-view now.<br/>
 Add an else tag before the ending if tag.</p>
 <p><img src="../../assets/img/contents/portfolio-site-45.png" alt=""></p>
 <p>Anything placed after the else tag will be output when <em>k_is_page</em> is not set - i.e. when <em>blog.php</em> is accessed without being associated with a cloned page.<br/>
 As a quick and dirty test, place an arbitrary message in this block -</p>
 <p><img src="../../assets/img/contents/portfolio-site-46.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/blog.php</em> and you&#39;ll see &#39;<em>Hi! You are seeing the list-view</em>&#39; greeting you.<br/>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> and you&#39;ll see &#39;<em>Hi! You are seeing the list-view_&#39; greeting you.<br/>
 Of course, you&#39;ll want to do something more useful than this in this view.<br/>
-Listing out all the pages that have been cloned from <em>blog.php</em> here is not a bad idea.<br/>
+Listing out all the pages that have been cloned from _blog.php</em> here is not a bad idea.<br/>
 Remember the <em>blog_list.html</em> (the original <em>blog.html</em> showing a list of blog entries that we had renamed to <em>blog_list.html</em>)?<br/>
 We&#39;ll display this in the list-view.</p>
 <h3 id="embedding-snippets">Embedding snippets</h3>
@@ -234,7 +231,7 @@ Move <em>blog_list.html</em> into the snippets folder found within the couch fol
 See <a href="../../tags-reference/embed.html">embed</a> tag for snippets folder customization instructions.<br/>
 Now replace the silly message we were displaying in list-view with the following embed tag -</p>
 <p><img src="../../assets/img/contents/portfolio-site-47.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/blog.php</em> once again and you should see the contents of <em>blog_list.html</em> being displayed.</p>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/blog.php">www.mytestsite.com/blog.php</a></em> once again and you should see the contents of <em>blog_list.html</em> being displayed.</p>
 <p><img src="../../assets/img/contents/portfolio-site-48.png" alt=""></p>
 <p>In a way, <em>blog_list.html</em> has become a part of the <em>blog.php</em> template only that it is displayed in list-view.</p>
 <p>Of course, what is being displayed is the hard coded HTML within <em>blog_list.html</em> and is not a list of the cloned pages of <em>blog.php</em> but we&#39;ll change that soon.</p>
@@ -244,21 +241,19 @@ The blog entry&#39;s title, the categories, date and number of comments need to 
 <p><img src="../../assets/img/contents/portfolio-site-49.png" alt=""></p>
 <p>In the step where we decided on the number of editable regions to create, we had discussed that these items are present in other ways within a page and do not need the creation of editable regions to capture them.<br/>
 Take a look at the &#39;<a href="../../concepts/variables-in-views.html">Variables available in Views</a>&#39; in the documentation for a list of variables that become available in the various views.</p>
-<p class="success"><strong>TIP:</strong> You can use <em>&lt;cms:dump_all /&gt;</em> or <em>&lt;cms:dump /&gt;</em> to get a quick list of all the variables that are available for use at any particular place.</p>
+<p class="success">**TIP:** You can use *&lt;cms:dump\_all /&gt;* or _&lt;cms:dump /&gt;_ to get a quick list of all the variables that are available for use at any particular place.</p>
 
 <p>Variables <em>k_page_title</em>, <em>k_page_date</em> and <em>k_comments_count</em> present in the page-view are what we require.<br/>
 With <em>blog.php</em> open in your editor, find the place where title of the blog entry is displayed</p>
 <p><img src="../../assets/img/contents/portfolio-site-50.png" alt=""></p>
 <p>and replace it with</p>
-<pre><code>&lt;cms:show k_page_title /&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-51.png" alt=""></p>
+<pre><code>&lt;cms:show k_page_title /&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-51.png" alt=""></p>
 <p>The titles are currently linked to &#39;single.html&#39;. Let us change this to link them back to the current page.<br/>
 We&#39;ll use the variable <em>k_page_link</em>, which is always available to give the link of the current page.<br/>
 Replace &#39;single.html&#39;</p>
 <p><img src="../../assets/img/contents/portfolio-site-52.png" alt=""></p>
 <p>with</p>
-<pre><code>&lt;cms:show k_page_link /&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-53.png" alt=""></p>
+<pre><code>&lt;cms:show k_page_link /&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-53.png" alt=""></p>
 <p>Access the cloned pages to see their title being shown instead of the ipsum lorem stuff having the right link.</p>
 <p><img src="../../assets/img/contents/portfolio-site-54.png" alt=""></p>
 <p><img src="../../assets/img/contents/portfolio-site-55.png" alt=""></p>
@@ -268,12 +263,11 @@ Replace &#39;single.html&#39;</p>
 <p><img src="../../assets/img/contents/portfolio-site-57.png" alt=""></p>
 <p>Accessing any cloned page to see the change</p>
 <p><img src="../../assets/img/contents/portfolio-site-58.png" alt=""></p>
-<p>The date that appears, although recognizable, hardly matches the &#39;<em>31st Sep, 09</em>&#39; format originally in place.<br/>
+<p>The date that appears, although recognizable, hardly matches the &#39;_31st Sep, 09_&#39; format originally in place.<br/>
 This is because <em>k_page_date</em> shows date in the internal raw format of its storage (yyyy-mm-dd hh:mm:ss).<br/>
 To make it display in the desired format we&#39;ll have to use the Couch date tag that takes a format parameter which can be used to modify the display.<br/>
 Place the following in place of the show tag -</p>
-<pre><code>&lt;cms:date k_page_date format=&#39;jS M, y&#39;/&gt;
-</code></pre><p>This results in the following display -</p>
+<pre><code>&lt;cms:date k_page_date format=&#39;jS M, y&#39;/&gt;</code></pre><p>This results in the following display -</p>
 <p><img src="../../assets/img/contents/portfolio-site-59.png" alt=""></p>
 <p>The comments count can be similarly fixed by finding and replacing the count</p>
 <p><img src="../../assets/img/contents/portfolio-site-60.png" alt=""></p>
@@ -283,48 +277,48 @@ Place the following in place of the show tag -</p>
 <p>We can now move on to handle the categories of blog entries.</p>
 <h3 id="virtual-folders">Virtual Folders</h3>
 <p>Couch supports the notion of virtual folders. Virtual folders can be created for a clonable template and then its cloned pages may be placed in any one such folder.<br/>
-The real value of virtual folders is seen when pretty-urls are enabled in Couch (after which the &#39;<em>?p=n</em>&#39; in the URL of a cloned page gets replaced by the name of the page, making the url more user-friendly). With pretty-urls enabled, if a cloned page resides within a virtual folder or a hierarchy of virtual folders (they can be nested), the names of the folders show up in the URL of the page, making it appear as if the page is physically located within such folders.<br/>
+The real value of virtual folders is seen when pretty-urls are enabled in Couch (after which the &#39;_?p=n_&#39; in the URL of a cloned page gets replaced by the name of the page, making the url more user-friendly). With pretty-urls enabled, if a cloned page resides within a virtual folder or a hierarchy of virtual folders (they can be nested), the names of the folders show up in the URL of the page, making it appear as if the page is physically located within such folders.<br/>
 Since the virtual folders are designed to mimic the physical folders of a file system, a cloned page can only reside within one folder.</p>
 <p>The categories of the blog section can be handled using virtual folders but please keep in mind that you&#39;ll only be able to place a blog entry in a single category.</p>
 <p>Creation of a virtual folder requires placing the Couch folder tag within the template the virtual folder is defined for.<br/>
 The template tag is an ideal place within which these folder tags may be placed.</p>
-<p>For our <em>blog.php</em>, we&#39;ll create unnested folders to match the following categories visible in the Aurelius template -<br/>
-<em>Philosophy</em>, <em>History</em>, <em>Jobs</em>, <em>Staff</em> and <em>Clients</em></p>
-<p>Place the following tags within the template tag already placed at the beginning of<em>blog.php</em> -</p>
+<p>For our <em>blog.php_, we&#39;ll create unnested folders to match the following categories visible in the Aurelius template -<br/>
+_Philosophy_, _History_, _Jobs_, _Staff</em> and <em>Clients</em></p>
+<p>Place the following tags within the template tag already placed at the beginning of_blog.php_ -</p>
 <p><img src="../../assets/img/contents/portfolio-site-62.png" alt=""></p>
 <p>Refresh <em>blog.php</em> in your browser by visiting it while still being logged-on as the super-admin.<br/>
 Visit the <em>blog</em> section in Couch admin and you should find a drop-down list being added to it -</p>
 <p><img src="../../assets/img/contents/portfolio-site-63.png" alt=""></p>
 <p><img src="../../assets/img/contents/portfolio-site-64.png" alt=""></p>
 <p>Let us now add the first blog entry to a folder.<br/>
-Click on &#39;<em>My first blog entry</em>&#39; to edit it.<br/>
-Click on the &#39;<em>Advanced Settings</em>&#39; found at the top right -</p>
+Click on &#39;_My first blog entry_&#39; to edit it.<br/>
+Click on the &#39;_Advanced Settings_&#39; found at the top right -</p>
 <p><img src="../../assets/img/contents/portfolio-site-65.png" alt=""></p>
 <p>It will expand to reveal several advanced settings. A list of the virtual folders defined for the template is one of them.</p>
 <p><img src="../../assets/img/contents/portfolio-site-66.png" alt=""></p>
-<p>Select one, let us say &#39;<em>clients</em>&#39;, and save.</p>
+<p>Select one, let us say &#39;_clients_&#39;, and save.</p>
 <p>Now to display this folder in the blog entry -<br/>
 As you know, Couch provides information about the page being accessed by setting up variables. <em>k_page_foldertitle</em> is the variable that contains the title of the folder a cloned page resides in (remains blank if the page does not reside in any folder) [see <a href="../../concepts/variables-in-views.html">Variables available in Views</a>].</p>
-<p class="success">Once again, when in any doubt about which variables are available for use, place <em>&lt;cms:dump /&gt;</em> or <em>&lt;cms:dump_all /&gt;</em> temporarily within the template. On accessing a page, these tags will spill out all the variables (along with their values) that are available.</p>
+<p class="success">Once again, when in any doubt about which variables are available for use, place _&lt;cms:dump /&gt;_ or *&lt;cms:dump\_all /&gt;* temporarily within the template. On accessing a page, these tags will spill out all the variables (along with their values) that are available.</p>
 
 <p>Find the place where the template displays the name of the categories -</p>
 <p><img src="../../assets/img/contents/portfolio-site-67.png" alt=""></p>
 <p>Replace it with -</p>
 <p><img src="../../assets/img/contents/portfolio-site-68.png" alt=""></p>
 <p>Notice how we have eliminated the second category because we can only have one.</p>
-<p>Visit &#39;<em>My first blog entry</em>&#39; to see the change being reflected on the web page -</p>
+<p>Visit &#39;_My first blog entry_&#39; to see the change being reflected on the web page -</p>
 <p><img src="../../assets/img/contents/portfolio-site-69.png" alt=""></p>
-<p>Now visit &#39;<em>My second blog entry</em>&#39; -</p>
+<p>Now visit &#39;_My second blog entry_&#39; -</p>
 <p><img src="../../assets/img/contents/portfolio-site-70.png" alt=""></p>
 <p>Nothing is displayed for the folder as this page was not placed in any folder but the blank looks awkward.<br/>
-We&#39;d like to display &#39;<em>Uncategorised</em>&#39; for such pages that do not reside in any folder.</p>
+We&#39;d like to display &#39;_Uncategorised_&#39; for such pages that do not reside in any folder.</p>
 <p>To do so, instead of directly using the <em>k_page_foldertitle</em>, we&#39;ll use a variable of our own to display the folder title.</p>
-<p class="notice">You might recall from the documentation that apart from the variables set up by Couch (the system variables that are all prefixed by a &#39;k_&#39;), we can define our own variables. [see <a href="../../concepts/variables.html">Variables</a>]</p>
+<p class="notice">You might recall from the documentation that apart from the variables set up by Couch (the system variables that are all prefixed by a 'k\_'), we can define our own variables. \[see [Variables](../../../../concepts/variables.html)\]</p>
 
-<p>If <em>k_page_foldertitle</em> is not blank, we&#39;ll set our variable to the folder title but if <em>k_page_foldertitle</em> is blank, we&#39;ll set it to &#39;<em>Uncategorised</em>&#39;. This is how it can be done -</p>
+<p>If <em>k_page_foldertitle</em> is not blank, we&#39;ll set our variable to the folder title but if <em>k_page_foldertitle</em> is blank, we&#39;ll set it to &#39;_Uncategorised_&#39;. This is how it can be done -</p>
 <p><img src="../../assets/img/contents/portfolio-site-71.png" alt=""></p>
 <p>Notice how we are now using <em>my_category</em>, instead of <em>k_page_foldertitle</em>, to display the folder title,</p>
-<p>Visiting &#39;<em>My second blog entry</em>&#39; now will show -</p>
+<p>Visiting &#39;_My second blog entry_&#39; now will show -</p>
 <p><img src="../../assets/img/contents/portfolio-site-72.png" alt=""></p>
 <p>That about wraps up the page-view part of <em>blog.php</em> (one that displays a single blog entry).<br/>
 A few minor points still remain unattended but we&#39;ll get back to them after we configure the other parts.<br/>

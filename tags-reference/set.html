@@ -72,23 +72,18 @@
 <p>The <strong>Set</strong> tag is used to put some value in a variable. The variable, if not already present, is created.<br/>
 (This tag is the counterpart of <a href="show.html"><strong>Show</strong></a> tag which is used to display set variables)</p>
 <p>The following example will create a variable called &#39;greeting&#39; and set its value to &#39;Hello&#39;</p>
-<pre><code>&lt;cms:set greeting=&#39;Hello&#39; /&gt;
-</code></pre><p>The following will create another variable known as &#39;message&#39; and set its value to &#39;Hello&#39;</p>
-<pre><code>&lt;cms:set message=greeting /&gt;
-</code></pre><p>As with all other tags, nested tags may be used in parameters (taking care to use double quotes).<br/>
+<pre><code>&lt;cms:set greeting=&#39;Hello&#39; /&gt;</code></pre><p>The following will create another variable known as &#39;message&#39; and set its value to &#39;Hello&#39;</p>
+<pre><code>&lt;cms:set message=greeting /&gt;</code></pre><p>As with all other tags, nested tags may be used in parameters (taking care to use double quotes).<br/>
 The following will set the value of &#39;message&#39; to &#39;Hello World&#39;.</p>
-<pre><code>&lt;cms:set message=&quot;&lt;cms:show greeting /&gt; World&quot; /&gt;
-</code></pre><p class="notice">A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.</p>
+<pre><code>&lt;cms:set message=&quot;&lt;cms:show greeting /&gt; World&quot; /&gt;</code></pre><p class="notice">A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.</p>
 
-<p class="error"><strong>IMP.</strong> <strong>Set</strong> cannot be used to set system variables (i.e. those that begin with prefix &#39;k_&#39;).</p>
+<p class="error">**IMP.** **Set** cannot be used to set system variables (i.e. those that begin with prefix 'k\_').</p>
 
 <h2 id="parameters">Parameters</h2>
 <p>The first parameter, as illustrated above, is mandatory and is used to set a named variable to a certain value.<br/>
 The tag also uses an optional unnamed (i.e. only the value can be provided) second parameter that defines the <strong>scope</strong> within which the variable will be set.</p>
-<pre><code>&lt;cms:set message=&#39;hello&#39; scope=&#39;global&#39; /&gt;
-</code></pre><p>The above is the same as</p>
-<pre><code>&lt;cms:set message=&#39;hello&#39; &#39;global&#39; /&gt;
-</code></pre><p>Here &#39;global&#39; defines the scope of &#39;message&#39; variable</p>
+<pre><code>&lt;cms:set message=&#39;hello&#39; scope=&#39;global&#39; /&gt;</code></pre><p>The above is the same as</p>
+<pre><code>&lt;cms:set message=&#39;hello&#39; &#39;global&#39; /&gt;</code></pre><p>Here &#39;global&#39; defines the scope of &#39;message&#39; variable</p>
 <p>The valid values for this second parameter are -</p>
 <ul>
 <li>local</li>

@@ -73,15 +73,13 @@
 <pre><code>&lt;cms:folder name=&quot;asia&quot; title=&quot;Asian News&quot;&gt;
     &lt;cms:folder name=&quot;china&quot; title=&quot;China News&quot; /&gt;
     &lt;cms:folder name=&quot;japan&quot; title=&quot;Japan News&quot; /&gt;
-&lt;/cms:folder&gt;
-</code></pre><p>This approach was perfect for templates where the hierarchy of folders was fixed and known beforehand to the designer/developer who placed the tags in the templates.<br/>
+&lt;/cms:folder&gt;</code></pre><p>This approach was perfect for templates where the hierarchy of folders was fixed and known beforehand to the designer/developer who placed the tags in the templates.<br/>
 However for templates, such as blogs, the end-user usually wished to create and manage folders by himself (for example while using the folders as categories for his posts). For such cases, it was not really practical to expect the end-user to edit the templates to tweak the folder hierarchy.</p>
 <p>Version 1.1 now allows the end-user to create/manage the folders from within the admin panel.</p>
 <p>By default the dynamic folders feature is turned off for all templates.<br/>
 To turn on this capability for a particular template, the designer needs to add the &#39;dynamic_folders&#39; attribute to the &#39;template&#39; tag of this template.<br/>
 For example -</p>
-<pre><code>&lt;cms:template clonable=&#39;1&#39; title=&#39;Blog&#39; dynamic_folders=&#39;1&#39;&gt;
-</code></pre><p>Once the dynamic folders feature is activated for a template, Couch will add a new button to the template&#39;s admin panel</p>
+<pre><code>&lt;cms:template clonable=&#39;1&#39; title=&#39;Blog&#39; dynamic_folders=&#39;1&#39;&gt;</code></pre><p>Once the dynamic folders feature is activated for a template, Couch will add a new button to the template&#39;s admin panel</p>
 <p><img src="../assets/img/contents/dynamic-folders-1.png" alt=""></p>
 <p>The client can now manage the folders from the screen that shows up upon clicking the button shown above.<br/>
 Apart from the regular attributes of a folder, the dynamic folders support two additional attributes - a description of the folder and an image associated with it.</p>
@@ -98,8 +96,7 @@ Suppose this was the folder hierarchy imposed upon the template by using the &#3
 <pre><code>&lt;cms:folder name=&quot;asia&quot; title=&quot;Asian News&quot;&gt;
     &lt;cms:folder name=&quot;china&quot; title=&quot;China News&quot; /&gt;
     &lt;cms:folder name=&quot;japan&quot; title=&quot;Japan News&quot; /&gt;
-&lt;/cms:folder&gt;
-</code></pre><p>Under the influence of the code above, this template had three folders. At this point suppose we turn on dynamic folders.<br/>
+&lt;/cms:folder&gt;</code></pre><p>Under the influence of the code above, this template had three folders. At this point suppose we turn on dynamic folders.<br/>
 The three existing folders will show up in the folder management screen that is now available but because the dynamic folders are turned on, Couch will now simply begin ignoring the folder tags shown above.</p>
 <p>Suppose we now add another couple of folders to the template so the total of folders goes to five.<br/>
 However, suppose that at this point we were to turn off the dynamic folders (by removing the &#39;dynamic_folders&#39; attribute or setting it to &#39;0&#39;). Suddenly the hitherto ignored existing folder tags will begin exerting their influence. Couch will adjust the folders to bring them in concord to what is being dictated by the code above. This will result in our two newly added folders getting deleted without warning and the total number of folders getting back to three.</p>

@@ -75,8 +75,7 @@ These tags, apart from the variables set to describe the current item being iter
 <p>To explain these variables, we&#39;ll use the following snippet -</p>
 <pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;10&#39; paginate=&#39;1&#39;&gt;
     &lt;!-- All the variables can be accessed here --&gt;
-&lt;/cms:pages&gt;
-</code></pre><p class="notice">Although we are using the example of a <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag to explain pagination, please keep in mind that the following discussion holds equally good for the <a href="../tags-reference/search.html"><strong><em>search</em></strong></a> and <a href="../tags-reference/comments.html"><strong><em>comments</em></strong></a> tags as well.</p>
+&lt;/cms:pages&gt;</code></pre><p class="notice">Although we are using the example of a [__*pages*__](../../tags-reference/pages.html) tag to explain pagination, please keep in mind that the following discussion holds equally good for the [__*search*__](../../tags-reference/search.html) and [__*comments*__](../../tags-reference/comments.html) tags as well.</p>
 
 <p>Suppose a total of 23 records have been fetched by the given snippet.<br/>
 Since the limit has been set to 10, splitting up the total in chunks of 10 records will result in requiring 3 pages to display all the records.</p>
@@ -142,8 +141,7 @@ for example - the &#39;next&#39; and &#39;forward&#39; links or the &#39;Page 1 
             &lt;a href=&quot;&lt;cms:show k_paginate_link_next /&gt;&quot;&gt;next&lt;/a&gt;
         &lt;/cms:if&gt;
     &lt;/cms:if&gt;
-&lt;/cms:pages&gt;
-</code></pre><p>Instead of manually coding the &#39;next&#39; and &#39;prev&#39; buttons for navigating through the pages, the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag can be used instead -</p>
+&lt;/cms:pages&gt;</code></pre><p>Instead of manually coding the &#39;next&#39; and &#39;prev&#39; buttons for navigating through the pages, the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag can be used instead -</p>
 <pre><code>&lt;cms:pages masterpage=&#39;blog.php&#39; limit=&#39;10&#39; paginate=&#39;1&#39;&gt;
     &lt;cms:if k_paginated_top&gt;
         &lt;cms:if k_paginator_required &gt;
@@ -156,8 +154,7 @@ for example - the &#39;next&#39; and &#39;forward&#39; links or the &#39;Page 1 
     &lt;!-- All the page variables can be accessed here --&gt;
 
     &lt;cms:paginator /&gt;
-&lt;/cms:pages&gt;
-</code></pre><p>If the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag is used to generate the navigation buttons, the following CSS code may be used to properly style the buttons -</p>
+&lt;/cms:pages&gt;</code></pre><p>If the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag is used to generate the navigation buttons, the following CSS code may be used to properly style the buttons -</p>
 <pre><code>/*
     Paginator -
     Source: http://www.strangerstudios.com/sandbox/pagination/diggstyle.php (strangerstudios.com)
@@ -202,8 +199,7 @@ div.pagination span.page_disabled {
     color: #DDD;
 }
 
-* span.elipsis {zoom:100%}
-</code></pre><p>The following is a sample output of the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag</p>
+* span.elipsis {zoom:100%}</code></pre><p>The following is a sample output of the <a href="../tags-reference/paginator.html"><strong><em>paginator</em></strong></a> tag</p>
 <p><img src="../assets/img/contents/pagination.png" alt=""></p>
 </article>
         </div>

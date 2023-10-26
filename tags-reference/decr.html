@@ -71,14 +71,11 @@
             <article><h1 id="decr">decr</h1>
 <p>The <strong>decr</strong> tag accepts as its first parameter a variable and decreases the value contained within the variable by the value contained within the second optional parameter. If the second parameter is not provided, a value of 1 is assumed.</p>
 <pre><code>&lt;cms:set my_value=&#39;11&#39; /&gt;
-&lt;cms:show my_value /&gt;
-</code></pre><p>In the snippet above, value of variable my_value is output as 11.</p>
+&lt;cms:show my_value /&gt;</code></pre><p>In the snippet above, value of variable my_value is output as 11.</p>
 <pre><code>&lt;cms:decr my_value &#39;2&#39; /&gt;
-&lt;cms:show my_value /&gt;
-</code></pre><p>The value of variable my_value now becomes 9.</p>
+&lt;cms:show my_value /&gt;</code></pre><p>The value of variable my_value now becomes 9.</p>
 <pre><code>&lt;cms:decr my_value /&gt;
-&lt;cms:show my_value /&gt;
-</code></pre><p>The value of variable my_value now becomes 8.</p>
+&lt;cms:show my_value /&gt;</code></pre><p>The value of variable my_value now becomes 8.</p>
 <h2 id="parameters">Parameters</h2>
 <p>Expects a maximum of two parameters.</p>
 <p>The first parameter has to be a variable. The second parameter is optional and its value is used to decrease the value of the variable passed as the first parameter. A default value of 1 is assumed if the second parameter is not specified.</p>

@@ -70,10 +70,7 @@
 
             <article><h1 id="date">date</h1>
 <p>The <strong>date</strong> tag outputs a string according to the given <em>format</em> parameter using the given <em>date</em> parameter. If no <em>date</em> provided, the current time is used.</p>
-<pre><code>&lt;cms:date /&gt;
-</code></pre><pre><code>&lt;cms:date k_page_date /&gt;
-</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;jS M, Y&#39; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:date /&gt;</code></pre><pre><code>&lt;cms:date k_page_date /&gt;</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;jS M, Y&#39; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>date</li>
 <li>format</li>
@@ -83,7 +80,7 @@
 </ul>
 <h3 id="date">date</h3>
 <p>The date to be formated.<br/>
-This parameter is expected to be in &#39;<em>Y-m-d H:i:s</em>&#39; format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. <em>k_page_date</em> etc., are in this format.</p>
+This parameter is expected to be in &#39;_Y-m-d H:i:s_&#39; format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. <em>k_page_date</em> etc., are in this format.</p>
 <h3 id="format">format</h3>
 <p>The <strong>date</strong> tag supports two different types of format characters - locale-aware and non locale-aware.<br/>
 With locale-aware characters, you can specify that the date is to formatted according to, for example, <em>french</em> locale or <em>italian</em> locale by setting the <em>locale</em> parameter.<br/>
@@ -91,7 +88,8 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <p class="error">The locale-aware and the non locale-aware characters cannot be intermixed.</p>
 
 <h4 id="non-locale-aware-format-characters">Non Locale-aware format characters</h4>
-<p><br/></p>
+<br/>
+
 <table>
 <thead>
 <tr>
@@ -100,9 +98,8 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <th>Example returned values</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td><span style="display:block; text-align:center;"><em><strong>Day</strong></em></span></td>
+<tbody><tr>
+<td><span style="display:block; text-align:center;">_<strong>Day</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -129,7 +126,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <tr>
 <td><em>S</em></td>
 <td>English ordinal suffix for the day of the month, 2 characters</td>
-<td><em>st</em>, <em>nd</em>, <em>rd</em> or <em>th</em>. Works well with <em>j</em></td>
+<td><em>st_, _nd_, _rd</em> or <em>th</em>. Works well with <em>j</em></td>
 </tr>
 <tr>
 <td><em>w</em></td>
@@ -142,7 +139,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>0</em> through <em>365</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Week</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Week</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -152,7 +149,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>Example: <em>42</em> (the 42nd week in the year)</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Month</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Month</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -182,7 +179,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>28</em> through <em>31</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Year</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Year</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -202,7 +199,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>Examples: <em>99</em> or <em>03</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Time</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Time</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -252,7 +249,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>00</em> through <em>59</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Timezone</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Timezone</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -269,7 +266,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <tr>
 <td><em>T</em></td>
 <td>Timezone abbreviation</td>
-<td>Examples: <em>EST</em>, <em>MDT</em>&hellip;</td>
+<td>Examples: _EST_, _MDT_&hellip;</td>
 </tr>
 <tr>
 <td><em>Z</em></td>
@@ -277,7 +274,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>-43200</em> through <em>50400</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Full&nbsp;Date/Time</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Full&nbsp;Date/Time</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -289,12 +286,14 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <tr>
 <td><em>U</em></td>
 <td>Seconds since the Unix Epoch (January 1 1970 00:00:00 GMT)</td>
+<td></td>
 </tr>
-</tbody>
-</table>
-<p><br/></p>
+</tbody></table>
+<br/>
+
 <h4 id="locale-aware-format-characters">Locale-aware format characters</h4>
-<p><br/></p>
+<br/>
+
 <table>
 <thead>
 <tr>
@@ -303,9 +302,8 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <th>Example returned values</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td><span style="display:block; text-align:center;"><em><strong>Day</strong></em></span></td>
+<tbody><tr>
+<td><span style="display:block; text-align:center;">_<strong>Day</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -345,7 +343,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>0</em> (for Sunday) through <em>6</em> (for Saturday)</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Week</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Week</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -365,7 +363,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>46</em> (for the 46th week of the year beginning with a Monday)</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Month</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Month</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -390,7 +388,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td><em>01</em> (for January) through <em>12</em> (for December)</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Year</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Year</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -420,7 +418,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>Example: <em>2038</em></td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Time</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Time</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -490,7 +488,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>Example: <em>-0500</em> or <em>EST</em> for Eastern Time</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Time&nbsp;and&nbsp;Date&nbsp;Stamps</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Time&nbsp;and&nbsp;Date&nbsp;Stamps</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -520,7 +518,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>Example: <em>02/05/09</em> for February 5, 2009</td>
 </tr>
 <tr>
-<td><span style="display:block; text-align:center;"><em><strong>Miscellaneous</strong></em></span></td>
+<td><span style="display:block; text-align:center;">_<strong>Miscellaneous</strong>_</span></td>
 <td>---</td>
 <td>---</td>
 </tr>
@@ -539,24 +537,20 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 <td>A literal percentage character (&quot;%&quot;)</td>
 <td>---</td>
 </tr>
-</tbody>
-</table>
-<p><br/></p>
+</tbody></table>
+<br/>
+
 <h3 id="gmt">gmt</h3>
 <p>By setting this parameter to &#39;1&#39;, you can get the GMT equivalent of the date provided.</p>
 <h3 id="locale">locale</h3>
 <p>If you use the locale-aware format characters mentioned above, this parameter can be set to the locale desired for formatting the provided date.</p>
-<pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;french&#39; /&gt;
-</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;italian&#39; /&gt;
-</code></pre><p class="error">This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default &#39;english&#39; locale is used.</p>
+<pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;french&#39; /&gt;</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;italian&#39; /&gt;</code></pre><p class="error">This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used.</p>
 
 <h3 id="charset">charset</h3>
 <p>Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.<br/>
 The <strong>date</strong> tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.</p>
 <p>For example -</p>
-<pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;greek&#39; charset=&#39;ISO-8859-7&#39; /&gt;
-</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;russian&#39; charset=&#39;ISO-8859-5&#39; /&gt;
-</code></pre><p>The following is a rough list of the charset used by different languages -</p>
+<pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;greek&#39; charset=&#39;ISO-8859-7&#39; /&gt;</code></pre><pre><code>&lt;cms:date k_page_date format=&#39;%B %d, %Y&#39; locale=&#39;russian&#39; charset=&#39;ISO-8859-5&#39; /&gt;</code></pre><p>The following is a rough list of the charset used by different languages -</p>
 <p><strong>ISO-8859-1 - Latin 1</strong><br/>
 Western Europe and Americas: Afrikaans, Basque, Catalan, Danish, Dutch, English, Faeroese, Finnish, French, Galician, German, Icelandic, Irish, Italian, Norwegian, Portuguese, Spanish and Swedish.</p>
 <p><strong>ISO-8859-2 - Latin 2</strong><br/>

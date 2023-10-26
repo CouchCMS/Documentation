@@ -106,172 +106,158 @@
     |       |---Japan News
     |---Sports News
     |---Music News
-    |---Entertainment News
-</code></pre><h3 id="masterpage">masterpage</h3>
+    |---Entertainment News</code></pre><h3 id="masterpage">masterpage</h3>
 <p>This parameter is used to specify the template behind the nested-pages tree used to create the menu.<br/>
 If left empty, the template of the currently executing page is assumed (which is unlikely to be correct as you&#39;ll usually want to display the menu on all sections (templates) of your site - typically by using &#39;<a href="embed.html">embed</a>&#39; tag).</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39;/&gt;
-</code></pre><h3 id="depth">depth</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39;/&gt;</code></pre><h3 id="depth">depth</h3>
 <p>This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be displayed in the menu.<br/>
 This can be used, for example, to list only the top-level pages in the tree by setting the depth to 1. A depth of 0 means unlimited depth.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;1&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;1&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* World News
 * Sports News
 * Music News
-* Entertainment News
-</code></pre><h3 id="orderby">orderby</h3>
+* Entertainment News</code></pre><h3 id="orderby">orderby</h3>
 <p>By default the menu-items get displayed in the order they are arranged in the admin-panel.<br/>
 This parameter can be set to order them according to the following criteria - name, title, id.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;2&#39; orderby=&#39;title&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;2&#39; orderby=&#39;title&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* Entertainment News
 * Music News
 * Sports News
 * World News
       o Asian News
-      o North American News
-</code></pre><h3 id="order">order</h3>
+      o North American News</code></pre><h3 id="order">order</h3>
 <p>Can be set to specify whether the menu-items are ordered in the ascending order or in descending order.<br/>
 Valid values are &#39;asc&#39; and &#39;desc&#39;. Default is &#39;asc&#39;.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;2&#39; orderby=&#39;title&#39; order=&#39;desc&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; depth=&#39;2&#39; orderby=&#39;title&#39; order=&#39;desc&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* World News
       o North American News
       o Asian News
 * Sports News
 * Music News
-* Entertainment News
-</code></pre><h3 id="exclude">exclude</h3>
+* Entertainment News</code></pre><h3 id="exclude">exclude</h3>
 <p>Pages can be excluded from the menu by specifying their names using this parameter.<br/>
 If an excluded page has children, they are excluded too.<br/>
 If multiple pages are to be excluded, separate them using comma.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; exclude=&#39;united-states-news, china-news&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; exclude=&#39;united-states-news, china-news&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* World News
       o North American News
       o Asian News
             + Japan News
 * Sports News
 * Music News
-* Entertainment News
-</code></pre><h3 id="ignore_show_in_menu">ignore_show_in_menu</h3>
+* Entertainment News</code></pre><h3 id="ignore_show_in_menu">ignore_show_in_menu</h3>
 <p>The &#39;Advanced Settings&#39; of each nested-page has a checkbox labeled &#39;Show in menu&#39;.<br/>
 If that is unchecked, the page (an all its child pages) is not included by default in the menu.<br/>
 You can override this by setting &#39;ignore_show_in_menu&#39; parameter to &#39;1&#39;.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; ignore_show_in_menu=&#39;1&#39; /&gt;
-</code></pre><h3 id="root">root</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; ignore_show_in_menu=&#39;1&#39; /&gt;</code></pre><h3 id="root">root</h3>
 <p>Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.<br/>
 The nested-page specified as the root is displayed along with all its children (compare with &#39;childof&#39; parameter below where only the children are displayed).</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;united-states-news&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;united-states-news&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* United States News
       o Ohio News
-      o Nevada News
-</code></pre><h3 id="childof">childof</h3>
+      o Nevada News</code></pre><h3 id="childof">childof</h3>
 <p>Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.<br/>
 Only the children of the nested-page specified are displayed (compare with &#39;root&#39; parameter above where the specified nested-page is also included in the display).</p>
-<p class="notice">If both &#39;childof&#39; and &#39;root&#39; are set, the &#39;root&#39; parameter gets precedence.</p>
+<p class="notice">If both 'childof' and 'root' are set, the 'root' parameter gets precedence.</p>
 
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; childof=&#39;united-states-news&#39; /&gt;
-</code></pre><p>Output:</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; childof=&#39;united-states-news&#39; /&gt;</code></pre><p>Output:</p>
 <pre><code>* Ohio News
-* Nevada News
-</code></pre><div class="notice">
+* Nevada News</code></pre><div class="notice">
     <h4 id="dynamic-menu">Dynamic Menu</h4>
     <br/>
-    Occasionally, you&#39;ll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.<br/>
+    Occasionally, you'll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.<br/>
     Thus we could have, for example, a top menu that shows only the top level pages of the site while another menu in the sidebar shows only the pages that occur immediately below the page currently selected in the top menu. There could be yet another menu in the footer that shows the pages below the page selected (if any) in the sidebar menu.<br/>
-    The sidebar and the footer menu in the case above are examples of dynamic menus because their &#39;root&#39; keeps on dynamically changing depending on the current page being visited.<br/>
+    The sidebar and the footer menu in the case above are examples of dynamic menus because their 'root' keeps on dynamically changing depending on the current page being visited.<br/>
     <br/>
-    To help easily create such menus the &#39;childof&#39; and &#39;root&#39; parameter accept some special keywords. At runtime, the &#39;menu&#39; tag dynamically calculates their values taking into consideration the current page.<br/>
+    To help easily create such menus the 'childof' and 'root' parameter accept some special keywords. At runtime, the 'menu' tag dynamically calculates their values taking into consideration the current page.<br/>
     <br/>
     The special keywords are -<br/>
-    <strong>@n</strong> (where n is a number starting from 1 e.g. @1, @2 etc.)<br/>
+    **@n** (where n is a number starting from 1 e.g. @1, @2 etc.)<br/>
     <br/>
-    By setting either the &#39;childof&#39; and &#39;root&#39; parameter to &#39;@n&#39;, we ask Couch to use as the &#39;root&#39; or &#39;childof&#39; the page that is parent number &#39;n&#39; of the current page being visited.<br/>
+    By setting either the 'childof' and 'root' parameter to '@n', we ask Couch to use as the 'root' or 'childof' the page that is parent number 'n' of the current page being visited.<br/>
     <br/>
     For example -<br/>
     <br/>
-    <code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;@1&#39; /&gt;</code>
-    In the snippet above we are instructing Couch to find out all the parents of the current page and then use the top most parent (first parent) as the value for the &#39;root&#39; parameter.<br/>
+    ```
+<cms:menu masterpage='menu.php' root='@1' />
+    ```
+    In the snippet above we are instructing Couch to find out all the parents of the current page and then use the top most parent (first parent) as the value for the 'root' parameter.<br/>
     Thus, if the page being visited was<br/>
-    &#39;Nevada News&#39; (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
-    the first parent would be &#39;world-news&#39; and that is the value that would be used as the &#39;root&#39; parameter.<br/>
+    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
+    the first parent would be 'world-news' and that is the value that would be used as the 'root' parameter.<br/>
     Whereas, in the following snippet<br/>
     <br/>
-    <code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;@2&#39; /&gt;</code>
-    the value used for the &#39;root&#39; parameter would be &#39;north-american-news&#39; as that is the second parent of the current page.<br/>
+    ```
+<cms:menu masterpage='menu.php' root='@2' />
+    ```
+    the value used for the 'root' parameter would be 'north-american-news' as that is the second parent of the current page.<br/>
     <br/>
-    <strong>@current</strong><br/>
+    **@current**<br/>
     <br/>
-    By setting either the &#39;childof&#39; and &#39;root&#39; parameter to &#39;@current&#39;, we ask Couch to use as the &#39;root&#39; or &#39;childof&#39; the current page itself that is being visited.<br/>
-    <br/>
-    For example -<br/>
-    <br/>
-    <code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;@current&#39; /&gt;</code>
-    In the snippet above, if the page being visited was<br/>
-    &#39;North American News&#39; (http&#58;//www.yoursite.com/world-news/north-american-news/)<br/>
-    the value used for the &#39;root&#39; parameter would be &#39;north-american-news&#39;.<br/>
-    <br/>
-    <strong>@current-n</strong> (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)<br/>
-    <br/>
-    By setting either the &#39;childof&#39; and &#39;root&#39; parameter to &#39;@current-n&#39;, we ask Couch to use as the &#39;root&#39; or &#39;childof&#39; the parent page that is &#39;n&#39; level above the page being visited.<br/>
+    By setting either the 'childof' and 'root' parameter to '@current', we ask Couch to use as the 'root' or 'childof' the current page itself that is being visited.<br/>
     <br/>
     For example -<br/>
     <br/>
-    <code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;@current-1&#39; /&gt;</code>
+    ```
+<cms:menu masterpage='menu.php' root='@current' />
+    ```
     In the snippet above, if the page being visited was<br/>
-    &#39;Nevada News&#39; (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
-    the value used for the &#39;root&#39; parameter would be &#39;united-states-news&#39; while for the following snippet<br/>
+    'North American News' (http&#58;//www.yoursite.com/world-news/north-american-news/)<br/>
+    the value used for the 'root' parameter would be 'north-american-news'.<br/>
     <br/>
-    <code>&lt;cms:menu masterpage=&#39;menu.php&#39; root=&#39;@current-2&#39; /&gt;</code>
-    the value used would be &#39;north-american-news&#39;.<br/>
+    **@current-n** (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)<br/>
+    <br/>
+    By setting either the 'childof' and 'root' parameter to '@current-n', we ask Couch to use as the 'root' or 'childof' the parent page that is 'n' level above the page being visited.<br/>
+    <br/>
+    For example -<br/>
+    <br/>
+    ```
+<cms:menu masterpage='menu.php' root='@current-1' />
+    ```
+    In the snippet above, if the page being visited was<br/>
+    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
+    the value used for the 'root' parameter would be 'united-states-news' while for the following snippet<br/>
+    <br/>
+    ```
+<cms:menu masterpage='menu.php' root='@current-2' />
+    ```
+    the value used would be 'north-american-news'.<br/>
     <br/>
     Using these special keywords some very complex menu can be easily created without involving any programming.
 </div>
 
-<p><br/></p>
+<br/>
+
 <h3 id="list_type">list_type</h3>
 <p>By default the HTML list element used to create the menu is &lt;UL&gt;.<br/>
 It can be set to &lt;OL&gt; but using this parameter.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; list_type=&#39;ol&#39; /&gt;
-</code></pre><h3 id="menu_class">menu_class</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; list_type=&#39;ol&#39; /&gt;</code></pre><h3 id="menu_class">menu_class</h3>
 <p>This parameter can be used to add class names to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.<br/>
 This is useful for styling the menu using CSS.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_class=&#39;sf-menu&#39; /&gt;
-</code></pre><pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_class=&#39;sf-menu sf-navbar&#39; /&gt;
-</code></pre><p>Notice that in the second example we are applying two classes to the menu.</p>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_class=&#39;sf-menu&#39; /&gt;</code></pre><pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_class=&#39;sf-menu sf-navbar&#39; /&gt;</code></pre><p>Notice that in the second example we are applying two classes to the menu.</p>
 <h3 id="menu_id">menu_id</h3>
 <p>This parameter can be used to apply an ID to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.<br/>
 This is useful for styling the menu using CSS.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_id=&#39;top-menu&#39; /&gt;
-</code></pre><h3 id="first_class">first_class</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; menu_id=&#39;top-menu&#39; /&gt;</code></pre><h3 id="first_class">first_class</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;first&#39; to the very first menu-item at each level.<br/>
 This is useful for styling the menu using CSS.<br/>
 A different class name can be set by using this parameter.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; first_class=&#39;begin&#39; /&gt;
-</code></pre><h3 id="last_class">last_class</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; first_class=&#39;begin&#39; /&gt;</code></pre><h3 id="last_class">last_class</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;last&#39; to the last menu-item at each level.<br/>
 This is useful for styling the menu using CSS.<br/>
 A different class name can be set by using this parameter.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; first_class=&#39;begin&#39; last_class=&#39;end&#39; /&gt;
-</code></pre><h3 id="no_selected">no_selected</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; first_class=&#39;begin&#39; last_class=&#39;end&#39; /&gt;</code></pre><h3 id="no_selected">no_selected</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;current&#39; (can be changed using the &#39;selected_class&#39; parameter) to the menu-item that matches the page being visited. This behavior can be turned off by setting the &#39;no_selected&#39; parameter to &#39;1&#39;.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; no_selected=&#39;1&#39; /&gt;
-</code></pre><h3 id="selected_class">selected_class</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; no_selected=&#39;1&#39; /&gt;</code></pre><h3 id="selected_class">selected_class</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;current&#39; to the menu-item that matches the page being visited.<br/>
 A different class name can be set by using this parameter.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; selected_class=&#39;selected&#39; /&gt;
-</code></pre><h3 id="no_active_trail">no_active_trail</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; selected_class=&#39;selected&#39; /&gt;</code></pre><h3 id="no_active_trail">no_active_trail</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;active&#39; to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an &#39;active-trail&#39; that can be used for CSS styling.<br/>
 This behavior can be turned off by setting the &#39;no_active_trail&#39; parameter to &#39;1&#39;.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; no_active_trail=&#39;1&#39; /&gt;
-</code></pre><h3 id="active_trail_class">active_trail_class</h3>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; no_active_trail=&#39;1&#39; /&gt;</code></pre><h3 id="active_trail_class">active_trail_class</h3>
 <p>The default behavior of the menu tag is to apply a special class &#39;active&#39; to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an &#39;active-trail&#39; that can be used for CSS styling.<br/>
 A different class name can be set by using this parameter.</p>
-<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; active_trail_class=&#39;selected-parent&#39; /&gt;
-</code></pre><h2 id="variables">Variables</h2>
+<pre><code>&lt;cms:menu masterpage=&#39;menu.php&#39; active_trail_class=&#39;selected-parent&#39; /&gt;</code></pre><h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

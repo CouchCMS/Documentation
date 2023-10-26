@@ -71,20 +71,18 @@
             <article><h1 id="nested_crumbs">nested_crumbs</h1>
 <p>The <strong>nested_crumbs</strong> tag can be used to easily create breadcrumbs out of <a href="../concepts/nested-pages-aka-menu-maker.html">nested-pages</a>.</p>
 <p class="notice">
-    There is another tag named &#39;<a href="breadcrumbs.html">breadcrumbs</a>&#39;, which is used with the folder hierarchy associated with normal cloned pages.<br/>
-    &#39;nested_crumbs&#39; on the other hand works with nested-pages only.
+    There is another tag named '[breadcrumbs](../breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.<br/>
+    'nested\_crumbs' on the other hand works with nested-pages only.
 </p>
 
 <h3 id="usage">Usage</h3>
 <p>This tag can be used in two ways -</p>
 <p><strong>1.</strong> As self-closing tag. e.g.</p>
-<pre><code>&lt;cms:nested_crumbs masterpage=&#39;index.php&#39; /&gt;
-</code></pre><p>where &#39;masterpage&#39; points to the template behind the nested-pages tree.</p>
+<pre><code>&lt;cms:nested_crumbs masterpage=&#39;index.php&#39; /&gt;</code></pre><p>where &#39;masterpage&#39; points to the template behind the nested-pages tree.</p>
 <p><strong>2.</strong> As a tag-pair for better control over the generated breadcrumbs markup. e.g.</p>
 <pre><code>&lt;cms:nested_crumbs masterpage=&#39;index.php&#39; ignore_show_in_menu=&#39;1&#39; prepend=&#39;&lt;ul class=&quot;breadcrumb&quot;&gt;&#39; append=&#39;&lt;/ul&gt;&#39;&gt;
    &lt;li&gt;&lt;a href=&quot;&lt;cms:show k_crumb_link /&gt;&quot;&gt;&lt;cms:show k_crumb_text /&gt;&lt;/a&gt;&lt;cms:if k_crumb_is_last=&#39;0&#39;&gt; &amp;raquo; &lt;/cms:if&gt;&lt;/li&gt;
-&lt;/cms:nested_crumbs&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+&lt;/cms:nested_crumbs&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>masterpage</li>
 <li>ignore_show_in_menu</li>

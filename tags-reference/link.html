@@ -73,18 +73,14 @@
 <p class="error">Never hard code links yourself because the links are different depending on whether or not pretty-urls are enabled.</p>
 
 <h3 id="home-view">Home view</h3>
-<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
-</code></pre><h3 id="page-view">Page view</h3>
-<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; page=&#39;first-news-item&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
-</code></pre><h3 id="folder-view">Folder view</h3>
-<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; folder=&#39;entertainment&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
-</code></pre><h3 id="archive-view">Archive view</h3>
+<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;</code></pre><h3 id="page-view">Page view</h3>
+<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; page=&#39;first-news-item&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;</code></pre><h3 id="folder-view">Folder view</h3>
+<pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; folder=&#39;entertainment&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;</code></pre><h3 id="archive-view">Archive view</h3>
 <pre><code>&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; year=&#39;2010&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
 
 &lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; year=&#39;2010&#39; month=&#39;8&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
 
-&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; year=&#39;2010&#39; month=&#39;8&#39; day=&#39;17&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;
-</code></pre><p class="notice">If multiple parameters are given, the page-view will be given priority over the folder-view and the folder-view will be given priority over the archive-view. The home-view link will be generated only when no other parameter (except the mandatory <em>masterpage</em>) is given.</p>
+&lt;a href=&quot;&lt;cms:link masterpage=&#39;news.php&#39; year=&#39;2010&#39; month=&#39;8&#39; day=&#39;17&#39; /&gt;&quot; &gt;Testing Link tag&lt;/a&gt;</code></pre><p class="notice">If multiple parameters are given, the page-view will be given priority over the folder-view and the folder-view will be given priority over the archive-view. The home-view link will be generated only when no other parameter (except the mandatory _masterpage_) is given.</p>
 
 <h2 id="parameters">Parameters</h2>
 <ul>

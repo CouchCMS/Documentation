@@ -81,8 +81,7 @@ Place the following snippet within a plain text file and name it, say, <em>rss.x
         &lt;language&gt;en-us&lt;/language&gt;
         &lt;pubDate&gt;Fri, 30 Jul 2010 05:49:44 GMT&lt;/pubDate&gt;
     &lt;/channel&gt;
-&lt;/rss&gt;
-</code></pre><p>In the snippet above, we are declaring one RSS channel that will carry your news items. You&#39;ll need to modify the title, link and description tags to match your channel.</p>
+&lt;/rss&gt;</code></pre><p>In the snippet above, we are declaring one RSS channel that will carry your news items. You&#39;ll need to modify the title, link and description tags to match your channel.</p>
 <p>Now add the individual news items to this channel -</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rss version=&quot;2.0&quot;&gt;
@@ -107,8 +106,7 @@ Place the following snippet within a plain text file and name it, say, <em>rss.x
             &lt;pubDate&gt;10 Jul 2007&lt;/pubDate&gt;
         &lt;/item&gt;
     &lt;/channel&gt;
-&lt;/rss&gt;
-</code></pre><p>We have added two recent news items that were published.<br/>
+&lt;/rss&gt;</code></pre><p>We have added two recent news items that were published.<br/>
 Try visiting this <em>rss.xml</em> page in your browser or a news aggregator and the feed should come up without a hitch.</p>
 <p>RSS (Really Simple Syndication) seems to be really simple after all.<br/>
 However, manually adding every new news item published to the feed will be a painful chore.<br/>
@@ -122,8 +120,7 @@ Rename the <em>rss.xml</em> file to <em>rss.php</em> and add the usual PHP code 
 </ol>
 <p>The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.<br/>
 The following snippet using Couch&#39;s <a href="../tags-reference/concat.html"><strong><em>concat</em></strong></a> tag will output exactly the same statement but because the &#39;&lt;?&#39; characters are now split up, PHP will have no problems.</p>
-<pre><code>&lt;cms:concat &#39;&lt;&#39; &#39;?xml version=&quot;1.0&quot; encoding=&quot;&#39; k_site_charset &#39;&quot;?&#39; &#39;&gt;&#39; /&gt;
-</code></pre><p class="notice">The <em>k_site_charset</em> variable contains the value set in <em>config.php</em> for the character set used by your web-site.</p>
+<pre><code>&lt;cms:concat &#39;&lt;&#39; &#39;?xml version=&quot;1.0&quot; encoding=&quot;&#39; k_site_charset &#39;&quot;?&#39; &#39;&gt;&#39; /&gt;</code></pre><p class="notice">The *k\_site\_charset* variable contains the value set in _config.php_ for the character set used by your web-site.</p>
 
 <p>The second problem can be rectified by using the Couch&#39;s <a href="../tags-reference/content_type.html"><strong><em>content_type</em></strong></a> tag. This tag instructs the web server to output the desired mime-type. We&#39;ll use it to output <em>text/xml</em>.</p>
 <p>The modified snippet should now look like this -</p>
@@ -152,8 +149,7 @@ The following snippet using Couch&#39;s <a href="../tags-reference/concat.html">
     &lt;/item&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;
-&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p class="notice"><strong>IMP.</strong> Do not split the <a href="../tags-reference/content_type.html"><strong><em>content_type</em></strong></a> statement and the <a href="../tags-reference/concat.html"><strong><em>concat</em></strong></a> statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
+&lt;?php COUCH::invoke(); ?&gt;</code></pre><p class="notice">**IMP.** Do not split the [__*content\_type*__](../../tags-reference/content_type.html) statement and the [__*concat*__](../../tags-reference/concat.html) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
 
 <p>We can now fetch the news items from the <em>news.php</em> template by using <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag and add it to our feed to make it dynamic -</p>
 <pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
@@ -182,8 +178,7 @@ The following snippet using Couch&#39;s <a href="../tags-reference/concat.html">
     &lt;/cms:pages&gt;
  &lt;/channel&gt;
 &lt;/rss&gt;
-&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p>We are assuming that an editable field named <em>my_news_text</em> contains the news text.<br/>
+&lt;?php COUCH::invoke(); ?&gt;</code></pre><p>We are assuming that an editable field named <em>my_news_text</em> contains the news text.<br/>
 The <a href="../tags-reference/excerpthtml.html"><strong><em>excerptHTML</em></strong></a> tag can be used to output only an excerpt of your page.<br/>
 We need to wrap the output within <a href="../tags-reference/html_encode.html"><strong><em>html_encode</em></strong></a> to encode certain characters that are not valid in XML.</p>
 <p>And that is it. Your automated RSS feed is ready.<br/>

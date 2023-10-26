@@ -71,21 +71,18 @@
             <article><h1 id="each">each</h1>
 <p>The <strong>Each</strong> tag, given a string containing values separated by a known separator, splits it up along the separator and returns each value.<br/>
 For example, assume we have a variable &#39;msg&#39; -</p>
-<pre><code>&lt;cms:set msg=&#39;hello|world|how|do|you|do&#39; /&gt;
-</code></pre><p>Passing variable &#39;msg&#39; as parameter to <strong>each</strong> like this -</p>
+<pre><code>&lt;cms:set msg=&#39;hello|world|how|do|you|do&#39; /&gt;</code></pre><p>Passing variable &#39;msg&#39; as parameter to <strong>each</strong> like this -</p>
 <pre><code>&lt;cms:each msg sep=&#39;|&#39; &gt;
     &lt;cms:show item /&gt;&lt;br&gt;
-&lt;/cms:each&gt;
-</code></pre><p>will make available each of the &#39;|&#39; separated words as variable named &#39;item&#39; (which is then being displayed using <strong>show</strong> tag).</p>
+&lt;/cms:each&gt;</code></pre><p>will make available each of the &#39;|&#39; separated words as variable named &#39;item&#39; (which is then being displayed using <strong>show</strong> tag).</p>
 <pre><code>hello
 world
 how
 do
 you
-do
-</code></pre><p class="notice">The above example could have been written without specifying &#39;sep&#39;, because the default separator is &#39;|&#39;.</p>
+do</code></pre><p class="notice">The above example could have been written without specifying 'sep', because the default separator is '|'.</p>
 
-<p class="success">One real world scenario for using <strong>each</strong> is while handling submission of forms containing multiple checkboxes. If more than one checkbox is selected, the checkbox variable contains a &#39;|&#39; separated string with values for each selected checkbox.</p>
+<p class="success">One real world scenario for using **each** is while handling submission of forms containing multiple checkboxes. If more than one checkbox is selected, the checkbox variable contains a '|' separated string with values for each selected checkbox.</p>
 
 <h2 id="parameters">Parameters</h2>
 <ul>
@@ -95,22 +92,18 @@ do
 </ul>
 <h3 id="var">var</h3>
 <p>The string to split. If passed as the first parameter, the name &#39;var&#39; can be omitted and only the value passed. e.g.</p>
-<pre><code>&lt;cms:each var=msg &gt;..&lt;/cms:each&gt;
-</code></pre><pre><code>&lt;cms:each msg &gt;..&lt;/cms:each&gt;
-</code></pre><p>both of the above are same.</p>
+<pre><code>&lt;cms:each var=msg &gt;..&lt;/cms:each&gt;</code></pre><pre><code>&lt;cms:each msg &gt;..&lt;/cms:each&gt;</code></pre><p>both of the above are same.</p>
 <h3 id="as">as</h3>
 <p>Name of the variable as which each of the values obtained after splitting the string will be made available.<br/>
 By default, the variable is named &#39;item&#39;.<br/>
 If you wish to use some other name, it can be specified thus -</p>
 <pre><code>&lt;cms:each msg as=&#39;my_var&#39; &gt;
     &lt;cms:show my_var/&gt;&lt;br&gt;
-&lt;/cms:each&gt;
-</code></pre><h3 id="sep">sep</h3>
+&lt;/cms:each&gt;</code></pre><h3 id="sep">sep</h3>
 <p>The separator along which the provided string is split.<br/>
 By default, the pipe character &#39;|&#39; is assumed as the separator.<br/>
 If any other character is being used in the string, it can be specified this way -</p>
-<pre><code>&lt;cms:each msg sep=&#39;@&#39; &gt;..&lt;/cms:each&gt;
-</code></pre><h2 id="variables">Variables</h2>
+<pre><code>&lt;cms:each msg sep=&#39;@&#39; &gt;..&lt;/cms:each&gt;</code></pre><h2 id="variables">Variables</h2>
 <ul>
 <li>item</li>
 </ul>

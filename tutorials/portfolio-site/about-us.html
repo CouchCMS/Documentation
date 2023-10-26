@@ -69,42 +69,39 @@
             </form>
 
             <article><h1 id="starting-off-simple-the-about-us-page">Starting off simple - the About-Us page</h1>
-<p>Of all the five sections that Aurelius has (i.e. <em>About-Us</em>, <em>Portfolio</em>, <em>Blog</em>, <em>Contact-Us</em> and <em>Home</em>), the <em>Portfolio</em> and <em>Blog</em> sections will need the &#39;cloned pages&#39; feature of Couch because they consist of multiple pages each cloned out of the same template.<a href="http://www.couchcms.com/docs/code/about.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p>Of all the five sections that Aurelius has (i.e. <em>About-Us_, _Portfolio_, _Blog_, _Contact-Us</em> and <em>Home_), the _Portfolio</em> and <em>Blog</em> sections will need the &#39;cloned pages&#39; feature of Couch because they consist of multiple pages each cloned out of the same template.<a href="https://www.couchcms.com/docs/code/about.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
 <p>We&#39;ll tackle the cloned pages in the next chapter. For now let us begin with a simpler section that doesn&#39;t require cloning. The <em>About Us</em> page will serve our purpose.<br/>
 Before proceeding further, make sure that you are logged into Couch using the super-admin account that got created during installation.</p>
-<p>Access <em>about.html</em> in your browser by visiting <em>http&#58;//www.mytestsite.com/about.html</em><br/>
-The <em>About Us</em> page should appear.</p>
+<p>Access <em>about.html</em> in your browser by visiting <em>http&#58;//<a href="http://www.mytestsite.com/about.html">www.mytestsite.com/about.html</a>_<br/>
+The _About Us</em> page should appear.</p>
 <p>Change the extension of the template from <em>.html</em> to <em>.php</em> so that <em>about.html</em> now becomes <em>about.php</em>. Access <em>about.php</em> in your browser -<br/>
-<em>http&#58;//www.mytestsite.com/about.php</em><br/>
-The same <em>About Us</em> page should appear as did when the file&#39;s extension was <em>html</em>.<br/>
+<em>http&#58;//<a href="http://www.mytestsite.com/about.php">www.mytestsite.com/about.php</a>_<br/>
+The same _About Us</em> page should appear as did when the file&#39;s extension was <em>html</em>.<br/>
 This change of extension from <em>.html</em> to <em>.php</em> is necessary before Couch can be retrofitted into a template.</p>
 <p>Time to fit Couch into <em>about.php</em>.<br/>
 Open up <em>about.php</em> in your favorite text editor and paste the following line to the very top of the file -</p>
-<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-9.png" alt=""></p>
+<pre><code>&lt;?php require_once( &#39;couch/cms.php&#39; ); ?&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-9.png" alt=""></p>
 <p class="notice">
     If you had chosen to rename the default admin folder from couch to something else, make sure the line pasted above also reflects the change. Thus if the new name of the folder was myadmin, the line to be pasted will become -<br/>
     <br/>
-    &lt;?php require_once( &#39;myadmin/cms.php&#39; ); ?&gt;
+    &lt;?php require\_once( 'myadmin/cms.php' ); ?&gt;
 </p>
 
 <p>As the final step, paste the following to <em>about.php</em> as the last line of the file (i.e. after all other content of the file) -</p>
-<pre><code>&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-10.png" alt=""></p>
+<pre><code>&lt;?php COUCH::invoke(); ?&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-10.png" alt=""></p>
 <p>These two boilerplate lines of code are the only PHP that you should ever need to write to work with Couch.</p>
 <p>Refresh the template within your browser by revisiting <em>about.php</em> and now visit the admin section once again.</p>
 <p><img src="../../assets/img/contents/portfolio-site-11.jpg" alt=""></p>
 <p>Notice how <em>about.php</em> now appears in the list of templates in the sidebar on the left and how the right panel informs you that <em>about.php</em> has no editable regions defined yet.</p>
 <p>These steps are all that you need to take in order to port any template to Couch.</p>
 <h3 id="defining-editable-regions">Defining editable regions</h3>
-<p>With Couch now hooked into <em>about.php</em>, let us now decide which regions within the template should be editable by the client.<br/>
-Looking at <em>about.php</em> in the browser, it appears that these two regions are the ones that the client will want to edit -</p>
+<p>With Couch now hooked into <em>about.php_, let us now decide which regions within the template should be editable by the client.<br/>
+Looking at _about.php</em> in the browser, it appears that these two regions are the ones that the client will want to edit -</p>
 <p><img src="../../assets/img/contents/portfolio-site-12.png" alt=""></p>
 <p>With <em>about.php</em> open in the text editor, find the HTML block representing the main content region -</p>
 <p><img src="../../assets/img/contents/portfolio-site-13.gif" alt=""></p>
 <p>and surround it with Couch&#39;s editable tags as follows -</p>
-<pre><code>&lt;cms:editable name=&#39;main_content&#39; type=&#39;richtext&#39;&gt; original content &lt;/cms:editable&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-14.gif" alt=""></p>
+<pre><code>&lt;cms:editable name=&#39;main_content&#39; type=&#39;richtext&#39;&gt; original content &lt;/cms:editable&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-14.gif" alt=""></p>
 <p>Similarly find the content in the sidebar -</p>
 <p><img src="../../assets/img/contents/portfolio-site-15.gif" alt=""></p>
 <p>and surround it with the editable tags -</p>
@@ -114,14 +111,13 @@ The right panel should now display the following -</p>
 <p><img src="../../assets/img/contents/portfolio-site-17.png" alt=""></p>
 <p>As you can see, Couch has now created the two editable regions for you.<br/>
 Try editing the contents in them and revisit <em>about.php</em> after saving your changes. Your changes should now appear on the website.</p>
-<p class="success">The editable tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client&#39;s need. Please consult the <a href="../../concepts/editable-regions.html">documentation</a> for details.</p>
+<p class="success">The editable tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client's need. Please consult the [documentation](../../../../concepts/editable-regions.html) for details.</p>
 
 <p>This is all that is needed to make a single page editable.<br/>
 To further refine the experience for your client, a few minor enhancements can be made.<br/>
 The name of the template appears as <em>about.php</em> in the admin panel. Let us make it appear as About Us.<br/>
 Couch has a tag named template. Add the following line containing the template tag to somewhere at the top of the page (below the boilerplate PHP include code we added, of course) -</p>
-<pre><code>&lt;cms:template title=&#39;About Us&#39; /&gt;
-</code></pre><p><img src="../../assets/img/contents/portfolio-site-18.png" alt=""></p>
+<pre><code>&lt;cms:template title=&#39;About Us&#39; /&gt;</code></pre><p><img src="../../assets/img/contents/portfolio-site-18.png" alt=""></p>
 <p>Repeat the mandatory step of refreshing the template in browser and then revisit the admin panel.<br/>
 The template should now be listed as &#39;About Us&#39; instead of its file-name.</p>
 <p><img src="../../assets/img/contents/portfolio-site-19.png" alt=""></p>

@@ -80,8 +80,7 @@
         &lt;/cms:pages&gt;
         &lt;/UL&gt;
     &lt;/cms:if&gt;
-&lt;/cms:folders&gt;
-</code></pre><p>If we place three dump tags at the following locations -</p>
+&lt;/cms:folders&gt;</code></pre><p>If we place three dump tags at the following locations -</p>
 <pre><code>&lt;cms:dump /&gt;
 &lt;cms:folders masterpage=&#39;news.php&#39; hierarchical=&#39;1&#39;&gt;
     &lt;H3&gt;&lt;cms:show k_folder_title /&gt;&lt;/H3&gt;
@@ -94,8 +93,7 @@
         &lt;/cms:pages&gt;
         &lt;/UL&gt;
     &lt;/cms:if&gt;
-&lt;/cms:folders&gt;
-</code></pre><p>- the first <strong>dump</strong> tag will output global variables (said to be in the <em>root context</em>) set for the executing page by Couch, the second <strong>dump</strong> tag will output variables set for each iteration by the <strong>folders</strong> tag while the third tag will output variables that are set by the <strong>pages</strong> tag.</p>
+&lt;/cms:folders&gt;</code></pre><p>- the first <strong>dump</strong> tag will output global variables (said to be in the _root context_) set for the executing page by Couch, the second <strong>dump</strong> tag will output variables set for each iteration by the <strong>folders</strong> tag while the third tag will output variables that are set by the <strong>pages</strong> tag.</p>
 <p>Compare this with the <strong>dump_all</strong> tag that will output variables belonging to all the contexts that are a part of the hierarchy leading to the current location. Thus for the same example using <strong>dump_all</strong>. instead of <strong>dump</strong>, the first tag would have output global variables belonging to the root context, the second tag would have output variables of the root context followed by the variables set for the current iteration by the <strong>folders</strong> tag and finally the third tag would have output the global variables, the variables set by folders followed by the variables set for the iteration by the <strong>pages</strong> tag.</p>
 <p>Since, unless specified otherwise, when we use a variable anywhere (e.g. with <strong>show</strong> tag), Couch looks up through the tags hierarchy starting from the tag within the context of which the variable was used, <strong>dump_all</strong> is a very useful tag to visually confirm if the variable is actually set and available anywhere in the hierarachy.</p>
 <p>The <strong>dump</strong> tag is very useful to quickly see which variables (along with their current values) are set by a particular tag.</p>

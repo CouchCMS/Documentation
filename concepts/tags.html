@@ -74,13 +74,11 @@
 Similar to the XML tags, a Couch tag is either <em>self-closing</em> or consists of a <em>start-tag/end-tag</em> pair.</p>
 <h4 id="self-closing-">Self Closing:</h4>
 <p>This is how a typical self closing Couch tag looks like -</p>
-<pre><code>&lt;cms:show &#39;Hello World&#39; /&gt;
-</code></pre><h4 id="start-tag-end-tag-pair-">Start-tag/End-tag pair:</h4>
+<pre><code>&lt;cms:show &#39;Hello World&#39; /&gt;</code></pre><h4 id="start-tag-end-tag-pair-">Start-tag/End-tag pair:</h4>
 <p>This is how a typical paired tag looks like -</p>
 <pre><code>&lt;cms:repeat count=&#39;4&#39;&gt;
     &lt;h3&gt;This heading will be repeated 4 times&lt;/h3&gt;
-&lt;/cms:repeat&gt;
-</code></pre><p>Every thing between the start-tag and the end-tag is considered to be the input for the paired tag.</p>
+&lt;/cms:repeat&gt;</code></pre><p>Every thing between the start-tag and the end-tag is considered to be the input for the paired tag.</p>
 <p>Every Couch tag begins with &#39;<strong>&lt;cms:</strong>&#39; followed by the tag&#39;s name (<em>show</em> and <em>repeat</em> in the examples above).<br/>
 The name may be followed by zero to any number of parameters (this depends on the tag in question).</p>
 <p>Depending upon the parameters and the input, a tag executes some function (e.g. modify the input, create a folder or fetch content from somewhere). If the action results in any displayable output, the tag returns back this output else it returns back a blank.</p>
@@ -91,26 +89,24 @@ The name may be followed by zero to any number of parameters (this depends on th
 
 <h3 id="parameters">PARAMETERS</h3>
 <p>Parameters are used to modify a tag&#39;s behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, &#39;Hello World&#39; is a parameter and is the message that <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag is supposed to display.</p>
-<pre><code>&lt;cms:show &#39;Hello World&#39; /&gt;
-</code></pre><p>In the following example, &#39;4&#39; is the parameter and it is the number of times that the <a href="../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag will repeat the contents enclosed by it.</p>
+<pre><code>&lt;cms:show &#39;Hello World&#39; /&gt;</code></pre><p>In the following example, &#39;4&#39; is the parameter and it is the number of times that the <a href="../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag will repeat the contents enclosed by it.</p>
 <pre><code>&lt;cms:repeat count=&#39;4&#39;&gt;
     &lt;h3&gt;This heading will be repeated 4 times&lt;/h3&gt;
-&lt;/cms:repeat&gt;
-</code></pre><h3 id="named-and-unnamed-parameters">NAMED AND UNNAMED PARAMETERS</h3>
+&lt;/cms:repeat&gt;</code></pre><h3 id="named-and-unnamed-parameters">NAMED AND UNNAMED PARAMETERS</h3>
 <p>Please notice that in the second example above, we are explicitly naming the parameter (<em>count=&#39;4&#39;</em> - where &#39;count&#39; is the name and &#39;4&#39; is the value of the parameter), whereas in the first example the parameter was passed unnamed.</p>
 <p>In Couch, naming the parameters is entirely optional but then you&#39;ll have to make sure that you pass the parameters in the exact sequence the tag expects them in. Thus, for example, <a href="../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag can take two parameters &#39;count&#39; and &#39;startcount&#39; where &#39;startcount&#39; is expected to be the second parameter. If we explicitly name the parameters, e.g. -</p>
 <pre><code>&lt;cms:repeat count=&#39;4&#39; startcount=&#39;1&#39;&gt;&lt;/cms:repeat&gt;
-&lt;cms:repeat startcount=&#39;1&#39; count=&#39;4&#39;&gt;&lt;/cms:repeat&gt;
-</code></pre><p>- the sequence of the parameters does not matter as there is no ambiguity. However, if we were to pass them unnamed e.g. -</p>
-<pre><code>&lt;cms:repeat &#39;1&#39; &#39;4&#39;&gt;&lt;/cms:repeat&gt;
-</code></pre><p>- the above will be interpreted as count=1 and startcount=4, which is not what was meant.</p>
+&lt;cms:repeat startcount=&#39;1&#39; count=&#39;4&#39;&gt;&lt;/cms:repeat&gt;</code></pre><p>- the sequence of the parameters does not matter as there is no ambiguity. However, if we were to pass them unnamed e.g. -</p>
+<pre><code>&lt;cms:repeat &#39;1&#39; &#39;4&#39;&gt;&lt;/cms:repeat&gt;</code></pre><p>- the above will be interpreted as count=1 and startcount=4, which is not what was meant.</p>
 <p class="success">
-    It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag above, in which case there can never be any ambiguity. In fact the <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag ignores the name you give to the parameter totally, thus<br/>
+    It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
     <br/>
-    <code>&lt;cms:show &#39;Hello&#39; /&gt;
-&lt;cms:show var=&#39;Hello&#39; /&gt;
-&lt;cms:show foobar=&#39;Hello&#39; /&gt;</code>
-    - all result in the same output.
+    ```
+<cms:show 'Hello' />
+<cms:show var='Hello' />
+<cms:show foobar='Hello' />
+    ```
+    \- all result in the same output.
 </p>
 
 <p>We&#39;ll have more to say about the various ways a parameter can be set, but before we can proceed to that, another concept needs to be known - <a href="variables.html"><strong>variables</strong></a>.</p>

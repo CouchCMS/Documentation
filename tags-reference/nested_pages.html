@@ -86,12 +86,10 @@ We&#39;ll assume that a template named &#39;index.php&#39; has been used to crea
     |       |---Japan News
     |---Sports News
     |---Music News
-    |---Entertainment News
-</code></pre><p>The simplest way to list the nested-pages would be as follows -</p>
+    |---Entertainment News</code></pre><p>The simplest way to list the nested-pages would be as follows -</p>
 <pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39;&gt;
    &lt;a href=&quot;&lt;cms:show k_nestedpage_link /&gt;&quot;&gt;&lt;cms:show k_nestedpage_title /&gt;&lt;/a&gt;&lt;br /&gt;
-&lt;/cms:nested_pages&gt;
-</code></pre><p>The output -</p>
+&lt;/cms:nested_pages&gt;</code></pre><p>The output -</p>
 <pre><code>World News
 North American News
 United States News
@@ -102,15 +100,13 @@ China News
 Japan News
 Sports News
 Music News
-Entertainment News
-</code></pre><p>Notice how the hierarchical relationship between the pages has been preserved.</p>
+Entertainment News</code></pre><p>Notice how the hierarchical relationship between the pages has been preserved.</p>
 <p>As is the norm with other similar tags in Couch, the &#39;nested_pages&#39; tag too, as it iterates through the pages within the tree, makes available all the information pertaining the page it is currently on by setting various variables.<br/>
 Place a <em>&lt;cms:dump /&gt;</em> statement inside the loop and you&#39;ll see that Couch provides all the information that was inputted in the admin-section for each nested-page.</p>
 <pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39;&gt;
    &lt;cms:dump /&gt;
    &lt;a href=&quot;&lt;cms:show k_nestedpage_link /&gt;&quot;&gt;&lt;cms:show k_nestedpage_title /&gt;&lt;/a&gt;&lt;br /&gt;
-&lt;/cms:nested_pages&gt;
-</code></pre><p>These, for example, are the variables that get set for page &#39;United States News&#39; -</p>
+&lt;/cms:nested_pages&gt;</code></pre><p>These, for example, are the variables that get set for page &#39;United States News&#39; -</p>
 <pre><code>* k_level: 2
 * k_nestedpage_id: 1595
 * k_nestedpage_name: united-states-news
@@ -131,8 +127,7 @@ Place a <em>&lt;cms:dump /&gt;</em> statement inside the loop and you&#39;ll see
 * k_total_children: 2
 * k_nestedpage_link: http://www.yourdomain.com/?p=1595
 * k_menu_link: http://www.yourdomain.com/?p=1595
-* k_menu_title: United States News
-</code></pre><p>As you can see, all the information that would be needed to create manually a menu markup is available.<br/>
+* k_menu_title: United States News</code></pre><p>As you can see, all the information that would be needed to create manually a menu markup is available.<br/>
 Let us use is to create one.</p>
 <h3 id="creating-menu-using-nested_pages-tag">Creating menu using &#39;nested_pages&#39; tag</h3>
 <p>A menu is normally created using nested &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; elements. To make the task of doing so easy, the &#39;nested_pages&#39; tag, like the &#39;<a href="folders.html">folders</a>&#39; tag, supports the &#39;extended_info&#39; parameter. Setting the &#39;extended_info&#39; parameter to &#39;1&#39; makes the &#39;nested_pages&#39; tag provide additional information that can be used to output the closing and opening &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; tags without any pain.</p>
@@ -143,8 +138,7 @@ Let us use is to create one.</p>
    &lt;/cms:if&gt;
    &lt;cms:if k_element_end &gt;&lt;/li&gt;&lt;/cms:if&gt;
    &lt;cms:if k_level_end &gt;&lt;/ul&gt;&lt;/cms:if&gt;
-&lt;/cms:nested_pages&gt;
-</code></pre><p>Output -</p>
+&lt;/cms:nested_pages&gt;</code></pre><p>Output -</p>
 <pre><code>&lt;ul&gt;
     &lt;li&gt;
         Asian News
@@ -165,8 +159,7 @@ Let us use is to create one.</p>
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;
-</code></pre><p>Following is a complete example that makes use of the variables mentioned before to create a functioning menu -</p>
+&lt;/ul&gt;</code></pre><p>Following is a complete example that makes use of the variables mentioned before to create a functioning menu -</p>
 <pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39; extended_info=&#39;1&#39; &gt;
    &lt;cms:if k_level_start &gt;
       &lt;cms:if k_level=&#39;0&#39;&gt;
@@ -183,10 +176,8 @@ Let us use is to create one.</p>
 
    &lt;cms:if k_element_end &gt;&lt;/li&gt;&lt;/cms:if&gt;
    &lt;cms:if k_level_end &gt;&lt;/ul&gt;&lt;/cms:if&gt;
-&lt;/cms:nested_pages&gt;
-</code></pre><p>The example shown above is equivalent to the following using &#39;<a href="menu.html">menu</a>&#39; tag -</p>
-<pre><code>&lt;cms:menu masterpage=&#39;index.php&#39; menu_class=&#39;my-menu-class-1 my-menu-class-2&#39; menu_id=&#39;my-menu-id&#39; first_class=&#39;first&#39; last_class=&#39;last&#39; active_trail_class=&#39;active&#39; selected_class=&#39;current&#39; /&gt;
-</code></pre><h3 id="creating-a-paginated-listing-using-nested_pages-tag">Creating a paginated listing using &#39;nested_pages&#39; tag</h3>
+&lt;/cms:nested_pages&gt;</code></pre><p>The example shown above is equivalent to the following using &#39;<a href="menu.html">menu</a>&#39; tag -</p>
+<pre><code>&lt;cms:menu masterpage=&#39;index.php&#39; menu_class=&#39;my-menu-class-1 my-menu-class-2&#39; menu_id=&#39;my-menu-id&#39; first_class=&#39;first&#39; last_class=&#39;last&#39; active_trail_class=&#39;active&#39; selected_class=&#39;current&#39; /&gt;</code></pre><h3 id="creating-a-paginated-listing-using-nested_pages-tag">Creating a paginated listing using &#39;nested_pages&#39; tag</h3>
 <p>Apart from being used to create a menu, the &#39;nested_pages&#39; tag may also be used to create a conventional listing of pages, complete with pagination etc., the way it is usually done using the &#39;<a href="pages.html">pages</a>&#39; tag with normal (i.e. non nestable) pages.</p>
 <p>If you are familiar with the &#39;<a href="pages.html">pages</a>&#39; tag, the following snippet will seem familiar -</p>
 <pre><code>&lt;cms:nested_pages masterpage=&#39;index.php&#39; extended_info=&#39;1&#39; paginate=&#39;1&#39; limit=&#39;5&#39; &gt;
@@ -203,8 +194,7 @@ Let us use is to create one.</p>
 
     &lt;cms:paginator /&gt;
 
-&lt;/cms:nested_pages&gt;
-</code></pre><p>Output -</p>
+&lt;/cms:nested_pages&gt;</code></pre><p>Output -</p>
 <pre><code>Page 1 of 3
 11 records Found. Displaying: 1-5
 
@@ -214,14 +204,13 @@ United States News
 Ohio News
 Nevada News
 
-« prev 1 2 3 next »
-</code></pre><p>Some points to note -</p>
+« prev 1 2 3 next »</code></pre><p>Some points to note -</p>
 <ol>
 <li>With &#39;paginate&#39; set to &#39;1&#39;, the &#39;extended_info&#39; is automatically turned off - i.e. only the conventional linear listing is possible.</li>
 <li>For performance reasons, data from the custom fields (i.e. the editable regions defined for the nested-pages template) is not made available by default. You can set the &#39;include_custom_fields&#39; parameter to &#39;1&#39; to make the custom fields available.</li>
 </ol>
 <p class="notice">
-    <strong>IMPORTANT:</strong> Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the &#39;pages&#39; tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
+    **IMPORTANT:** Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the 'pages' tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
     One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).<br/>
     <br/>
     However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.<br/>
@@ -271,7 +260,7 @@ The page specified as the root is displayed along with all its children (compare
 <h3 id="childof">childof</h3>
 <p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
 Only the children of the page specified are displayed (compare with &#39;root&#39; parameter above where the specified page is also included in the display).</p>
-<p class="notice">If both &#39;childof&#39; and &#39;root&#39; are set, the &#39;root&#39; parameter gets precedence.</p>
+<p class="notice">If both 'childof' and 'root' are set, the 'root' parameter gets precedence.</p>
 
 <h3 id="extended_info">extended_info</h3>
 <p>If this parameter is set, additional variables get set to report the changes in hierarchy encountered by the nested_pages tag, as it traverses through the tree. Please see the Variables section below.</p>

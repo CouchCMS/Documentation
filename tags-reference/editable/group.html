@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="type-group-">type = &#39;group&#39;</h1>
-<p>Editable region of type <em>group</em>, in fact, is not editable at all.<br/>
+<p>Editable region of type _group_, in fact, is not editable at all.<br/>
 It is meant to group together related editable regions and thus improve end user experience.</p>
 <p>As an example, suppose a template has the following editable regions -</p>
 <pre><code>&lt;cms:editable name=&#39;prop_image&#39; label=&#39;Image&#39; desc=&#39;Upload main image here&#39; show_preview=&#39;1&#39;
@@ -86,13 +86,11 @@ It is meant to group together related editable regions and thus improve end user
     type=&#39;text&#39; /&gt;
 
 &lt;cms:editable name=&#39;prop_document&#39; label=&#39;Downloadable File&#39; desc=&#39;Upload the file here&#39;
-    type=&#39;file&#39; /&gt;
-</code></pre><p>This is how they look like in the admin panel -</p>
+    type=&#39;file&#39; /&gt;</code></pre><p>This is how they look like in the admin panel -</p>
 <p><img src="../../assets/img/contents/editable-group-1.gif" alt=""></p>
 <p>Of the four regions, three are closely related (<em>prop_image</em>, <em>prop_image_thumb</em> and <em>prop_document</em>) since they need the user to upload something from his machine to the server.</p>
 <p>To visually convey this relation we can group them together. For this first we create an editable region of <em>group</em> type -</p>
-<pre><code>&lt;cms:editable name=&#39;prop_uploads&#39; label=&#39;Uploads&#39; desc=&#39;Your main uploads&#39; type=&#39;group&#39; /&gt;
-</code></pre><p>Next link the three aforementioned editable regions to this group by setting their group parameters to its name.</p>
+<pre><code>&lt;cms:editable name=&#39;prop_uploads&#39; label=&#39;Uploads&#39; desc=&#39;Your main uploads&#39; type=&#39;group&#39; /&gt;</code></pre><p>Next link the three aforementioned editable regions to this group by setting their group parameters to its name.</p>
 <pre><code>&lt;cms:editable name=&#39;prop_image&#39; label=&#39;Image&#39; desc=&#39;Upload main image here&#39; show_preview=&#39;1&#39;
     group=&#39;prop_uploads&#39;
     type=&#39;image&#39; /&gt;
@@ -110,8 +108,7 @@ It is meant to group together related editable regions and thus improve end user
 
 &lt;cms:editable name=&#39;prop_document&#39; label=&#39;Downloadable File&#39; desc=&#39;Upload the file here&#39;
     group=&#39;prop_uploads&#39;
-    type=&#39;file&#39; /&gt;
-</code></pre><p>And here is the result -</p>
+    type=&#39;file&#39; /&gt;</code></pre><p>And here is the result -</p>
 <p><img src="../../assets/img/contents/editable-group-2.gif" alt=""></p>
 <p>As you can see, the three regions have been grouped together in a panel.</p>
 <p>If there are multiple groups in the template (and hence multiple panels), only one panel remains fully expanded while all the rest remainj collapsed, thus reducing the visual clutter in the admin panel.</p>

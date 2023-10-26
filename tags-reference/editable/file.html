@@ -72,12 +72,14 @@
 <p>Editable region of type <strong>file</strong> is primarily used to allow the user to upload a file from his local computer onto the server. The user can also browse and select any of the previously uploaded files.<br/>
 Once a file has been selected, this editable region then holds a fully qualified URL of the uploaded file.</p>
 <p class="notice">
-    <strong>NOTE:</strong> By default, all uploaded files will be saved within the <em><strong>couch/uploads/file</strong></em> folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (<em>K_UPLOAD_DIR</em>) in <em>config.php</em> and changing it to the desired location.<br/>
+    **NOTE:** By default, all uploaded files will be saved within the _**couch/uploads/file**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
     <br/>
-    <code>// 12.
-// Upload folder if not using the default upload folder within &#39;couch&#39;.
-// Should be relative to your site (don&#39;t forget to set write permissions on it).
-define( &#39;K_UPLOAD_DIR&#39;, &#39;myuploads&#39; );</code>
+    ```
+// 12.
+// Upload folder if not using the default upload folder within 'couch'.
+// Should be relative to your site (don't forget to set write permissions on it).
+define( 'K_UPLOAD_DIR', 'myuploads' );
+    ```
 </p>
 
 <p>An editable region of <em>file</em> type can be defined this way -</p>
@@ -86,13 +88,11 @@ define( &#39;K_UPLOAD_DIR&#39;, &#39;myuploads&#39; );</code>
   label=&#39;Downloadable File&#39;
   desc=&#39;Upload the file here&#39;
   type=&#39;file&#39;
-/&gt;
-</code></pre><p>The code above will result in -</p>
+/&gt;</code></pre><p>The code above will result in -</p>
 <p><img src="../../assets/img/contents/editable-file.gif" alt=""></p>
 <p>Clicking the &#39;Browse Server&#39; button will bring up a window which can be used to browse previously uploaded files on the server or upload a new file from the local machine.</p>
 <p>The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -</p>
-<pre><code>&lt;a href=&quot;&lt;cms:show my_document /&gt;&quot; &gt;Download file&lt;/a&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;a href=&quot;&lt;cms:show my_document /&gt;&quot; &gt;Download file&lt;/a&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <p>Apart from the parameters common to all the other types of editable regions, this type does not accept any other parameter.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

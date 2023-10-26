@@ -80,8 +80,7 @@ You can use it to define areas within your HTML template that you wish to make e
         Jack Nicklaus Signature Golf Course.
     &lt;/span&gt;
     &lt;br class=&quot;clear&quot;/&gt;
-&lt;/div&gt;
-</code></pre><p>The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.<br/>
+&lt;/div&gt;</code></pre><p>The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.<br/>
 To do so, simply enclose this part by an <a href="../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag -</p>
 <pre><code>&lt;div class=&quot;prop_desc&quot;&gt;
     &lt;b&gt;Property Description:&lt;/b&gt;
@@ -93,17 +92,18 @@ To do so, simply enclose this part by an <a href="../tags-reference/editable.htm
         &lt;/cms:editable&gt;
     &lt;/span&gt;
     &lt;br class=&quot;clear&quot;/&gt;
-&lt;/div&gt;
-</code></pre><p><a href="../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag accepts several parameters but only one is mandatory - <em>name</em>. It has to be unique within a template.</p>
+&lt;/div&gt;</code></pre><p><a href="../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag accepts several parameters but only one is mandatory - <em>name</em>. It has to be unique within a template.</p>
 <p>Now, while being logged in as the super-admin, visit the template in your browser.<br/>
-For example, if the template was <em>property.php</em>, visit <em>http&#58;//www.yoursite.com/property.php</em></p>
-<p class="notice">At the risk of repeating ourselves - for your changes to show up in the admin panel, you&#39;ll always need to run the modified template in the browser while being logged in as the super-admin.</p>
+For example, if the template was <em>property.php_, visit _http&#58;//<a href="http://www.yoursite.com/property.php">www.yoursite.com/property.php</a></em></p>
+<p class="notice">At the risk of repeating ourselves - for your changes to show up in the admin panel, you'll always need to run the modified template in the browser while being logged in as the super-admin.</p>
 
 <p>Now visit the admin panel and access <em>property.php</em> and you&#39;ll find that Couch has created a textarea for the editable region.</p>
 <p class="success">
-    If you enclose some text between the opening and closing <a href="../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the <a href="../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag as a self closing tag.<br/>
+    If you enclose some text between the opening and closing [__*Editable*__](../../tags-reference/editable.html) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [__*Editable*__](../../tags-reference/editable.html) tag as a self closing tag.<br/>
     <br/>
-    <code>&lt;cms:editable name=&#39;prop_desc&#39; /&gt;</code>
+    ```
+<cms:editable name='prop_desc' />
+    ```
 </p>
 
 <p>Input or edit the text within this textarea and save your changes.<br/>
@@ -115,8 +115,7 @@ For example, the textarea created above is suitable when you wish the users to i
 Similarly, sometimes a single line of text input is all that is needed.<br/>
 The <em>type</em> parameter of Editable text can bet set to the kind of editable region you wish to create.</p>
 <p>e.g. setting the type to &#39;richtext&#39; -</p>
-<pre><code>&lt;cms:editable name=&#39;prop_desc&#39; type=&#39;richtext&#39;&gt;..&lt;/cms:editable&gt;
-</code></pre><p>- will result in Couch now displaying a WYSIWYG editor instead of the plain textarea.</p>
+<pre><code>&lt;cms:editable name=&#39;prop_desc&#39; type=&#39;richtext&#39;&gt;..&lt;/cms:editable&gt;</code></pre><p>- will result in Couch now displaying a WYSIWYG editor instead of the plain textarea.</p>
 <p>The followng are the different types of editable regions currently supported by Couch -</p>
 <ul>
 <li><a href="../tags-reference/editable/text.html">text</a></li>
@@ -135,7 +134,7 @@ The <em>type</em> parameter of Editable text can bet set to the kind of editable
 <li><a href="../tags-reference/editable/relation.html">relation</a></li>
 </ul>
 <p>You can define any number of editable regions in a template.</p>
-<p class="error"><strong>V.IMP:</strong> Editable tags cannot be nested within other editable tags.</p>
+<p class="error">**V.IMP:** Editable tags cannot be nested within other editable tags.</p>
 
 <h3 id="accessing-the-contents-of-editable-regions">ACCESSING THE CONTENTS OF EDITABLE REGIONS</h3>
 <p>There are four ways the contents of an editable region defined within a template may be accessed. The first two can be used only within the templates that defined the editable regions while the last two can be used in any template - even those that did not define the regions.</p>
@@ -147,8 +146,7 @@ The <em>type</em> parameter of Editable text can bet set to the kind of editable
 <p>When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.<br/>
 Thus in the example above, since the name of the editable region is <em>prop_desc</em>, a variable by the same name will also be set by Couch during the execution of this page.<br/>
 So if you use the following snippet anywhere within your template -</p>
-<pre><code>&lt;cms:show prop_desc /&gt;
-</code></pre><p>the current contents of the editable region will be output by show.</p>
+<pre><code>&lt;cms:show prop_desc /&gt;</code></pre><p>the current contents of the editable region will be output by show.</p>
 <p>[See: <a href="variables-in-views.html">Variables available in Views</a>]</p>
 <p><strong>3. As variables set by the <a href="../tags-reference/pages.html"><em>pages</em></a> tag -</strong></p>
 <p>The <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag is used to list (all or specific) pages cloned from a template. The tag, as it fetches the pages, makes vailable all the variables pertaining to the pages - these include the variables that represent the editables regions defined for the pages.</p>
@@ -164,13 +162,11 @@ A good practice is to define together all editable regions used by the template 
 <pre><code>&lt;cms:template title=&#39;Index&#39; clonable=&#39;1&#39; &gt;
     &lt;cms:editable name=&quot;body&quot; label=&quot;Body&quot; type=&quot;richtext&quot; /&gt;
     &lt;cms:editable name=&quot;excerpt&quot; label=&quot;Excerpt&quot; type=&quot;textarea&quot; /&gt;
-&lt;/cms:template&gt;
-</code></pre><p>The editable tags themselves can be enclosed within <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag (more about it in a little while) because this is a key tag in clonable templates and also because this tag has no output of its own and thus it &#39;swallows up&#39; the default output of the enclosed editable tags, which otherwise would have appeared on the webpage.</p>
+&lt;/cms:template&gt;</code></pre><p>The editable tags themselves can be enclosed within <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag (more about it in a little while) because this is a key tag in clonable templates and also because this tag has no output of its own and thus it &#39;swallows up&#39; the default output of the enclosed editable tags, which otherwise would have appeared on the webpage.</p>
 <p>If you do not wish to enclose the <a href="../tags-reference/editable.html"><strong><em>editable</em></strong></a> tags within <a href="../tags-reference/template.html"><strong><em>template</em></strong></a> tag, set the <em>hidden</em> parameter of each to &#39;1&#39; and this will turn off the output of the tags.</p>
 <p>The content of these editable regions can be displayed where ever required by using the <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> tag -</p>
 <pre><code>&lt;cms:show body /&gt;
-&lt;cms:show excerpt /&gt;
-</code></pre></article>
+&lt;cms:show excerpt /&gt;</code></pre></article>
         </div>
         <!-- end -->
 		</div>

@@ -72,22 +72,18 @@
 <p>The <strong>get</strong> tag is used to output the value of the variable the name of which is supplied to it as its parameter.<br/>
 For example -</p>
 <pre><code>&lt;cms:set my_var=&#39;10&#39; /&gt;
-&lt;cms:get &#39;my_var&#39; /&gt;
-</code></pre><p>In the snippet given above,  &#39;my_var&#39; is the name of the variable the value of which is output by the <strong>get</strong> tag.<br/>
+&lt;cms:get &#39;my_var&#39; /&gt;</code></pre><p>In the snippet given above,  &#39;my_var&#39; is the name of the variable the value of which is output by the <strong>get</strong> tag.<br/>
 The output of the snippet is &#39;10&#39;.</p>
 <p>Compare the <strong>get</strong> tag with the <strong>show</strong> tag that takes a value (not the name) as its parameter.</p>
 <p>In the snippet given above, if we substitute the <strong>get</strong> tag with the <strong>show</strong> tag -</p>
 <pre><code>&lt;cms:set my_var=&#39;10&#39; /&gt;
-&lt;cms:show &#39;my_var&#39; /&gt;
-</code></pre><p>- the output would be &#39;my_var&#39; and not &#39;10&#39;.</p>
+&lt;cms:show &#39;my_var&#39; /&gt;</code></pre><p>- the output would be &#39;my_var&#39; and not &#39;10&#39;.</p>
 <p>The snippet has to be written in the following manner to make it show the value contained within variable <em>my_var</em> -</p>
 <pre><code>&lt;cms:set my_var=&#39;10&#39; /&gt;
-&lt;cms:show my_var /&gt;
-</code></pre><p>Notice how the absence of the quotes in the parameter which signifies that it is a variable. This time the output is &#39;10&#39;.</p>
+&lt;cms:show my_var /&gt;</code></pre><p>Notice how the absence of the quotes in the parameter which signifies that it is a variable. This time the output is &#39;10&#39;.</p>
 <p>Consider what would happen with the <strong>get</strong> tag if we forgot the quotes around the first parameter -</p>
 <pre><code>&lt;cms:set my_var=&#39;10&#39; /&gt;
-&lt;cms:get my_var /&gt;
-</code></pre><p>The <strong>get</strong> tag will try and fetch the value of a variable named &#39;10&#39;, which would be non-existent.</p>
+&lt;cms:get my_var /&gt;</code></pre><p>The <strong>get</strong> tag will try and fetch the value of a variable named &#39;10&#39;, which would be non-existent.</p>
 <p>The <strong>get</strong> tag is useful in the cases where we have to fetch the values of variables the names of which are generated dynamically.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>

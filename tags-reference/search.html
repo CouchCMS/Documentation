@@ -80,12 +80,9 @@
 <p>This parameter can set to the terms to be searched. If skipped, the <strong>search</strong> tag will look for a GET parameter named &#39;s&#39; in the querystring for the search terms.</p>
 <h3 id="masterpage">masterpage</h3>
 <p>Normally pages of all available templates will be searched for the specified terms. You can set this parameter to limit he search to only some of the templates or to exclude certain templates from the search.</p>
-<pre><code>&lt;cms:search masterpage=&#39;news.php&#39; &gt;..&lt;/cms:search&gt;
-</code></pre><p>This example would search only pages of news.php.</p>
-<pre><code>&lt;cms:search masterpage=&#39;news.php, blog.php&#39; &gt;..&lt;/cms:search&gt;
-</code></pre><p>This example would search only pages of news.php and blog.php.</p>
-<pre><code>&lt;cms:search masterpage=&#39;NOT news.php&#39; &gt;..&lt;/cms:search&gt;
-</code></pre><p>This example would search pages of all templates except news.php.</p>
+<pre><code>&lt;cms:search masterpage=&#39;news.php&#39; &gt;..&lt;/cms:search&gt;</code></pre><p>This example would search only pages of news.php.</p>
+<pre><code>&lt;cms:search masterpage=&#39;news.php, blog.php&#39; &gt;..&lt;/cms:search&gt;</code></pre><p>This example would search only pages of news.php and blog.php.</p>
+<pre><code>&lt;cms:search masterpage=&#39;NOT news.php&#39; &gt;..&lt;/cms:search&gt;</code></pre><p>This example would search pages of all templates except news.php.</p>
 <h3 id="limit">limit</h3>
 <p><em>Limit</em> parameter can be set to display only a limited number of pages that were found. The rest of the pages can be displayed in a paginated manner (See <a href="../concepts/pagination.html"><strong>Pagination</strong></a>).</p>
 <h2 id="variables">Variables</h2>

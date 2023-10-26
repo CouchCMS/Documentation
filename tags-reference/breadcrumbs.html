@@ -70,22 +70,20 @@
 
             <article><h1 id="breadcrumbs">breadcrumbs</h1>
 <p>The <strong>breadcrumbs</strong> tag outputs the hierarchy of folders leading upto the folder being shown (if folder_view) or the folder within which the current page resides (if page_view). This can be used too create a trail (breadcrumbs) leading upto the current page.</p>
-<pre><code>&lt;cms:breadcrumbs /&gt;
-</code></pre><p>Please see <a href="../concepts/using-folders.html"><strong>Core Concepts - Folders</strong></a> for a discussion on this tag&#39;s usage.</p>
+<pre><code>&lt;cms:breadcrumbs /&gt;</code></pre><p>Please see <a href="../concepts/using-folders.html"><strong>Core Concepts - Folders</strong></a> for a discussion on this tag&#39;s usage.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>separator</li>
 <li>include_template</li>
 </ul>
 <h3 id="separator">separator</h3>
-<p>Set the separator to show between each item in the breadcrumbs. The default separator is &#39;<em>&amp;nbsp;&gt;&amp;nbsp;</em>&#39;.</p>
+<p>Set the separator to show between each item in the breadcrumbs. The default separator is &#39;_&amp;nbsp;&gt;&amp;nbsp;_&#39;.</p>
 <h3 id="include_template">include_template</h3>
 <p>By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to &#39;1&#39;.<br/>
 If this parameter is set, remember to check that the current view is either <em>folder-view</em> or <em>page-view</em> before invoking this tag, because for any other views the folder hierarchy is irrelevant and <strong>breadcrumbs</strong> tag rightly does not output any folder names, however the <em>include_template</em> parameter will cause the template&#39;s name to appear which might not be desirable.</p>
 <pre><code>&lt;cms:if k_is_page || k_is_folder &gt;
     &lt;cms:breadcrumbs separator=&#39;&amp;nbsp;&gt;&gt;&amp;nbsp;&#39; include_template=&#39;1&#39; /&gt;
-&lt;/cms:if&gt;
-</code></pre><h2 id="variables">Variables</h2>
+&lt;/cms:if&gt;</code></pre><h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

@@ -74,24 +74,19 @@ Unlike the editable region, this method is a simple tag and does not create anyt
 <p>The immediate reason for the introduction of this tag is to use it with <a href="../concepts/repeatable-regions.html"><strong>repeatable regions</strong></a> as its editable region counterpart does not support being repeated.</p>
 <h3 id="usage">Usage</h3>
 <p>Given the full path of an image, as in the following snippet</p>
-<pre><code>&lt;cms:thumbnail src=&#39;http://www.mysite.com/couch/uploads/image/test.jpg&#39; width=&#39;150&#39; /&gt;
-</code></pre><p>this tag will create a thumbnail of the specified image (in the same folder) and output the thumbnail&#39;s path.</p>
+<pre><code>&lt;cms:thumbnail src=&#39;http://www.mysite.com/couch/uploads/image/test.jpg&#39; width=&#39;150&#39; /&gt;</code></pre><p>this tag will create a thumbnail of the specified image (in the same folder) and output the thumbnail&#39;s path.</p>
 <p>The proper way to use this tag&#39;s output in a template would be in tandem with the HTML &#39;img&#39; tag - something like this</p>
-<pre><code>&lt;img src=&quot;&lt;cms:thumbnail src=&#39;http://www.mysite.com/couch/uploads/image/test.jpg&#39; width=&#39;150&#39; /&gt;&quot; /&gt;
-</code></pre><p>Instead of hardcoding the source image&#39;s path, as we did above, we are more likely to provide the output of an editable region of type <a href="editable/image.html"><strong>image</strong></a> as this tag&#39;s source.</p>
+<pre><code>&lt;img src=&quot;&lt;cms:thumbnail src=&#39;http://www.mysite.com/couch/uploads/image/test.jpg&#39; width=&#39;150&#39; /&gt;&quot; /&gt;</code></pre><p>Instead of hardcoding the source image&#39;s path, as we did above, we are more likely to provide the output of an editable region of type <a href="editable/image.html"><strong>image</strong></a> as this tag&#39;s source.</p>
 <p>If, for example, the name of an <a href="editable/image.html"><strong>image</strong></a> type region is &#39;my_image&#39;, this is how we would output the image on the front-end</p>
-<pre><code>&lt;img src=&quot;&lt;cms:show my_image /&gt;&quot; /&gt;
-</code></pre><p>and this is how we create and output the above image&#39;s thumbnail</p>
-<pre><code>&lt;img src=&quot;&lt;cms:thumbnail my_image width=&#39;150&#39; /&gt;&quot; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;img src=&quot;&lt;cms:show my_image /&gt;&quot; /&gt;</code></pre><p>and this is how we create and output the above image&#39;s thumbnail</p>
+<pre><code>&lt;img src=&quot;&lt;cms:thumbnail my_image width=&#39;150&#39; /&gt;&quot; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>src</li>
 <li>width</li>
 <li>height</li>
 <li>enforce_max</li>
 </ul>
-<pre><code>&lt;img src=&quot;&lt;cms:thumbnail my_image width=&#39;150&#39; height=&#39;150&#39; enforce_max=&#39;1&#39; /&gt;&quot; /&gt;
-</code></pre><p>These parameters work exactly the same way as the parameters with the same names work for editable region of type <a href="editable/thumbnail.html"><strong>thumbnail</strong></a>.<br/>
+<pre><code>&lt;img src=&quot;&lt;cms:thumbnail my_image width=&#39;150&#39; height=&#39;150&#39; enforce_max=&#39;1&#39; /&gt;&quot; /&gt;</code></pre><p>These parameters work exactly the same way as the parameters with the same names work for editable region of type <a href="editable/thumbnail.html"><strong>thumbnail</strong></a>.<br/>
 Please see <a href="editable/thumbnail.html#parameters"><strong>Editable region - thumbnail</strong></a> for details of the parameters.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables of its own.</p>

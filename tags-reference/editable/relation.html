@@ -86,8 +86,7 @@
 <h3 id="masterpage">masterpage</h3>
 <p>This parameter specifies the template the cloned pages of which will be listed in this region.<br/>
 This represents the &#39;other&#39; end of the relationship.</p>
-<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; /&gt;
-</code></pre><p>In the example above, the editable region will list all cloned pages of &#39;albums.php&#39;</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; /&gt;</code></pre><p>In the example above, the editable region will list all cloned pages of &#39;albums.php&#39;</p>
 <h3 id="has">has</h3>
 <p>This parameter specifies with how many of the listed pages can the page being edited be related to.<br/>
 Acceptable values are &#39;one&#39; and &#39;many&#39; (where &#39;many&#39; is the default).<br/>
@@ -99,17 +98,13 @@ If &#39;one&#39; is specified, the listing shows only the pages that have not ye
 <h3 id="folder">folder</h3>
 <p>This parameter can be used to list only the page belonging to a particular folder (or folders).<br/>
 Also supports negation (where pages of the specified folder(s) will be skipped).</p>
-<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical&#39; /&gt;
-</code></pre><p>The example above will list only pages belonging to &#39;classical&#39; folder (and its sub-folders).</p>
-<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical, jazz&#39; /&gt;
-</code></pre><p>The example above will list only pages belonging to either &#39;classical&#39; or &#39;jazz&#39; folders (or their sub-folders).</p>
-<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;NOT classical, jazz&#39; /&gt;
-</code></pre><p>The example above will list all pages of the template except those belonging to &#39;classical&#39; or &#39;jazz&#39; folders (and their sub-folders).</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical&#39; /&gt;</code></pre><p>The example above will list only pages belonging to &#39;classical&#39; folder (and its sub-folders).</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical, jazz&#39; /&gt;</code></pre><p>The example above will list only pages belonging to either &#39;classical&#39; or &#39;jazz&#39; folders (or their sub-folders).</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;NOT classical, jazz&#39; /&gt;</code></pre><p>The example above will list all pages of the template except those belonging to &#39;classical&#39; or &#39;jazz&#39; folders (and their sub-folders).</p>
 <h3 id="include_subfolders">include_subfolders</h3>
 <p>The default value of this parameter is &#39;1&#39; and this causes the &#39;folder&#39; parameter mentioned above to list pages belonging to the specified folder AND all sub-folders in the hierarchy below it.<br/>
 Setting &#39;include_subfolders&#39; to &#39;0&#39; will make this tag list only pages that are located directly within the specified folder.</p>
-<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical&#39; include_subfolders=&#39;1&#39; /&gt;
-</code></pre><p>The example above will list only pages belonging directly to &#39;classical&#39; folder.</p>
+<pre><code>&lt;cms:editable type=&#39;relation&#39; name=&#39;artist_albums&#39; masterpage=&#39;albums.php&#39; folder=&#39;classical&#39; include_subfolders=&#39;1&#39; /&gt;</code></pre><p>The example above will list only pages belonging directly to &#39;classical&#39; folder.</p>
 <h3 id="orderby">orderby</h3>
 <p>The pages being listed can be sorted according to the following fields</p>
 <ul>

@@ -70,8 +70,7 @@
 
             <article><h1 id="gravatar">gravatar</h1>
 <p>Given an email address, the <strong>gravatar</strong> tag outputs an HTML &lt;img&gt; tag (or link only). The source of this image is set to the Gravatar image registered for this email at <em>gravatar.com</em>. If the email is not registered, the default image is output.</p>
-<pre><code>&lt;cms:gravatar email=&quot;johndoe@gmail.com&quot; size=&quot;60&quot; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:gravatar email=&quot;johndoe@gmail.com&quot; size=&quot;60&quot; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>email</li>
 <li>size</li>
@@ -83,7 +82,7 @@
 <h3 id="size">size</h3>
 <p>Specifies the desired width and height of the Gravatar. Valid values are from 1 to 512 inclusive. If skipped, value of 48 is used.</p>
 <h3 id="default">default</h3>
-<p>If no Gravatar found for the email, by default the Gravatar of <em>unknown@gravatar.com</em> is used. You can specify some other image to be used instead by setting this parameter to the URL of the alternative image.</p>
+<p>If no Gravatar found for the email, by default the Gravatar of <a href="mailto:_unknown@gravatar.co">_unknown@gravatar.co</a>m_ is used. You can specify some other image to be used instead by setting this parameter to the URL of the alternative image.</p>
 <h3 id="link_only">link_only</h3>
 <p>If set to &#39;1&#39;, output the image link only (i.e. not the &lt;img&gt; tag).</p>
 <h2 id="variables">Variables</h2>

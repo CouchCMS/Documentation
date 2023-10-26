@@ -73,11 +73,9 @@
 <p class="error">Take care not to allow execution of arbitrary PHP code as this could have security implications.</p>
 
 <p>Examples -</p>
-<pre><code>&lt;cms:php&gt; echo( &quot;Hello World&quot; ); &lt;/cms:php&gt;
-</code></pre><pre><code>&lt;cms:set k_success2=&quot;&lt;cms:php&gt;
+<pre><code>&lt;cms:php&gt; echo( &quot;Hello World&quot; ); &lt;/cms:php&gt;</code></pre><pre><code>&lt;cms:set k_success2=&quot;&lt;cms:php&gt;
     echo(str_replace( \&quot;\n\&quot;, &#39;|&#39;, \&quot;&lt;cms:show k_success/&gt;\&quot; ));
-&lt;/cms:php&gt;&quot; /&gt;
-</code></pre><p>Notice how in the last snippet above, we are using the <strong>php</strong> tag as a parameter of the <strong>set</strong> tag and how we are using the Couch <strong>show</strong> tag as a parameter of the PHP <em>str_replace</em> function.</p>
+&lt;/cms:php&gt;&quot; /&gt;</code></pre><p>Notice how in the last snippet above, we are using the <strong>php</strong> tag as a parameter of the <strong>set</strong> tag and how we are using the Couch <strong>show</strong> tag as a parameter of the PHP <em>str_replace</em> function.</p>
 <h2 id="parameters">Parameters</h2>
 <p>Takes no parameters.</p>
 <h2 id="variables">Variables</h2>

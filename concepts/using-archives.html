@@ -69,22 +69,20 @@
             </form>
 
             <article><h1 id="archives">Archives</h1>
-<p>For some types of templates, like <em>blog</em> and <em>news</em>, it is useful to archive the cloned pages by certain time periods e.g. group together pages by years, months or days.<br/>
+<p>For some types of templates, like <em>blog</em> and _news_, it is useful to archive the cloned pages by certain time periods e.g. group together pages by years, months or days.<br/>
 <a href="../tags-reference/archives.html"><strong><em>Archives</em></strong></a> tag is used to find out all the past time periods (years, months and days) during which atleast one page has been published.</p>
 <p>The following snippet will simply list all the monthly periods that contain alleast one published page -</p>
 <pre><code>&lt;cms:archives masterpage=&#39;blog.php&#39;&gt;
     &lt;cms:date k_archive_date format=&#39;F Y&#39; /&gt;&lt;br&gt;
-&lt;/cms:archives&gt;
-</code></pre><p class="notice">
-    The <em>k_archive_date</em> variable is set in a machine readable format.<br/>
-    The <a href="../tags-reference/date.html"><strong><em>date</em></strong></a> tag converts it into a displayable format.
+&lt;/cms:archives&gt;</code></pre><p class="notice">
+    The *k\_archive\_date* variable is set in a machine readable format.<br/>
+    The [__*date*__](../../tags-reference/date.html) tag converts it into a displayable format.
 </p>
 
-<p>By default the archives tag will group together pages by month. You can set the <em>type</em> parameter to either <em>yearly</em>, <em>monthly</em> or <em>daily</em> to specify the desired grouping. For example, the following snippet will create yearly archives of pages -</p>
+<p>By default the archives tag will group together pages by month. You can set the <em>type</em> parameter to either <em>yearly_, _monthly</em> or <em>daily</em> to specify the desired grouping. For example, the following snippet will create yearly archives of pages -</p>
 <pre><code>&lt;cms:archives masterpage=&#39;blog.php&#39; type=&#39;yearly&#39;&gt;
     &lt;cms:date k_archive_date format=&#39;F Y&#39; /&gt;&lt;br&gt;
-&lt;/cms:archives&gt;
-</code></pre><h3 id="variables-set-by-archives-tag">Variables set by archives tag</h3>
+&lt;/cms:archives&gt;</code></pre><h3 id="variables-set-by-archives-tag">Variables set by archives tag</h3>
 <p>The following variables are set for each time period as it is iterated -</p>
 <h4 id="k_archive_date">k_archive_date</h4>
 <p>Denotes the beginning of the time period.</p>
@@ -106,8 +104,7 @@ Starts by default from &#39;1&#39; but this can be modified by the <em>startcoun
     (&lt;cms:show k_archive_count /&gt;)
     &lt;/li&gt;
 &lt;/cms:archives&gt;
-&lt;/ul&gt;
-</code></pre><p>The <a href="../tags-reference/archives.html"><strong><em>archives</em></strong></a> tag is only the first step in arranging your pages in archives as it merely delineates the archive periods for us.<br/>
+&lt;/ul&gt;</code></pre><p>The <a href="../tags-reference/archives.html"><strong><em>archives</em></strong></a> tag is only the first step in arranging your pages in archives as it merely delineates the archive periods for us.<br/>
 To list the pages belonging to any of these periods, we&#39;ll have to use the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag which we have already discussed.</p>
 <p>If you recall the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag, pages belonging to a particular time period can be easily fetched by setting the <em>start_on</em> and <em>stop_before</em> parameters.<br/>
 If we set these two parameters to the start and the end of an archive time period, a list of pages that were published during that period can be created.<br/>
@@ -126,18 +123,17 @@ We can use the <em>k_archive_date</em> and <em>k_next_archive_date</em> variable
     &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/cms:archives&gt;
-&lt;/ul&gt;
-</code></pre><p>The snippet given above is great for listing out on one single page all the monthly archive periods along with the pages belonging to them (like in a site-map).</p>
+&lt;/ul&gt;</code></pre><p>The snippet given above is great for listing out on one single page all the monthly archive periods along with the pages belonging to them (like in a site-map).</p>
 <p>You can also create separate pages for each archive period.<br/>
 In fact, Couch already does this for you.<br/>
 You might recall that Couch supports a view of any clonable template that is dedicated to listing out pages belonging to a time period - the <em>archive-view</em>.<br/>
 The <em>k_archive_link</em> variable set by the archives tag points to this view for each time period.<br/>
 Thus for a monthly period of July, 2010, the link of the <em>archive-view</em> of <em>blog.php</em> could be -<br/>
-<em>http&#58;//www.yoursite.com/blog/2010/07/</em></p>
+<em>http&#58;//<a href="http://www.yoursite.com/blog/2010/07/">www.yoursite.com/blog/2010/07/</a></em></p>
 <p>For an yearly period of 2010, the same link would be -<br/>
-<em>http&#58;//www.yoursite.com/blog/2010/</em></p>
+<em>http&#58;//<a href="http://www.yoursite.com/blog/2010/">www.yoursite.com/blog/2010/</a></em></p>
 <p>While for a daily period, the link would be -<br/>
-<em>http&#58;//www.yoursite.com/blog/2010/07/31/</em></p>
+<em>http&#58;//<a href="http://www.yoursite.com/blog/2010/07/31/">www.yoursite.com/blog/2010/07/31/</a></em></p>
 <p>By pointing your browser to these urls, you&#39;ll be accessing your <em>blog.php</em> template in <em>archive-view</em> (see: <a href="views.html"><strong>Views</strong></a>).<br/>
 In this view, apart from other variables that you normally find set, Couch sets the <em>k_archive_date</em> and <em>k_next_archive_date</em> variables (see: <a href="variables-in-views.html"><strong>Variables available in Views</strong></a>).<br/>
 It shouldn&#39;t be difficult to set up the <a href="../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag to list pages belonging the archive period by using these variables (see: <a href="listing-pages.html"><strong>Listing Pages</strong></a>).</p>

@@ -85,14 +85,12 @@ By setting the &#39;truncate_chars&#39; parameter (see below)  to &#39;1&#39;, i
 <h3 id="allow">allow</h3>
 <p>The HTML elements you wish to preserve in the excerpt.<br/>
 If you wish to preserve multiple tags, separate the tagnames by using comma e.g.</p>
-<pre><code>allow=&#39;i, b&#39;
-</code></pre><h3 id="trail">trail</h3>
+<pre><code>allow=&#39;i, b&#39;</code></pre><h3 id="trail">trail</h3>
 <p>By default the produced excerpt is appended with &#39;...&#39; (three ellipses). You can change this by using this parameter.</p>
 <h3 id="truncate_chars">truncate_chars</h3>
 <p>By default, the &#39;count&#39; paramater is considered to be the number of words the excerpt can contain.<br/>
 By setting the &#39;truncate_chars&#39; to &#39;1&#39;, the &#39;count&#39; becomes the number of characters the excerpt can contain.</p>
-<pre><code>&lt;cms:excerpt count=&#39;100&#39; truncate_chars=&#39;1&#39;&gt;...blah blah...&lt;/cms:excerpt&gt;
-</code></pre><p class="notice">Please note that if &#39;truncate_chars&#39; is set to &#39;1&#39;, the &#39;allow&#39; parameter is ignored and all the HTML tags are stripped off the input.</p>
+<pre><code>&lt;cms:excerpt count=&#39;100&#39; truncate_chars=&#39;1&#39;&gt;...blah blah...&lt;/cms:excerpt&gt;</code></pre><p class="notice">Please note that if 'truncate\_chars' is set to '1', the 'allow' parameter is ignored and all the HTML tags are stripped off the input.</p>
 
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables of its own.</p>

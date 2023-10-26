@@ -89,7 +89,7 @@ As we&#39;ll see later, Couch also provides you all necessary security tools to 
 <h2 id="a-real-world-example">A real-world example</h2>
 <p>Instead of dryly documenting the new tags, I&#39;ll walk you through a real-world example.</p>
 <p class="error">
-    <strong>Caveat:</strong> the discussion that follows assumes that you&#39;re already conversant with Couch&#39;s <a href="forms.html"><strong>form</strong></a> and <a href="editable-regions.html"><strong>editable-regions</strong></a> concepts.<br/>
+    **Caveat:** the discussion that follows assumes that you're already conversant with Couch's [**form**](../forms.html) and [**editable-regions**](../editable-regions.html) concepts.<br/>
     If you are new to Couch, please take some time to first study those as all the new functions discussed here build upon them.
 </p>
 
@@ -98,10 +98,8 @@ What I&#39;d be demonstrating is (intentionally) a very simple scenario but it s
 <p>Before we embark on our little tutorial, there is one little preparatory step that needs to be completed first.<br/>
 As not all sites deploying Couch will need the Databound forms feature, though Couch 1.4 ships with the module, it is not enabled by default.<br/>
 To enable this module, please edit the &#39;kfunctions.php&#39; file found in &#39;couch/addons&#39; folder and uncomment (or add if upgrading from an older version) the following line</p>
-<pre><code>require_once( K_COUCH_DIR.&#39;addons/data-bound-form/data-bound-form.php&#39; );
-</code></pre><p>The code in our tutorial will also utilize the <em>cms:set_flash</em> tag to set flash messages signifying successful form submission. This will require the &#39;sessions&#39; module to be enabled so uncomment the following line too (if not already so)</p>
-<pre><code>require_once( K_COUCH_DIR.&#39;addons/cart/session.php&#39; );
-</code></pre><p class="notice"><strong>NOTE:</strong> Beginning with 1.4, new installations will find a file named &#39;kfunctions.example.php&#39; in the addon folder. This is to prevent future upgrades from overwriting your changes. Please rename this file to &#39;kfunctions.php&#39; and uncomment the mentioned line from it.</p>
+<pre><code>require_once( K_COUCH_DIR.&#39;addons/data-bound-form/data-bound-form.php&#39; );</code></pre><p>The code in our tutorial will also utilize the <em>cms:set_flash</em> tag to set flash messages signifying successful form submission. This will require the &#39;sessions&#39; module to be enabled so uncomment the following line too (if not already so)</p>
+<pre><code>require_once( K_COUCH_DIR.&#39;addons/cart/session.php&#39; );</code></pre><p class="notice">**NOTE:** Beginning with 1.4, new installations will find a file named 'kfunctions.example.php' in the addon folder. This is to prevent future upgrades from overwriting your changes. Please rename this file to 'kfunctions.php' and uncomment the mentioned line from it.</p>
 
 <p>With the required modules enabled, we can finally begin.</p>
 <p>The situation is that my (hypothetical) client wishes to use his website to announce the job openings available at his agency.<br/>
@@ -123,7 +121,7 @@ I mean, though the form can be used to submit data and the editable regions can 
 <p>This is where the new &#39;databound form&#39; feature comes in.<br/>
 You see, this simply connects an existing front-end form with existing back-end editable regions (in other words - &#39;binds&#39; a Couch form with Couch database i.e. editable regions. This, incidentally, also explains why we chose to call this feaure &#39;DataBound Forms&#39;).</p>
 <p>So, when working with databound forms, we always start off with two concepts that are already well known to us - <a href="forms.html"><strong>form</strong></a> and <a href="editable-regions.html"><strong>editable regions</strong></a>.<br/>
-This is the form we&#39;ll be working on (kindly provided by <a href="http://www.couchcms.com/forum/memberlist.php?mode=viewprofile&amp;u=11919">@cheesypoof</a>) -</p>
+This is the form we&#39;ll be working on (kindly provided by <a href="https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&amp;u=11919">@cheesypoof</a>) -</p>
 <p><img src="../assets/img/contents/databound-forms-1.png" alt=""></p>
 <p>Following is a stripped-down code of the same form to show only relevant HTML markup. Link for downloading the styled form (both original and couchified) can be found at the end of this post.</p>
 <pre><code>&lt;form method=&quot;post&quot;&gt;
@@ -165,8 +163,7 @@ This is the form we&#39;ll be working on (kindly provided by <a href="http://www
 
     &lt;button type=&quot;submit&quot;&gt;Submit Application&lt;/button&gt;
 
-&lt;/form&gt;
-</code></pre><p>Let us begin by creating and registering a clonable template (we&#39;ll name it &#39;applications.php&#39;).<br/>
+&lt;/form&gt;</code></pre><p>Let us begin by creating and registering a clonable template (we&#39;ll name it &#39;applications.php&#39;).<br/>
 Place the above form code within the template. Of course, the form is not (yet) a Couch managed one but we&#39;ll do that soon.<br/>
 The plan of action is that, once we have a fully functional form on the front-end, we&#39;ll capture each successful form submission by automatically creating a cloned page of our template and dumping the submitted values into the page&#39;s editable regions.</p>
 <p>This, obviously, means that our template needs to have editable regions that correspond to the input fields of the front-end form.<br/>
@@ -183,8 +180,7 @@ Let us define those.</p>
     /&gt;
     &lt;cms:editable name=&#39;salary&#39; type=&#39;text&#39; search_type=&#39;decimal&#39; /&gt;
     &lt;cms:editable name=&#39;resume&#39; required=&#39;1&#39; allowed_ext=&#39;pdf, doc, docx&#39; max_size=&#39;1024&#39; type=&#39;securefile&#39; /&gt;
-&lt;/cms:template&gt;
-</code></pre><p>Notice that we have defined editable regions that are equivalent to the input fields in the form.</p>
+&lt;/cms:template&gt;</code></pre><p>Notice that we have defined editable regions that are equivalent to the input fields in the form.</p>
 <p class="success">The type of last editable region (securefile) would seem unfamiliar. This is a new editable region that debuts with v1.4 and is meant exclusively to be used for uploading files securely from the front-end.</p>
 
 <p>Also notice that we&#39;ve also added all data constrains (e.g. the field being required, validator, search_type etc.) to the editable regions. This part is exactly how we use other templates in Couch and can be tested independently of the front-end form - i.e. after visiting the template as super-admin for the changes to be picked up, we can create cloned pages from the admin-panel, add data to the editable regions we defined and save.<br/>
@@ -246,8 +242,7 @@ This is the right time to manually test everything e.g. validations etc. work as
         &lt;button type=&quot;submit&quot;&gt;Submit Application&lt;/button&gt;
     &lt;/cms:if&gt;
 
-&lt;/cms:form&gt;
-</code></pre><p>Please notice that we are using the simplest definition possible for the inputs - all have the same &#39;text&#39; type and there are no validation and requirement checks in place. This is deliberate and we&#39;ll soon see the logic behind this.</p>
+&lt;/cms:form&gt;</code></pre><p>Please notice that we are using the simplest definition possible for the inputs - all have the same &#39;text&#39; type and there are no validation and requirement checks in place. This is deliberate and we&#39;ll soon see the logic behind this.</p>
 <p>So, we have the &#39;data&#39; component and the &#39;form&#39; component ready.<br/>
 Time for &#39;binding&#39; the two. This is where all the fun lies.</p>
 <h3 id="3-the-bound-part-of-databound-forms">3. The &#39;bound&#39; part of DataBound forms</h3>
@@ -256,16 +251,14 @@ We&#39;ve already done all the difficult stuff and this step will require only m
 All these changes (three to be precise) need to be made only to the &#39;form&#39; component. The &#39;data&#39; component, for all practical purposes, remains agnostic of the fact that the data it is receiving comes from a frontend form.</p>
 <h4 id="a-modify-the-cms-form-tag">a. Modify the cms:form tag</h4>
 <p>Before:</p>
-<pre><code>&lt;cms:form method=&#39;post&#39; anchor=&#39;0&#39;&gt;
-</code></pre><p>After:</p>
+<pre><code>&lt;cms:form method=&#39;post&#39; anchor=&#39;0&#39;&gt;</code></pre><p>After:</p>
 <pre><code>&lt;cms:form
     masterpage=k_template_name
     mode=&#39;create&#39;
     enctype=&#39;multipart/form-data&#39;
     method=&#39;post&#39;
     anchor=&#39;0&#39;
-    &gt;
-</code></pre><p>The key change here is the &#39;masterpage&#39; parameter. By specifying this parameter we are making it known to the form that it is no longer a regular form but a &#39;data bound&#39; one (bound to the template specified as the masterpage).</p>
+    &gt;</code></pre><p>The key change here is the &#39;masterpage&#39; parameter. By specifying this parameter we are making it known to the form that it is no longer a regular form but a &#39;data bound&#39; one (bound to the template specified as the masterpage).</p>
 <p>The other parameter of interest is the &#39;mode&#39;. It can take two possible values, &#39;edit&#39; and &#39;create&#39;. However, for this tutorial of ours we are hard coding it to &#39;create&#39; because we&#39;ll only be using our form for creating new cloned pages and never for editing existing ones.</p>
 <h4 id="b-modify-the-cms-input-tags">b. Modify the cms:input tags</h4>
 <p>This is where the rubber meets the road.<br/>
@@ -296,8 +289,7 @@ Please notice carefully the modification done to the existing input tags -</p>
 &lt;br /&gt;
 
 &lt;label&gt;Attach a Copy of Your Resume&lt;/label&gt;
-&lt;cms:input name=&quot;resume&quot; type=&quot;text&quot; /&gt;
-</code></pre><p>After:</p>
+&lt;cms:input name=&quot;resume&quot; type=&quot;text&quot; /&gt;</code></pre><p>After:</p>
 <pre><code>&lt;label&gt;First Name&lt;/label&gt;
 &lt;cms:input name=&quot;first_name&quot; type=&quot;bound&quot; /&gt;
 &lt;br /&gt;
@@ -323,8 +315,7 @@ Please notice carefully the modification done to the existing input tags -</p>
 &lt;br /&gt;
 
 &lt;label&gt;Attach a Copy of Your Resume&lt;/label&gt;
-&lt;cms:input name=&quot;resume&quot; type=&quot;bound&quot; /&gt;
-</code></pre><p>I am sure you&#39;d be surprised to notice that the only change we&#39;ve done is convert the &#39;type&#39; of *all* cms:input tags to &#39;bound&#39;.<br/>
+&lt;cms:input name=&quot;resume&quot; type=&quot;bound&quot; /&gt;</code></pre><p>I am sure you&#39;d be surprised to notice that the only change we&#39;ve done is convert the &#39;type&#39; of *all* cms:input tags to &#39;bound&#39;.<br/>
 Try accessing the template in the browser at this point.<br/>
 You&#39;ll see that although we declared all the inputs with the same type &#39;bound&#39;, on the front-end each renders differently - the &#39;position&#39; input renders as a dropdown, the &#39;resume&#39; input renders as a file input etc.<br/>
 In fact, each renders exactly as it does in the admin-panel.<br/>
@@ -343,8 +334,7 @@ However, we haven&#39;t placed anything there. Let us do that in the final modif
     &lt;cms:set_flash name=&#39;submit_success&#39; value=&#39;1&#39; /&gt;
     &lt;cms:redirect k_page_link /&gt;
 
-&lt;/cms:if&gt;
-</code></pre><p>After:</p>
+&lt;/cms:if&gt;</code></pre><p>After:</p>
 <pre><code>&lt;cms:if k_success &gt;
 
     &lt;cms:db_persist_form
@@ -355,8 +345,7 @@ However, we haven&#39;t placed anything there. Let us do that in the final modif
     &lt;cms:set_flash name=&#39;submit_success&#39; value=&#39;1&#39; /&gt;
     &lt;cms:redirect k_page_link /&gt;
 
-&lt;/cms:if&gt;
-</code></pre><p>The &#39;db_persist_form&#39; tag is the final piece of this puzzle.</p>
+&lt;/cms:if&gt;</code></pre><p>The &#39;db_persist_form&#39; tag is the final piece of this puzzle.</p>
 <p>Used without any parameters, this tag simply pulls in the submitted values (from the &#39;bound&#39; inputs) and saves them into the template the form is bound to. Since in our case, the binding &#39;mode&#39; of the form is &#39;create&#39;, this saving action results in the creation of a new cloned page of our template.</p>
 <p>Try submitting some filled forms from the front-end.<br/>
 Coming back to the admin-panel, you should see a list of cloned pages that were created for all successful form submissions.</p>
@@ -432,44 +421,51 @@ Coming back to the admin-panel, you should see a list of cloned pages that were 
         &lt;button type=&quot;submit&quot;&gt;Submit Application&lt;/button&gt;
     &lt;/cms:if&gt;
 
-&lt;/cms:form&gt;
-</code></pre><p class="success">
-    The &#39;_auto_title&#39; parameter of <em>cms:db_persist_form</em> tag merits some discussion.<br/>
-    Take a look at the edit screen of any cloned page in the back-end and you&#39;ll find that it has two default fields - name &amp; title.<br/>
-    Of the two, only the &#39;name&#39; is mandatory. This is the unique id by which a cloned page is known internally by the system.<br/>
-    However, you are permitted to leave it blank as long as you fill the &#39;title&#39; field. This is because if the &#39;name&#39; is not supplied, Couch automatically generates a &#39;name&#39; from the &#39;title&#39;. If, however, even the &#39;title&#39; is left empty this results in an error.<br/>
+&lt;/cms:form&gt;</code></pre><p class="success">
+    The '\_auto\_title' parameter of *cms:db\_persist\_form* tag merits some discussion.<br/>
+    Take a look at the edit screen of any cloned page in the back-end and you'll find that it has two default fields - name & title.<br/>
+    Of the two, only the 'name' is mandatory. This is the unique id by which a cloned page is known internally by the system.<br/>
+    However, you are permitted to leave it blank as long as you fill the 'title' field. This is because if the 'name' is not supplied, Couch automatically generates a 'name' from the 'title'. If, however, even the 'title' is left empty this results in an error.<br/>
     <br/>
     In this tutorial of ours, if we were to simply use<br/>
     <br/>
-    <code>&lt;cms:db_persist_form /&gt;</code>
-    this would result in an error complaining that the &#39;name&#39; cannot be left empty. The explanation above should explain that.<br/>
+    ```
+<cms:db_persist_form />
+    ```
+    this would result in an error complaining that the 'name' cannot be left empty. The explanation above should explain that.<br/>
     <br/>
     As a solution<br/>
-    <strong>1.</strong> We could duplicate the method used in the admin-panel (i.e. offer explicit input boxes for name and title).<br/>
+    **1\.** We could duplicate the method used in the admin-panel (i.e. offer explicit input boxes for name and title).<br/>
     This can be done by using cms:input fields bound to the system fields e.g.<br/>
     <br/>
-    <code>&lt;cms:input type=&quot;bound&quot; name=&quot;k_page_name&quot; /&gt;
-&lt;cms:input type=&quot;bound&quot; name=&quot;k_page_title&quot; /&gt;</code>
-    If the input bound to &#39;k_page_name&#39; is omitted, a name would be auto-generated using the value from the field bound to the &#39;title&#39; (i.e. k_page_title).<br/>
+    ```
+<cms:input type="bound" name="k_page_name" />
+<cms:input type="bound" name="k_page_title" />
+    ```
+    If the input bound to 'k\_page\_name' is omitted, a name would be auto-generated using the value from the field bound to the 'title' (i.e. k\_page\_title).<br/>
     <br/>
-    2. We could indirectly supply values for the name/title as parameters of the cms:db_persist_form tag e.g.<br/>
+    2\. We could indirectly supply values for the name/title as parameters of the cms:db\_persist\_form tag e.g.<br/>
     <br/>
-    <code>&lt;cms:db_persist_form
-    k_page_name=&#39;my-page-name&#39;
-    k_page_title=&#39;My Page Name&#39;
-/&gt;</code>
-    As before, if the &#39;k_page_name&#39; is skipped, the value of &#39;k_page_title&#39; will be used to generate a name automatically.<br/>
-    Of course, in a real-life situation instead of hard-coding the values you&#39;d want to use some code or algorithm to provide unique values.<br/>
+    ```
+<cms:db_persist_form
+    k_page_name='my-page-name'
+    k_page_title='My Page Name'
+/>
+    ```
+    As before, if the 'k\_page\_name' is skipped, the value of 'k\_page\_title' will be used to generate a name automatically.<br/>
+    Of course, in a real-life situation instead of hard-coding the values you'd want to use some code or algorithm to provide unique values.<br/>
     <br/>
     For the case we are dealing with in our tutorial, the first solution (explicit input boxes) would be too much to ask from the visitor.<br/>
-    The second solution would either require providing a unique name at every submission or provide a fixed &#39;title&#39; and then bank on the system to generate a unique &#39;name&#39; out of it. Since the &#39;title&#39; is fixed, the generated name will always be suffixed with a unique number (1, 2 etc.). Doing this would be wasteful if the number of submissions could run into thousands.<br/>
+    The second solution would either require providing a unique name at every submission or provide a fixed 'title' and then bank on the system to generate a unique 'name' out of it. Since the 'title' is fixed, the generated name will always be suffixed with a unique number (1, 2 etc.). Doing this would be wasteful if the number of submissions could run into thousands.<br/>
     <br/>
-    In any case, if we reflect over it, the &#39;name&#39; is just a requirement of the system and adds nothing to the data we are capturing (i.e. the application). So the most efficient way of providing the required name would be to ask the form to generate one for itself.<br/>
-    This is what the &#39;_auto_title&#39; parameter is doing.<br/>
+    In any case, if we reflect over it, the 'name' is just a requirement of the system and adds nothing to the data we are capturing (i.e. the application). So the most efficient way of providing the required name would be to ask the form to generate one for itself.<br/>
+    This is what the '\_auto\_title' parameter is doing.<br/>
     <br/>
-    <code>&lt;cms:db_persist_form
-    _auto_title=&#39;1&#39;
-/&gt;</code>
+    ```
+<cms:db_persist_form
+    _auto_title='1'
+/>
+    ```
 </p>
 
 <h3 id="security">Security</h3>
@@ -478,7 +474,7 @@ Any visitor interested in applying for the job may now use it submit his/her inf
 However, the very nature of the Internet dictates that not all visitors filling up the form would be job seekers. Any form on a website is always a juicy target for spammers and wannabe hackers and there is no reason why ours would be any different.<br/>
 The onus of securing up the form lies squarely on our shoulders.</p>
 <p>Since the form is Couch managed, the default security offered by the CMS against serious attacks like XSS, CSRF, SQL injection etc. covers the form as well. Nothing needs to be done on this front. Preventing spam submissions will require some work though.</p>
-<p>As discussed elsewhere on our forum (Fighting Spam - <a href="http://www.couchcms.com/forum/viewtopic.php?f=8&amp;t=7047">http&#58;//www.couchcms.com/forum/viewtopic.php?f=8&amp;t=7047</a>), Captcha has long lost its efficacy in stopping spam. We have to look at other measures now. As discussed in the mentioned thread, there are two main sources of spam to contend with -</p>
+<p>As discussed elsewhere on our forum (Fighting Spam - <a href="https://www.couchcms.com/forum/viewtopic.php?f=8&amp;t=7047">http&#58;//www.couchcms.com/forum/viewtopic.php?f=8&amp;t=7047</a>), Captcha has long lost its efficacy in stopping spam. We have to look at other measures now. As discussed in the mentioned thread, there are two main sources of spam to contend with -</p>
 <ol>
 <li>Spambots</li>
 <li>Human</li>
@@ -505,14 +501,12 @@ This webpage has some interesting sample questions that should give us an idea a
 <p>Suppose we choose, &#39;What colour is a blue apple?&#39;.<br/>
 To implement it in the form, we add the following field to it -</p>
 <pre><code>&lt;label&gt;What colour is a blue apple? (4 characters required)&lt;/label&gt;
-&lt;cms:input name=&quot;human&quot; type=&quot;text&quot; required=&#39;1&#39; validator=&#39;regex=/^blue$/i&#39; /&gt;
-</code></pre><p>To explain the code - we are using a simple <em>cms:input</em> of type &#39;text&#39; with the &#39;required&#39; parameter set to make it mandatory.<br/>
+&lt;cms:input name=&quot;human&quot; type=&quot;text&quot; required=&#39;1&#39; validator=&#39;regex=/^blue$/i&#39; /&gt;</code></pre><p>To explain the code - we are using a simple <em>cms:input</em> of type &#39;text&#39; with the &#39;required&#39; parameter set to make it mandatory.<br/>
 The real deal is the &#39;validator&#39; parameter where we are checking if the inputted response matches the correct answer -</p>
-<pre><code>validator=&#39;regex=/^blue$/i&#39;
-</code></pre><p>Make sure to change the highlited portion to match whatever is the answer to the question you put. Your visitors will also appreciate if you provided a hint about the length of the right answer.</p>
+<pre><code>validator=&#39;regex=/^blue$/i&#39;</code></pre><p>Make sure to change the highlited portion to match whatever is the answer to the question you put. Your visitors will also appreciate if you provided a hint about the length of the right answer.</p>
 <p class="notice">
-    This step, incidentally, also shows that we can use &#39;bound&#39; and normal cms:inputs together in the same form (the &#39;human&#39; input we used above, unlike others, is not a bound field).<br/>
-    Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by &#39;frm_&#39; and &#39;k_error_&#39; to input names).<br/>
+    This step, incidentally, also shows that we can use 'bound' and normal cms:inputs together in the same form (the 'human' input we used above, unlike others, is not a bound field).<br/>
+    Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by 'frm\_' and 'k\_error\_' to input names).<br/>
     The only difference between the two lies in the fact that values of normal inputs, unlike those of bound inputs, will not be saved into the database.
 </p>
 
@@ -538,8 +532,7 @@ Just before we persist a successful form submission in the database by using &#3
     &lt;cms:set_flash name=&#39;submit_success&#39; value=&#39;1&#39; /&gt;
     &lt;cms:redirect k_page_link /&gt;
 
-&lt;/cms:if&gt;
-</code></pre><p>After:</p>
+&lt;/cms:if&gt;</code></pre><p>After:</p>
 <pre><code>&lt;cms:if k_success &gt;
 
     &lt;cms:check_spam email=frm_email /&gt;
@@ -552,8 +545,7 @@ Just before we persist a successful form submission in the database by using &#3
     &lt;cms:set_flash name=&#39;submit_success&#39; value=&#39;1&#39; /&gt;
     &lt;cms:redirect k_page_link /&gt;
 
-&lt;/cms:if&gt;
-</code></pre><p>Notice how we are sending the submitted email address (made available as &#39;frm_email&#39; in the k_success block) as its &#39;email&#39; parameter.<br/>
+&lt;/cms:if&gt;</code></pre><p>Notice how we are sending the submitted email address (made available as &#39;frm_email&#39; in the k_success block) as its &#39;email&#39; parameter.<br/>
 And that is all that would be required. The tag contacts stopforumspam.com and if the user is reported as a spammer, simply terminates the submission after displaying a short notice.</p>
 <p>At this point, we have a fully functional and secure form on the website that can accept user-submitted content.<br/>
 In terms of functionality, this completes what we set out to do. So we can, if so we wish, call it quits at this stage.</p>
@@ -659,8 +651,7 @@ In terms of functionality, this completes what we set out to do. So we can, if s
 
 &lt;/body&gt;
 &lt;/html&gt;
-&lt;?php COUCH::invoke(); ?&gt;
-</code></pre><h3 id="custom-admin-screens">Custom admin screens</h3>
+&lt;?php COUCH::invoke(); ?&gt;</code></pre><h3 id="custom-admin-screens">Custom admin screens</h3>
 <p>Version 1.4 ships with one more very useful new feature that can be used in tandem with the databound forms functionality to deliver a more &#39;holistic&#39; solution to the clients.</p>
 <p>A look at the admin-panel will reveal that, although we can define any number of editable regions for a template, the admin page that lists all cloned pages of any template always does so in a tabular form and more so shows only a fixed number of columns.</p>
 <p>Similarly, while editing any cloned page, the edit screen always displays the editable regions in a fixed format that does not allow much customization, if at all any.</p>
@@ -677,11 +668,9 @@ Let us do just that.</p>
 <p>For a quick test, let us put the following in the snippet -</p>
 <pre><code>&lt;cms:repeat &#39;4&#39;&gt;
     &lt;h3&gt;Hello &lt;cms:show k_template_title /&gt;!&lt;/h3&gt;
-&lt;/cms:repeat&gt;
-</code></pre><p>As you can see, it is regular Couch code that we normally use in our templates and snippets.</p>
+&lt;/cms:repeat&gt;</code></pre><p>As you can see, it is regular Couch code that we normally use in our templates and snippets.</p>
 <p>Now edit the kfunctions.php file present in &#39;couch/addons&#39; folder and place the following bit of code within it</p>
-<pre><code>$FUNCS-&gt;register_admin_listview( &#39;application.php&#39;, &#39;my_list.html&#39; );
-</code></pre><p>Visit the admin-panel and access the &#39;applications.php&#39; template. Here is what should appear -</p>
+<pre><code>$FUNCS-&gt;register_admin_listview( &#39;application.php&#39;, &#39;my_list.html&#39; );</code></pre><p>Visit the admin-panel and access the &#39;applications.php&#39; template. Here is what should appear -</p>
 <p><img src="../assets/img/contents/databound-forms-5.png" alt=""></p>
 <p>That is our snippet in action. Not doing anything useful though, I agree, but the point to note is that it has completely replaced the default listing shown by Couch.</p>
 <p>Place a <a href="../tags-reference/dump.html"><strong>cms:dump</strong></a> tag in the snippet and you&#39;ll find that for all practical purposes our code thinks it is executing in the &#39;home-view&#39; of masterpage &#39;applications.php&#39;.</p>
@@ -690,11 +679,13 @@ Let us do just that.</p>
 Create a table, create a stacked display, show images, use custom CSS, JS ... whatever.<br/>
 Everything that can be used on the front-end can now be used in identical fashion on the backend.</p>
 <p class="error">
-    <strong>Caveat:</strong> one little thing to keep in mind is that, unlike the front-end where our code controls the output of the entire page i.e. from &lt;HTML&gt; to &lt;/HTML&gt;, the snippet we use in the admin panel is constrained within an existing DIV -<br/>
+    **Caveat:** one little thing to keep in mind is that, unlike the front-end where our code controls the output of the entire page i.e. from &lt;HTML&gt; to &lt;/HTML&gt;, the snippet we use in the admin panel is constrained within an existing DIV -<br/>
     <br/>
-    <code>&lt;div id=&quot;admin-wrapper-body&quot;&gt;
-    &lt;!-- our snippet gets output here --&gt;
-&lt;/div&gt;</code>
+    ```
+<div id="admin-wrapper-body">
+    <!-- our snippet gets output here -->
+</div>
+    ```
     If your snippet uses its own CSS, this piece of information will likely be necessary to be taken into account.
 </p>
 
@@ -724,8 +715,7 @@ Consider, for example, the following screenshot from a site using a custom edit 
 <p>The procedure is very similar to what we used for custom listing above.<br/>
 It begins by creating a snippet file in Couch&#39;s snippets folder and then registering it for the template in kfunctions.php.<br/>
 Assuming the snippet we use is named &#39;my_edit.html&#39;, this is what needs to be placed in kfunctions.php -</p>
-<pre><code>$FUNCS-&gt;register_admin_pageview( &#39;application.php&#39;, &#39;my_edit.html&#39;, 1 ); // &#39;1&#39; for showing the &#39;advanced setting dropdown&#39;
-</code></pre><p>As with the custom listing, Couch forgoes everything it normally does while rendering the edit screen and delegates the process to our snippet.<br/>
+<pre><code>$FUNCS-&gt;register_admin_pageview( &#39;application.php&#39;, &#39;my_edit.html&#39;, 1 ); // &#39;1&#39; for showing the &#39;advanced setting dropdown&#39;</code></pre><p>As with the custom listing, Couch forgoes everything it normally does while rendering the edit screen and delegates the process to our snippet.<br/>
 If we place a <a href="../tags-reference/dump.html"><strong>cms:dump</strong></a> in our snippet, we&#39;ll find that our code thinks it is executing in a &#39;page-view&#39; (where the current page is the one being edited).</p>
 <p>So, although we can do anything we wish through our snippet it is only fair to assume that we&#39;d want to provide the editing functionality here (after all it is the edit screen). If we take a look at the code used by Couch&#39;s default edit screen (using browser tools), we&#39;ll find that it uses an HTML form for the purpose. That is hardly surprising as anything related to editing database fields in a browser invariably has to use a form.<br/>
 Speaking of which, remember our databound form? I think you get the connection - yes, we&#39;ll use the databound form in our snippet to handle page editing.</p>
@@ -753,7 +743,7 @@ What could hitherto only be done from the back-end can now be achieved from the 
 <p>The separation is not quite complete yet. I am not sure when (or even &#39;if&#39;) this happens but in later versions of Couch, I&#39;d like to see this disappear completely so you, as a designer, could code up your very own admin-panel using your own HTML templates with the same ease as coding up the front-end site. Mind you, I am not talking about simply styling the admin-panel using CSS but actually generating its markup.<br/>
 So, in a sense, Couch then would become a &#39;CMS maker&#39; instead of just a CMS.</p>
 <p>Keeping my fingers crossed :)</p>
-<h4 id="-download-source-code-http-www-couchcms-com-docs-code-db_code-zip-"><a href="http://www.couchcms.com/docs/code/db_code.zip"><strong>Download Source Code</strong></a></h4>
+<h4 id="download-source-code"><a href="https://www.couchcms.com/docs/code/db_code.zip"><strong>Download Source Code</strong></a></h4>
 </article>
         </div>
         <!-- end -->

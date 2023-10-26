@@ -70,9 +70,7 @@
 
             <article><h1 id="set_cookie">set_cookie</h1>
 <p>The <strong>set_cookie</strong> tag can be used to set a cookie with a name and value. An expiration time can also be set for the cookie.</p>
-<pre><code>&lt;cms:set_cookie &#39;my_test_cookie&#39; &#39;hello world&#39; /&gt;
-</code></pre><pre><code>&lt;cms:set_cookie name=&#39;my_test_cookie&#39; value=&#39;hello world&#39; /&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;cms:set_cookie &#39;my_test_cookie&#39; &#39;hello world&#39; /&gt;</code></pre><pre><code>&lt;cms:set_cookie name=&#39;my_test_cookie&#39; value=&#39;hello world&#39; /&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>name</li>
 <li>value</li>
@@ -84,8 +82,7 @@
 <p>The value of the cookie. This value is stored on the clients computer.</p>
 <h3 id="expire">expire</h3>
 <p>The time in seconds for the cookie to expire. If set to 0, or omitted, the cookie will expire at the end of the session (when the browser closes).</p>
-<pre><code>&lt;cms:set_cookie &#39;my_test_cookie&#39; value=&#39;hello world&#39; expire=&#39;86400&#39; /&gt;
-</code></pre><p>The code above will set the expiration time of the cookie to 1 day (24 * 60 * 60).</p>
+<pre><code>&lt;cms:set_cookie &#39;my_test_cookie&#39; value=&#39;hello world&#39; expire=&#39;86400&#39; /&gt;</code></pre><p>The code above will set the expiration time of the cookie to 1 day (24 * 60 * 60).</p>
 <h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>

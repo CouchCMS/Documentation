@@ -70,10 +70,8 @@
 
             <article><h1 id="gpc">gpc</h1>
 <p>The <strong>gpc</strong> tag stands for <strong>G</strong>ET-<strong>P</strong>OST-<strong>C</strong>OOKIES and can be used to fetch values from variables contained in these.</p>
-<pre><code>&lt;cms:gpc &#39;my_parameter&#39; /&gt;
-</code></pre><pre><code>&lt;cms:gpc &#39;my_parameter&#39; method=&#39;post&#39; /&gt;
-</code></pre><p>If the method parameter is not specified, this tag will look into all the three sources.</p>
-<p class="error"><strong>M.IMP:</strong> Never, never use variables from GET, POST or COOKIES by using raw PHP code. The <strong>gpc</strong> tag sanitizes all variables and helps in preventing XSS attacks, something that your code will be susceptible of if you choose to do it manually and do not sanitize the values.</p>
+<pre><code>&lt;cms:gpc &#39;my_parameter&#39; /&gt;</code></pre><pre><code>&lt;cms:gpc &#39;my_parameter&#39; method=&#39;post&#39; /&gt;</code></pre><p>If the method parameter is not specified, this tag will look into all the three sources.</p>
+<p class="error">**M.IMP:** Never, never use variables from GET, POST or COOKIES by using raw PHP code. The **gpc** tag sanitizes all variables and helps in preventing XSS attacks, something that your code will be susceptible of if you choose to do it manually and do not sanitize the values.</p>
 
 <h2 id="parameters">Parameters</h2>
 <ul>
@@ -83,7 +81,7 @@
 <h3 id="var">var</h3>
 <p>Name of the variable to fetch the value of.</p>
 <h3 id="method">method</h3>
-<p>This can be one of the following - <em>get</em>, <em>post</em>, <em>cookie</em>.<br/>
+<p>This can be one of the following - <em>get_, _post_, _cookie</em>.<br/>
 If this parameter is not specified, all the three are searched.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>

@@ -69,16 +69,16 @@
             </form>
 
             <article><h1 id="finally-home">Finally home</h1>
-<p><a href="http://www.couchcms.com/docs/code/home.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
+<p><a href="https://www.couchcms.com/docs/code/home.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a></p>
 <p>The home page in Aurelius is represented by <em>index.html</em>.</p>
 <p>Having configured all the other sections of this web site, configuring the home page should now be pretty straightforward.</p>
 <p>Let us begin by attaching Couch to this template.<br/>
 Take the usual steps to do so -<br/>
-Change the extension of <em>index.html</em> to make it <em>index.php</em><br/>
+Change the extension of <em>index.html</em> to make it _index.php_<br/>
 Add the two lines of boilerplate PHP code to enclose the contents of this file and use the template tag to change the display-name of the template.</p>
 <p><img src="../../assets/img/contents/portfolio-site-179.png" alt=""></p>
 <p><img src="../../assets/img/contents/portfolio-site-180.png" alt=""></p>
-<p>Access <em>http&#58;//www.mytestsite.com/</em> while logged on as the super-admin.<br/>
+<p>Access <em>http&#58;//<a href="http://www.mytestsite.com/">www.mytestsite.com/</a></em> while logged on as the super-admin.<br/>
 This will hook up Couch to the template.<br/>
 Visit the admin panel. An new entry &#39;Home Page&#39; should appear in the list of templates.</p>
 <h3 id="defining-editable-regions">Defining editable regions</h3>
@@ -96,10 +96,10 @@ The boxes at the bottom need to be looked at a little closer -</p>
 Here is how the editable regions are created for all the boxes -</p>
 <p><img src="../../assets/img/contents/portfolio-site-184.png" alt=""></p>
 <p>(There is not sufficient space to show the full width of the code so the closing tags of editable regions are not visible. However it is fairly regular stuff and you can check it out from the php file you&#39;ll find linked to this tutorial.)</p>
-<p>If defining the editable regions in-line seems too cluttered to you, you can define them, the way we did for <em>blog</em> and <em>portfolio</em>, within the template tag instead. In that case, you&#39;ll need to show only the variables representing the editable regions at the marked regions.</p>
+<p>If defining the editable regions in-line seems too cluttered to you, you can define them, the way we did for <em>blog</em> and _portfolio_, within the template tag instead. In that case, you&#39;ll need to show only the variables representing the editable regions at the marked regions.</p>
 <p>Please note in the code above that the labels of several regions are the same however, as is mandatory, their names are different.<br/>
 Also note that we have grouped together the editable regions belonging to each box by creating group type editable regions for each box and linking them to the regions.</p>
-<p>Refresh the home page by visiting <em>http&#58;//www.mytestsite.com/</em> logged-in as the super-admin.<br/>
+<p>Refresh the home page by visiting <em>http&#58;//<a href="http://www.mytestsite.com/">www.mytestsite.com/</a></em> logged-in as the super-admin.<br/>
 Visit the admin panel and you should find the following -</p>
 <p><img src="../../assets/img/contents/portfolio-site-185.png" alt=""></p>
 <p>Edit the links to make the boxes lead to the proper sections and we can then move on.</p>
@@ -116,7 +116,7 @@ Delete all items representing the object to be enumerated (the pages, in this ca
 <p><img src="../../assets/img/contents/portfolio-site-188.png" alt=""></p>
 <p>Finally, use the variables set by the enumerator tag belonging to each fetched object</p>
 <p><img src="../../assets/img/contents/portfolio-site-189.png" alt=""></p>
-<p>Visit <em>http&#58;//www.mytestsite.com/</em> to see the results of your work -</p>
+<p>Visit <em>http&#58;//<a href="http://www.mytestsite.com/">www.mytestsite.com/</a></em> to see the results of your work -</p>
 <p><img src="../../assets/img/contents/portfolio-site-190.png" alt=""></p>
 <p>Couldn&#39;t have been any easier.</p>
 <p>Well, that completes our last template. A little more work still needs to be done before we can finally call it quits - e.g. make the menu links work etc.</p>

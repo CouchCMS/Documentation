@@ -72,30 +72,31 @@
 <p>The <strong>Concat</strong> tag is a utility tag that can be used to concatenate several values together into a single variable.</p>
 <p>For example, suppose we have two variables &#39;first_name&#39; and &#39;last_name&#39;.</p>
 <pre><code>&lt;cms:set first_name = &#39;John&#39; /&gt;
-&lt;cms:set last_name = &#39;Doe&#39; /&gt;
-</code></pre><p>To set a variable, &#39;welcome_message&#39; to &#39;Hello John Doe! We welcome you!&#39;, using both the variables, we can do either this -</p>
-<pre><code>&lt;cms:set welcome_message=&quot;Hello &lt;cms:show first_name/&gt; &lt;cms:show last_name/&gt;! We welcome you!&quot; /&gt;
-</code></pre><p>or use <strong>concat</strong> as follows -</p>
-<pre><code>&lt;cms:set welcome_message=&quot;&lt;cms:concat &#39;Hello &#39; first_name &#39; &#39; last_name &#39;! We welcome you!&#39; /&gt;&quot; /&gt;
-</code></pre><p>Here we supply <strong>concat</strong> with all parts of the string as unnamed parameters separated by spaces (i.e. &#39;Hello &#39;, first_name, &#39; &#39;, last_name, and &#39;! We welcome you!&#39; with space between each as separator) and <strong>concat</strong> simply returns back the concatenated string.</p>
+&lt;cms:set last_name = &#39;Doe&#39; /&gt;</code></pre><p>To set a variable, &#39;welcome_message&#39; to &#39;Hello John Doe! We welcome you!&#39;, using both the variables, we can do either this -</p>
+<pre><code>&lt;cms:set welcome_message=&quot;Hello &lt;cms:show first_name/&gt; &lt;cms:show last_name/&gt;! We welcome you!&quot; /&gt;</code></pre><p>or use <strong>concat</strong> as follows -</p>
+<pre><code>&lt;cms:set welcome_message=&quot;&lt;cms:concat &#39;Hello &#39; first_name &#39; &#39; last_name &#39;! We welcome you!&#39; /&gt;&quot; /&gt;</code></pre><p>Here we supply <strong>concat</strong> with all parts of the string as unnamed parameters separated by spaces (i.e. &#39;Hello &#39;, first_name, &#39; &#39;, last_name, and &#39;! We welcome you!&#39; with space between each as separator) and <strong>concat</strong> simply returns back the concatenated string.</p>
 <p class="success">
-    If many values are supplied to <strong>concat</strong>, the code sometimes becomes a little difficult to comprehend (as might be the case in the snippet above) because the only demarcation between the parameters is the space.<br/>
+    If many values are supplied to **concat**, the code sometimes becomes a little difficult to comprehend (as might be the case in the snippet above) because the only demarcation between the parameters is the space.<br/>
     <br/>
     In such cases, we can try naming the parameters (any arbitrary names can be used). Thus the above snippet could be written as -<br/>
     <br/>
-    <code>&lt;cms:set welcome_message=&quot;&lt;cms:concat p1=&#39;Hello &#39; p2=first_name p3=&#39; &#39; p4=last_name p5=&#39;! We welcome you!&#39; /&gt;&quot; /&gt;</code>
+    ```
+<cms:set welcome_message="<cms:concat p1='Hello ' p2=first_name p3=' ' p4=last_name p5='! We welcome you!' />" />
+    ```
     Hopefully that should make the snippet more legible.
 </p>
 
 <p class="notice">
-    One benefit of <strong>concat</strong> over the first method is that it avoids using &#39;&lt;cms:show /&gt;&#39; with all variables used within the string.<br/>
+    One benefit of **concat** over the first method is that it avoids using '&lt;cms:show /&gt;' with all variables used within the string.<br/>
     <br/>
-    Another is that we can use &#39;\n&#39; and &#39;\t&#39; for inserting newline and tab characters in the string. For example -<br/>
+    Another is that we can use '\\n' and '\\t' for inserting newline and tab characters in the string. For example -<br/>
     <br/>
-    <code>&lt;cms:set msg = &quot;&lt;cms:concat &#39;item_name: &#39; pp_item_name &#39;\n&#39;
-    &#39;item_number: &#39; pp_item_number &#39;\n&#39;
-    &#39;quantity: &#39; pp_quantity /&gt;&quot; /&gt;</code>
-    In the snippet above, &#39;msg&#39; variable is being set in response to a successful PayPal transaction and will then be emailed.
+    ```
+<cms:set msg = "<cms:concat 'item_name: ' pp_item_name '\n'
+    'item_number: ' pp_item_number '\n'
+    'quantity: ' pp_quantity />" />
+    ```
+    In the snippet above, 'msg' variable is being set in response to a successful PayPal transaction and will then be emailed.
 </p>
 
 <h2 id="parameters">Parameters</h2>

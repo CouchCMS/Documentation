@@ -71,10 +71,8 @@
             <article><h1 id="cloak_email">cloak_email</h1>
 <p>The <strong>cloak_email</strong> tag can be used to hide email addresses from spambots (email harvesters).<br/>
 This tag creates a JavaScript encrypted mailto link that remains inaccessible to spambots.</p>
-<pre><code>&lt;cms:cloak_email &#39;johndoe@gmail.com&#39; /&gt;
-</code></pre><p>The code above will produce the following HTML but only if accessed using JavaScript -</p>
-<pre><code>&lt;a href=&quot;mailto:johndoe@gmail.com&quot;&gt;johndoe@gmail.com&lt;/a&gt;
-</code></pre><p>When accessed with JavaScript disabled, a message prompting the visitor to enable JavaScript is shown instead.</p>
+<pre><code>&lt;cms:cloak_email &#39;johndoe@gmail.com&#39; /&gt;</code></pre><p>The code above will produce the following HTML but only if accessed using JavaScript -</p>
+<pre><code>&lt;a href=&quot;mailto:johndoe@gmail.com&quot;&gt;johndoe@gmail.com&lt;/a&gt;</code></pre><p>When accessed with JavaScript disabled, a message prompting the visitor to enable JavaScript is shown instead.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>email</li>
@@ -83,15 +81,12 @@ This tag creates a JavaScript encrypted mailto link that remains inaccessible to
 </ul>
 <h3 id="email">email</h3>
 <p>The email address to cloak.</p>
-<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; /&gt;
-</code></pre><h3 id="title">title</h3>
+<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; /&gt;</code></pre><h3 id="title">title</h3>
 <p>The visible text of the mailto link. If skipped, the <em>email</em> parameter is used for the title too.</p>
-<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; title=&#39;Contact Me!&#39; /&gt;
-</code></pre><h3 id="msg">msg</h3>
+<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; title=&#39;Contact Me!&#39; /&gt;</code></pre><h3 id="msg">msg</h3>
 <p>Message to display if this email is accessed with JavaScript disabled. If skipped, the default text shown is -<br/>
-&#39;<em>(Please enable JavaScript to view this email address)</em>&#39;</p>
-<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; title=&#39;Contact Me!&#39; msg=&#39;No JavaScript ?!!&#39; /&gt;
-</code></pre><h2 id="variables">Variables</h2>
+&#39;_(Please enable JavaScript to view this email address)_&#39;</p>
+<pre><code>&lt;cms:cloak_email email=&#39;johndoe@gmail.com&#39; title=&#39;Contact Me!&#39; msg=&#39;No JavaScript ?!!&#39; /&gt;</code></pre><h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

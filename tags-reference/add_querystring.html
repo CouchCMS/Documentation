@@ -71,9 +71,7 @@
             <article><h1 id="add_querystring">add_querystring</h1>
 <p>The <strong>add_querystring</strong> tag can be used to add parameters to the query string portion of URLs (i.e. the portion that contains data to be passed to other pages).</p>
 <p>This tag takes care to prefix the provided querystring by a &#39;?&#39; if there are no existing parameters in the URL, else it prefixes an &#39;&amp;&#39;. It is difficult to do so manually if the URL we are adding the parameters to is contained within a variable, which is where this tag comes in handy.</p>
-<pre><code>&lt;a href=&quot;&lt;cms:add_querystring k_page_link &#39;param1=some_value&#39; /&gt;&quot; &gt;Some link&lt;/a&gt;
-</code></pre><pre><code>&lt;a href=&quot;&lt;cms:add_querystring k_page_link &#39;param1=some_value&amp;param2=other_value&#39; /&gt;&quot; &gt;Some link&lt;/a&gt;
-</code></pre><h2 id="parameters">Parameters</h2>
+<pre><code>&lt;a href=&quot;&lt;cms:add_querystring k_page_link &#39;param1=some_value&#39; /&gt;&quot; &gt;Some link&lt;/a&gt;</code></pre><pre><code>&lt;a href=&quot;&lt;cms:add_querystring k_page_link &#39;param1=some_value&amp;param2=other_value&#39; /&gt;&quot; &gt;Some link&lt;/a&gt;</code></pre><h2 id="parameters">Parameters</h2>
 <ul>
 <li>link</li>
 <li>querystring</li>
