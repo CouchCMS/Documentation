@@ -17,10 +17,10 @@ The following snippet will simply list all the monthly periods that contain alle
 </cms:archives>
 ```
 
-<p class="notice">
-    The *k\_archive\_date* variable is set in a machine readable format.<br/>
-    The [__*date*__](../../tags-reference/date.html) tag converts it into a displayable format.
-</p>
+::: .notice
+The *k\_archive\_date* variable is set in a machine readable format.<br/>
+The [__*date*__](../../tags-reference/date.html) tag converts it into a displayable format.
+:::
 
 By default the archives tag will group together pages by month. You can set the _type_ parameter to either _yearly_, _monthly_ or _daily_ to specify the desired grouping. For example, the following snippet will create yearly archives of pages -
 
@@ -109,6 +109,6 @@ _http&#58;//www.yoursite.com/blog/2010/_
 While for a daily period, the link would be -<br/>
 _http&#58;//www.yoursite.com/blog/2010/07/31/_
 
-By pointing your browser to these urls, you'll be accessing your _blog.php_ template in _archive-view_ (see: [**Views**](../views.html)).<br/>
-In this view, apart from other variables that you normally find set, Couch sets the *k\_archive\_date* and *k\_next\_archive\_date* variables (see: [**Variables available in Views**](../variables-in-views.html)).<br/>
-It shouldn't be difficult to set up the [__*pages*__](../../tags-reference/pages.html) tag to list pages belonging the archive period by using these variables (see: [**Listing Pages**](../listing-pages.html)).
+By pointing your browser to these urls, you'll be accessing your _blog.php_ template in _archive-view_ (see: [**Views**](./views.html)).<br/>
+In this view, apart from other variables that you normally find set, Couch sets the *k\_archive\_date* and *k\_next\_archive\_date* variables (see: [**Variables available in Views**](./variables-in-views.html)).<br/>
+It shouldn't be difficult to set up the [__*pages*__](../../tags-reference/pages.html) tag to list pages belonging the archive period by using these variables (see: [**Listing Pages**](./listing-pages.html)).

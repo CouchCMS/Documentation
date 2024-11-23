@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="repeat" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/repeat.html" itemprop="item"><span itemprop="name">repeat</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/repeat.html" itemprop="item"><span itemprop="name">repeat</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -71,16 +71,18 @@
             <article><h1 id="repeat">repeat</h1>
 <p>The <strong>repeat</strong> tag can be used to unconditionaly repeat all contents contained within its opening and closing tags the number of times specified by its <em>count</em> parameter. This can be used to create HTML tables etc.</p>
 <pre><code>&lt;TABLE&gt;
-&lt;cms:repeat count=&#39;4&#39; &gt;
+&lt;cms:repeat count='4' &gt;
     &lt;TR&gt;
-        &lt;cms:repeat count=&#39;6&#39; startcount=&#39;1&#39; &gt;
+        &lt;cms:repeat count='6' startcount='1' &gt;
             &lt;TD&gt;
                 &lt;cms:show k_count /&gt;
             &lt;/TD&gt;
         &lt;/cms:repeat&gt;
     &lt;/TR&gt;
 &lt;/cms:repeat&gt;
-&lt;/TABLE&gt;</code></pre><p>In the example above, we are using the <strong>repeat</strong> tag twice to create a table with 4 rows each having 6 cells. The <em>startcount</em> parameter is used to make the <em>k_count</em> variable, set by this tag to denote the number of the current iteration, to start from 1 instead of the default 0.</p>
+&lt;/TABLE&gt;
+</code></pre>
+<p>In the example above, we are using the <strong>repeat</strong> tag twice to create a table with 4 rows each having 6 cells. The <em>startcount</em> parameter is used to make the <em>k_count</em> variable, set by this tag to denote the number of the current iteration, to start from 1 instead of the default 0.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>count</li>
@@ -98,8 +100,8 @@
 <p>This variable is increased by one each time the <strong>repeat</strong> tags repeats the loop. See the <em>startcount</em> parameter above.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>
-<li><a href="each.html">each</a></li>
-<li><a href="zebra.html">zebra</a></li>
+<li><a href="./each.html">each</a></li>
+<li><a href="./zebra.html">zebra</a></li>
 </ul>
 </article>
         </div>

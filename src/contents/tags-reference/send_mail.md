@@ -18,7 +18,9 @@ will form the body of the email that will be sent.
 Anything enclosed within the opening and closing tags will form the body of the message to be sent.<br/>
 Each line should be separated with a LF (\\n). Lines should not be larger than 70 characters.
 
-<p class="notice">There is no provision (yet) for attachments.</p>
+::: .notice
+<s>There is no provision (yet) for attachments.</s> For attachments please see [PHPMailer module for emails with attachments](https://www.couchcms.com/forum/viewtopic.php?f=5&t=10750)
+:::
 
 ## Parameters
 

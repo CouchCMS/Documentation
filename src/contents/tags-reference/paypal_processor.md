@@ -62,4 +62,4 @@ If the transaction is deemed invalid, the following variable is set to notify th
 
 ## Related Tags
 
-*   [paypal\_button](../paypal_button.html)
+*   [paypal\_button](./paypal_button.html)

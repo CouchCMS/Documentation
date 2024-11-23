@@ -36,10 +36,8 @@ The name may be followed by zero to any number of parameters (this depends on th
 
 Depending upon the parameters and the input, a tag executes some function (e.g. modify the input, create a folder or fetch content from somewhere). If the action results in any displayable output, the tag returns back this output else it returns back a blank.
 
-<p class="notice">
-    When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.<br/>
-    Therefore, a Couch tag will never appear in the HTML that is returned to the browser.
-</p>
+When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.<br/>
+Therefore, a Couch tag will never appear in the HTML that is returned to the browser. {.notice}
 
 ### PARAMETERS
 
@@ -76,15 +74,15 @@ In Couch, naming the parameters is entirely optional but then you'll have to mak
 
 \- the above will be interpreted as count=1 and startcount=4, which is not what was meant.
 
-<p class="success">
-    It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
-    <br/>
-    ```
+::: .success
+It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
+<br/>
+```
 <cms:show 'Hello' />
 <cms:show var='Hello' />
 <cms:show foobar='Hello' />
-    ```
-    \- all result in the same output.
-</p>
+```
+\- all result in the same output.
+:::
 
-We'll have more to say about the various ways a parameter can be set, but before we can proceed to that, another concept needs to be known - [**variables**](../variables.html).
+We'll have more to say about the various ways a parameter can be set, but before we can proceed to that, another concept needs to be known - [**variables**](./variables.html).

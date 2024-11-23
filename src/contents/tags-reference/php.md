@@ -8,7 +8,7 @@ template: default.html
 
 The **php** tag can be used to execute raw PHP code enclosed within its opening and closing tags. The enclosed PHP code can contain Couch tags which will be fully executed to yield the final PHP code that will be eventually evaled to return the output.
 
-<p class="error">Take care not to allow execution of arbitrary PHP code as this could have security implications.</p>
+Take care not to allow execution of arbitrary PHP code as this could have security implications. {.error}
 
 Examples -
 

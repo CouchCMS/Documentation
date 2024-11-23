@@ -21,7 +21,7 @@ For example -
 
 In the snippet above, if variable 'my\_var' contains 'hello', all the statements within the **if** tag block upto the **else** tag will be executed. In case 'my\_var' contains any other value, all the statements within the **if** tag block starting from the **else** tag upto the end tag of **if**, will be executed. (In our example there are only single statements for both conditions but there can be any number of them).
 
-<p class="notice">Notice that the **else** tag is a self closing tag.</p>
+Notice that the **else** tag is a self closing tag. {.notice}
 
 In cases where there are more than two outcomes of the condition, the **else** block can be made to contain another nested **if** block -<br/>
 For example, here is a snippet that shows the stage of life by evaluating the variable 'age'.
@@ -64,4 +64,4 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-*   [if](../if.html)
+*   [if](./if.html)

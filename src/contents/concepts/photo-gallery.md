@@ -88,7 +88,7 @@ This is necessary because later on while automatically creating the cloned pages
 You can tweak all other parameters of the two regions to your fill but the names cannot be changed if Couch is to recognize them.<br/>
 You can, of course, also create as many other editable regions as you wish (e.g. a region for 'description' is a usual addition).
 
-<p class="success">The thumbnail region **gg\_thumb** is used by Couch for displaying the image thumbnails in the admin panel as such it is not advised to modify the dimensions of it. You can always create another associated thumbnail region if you wish to use thumbnails of other dimensions.</p>
+The thumbnail region **gg\_thumb** is used by Couch for displaying the image thumbnails in the admin panel as such it is not advised to modify the dimensions of it. You can always create another associated thumbnail region if you wish to use thumbnails of other dimensions. {.success}
 
 To persist the changes made to the template, make the mandatory visit to the template using your browser while being logged on as the super-admin.<br/>
 This will add the template to Couch admin. We are now all set to begin adding images to our gallery.
@@ -101,7 +101,7 @@ Instead you have an 'Upload' button
 
 ![](../../assets/img/contents/photo-gallery-1.gif)
 
-<p class="notice">Also notice the 'Default page' that Couch creates for all cloned templates. For a gallery, this default page is really not needed and you should 'unpublish' it. It gets shown to only the super-admin. The site-owner will never see it.</p>
+Also notice the 'Default page' that Couch creates for all cloned templates. For a gallery, this default page is really not needed and you should 'unpublish' it. It gets shown to only the super-admin. The site-owner will never see it. {.notice}
 
 Clicking on this 'Upload' button will bring up the following window
 
@@ -115,13 +115,13 @@ Once all the images are queued up, click 'Start upload'
 
 You'll see Couch uploading and processing the images one after another.
 
-<p class="success">Errors that might occur in the process will be reported as they are encountered - one common error is trying to upload an image that is too large. For now only a **maximum size of 2MB** is supported.</p>
+Errors that might occur in the process will be reported as they are encountered - one common error is trying to upload an image that is too large. For now only a **maximum size of 2MB** is supported. {.success}
 
-<p class="error">
-    You might receive errors at this point stating something like 'Access not allowed' or 'Failed to open stream' etc. This can happen if your server is running under **SAFE MODE restrictions** (this mode has been deprecated but you still might run into some paranoid hosts insisting on using it).<br/>
-    To by-pass these restrictions you'll have to lend a helping hand to PHP by creating some folders and setting their permissions manually.<br/>
-    This thread of our forum discusses the procedure in detail - [**http&#58;//www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703**](https://www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703).
-</p>
+::: .error
+You might receive errors at this point stating something like 'Access not allowed' or 'Failed to open stream' etc. This can happen if your server is running under **SAFE MODE restrictions** (this mode has been deprecated but you still might run into some paranoid hosts insisting on using it).<br/>
+To by-pass these restrictions you'll have to lend a helping hand to PHP by creating some folders and setting their permissions manually.<br/>
+This thread of our forum discusses the procedure in detail - [**http&#58;//www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703**](https://www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703).
+:::
 
 Once all the images are successfully uploaded, the admin-panel you were on will refresh and there you have it -
 
@@ -152,7 +152,7 @@ Example -
 
 ## New variables
 
-Apart from all the [usual variables pertaining to a page](../variables-in-views.html) made available by Couch, the following new variables are also made available for gallery pages -
+Apart from all the [usual variables pertaining to a page](./variables-in-views.html) made available by Couch, the following new variables are also made available for gallery pages -
 
 *   k\_file\_name
 *   k\_file\_ext
@@ -171,15 +171,15 @@ For gallery pages, the [**cms:pages**](../../tags-reference/pages.html) tag also
 EXIF (Exchangeable image file) format is a specification for image files used by digital cameras to add meta-data to images.<br/>
 Couch can extract this data from uploaded images and make it available as simple variables.
 
-<p class="notice">
-    As this addition is more likely to be useful to only professional photographers, it is turned off by default. To turn this feature on, please set the following directive in 'config.php' to 1<br/>
-    <br/>
-    ```
+::: .notice
+As this addition is more likely to be useful to only professional photographers, it is turned off by default. To turn this feature on, please set the following directive in 'config.php' to 1<br/>
+<br/>
+```
 // 25
 // Set the following to '1' if you wish to extract EXIF data from images uploaded to Gallery
 define( 'K_EXTRACT_EXIF_DATA', 0 );
-    ```
-</p>
+```
+:::
 
 Following is the complete list of variables that may become available (depending on their presence in the image) -
 
@@ -245,17 +245,17 @@ To get to them, you need to make use of a new tag named 'exif'. The usage is sim
 
 As can be seen, the 'exif' tag makes available all the Exif data within its opening and closing tags.
 
-<p class="error">
-    **A note of caution here:**<br/>
-    <br/>
-    The GD library used on the server side (by Couch as well as most other scripts) for image manipulation has the property of discarding away the Exif data for good from the image being manipulated (resized for example).<br/>
-    <br/>
-    As such, once the you turn on the setting to capture Exif data from images, Couch will **NOT resize** the uploaded images at all.<br/>
-    This is to keep the exif data within the image intact.<br/>
-    Please remember that with this setting on, you'll have to upload the images already resized on your local machine using any Exif savvy program (like IrfanView).<br/>
-    <br/>
-    If this is not possible for the client, a workaround could be to define a new thumbnail associated with the main image that has the proper dimension. The original image will be left untouched however the thumbnail can now be used instead of the original image itself.
-</p>
+::: .error
+**A note of caution here:**<br/>
+<br/>
+The GD library used on the server side (by Couch as well as most other scripts) for image manipulation has the property of discarding away the Exif data for good from the image being manipulated (resized for example).<br/>
+<br/>
+As such, once the you turn on the setting to capture Exif data from images, Couch will **NOT resize** the uploaded images at all.<br/>
+This is to keep the exif data within the image intact.<br/>
+Please remember that with this setting on, you'll have to upload the images already resized on your local machine using any Exif savvy program (like IrfanView).<br/>
+<br/>
+If this is not possible for the client, a workaround could be to define a new thumbnail associated with the main image that has the proper dimension. The original image will be left untouched however the thumbnail can now be used instead of the original image itself.
+:::
 
 ## A working sample Gallery
 

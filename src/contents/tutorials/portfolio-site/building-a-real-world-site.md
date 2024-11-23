@@ -27,13 +27,13 @@ It can be found at [_http&#58;//net.tutsplus.com/articles/news/free-website-temp
 Couch works by retrofitting within an existing working site. As such, our first step will be to get the static Aurelius site working.<br/>
 Unzip and upload all the files of Aurelius to your web server.
 
-<p class="notice">
-    You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP'ing the modified files back to the server every time you make any changes.<br/>
-    <br/>
-    A more pragmatic approach would be to use [XAMPP](http://www.apachefriends.org/en/xampp.html) or [WampServer](http://www.wampserver.com/en/) on your local machine. This way you can directly make changes to local files.<br/>
-    <br/>
-    For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.
-</p>
+::: .notice
+You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP'ing the modified files back to the server every time you make any changes.<br/>
+<br/>
+A more pragmatic approach would be to use [XAMPP](http://www.apachefriends.org/en/xampp.html) or [WampServer](http://www.wampserver.com/en/) on your local machine. This way you can directly make changes to local files.<br/>
+<br/>
+For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.
+:::
 
 If you are using the files downloaded from _http&#58;//net.tutsplus.com/_, remove the _Documentation_ and _psd_ folders as well as the _config.php_, *send\_email.php* and *full\_width.html* files as these will no longer be needed by us (this won't be necessary if you downloaded the template from our site).
 
@@ -62,21 +62,21 @@ The resulting site structure should now look like this with the _couch_ folder a
 
 ![](../../../../assets/img/contents/portfolio-site-4.png)
 
-<p class="notice">
-    The uploaded _couch_ folder is your site's admin section.<br/>
-    It is a good security measure to rename this folder to anything else you wish. This way you'll make it more difficult for unwanted visitors to try and access your admin section.<br/>
-    For this tutorial we'll assume you have chosen to go with the default name.
-</p>
+::: .notice
+The uploaded _couch_ folder is your site's admin section.<br/>
+It is a good security measure to rename this folder to anything else you wish. This way you'll make it more difficult for unwanted visitors to try and access your admin section.<br/>
+For this tutorial we'll assume you have chosen to go with the default name.
+:::
 
 Access the admin section through your browser - _http&#58;//www.mytestsite.com/couch/_
 
-<p class="success">For the rest of this tutorial we'll assume the site's address to be _http&#58;//www.mytestsite.com/_. Replace it with your site's address for all examples.</p>
+For the rest of this tutorial we'll assume the site's address to be _http&#58;//www.mytestsite.com/_. Replace it with your site's address for all examples. {.success}
 
 Couch will sense that installation is required and will display the following form for you to fill -
 
 ![](../../../../assets/img/contents/portfolio-site-5.jpg)
 
-<p class="notice">If, however, at this point you get an '500 Internal Server Error', please try deleting the .htaccess file present in the 'couch' installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file.</p>
+If, however, at this point you get an '500 Internal Server Error', please try deleting the .htaccess file present in the 'couch' installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file. {.notice}
 
 Enter your desired name, password and email address. Press install and in a little while you should be prompted with the following screen -
 
@@ -84,11 +84,11 @@ Enter your desired name, password and email address. Press install and in a litt
 
 Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.
 
-<p class="error">
-    **V. Imp:** This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any 'structural' changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
-    <br/>
-    Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account's password.
-</p>
+::: .error
+**V. Imp:** This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any 'structural' changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
+<br/>
+Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account's password.
+:::
 
 Login using the super-admin account you created and brace yourself for facing the most 'barren' admin section you'll ever come across -
 
@@ -105,4 +105,4 @@ It is important to note that the admin panels of no two sites built with Couch a
 
 With Couch installed we can now begin porting the Aurelius files to it.
 
-Next: [Starting up simple - The About Us page](../../about-us.html).
+Next: [Starting up simple - The About Us page](./about-us.html).

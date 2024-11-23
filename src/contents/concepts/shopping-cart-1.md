@@ -36,7 +36,7 @@ To demonstrate the use of these tags, we'll take a sample HTML template (kindly 
 Before commencing, you might want to take a look at what our finished site would look like - [**here is a demo of it**](https://www.couchcms.com/demo/simple/).<br/>
 Please keep in mind that the design has been kept intentionally simple to focus only on the specific functionality added by the cart component to CouchCMS. Coupled with the existing features of Couch (e.g. Categories, menus, Related Pages etc.) a much more full-featured site can easily be created.
 
-<p class="notice">CouchCart builds upon the existing features of Couch, as such a basic familiarity with Couch's core concepts is assumed for one to understand fully the discussion that follows. If you are new to Couch, please first take some time to explore how things work in Couch. Our [**step-by-step tutorial**](../../tutorials/portfolio-site.html) showing how to build a site from scratch using Couch is a good place to begin with.</p>
+CouchCart builds upon the existing features of Couch, as such a basic familiarity with Couch's core concepts is assumed for one to understand fully the discussion that follows. If you are new to Couch, please first take some time to explore how things work in Couch. Our [**step-by-step tutorial**](../../tutorials/portfolio-site.html) showing how to build a site from scratch using Couch is a good place to begin with. {.notice}
 
 Before we dive right into the thick of action, a couple of things need your special consideration:
 
@@ -64,9 +64,9 @@ $pp['tpl_checkout'] = 'checkout.php';
 
 If the templates you use have other names, please modify the config file to indicate the new names.
 
-<p class="notice">From 1.3.5 final version, instead of 'config.php' you'll find a file named 'config.example.php' in the 'addons/cart' folder. This is to prevent your changes in config.php from being overwritten by future updates. If you don't already have a 'config.php' present in the said folder, please rename 'config.example.php' to 'config.php'.</p>
+From 1.3.5 final version, instead of 'config.php' you'll find a file named 'config.example.php' in the 'addons/cart' folder. This is to prevent your changes in config.php from being overwritten by future updates. If you don't already have a 'config.php' present in the said folder, please rename 'config.example.php' to 'config.php'. {.notice}
 
-<p class="error">Don't forget that a Couch template that is present in a subfolder will have the name of the subfolder appended to it. If in any doubt, hover your mouse over the template's entry in Couch admin-panel sidebar to see the template's name.</p>
+Don't forget that a Couch template that is present in a subfolder will have the name of the subfolder appended to it. If in any doubt, hover your mouse over the template's entry in Couch admin-panel sidebar to see the template's name. {.error}
 
 With the caveats out of the way, we can get down to work now.<br/>
 The original HTML design is [attached in zip form here](https://www.couchcms.com/docs/code/simple.zip). Extract all files and place them in your test site's root (or in a sub-folder if you so desire - just make sure to remember that the template names will now have the subfolder appended to them).
@@ -231,7 +231,7 @@ This is what the modified template looks like:
 
 ![](../../assets/img/contents/shopping-cart-12.png)
 
-<p class="success">Incidentally, this has been our first encounter with tags provide by CouchCart. If at this point you get an error saying 'Unknown tag', you have missed enabling the CouchCart component (as discussed somewhere above). Please do so before continuing.</p>
+Incidentally, this has been our first encounter with tags provide by CouchCart. If at this point you get an error saying 'Unknown tag', you have missed enabling the CouchCart component (as discussed somewhere above). Please do so before continuing. {.success}
 
 You'll notice that __*pp\_option\_values*__ faithfully outputs the option-values as dropdowns, radio-buttons or text-boxes in accordance to whatever you specified in the string inputted via *pp\_options* editable region above.
 
@@ -351,13 +351,13 @@ As you can see, the 'name' of this field is "quantity". Simply modify it to make
 <input class="product-quantity" name="qty" id="quantity" type="number" step="1" value="1" title="Quantity">
 ```
 
-<p class="notice">
-    If in your design, the add-item form does not allow the buyer to specify a quantity (e.g. always adds a quantity of '1'), you can add a 'hidden' input with the name of 'qty' with the value set to whatever default quantity is to be added e.g.<br/>
-    <br/>
-    ```
+::: .notice
+If in your design, the add-item form does not allow the buyer to specify a quantity (e.g. always adds a quantity of '1'), you can add a 'hidden' input with the name of 'qty' with the value set to whatever default quantity is to be added e.g.<br/>
+<br/>
+```
 <input type="hidden" value="1" name="qty"/>
-    ```
-</p>
+```
+:::
 
 Our products are now ready to be added to the cart.<br/>
 Press the 'Add to cart' button to submit the form and voila! We get...<br/>
@@ -369,7 +369,7 @@ The way CouchCart works, after most of the actions we listed above (notable exce
 
 The design we are porting already contains a cart template named 'cart.html' so this is not a problem.
 
-<p class="notice">In the rare event, however, where your design does not consist of a separate template showing the cart (e.g. in a very simple design where the cart is always shown on the same page that lists the products), use CouchCart's config file to specify the name of another Couch managed template that it can invoke instead. In such cases, you might also find the 'redirect' parameter of pp\_product\_form tag useful to make the visitor come back to the page he clicked the 'Add' button from.</p>
+In the rare event, however, where your design does not consist of a separate template showing the cart (e.g. in a very simple design where the cart is always shown on the same page that lists the products), use CouchCart's config file to specify the name of another Couch managed template that it can invoke instead. In such cases, you might also find the 'redirect' parameter of pp\_product\_form tag useful to make the visitor come back to the page he clicked the 'Add' button from. {.notice}
 
 Convert cart.html to a Couch managed template by following the usual drill of changing the extension to .php, adding to it the mandatory *&lt;?php require\_once 'couch/cms.php'; ?&gt;* and _&lt;?php COUCH::invoke(); ?&gt;_ statements and then accessing it as super-admin using the browser.
 
@@ -762,30 +762,20 @@ Add this one final tag to the template and it is ready to execute the checkout a
 
 The __*pp\_payment\_gateway*__ tag uses the current state of the cart, formats it in a manner stipulated by PayPal and finally simply redirects the buyer to PayPal where he can complete the transaction by making the payment.
 
-<div class="notice">
-    The __*pp\_payment\_gateway*__ tag accepts the following parameters:
+::: .notice
+The __*pp\_payment\_gateway*__ tag accepts the following parameters:
++ **shipping\_address**
+    + If set to 0 (the default) means '_address not required_' and hence the buyer will not be prompted by PayPal for his address.
+    + If set to 1, means '_address required_' and PayPal will make the buyer input the shipping address at its site.<
+    + If set to 2, means '_address required but will be supplied by us_'. In this case the onus of capturing the buyer's address falls on us. This tag expects the elements of the address to be saved in session as variables of the following names:<br/>*contact\_email*, *shipping\_first\_name*, *shipping\_last\_name*, *shipping\_address1*, *shipping\_address2*, *shipping\_city*, *shipping\_state\_code*, *shipping\_country\_code*, *shipping\_zip*.
++ **calc\_shipping\_at\_paypal** PayPal allows merchants to configure shipping charges at its site. If shipping is to be calculated there, set this parameter to '1'.
++ **logo** The URL of merchant's 50 x 150 pixel logo that appears at PayPal.
++ **return\_url** URL of the page where the buyer is prompted by PayPal to return after successful transaction.
++ **cancel\_url** URL of the page where the buyer is prompted by PayPal to return after cancelling the transaction.
++ **empty\_cart** This tag empties the cart before redirecting to PayPal. Setting this parameter to '1' prevents this behaviour.
+:::
 
-    <ul>
-        <li>**shipping\_address**
-
-            <ul>
-                <li>If set to 0 (the default) means '_address not required_' and hence the buyer will not be prompted by PayPal for his address.</li>
-                <li>If set to 1, means '_address required_' and PayPal will make the buyer input the shipping address at its site.</li>
-                <li>If set to 2, means '_address required but will be supplied by us_'. In this case the onus of capturing the buyer's address falls on us. This tag expects the elements of the address to be saved in session as variables of the following names:<br/>*contact\_email*, *shipping\_first\_name*, *shipping\_last\_name*, *shipping\_address1*, *shipping\_address2*, *shipping\_city*, *shipping\_state\_code*, *shipping\_country\_code*, *shipping\_zip*.</li>
-            </ul>
-        </li>
-
-        <li>**calc\_shipping\_at\_paypal** PayPal allows merchants to configure shipping charges at its site. If shipping is to be calculated there, set this parameter to '1'.</li>
-        <li>**logo** The URL of merchant's 50 x 150 pixel logo that appears at PayPal.</li>
-        <li>**return\_url** URL of the page where the buyer is prompted by PayPal to return after successful transaction.</li>
-        <li>**cancel\_url** URL of the page where the buyer is prompted by PayPal to return after cancelling the transaction.</li>
-        <li>**empty\_cart** This tag empties the cart before redirecting to PayPal. Setting this parameter to '1' prevents this behaviour.</li>
-    </ul>
-</div>
-
-<br/>
-
-<p class="notice">The seller's email shown at PayPal can be set in the '_addons/cart/config.php_' file.</p>
+The seller's email shown at PayPal can be set in the '_addons/cart/config.php_' file. {.notice}
 
 To explain the code above, the __*pp\_payment\_gateway*__ tag, by default, empties the cart before redirecting to PayPal. As we are still in the phase of testing the cart, it might be a good idea to prevent it from doing so. The 'empty\_cart' parameter set to '0' switches off this behaviour.<br/>
 As for the 'shipping\_address' parameter, if there are any shippable items in the cart (the __*pp\_count\_shippable\_items*__ tag gives us this count), we set it to '1'. Else, we set it to '0'. This makes PayPal allow the buyer to set the shipping address, when required.
@@ -808,13 +798,13 @@ One little modification that we can do to our checkout.php template is to first 
 <?php COUCH::invoke(); ?>
 ```
 
-<p class="success">
-    Using a separate template for the checkout provides us a way to code more involved use-cases. For example, instead of straightaway redirecting to PayPal, as we've done above, we can show the buyer a summary of his cart, show a form to capture his address, give him an opportunity to enter any discount coupon he might have etc. and then invoke pp\_payment\_gateway after all necessary information has been captured.<br/>
-    <br/>
-    In fact, you can even give the buyer a choice of either using PayPal or pay using a bank check etc. If the choice is a bank check, we can skip invoking pp\_payment\_gateway and show him the seller's bank details etc. as the final step of the transaction.<br/>
-    <br/>
-    In the second part of this tutorial we'll extend this checkout template.
-</p>
+::: .success
+Using a separate template for the checkout provides us a way to code more involved use-cases. For example, instead of straightaway redirecting to PayPal, as we've done above, we can show the buyer a summary of his cart, show a form to capture his address, give him an opportunity to enter any discount coupon he might have etc. and then invoke pp\_payment\_gateway after all necessary information has been captured.<br/>
+<br/>
+In fact, you can even give the buyer a choice of either using PayPal or pay using a bank check etc. If the choice is a bank check, we can skip invoking pp\_payment\_gateway and show him the seller's bank details etc. as the final step of the transaction.<br/>
+<br/>
+In the second part of this tutorial we'll extend this checkout template.
+:::
 
 With this, we've finally implemented all the core actions of our shopping cart.<br/>
 Before moving over to handle the other essential parts of any e-commerce site (namely, configuring the discounts, shipping charges and taxes), let us put in a final touch to our cart by AJAXifying it.
@@ -913,7 +903,7 @@ So, there we have it. A fully functional shopping cart that required only minima
 
 Of course, there is more to an e-commerce site than just a shopping cart :)<br/>
 No e-commerce site can do without functions like discounts, shipping charges and taxes.<br/>
-We'll get all that done in [**part II of this topic**](../shopping-cart-2.html).
+We'll get all that done in [**part II of this topic**](./shopping-cart-2.html).
 
 ## Appendix
 

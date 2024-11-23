@@ -76,14 +76,14 @@ Printing out the value contained within the editable region -
 
 \- will now output '2'.
 
-<p class="notice">
-    **NOTE:** A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.<br/>
-    <br/>
-    ```
+::: .notice
+  **NOTE:** A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.<br/>
+  <br/>
+  ```
 opt_values='Please Select=- | Residential=0 | Commercial=1 | Rental=2'
-    ```
-    In the example above, out of the four options in the list, if the first option is selected, the selection is not considered to be made. If _required_ parameter is set, an error is thrown upon saving the page.
-</p>
+  ```
+  In the example above, out of the four options in the list, if the first option is selected, the selection is not considered to be made. If _required_ parameter is set, an error is thrown upon saving the page.
+:::
 
 ### opt_selected
 
@@ -143,21 +143,21 @@ Can be set to the following valid values -
 The default *search\_type* is (as with all other types of editable regions) _text_.<br/>
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either _numeric_ or _decimal_ (if the value can be fractional).
 
-<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../../../pages.html#custom_field).</p>
+It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../pages.html#custom_field). {.notice}
 
 ## Related Tags
 
-*   [editable](../../../editable.html)
-*   [editable (text)](../../text.html)
-*   [editable (password)](../../password.html)
-*   [editable (textarea)](../../textarea.html)
-*   [editable (richtext)](../../richtext.html)
-*   [editable (image)](../../image.html)
-*   [editable (thumbnail)](../../thumbnail.html)
-*   [editable (file)](../../file.html)
-*   [editable (radio)](../../radio.html)
-*   [editable (checkbox)](../../checkbox.html)
-*   [editable (group)](../../group.html)
-*   [editable (message)](../../message.html)
-*   [editable (nicedit)](../../nicedit.html)
-*   [editable (relation)](../../relation.html)
+*   [editable](../editable.html)
+*   [editable (text)](./text.html)
+*   [editable (password)](./password.html)
+*   [editable (textarea)](./textarea.html)
+*   [editable (image)](./image.html)
+*   [editable (thumbnail)](./thumbnail.html)
+*   [editable (file)](./file.html)
+*   [editable (radio)](./radio.html)
+*   [editable (checkbox)](./checkbox.html)
+*   [editable (dropdown)](./dropdown.html)
+*   [editable (group)](./group.html)
+*   [editable (message)](./message.html)
+*   [editable (nicedit)](./nicedit.html)
+*   [editable (relation)](./relation.html)

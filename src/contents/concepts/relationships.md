@@ -32,14 +32,14 @@ Make the mandatory visit to the template as super-admin. Coming back to the admi
 As can be seen, Couch shows us a list of all the cloned pages of 'albums.php'.<br/>
 We can choose all the albums from this list that are related to the artist being edited.
 
-<p class="success">
-    By default, all the pages of the related template are show in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the 'editable' tag of type [**relation**](../../tags-reference/editable/relation.html) -<br/>
-    <br/>
-    [**folder**](../../tags-reference/editable/relation.html#parameters)<br/>
-    [**include\_subfolders**](../../tags-reference/editable/relation.html#parameters)<br/>
-    [**orderby**](../../tags-reference/editable/relation.html#parameters)<br/>
-    [**order_dir**](../../tags-reference/editable/relation.html#parameters)
-</p>
+::: .success
+By default, all the pages of the related template are show in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the 'editable' tag of type [**relation**](../../tags-reference/editable/relation.html) -
+<br/>
+[**folder**](../../tags-reference/editable/relation.html#parameters)<br/>
+[**include\_subfolders**](../../tags-reference/editable/relation.html#parameters)<br/>
+[**orderby**](../../tags-reference/editable/relation.html#parameters)<br/>
+[**order_dir**](../../tags-reference/editable/relation.html#parameters)
+:::
 
 Important points to note in the code above -
 
@@ -113,13 +113,13 @@ It would make a lot more sense if, instead of the 'artists' template, we define 
 
 Now while editing an album, we'll see a drop-down list showing all the artists and we can choose the single artist this album belongs to. This way an album can be associated with only a single artist but an artist can be associated with multiple albums - which, I'm sure you'll agree, is a more real-life situation.
 
-<p class="notice">Incidentally, this also illustrates a case where you'd want to give a little thought as to which template you'd want to make the 'primary' in the relationship.</p>
+Incidentally, this also illustrates a case where you'd want to give a little thought as to which template you'd want to make the 'primary' in the relationship. {.notice}
 
 ### One-to-one relation
 
 As the name suggests, if our example artists and albums scenario were to be converted to this type of relationship, an artist could be associated with only a single album and conversely, an album could be associated with only a single artist.
 
-<p class="notice">This is a not a relationship that you'll find very often because it offers no design benefits. As you can see from our example scenario, it'd be better to define all the 'album' fields in the 'artist' template itself.</p>
+This is a not a relationship that you'll find very often because it offers no design benefits. As you can see from our example scenario, it'd be better to define all the 'album' fields in the 'artist' template itself. {.notice}
 
 This is how we define this type of relation -
 

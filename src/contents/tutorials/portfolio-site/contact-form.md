@@ -75,16 +75,16 @@ We can deploy simple conditional tags to handle this -
 
 We enclose each LI element representing an icon within Couch conditional if tag that tests for the result of Couch not\_empty tag. The not\_empty tag returns 1 only if the variable it is testing has any value within it. This way an icon is output only if the associated variable is not empty.
 
-<p class="notice">
-    In case you are wondering why we are using the construct<br/>
-    **&lt;cms:if "&lt;cms:not\_empty flickr\_id /&gt;"&gt; Display this &lt;/cms:if&gt;**<br/>
-    instead of the more straightforward<br/>
-    **&lt;cms:if flickr\_id &gt; Display this &lt;/cms:if&gt;**<br/>
-    The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some **&lt;BR/&gt;** or empty **&lt;P&gt;** elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.<br/>
-    <br/>
-    The not\_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.<br/>
-    The editable regions in the case of profiles section above are not of richtext type, hence the simpler conditional check would have worked the same as the one we used.
-</p>
+::: .notice
+In case you are wondering why we are using the construct<br/>
+**&lt;cms:if "&lt;cms:not\_empty flickr\_id /&gt;"&gt; Display this &lt;/cms:if&gt;**<br/>
+instead of the more straightforward<br/>
+**&lt;cms:if flickr\_id &gt; Display this &lt;/cms:if&gt;**<br/>
+The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some **&lt;BR/&gt;** or empty **&lt;P&gt;** elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.<br/>
+<br/>
+The not\_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.<br/>
+The editable regions in the case of profiles section above are not of richtext type, hence the simpler conditional check would have worked the same as the one we used.
+:::
 
 Place values only in two of the five social links regions and icons for only those two should appear on the web page -
 
@@ -244,4 +244,4 @@ The *k\_email\_from* and the *k\_email\_to* contain these values set in _config.
 
 This wraps up the contact form section. The last template that now remains to be configured is the _index.html_ - the home page.
 
-[That is next.](../../home-page.html)
+[That is next.](./home-page.html)

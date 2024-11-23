@@ -6,17 +6,17 @@ template: default.html
 
 # Search
 
-Given a single word or several words, Couch supports searching for them through all the defined [**editable regions**](../editable-regions.html) of your templates (and a few of the system fields - namely the _title_ and _name_ fields) and give back all the pages that contain these words.
+Given a single word or several words, Couch supports searching for them through all the defined [**editable regions**](./editable-regions.html) of your templates (and a few of the system fields - namely the _title_ and _name_ fields) and give back all the pages that contain these words.
 
-<p class="notice">
-    Couch uses MySQL's **Fulltext search** for this purpose. An advantage of this is that Couch can assign different weightages to words apprearing at different places in a page and fetch back pages ordered according to their calculated relevance.<br/>
-    <br/>
-    Thus a page that contains the searched word in its title will be considered more relavant than another page that has the same word somewhere in an editable region. Similarly a page that contains the searched word multiple times is considered more relevant to the one containing it only once.<br/>
-    <br/>
-    Fulltext search also has a few drawbacks that you need to be aware of -<br/>
-    It cannot be used to search for words that are less than four characters in length (considers them unimportant).<br/>
-    Also fulltext search does not match partial words.
-</p>
+::: .notice
+Couch uses MySQL's **Fulltext search** for this purpose. An advantage of this is that Couch can assign different weightages to words apprearing at different places in a page and fetch back pages ordered according to their calculated relevance.<br/>
+<br/>
+Thus a page that contains the searched word in its title will be considered more relavant than another page that has the same word somewhere in an editable region. Similarly a page that contains the searched word multiple times is considered more relevant to the one containing it only once.<br/>
+<br/>
+Fulltext search also has a few drawbacks that you need to be aware of -<br/>
+It cannot be used to search for words that are less than four characters in length (considers them unimportant).<br/>
+Also fulltext search does not match partial words.
+:::
 
 The tag that Couch uses to find pages containing the searched word/words is the [__*search*__](../../tags-reference/search.html) tag.<br/>
 This tag is very similar to the [__*pages*__](../../tags-reference/pages.html) tag discussed before in the way it fetches the relevant pages and then steps through each of them setting up variables that describe the current page.
@@ -24,7 +24,7 @@ This tag is very similar to the [__*pages*__](../../tags-reference/pages.html) t
 Two of the parameters supported by this tag are - _masterpage_ and _limit_.<br/>
 By default, the [__*search*__](../../tags-reference/search.html) tag searches through pages of all the available templates. If you wish to set up search for only a section of your website, use the _masterpage_ parameter to make Couch search only certain templates or exclude certain templates.
 
-_Limit_ parameter can be set to display only a limited number of pages that were found. The rest of the pages can be displayed in a paginated manner (See [**Pagination**](../pagination.html)).
+_Limit_ parameter can be set to display only a limited number of pages that were found. The rest of the pages can be displayed in a paginated manner (See [**Pagination**](./pagination.html)).
 
 As noted above, this tag iterates through all the found pages setting up variables pertaining to each page as it steps through it. Thus the following snippet -
 
@@ -82,7 +82,7 @@ Couch has a simple tag named [__*search\_form*__](../../tags-reference/search_fo
 The snippet above will generate a search form that when submitted will invoke the same page the snippet was called from, after putting the searched terms in the querystring.<br/>
 Of course you are expected to place a [__*search*__](../../tags-reference/search.html) tag on the same page to handle the search.
 
-<p class="success">You can create and use your own form instead of using the one created by [__*search\_form*__](../../tags-reference/search_form.html) tag. Just make sure that the textbox, within which the keywords will be inputted by the users, is named 's'.</p>
+You can create and use your own form instead of using the one created by [__*search\_form*__](../../tags-reference/search_form.html) tag. Just make sure that the textbox, within which the keywords will be inputted by the users, is named 's'. {.success}
 
 Sometimes one wishes to initiate the search from one page and display the results in another page.<br/>
 For example you might wish to place the search form on the homepage (_index.php_) of the website but want that on submitting this form the user is taken to another page (_search.php_) that then displays the result of the search.<br/>
@@ -120,4 +120,4 @@ As a final example, following is a snippet that can be placed on a search page -
 </cms:search>
 ```
 
-See [**Pagination**](../pagination.html) for details about the other variables used in the snippet.
+See [**Pagination**](./pagination.html) for details about the other variables used in the snippet.

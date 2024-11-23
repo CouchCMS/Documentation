@@ -15,7 +15,7 @@ Please see [**Core Concepts - Repeatable Regions**](../../concepts/repeatable-re
 
 ### var
 
-Default parameter (usually left unnamed). The name of the [**repeatable**](../repeatable.html) tag defining the repeatable regions.
+Default parameter (usually left unnamed). The name of the [**repeatable**](./repeatable.html) tag defining the repeatable regions.
 
 ```
 <cms:show_repeatable 'my_multiple_images' >
@@ -25,7 +25,7 @@ Default parameter (usually left unnamed). The name of the [**repeatable**](../re
 </cms:show_repeatable>
 ```
 
-In the snippet above the string 'my\_multiple\_images' is the name of a [**repeatable**](../repeatable.html) tag.
+In the snippet above the string 'my\_multiple\_images' is the name of a [**repeatable**](./repeatable.html) tag.
 
 ### startcount
 

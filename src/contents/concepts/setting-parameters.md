@@ -56,22 +56,22 @@ This feature can be utilized to set a tag's parameter by using the output of ano
 In the snippet above, message will be set to 'Hello World' which was the output of the nested [__*show*__](../../tags-reference/show.html) tag.<br/>
 Please notice that **the nested tag is ALWAYS enclosed within DOUBLE quotes**.
 
-<p class="notice">
-    **V.IMP -**<br/>
-    **If single quotes are used, Couch considers the parameter's value to be an explicit value.<br/>
-    If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag.<br/>
-    If no quotes are used, Couch considers the value to be a variable.**<br/>
-    <br/>
-    This is a very important point because it is very easy to forget the quotes while setting a parameter, e.g.<br/><br/>
-    ```
+::: .notice
+**V.IMP -**<br/>
+**If single quotes are used, Couch considers the parameter's value to be an explicit value.<br/>
+If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag.<br/>
+If no quotes are used, Couch considers the value to be a variable.**<br/>
+<br/>
+This is a very important point because it is very easy to forget the quotes while setting a parameter, e.g.<br/>
+```
 <cms:repeat count=4></cms:repeat>
-    ```
-    \- in the snippet above the value being passed to _count_ is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value '4', will consider it to be a variable named 4 and try and use the value of a variable named '4' as the parameter. Incidently, it is illegal to begin a variable's name with a number and so Couch will throw an error. But had this value been a text string e.g.<br/><br/>
-    ```
+```
+\- in the snippet above the value being passed to _count_ is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value '4', will consider it to be a variable named 4 and try and use the value of a variable named '4' as the parameter. Incidently, it is illegal to begin a variable's name with a number and so Couch will throw an error. But had this value been a text string e.g.<br/>
+```
 <cms:show var=Hello />
-    ```
-    Couch would have used the value of an non-existent variable _Hello_ as parameter for [__*show*__](../../tags-reference/show.html), which would then have printed nothing.
-</p>
+```
+Couch would have used the value of an non-existent variable _Hello_ as parameter for [__*show*__](../../tags-reference/show.html), which would then have printed nothing.
+:::
 
 ### NESTING PARAMETERS
 
@@ -94,7 +94,7 @@ and everything should make sense.
 
 The example given above is rather extreme and futile but using the output of one tag as input for another is a very powerful mechanism and we'll be using it very often to solve some otherwise very sticky problems.
 
-<p class="error">**ADVANCED** (skip the following section if you are not keen to delve any deeper into nested tags):</p>
+**ADVANCED** (skip the following section if you are not keen to delve any deeper into nested tags): {.error}
 
 As a more practical example consider the following very useful snippet -
 
@@ -121,7 +121,7 @@ We are already familiar with the [__*show*__](../../tags-reference/show.html) ta
 ```
 
 \- the parameter being passed to it has no quotes around it so it must be a variable.<br/>
-The *k\_page\_name* variable is set by Couch everytime a page (see [**pages**](../cloned-pages.html)) is executed to hold the page's name. Thus if the page being currently executed is _about-us_, the value of *k\_page\_name* will be *about\_us* while if the page being executed is _contact-us_, *k\_page\_name* will be set to _contact-us_.
+The *k\_page\_name* variable is set by Couch everytime a page (see [**pages**](./cloned-pages.html)) is executed to hold the page's name. Thus if the page being currently executed is _about-us_, the value of *k\_page\_name* will be *about\_us* while if the page being executed is _contact-us_, *k\_page\_name* will be set to _contact-us_.
 
 Assuming that the current page is _about-us_, substituting [__*show*__](../../tags-reference/show.html) tag with its output will result in -
 
@@ -162,4 +162,4 @@ and finally the output of _if_ -
 
 &lt;h1&gt;Hello I am About Us&lt;/h1&gt;
 
-With the information we have had so far, we are ready to move on to the [**Editable Regions**](../editable-regions.html).
+With the information we have had so far, we are ready to move on to the [**Editable Regions**](./editable-regions.html).

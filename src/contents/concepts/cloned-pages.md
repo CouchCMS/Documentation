@@ -81,12 +81,12 @@ In contrast, as in the case with _blog.php_ above, once a template is declared c
 _http&#58;//www.yoursite.com/blog.php?p=12_ is one page while<br/>
 _http&#58;//www.yoursite.com/blog.php?p=13_ is a totally different page.
 
-<p class="success">
-    It becomes even more distinct when we use pretty urls (see).<br/>
-    Then the URLs for the above two pages will become -<br/>
-    _http&#58;//www.yoursite.com/blog/my-first-page.html_<br/>
-    _http&#58;//www.yoursite.com/blog/my-second-page.html_
-</p>
+::: .success
+It becomes even more distinct when we use pretty urls (see).<br/>
+Then the URLs for the above two pages will become -<br/>
+_http&#58;//www.yoursite.com/blog/my-first-page.html_<br/>
+_http&#58;//www.yoursite.com/blog/my-second-page.html_
+:::
 
 Notice how in each of the instances above, the template is the same (_blog.php_) but the page is different.<br/>
 However when _blog.php_ is accessed in the following manner -<br/>
@@ -94,7 +94,7 @@ _http&#58;//www.yoursite.com/blog.php_<br/>
 \- _blog.php_ is not representing any page (there is no '?=p' present). It is, well, simply itself.<br/>
 And this is the point that we were trying to make -
 
-<p class="error">**V.IMP** - A clonable template acquires a split personality - it can represent a cloned page or it can be simply itself.</p>
+**V.IMP** - A clonable template acquires a split personality - it can represent a cloned page or it can be simply itself. .{error}
 
 Once a template becomes clonable it has NO DATA OF ITS OWN. Whatever data was associated to it, before being clonable, is moved into a new first page that gets created automatically.<br/>
 This should explain the page that appeared out of nowhere and why it is identical to the not cloned blog.php of yore.
@@ -116,14 +116,14 @@ useless?
 
 Not at all. By default Couch displays nothing here but it is totally upto you as to what you wish to show on this page.<br/>
 This page is ideal for displaying a list of all pages that have been cloned out of this template.<br/>
-You might want to display the contents of a particular page here or maybe a list of the latest pages cloned from a different template altogether (see [**listing pages**](../listing-pages.html)).
+You might want to display the contents of a particular page here or maybe a list of the latest pages cloned from a different template altogether (see [**listing pages**](./listing-pages.html)).
 
-<p class="notice">In fact, Couch recognizing the fact that a clonable template can be viewed in two different contexts - as a cloned page and as simply itself where possibly a listing of its cloned pages will be displayed, calls the first scenario a 'Page View' and the second a 'List View'.</p>
+In fact, Couch recognizing the fact that a clonable template can be viewed in two different contexts - as a cloned page and as simply itself where possibly a listing of its cloned pages will be displayed, calls the first scenario a 'Page View' and the second a 'List View'. {.notice}
 
-Couch indicates to your template which 'view' it is executing in by setting certain variables (see [**Views**](../views.html)).<br/>
-Your template can test these variables and display whatever you wish accordingly (see [**Variables available in Views**](../variables-in-views.html)).
+Couch indicates to your template which 'view' it is executing in by setting certain variables (see [**Views**](./views.html)).<br/>
+Your template can test these variables and display whatever you wish accordingly (see [**Variables available in Views**](./variables-in-views.html)).
 
-<p class="error">
-    **V.IMP** - If you have turned on the [**pretty-urls**](../pretty-urls.html) feature, every time you declare a template to be clonable, make sure to recreate your .htaccess file else the cloned pages will NOT be accessible.<br/>
-    As a temporary measure, you can turn off pretty-urls in _config.php_ till you are done with the testing.
-</p>
+::: .error
+**V.IMP** - If you have turned on the [**pretty-urls**](./pretty-urls.html) feature, every time you declare a template to be clonable, make sure to recreate your .htaccess file else the cloned pages will NOT be accessible.<br/>
+As a temporary measure, you can turn off pretty-urls in _config.php_ till you are done with the testing.
+:::

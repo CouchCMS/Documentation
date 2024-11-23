@@ -59,4 +59,4 @@ Is a self-closing tag and sets no variables of its own.
 
 ## Related Tags
 
-*   [dump\_all](../dump_all.html)
+*   [dump\_all](./dump_all.html)

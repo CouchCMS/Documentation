@@ -12,7 +12,7 @@ It shouldn't be difficult to see that to build an Events Calendar, we can create
 
 This _events.php_ template then can be associated with a calendar to display the events (cloned pages) on the dates they are to fall on.
 
-<p class="notice">If you need an end date for your events, you can create an editable region of type _text_ and set an appropriate regex validator on it to capture date in the proper format. Please see the last example on this page.</p>
+If you need an end date for your events, you can create an editable region of type _text_ and set an appropriate regex validator on it to capture date in the proper format. Please see the last example on this page. {.notice}
 
 ### Displaying the calendar
 
@@ -35,7 +35,7 @@ The following example will make the relationship clear where we are displaying a
 </cms:calendar>
 ```
 
-<p class="notice">For all the examples of calendar on this page, we'll use _calendar.css_ to format the display. You can use the same CSS for your work or create your own CSS \[[Download](https://www.couchcms.com/docs/code/calendar.css)\].</p>
+For all the examples of calendar on this page, we'll use _calendar.css_ to format the display. You can use the same CSS for your work or create your own CSS \[[Download](https://www.couchcms.com/docs/code/calendar.css)\]. {.notice}
 
 Executing the code given above should result in the following -
 

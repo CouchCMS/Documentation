@@ -18,7 +18,7 @@ The **gpc** tag stands for **G**ET-**P**OST-**C**OOKIES and can be used to fetch
 
 If the method parameter is not specified, this tag will look into all the three sources.
 
-<p class="error">**M.IMP:** Never, never use variables from GET, POST or COOKIES by using raw PHP code. The **gpc** tag sanitizes all variables and helps in preventing XSS attacks, something that your code will be susceptible of if you choose to do it manually and do not sanitize the values.</p>
+**M.IMP:** Never, never use variables from GET, POST or COOKIES by using raw PHP code. The **gpc** tag sanitizes all variables and helps in preventing XSS attacks, something that your code will be susceptible of if you choose to do it manually and do not sanitize the values. {.error}
 
 ## Parameters
 

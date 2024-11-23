@@ -41,9 +41,9 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [add](../add.html)
-*   [sub](../sub.html)
-*   [mul](../mul.html)
-*   [div](../div.html)
-*   [mod](../mod.html)
-*   [decr](../decr.html)
+*   [add](./add.html)
+*   [sub](./sub.html)
+*   [mul](./mul.html)
+*   [div](./div.html)
+*   [mod](./mod.html)
+*   [decr](./decr.html)

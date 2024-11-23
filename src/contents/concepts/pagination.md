@@ -18,7 +18,7 @@ To explain these variables, we'll use the following snippet -
 </cms:pages>
 ```
 
-<p class="notice">Although we are using the example of a [__*pages*__](../../tags-reference/pages.html) tag to explain pagination, please keep in mind that the following discussion holds equally good for the [__*search*__](../../tags-reference/search.html) and [__*comments*__](../../tags-reference/comments.html) tags as well.</p>
+Although we are using the example of a [__*pages*__](../../tags-reference/pages.html) tag to explain pagination, please keep in mind that the following discussion holds equally good for the [__*search*__](../../tags-reference/search.html) and [__*comments*__](../../tags-reference/comments.html) tags as well. {.notice}
 
 Suppose a total of 23 records have been fetched by the given snippet.<br/>
 Since the limit has been set to 10, splitting up the total in chunks of 10 records will result in requiring 3 pages to display all the records.

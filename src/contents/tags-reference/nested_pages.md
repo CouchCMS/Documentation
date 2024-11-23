@@ -8,9 +8,9 @@ template: default.html
 
 The **nested\_pages** tag is used to list [nested-pages](../../concepts/nested-pages-aka-menu-maker.html).
 
-Since the primary purpose of nested-pages (as explained in the [Core Concepts](../../concepts/nested-pages-aka-menu-maker.html)) is to create a hierarchy of pages that can be represented as the site's menu, you'll find that usually the '[menu](../menu.html)' tag will suffice for the purpose of creating a menu.<br/>
-However, sometimes you'll need more control over the generated menu than what the '[menu](../menu.html)' tag offers.<br/>
-For such cases, the 'nested\_pages' tag can be used as it is a lower level tag (in fact, the '[menu](../menu.html)' tag uses the 'nested\_pages' internally).
+Since the primary purpose of nested-pages (as explained in the [Core Concepts](../../concepts/nested-pages-aka-menu-maker.html)) is to create a hierarchy of pages that can be represented as the site's menu, you'll find that usually the '[menu](./menu.html)' tag will suffice for the purpose of creating a menu.<br/>
+However, sometimes you'll need more control over the generated menu than what the '[menu](./menu.html)' tag offers.<br/>
+For such cases, the 'nested\_pages' tag can be used as it is a lower level tag (in fact, the '[menu](./menu.html)' tag uses the 'nested\_pages' internally).
 
 To illustrate the use of 'nested\_pages', we'll use the same sample hierarchy of elements that we used in the '[folders](../../concepts/using-folders.html)' section. The difference being that in this case the elements represent pages instead of folders.<br/>
 We'll assume that a template named 'index.php' has been used to create the nested-pages.
@@ -97,7 +97,7 @@ Let us use is to create one.
 
 ### Creating menu using 'nested_pages' tag
 
-A menu is normally created using nested &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; elements. To make the task of doing so easy, the 'nested\_pages' tag, like the '[folders](../folders.html)' tag, supports the 'extended\_info' parameter. Setting the 'extended\_info' parameter to '1' makes the 'nested\_pages' tag provide additional information that can be used to output the closing and opening &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; tags without any pain.
+A menu is normally created using nested &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; elements. To make the task of doing so easy, the 'nested\_pages' tag, like the '[folders](./folders.html)' tag, supports the 'extended\_info' parameter. Setting the 'extended\_info' parameter to '1' makes the 'nested\_pages' tag provide additional information that can be used to output the closing and opening &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; tags without any pain.
 
 ```
 <cms:nested_pages masterpage='index.php' extended_info='1' >
@@ -158,7 +158,7 @@ Following is a complete example that makes use of the variables mentioned before
 </cms:nested_pages>
 ```
 
-The example shown above is equivalent to the following using '[menu](../menu.html)' tag -
+The example shown above is equivalent to the following using '[menu](./menu.html)' tag -
 
 ```
 <cms:menu masterpage='index.php' menu_class='my-menu-class-1 my-menu-class-2' menu_id='my-menu-id' first_class='first' last_class='last' active_trail_class='active' selected_class='current' />
@@ -166,9 +166,9 @@ The example shown above is equivalent to the following using '[menu](../menu.htm
 
 ### Creating a paginated listing using 'nested_pages' tag
 
-Apart from being used to create a menu, the 'nested\_pages' tag may also be used to create a conventional listing of pages, complete with pagination etc., the way it is usually done using the '[pages](../pages.html)' tag with normal (i.e. non nestable) pages.
+Apart from being used to create a menu, the 'nested\_pages' tag may also be used to create a conventional listing of pages, complete with pagination etc., the way it is usually done using the '[pages](./pages.html)' tag with normal (i.e. non nestable) pages.
 
-If you are familiar with the '[pages](../pages.html)' tag, the following snippet will seem familiar -
+If you are familiar with the '[pages](./pages.html)' tag, the following snippet will seem familiar -
 
 ```
 <cms:nested_pages masterpage='index.php' extended_info='1' paginate='1' limit='5' >
@@ -208,13 +208,13 @@ Some points to note -
 1.  With 'paginate' set to '1', the 'extended\_info' is automatically turned off - i.e. only the conventional linear listing is possible.
 2.  For performance reasons, data from the custom fields (i.e. the editable regions defined for the nested-pages template) is not made available by default. You can set the 'include\_custom\_fields' parameter to '1' to make the custom fields available.
 
-<p class="notice">
-    **IMPORTANT:** Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the 'pages' tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
-    One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).<br/>
-    <br/>
-    However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.<br/>
-    You can definitely have hundreds of them, but if the number of pages is likely to reach into the thousands please use the regular cloned pages as they are optimized for handling larger numbers.
-</p>
+::: .notice
+**IMPORTANT:** Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the 'pages' tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
+One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).<br/>
+<br/>
+However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.<br/>
+You can definitely have hundreds of them, but if the number of pages is likely to reach into the thousands please use the regular cloned pages as they are optimized for handling larger numbers.
+:::
 
 ## Parameters
 
@@ -275,7 +275,7 @@ The page specified as the root is displayed along with all its children (compare
 Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
 Only the children of the page specified are displayed (compare with 'root' parameter above where the specified page is also included in the display).
 
-<p class="notice">If both 'childof' and 'root' are set, the 'root' parameter gets precedence.</p>
+If both 'childof' and 'root' are set, the 'root' parameter gets precedence. {.notice}
 
 ### extended_info
 
@@ -349,5 +349,5 @@ If the 'paginate' parameter is set to '1', variables that help in creating the p
 
 ## Related Tags
 
-*   [pages](../pages.html)
-*   [folders](../folders.html)
+*   [pages](./pages.html)
+*   [folders](./folders.html)

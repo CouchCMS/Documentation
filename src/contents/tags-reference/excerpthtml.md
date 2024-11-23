@@ -58,4 +58,4 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-*   [excerpt](../excerpt.html)
+*   [excerpt](./excerpt.html)

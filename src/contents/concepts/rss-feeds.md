@@ -77,7 +77,7 @@ The following snippet using Couch's [__*concat*__](../../tags-reference/concat.h
 <cms:concat '<' '?xml version="1.0" encoding="' k_site_charset '"?' '>' />
 ```
 
-<p class="notice">The *k\_site\_charset* variable contains the value set in _config.php_ for the character set used by your web-site.</p>
+The *k\_site\_charset* variable contains the value set in _config.php_ for the character set used by your web-site. {.notice}
 
 The second problem can be rectified by using the Couch's [__*content\_type*__](../../tags-reference/content_type.html) tag. This tag instructs the web server to output the desired mime-type. We'll use it to output _text/xml_.
 
@@ -112,7 +112,7 @@ The modified snippet should now look like this -
 <?php COUCH::invoke(); ?>
 ```
 
-<p class="notice">**IMP.** Do not split the [__*content\_type*__](../../tags-reference/content_type.html) statement and the [__*concat*__](../../tags-reference/concat.html) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.</p>
+**IMP.** Do not split the [__*content\_type*__](../../tags-reference/content_type.html) statement and the [__*concat*__](../../tags-reference/concat.html) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed. {.notice}
 
 We can now fetch the news items from the _news.php_ template by using [__*pages*__](../../tags-reference/pages.html) tag and add it to our feed to make it dynamic -
 
@@ -126,7 +126,7 @@ We can now fetch the news items from the _news.php_ template by using [__*pages*
     <description>Description of this channel.</description>
     <language>en-us</language>
     <pubDate><cms:date format='D, d M Y H:i:s' gmt='1'/> GMT</pubDate>
-    <generator>Couch CMS</generator>
+    <generator>CouchCMS</generator>
 
     <cms:pages masterpage='property.php' limit="10">
     <item>

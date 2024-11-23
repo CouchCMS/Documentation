@@ -57,4 +57,4 @@ Please see [**Core Concepts - Search**](../../concepts/using-search.html) for de
 
 ## Related Tags
 
-*   [search\_form](../search_form.html)
+*   [search\_form](./search_form.html)

@@ -32,9 +32,9 @@ you
 do
 ```
 
-<p class="notice">The above example could have been written without specifying 'sep', because the default separator is '|'.</p>
+The above example could have been written without specifying 'sep', because the default separator is '|'. {.notice}
 
-<p class="success">One real world scenario for using **each** is while handling submission of forms containing multiple checkboxes. If more than one checkbox is selected, the checkbox variable contains a '|' separated string with values for each selected checkbox.</p>
+One real world scenario for using **each** is while handling submission of forms containing multiple checkboxes. If more than one checkbox is selected, the checkbox variable contains a '|' separated string with values for each selected checkbox. {.success}
 
 ## Parameters
 
@@ -90,5 +90,5 @@ The specified variable will be set instead.
 
 ## Related Tags
 
-*   [repeat](../repeat.html)
-*   [zebra](../zebra.html)
+*   [repeat](./repeat.html)
+*   [zebra](./zebra.html)

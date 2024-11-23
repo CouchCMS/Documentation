@@ -53,7 +53,7 @@ menu.php
 ### masterpage
 
 This parameter is used to specify the template behind the nested-pages tree used to create the menu.<br/>
-If left empty, the template of the currently executing page is assumed (which is unlikely to be correct as you'll usually want to display the menu on all sections (templates) of your site - typically by using '[embed](../embed.html)' tag).
+If left empty, the template of the currently executing page is assumed (which is unlikely to be correct as you'll usually want to display the menu on all sections (templates) of your site - typically by using '[embed](./embed.html)' tag).
 
 ```
 <cms:menu masterpage='menu.php'/>
@@ -171,7 +171,7 @@ Output:
 Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.<br/>
 Only the children of the nested-page specified are displayed (compare with 'root' parameter above where the specified nested-page is also included in the display).
 
-<p class="notice">If both 'childof' and 'root' are set, the 'root' parameter gets precedence.</p>
+If both 'childof' and 'root' are set, the 'root' parameter gets precedence. {.notice}
 
 ```
 <cms:menu masterpage='menu.php' childof='united-states-news' />
@@ -184,71 +184,70 @@ Output:
 * Nevada News
 ```
 
-<div class="notice">
-    <h4 id="dynamic-menu">Dynamic Menu</h4>
-    <br/>
-    Occasionally, you'll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.<br/>
-    Thus we could have, for example, a top menu that shows only the top level pages of the site while another menu in the sidebar shows only the pages that occur immediately below the page currently selected in the top menu. There could be yet another menu in the footer that shows the pages below the page selected (if any) in the sidebar menu.<br/>
-    The sidebar and the footer menu in the case above are examples of dynamic menus because their 'root' keeps on dynamically changing depending on the current page being visited.<br/>
-    <br/>
-    To help easily create such menus the 'childof' and 'root' parameter accept some special keywords. At runtime, the 'menu' tag dynamically calculates their values taking into consideration the current page.<br/>
-    <br/>
-    The special keywords are -<br/>
-    **@n** (where n is a number starting from 1 e.g. @1, @2 etc.)<br/>
+::: .notice
+<h4 id="dynamic-menu">Dynamic Menu</h4>
+<br/>
+Occasionally, you'll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.<br/>
+Thus we could have, for example, a top menu that shows only the top level pages of the site while another menu in the sidebar shows only the pages that occur immediately below the page currently selected in the top menu. There could be yet another menu in the footer that shows the pages below the page selected (if any) in the sidebar menu.<br/>
+The sidebar and the footer menu in the case above are examples of dynamic menus because their 'root' keeps on dynamically changing depending on the current page being visited.<br/>
+<br/>
+To help easily create such menus the 'childof' and 'root' parameter accept some special keywords. At runtime, the 'menu' tag dynamically calculates their values taking into consideration the current page.<br/>
+<br/>
+The special keywords are -<br/>
+
++ **@n** (where n is a number starting from 1 e.g. @1, @2 etc.)<br/>
     <br/>
     By setting either the 'childof' and 'root' parameter to '@n', we ask Couch to use as the 'root' or 'childof' the page that is parent number 'n' of the current page being visited.<br/>
     <br/>
     For example -<br/>
-    <br/>
+
     ```
-<cms:menu masterpage='menu.php' root='@1' />
+    <cms:menu masterpage='menu.php' root='@1' />
     ```
     In the snippet above we are instructing Couch to find out all the parents of the current page and then use the top most parent (first parent) as the value for the 'root' parameter.<br/>
     Thus, if the page being visited was<br/>
     'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
     the first parent would be 'world-news' and that is the value that would be used as the 'root' parameter.<br/>
     Whereas, in the following snippet<br/>
-    <br/>
+
     ```
-<cms:menu masterpage='menu.php' root='@2' />
+    <cms:menu masterpage='menu.php' root='@2' />
     ```
     the value used for the 'root' parameter would be 'north-american-news' as that is the second parent of the current page.<br/>
-    <br/>
-    **@current**<br/>
-    <br/>
+
++ **@current**<br/>
     By setting either the 'childof' and 'root' parameter to '@current', we ask Couch to use as the 'root' or 'childof' the current page itself that is being visited.<br/>
     <br/>
     For example -<br/>
-    <br/>
+
     ```
-<cms:menu masterpage='menu.php' root='@current' />
+    <cms:menu masterpage='menu.php' root='@current' />
     ```
     In the snippet above, if the page being visited was<br/>
     'North American News' (http&#58;//www.yoursite.com/world-news/north-american-news/)<br/>
     the value used for the 'root' parameter would be 'north-american-news'.<br/>
-    <br/>
-    **@current-n** (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)<br/>
-    <br/>
+
++ **@current-n** (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)<br/>
     By setting either the 'childof' and 'root' parameter to '@current-n', we ask Couch to use as the 'root' or 'childof' the parent page that is 'n' level above the page being visited.<br/>
     <br/>
     For example -<br/>
-    <br/>
+
     ```
-<cms:menu masterpage='menu.php' root='@current-1' />
+    <cms:menu masterpage='menu.php' root='@current-1' />
     ```
     In the snippet above, if the page being visited was<br/>
     'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
     the value used for the 'root' parameter would be 'united-states-news' while for the following snippet<br/>
-    <br/>
+
     ```
-<cms:menu masterpage='menu.php' root='@current-2' />
+    <cms:menu masterpage='menu.php' root='@current-2' />
     ```
     the value used would be 'north-american-news'.<br/>
-    <br/>
-    Using these special keywords some very complex menu can be easily created without involving any programming.
-</div>
 
-<br/>
+Using these special keywords some very complex menu can be easily created without involving any programming.
+:::
+
+
 
 ### list_type
 
@@ -344,5 +343,5 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [nested\_pages](../nested_pages.html)
-*   [nested\_crumbs](../nested_crumbs.html)
+*   [nested\_pages](./nested_pages.html)
+*   [nested\_crumbs](./nested_crumbs.html)

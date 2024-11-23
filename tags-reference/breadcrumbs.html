@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="breadcrumbs" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/breadcrumbs.html" itemprop="item"><span itemprop="name">breadcrumbs</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/breadcrumbs.html" itemprop="item"><span itemprop="name">breadcrumbs</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -70,29 +70,33 @@
 
             <article><h1 id="breadcrumbs">breadcrumbs</h1>
 <p>The <strong>breadcrumbs</strong> tag outputs the hierarchy of folders leading upto the folder being shown (if folder_view) or the folder within which the current page resides (if page_view). This can be used too create a trail (breadcrumbs) leading upto the current page.</p>
-<pre><code>&lt;cms:breadcrumbs /&gt;</code></pre><p>Please see <a href="../concepts/using-folders.html"><strong>Core Concepts - Folders</strong></a> for a discussion on this tag&#39;s usage.</p>
+<pre><code>&lt;cms:breadcrumbs /&gt;
+</code></pre>
+<p>Please see <a href="../../concepts/using-folders.html"><strong>Core Concepts - Folders</strong></a> for a discussion on this tag's usage.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>separator</li>
 <li>include_template</li>
 </ul>
 <h3 id="separator">separator</h3>
-<p>Set the separator to show between each item in the breadcrumbs. The default separator is &#39;_&amp;nbsp;&gt;&amp;nbsp;_&#39;.</p>
+<p>Set the separator to show between each item in the breadcrumbs. The default separator is '<em>&amp;nbsp;&gt;&amp;nbsp;</em>'.</p>
 <h3 id="include_template">include_template</h3>
-<p>By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to &#39;1&#39;.<br/>
-If this parameter is set, remember to check that the current view is either <em>folder-view</em> or <em>page-view</em> before invoking this tag, because for any other views the folder hierarchy is irrelevant and <strong>breadcrumbs</strong> tag rightly does not output any folder names, however the <em>include_template</em> parameter will cause the template&#39;s name to appear which might not be desirable.</p>
+<p>By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to '1'.<br/>
+If this parameter is set, remember to check that the current view is either <em>folder-view</em> or <em>page-view</em> before invoking this tag, because for any other views the folder hierarchy is irrelevant and <strong>breadcrumbs</strong> tag rightly does not output any folder names, however the <em>include_template</em> parameter will cause the template's name to appear which might not be desirable.</p>
 <pre><code>&lt;cms:if k_is_page || k_is_folder &gt;
-    &lt;cms:breadcrumbs separator=&#39;&amp;nbsp;&gt;&gt;&amp;nbsp;&#39; include_template=&#39;1&#39; /&gt;
-&lt;/cms:if&gt;</code></pre><h2 id="variables">Variables</h2>
+    &lt;cms:breadcrumbs separator='&amp;nbsp;&gt;&gt;&amp;nbsp;' include_template='1' /&gt;
+&lt;/cms:if&gt;
+</code></pre>
+<h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>
-<li><a href="folder.html">folder</a></li>
-<li><a href="folders.html">folders</a></li>
-<li><a href="listfolders.html">listfolders</a></li>
-<li><a href="dropdownfolders.html">dropdownfolders</a></li>
-<li><a href="parentfolders.html">parentfolders</a></li>
-<li><a href="is_ancestor.html">is_ancestor</a></li>
+<li><a href="./folder.html">folder</a></li>
+<li><a href="./folders.html">folders</a></li>
+<li><a href="./listfolders.html">listfolders</a></li>
+<li><a href="./dropdownfolders.html">dropdownfolders</a></li>
+<li><a href="./parentfolders.html">parentfolders</a></li>
+<li><a href="./is_ancestor.html">is_ancestor</a></li>
 </ul>
 </article>
         </div>

@@ -83,3 +83,6 @@ div.gs-no-results-result > .gs-snippet { margin:32px 0 0; }
 article > table > tbody > tr > td, article > table > thead > tr > th, article > table > caption { vertical-align:top; padding:4px 10px 4px 5px; }
 article > table > thead > tr > th { white-space:nowrap; }
 article > table{ margin-bottom:1.4em; }
+
+div.notice p, div.success p, div.error p { margin-bottom: 0; }
+div.notice, div.success, div.error { margin-bottom: 1.4em; }

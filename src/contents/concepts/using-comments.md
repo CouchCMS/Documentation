@@ -39,7 +39,7 @@ define( 'K_COMMENTS_INTERVAL', 5 * 60 );
 
 Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.
 
-<p class="error">The following discussion about the comment form assumes that you are already familiar with the [__*form*__](../../tags-reference/form.html) tag which is used to create it.</p>
+The following discussion about the comment form assumes that you are already familiar with the [__*form*__](../../tags-reference/form.html) tag which is used to create it. {.error}
 
 ### COMMENT SUBMISSION
 
@@ -149,21 +149,21 @@ Following is a complete snippet that generates such a form -
 </cms:if>
 ```
 
-<p class="success">
-    **TIP:** The above snippet can be saved into a file named, for example, _comment-form.inc_ within the snippets folder and then be used in any template by using the [__*embed*__](../../tags-reference/embed.html) tag -<br/>
-    <br/>
-    ```
+::: .success
+**TIP:** The above snippet can be saved into a file named, for example, _comment-form.inc_ within the snippets folder and then be used in any template by using the [__*embed*__](../../tags-reference/embed.html) tag -<br/>
+<br/>
+```
 <cms:embed 'comment-form.inc' />
-    ```
-</p>
+```
+:::
 
-If you have been through the [__*form*__](../forms.html) tag discussion, the code above should look familiar. We'll discuss a few features of the snippet though -<br/>
+If you have been through the [__*form*__](./forms.html) tag discussion, the code above should look familiar. We'll discuss a few features of the snippet though -<br/>
 The form consists of the four aforementioned input tags - *k\_author*, *k\_email*, *k\_link*, *k\_comment*. A fifth in the form of **captcha** has also been added. Please never omit the captcha from any of your forms or you risk facing a deluge of spam.
 
-<p class="notice">
-    To fight spam always use a captcha during comment submission and always require approval of comments before publishing them.<br/>
-    As a way of warding off spam, Couch also rejects duplicate comments and multiple comments that originate from the same place too quickly.
-</p>
+::: .notice
+To fight spam always use a captcha during comment submission and always require approval of comments before publishing them.<br/>
+As a way of warding off spam, Couch also rejects duplicate comments and multiple comments that originate from the same place too quickly.
+:::
 
 Note that we first check that no registered user is logged in (*k\_logged\_out*) before showing the input fields for name, email, link and the captcha. If a user is already logged in, the values for these inputs can be had from his registration profile and hence only the textbox for inputting comments needs to be displayed to him.
 
@@ -208,7 +208,7 @@ For each comment, the following variables (containing the data submitted by the 
 *   k\_comment\_page\_name
 *   k\_comment\_template\_name
 
-In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see [**pagination**](../pagination.html) for details.
+In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see [**pagination**](./pagination.html) for details.
 
 #### PARAMETERS
 

@@ -41,7 +41,7 @@ $t['admin_panel'] = 'Admin Panel';
 $t['login_title'] = 'CouchCMS';
 ```
 
-<p class="error">
-    **IMP.** Rebranding **DOES NOT** however permit you to remove copyright notices in the source code of the Software.<br/>
-    These copyright notices must remain intact **under any circumstances**.
-</p>
+::: .error
+**IMP.** Rebranding **DOES NOT** however permit you to remove copyright notices in the source code of the Software.<br/>
+These copyright notices must remain intact **under any circumstances**.
+:::

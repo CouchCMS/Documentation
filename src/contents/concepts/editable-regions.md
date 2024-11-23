@@ -45,17 +45,17 @@ To do so, simply enclose this part by an [__*editable*__](../../tags-reference/e
 Now, while being logged in as the super-admin, visit the template in your browser.<br/>
 For example, if the template was _property.php_, visit _http&#58;//www.yoursite.com/property.php_
 
-<p class="notice">At the risk of repeating ourselves - for your changes to show up in the admin panel, you'll always need to run the modified template in the browser while being logged in as the super-admin.</p>
+At the risk of repeating ourselves - for your changes to show up in the admin panel, you'll always need to run the modified template in the browser while being logged in as the super-admin. {.notice}
 
 Now visit the admin panel and access _property.php_ and you'll find that Couch has created a textarea for the editable region.
 
-<p class="success">
-    If you enclose some text between the opening and closing [__*Editable*__](../../tags-reference/editable.html) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [__*Editable*__](../../tags-reference/editable.html) tag as a self closing tag.<br/>
-    <br/>
-    ```
+::: .success
+If you enclose some text between the opening and closing [__*Editable*__](../../tags-reference/editable.html) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [__*Editable*__](../../tags-reference/editable.html) tag as a self closing tag.
+<br/>
+```
 <cms:editable name='prop_desc' />
-    ```
-</p>
+```
+:::
 
 Input or edit the text within this textarea and save your changes.<br/>
 Visiting the template in your browser again should show up the edited text on the webpage.
@@ -95,7 +95,7 @@ The followng are the different types of editable regions currently supported by 
 
 You can define any number of editable regions in a template.
 
-<p class="error">**V.IMP:** Editable tags cannot be nested within other editable tags.</p>
+**V.IMP:** Editable tags cannot be nested within other editable tags. {.error}
 
 ### ACCESSING THE CONTENTS OF EDITABLE REGIONS
 
@@ -121,13 +121,13 @@ So if you use the following snippet anywhere within your template -
 
 the current contents of the editable region will be output by show.
 
-\[See: [Variables available in Views](../variables-in-views.html)\]
+\[See: [Variables available in Views](./variables-in-views.html)\]
 
 **3\. As variables set by the [_pages_](../../tags-reference/pages.html) tag -**
 
 The [__*pages*__](../../tags-reference/pages.html) tag is used to list (all or specific) pages cloned from a template. The tag, as it fetches the pages, makes vailable all the variables pertaining to the pages - these include the variables that represent the editables regions defined for the pages.
 
-See also [**Listing Pages**](../listing-pages.html)
+See also [**Listing Pages**](./listing-pages.html)
 
 **4\. By using the [*get\_custom\_field*](../../tags-reference/get_custom_field.html) tag -**
 

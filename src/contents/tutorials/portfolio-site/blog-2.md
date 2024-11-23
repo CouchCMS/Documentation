@@ -6,7 +6,7 @@ template: default.html
 ---
 
 # Diving deep - the Blog (Part 2)
-<br/>
+
 ### LISTING CLONED PAGES - The list-view
 
 As already discussed, _http&#58;//www.mytestsite.com/blog.php_ is the view where we list all the existing blog entries.<br/>
@@ -54,7 +54,7 @@ will display -
 
 As you can see we can access all variables belonging to each cloned pages just the way we did when the page was accessed in its page-view.
 
-<p class="notice">The [pages](../../../../tags-reference/pages.html) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please consult the [documentation](../../../../tags-reference/pages.html) for a full discussion.</p>
+The [pages](../../../../tags-reference/pages.html) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please consult the [documentation](../../../../tags-reference/pages.html) for a full discussion. {.notice}
 
 With this ability to list cloned pages and access their data, we can now make changes to the *blog\_list.html* snippet to display the cloned pages instead of its hard coded content.
 
@@ -128,7 +128,7 @@ After -
 But now when you access _blog.php_, you'll see that the next and previous buttons now get repeated for all the posts that are listed on the page. Certainly not what we desired. We wish to display the navigation buttons only after the last post on the page. As noted above, Couch sets up several variables that reflect the current status of the loop as the pages tag iterates through the fetched pages.<br/>
 *k\_paginated\_top* and *k\_paginated\_bottom* are two such variables.
 
-<p class="success">Use &lt;cms:dump /&gt; or &lt;cms:dump\_all /&gt; anywhere within the opening and closing component of the pages tag to see the variables change values as the cloned pages are looped through.</p>
+Use &lt;cms:dump /&gt; or &lt;cms:dump\_all /&gt; anywhere within the opening and closing component of the pages tag to see the variables change values as the cloned pages are looped through. {.success}
 
 *k\_paginated\_top* is set when the first page of the current set of pages is being displayed while *k\_paginated\_bottom* is set when it is the last page that is getting displayed.<br/>
 We can use the *k\_paginated\_bottom* variable to conditionally output the navigation buttons only after the last entry -
@@ -434,4 +434,4 @@ and change it to.
 
 Congratulations. The blog section is finally complete.
 
-Next: [The portfolio section](../../portfolio.html)
+Next: [The portfolio section](./portfolio.html)

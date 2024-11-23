@@ -22,5 +22,5 @@ This tag does not set any variables.
 
 ## Related Tags
 
-*   [form](../form.html)
-*   [input](../input.html)
+*   [form](./form.html)
+*   [input](./input.html)

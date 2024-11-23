@@ -83,13 +83,13 @@ You can use these variables to easily create HTML ordered or unordered lists. Pl
 
 ## Related Tags
 
-*   [folder](../folder.html)
-*   [listfolders](../listfolders.html)
-*   [dropdownfolders](../dropdownfolders.html)
-*   [parentfolders](../parentfolders.html)
-*   [is\_ancestor](../is_ancestor.html)
-*   [breadcrumbs](../breadcrumbs.html)
-*   [pages](../pages.html)
-*   [archives](../archives.html)
-*   [templates](../templates.html)
-*   [comments](../comments.html)
+*   [folder](./folder.html)
+*   [listfolders](./listfolders.html)
+*   [dropdownfolders](./dropdownfolders.html)
+*   [parentfolders](./parentfolders.html)
+*   [is\_ancestor](./is_ancestor.html)
+*   [breadcrumbs](./breadcrumbs.html)
+*   [pages](./pages.html)
+*   [archives](./archives.html)
+*   [templates](./templates.html)
+*   [comments](./comments.html)

@@ -39,7 +39,7 @@ _http&#58;//www.mysite.com/blog/2010/05/_<br/>
 \- is considered to be an **archive-view** and a list of all the pages cloned out of _blog.php_ that have been published during the month of May in 2010 should be displayed in this view.
 
 When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.<br/>
-See: [**Variables available in views**](../variables-in-views.html).<br/>
+See: [**Variables available in views**](./variables-in-views.html).<br/>
 It is ultimately upto you whether or not you choose to list pages in the expected manner.
 
 ### Handling home-view
@@ -90,4 +90,4 @@ The three list views can be handled separately if the way the pages and their co
 </cms:if>
 ```
 
-<p class="success">The snippet given above can handle all the list-views because if the current view is a _home-view_, the *k\_folder\_name*, *k\_archive\_date* and *k\_next\_archive\_date* will not be set and hence these parameters will have no effect on the pages fetched. Similarly in the *folder-view* the *k\_archive\_date* and *k\_next\_archive\_date* will not be set and in the archive-view the *k\_folder\_name* will not be set.</p>
+The snippet given above can handle all the list-views because if the current view is a _home-view_, the *k\_folder\_name*, *k\_archive\_date* and *k\_next\_archive\_date* will not be set and hence these parameters will have no effect on the pages fetched. Similarly in the *folder-view* the *k\_archive\_date* and *k\_next\_archive\_date* will not be set and in the archive-view the *k\_folder\_name* will not be set. {.success}

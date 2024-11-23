@@ -32,10 +32,10 @@ As we'll see later, Couch also provides you all necessary security tools to safe
 
 Instead of dryly documenting the new tags, I'll walk you through a real-world example.
 
-<p class="error">
-    **Caveat:** the discussion that follows assumes that you're already conversant with Couch's [**form**](../forms.html) and [**editable-regions**](../editable-regions.html) concepts.<br/>
-    If you are new to Couch, please take some time to first study those as all the new functions discussed here build upon them.
-</p>
+::: .error
+**Caveat:** the discussion that follows assumes that you're already conversant with Couch's [**form**](./forms.html) and [**editable-regions**](./editable-regions.html) concepts.<br/>
+If you are new to Couch, please take some time to first study those as all the new functions discussed here build upon them.
+:::
 
 Please remember that there can literally be n-number of situations where we could put this new functionality to use.<br/>
 What I'd be demonstrating is (intentionally) a very simple scenario but it should be sufficient to get you going on your own.
@@ -54,7 +54,7 @@ The code in our tutorial will also utilize the *cms:set\_flash* tag to set flash
 require_once( K_COUCH_DIR.'addons/cart/session.php' );
 ```
 
-<p class="notice">**NOTE:** Beginning with 1.4, new installations will find a file named 'kfunctions.example.php' in the addon folder. This is to prevent future upgrades from overwriting your changes. Please rename this file to 'kfunctions.php' and uncomment the mentioned line from it.</p>
+**NOTE:** Beginning with 1.4, new installations will find a file named 'kfunctions.example.php' in the addon folder. This is to prevent future upgrades from overwriting your changes. Please rename this file to 'kfunctions.php' and uncomment the mentioned line from it. {.notice}
 
 With the required modules enabled, we can finally begin.
 
@@ -79,7 +79,7 @@ I mean, though the form can be used to submit data and the editable regions can 
 This is where the new 'databound form' feature comes in.<br/>
 You see, this simply connects an existing front-end form with existing back-end editable regions (in other words - 'binds' a Couch form with Couch database i.e. editable regions. This, incidentally, also explains why we chose to call this feaure 'DataBound Forms').
 
-So, when working with databound forms, we always start off with two concepts that are already well known to us - [**form**](../forms.html) and [**editable regions**](../editable-regions.html).<br/>
+So, when working with databound forms, we always start off with two concepts that are already well known to us - [**form**](./forms.html) and [**editable regions**](./editable-regions.html).<br/>
 This is the form we'll be working on (kindly provided by [@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) -
 
 ![](../../assets/img/contents/databound-forms-1.png)
@@ -156,7 +156,7 @@ Following is what should be sufficient to capture all data inputted through our 
 
 Notice that we have defined editable regions that are equivalent to the input fields in the form.
 
-<p class="success">The type of last editable region (securefile) would seem unfamiliar. This is a new editable region that debuts with v1.4 and is meant exclusively to be used for uploading files securely from the front-end.</p>
+The type of last editable region (securefile) would seem unfamiliar. This is a new editable region that debuts with v1.4 and is meant exclusively to be used for uploading files securely from the front-end. {.success}
 
 Also notice that we've also added all data constrains (e.g. the field being required, validator, search\_type etc.) to the editable regions. This part is exactly how we use other templates in Couch and can be tested independently of the front-end form - i.e. after visiting the template as super-admin for the changes to be picked up, we can create cloned pages from the admin-panel, add data to the editable regions we defined and save.<br/>
 This is the right time to manually test everything e.g. validations etc. work as expected.
@@ -165,7 +165,7 @@ With the 'data' component completed, time to move to the 'form' component.
 
 ### 2. The 'form' part of DataBound forms
 
-It should be trivial to 'couchify' the plain HTML form we have in our template (as explained [here](../forms.html)).
+It should be trivial to 'couchify' the plain HTML form we have in our template (as explained [here](./forms.html)).
 
 Following is what we end up with -
 
@@ -461,52 +461,52 @@ This is how our form stands right now:
 </cms:form>
 ```
 
-<p class="success">
-    The '\_auto\_title' parameter of *cms:db\_persist\_form* tag merits some discussion.<br/>
-    Take a look at the edit screen of any cloned page in the back-end and you'll find that it has two default fields - name & title.<br/>
-    Of the two, only the 'name' is mandatory. This is the unique id by which a cloned page is known internally by the system.<br/>
-    However, you are permitted to leave it blank as long as you fill the 'title' field. This is because if the 'name' is not supplied, Couch automatically generates a 'name' from the 'title'. If, however, even the 'title' is left empty this results in an error.<br/>
-    <br/>
-    In this tutorial of ours, if we were to simply use<br/>
-    <br/>
-    ```
+::: .success
+The '\_auto\_title' parameter of *cms:db\_persist\_form* tag merits some discussion.<br/>
+Take a look at the edit screen of any cloned page in the back-end and you'll find that it has two default fields - name & title.<br/>
+Of the two, only the 'name' is mandatory. This is the unique id by which a cloned page is known internally by the system.<br/>
+However, you are permitted to leave it blank as long as you fill the 'title' field. This is because if the 'name' is not supplied, Couch automatically generates a 'name' from the 'title'. If, however, even the 'title' is left empty this results in an error.<br/>
+<br/>
+In this tutorial of ours, if we were to simply use<br/>
+<br/>
+```
 <cms:db_persist_form />
-    ```
-    this would result in an error complaining that the 'name' cannot be left empty. The explanation above should explain that.<br/>
-    <br/>
-    As a solution<br/>
-    **1\.** We could duplicate the method used in the admin-panel (i.e. offer explicit input boxes for name and title).<br/>
-    This can be done by using cms:input fields bound to the system fields e.g.<br/>
-    <br/>
-    ```
+```
+this would result in an error complaining that the 'name' cannot be left empty. The explanation above should explain that.<br/>
+<br/>
+As a solution<br/>
+**1\.** We could duplicate the method used in the admin-panel (i.e. offer explicit input boxes for name and title).<br/>
+This can be done by using cms:input fields bound to the system fields e.g.<br/>
+<br/>
+```
 <cms:input type="bound" name="k_page_name" />
 <cms:input type="bound" name="k_page_title" />
-    ```
-    If the input bound to 'k\_page\_name' is omitted, a name would be auto-generated using the value from the field bound to the 'title' (i.e. k\_page\_title).<br/>
-    <br/>
-    2\. We could indirectly supply values for the name/title as parameters of the cms:db\_persist\_form tag e.g.<br/>
-    <br/>
-    ```
+```
+If the input bound to 'k\_page\_name' is omitted, a name would be auto-generated using the value from the field bound to the 'title' (i.e. k\_page\_title).<br/>
+<br/>
+2\. We could indirectly supply values for the name/title as parameters of the cms:db\_persist\_form tag e.g.<br/>
+<br/>
+```
 <cms:db_persist_form
-    k_page_name='my-page-name'
-    k_page_title='My Page Name'
+k_page_name='my-page-name'
+k_page_title='My Page Name'
 />
-    ```
-    As before, if the 'k\_page\_name' is skipped, the value of 'k\_page\_title' will be used to generate a name automatically.<br/>
-    Of course, in a real-life situation instead of hard-coding the values you'd want to use some code or algorithm to provide unique values.<br/>
-    <br/>
-    For the case we are dealing with in our tutorial, the first solution (explicit input boxes) would be too much to ask from the visitor.<br/>
-    The second solution would either require providing a unique name at every submission or provide a fixed 'title' and then bank on the system to generate a unique 'name' out of it. Since the 'title' is fixed, the generated name will always be suffixed with a unique number (1, 2 etc.). Doing this would be wasteful if the number of submissions could run into thousands.<br/>
-    <br/>
-    In any case, if we reflect over it, the 'name' is just a requirement of the system and adds nothing to the data we are capturing (i.e. the application). So the most efficient way of providing the required name would be to ask the form to generate one for itself.<br/>
-    This is what the '\_auto\_title' parameter is doing.<br/>
-    <br/>
-    ```
+```
+As before, if the 'k\_page\_name' is skipped, the value of 'k\_page\_title' will be used to generate a name automatically.<br/>
+Of course, in a real-life situation instead of hard-coding the values you'd want to use some code or algorithm to provide unique values.<br/>
+<br/>
+For the case we are dealing with in our tutorial, the first solution (explicit input boxes) would be too much to ask from the visitor.<br/>
+The second solution would either require providing a unique name at every submission or provide a fixed 'title' and then bank on the system to generate a unique 'name' out of it. Since the 'title' is fixed, the generated name will always be suffixed with a unique number (1, 2 etc.). Doing this would be wasteful if the number of submissions could run into thousands.<br/>
+<br/>
+In any case, if we reflect over it, the 'name' is just a requirement of the system and adds nothing to the data we are capturing (i.e. the application). So the most efficient way of providing the required name would be to ask the form to generate one for itself.<br/>
+This is what the '\_auto\_title' parameter is doing.<br/>
+<br/>
+```
 <cms:db_persist_form
-    _auto_title='1'
+_auto_title='1'
 />
-    ```
-</p>
+```
+:::
 
 ### Security
 
@@ -562,11 +562,11 @@ validator='regex=/^blue$/i'
 
 Make sure to change the highlited portion to match whatever is the answer to the question you put. Your visitors will also appreciate if you provided a hint about the length of the right answer.
 
-<p class="notice">
-    This step, incidentally, also shows that we can use 'bound' and normal cms:inputs together in the same form (the 'human' input we used above, unlike others, is not a bound field).<br/>
-    Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by 'frm\_' and 'k\_error\_' to input names).<br/>
-    The only difference between the two lies in the fact that values of normal inputs, unlike those of bound inputs, will not be saved into the database.
-</p>
+::: .notice
+This step, incidentally, also shows that we can use 'bound' and normal cms:inputs together in the same form (the 'human' input we used above, unlike others, is not a bound field).<br/>
+Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by 'frm\_' and 'k\_error\_' to input names).<br/>
+The only difference between the two lies in the fact that values of normal inputs, unlike those of bound inputs, will not be saved into the database.
+:::
 
 This one step alone should cut down the spam spewed by bots appreciably.<br/>
 Spam submitted by real humans is a different prospect altogether.
@@ -785,16 +785,16 @@ So now we have the full arsenal of our familiar Couch tags at our disposal to co
 Create a table, create a stacked display, show images, use custom CSS, JS ... whatever.<br/>
 Everything that can be used on the front-end can now be used in identical fashion on the backend.
 
-<p class="error">
-    **Caveat:** one little thing to keep in mind is that, unlike the front-end where our code controls the output of the entire page i.e. from &lt;HTML&gt; to &lt;/HTML&gt;, the snippet we use in the admin panel is constrained within an existing DIV -<br/>
-    <br/>
-    ```
+::: .error
+**Caveat:** one little thing to keep in mind is that, unlike the front-end where our code controls the output of the entire page i.e. from &lt;HTML&gt; to &lt;/HTML&gt;, the snippet we use in the admin panel is constrained within an existing DIV -<br/>
+<br/>
+```
 <div id="admin-wrapper-body">
-    <!-- our snippet gets output here -->
+<!-- our snippet gets output here -->
 </div>
-    ```
-    If your snippet uses its own CSS, this piece of information will likely be necessary to be taken into account.
-</p>
+```
+If your snippet uses its own CSS, this piece of information will likely be necessary to be taken into account.
+:::
 
 It is important to realize here that the default page listing shown by Couch, apart from listing pages, does several things. e.g. it handles folders display, pagination, bulk-selection of pages for deletion etc.<br/>
 Once we specify our snippet to be used for the display, it is an 'all or nothing' proposition.<br/>
@@ -868,7 +868,7 @@ Not very different from the default screen provide by Couch but now since the ou
 
 and much more.
 
-<p class="success">You can study this code to see the use of Databound forms for editing existing pages.</p>
+You can study this code to see the use of Databound forms for editing existing pages. {.success}
 
 So that brings us to the end of our little tutorial.
 

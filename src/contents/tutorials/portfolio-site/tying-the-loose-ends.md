@@ -6,7 +6,7 @@ template: default.html
 ---
 
 # Tying the loose ends
-<br/>
+
 ### The Menu
 
 [<img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/>](https://www.couchcms.com/docs/code/final.zip)

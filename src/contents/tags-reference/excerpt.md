@@ -44,7 +44,7 @@ By setting the 'truncate\_chars' to '1', the 'count' becomes the number of chara
 <cms:excerpt count='100' truncate_chars='1'>...blah blah...</cms:excerpt>
 ```
 
-<p class="notice">Please note that if 'truncate\_chars' is set to '1', the 'allow' parameter is ignored and all the HTML tags are stripped off the input.</p>
+Please note that if 'truncate\_chars' is set to '1', the 'allow' parameter is ignored and all the HTML tags are stripped off the input. {.notice}
 
 ## Variables
 
@@ -52,4 +52,4 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-*   [excerptHTML](../excerpthtml.html)
+*   [excerptHTML](./excerpthtml.html)

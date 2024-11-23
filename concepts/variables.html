@@ -62,54 +62,60 @@
         <a class="report-bug" data-title="Variables" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../concepts/variables.html" itemprop="item"><span itemprop="name">Variables</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../concepts.html" itemprop="item"><span itemprop="name">Core Concepts</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//concepts/variables.html" itemprop="item"><span itemprop="name">Variables</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
             </form>
 
             <article><h1 id="variables">Variables</h1>
-<p>Don&#39;t get put off by that programming term. Variable is simply a place that can hold different values at different times.</p>
-<p>You can use the Couch tag named <a href="../tags-reference/set.html"><strong><em>set</em></strong></a> to place values within variables. For example the following snippet -</p>
-<pre><code>&lt;cms:set my_message=&#39;Hello World&#39; /&gt;</code></pre><p>- will place value &#39;Hello World&#39; within a variable named <em>my_message</em> (i.e. set <em>my_message</em> to &#39;Hello World&#39;).<br/>
+<p>Don't get put off by that programming term. Variable is simply a place that can hold different values at different times.</p>
+<p>You can use the Couch tag named <a href="../../tags-reference/set.html"><strong><em>set</em></strong></a> to place values within variables. For example the following snippet -</p>
+<pre><code>&lt;cms:set my_message='Hello World' /&gt;
+</code></pre>
+<p>- will place value 'Hello World' within a variable named <em>my_message</em> (i.e. set <em>my_message</em> to 'Hello World').<br/>
 This variable (<em>my_message</em>) can then be used elsewhere.</p>
 <p>For example, in the following snippet -</p>
-<pre><code>&lt;cms:show &#39;Hello&#39; /&gt;</code></pre><p>- we are passing &#39;Hello&#39; as the parameter for <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> to display. If instead we do the following -</p>
-<pre><code>&lt;cms:show my_message /&gt;</code></pre><p>- instead of explicitly passing &#39;Hello&#39; as parameter, we are passing the value CONTAINED within <em>my_message</em> as the parameter. In this case &#39;Hello World&#39; will get displayed.</p>
+<pre><code>&lt;cms:show 'Hello' /&gt;
+</code></pre>
+<p>- we are passing 'Hello' as the parameter for <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> to display. If instead we do the following -</p>
+<pre><code>&lt;cms:show my_message /&gt;
+</code></pre>
+<p>- instead of explicitly passing 'Hello' as parameter, we are passing the value CONTAINED within <em>my_message</em> as the parameter. In this case 'Hello World' will get displayed.</p>
 <p>Thus we see that variables act as simple containers for values.<br/>
 The value can be changed anytime, thus -</p>
-<pre><code>&lt;cms:set my_message=&#39;Salut!&#39; /&gt;
-&lt;cms:show my_message /&gt;</code></pre><p>- <a href="../tags-reference/show.html"><strong><em>show</em></strong></a> will now display &#39;Salut!&#39;.</p>
+<pre><code>&lt;cms:set my_message='Salut!' /&gt;
+&lt;cms:show my_message /&gt;
+</code></pre>
+<p>- <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> will now display 'Salut!'.</p>
 <p>In the examples above, we set the variable ourselves manually.<br/>
-However, the variables that we&#39;ll be dealing with more often are those that we&#39;ll find automatically set for us. e.g. -</p>
+However, the variables that we'll be dealing with more often are those that we'll find automatically set for us. e.g. -</p>
 <ol>
-<li>At the execution of a page, Couch automatically sets certain variables that describe the current page and the context it is being executed in. These variables remain available throughout the page.<br/><br/>
+<li>At the execution of a page, Couch automatically sets certain variables that describe the current page and the context it is being executed in. These variables remain available throughout the page.<br/>
+<br/>
 For example - the following snippet placed in any template will output the name of the template -<br/>
 <br/>
-```<cms:show k_template_name />```
+<code>&lt;cms:show k_template_name /&gt;</code>
 and the following will output the link (URL) of the page -<br/>
 <br/>
-```<cms:show k_page_link />```
-In the examples above, *k\_template\_name* and *k\_page\_link* are variables that have been set by Couch.<br/>
+<code>&lt;cms:show k_page_link /&gt;</code>
+In the examples above, <em>k_template_name</em> and <em>k_page_link</em> are variables that have been set by Couch.<br/>
 <br/>
-See: [Variables available in Views](../variables-in-views.html)<br/><br/></li>
-<li>A Paired tag usually sets certain variables that pertain to the task the tag does. These variables remain available only within the start-tag and the end-tag.<br/><br/>
-For example - we have already seen how the [__*repeat*__](../../tags-reference/repeat.html) tag simply repeats the contents enclosed within it the number of times specified by the _count_ parameter. At each iteration, the [__*repeat*__](../../tags-reference/repeat.html) tag sets a variable named *k\_count* that is set to the count of the current iteration.<br/>
+See: <a href="./variables-in-views.html">Variables available in Views</a><br/><br/></li>
+<li>A Paired tag usually sets certain variables that pertain to the task the tag does. These variables remain available only within the start-tag and the end-tag.<br/>
 <br/>
-```
-<cms:repeat count='4'>
-    <cms:show k_count /><br>
-</cms:repeat>
-```
+For example - we have already seen how the <a href="../../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag simply repeats the contents enclosed within it the number of times specified by the <em>count</em> parameter. At each iteration, the <a href="../../tags-reference/repeat.html"><strong><em>repeat</em></strong></a> tag sets a variable named <em>k_count</em> that is set to the count of the current iteration.<br/>
+<br/><pre><code>&lt;cms:repeat count='4'&gt;
+    &lt;cms:show k_count /&gt;&lt;br&gt;
+&lt;/cms:repeat&gt;
+</code></pre>
 The snippet above will output -<br/>
-**0**<br/>
-**1**<br/>
-**2**<br/>
-**3**<br/>
-
-</li>
+<strong>0</strong><br/>
+<strong>1</strong><br/>
+<strong>2</strong><br/>
+<strong>3</strong><br/></li>
 </ol>
-<p>Having now seen what variables are, we can move on to complete the previous topic - <a href="setting-parameters.html"><strong>Setting a Tag&#39;s Parameters</strong></a>.</p>
+<p>Having now seen what variables are, we can move on to complete the previous topic - <a href="./setting-parameters.html"><strong>Setting a Tag's Parameters</strong></a>.</p>
 </article>
         </div>
         <!-- end -->

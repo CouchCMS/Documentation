@@ -54,7 +54,7 @@ However, the variables that we'll be dealing with more often are those that we'l
     ```<cms:show k_page_link />```
     In the examples above, *k\_template\_name* and *k\_page\_link* are variables that have been set by Couch.<br/>
     <br/>
-    See: [Variables available in Views](../variables-in-views.html)<br/><br/>
+    See: [Variables available in Views](./variables-in-views.html)<br/><br/>
 2.  A Paired tag usually sets certain variables that pertain to the task the tag does. These variables remain available only within the start-tag and the end-tag.<br/>
     <br/>
     For example - we have already seen how the [__*repeat*__](../../tags-reference/repeat.html) tag simply repeats the contents enclosed within it the number of times specified by the _count_ parameter. At each iteration, the [__*repeat*__](../../tags-reference/repeat.html) tag sets a variable named *k\_count* that is set to the count of the current iteration.<br/>
@@ -70,4 +70,4 @@ However, the variables that we'll be dealing with more often are those that we'l
     **2**<br/>
     **3**<br/>
 
-Having now seen what variables are, we can move on to complete the previous topic - [**Setting a Tag's Parameters**](../setting-parameters.html).
+Having now seen what variables are, we can move on to complete the previous topic - [**Setting a Tag's Parameters**](./setting-parameters.html).

@@ -88,10 +88,10 @@ The 'smart\_embed' tag makes it easier for us to implement the outlined approach
 
 That's right. Only a single line of code is required.
 
-<p class="success">
-    The 'smartness' of the smart\_embed tag lies in its capability to look into the snippets folder and then **automatically choose the snippet best matching the current view and then embed it**.<br/>
-    All we have to do is follow a simple file-naming convention to help smart\_embed in figuring out the right snippet to template.
-</p>
+::: .success
+The 'smartness' of the smart\_embed tag lies in its capability to look into the snippets folder and then **automatically choose the snippet best matching the current view and then embed it**.<br/>
+All we have to do is follow a simple file-naming convention to help smart\_embed in figuring out the right snippet to template.
+:::
 
 The 'smart\_embed' takes into consideration two values as it goes looking for the right snippet - the current view and the current template.<br/>
 For example, if the current template is 'movies.php' and it is being accessed in home-view, 'smart\_embed' tag will
@@ -263,7 +263,7 @@ The only part that differs is the 'content'.<br/>
 Create the chunk that shows the content for about.php, name it 'about-default.html' and place it within snippets/content folder.<br/>
 Access about.php again and we'll see that the new snippet is displayed for the content area while all the other snippets remain the same as used for index.php.
 
-<p class="notice">The important thing to note is that **we have not modified** the about.php template at all. We can modify its output by simply placing the appropriately named snippets in the proper folders.</p>
+The important thing to note is that **we have not modified** the about.php template at all. We can modify its output by simply placing the appropriately named snippets in the proper folders. {.notice}
 
 You'll appreciate this flexibility when dealing with cloned templates. Let us assume that index.php is now made clonable.<br/>
 The two views that we wish to handle are the 'list' view and the 'page' view.<br/>
@@ -311,15 +311,15 @@ Looking for files in folder snippets:
 Chosen file: home.html
 ```
 
-<p class="success">
-    **Tip:**<br/>
-    I find it tedious to flip the debug parameter if there are multiple 'smart\_embed' statements in my template.<br/>
-    I use the following code to use a variable to do so. This way I need to turn on/off the debug setting at only one place<br/>
-    **&lt;cms:set my\_debug='0' 'global' /&gt;**<br/>
-    **&lt;cms:smart\_embed 'header' debug=my\_debug /&gt;**<br/>
-    **&lt;cms:smart\_embed 'menu' debug=my\_debug /&gt;**<br/>
-    **&lt;cms:smart\_embed 'content' debug=my\_debug /&gt;**<br/>
-    **&lt;cms:smart\_embed 'footer' debug=my\_debug /&gt;**
-</p>
+::: .success
+**Tip:**<br/>
+I find it tedious to flip the debug parameter if there are multiple 'smart\_embed' statements in my template.<br/>
+I use the following code to use a variable to do so. This way I need to turn on/off the debug setting at only one place<br/>
+**&lt;cms:set my\_debug='0' 'global' /&gt;**<br/>
+**&lt;cms:smart\_embed 'header' debug=my\_debug /&gt;**<br/>
+**&lt;cms:smart\_embed 'menu' debug=my\_debug /&gt;**<br/>
+**&lt;cms:smart\_embed 'content' debug=my\_debug /&gt;**<br/>
+**&lt;cms:smart\_embed 'footer' debug=my\_debug /&gt;**
+:::
 
 In conclusion, the 'smart\_embed' tag represents the '**convention over configuration (AKA also known as coding by convention)**' approach and can prove to be an absolute life saver for certain types of sites. The examples we used above were the extreme cases where we delegated the entire display logic from the main templates to the snippets by using multiple 'smart\_embed' tags. However, we can also use the 'smart\_embed' tag to handle only certain regions by adding it to our regular templates.

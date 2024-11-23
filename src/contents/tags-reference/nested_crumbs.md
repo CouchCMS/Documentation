@@ -8,10 +8,10 @@ template: default.html
 
 The **nested\_crumbs** tag can be used to easily create breadcrumbs out of [nested-pages](../../concepts/nested-pages-aka-menu-maker.html).
 
-<p class="notice">
-    There is another tag named '[breadcrumbs](../breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.<br/>
-    'nested\_crumbs' on the other hand works with nested-pages only.
-</p>
+::: .notice
+There is another tag named '[breadcrumbs](./breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.<br/>
+'nested\_crumbs' on the other hand works with nested-pages only.
+:::
 
 ### Usage
 
@@ -76,6 +76,6 @@ When used as a tag-pair, the following variables are set for each crumb -
 
 ## Related Tags
 
-*   [menu](../menu.html)
-*   [breadcrumbs](../breadcrumbs.html)
-*   [nested\_pages](../nested_pages.html)
+*   [menu](./menu.html)
+*   [breadcrumbs](./breadcrumbs.html)
+*   [nested\_pages](./nested_pages.html)

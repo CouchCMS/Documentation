@@ -13,7 +13,7 @@ _Thumbnail_ type is different from all other types of editable regions in that t
 
 Once the thumbnail has been created, this editable region then holds its fully qualified URL.
 
-<p class="notice">The thumbnail gets created in the same folder as that of the main image.</p>
+The thumbnail gets created in the same folder as that of the main image. {.notice}
 
 Suppose we have an editable region, named *my\_image*, of type _image_ -
 
@@ -45,7 +45,7 @@ Once the user selects an image into the main image region (and saves the page), 
 
 Anytime the user changes the main image (and saves the changes), the thumbnail automatically reflects the changes.
 
-<p class="success">To create multiple thumbnail images of the same image (one might be square, the other rectangular, perhaps), define multiple regions and associate them all with the same parent image.</p>
+To create multiple thumbnail images of the same image (one might be square, the other rectangular, perhaps), define multiple regions and associate them all with the same parent image. {.success}
 
 The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -
 
@@ -155,21 +155,21 @@ As noted above, setting *show\_preview* to '1' causes a preview of the thumbnail
     type='thumbnail' />
 ```
 
-<p class="success">If both *preview\_width* and *preview\_height* are omitted, the thumbnail preview is of exactly the same dimensions as the thumbnail. Usually this is what you'd want and you won't find yourself setting *preview\_width* or *preview\_height* too often.</p>
+If both *preview\_width* and *preview\_height* are omitted, the thumbnail preview is of exactly the same dimensions as the thumbnail. Usually this is what you'd want and you won't find yourself setting *preview\_width* or *preview\_height* too often. {.success}
 
 ## Related Tags
 
-*   [editable](../../../editable.html)
-*   [editable (text)](../../text.html)
-*   [editable (password)](../../password.html)
-*   [editable (textarea)](../../textarea.html)
-*   [editable (richtext)](../../richtext.html)
-*   [editable (image)](../../image.html)
-*   [editable (file)](../../file.html)
-*   [editable (radio)](../../radio.html)
-*   [editable (checkbox)](../../checkbox.html)
-*   [editable (dropdown)](../../dropdown.html)
-*   [editable (group)](../../group.html)
-*   [editable (message)](../../message.html)
-*   [editable (nicedit)](../../nicedit.html)
-*   [editable (relation)](../../relation.html)
+*   [editable](../editable.html)
+*   [editable (text)](./text.html)
+*   [editable (password)](./password.html)
+*   [editable (textarea)](./textarea.html)
+*   [editable (image)](./image.html)
+*   [editable (thumbnail)](./thumbnail.html)
+*   [editable (file)](./file.html)
+*   [editable (radio)](./radio.html)
+*   [editable (checkbox)](./checkbox.html)
+*   [editable (dropdown)](./dropdown.html)
+*   [editable (group)](./group.html)
+*   [editable (message)](./message.html)
+*   [editable (nicedit)](./nicedit.html)
+*   [editable (relation)](./relation.html)

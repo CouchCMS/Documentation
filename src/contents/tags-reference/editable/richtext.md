@@ -27,15 +27,15 @@ The code above will result in -
 
 ![](../../../../assets/img/contents/editable-richtext-1.jpg)
 
-<p class="notice">
-    Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
-    <br/>
-    ```
+::: .notice
+Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
+<br/>
+```
 <cms:editable name='prop_desc' label='Description'
-     desc='Enter description of property here'
-     type='richtext' />
-    ```
-</p>
+    desc='Enter description of property here'
+    type='richtext' />
+```
+:::
 
 The contents of this region can be accessed, as with all other editable regions, by using the variable named after it -
 
@@ -43,13 +43,13 @@ The contents of this region can be accessed, as with all other editable regions,
 <cms:show prop_desc />
 ```
 
-<p class="success">
-    Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to _Comics Sans MS_.<br/>
-    <br/>
-    But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.<br/>
-    <br/>
-    The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.<br/>
-</p>
+::: .success
+Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to _Comics Sans MS_.<br/>
+<br/>
+But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.<br/>
+<br/>
+The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.<br/>
+:::
 
 ## Parameters
 
@@ -199,13 +199,13 @@ Next we need to inform [CKEditor](http://ckeditor.com/) to use the elements defi
     type='richtext'/>
 ```
 
-<p class="notice">**IMP.** Notice how we have provided the value of *custom\_styles* in two parts - name given to this set of styles (*my\_styles*) follwed by an **equal-to** sign and then the path of the JavaScript file (for our example, we assume that it has been saved within _styles_ folder of your website). Absolute path can also be used (see discussion of path in _css_ parameter above).</p>
+**IMP.** Notice how we have provided the value of *custom\_styles* in two parts - name given to this set of styles (*my\_styles*) follwed by an **equal-to** sign and then the path of the JavaScript file (for our example, we assume that it has been saved within _styles_ folder of your website). Absolute path can also be used (see discussion of path in _css_ parameter above). {.notice}
 
 The resulting drop-down list -
 
 ![](../../../../assets/img/contents/editable-richtext-3.gif)
 
-<p class="success">Everytime you modify the JavaScript file, you might need to clear your browser's cache to make the editor pickup the changed file.</p>
+Everytime you modify the JavaScript file, you might need to clear your browser's cache to make the editor pickup the changed file. {.success}
 
 ### toolbar
 
@@ -244,7 +244,7 @@ results in -
 
 ![](../../../../assets/img/contents/editable-richtext-5.gif)
 
-<p class="notice">_Medium_ is the default value and hence if _toolbar_ parameter is omitted, this is what is used.</p>
+_Medium_ is the default value and hence if _toolbar_ parameter is omitted, this is what is used. {.notice}
 
 #### full
 
@@ -322,7 +322,7 @@ You have the following buttons to choose from to display them in the toolbar -
 *   -
 *   \_
 
-<p class="notice">The last two buttons are hyphen and underscore. Both can be used to create a separator between buttons.</p>
+The last two buttons are hyphen and underscore. Both can be used to create a separator between buttons. {.notice}
 
 #### Examples:
 
@@ -366,31 +366,31 @@ Visually both might appear to be the same but when the toolbar needs to be broke
 
 Also note that you can force the toolbar to be break into a new row by specifying '|' twice (i.e. no buttons between two pipes - see how the group begining with the **cut** button has been forced into a new row).
 
-<p class="success">
-    **TIP** - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the [**Embed**](../../../embed.html) tag. Cut and paste the _value_ of the *custom\_toolbar* parameter (everything between the quotes) and save it in a file named, say, *my\_toolbar.inc*. Instruct the [**Embed**](../../../embed.html) tag to use this file.<br/>
-    <br/>
-    ```
+::: .success
+**TIP** - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the [**Embed**](../embed.html) tag. Cut and paste the _value_ of the *custom\_toolbar* parameter (everything between the quotes) and save it in a file named, say, *my\_toolbar.inc*. Instruct the [**Embed**](../embed.html) tag to use this file.<br/>
+<br/>
+```
 <cms:editable name='desc' label='Description'
-      desc='Enter description of property here'
-      toolbar='custom'
-      custom_toolbar="<cms:embed 'my_toolbar.inc' />"
-      type='richtext' />
-    ```
-</p>
+    desc='Enter description of property here'
+    toolbar='custom'
+    custom_toolbar="<cms:embed 'my_toolbar.inc' />"
+    type='richtext' />
+```
+:::
 
 ## Related Tags
 
-*   [editable](../../../editable.html)
-*   [editable (text)](../../text.html)
-*   [editable (password)](../../password.html)
-*   [editable (textarea)](../../textarea.html)
-*   [editable (image)](../../image.html)
-*   [editable (thumbnail)](../../thumbnail.html)
-*   [editable (file)](../../file.html)
-*   [editable (radio)](../../radio.html)
-*   [editable (checkbox)](../../checkbox.html)
-*   [editable (dropdown)](../../dropdown.html)
-*   [editable (group)](../../group.html)
-*   [editable (message)](../../message.html)
-*   [editable (nicedit)](../../nicedit.html)
-*   [editable (relation)](../../relation.html)
+*   [editable](../editable.html)
+*   [editable (text)](./text.html)
+*   [editable (password)](./password.html)
+*   [editable (textarea)](./textarea.html)
+*   [editable (image)](./image.html)
+*   [editable (thumbnail)](./thumbnail.html)
+*   [editable (file)](./file.html)
+*   [editable (radio)](./radio.html)
+*   [editable (checkbox)](./checkbox.html)
+*   [editable (dropdown)](./dropdown.html)
+*   [editable (group)](./group.html)
+*   [editable (message)](./message.html)
+*   [editable (nicedit)](./nicedit.html)
+*   [editable (relation)](./relation.html)

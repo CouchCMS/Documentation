@@ -25,9 +25,9 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [sub](../sub.html)
-*   [mul](../mul.html)
-*   [div](../div.html)
-*   [mod](../mod.html)
-*   [incr](../incr.html)
-*   [decr](../decr.html)
+*   [sub](./sub.html)
+*   [mul](./mul.html)
+*   [div](./div.html)
+*   [mod](./mod.html)
+*   [incr](./incr.html)
+*   [decr](./decr.html)

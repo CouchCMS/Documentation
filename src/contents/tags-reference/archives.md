@@ -63,7 +63,7 @@ Please see [**Core Concepts - Archives**](../../concepts/using-archives.html) fo
 
 ## Related Tags
 
-*   [pages](../pages.html)
-*   [folders](../folders.html)
-*   [templates](../templates.html)
-*   [comments](../comments.html)
+*   [pages](./pages.html)
+*   [folders](./folders.html)
+*   [templates](./templates.html)
+*   [comments](./comments.html)

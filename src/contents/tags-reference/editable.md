@@ -43,20 +43,20 @@ This can be used to provide the user some more information about the editable re
 
 The following are the different types of editable regions that can be created (_click for full details_).
 
-*   [text](../editable/text.html)
-*   [password](../editable/password.html)
-*   [textarea](../editable/textarea.html)
-*   [richtext](../editable/richtext.html)
-*   [image](../editable/image.html)
-*   [thumbnail](../editable/thumbnail.html)
-*   [file](../editable/file.html)
-*   [radio](../editable/radio.html)
-*   [checkbox](../editable/checkbox.html)
-*   [dropdown](../editable/dropdown.html)
-*   [group](../editable/group.html)
-*   [message](../editable/message.html)
-*   [nicedit](../editable/nicedit.html)
-*   [relation](../editable/relation.html)
+*   [text](./editable/text.html)
+*   [password](./editable/password.html)
+*   [textarea](./editable/textarea.html)
+*   [richtext](./editable/richtext.html)
+*   [image](./editable/image.html)
+*   [thumbnail](./editable/thumbnail.html)
+*   [file](./editable/file.html)
+*   [radio](./editable/radio.html)
+*   [checkbox](./editable/checkbox.html)
+*   [dropdown](./editable/dropdown.html)
+*   [group](./editable/group.html)
+*   [message](./editable/message.html)
+*   [nicedit](./editable/nicedit.html)
+*   [relation](./editable/relation.html)
 
 ### order
 
@@ -72,13 +72,13 @@ The default order number given to all editable regions is '0'.
 
 ### group
 
-Related editable regions can be grouped together by setting the _group_ parameter of each region to the name of an another editable region of type [**group**](../editable/group.html). For example -
+Related editable regions can be grouped together by setting the _group_ parameter of each region to the name of an another editable region of type [**group**](./editable/group.html). For example -
 
 ```
 group='paypal_group'
 ```
 
-\- where paypal\_group is the name of an editable region of type [**group**](../editable/group.html).
+\- where paypal\_group is the name of an editable region of type [**group**](./editable/group.html).
 
 ### searchable
 
@@ -100,9 +100,9 @@ search_type='decimal'
 *   integer
 *   decimal
 
-The default *search\_type* of all editable regions is _text_. For editable regions of type [**text**](../editable/text.html), [**radio**](../editable/radio.html) and [**dropdown**](../editable/dropdown.html), the *search\_type* can be changed to _integer_ or _decimal_ if the values contained within them would be numeric.
+The default *search\_type* of all editable regions is _text_. For editable regions of type [**text**](./editable/text.html), [**radio**](./editable/radio.html) and [**dropdown**](./editable/dropdown.html), the *search\_type* can be changed to _integer_ or _decimal_ if the values contained within them would be numeric.
 
-<p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../pages.html#custom_field).</p>
+It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](./pages.html#custom_field). {.notice}
 
 ### hidden
 
@@ -110,7 +110,7 @@ The default *search\_type* of all editable regions is _text_. For editable regio
 hidden='1'
 ```
 
-_hidden_ parameter can be set to '1' to supress the output of an editable region that has been defined outside the [**Template**](../template.html) tag.
+_hidden_ parameter can be set to '1' to supress the output of an editable region that has been defined outside the [**Template**](./template.html) tag.
 
 ### required
 
@@ -120,7 +120,7 @@ required='1'
 
 Setting the _required_ parameter to '1' for an editable region will make it mandatory for the user to input something within it. i.e. the region cannot be left empty.
 
-<p class="success">If an editable region marked as required is left empty, the user is not allowed to save his changes and a default error message gets displayed. You can display your custom error message by setting the *validator\_msg* parameter described below.</p>
+If an editable region marked as required is left empty, the user is not allowed to save his changes and a default error message gets displayed. You can display your custom error message by setting the *validator\_msg* parameter described below. {.success}
 
 ### validator
 
@@ -275,13 +275,13 @@ validator='regex=/(cat|dog)$/i'
 
 In the silly example, the input is considered valid only if it ends in either _cat_ or _dog_.
 
-<p class="success">
-    Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-    <br/>
-    ```
+::: .success
+Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -<br/>
+<br/>
+```
 validator='alpha_num | min_len=6 | max_len=14'
-    ```
-</p>
+```
+:::
 
 ### validator_msg
 
@@ -293,13 +293,13 @@ You can display your own custom message instead by setting the *validator\_msg* 
 validator_msg='required=What! You think you can get away with leaving this empty?'
 ```
 
-<p class="success">
-    Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-    <br/>
-    ```
+::: .success
+Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -<br/>
+<br/>
+```
 validator_msg='required=Please enter something | min_len=Too short!'
-    ```
-</p>
+```
+:::
 
 ### separator
 
@@ -338,17 +338,17 @@ A variable by the name of the editable region becomes available in the context t
 
 ## Related Tags
 
-*   [editable (text)](../editable/text.html)
-*   [editable (password)](../editable/password.html)
-*   [editable (textarea)](../editable/textarea.html)
-*   [editable (richtext)](../editable/richtext.html)
-*   [editable (image)](../editable/image.html)
-*   [editable (thumbnail)](../editable/thumbnail.html)
-*   [editable (file)](../editable/file.html)
-*   [editable (radio)](../editable/radio.html)
-*   [editable (checkbox)](../editable/checkbox.html)
-*   [editable (dropdown)](../editable/dropdown.html)
-*   [editable (group)](../editable/group.html)
-*   [editable (message)](../editable/message.html)
-*   [editable (nicedit)](../editable/nicedit.html)
-*   [editable (relation)](../editable/relation.html)
+*   [editable (text)](./editable/text.html)
+*   [editable (password)](./editable/password.html)
+*   [editable (textarea)](./editable/textarea.html)
+*   [editable (richtext)](./editable/richtext.html)
+*   [editable (image)](./editable/image.html)
+*   [editable (thumbnail)](./editable/thumbnail.html)
+*   [editable (file)](./editable/file.html)
+*   [editable (radio)](./editable/radio.html)
+*   [editable (checkbox)](./editable/checkbox.html)
+*   [editable (dropdown)](./editable/dropdown.html)
+*   [editable (group)](./editable/group.html)
+*   [editable (message)](./editable/message.html)
+*   [editable (nicedit)](./editable/nicedit.html)
+*   [editable (relation)](./editable/relation.html)

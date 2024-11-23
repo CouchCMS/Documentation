@@ -24,5 +24,5 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [set\_cookie](../set_cookie.html)
-*   [get\_cookie](../get_cookie.html)
+*   [set\_cookie](./set_cookie.html)
+*   [get\_cookie](./get_cookie.html)

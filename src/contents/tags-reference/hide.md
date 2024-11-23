@@ -27,4 +27,4 @@ This tag sets no variables of its own.
 
 ## Related Tags
 
-*   [ignore](../ignore.html)
+*   [ignore](./ignore.html)

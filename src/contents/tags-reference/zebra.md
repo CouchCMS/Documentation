@@ -56,5 +56,5 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [repeat](../repeat.html)
-*   [each](../each.html)
+*   [repeat](./repeat.html)
+*   [each](./each.html)

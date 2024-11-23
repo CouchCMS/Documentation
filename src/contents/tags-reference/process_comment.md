@@ -21,4 +21,4 @@ This tag is self-closing and does not set any variables of its own except the *k
 
 ## Related Tags
 
-*   [comments](../comments.html)
+*   [comments](./comments.html)

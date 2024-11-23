@@ -7,7 +7,7 @@ template: default.html
 # set
 
 The **Set** tag is used to put some value in a variable. The variable, if not already present, is created.<br/>
-(This tag is the counterpart of [**Show**](../show.html) tag which is used to display set variables)
+(This tag is the counterpart of [**Show**](./show.html) tag which is used to display set variables)
 
 The following example will create a variable called 'greeting' and set its value to 'Hello'
 
@@ -27,9 +27,9 @@ The following will set the value of 'message' to 'Hello World'.
 <cms:set message="<cms:show greeting /> World" />
 ```
 
-<p class="notice">A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.</p>
+A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. {.notice}
 
-<p class="error">**IMP.** **Set** cannot be used to set system variables (i.e. those that begin with prefix 'k\_').</p>
+**IMP.** **Set** cannot be used to set system variables (i.e. those that begin with prefix 'k\_'). {.error}
 
 ## Parameters
 
@@ -60,7 +60,7 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-*   [show](../show.html)
-*   [get](../get.html)
-*   [get\_custom\_field](../get_custom_field.html)
-*   [pages](../pages.html)
+*   [show](./show.html)
+*   [get](./get.html)
+*   [get\_custom\_field](./get_custom_field.html)
+*   [pages](./pages.html)

@@ -212,23 +212,23 @@ The finished code should be something like this -
 
 ![](../../../../assets/img/contents/portfolio-site-142.png)
 
-<p class="notice">
-    Everything should look familiar in the code above except for the highlighted parameter that needs a little explanation.<br/>
-    <br/>
-    A clonable template in Couch serves three purposes -<br/>
-    **1\.** It defines the URL that will be used to access the pages created from this template.<br/>
-    **2\.** It defines the editable regions that will hold data belonging to each cloned page.<br/>
-    **3\.** It provides the HTML code that will be used to display each page (after processing the Couch tags within it).<br/>
-    <br/>
-    Normally when we create any cloned template, the template serves all the three mentioned purposes. However, this is not mandatory and a template could be used to fulfill only some of these functions.<br/>
-    <br/>
-    The *portfolio\_desc.php* template that we created is meant to serve only the second purpose mentioned in the list above.<br/>
-    Its only purpose is to define the two editable regions that will then be used to store data pertaining to the folders.<br/>
-    The pages cloned out of it are not meant to be accessed directly in a browser through a URL. As such, it also does not contain any HTML code whatsoever.<br/>
-    <br/>
-    By declaring this template as non-executable (executable='0'), we are signaling to Couch that this template is not meant to be accessed directly via a URL.<br/>
-    When you are logged-in as the super-admin and access *http&#58;//www.mytestsite.com/portfolio\_desc.php*, Couch loads up this template as a normal template (because without doing this the changes you made will not take effect). However, try accessing the same URL without being logged-in as the super-admin and you'll receive a 'HTTP 404 Page not found' error.
-</p>
+::: .notice
+Everything should look familiar in the code above except for the highlighted parameter that needs a little explanation.<br/>
+<br/>
+A clonable template in Couch serves three purposes -<br/>
+**1\.** It defines the URL that will be used to access the pages created from this template.<br/>
+**2\.** It defines the editable regions that will hold data belonging to each cloned page.<br/>
+**3\.** It provides the HTML code that will be used to display each page (after processing the Couch tags within it).<br/>
+<br/>
+Normally when we create any cloned template, the template serves all the three mentioned purposes. However, this is not mandatory and a template could be used to fulfill only some of these functions.<br/>
+<br/>
+The *portfolio\_desc.php* template that we created is meant to serve only the second purpose mentioned in the list above.<br/>
+Its only purpose is to define the two editable regions that will then be used to store data pertaining to the folders.<br/>
+The pages cloned out of it are not meant to be accessed directly in a browser through a URL. As such, it also does not contain any HTML code whatsoever.<br/>
+<br/>
+By declaring this template as non-executable (executable='0'), we are signaling to Couch that this template is not meant to be accessed directly via a URL.<br/>
+When you are logged-in as the super-admin and access *http&#58;//www.mytestsite.com/portfolio\_desc.php*, Couch loads up this template as a normal template (because without doing this the changes you made will not take effect). However, try accessing the same URL without being logged-in as the super-admin and you'll receive a 'HTTP 404 Page not found' error.
+:::
 
 Access *http&#58;//www.mytestsite.com/portfolio\_desc.php* while being logged-in as the super-admin. You'll get a blank page because the template contains no HTML. However, the purpose of this visit was to execute the Couch tags contained within the template. To verify that, visit the admin section and you should find that Couch has created the default cloned page for this template and has also created the two editable regions.
 
@@ -258,4 +258,4 @@ Accessing _http&#58;//www.mytestsite.com/portfolio.php_ will now show the catego
 
 That wraps up the portfolio section.
 
-[Next we set up the Contact Us section.](../../contact-form.html)
+[Next we set up the Contact Us section.](./contact-form.html)

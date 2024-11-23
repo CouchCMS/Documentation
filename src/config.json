@@ -1,7 +1,20 @@
 {
-    "baseUrl": "./",
+    "baseUrl": "/",
     "output": "./../",
     "plugins": [
-        "wintersmith-nunjucks"
-    ]
+        "wintersmith-nunjucks",
+        "wintersmith-markdown-it"
+    ],
+    "markdown-it": {
+        "settings": {
+            "html": true,
+            "linkify": true,
+            "typographer": false
+        },
+        "markdown-it-attrs": {
+            "allowedAttributes": ["id","class"]
+        },
+        "markdown-it-div": {},
+        "markdown-it-anchor": {"tabIndex": false}
+    }
 }

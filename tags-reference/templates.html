@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="templates" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/templates.html" itemprop="item"><span itemprop="name">templates</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/templates.html" itemprop="item"><span itemprop="name">templates</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -71,9 +71,11 @@
             <article><h1 id="templates">templates</h1>
 <p>The <strong>templates</strong> tag can be used to enumerate all the templates that are managed by Couch.</p>
 <p>Example -</p>
-<pre><code>&lt;cms:templates show_hidden=&#39;1&#39; order=&#39;desc&#39;&gt;
+<pre><code>&lt;cms:templates show_hidden='1' order='desc'&gt;
     &lt;cms:dump /&gt;
-&lt;/cms:templates&gt;</code></pre><h2 id="parameters">Parameters</h2>
+&lt;/cms:templates&gt;
+</code></pre>
+<h2 id="parameters">Parameters</h2>
 <ul>
 <li>show_hidden</li>
 <li>orderby</li>
@@ -82,7 +84,7 @@
 <h3 id="show_hidden">show_hidden</h3>
 <p>By default the hidden templates are not enumerated. This can be changed by setting this parameter to 1.</p>
 <h3 id="orderby">orderby</h3>
-<p>The templates can be ordered by one of these attributes - <em>name_, _title</em> or <em>order</em>. The default is <em>order</em>.</p>
+<p>The templates can be ordered by one of these attributes - <em>name</em>, <em>title</em> or <em>order</em>. The default is <em>order</em>.</p>
 <h3 id="order">order</h3>
 <p>Can be set to either <em>asc</em> or <em>desc</em>.</p>
 <h2 id="variables">Variables</h2>
@@ -102,10 +104,10 @@
 </ul>
 <h2 id="related-tags">Related Tags</h2>
 <ul>
-<li><a href="pages.html">pages</a></li>
-<li><a href="folders.html">folders</a></li>
-<li><a href="archives.html">archives</a></li>
-<li><a href="comments.html">comments</a></li>
+<li><a href="./pages.html">pages</a></li>
+<li><a href="./folders.html">folders</a></li>
+<li><a href="./archives.html">archives</a></li>
+<li><a href="./comments.html">comments</a></li>
 </ul>
 </article>
         </div>

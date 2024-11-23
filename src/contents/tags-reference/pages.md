@@ -231,7 +231,7 @@ Apart from the three fields mentioned above, any of the custom field defined in 
 
 will sort the fetched pages by the custom field named 'my\_blog\_author'.
 
-<p class="notice">**IMP.** Though any type of editable region can be used as the orderby field, it is the 'text', 'textarea', 'dropdown' and 'radio' types that are best suited for ordering the pages.</p>
+**IMP.** Though any type of editable region can be used as the orderby field, it is the 'text', 'textarea', 'dropdown' and 'radio' types that are best suited for ordering the pages. {.notice}
 
 Multiple fields can be used together for sorting e.g.
 
@@ -283,14 +283,14 @@ To fetch those pages where the editable region 'my\_blog\_author' exactly matche
 
 This example would fetch all cloned pages of blog.php where the editable region 'my\_blog\_author' exactly matches either the term 'jeffrey' or 'arthur'.
 
-<p class="notice">
-    Since a comma ',' is being used to separate two values, if any of the values contains a comma<br/>
-    within itself you'll have to 'escape' the comma by prepending it with a backward slash -<br/>
-    'my\_blog\_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci<br/>
-    'my\_blog\_text=veni\\, vidi\\, veci' - contains the phrase 'veni, vidi, veci'.<br/>
-    <br/>
-    Similarly if any of the values contains a single quote ''' or double quote '"', it can be escaped likewise.
-</p>
+::: .notice
+Since a comma ',' is being used to separate two values, if any of the values contains a comma<br/>
+within itself you'll have to 'escape' the comma by prepending it with a backward slash -<br/>
+'my\_blog\_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci<br/>
+'my\_blog\_text=veni\\, vidi\\, veci' - contains the phrase 'veni, vidi, veci'.<br/>
+<br/>
+Similarly if any of the values contains a single quote ''' or double quote '"', it can be escaped likewise.
+:::
 
 ```
 <cms:pages masterpage='blog.php' custom_field='my_blog_author!=jeffrey'></cms:pages>
@@ -310,12 +310,12 @@ This example would fetch all cloned pages of blog.php where the editable region 
 
 This example would fetch all cloned pages of blog.php where the editable region 'my\_blog\_author' DOES NOT contain the words 'jeffrey' and 'arthur' anywhere within it.
 
-<p class="error">
-    The above snippet might seem a little counter-intuitive.<br/>
-    It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not<br/>
-    have both jeffrey and arthur in the same field.<br/>
-    For how to fetch pages that contain neither jeffrey nor arthur, use the multiple fields examples given below.
-</p>
+::: .error
+The above snippet might seem a little counter-intuitive.<br/>
+It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not<br/>
+have both jeffrey and arthur in the same field.<br/>
+For how to fetch pages that contain neither jeffrey nor arthur, use the multiple fields examples given below.
+:::
 
 Multiple custom fields may be combined together with a pipe '|' character (The pipe stands for a boolean AND) -<br/>
 The same custom field may be repeated.
@@ -341,21 +341,21 @@ This example would fetch all pages that contain 'jeffery' within 'my\_blog\_auth
 Custom fields can also be used for comparisions other than the equality and non-equality described above.<br/>
 For example, we can fetch pages that have the value of a certain editable region 'greater than' or 'less than' a particular value.
 
-<p class="notice">
-    Please bear in mind that if an editable region will contain values that you plan to compare in this manner<br/>
-    (i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -<br/>
-    age &lt; 35<br/>
-    salary &gt; 12500<br/>
-    distance &gt;= 23.56<br/>
-    price = 355.39<br/>
-    <br/>
-    Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -<br/>
-    telephone\_number &lt; 234567878<br/>
-    <br/>
-    For all such cases where the values will be numbers and you'd want to use them in the *custom\_field* parameter, MAKE SURE to set the *search\_type* parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
-    <br/>
-    Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search\_type.
-</p>
+::: .notice
+Please bear in mind that if an editable region will contain values that you plan to compare in this manner<br/>
+(i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -<br/>
+age &lt; 35<br/>
+salary &gt; 12500<br/>
+distance &gt;= 23.56<br/>
+price = 355.39<br/>
+<br/>
+Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -<br/>
+telephone\_number &lt; 234567878<br/>
+<br/>
+For all such cases where the values will be numbers and you'd want to use them in the *custom\_field* parameter, MAKE SURE to set the *search\_type* parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
+<br/>
+Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search\_type.
+:::
 
 As an example of numeric fields -
 
@@ -386,7 +386,7 @@ See [**Pagination**](../../concepts/pagination.html).
 
 ## Related Tags
 
-*   [folders](../folders.html)
-*   [archives](../archives.html)
-*   [templates](../templates.html)
-*   [comments](../comments.html)
+*   [folders](./folders.html)
+*   [archives](./archives.html)
+*   [templates](./templates.html)
+*   [comments](./comments.html)

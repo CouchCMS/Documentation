@@ -51,4 +51,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [cloak\_email](../cloak_email.html)
+*   [cloak\_email](./cloak_email.html)

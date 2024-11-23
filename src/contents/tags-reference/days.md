@@ -71,6 +71,6 @@ Denotes the position of the day in timelime (relative to today). Can be one of t
 
 ## Related Tags
 
-*   [calendar](../calendar.html)
-*   [weeks](../weeks.html)
-*   [entries](../entries.html)
+*   [calendar](./calendar.html)
+*   [weeks](./weeks.html)
+*   [entries](./entries.html)

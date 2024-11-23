@@ -31,7 +31,7 @@ This addon recognizes the fact that there are two different ways editable region
 Let us take a deeper look at how the two kinds of on-page editing work. But before we do that, we need to enable the addon first.<br/>
 It requires the usual procedure of making an entry in the '_couch/addons/kfunctions.php_' file.
 
-<p class="notice">If there is no '_kfunctions.php_' in the 'addons' folder, please rename the '_kfunctions.example.php_' file to '_kfunctions.php_'.</p>
+If there is no '_kfunctions.php_' in the 'addons' folder, please rename the '_kfunctions.example.php_' file to '_kfunctions.php_'. {.notice}
 
 Open _kfunctions.php_ in your text editor and add the following line to it
 
@@ -126,10 +126,10 @@ Saving the template and visiting it as admin will show the following change
 
 Notice the 'Edit' link where we placed the **popup\_edit** tag.
 
-<p class="notice">
-    The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '*link\_text*' parameter of the **popup\_edit** tag.<br/>
-    You can also style this link anyway you like - it is a regular anchor element with its class set as 'k\_inline'. You can add you own classes using the '_class_' parameter.  This can be used, for example, to show a pencil icon instead of the text.
-</p>
+::: .notice
+The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '*link\_text*' parameter of the **popup\_edit** tag.<br/>
+You can also style this link anyway you like - it is a regular anchor element with its class set as 'k\_inline'. You can add you own classes using the '_class_' parameter.  This can be used, for example, to show a pencil icon instead of the text.
+:::
 
 Clicking on the link will bring up the promised popup.
 
@@ -187,7 +187,7 @@ Add an **inline\_edit** tag to it as follows
 </header>
 ```
 
-<p class="error">**IMP:** Please notice that the **inline\_edit** tag is always added as a parameter to a block-level HTML element.</p>
+**IMP:** Please notice that the **inline\_edit** tag is always added as a parameter to a block-level HTML element. {.error}
 
 Visiting the template should show the following
 
@@ -199,13 +199,13 @@ Clicking anywhere within the text will display the editing toolbar
 
 Changing the heading now only requires editing it directly and clicking the 'save' icon.
 
-<p class="notice">
-    If the light-yellow outline, demarcating the inline editable regions, bothers you, it can be turned off by setting the 'no\_border' parameter of the **load\_edit** tag we placed in the header<br/>
-    <br/>
-    ```
+::: .notice
+If the light-yellow outline, demarcating the inline editable regions, bothers you, it can be turned off by setting the 'no\_border' parameter of the **load\_edit** tag we placed in the header<br/>
+<br/>
+```
 <cms:load_edit no_border='1' />
-    ```
-</p>
+```
+:::
 
 Let us add inline editing to the final region and complete our tutorial.
 
@@ -251,7 +251,7 @@ and you'll find that the onpage editing functionality disappears from our templa
 Of course, that is not much good. It'd be better if the admin could selectively 'toggle' this **no\_edit** tag on/off.<br/>
 We can use the standard Couch tags for doing that. I'll describe one quick method of doing so below.
 
-<p class="notice">Please bear in mind that the following method is just one of the N number of ways we could implement the toggle - feel free to code/design you own if this method does no suit you.</p>
+Please bear in mind that the following method is just one of the N number of ways we could implement the toggle - feel free to code/design you own if this method does no suit you. {.notice}
 
 My solution relies on using a session variable to conditionally output the **no\_edit** tag. The line of code mentioned above now becomes
 
@@ -396,7 +396,7 @@ For example, suppose a template has a richtext editable region named 'my\_descri
 </div>
 ```
 
-<p class="notice">Please notice that we need to add the *inline\_edit* tag as if it were an unnamed parameter of the element being converted.</p>
+Please notice that we need to add the *inline\_edit* tag as if it were an unnamed parameter of the element being converted. {.notice}
 
 The *inline\_edit* tag supports the following parameters:
 

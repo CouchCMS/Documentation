@@ -35,4 +35,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [exists](../exists.html)
+*   [exists](./exists.html)

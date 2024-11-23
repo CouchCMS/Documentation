@@ -11,7 +11,7 @@ A typical website usually consists of two kind of pages -
 1.  Pages that can be grouped together under a common section e.g. all the pages belonging to the blog section or portfolio section.
 2.  Standalone single pages that are distinct enough to form a section of their own e.g. About-us, Contact-us or Privacy-policy etc.
 
-In Couch we handle the first kind of pages mentioned above by cloning them out of a single template e.g. all the pages of the blog section will actually use only a single physical template 'blog.php' (see: [Cloned Pages](../cloned-pages.html)).
+In Couch we handle the first kind of pages mentioned above by cloning them out of a single template e.g. all the pages of the blog section will actually use only a single physical template 'blog.php' (see: [Cloned Pages](./cloned-pages.html)).
 
 We handle the second kind of pages by using a separate template for each of such pages e.g. About-us section might use 'about-us.php' while Contact-us uses 'contact.php'.
 
@@ -24,10 +24,10 @@ The hierarchical relation between the pages usually manifests itself in these wa
 **2\.** The breadcrumbs - where the crumbs represent the hierarchy of pages leading up to the page being visited.<br/>
 **3\.** The URL of a page - where the page's hierarchy in the site-tree shows up as segments of the URL (if prettyURLs are used).
 
-<p class="success">
-    Creating a menu that reflects the site structure is the more pressing demand that is encountered.<br/>
-    A related requirement that often crops up with building a site's menu may be cited here - it is the site-owner's demand to be able to manipulate the menu himself i.e. to decide which pages show up in the menu and at which location.
-</p>
+::: .success
+Creating a menu that reflects the site structure is the more pressing demand that is encountered.<br/>
+A related requirement that often crops up with building a site's menu may be cited here - it is the site-owner's demand to be able to manipulate the menu himself i.e. to decide which pages show up in the menu and at which location.
+:::
 
 If a site having the structure shown above was to be built in Couch, we already know how to create each of the sections. Creating the hierarchical relation between them, however, would not be so straightforward.
 
@@ -40,7 +40,7 @@ Couch version 1.2 introduces 'Nested Pages' feature to provide such a way.
 
 A nested-page, internally, is just a variation of the regular cloned-page in Couch that you are already familiar with.
 
-<p class="error">If not, please first take a look at the '[Cloned Pages](../cloned-pages.html)' documentation. Much of the current discussion will not make much sense unless you are familiar with the regular cloned pages in Couch.</p>
+If not, please first take a look at the '[Cloned Pages](./cloned-pages.html)' documentation. Much of the current discussion will not make much sense unless you are familiar with the regular cloned pages in Couch. {.error}
 
 It is almost identical to the regular cloned page except for the following characteristics -
 
@@ -123,7 +123,7 @@ As we already mentioned, the blog and portfolio sections can be implemented usin
 
 Get them done first using clonable templates e.g. blog.php and portfolio.php.
 
-<p class="notice">We assume you already know how to create regular cloned pages. [Please see the documentation](../cloned-pages.html) if you need a refresher.</p>
+We assume you already know how to create regular cloned pages. [Please see the documentation](./cloned-pages.html) if you need a refresher. {.notice}
 
 With those sections done we can move on to the isolated standalone pages.<br/>
 It is these pages that we'll implement using the nested-pages feature.
@@ -143,7 +143,7 @@ Same applies for the 'testimonials' in _http&#58;//www.yoursite.com/about-us/wha
 However which page do you think will get loaded for this URL? -<br/>
 _http&#58;//www.yoursite.com/_
 
-If you are familiar with the regular cloned pages, you'll recognize that this is the 'list-view' \[see [cloned-pages](../cloned-pages.html) and [views](../views.html)\].<br/>
+If you are familiar with the regular cloned pages, you'll recognize that this is the 'list-view' \[see [cloned-pages](./cloned-pages.html) and [views](./views.html)\].<br/>
 Since no page is indicated, none gets loaded. Only the empty template will show up (i.e. the HTML will appear but the editable regions will be empty).<br/>
 We also know that in 'list-view', we usually list all the cloned pages of the template (we can choose to do any other thing we want to - point is we'll have to handle the view ourselves).<br/>
 As with any other clonable template, we'll add the following logic to the index.php template -
@@ -162,7 +162,7 @@ Moving on, we now define the editable regions for index.php. Since all the clone
 
 ![](../../assets/img/contents/nested-pages-12.png)
 
-<p class="success">Most of the standalone pages are usually similar and can share the same template and editable regions but what happens when one of them happens to differ from the rest (e.g. contact-us page will usually have a different markup than the others)?. Please read on. We'll illustrate how to handle that a little further down.</p>
+Most of the standalone pages are usually similar and can share the same template and editable regions but what happens when one of them happens to differ from the rest (e.g. contact-us page will usually have a different markup than the others)?. Please read on. We'll illustrate how to handle that a little further down. {.success}
 
 With the preparations done, make the mandatory visit to index.php as super-admin. This will make Couch persist all the changes and add 'index.php' as a template managed by it.
 
@@ -208,7 +208,7 @@ Paste the URL of the actual portfolio section into the textbox
 
 ![](../../assets/img/contents/nested-pages-19.png)
 
-<p class="error">**IMP:** always get the URL of any section being pointed to by visiting it and copying its URL from the address bar of the browser.</p>
+**IMP:** always get the URL of any section being pointed to by visiting it and copying its URL from the address bar of the browser. {.error}
 
 Click save. Click on the 'View' button to visit this nested page of ours. You'll notice that, instead of _http&#58;//www.yoursite.com/about-us/what-we-do/portfolio/_ (this nested 'portfolio' page's canonical URL), we get redirected to _http&#58;//www.yoursite.com/portfolio/_.
 
@@ -221,7 +221,7 @@ If _index.php_ is being used as the template for the nested-pages (as we are doi
 Masquerading is a very powerful method that can be used to **make the pointer page behave as if it were the target section itself**.<br/>
 By using this option we can virtually move an entire section anywhere within the nested-pages hierarchy, thus being able to choose any arbitrary URL for that section.
 
-<p class="notice">Masquerading requires prettyURLs to be enabled. This is understandable because the whole purpose of masquerading is to impose a new URL structure (established by the pointer page's hierarchy) upon the section being masqueraded. Please see [Pretty URLS](../pretty-urls.html) section in documentation if you require information on how to enable this feature.</p>
+Masquerading requires prettyURLs to be enabled. This is understandable because the whole purpose of masquerading is to impose a new URL structure (established by the pointer page's hierarchy) upon the section being masqueraded. Please see [Pretty URLS](./pretty-urls.html) section in documentation if you require information on how to enable this feature. {.notice}
 
 A slight modification to the previous example should make the concept of masquerading clear.
 
@@ -411,56 +411,56 @@ Visit the site and this is the menu that should appear -
 Play around with this menu and you'll notice that not only does it automatically highlight the page being visited but also all the parent pages above the current page (if there are any). For example, in the image above, the page being visited is 'Testimonials'. As can be seen, both the parent pages of it are also highlighted.<br/>
 By default, the 'menu' tag applies the classname 'current' to the current menu-item. It also applies the classname 'active' to all the parent menu-items leading to (and including) the current menu-item. We can use this behavior to set appropriate CSS styles for highlighting the selected items.
 
-<p class="notice">
-    How the 'menu' tag recognizes a menu-item to be current requires a little explanation.<br/>
-    <br/>
-    When a page is visited, the 'menu' tag iterates through its associated nested-pages tree testing each menu-item (i.e. nested-page) against the visited page to determine if they match.<br/>
-    <br/>
-    For normal menu-items (i.e. those that are not pointers to other pages) the process is straightforward - if the page being visited is the same as the menu-item, the menu-item is marked as 'current' and all menu-items leading to it (including the current menu-item) as 'active'.<br/>
-    <br/>
-    For menu-items that point to other pages, however, the 'menu' tag needs to apply a fair bit of intelligence to recognize if a menu-item is current.<br/>
-    Let us say that a menu-item being tested by the 'menu' tag points to the following location -<br/>
-    _http&#58;//www.yoursite.com/portfolio.php_ (_http&#58;//www.yoursite.com/portfolio/_ with prettyURL) - the home-view of template 'portfolio.php'.<br/>
-    <br/>
-    Now if the page being visited is _http&#58;//www.yoursite.com/portfolio.php_, it is perfect match and so the menu-item in question will be marked as 'current', its parents will be marked as 'active' and the process will end i.e. no further menu-items will be examined (there can be only one current page in the tree at any time). This was no different than what happens with non-pointer pages.<br/>
-    <br/>
-    However, consider if the page being visited happens to be a cloned page of 'portfolio.php'<br/>
-    e.g. _http&#58;//www.yoursite.com/portfolio.php?p=34_ (_http&#58;//www.yoursite.com/portfolio/some-item.html_ with prettyURL).<br/>
-    Or it happens to be a folder-view of 'portfolio.php'<br/>
-    e.g. _http&#58;//www.yoursite.com/portfolio.php?f=2_ (_http&#58;//www.yoursite.com/portfolio/some-folder/_ with prettyURL).<br/>
-    In both these cases, although the same template is involved (i.e. portfolio.php), the URL of the pages does not match that which the menu-item is pointing to.<br/>
-    <br/>
-    For such cases, by default, the 'menu' tag tries to figure out if the page being visited 'logically' falls below the page being pointed to.<br/>
-    <br/>
-    Thus, in the example above, both<br/>
-    _http&#58;//www.yoursite.com/portfolio/some-item.html_<br/>
-    as well as<br/>
-    _http&#58;//www.yoursite.com/portfolio/some-folder/_<br/>
-    logically are sub-pages of<br/>
-    _http&#58;//www.yoursite.com/portfolio/_ (with prettyURL)<br/>
-    and so the 'menu' tag goes ahead and marks the menu-item in question as 'current' and all its parents as 'active'.<br/>
-    <br/>
-    Now consider another menu-item - this one pointing to a folder-view<br/>
-    e.g. _http&#58;//www.yoursite.com/portfolio.php?f=2_ (_http&#58;//www.yoursite.com/portfolio/some-folder/_ with prettyURL)<br/>
-    In this case, the menu-item will be marked as 'current' only for the same folder<br/>
-    _http&#58;//www.yoursite.com/portfolio/some-folder/_<br/>
-    and any page that is below the folder<br/>
-    e.g. _http&#58;//www.yoursite.com/portfolio/some-folder/some-item.html_<br/>
-    but NOT for<br/>
-    _http&#58;//www.yoursite.com/portfolio/_ or<br/>
-    _http&#58;//www.yoursite.com/portfolio/some-item.html_ or<br/>
-    _http&#58;//www.yoursite.com/portfolio/some-other-folder/_<br/>
-    as they are logically not sub-pages of folder being pointed to.<br/>
-    <br/>
-    This is a powerful functionality and allows the menu to seamlessly blend with other discrete sections of the site, for example the portfolio section, as we saw above.<br/>
-    <br/>
-    Finally consider a point we touched upon earlier but deferred the explanation for later -<br/>
-    in our tree, we have a 'Home' menu-item that points to the home-view of index.php (_http&#58;//www.yoursite.com_) and we have separate menu-items that represent other pages of index.php e.g. _http&#58;//www.yoursite.com/about-us/_ and _http&#58;//www.yoursite.com/about-us/what-we-do/_.<br/>
-    <br/>
-    Going by the logic we discussed above, if we visit _http&#58;//www.yoursite.com/about-us/_ or _http&#58;//www.yoursite.com/about-us/what-we-do/_, since in the tree the 'Home' menu-item physically comes before the menu-item representing the visited page, **it is the 'Home' menu-item that will always get selected although we have a menu-item that specifically represents the visited page**.<br/>
-    <br/>
-    For such cases we can configure the nested-page behind the menu-item NOT to be marked as current for the child-pages (i.e. be marked as current only for the page that is perfect match).
-</p>
+::: .notice
+How the 'menu' tag recognizes a menu-item to be current requires a little explanation.<br/>
+<br/>
+When a page is visited, the 'menu' tag iterates through its associated nested-pages tree testing each menu-item (i.e. nested-page) against the visited page to determine if they match.<br/>
+<br/>
+For normal menu-items (i.e. those that are not pointers to other pages) the process is straightforward - if the page being visited is the same as the menu-item, the menu-item is marked as 'current' and all menu-items leading to it (including the current menu-item) as 'active'.<br/>
+<br/>
+For menu-items that point to other pages, however, the 'menu' tag needs to apply a fair bit of intelligence to recognize if a menu-item is current.<br/>
+Let us say that a menu-item being tested by the 'menu' tag points to the following location -<br/>
+_http&#58;//www.yoursite.com/portfolio.php_ (_http&#58;//www.yoursite.com/portfolio/_ with prettyURL) - the home-view of template 'portfolio.php'.<br/>
+<br/>
+Now if the page being visited is _http&#58;//www.yoursite.com/portfolio.php_, it is perfect match and so the menu-item in question will be marked as 'current', its parents will be marked as 'active' and the process will end i.e. no further menu-items will be examined (there can be only one current page in the tree at any time). This was no different than what happens with non-pointer pages.<br/>
+<br/>
+However, consider if the page being visited happens to be a cloned page of 'portfolio.php'<br/>
+e.g. _http&#58;//www.yoursite.com/portfolio.php?p=34_ (_http&#58;//www.yoursite.com/portfolio/some-item.html_ with prettyURL).<br/>
+Or it happens to be a folder-view of 'portfolio.php'<br/>
+e.g. _http&#58;//www.yoursite.com/portfolio.php?f=2_ (_http&#58;//www.yoursite.com/portfolio/some-folder/_ with prettyURL).<br/>
+In both these cases, although the same template is involved (i.e. portfolio.php), the URL of the pages does not match that which the menu-item is pointing to.<br/>
+<br/>
+For such cases, by default, the 'menu' tag tries to figure out if the page being visited 'logically' falls below the page being pointed to.<br/>
+<br/>
+Thus, in the example above, both<br/>
+_http&#58;//www.yoursite.com/portfolio/some-item.html_<br/>
+as well as<br/>
+_http&#58;//www.yoursite.com/portfolio/some-folder/_<br/>
+logically are sub-pages of<br/>
+_http&#58;//www.yoursite.com/portfolio/_ (with prettyURL)<br/>
+and so the 'menu' tag goes ahead and marks the menu-item in question as 'current' and all its parents as 'active'.<br/>
+<br/>
+Now consider another menu-item - this one pointing to a folder-view<br/>
+e.g. _http&#58;//www.yoursite.com/portfolio.php?f=2_ (_http&#58;//www.yoursite.com/portfolio/some-folder/_ with prettyURL)<br/>
+In this case, the menu-item will be marked as 'current' only for the same folder<br/>
+_http&#58;//www.yoursite.com/portfolio/some-folder/_<br/>
+and any page that is below the folder<br/>
+e.g. _http&#58;//www.yoursite.com/portfolio/some-folder/some-item.html_<br/>
+but NOT for<br/>
+_http&#58;//www.yoursite.com/portfolio/_ or<br/>
+_http&#58;//www.yoursite.com/portfolio/some-item.html_ or<br/>
+_http&#58;//www.yoursite.com/portfolio/some-other-folder/_<br/>
+as they are logically not sub-pages of folder being pointed to.<br/>
+<br/>
+This is a powerful functionality and allows the menu to seamlessly blend with other discrete sections of the site, for example the portfolio section, as we saw above.<br/>
+<br/>
+Finally consider a point we touched upon earlier but deferred the explanation for later -<br/>
+in our tree, we have a 'Home' menu-item that points to the home-view of index.php (_http&#58;//www.yoursite.com_) and we have separate menu-items that represent other pages of index.php e.g. _http&#58;//www.yoursite.com/about-us/_ and _http&#58;//www.yoursite.com/about-us/what-we-do/_.<br/>
+<br/>
+Going by the logic we discussed above, if we visit _http&#58;//www.yoursite.com/about-us/_ or _http&#58;//www.yoursite.com/about-us/what-we-do/_, since in the tree the 'Home' menu-item physically comes before the menu-item representing the visited page, **it is the 'Home' menu-item that will always get selected although we have a menu-item that specifically represents the visited page**.<br/>
+<br/>
+For such cases we can configure the nested-page behind the menu-item NOT to be marked as current for the child-pages (i.e. be marked as current only for the page that is perfect match).
+:::
 
 The 'menu' tag supports a rich set of parameters that can be used to create menus of almost any complexity.<br/>
 Please see the tag's documentation for a full list of the parameters and their use.
@@ -471,10 +471,10 @@ Another element on a typical web page that reflects the hierarchy of pages is th
 
 The Couch tag that can be used to easily create breadcrumbs is the '[nested\_crumbs](../../tags-reference/nested_crumbs.html)' tag.
 
-<p class="notice">
-    There already is an existing tag named '[breadcrumbs](../../tags-reference/breadcrumbs.html)' which is used with the folder hierarchy associated with normal cloned pages.<br/>
-    '[nested\_crumbs](../../tags-reference/nested_crumbs.html)' on the other hand works with nested-pages only.
-</p>
+::: .notice
+There already is an existing tag named '[breadcrumbs](../../tags-reference/breadcrumbs.html)' which is used with the folder hierarchy associated with normal cloned pages.<br/>
+'[nested\_crumbs](../../tags-reference/nested_crumbs.html)' on the other hand works with nested-pages only.
+:::
 
 #### Usage
 

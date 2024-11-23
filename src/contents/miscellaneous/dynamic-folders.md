@@ -62,4 +62,4 @@ The three existing folders will show up in the folder management screen that is 
 Suppose we now add another couple of folders to the template so the total of folders goes to five.<br/>
 However, suppose that at this point we were to turn off the dynamic folders (by removing the 'dynamic\_folders' attribute or setting it to '0'). Suddenly the hitherto ignored existing folder tags will begin exerting their influence. Couch will adjust the folders to bring them in concord to what is being dictated by the code above. This will result in our two newly added folders getting deleted without warning and the total number of folders getting back to three.
 
-<p class="error">Please keep the above mentioned behaviour of dynamic folders in mind before turning them off after having once activated them.</p>
+Please keep the above mentioned behaviour of dynamic folders in mind before turning them off after having once activated them. {.error}

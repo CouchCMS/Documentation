@@ -13,7 +13,7 @@ To use Couch you must at least have a working knowledge of HTML and CSS and know
 *   MySQL 4.1.2 or greater
 *   Apache (or compatible Web Servers like LiteSpeed etc.)
 
-<p class="error">**IMPORTANT!** Microsoft IIS web server is NOT supported.</p>
+**IMPORTANT!** Microsoft IIS web server is NOT supported. {.error}
 
 *   (Optional) GD library compiled into PHP for CAPTCHA.
 *   (Optional) Apache mod\_rewrite module for prettyURLS.

@@ -172,7 +172,7 @@ Further notice that apart from these two editable regions, Couch has added two m
 Since multiple pages can now be created from the clonable template, each cloned page needs to have a unique identification. The _Name_ field is this unique id.<br/>
 Every cloned page will always have the _Name_ and _Title_ fields associated with it. Difference between the two is that the _Name_ field has restrictions on the characters that you can use within it (only alpha-numeric, hyphen and underscore). The _Title_ field, on the other hand, has no such restrictions.
 
-<p class="success">If you fill the _Title_ field, you can leave the _Name_ field empty and Couch will generate a name for the page based on the title you entered.</p>
+If you fill the _Title_ field, you can leave the _Name_ field empty and Couch will generate a name for the page based on the title you entered. {.success}
 
 Change the _title_ to something friendlier and leave the name blank -
 
@@ -291,7 +291,7 @@ The blog entry's title, the categories, date and number of comments need to be h
 In the step where we decided on the number of editable regions to create, we had discussed that these items are present in other ways within a page and do not need the creation of editable regions to capture them.<br/>
 Take a look at the '[Variables available in Views](../../../../concepts/variables-in-views.html)' in the documentation for a list of variables that become available in the various views.
 
-<p class="success">**TIP:** You can use *&lt;cms:dump\_all /&gt;* or _&lt;cms:dump /&gt;_ to get a quick list of all the variables that are available for use at any particular place.</p>
+**TIP:** You can use *&lt;cms:dump\_all /&gt;* or _&lt;cms:dump /&gt;_ to get a quick list of all the variables that are available for use at any particular place. {.success}
 
 Variables *k\_page\_title*, *k\_page\_date* and *k\_comments\_count* present in the page-view are what we require.<br/>
 With _blog.php_ open in your editor, find the place where title of the blog entry is displayed
@@ -403,7 +403,7 @@ Select one, let us say '_clients_', and save.
 Now to display this folder in the blog entry -<br/>
 As you know, Couch provides information about the page being accessed by setting up variables. *k\_page\_foldertitle* is the variable that contains the title of the folder a cloned page resides in (remains blank if the page does not reside in any folder) \[see [Variables available in Views](../../../../concepts/variables-in-views.html)\].
 
-<p class="success">Once again, when in any doubt about which variables are available for use, place _&lt;cms:dump /&gt;_ or *&lt;cms:dump\_all /&gt;* temporarily within the template. On accessing a page, these tags will spill out all the variables (along with their values) that are available.</p>
+Once again, when in any doubt about which variables are available for use, place _&lt;cms:dump /&gt;_ or *&lt;cms:dump\_all /&gt;* temporarily within the template. On accessing a page, these tags will spill out all the variables (along with their values) that are available. {.success}
 
 Find the place where the template displays the name of the categories -
 
@@ -428,7 +428,7 @@ We'd like to display '_Uncategorised_' for such pages that do not reside in any 
 
 To do so, instead of directly using the *k\_page\_foldertitle*, we'll use a variable of our own to display the folder title.
 
-<p class="notice">You might recall from the documentation that apart from the variables set up by Couch (the system variables that are all prefixed by a 'k\_'), we can define our own variables. \[see [Variables](../../../../concepts/variables.html)\]</p>
+You might recall from the documentation that apart from the variables set up by Couch (the system variables that are all prefixed by a 'k\_'), we can define our own variables. \[see [Variables](../../../../concepts/variables.html)\] {.notice}
 
 If *k\_page\_foldertitle* is not blank, we'll set our variable to the folder title but if *k\_page\_foldertitle* is blank, we'll set it to '_Uncategorised_'. This is how it can be done -
 
@@ -444,4 +444,4 @@ That about wraps up the page-view part of _blog.php_ (one that displays a single
 A few minor points still remain unattended but we'll get back to them after we configure the other parts.<br/>
 Let us now move on to the list-view of _blog.php_ - where we display a paginated list of all cloned pages i.e. blog entries.
 
-[Diving deep - the Blog (Part 2)](../../blog-2.html)
+[Diving deep - the Blog (Part 2)](./blog-2.html)

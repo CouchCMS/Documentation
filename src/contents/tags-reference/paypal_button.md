@@ -51,4 +51,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [paypal\_processor](../paypal_processor.html)
+*   [paypal\_processor](./paypal_processor.html)

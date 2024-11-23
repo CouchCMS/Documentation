@@ -39,7 +39,7 @@ The **date** tag supports two different types of format characters - locale-awar
 With locale-aware characters, you can specify that the date is to formatted according to, for example, _french_ locale or _italian_ locale by setting the _locale_ parameter.<br/>
 The locale-aware characters all have a % sign prefixed to them.
 
-<p class="error">The locale-aware and the non locale-aware characters cannot be intermixed.</p>
+The locale-aware and the non locale-aware characters cannot be intermixed. {.error}
 
 #### Non Locale-aware format characters
 
@@ -160,7 +160,7 @@ If you use the locale-aware format characters mentioned above, this parameter ca
 <cms:date k_page_date format='%B %d, %Y' locale='italian' />
 ```
 
-<p class="error">This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used.</p>
+This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used. {.error}
 
 ### charset
 
@@ -215,4 +215,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [number\_format](../number_format.html)
+*   [number\_format](./number_format.html)

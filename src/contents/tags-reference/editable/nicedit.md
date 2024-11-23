@@ -7,8 +7,8 @@ template: default.html
 
 # type = 'nicedit'
 
-Editable region of type nicedit can be used as a light-weight alternative to editable region of type [**richtext**](../../richtext.html).<br/>
-It is primarily meant to be used with [**repeatable regions**](../../../../concepts/repeatable-regions.html) (as type 'richtext' does not support being repeated), however it can be used as an independent editable region too.
+Editable region of type nicedit can be used as a light-weight alternative to editable region of type [**richtext**](./richtext.html).<br/>
+It is primarily meant to be used with [**repeatable regions**](../../../../concepts/repeatable-regions.html) (<s>as type 'richtext' does not support being repeated</s>), however it can be used as an independent editable region too.
 
 Unlike 'richtext' that uses CKEditor - a full fledged Wysiwyg editor, 'nicedit' is somewhat limited in the wysiwyg features it offers but is perfect for situations where only basic HTML editing capability is required.
 
@@ -95,17 +95,17 @@ bold, italic, underline, ol, ul, link, unlink, image, removeformat, source
 
 ## Related Tags
 
-*   [editable](../../../editable.html)
-*   [editable (text)](../../text.html)
-*   [editable (password)](../../password.html)
-*   [editable (textarea)](../../textarea.html)
-*   [editable (richtext)](../../richtext.html)
-*   [editable (image)](../../image.html)
-*   [editable (thumbnail)](../../thumbnail.html)
-*   [editable (file)](../../file.html)
-*   [editable (radio)](../../radio.html)
-*   [editable (checkbox)](../../checkbox.html)
-*   [editable (dropdown)](../../dropdown.html)
-*   [editable (group)](../../group.html)
-*   [editable (message)](../../message.html)
-*   [editable (relation)](../../relation.html)
+*   [editable](../editable.html)
+*   [editable (text)](./text.html)
+*   [editable (password)](./password.html)
+*   [editable (textarea)](./textarea.html)
+*   [editable (image)](./image.html)
+*   [editable (thumbnail)](./thumbnail.html)
+*   [editable (file)](./file.html)
+*   [editable (radio)](./radio.html)
+*   [editable (checkbox)](./checkbox.html)
+*   [editable (dropdown)](./dropdown.html)
+*   [editable (group)](./group.html)
+*   [editable (message)](./message.html)
+*   [editable (nicedit)](./nicedit.html)
+*   [editable (relation)](./relation.html)

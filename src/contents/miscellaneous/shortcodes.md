@@ -36,7 +36,7 @@ With version 1.2, Couch has begun opening up its architecture to allow extending
 
 This _kfunctions.php_ file provides an entry into Couch for your custom code.
 
-<p class="error">**CAUTION:** Please remember that since your code gets included into Couch core runtime, any PHP error within it might cause Couch not to execute at all!</p>
+**CAUTION:** Please remember that since your code gets included into Couch core runtime, any PHP error within it might cause Couch not to execute at all! {.error}
 
 So the first step in creating a shortcode is to (if not already present) create a PHP script file named _kfunctions.php_ and place it within your client's site along with the other Couch managed templates.
 
@@ -184,7 +184,7 @@ Output:
 <span style="text-decoration:underline"><em>hello</em> <strong>world</strong></span>
 ```
 
-<p class="notice">The last input above shows that **shortcodes can be nested**. Like Couch tags, the shortcodes get resolved inside out i.e. the most deeply nested shortcode gets expanded first and its output then becomes the input for the shortcode that encloses it.</p>
+The last input above shows that **shortcodes can be nested**. Like Couch tags, the shortcodes get resolved inside out i.e. the most deeply nested shortcode gets expanded first and its output then becomes the input for the shortcode that encloses it. {.notice}
 
 ## Passing parameters to shortcodes
 
@@ -205,7 +205,7 @@ e.g. the following shortcode is exactly the same as above:
 
     [some_shortcode "hello" 'world' hi ]
 
-<p class="error">If there are multiple parameters, skipping the names makes the shortcode difficult to read hence do this only if there are few, say only a single, parameters.</p>
+If there are multiple parameters, skipping the names makes the shortcode difficult to read hence do this only if there are few, say only a single, parameters. {.error}
 
 #### Handling the parameters
 
@@ -244,7 +244,7 @@ The shortcode described above can be used by the end user in any of the followin
 [googlemap src="http://maps.google.com/?ll=23.250652,77.402072&spn=0.019912,0.038581&z=15" width='600' height='480']
 ```
 
-<p class="success">If you are wondering where that URL given as _src_ came from, you can get it from http&#58;//maps.google.com/ by navigating to the desired geographical location and then clicking the 'link' button available at the top.</p>
+If you are wondering where that URL given as _src_ came from, you can get it from http&#58;//maps.google.com/ by navigating to the desired geographical location and then clicking the 'link' button available at the top. {.success}
 
 That wraps up all that is there for you to know about shortcodes in Couch.<br/>
 We end this section by providing some very useful (and real world) examples of shortcodes that you can use as guides for your own shortcodes or use them as-is in your projects.

@@ -46,5 +46,5 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [get\_cookie](../get_cookie.html)
-*   [delete\_cookie](../delete_cookie.html)
+*   [get\_cookie](./get_cookie.html)
+*   [delete\_cookie](./delete_cookie.html)

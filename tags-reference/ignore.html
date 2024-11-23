@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="ignore" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/ignore.html" itemprop="item"><span itemprop="name">ignore</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/ignore.html" itemprop="item"><span itemprop="name">ignore</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -72,17 +72,19 @@
 <p>The <strong>Ignore</strong> tag can be used to surround sections of code that you temporarily do not wish to execute (i.e. want to have the code present on the page yet not be executed).<br/>
 This is somewhat akin to comenting out code in other languages to prevent execution.</p>
 <p>For example -</p>
-<pre><code>&lt;cms:show &#39;Hello &#39; /&gt;
+<pre><code>&lt;cms:show 'Hello ' /&gt;
 &lt;cms:ignore&gt;
-    &lt;cms:show &#39;world&#39; /&gt;
-&lt;/cms:ignore&gt;</code></pre><p>will output only <em>Hello</em> and ignore <em>world</em>.</p>
+    &lt;cms:show 'world' /&gt;
+&lt;/cms:ignore&gt;
+</code></pre>
+<p>will output only <em>Hello</em> and ignore <em>world</em>.</p>
 <h2 id="parameters">Parameters</h2>
 <p>This tag does not take any parameters.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>
-<li><a href="hide.html">hide</a></li>
+<li><a href="./hide.html">hide</a></li>
 </ul>
 </article>
         </div>

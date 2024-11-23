@@ -51,7 +51,7 @@ Can be set to either _asc_ or _desc_.
 
 ## Related Tags
 
-*   [pages](../pages.html)
-*   [folders](../folders.html)
-*   [archives](../archives.html)
-*   [comments](../comments.html)
+*   [pages](./pages.html)
+*   [folders](./folders.html)
+*   [archives](./archives.html)
+*   [comments](./comments.html)

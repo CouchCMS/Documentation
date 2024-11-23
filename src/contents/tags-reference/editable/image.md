@@ -10,16 +10,16 @@ template: default.html
 Editable region of type **image** is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images.<br/>
 Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.
 
-<p class="notice">
-    **NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
-    <br/>
-    ```
+::: .notice
+**NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
+<br/>
+```
 // 12.
 // Upload folder if not using the default upload folder within 'couch'.
 // Should be relative to your site (don't forget to set write permissions on it).
 define( 'K_UPLOAD_DIR', 'myuploads' );
     ```
-</p>
+:::
 
 An editable region of type _image_ can be defined this way -
 
@@ -71,14 +71,14 @@ These dimensions (in pixels) are represented by the _width_ and _height_ paramet
 How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -<br/>
 *enforce\_max* and _crop_.
 
-<p class="notice">
-    **NOTE:** If **none** of the two dimensions are specified, e.g.<br/>
-    <br/>
-    ```
+::: .notice
+**NOTE:** If **none** of the two dimensions are specified, e.g.<br/>
+<br/>
+```
 <cms:editable name='prop_image' type='image' />
-    ```
-    regardless of any settings of *enforce\_max* and _crop_, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).
-</p>
+```
+regardless of any settings of *enforce\_max* and _crop_, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).
+:::
 
 ### enforce_max
 
@@ -88,7 +88,7 @@ If any of the dimensions of an uploaded image exceeds the provided value, Couch 
 
 If both height and width are specified, enforcing the limit of one dimension might end up making the other dimension smaller than what was specified (_see examples below_).
 
-<p class="notice">**By default *enforce\_max* is always on so you do not have to explicitly set it.** It can be turned off either by specifically setting it to _0_ (enforce\_max='0') or by turnng on _crop_ (crop='1').</p>
+**By default *enforce\_max* is always on so you do not have to explicitly set it.** It can be turned off either by specifically setting it to _0_ (enforce\_max='0') or by turnng on _crop_ (crop='1'). {.notice}
 
 #### Examples:
 
@@ -159,7 +159,7 @@ If any of the dimensions of an uploaded image is lesser or greater than the valu
 
 If both width and height are specified, very often while matching one dimension the other dimension overshoots the given value. In such cases, the overflowing part of it is cropped.
 
-<p class="notice">By setting this parameter to _1_ we also implicitly turn off *enforce\_max*.</p>
+By setting this parameter to _1_ we also implicitly turn off *enforce\_max*. {.notice}
 
 #### Examples:
 
@@ -250,21 +250,21 @@ As illustrated above, setting *show\_preview* to '1' causes a preview of the sel
 
 ![](../../../../assets/img/contents/editable-image-30.jpg)
 
-<p class="success">It is always a good idea to set at least one of the two dimensions while using *show\_preview*.</p>
+It is always a good idea to set at least one of the two dimensions while using *show\_preview*. {.success}
 
 ## Related Tags
 
-*   [editable](../../../editable.html)
-*   [editable (text)](../../text.html)
-*   [editable (password)](../../password.html)
-*   [editable (textarea)](../../textarea.html)
-*   [editable (richtext)](../../richtext.html)
-*   [editable (thumbnail)](../../thumbnail.html)
-*   [editable (file)](../../file.html)
-*   [editable (radio)](../../radio.html)
-*   [editable (checkbox)](../../checkbox.html)
-*   [editable (dropdown)](../../dropdown.html)
-*   [editable (group)](../../group.html)
-*   [editable (message)](../../message.html)
-*   [editable (nicedit)](../../nicedit.html)
-*   [editable (relation)](../../relation.html)
+*   [editable](../editable.html)
+*   [editable (text)](./text.html)
+*   [editable (password)](./password.html)
+*   [editable (textarea)](./textarea.html)
+*   [editable (image)](./image.html)
+*   [editable (thumbnail)](./thumbnail.html)
+*   [editable (file)](./file.html)
+*   [editable (radio)](./radio.html)
+*   [editable (checkbox)](./checkbox.html)
+*   [editable (dropdown)](./dropdown.html)
+*   [editable (group)](./group.html)
+*   [editable (message)](./message.html)
+*   [editable (nicedit)](./nicedit.html)
+*   [editable (relation)](./relation.html)

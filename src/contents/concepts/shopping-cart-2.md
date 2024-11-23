@@ -25,7 +25,7 @@ template: default.html
 
 --------------------------------
 
-By this point, our [initial store assembly is nearly complete](../shopping-cart-1.html).
+By this point, our [initial store assembly is nearly complete](./shopping-cart-1.html).
 
 The product catalog is built, the shopping cart is in place and we can accept online payments via PayPal.<br/>
 However, almost every eStore will need to configure a few '**adjustments**' before it can finally throw open its (virtual) doors to the world and start doing business.
@@ -47,34 +47,34 @@ You can find my implementation in a file named '**cart\_ex.example.php**' within
 Please keep in mind that this is just my implementation of the required calculations. As I said, I've tried to cover some of the most common ways of doing them. However, it might, or might not, be suitable for your client's business requirements.<br/>
 In case it is not, feel free to tweak, modify heavily or even discard this implementation completely and put in your version tailored to your specific needs.
 
-<p class="success">If it comes down to having to use your own custom implementation and you are not conversant with PHP, it is likely that you'll require the services of a competent PHP developer. In which case, my implementation can at least serve as sample code to guide the developer. All the functions are profusely commented for this very purpose.</p>
+If it comes down to having to use your own custom implementation and you are not conversant with PHP, it is likely that you'll require the services of a competent PHP developer. In which case, my implementation can at least serve as sample code to guide the developer. All the functions are profusely commented for this very purpose. {.success}
 
 **All the calculation methods discussed below assume that you've decided to use my implementation** (by renaming '*cart\_ex.example.php*' to '*cart\_ex.php*').
 
-<p class="notice">
-    Before we delve into the details of available calculations, however, a little concept (used both by shipping and by discount calculations that follow) requires some explanation.<br/>
-    <br/>
-    **Sliding Scale:**<br/>
-    This is a scale in which the indicated shipping charges or discounts vary in accordance with another factor - e.g. _count of items_, _total price_ etc. For example, more the total cost of the order, more the discount offered or more the number of items in cart, less the shipping charges payable.<br/>
-    <br/>
-    The accepted format for such scale is simple and looks like the following<br/>
-    <br/>
-    ```
+Before we delve into the details of available calculations, however, a little concept (used both by shipping and by discount calculations that follow) requires some explanation.
+
+::: notice
+**Sliding Scale:**
+This is a scale in which the indicated shipping charges or discounts vary in accordance with another factor - e.g. _count of items_, _total price_ etc. For example, more the total cost of the order, more the discount offered or more the number of items in cart, less the shipping charges payable.
+
+The accepted format for such scale is simple and looks like the following
+
+```
 [ 0=3 | 50=7 | 100=10 ]
-    ```
-    where, in the example above, the scale has three tiers.<br/>
-    Important (and potentially confusing) thing to remember is that this is a '**more than**' scale (and not '**starts from**' scale as you might think).<br/>
-    <br/>
-    So, assuming the scale above denotes shipping charges based on number of items in cart, the three tiers in the scale would stand for<br/>
-    More than 0 items - charge 3<br/>
-    More than 50 items - charge 7<br/>
-    More than 100 items - charge 10<br/>
-    <br/>
-    This, in other words, could also be written as:<br/>
-    1 to 50 items - charge 3<br/>
-    51 to 100 - charge 7<br/>
-    101 to infinity - charge 10
-</p>
+```
+where, in the example above, the scale has three tiers.<br/>
+Important (and potentially confusing) thing to remember is that this is a '**more than**' scale (and not '**starts from**' scale as you might think).
+
+So, assuming the scale above denotes shipping charges based on number of items in cart, the three tiers in the scale would stand for
+- More than 0 items - charge 3
+- More than 50 items - charge 7
+- More than 100 items - charge 10
+
+This, in other words, could also be written as:
+- 1 to 50 items - charge 3
+- 51 to 100 - charge 7
+- 101 to infinity - charge 10
+:::
 
 ## Shipping Charges
 
@@ -153,11 +153,11 @@ For example, if you charge $3 to deliver one to five units, $7 to ship six to 15
 
 where the string above stands for '3 for more than 0, 7 for more than 5, 10 for more than 15'.
 
-<p class="notice">The shipping charges will be **calculated for only** those items that have their '*pp\_requires\_shipping*' editable region set to 'Yes'.</p>
+The shipping charges will be **calculated for only** those items that have their '*pp\_requires\_shipping*' editable region set to 'Yes'. {.notice}
 
 ![](../../assets/img/contents/shopping-cart-17.png)
 
-<p class="notice">All the 5 calculation methods discussed above are **cumulative**. That is, if you choose to set more than one, the values returned by each of them will be **added together** to arrive at a single shipping charge for the cart.</p>
+All the 5 calculation methods discussed above are **cumulative**. That is, if you choose to set more than one, the values returned by each of them will be **added together** to arrive at a single shipping charge for the cart.  {.notice}
 
 ## Discounts
 
@@ -239,18 +239,18 @@ To setup price-reductions (discounts) as a **percentage** of the product's base 
 
 where the scale now becomes 'reduce product's base-price by 10% if customer buys more than 5 units of it, by 15% if buys more than 10'.
 
-<p class="notice">
-    If a product's base price gets reduced by this method, two custom variables are made available within '__*pp\_cart\_items*__' tag (the tag used to display the cart) -<br/>
-    <br/>
-    **line\_discount**: this shows the discounted value<br/>
-    **orig\_price**: this shows the original base price without the discount applied.<br/>
-    <br/>
-    e.g. in cart.php template, this is how we display the original price of discounted cart items (with a strikethrough style)<br/>
-    <br/>
-    ```
+::: notice
+If a product's base price gets reduced by this method, two custom variables are made available within '__*pp\_cart\_items*__' tag (the tag used to display the cart) -<br/>
+<br/>
++ **line\_discount**: this shows the discounted value<br/>
++ **orig\_price**: this shows the original base price without the discount applied.<br/>
+<br/>
+e.g. in cart.php template, this is how we display the original price of discounted cart items (with a strikethrough style)<br/>
+<br/>
+```
 <cms:if line_discount><span class="compare-price">$<cms:number_format orig_price /></span></cms:if>$<cms:number_format price />
-    ```
-</p>
+```
+:::
 
 ## Taxes
 
@@ -274,7 +274,7 @@ Coupons can be used to provide **cart level discount** and/or **free shipping** 
 This simple implementation of the coupon feature is an example of using Couch's cloned pages in tandem with CouchCart to add features not originally available.<br/>
 The finished version of our sample site contains a template named '_coupons.php'_. It is a regular Couch template defining a set of editable regions. Execute it as super-admin to register it with Couch. In the admin-panel, we can now create coupons as cloned pages of this template.
 
-<p class="notice">**NOTE:** The '_End Date_' field defined by this template makes use of the [**Date-Picker addon**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=7126) for ease in inputting dates. If you don't wish to use the addon, you may safely remove the _editable name='datepicker'_ region from the template.</p>
+**NOTE:** The '_End Date_' field defined by this template makes use of the [**Date-Picker addon**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=7126) for ease in inputting dates. If you don't wish to use the addon, you may safely remove the _editable name='datepicker'_ region from the template. {.notice}
 
 ### Creating coupons
 
@@ -312,7 +312,7 @@ If set to 'Yes', this coupon will set the cart's shipping charges to 0\. A coupo
 
 If the coupon is meant to be valid only for a definite period, the end date of the period can be set here. Actually, this is a mandatory field (technical reasons) so you'll have to set this even for coupons that will never expire. For such coupons, simply set this date to somewhere far into the future, say 100 years from now.
 
-<p class="notice">You'll notice that, while there is an end date, there is no corresponding **start date** field for the coupons. That is because, defining one would be redundant. Since coupons are simply cloned pages, they already have an implicit start date - their **publish date**. Set the publish date (from 'Advanced settings' dropdown) to a future date for the coupon to be effective from that date onwards.</p>
+You'll notice that, while there is an end date, there is no corresponding **start date** field for the coupons. That is because, defining one would be redundant. Since coupons are simply cloned pages, they already have an implicit start date - their **publish date**. Set the publish date (from 'Advanced settings' dropdown) to a future date for the coupon to be effective from that date onwards. {.notice}
 
 ### Processing coupons
 
@@ -328,38 +328,38 @@ The _checkout.php_ template found in the finished version of our sample site sho
 The cart summary is a simple modification of the code we used to display the cart in _cart.php_ and _cart-modal.php_ (this one does not allow editing of values). As for the input box for coupon code, we've used Couch's _**form**_ tag to handle its submission.<br/>
 You can simply copy the entire form code (every thing between the _&lt;!-- START COUPON FORM --&gt;_ to _&lt;!-- END COUPON FORM --&gt;_) and paste it in your own templates to allow buyers to enter their coupons.
 
-<p class="notice">
-    You can use the code as it is but a little understanding of what it does will do no harm (feel free to skip this section if it does not interest you).<br/>
-    <br/>
-    The logic is pretty simple - successful submission of the form will trigger the *k\_success* condition.<br/>
-    In this condition, we use _**pages**_ tag to fetch the cloned page (i.e. the coupon) that contains the submitted coupon code as value of its edtitable region named '_code_'.<br/>
-    <br/>
-    ```
-<cms:if k_success >
-    <cms:pages masterpage="<cms:pp_config 'tpl_coupons' />" custom_field="code==<cms:show frm_coupon_code /> | end_date>=<cms:date format='Y-m-d' />" limit='1'>
+::: notice
+You can use the code as it is but a little understanding of what it does will do no harm (feel free to skip this section if it does not interest you).
 
-   </cms:pages>
-</cms:if>
-    ```
-    If one is found, the inputted coupon is valid. Now comes the important technique. As we know, it is '*cart\_ex.php*' that does all the calculations for discounts and shipping. We provide '*cart\_ex.php*' all the coupon data we fetched via cms:pages by using '**session variables**' (these variables can be accessed site-wide. The shopping cart itself is internally implemented as a session variable).<br/>
-    Note the last statement '__*pp\_refresh\_cart*__'. By refreshing the cart, we make '*cart\_ex.php*' redo all the calculations (which now will take into account the coupon data we provided)<br/>
-    <br/>
-    ```
-<cms:if k_success >
-   <cms:pages masterpage="<cms:pp_config 'tpl_coupons' />" custom_field="code==<cms:show frm_coupon_code /> | end_date>=<cms:date format='Y-m-d' />" limit='1'>
-       <cms:set_session name='coupon_found' value='1' />
-       <cms:set_session name='coupon_code' value=code />
-       <cms:set_session name='coupon_discount' value=discount />
-       <cms:set_session name='coupon_type' value=type />
-       <cms:set_session name='coupon_min_amount' value=min_amount />
-       <cms:set_session name='coupon_free_shipping' value=free_shipping />
+The logic is pretty simple - successful submission of the form will trigger the *k\_success* condition.<br/>
+In this condition, we use _**pages**_ tag to fetch the cloned page (i.e. the coupon) that contains the submitted coupon code as value of its edtitable region named '_code_'.
 
-      <cms:pp_refresh_cart />
-   </cms:pages>
+```
+<cms:if k_success >
+<cms:pages masterpage="<cms:pp_config 'tpl_coupons' />" custom_field="code==<cms:show frm_coupon_code /> | end_date>=<cms:date format='Y-m-d' />" limit='1'>
+
+</cms:pages>
 </cms:if>
-    ```
-    So this basically is how the coupon feature was implemented. The same technique (i.e. using cms:form and then setting session variables with submitted values) can be used to implement other features e.g. capturing buyer's address etc.
-</p>
+```
+If one is found, the inputted coupon is valid. Now comes the important technique. As we know, it is '*cart\_ex.php*' that does all the calculations for discounts and shipping. We provide '*cart\_ex.php*' all the coupon data we fetched via cms:pages by using '**session variables**' (these variables can be accessed site-wide. The shopping cart itself is internally implemented as a session variable).<br/>
+Note the last statement '__*pp\_refresh\_cart*__'. By refreshing the cart, we make '*cart\_ex.php*' redo all the calculations (which now will take into account the coupon data we provided)<br/>
+
+```
+<cms:if k_success >
+<cms:pages masterpage="<cms:pp_config 'tpl_coupons' />" custom_field="code==<cms:show frm_coupon_code /> | end_date>=<cms:date format='Y-m-d' />" limit='1'>
+   <cms:set_session name='coupon_found' value='1' />
+   <cms:set_session name='coupon_code' value=code />
+   <cms:set_session name='coupon_discount' value=discount />
+   <cms:set_session name='coupon_type' value=type />
+   <cms:set_session name='coupon_min_amount' value=min_amount />
+   <cms:set_session name='coupon_free_shipping' value=free_shipping />
+
+  <cms:pp_refresh_cart />
+</cms:pages>
+</cms:if>
+```
+So this basically is how the coupon feature was implemented. The same technique (i.e. using cms:form and then setting session variables with submitted values) can be used to implement other features e.g. capturing buyer's address etc.
+:::
 
 ## The end, finally...
 

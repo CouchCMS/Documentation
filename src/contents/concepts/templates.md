@@ -19,7 +19,7 @@ Please see the following tutorial, where we use Couch to build a full fledged si
 
 ### HOOKING UP COUCH INTO THE TEMPLATES
 
-<p class="error">**IMP.** To make the following changes you need to be logged in as the super-admin (the first account created by Couch during its installation). If you are not already logged in as super-admin, do so now else the following procedure will not work.</p>
+**IMP.** To make the following changes you need to be logged in as the super-admin (the first account created by Couch during its installation). If you are not already logged in as super-admin, do so now else the following procedure will not work. {.error}
 
 Once Couch is installed, the next step is to hook it up into the templates.<br/>
 Three steps are required to accomplish this -
@@ -47,4 +47,4 @@ Three steps are required to accomplish this -
 
 ### WHAT NEXT?
 
-Once we have Couch hooked into the template, we can place Couch [**Tags**](../tags.html) in the template to make Couch work its magic.
+Once we have Couch hooked into the template, we can place Couch [**Tags**](./tags.html) in the template to make Couch work its magic.

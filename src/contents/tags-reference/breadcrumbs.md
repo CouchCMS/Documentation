@@ -40,9 +40,9 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-*   [folder](../folder.html)
-*   [folders](../folders.html)
-*   [listfolders](../listfolders.html)
-*   [dropdownfolders](../dropdownfolders.html)
-*   [parentfolders](../parentfolders.html)
-*   [is\_ancestor](../is_ancestor.html)
+*   [folder](./folder.html)
+*   [folders](./folders.html)
+*   [listfolders](./listfolders.html)
+*   [dropdownfolders](./dropdownfolders.html)
+*   [parentfolders](./parentfolders.html)
+*   [is\_ancestor](./is_ancestor.html)

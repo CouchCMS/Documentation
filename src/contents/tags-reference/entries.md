@@ -32,6 +32,6 @@ As this tag iterates through the pages, at each iteration it sets all the variab
 
 ## Related Tags
 
-*   [calendar](../calendar.html)
-*   [weeks](../weeks.html)
-*   [days](../days.html)
+*   [calendar](./calendar.html)
+*   [weeks](./weeks.html)
+*   [days](./days.html)

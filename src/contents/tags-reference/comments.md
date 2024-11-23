@@ -95,7 +95,7 @@ Fetch five approved comments. (Since 'order' is not specified, the default value
 <cms:comments limit='5' paginate='1'></cms:comments>
 ```
 
-Fetch ALL approved comments but show only 5 at one time. To move to the next 5 or the previous 5 comments, pagination code has to be used (see [**paginator**](../paginator.html)).
+Fetch ALL approved comments but show only 5 at one time. To move to the next 5 or the previous 5 comments, pagination code has to be used (see [**paginator**](./paginator.html)).
 
 ### offset
 
@@ -130,12 +130,12 @@ Fetch all approved comments and order them in ascending order (oldest first) of 
 *   k\_comment\_page\_name
 *   k\_comment\_template\_name
 
-In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see [**paginator**](../paginator.html) for details.
+In addition to these variables, the pagination related variables that describe the current status of the loop are also set. Please see [**paginator**](./paginator.html) for details.
 
 ## Related Tags
 
-*   [process\_comment](../process_comment.html)
-*   [pages](../pages.html)
-*   [folders](../folders.html)
-*   [archives](../archives.html)
-*   [templates](../templates.html)
+*   [process\_comment](./process_comment.html)
+*   [pages](./pages.html)
+*   [folders](./folders.html)
+*   [archives](./archives.html)
+*   [templates](./templates.html)

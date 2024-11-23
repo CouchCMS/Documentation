@@ -35,10 +35,10 @@ http://www.mysite.com/blog/electronics/mobile-phones.html
 It is obvious that the 'pretty' versions of the URLs convey more meaning about the pages they represent.<br/>
 Not only do they appear friendlier to the visitors but they also offer immense benefit from the SEO (Search Engine Optimization) perspective - something that cannot be ignored if you wish your pages to rank high in Google search.
 
-<p class="notice">
-    For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod\_rewrite' module enabled.<br/>
-    To make sure this module is indeed available at your server, [please use this utility available at our forums](https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
-</p>
+::: .notice
+For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod\_rewrite' module enabled.<br/>
+To make sure this module is indeed available at your server, [please use this utility available at our forums](https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
+:::
 
 ### ENABLING PRETTY URLS
 
@@ -64,11 +64,11 @@ Set the K\_PRETTY\_URLS to 1\.
 A list of rewrite rules should appear on the page.<br/>
 Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it into a file named '.htaccess' and place this file in your website's root.
 
-<p class="notice">
-    If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.<br/>
-    <br/>
-    **EDIT:** You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with **double-quotes**.
-</p>
+::: .notice
+If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.<br/>
+<br/>
+**EDIT:** You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with **double-quotes**.
+:::
 
 Try visiting your cloned pages from the Admin Panel and the pretty urls should be now seen in action.
 
@@ -76,7 +76,7 @@ The rules that are copied and pasted into the .htaccess file pertain to all your
 
 This is the reason why it is advisable to turn on Pretty URLS after all the clonable templates are already in place.
 
-<p class="error">The rewrite rules created by *gen\_htaccess.php* use PCRE flavor of Regular Expressions instead of the now deprecated (and much slower) POSIX type. Unfortunately, some very old versions of Apache 1.x have been reported to still be using POSIX and as such the PrettyURLs feature might not work on them. Placing the generated .htaccess file on such servers will usually result in an '_HTTP 500: Internal Server Error_'.</p>
+The rewrite rules created by *gen\_htaccess.php* use PCRE flavor of Regular Expressions instead of the now deprecated (and much slower) POSIX type. Unfortunately, some very old versions of Apache 1.x have been reported to still be using POSIX and as such the PrettyURLs feature might not work on them. Placing the generated .htaccess file on such servers will usually result in an '_HTTP 500: Internal Server Error_'. {.error}
 
 ### TROUBLESHOOTING
 

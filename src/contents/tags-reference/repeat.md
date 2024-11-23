@@ -47,5 +47,5 @@ This variable is increased by one each time the **repeat** tags repeats the loop
 
 ## Related Tags
 
-*   [each](../each.html)
-*   [zebra](../zebra.html)
+*   [each](./each.html)
+*   [zebra](./zebra.html)

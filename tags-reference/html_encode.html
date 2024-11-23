@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="html_encode" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/html_encode.html" itemprop="item"><span itemprop="name">html_encode</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/html_encode.html" itemprop="item"><span itemprop="name">html_encode</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -72,16 +72,18 @@
 <p>Certain characters have special significance in HTML, and should be represented by HTML entities if they are to preserve their meanings. This function returns a string with some of these conversions made.</p>
 <p>The translations performed are:</p>
 <ul>
-<li>&#39;&amp;&#39; (ampersand) becomes &#39;&amp;amp;&#39;</li>
-<li>&#39;&quot;&#39; (double quote) becomes &#39;&amp;quot;&#39;</li>
-<li>&#39;&#39;&#39; (single quote) becomes &#39;&amp;#039;&#39;</li>
-<li>&#39;&lt;&#39; (less than) becomes &#39;&amp;lt;&#39;</li>
-<li>&#39;&gt;&#39; (greater than) becomes &#39;&amp;gt;&#39;</li>
+<li>'&amp;' (ampersand) becomes '&amp;amp;'</li>
+<li>'&quot;' (double quote) becomes '&amp;quot;'</li>
+<li>''' (single quote) becomes '&amp;#039;'</li>
+<li>'&lt;' (less than) becomes '&amp;lt;'</li>
+<li>'&gt;' (greater than) becomes '&amp;gt;'</li>
 </ul>
-<p>As an example, the following snippet has been taken from <a href="../concepts/rss-feeds.html"><strong>Core Concepts - RSS Feeds</strong></a>, where we are are supplyig the feed with HTML encoded excerpt of our pages -</p>
+<p>As an example, the following snippet has been taken from <a href="../../concepts/rss-feeds.html"><strong>Core Concepts - RSS Feeds</strong></a>, where we are are supplyig the feed with HTML encoded excerpt of our pages -</p>
 <pre><code>&lt;cms:html_encode&gt;
     &lt;cms:excerptHTML&gt;&lt;cms:show my_news_text /&gt;&lt;/cms:excerptHTML&gt;
-&lt;/cms:html_encode&gt;</code></pre><h2 id="parameters">Parameters</h2>
+&lt;/cms:html_encode&gt;
+</code></pre>
+<h2 id="parameters">Parameters</h2>
 <p>This tag does not accept any parameters. Everything enclosed within its opening and closing tags is considered as its input.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables.</p>

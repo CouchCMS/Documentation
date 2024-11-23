@@ -8,13 +8,13 @@ template: default.html
 
 Couch makes it very easy for you to sell single digital products (ebooks, software, images etc) online using PayPal.
 
-<p class="success">
-    Paypal can be used to accept _single-item purchase_ payments (the ones with Buy Now buttons), _contribution_ payments (Donate buttons), _recurring_ payments (Subscribe buttons) and _multi-items purchase_ payments (shopping cart buttons).<br/>
-    <br/>
-    The current version of Couch supports only accepting _single-item purchase_ payments.<br/>
-    <br/>
-    Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch's method cannot be used.
-</p>
+::: .success
+Paypal can be used to accept _single-item purchase_ payments (the ones with Buy Now buttons), _contribution_ payments (Donate buttons), _recurring_ payments (Subscribe buttons) and _multi-items purchase_ payments (shopping cart buttons).<br/>
+<br/>
+The current version of Couch supports only accepting _single-item purchase_ payments.<br/>
+<br/>
+Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch's method cannot be used.
+:::
 
 ### AN OVERVIEW OF PAYPAL IPN
 
@@ -51,14 +51,14 @@ define( 'K_PAYPAL_EMAIL', 'seller_3272492192_biz@gmail.com' );
 define( 'K_PAYPAL_CURRENCY', 'USD' );
 ```
 
-<p class="notice">
-    Usually while testing you'll be using PayPal's Sandbox.<br/>
-    Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K\_PAYPAL\_USE\_SANDBOX to 1 and K\_PAYPAL\_EMAIL to the fictitious seller's account, in _config.php_ mentioned above).
-</p>
+::: .notice
+Usually while testing you'll be using PayPal's Sandbox.<br/>
+Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K\_PAYPAL\_USE\_SANDBOX to 1 and K\_PAYPAL\_EMAIL to the fictitious seller's account, in _config.php_ mentioned above).
+:::
 
 For the next step, it is necessary to understand that each saleable item in Couch is represented by a separate cloned page.<br/>
 For our example, let us say we use a template named _product.php_ for this purpose.<br/>
-Make this template clonable and define in it all [**editable regions**](../editable-regions.html) that are relevant to your products (e.g. ISBN number, Author, Link to the downloadable file etc.)
+Make this template clonable and define in it all [**editable regions**](./editable-regions.html) that are relevant to your products (e.g. ISBN number, Author, Link to the downloadable file etc.)
 
 Two fields are mandatory and need your special attention -
 
@@ -90,7 +90,7 @@ To create the PayPal 'Buy Button' simply place the following Couch tag in your _
 
 The image used as the button can be changed by setting the _image_ parameter of the tag (See [**Tags Reference - PayPal Button**](../../tags-reference/paypal_button.html)).
 
-<p class="error">Remember: If the **paypal\_button** tag fails to find a variable named *pp\_price*, that we mentioned in the previous section, it will not display any button at all.</p>
+Remember: If the **paypal\_button** tag fails to find a variable named *pp\_price*, that we mentioned in the previous section, it will not display any button at all. {.error}
 
 Create a few items and visit their pages to try out the buttons.<br/>
 Clicking any item's button should lead to PayPal's site with the item's name and price correctly supplied.<br/>
@@ -110,21 +110,21 @@ To see how it works, place the following snippet somewhere at the top of your _p
 
 In the snippet above we have set the _debug_ parameter to '1'. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website's root.
 
-<p class="success">
-    By default the name of the log file is _log.txt_. However you can set it to any other by setting the _logfile_ parameter -<br/>
-    <br/>
-    ```
+::: .success
+By default the name of the log file is _log.txt_. However you can set it to any other by setting the _logfile_ parameter -<br/>
+<br/>
+```
 <cms:paypal_processor debug='1' logfile='paypal.log' />
-    ```
-    The snippet given above will make *paypal\_processor* use a log file named _paypal.log_.
-</p>
+```
+The snippet given above will make *paypal\_processor* use a log file named _paypal.log_.
+:::
 
 Try clicking an item's 'Buy Now' button and upon reaching the PayPal's site, complete the transaction by logging in and buying the item. Once the transaction completes, check in your website's root for the aforesaid log file.
 
-<p class="notice">
-    If you cannot find the log file, either something is wrong and PayPal's IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
-    Try creating a file named _log.txt_ (or whatever you have set using _logfile_ parameter) manually, make it writable and try once again.
-</p>
+::: .notice
+If you cannot find the log file, either something is wrong and PayPal's IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
+Try creating a file named _log.txt_ (or whatever you have set using _logfile_ parameter) manually, make it writable and try once again.
+:::
 
 You'll find something like this in the log file -
 
@@ -204,7 +204,7 @@ Once [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) verif
 *   pp\_last\_name
 *   pp\_payer\_business\_name
 
-<p class="notice">As should be obvious, these variables represent the values that PayPal provided through the IPN. We can use these values to take further actions.</p>
+As should be obvious, these variables represent the values that PayPal provided through the IPN. We can use these values to take further actions. {.notice}
 
 [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch's database. Thus it makes sure that the amount paid is not less than the item's price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.<br/>
 If the transaction is valid, it sets another variable named *k\_paypal\_success* else it sets a variable named *k\_paypal\_error* and places the error message into it. Additionaly, it also makes available all the variables associated with the page representing the item.

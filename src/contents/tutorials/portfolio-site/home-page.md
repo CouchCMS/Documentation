@@ -94,4 +94,4 @@ Couldn't have been any easier.
 
 Well, that completes our last template. A little more work still needs to be done before we can finally call it quits - e.g. make the menu links work etc.
 
-[We'll tie all the loose ends in the next tutorial.](../../tying-the-loose-ends.html)
+[We'll tie all the loose ends in the next tutorial.](./tying-the-loose-ends.html)

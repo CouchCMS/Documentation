@@ -62,7 +62,7 @@
         <a class="report-bug" data-title="excerpt" href="https://github.com/CouchCMS/Documentation/issues/new" target="_blank" title="Is there a mistake on this page? Report the issue!"><img alt="" src="../assets/img/bug.png"/></a>
 
         <div id="content"><ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="../tags-reference/excerpt.html" itemprop="item"><span itemprop="name">excerpt</span><meta content="3" itemprop="position"/></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../index.html" itemprop="item"><span itemprop="name">Documentation</span><meta content="1" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="../tags-reference.html" itemprop="item"><span itemprop="name">Tags Reference</span><meta content="2" itemprop="position"/></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a class="text-link" href="..//tags-reference/excerpt.html" itemprop="item"><span itemprop="name">excerpt</span><meta content="3" itemprop="position"/></a></li>
                 </ul><form action="../search.html" id="search_form" method="get" name="search_form">
                 <input id="search_input" name="q" placeholder="Search" required type="text" value=""/>
                 <input id="search_submit" type="submit" value="Go"/>
@@ -81,22 +81,25 @@ Unlike the <strong>excerptHTML</strong> tag, the <strong>excerpt</strong> tag st
 <h3 id="count">count</h3>
 <p>The maximum number of words/characters that the excerpt can contain. The default value is 50.<br/>
 By default, this parameter is applied to the number of words in the excerpt.<br/>
-By setting the &#39;truncate_chars&#39; parameter (see below)  to &#39;1&#39;, it can be made to apply to the number of characters in the excerpt instead.</p>
+By setting the 'truncate_chars' parameter (see below)  to '1', it can be made to apply to the number of characters in the excerpt instead.</p>
 <h3 id="allow">allow</h3>
 <p>The HTML elements you wish to preserve in the excerpt.<br/>
 If you wish to preserve multiple tags, separate the tagnames by using comma e.g.</p>
-<pre><code>allow=&#39;i, b&#39;</code></pre><h3 id="trail">trail</h3>
-<p>By default the produced excerpt is appended with &#39;...&#39; (three ellipses). You can change this by using this parameter.</p>
+<pre><code>allow='i, b'
+</code></pre>
+<h3 id="trail">trail</h3>
+<p>By default the produced excerpt is appended with '...' (three ellipses). You can change this by using this parameter.</p>
 <h3 id="truncate_chars">truncate_chars</h3>
-<p>By default, the &#39;count&#39; paramater is considered to be the number of words the excerpt can contain.<br/>
-By setting the &#39;truncate_chars&#39; to &#39;1&#39;, the &#39;count&#39; becomes the number of characters the excerpt can contain.</p>
-<pre><code>&lt;cms:excerpt count=&#39;100&#39; truncate_chars=&#39;1&#39;&gt;...blah blah...&lt;/cms:excerpt&gt;</code></pre><p class="notice">Please note that if 'truncate\_chars' is set to '1', the 'allow' parameter is ignored and all the HTML tags are stripped off the input.</p>
-
+<p>By default, the 'count' paramater is considered to be the number of words the excerpt can contain.<br/>
+By setting the 'truncate_chars' to '1', the 'count' becomes the number of characters the excerpt can contain.</p>
+<pre><code>&lt;cms:excerpt count='100' truncate_chars='1'&gt;...blah blah...&lt;/cms:excerpt&gt;
+</code></pre>
+<p class="notice">Please note that if 'truncate_chars' is set to '1', the 'allow' parameter is ignored and all the HTML tags are stripped off the input.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag does not set any variables of its own.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>
-<li><a href="excerpthtml.html">excerptHTML</a></li>
+<li><a href="./excerpthtml.html">excerptHTML</a></li>
 </ul>
 </article>
         </div>

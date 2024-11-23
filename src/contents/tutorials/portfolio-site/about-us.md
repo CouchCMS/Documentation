@@ -29,11 +29,11 @@ Open up _about.php_ in your favorite text editor and paste the following line to
 
 ![](../../../../assets/img/contents/portfolio-site-9.png)
 
-<p class="notice">
-    If you had chosen to rename the default admin folder from couch to something else, make sure the line pasted above also reflects the change. Thus if the new name of the folder was myadmin, the line to be pasted will become -<br/>
-    <br/>
-    &lt;?php require\_once( 'myadmin/cms.php' ); ?&gt;
-</p>
+::: .notice
+If you had chosen to rename the default admin folder from couch to something else, make sure the line pasted above also reflects the change. Thus if the new name of the folder was myadmin, the line to be pasted will become -<br/>
+<br/>
+&lt;?php require\_once( 'myadmin/cms.php' ); ?&gt;
+:::
 
 As the final step, paste the following to _about.php_ as the last line of the file (i.e. after all other content of the file) -
 
@@ -88,7 +88,7 @@ The right panel should now display the following -
 As you can see, Couch has now created the two editable regions for you.<br/>
 Try editing the contents in them and revisit _about.php_ after saving your changes. Your changes should now appear on the website.
 
-<p class="success">The editable tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client's need. Please consult the [documentation](../../../../concepts/editable-regions.html) for details.</p>
+The editable tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client's need. Please consult the [documentation](../../../../concepts/editable-regions.html) for details. {.success}
 
 This is all that is needed to make a single page editable.<br/>
 To further refine the experience for your client, a few minor enhancements can be made.<br/>
@@ -108,4 +108,4 @@ The template should now be listed as 'About Us' instead of its file-name.
 
 In the next chapter we'll tackle the templates that will be used to create multiple cloned pages.
 
-[Diving deep - the Blog (Part 1)](../../blog.html)
+[Diving deep - the Blog (Part 1)](./blog.html)
