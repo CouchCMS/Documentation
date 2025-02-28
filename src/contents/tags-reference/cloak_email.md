@@ -6,7 +6,7 @@ template: default.html
 
 # cloak_email
 
-The **cloak\_email** tag can be used to hide email addresses from spambots (email harvesters).<br/>
+The **cloak\_email** tag can be used to hide email addresses from spambots (email harvesters).
 This tag creates a JavaScript encrypted mailto link that remains inaccessible to spambots.
 
 ```
@@ -45,7 +45,7 @@ The visible text of the mailto link. If skipped, the _email_ parameter is used f
 
 ### msg
 
-Message to display if this email is accessed with JavaScript disabled. If skipped, the default text shown is -<br/>
+Message to display if this email is accessed with JavaScript disabled. If skipped, the default text shown is -
 '_(Please enable JavaScript to view this email address)_'
 
 ```

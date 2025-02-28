@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="excerpt">excerpt</h1>
-<p>The <strong>excerpt</strong> tag can be used to create an excerpt of any content that is enclosed within its opening and closing tags.<br/>
+<p>The <strong>excerpt</strong> tag can be used to create an excerpt of any content that is enclosed within its opening and closing tags.
 Unlike the <strong>excerptHTML</strong> tag, the <strong>excerpt</strong> tag strips off all HTML tags (except those specified by its <em>allow</em> parameter) from the excerpt it creates.</p>
 <h2 id="parameters">Parameters</h2>
 <ul>
@@ -79,18 +79,18 @@ Unlike the <strong>excerptHTML</strong> tag, the <strong>excerpt</strong> tag st
 <li>truncate_chars</li>
 </ul>
 <h3 id="count">count</h3>
-<p>The maximum number of words/characters that the excerpt can contain. The default value is 50.<br/>
-By default, this parameter is applied to the number of words in the excerpt.<br/>
+<p>The maximum number of words/characters that the excerpt can contain. The default value is 50.
+By default, this parameter is applied to the number of words in the excerpt.
 By setting the 'truncate_chars' parameter (see below)  to '1', it can be made to apply to the number of characters in the excerpt instead.</p>
 <h3 id="allow">allow</h3>
-<p>The HTML elements you wish to preserve in the excerpt.<br/>
+<p>The HTML elements you wish to preserve in the excerpt.
 If you wish to preserve multiple tags, separate the tagnames by using comma e.g.</p>
 <pre><code>allow='i, b'
 </code></pre>
 <h3 id="trail">trail</h3>
 <p>By default the produced excerpt is appended with '...' (three ellipses). You can change this by using this parameter.</p>
 <h3 id="truncate_chars">truncate_chars</h3>
-<p>By default, the 'count' paramater is considered to be the number of words the excerpt can contain.<br/>
+<p>By default, the 'count' paramater is considered to be the number of words the excerpt can contain.
 By setting the 'truncate_chars' to '1', the 'count' becomes the number of characters the excerpt can contain.</p>
 <pre><code>&lt;cms:excerpt count='100' truncate_chars='1'&gt;...blah blah...&lt;/cms:excerpt&gt;
 </code></pre>

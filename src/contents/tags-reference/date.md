@@ -30,20 +30,20 @@ The **date** tag outputs a string according to the given _format_ parameter usin
 
 ### date
 
-The date to be formated.<br/>
+The date to be formated.
 This parameter is expected to be in '_Y-m-d H:i:s_' format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. *k\_page\_date* etc., are in this format.
 
 ### format
 
-The **date** tag supports two different types of format characters - locale-aware and non locale-aware.<br/>
-With locale-aware characters, you can specify that the date is to formatted according to, for example, _french_ locale or _italian_ locale by setting the _locale_ parameter.<br/>
+The **date** tag supports two different types of format characters - locale-aware and non locale-aware.
+With locale-aware characters, you can specify that the date is to formatted according to, for example, _french_ locale or _italian_ locale by setting the _locale_ parameter.
 The locale-aware characters all have a % sign prefixed to them.
 
 The locale-aware and the non locale-aware characters cannot be intermixed. {.error}
 
 #### Non Locale-aware format characters
 
-<br/>
+
 
 | Format character | Description | Example returned values |
 | ---------------- | ----------- | ----------------------- |
@@ -86,11 +86,11 @@ The locale-aware and the non locale-aware characters cannot be intermixed. {.err
 | _r_ | [» RFC 2822](http://www.faqs.org/rfcs/rfc2822) formatted date | Example: _Thu, 21 Dec 2000 16:01:07 +0200_ |
 | _U_ | Seconds since the Unix Epoch (January 1 1970 00:00:00 GMT) | |
 
-<br/>
+
 
 #### Locale-aware format characters
 
-<br/>
+
 
 | Format Character | Description | Example returned values |
 | ---------------- | ----------- | ----------------------- |
@@ -142,7 +142,7 @@ The locale-aware and the non locale-aware characters cannot be intermixed. {.err
 | _%t_ | A Tab character ("\t") | \--- |
 | _%%_ | A literal percentage character ("%") | \--- |
 
-<br/>
+
 
 ### gmt
 
@@ -164,7 +164,7 @@ This feature depends entirely on the indicated locale being available at your we
 
 ### charset
 
-Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.<br/>
+Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.
 The **date** tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.
 
 For example -
@@ -179,34 +179,34 @@ For example -
 
 The following is a rough list of the charset used by different languages -
 
-**ISO-8859-1 - Latin 1**<br/>
+**ISO-8859-1 - Latin 1**
 Western Europe and Americas: Afrikaans, Basque, Catalan, Danish, Dutch, English, Faeroese, Finnish, French, Galician, German, Icelandic, Irish, Italian, Norwegian, Portuguese, Spanish and Swedish.
 
-**ISO-8859-2 - Latin 2**<br/>
+**ISO-8859-2 - Latin 2**
 Latin-written Slavic and Central European languages: Czech, German, Hungarian, Polish, Romanian, Croatian, Slovak, Slovene.
 
-**ISO-8859-3 - Latin 3**<br/>
+**ISO-8859-3 - Latin 3**
 Esperanto, Galician, Maltese, and Turkish.
 
-**ISO-8859-4 - Latin 4**<br/>
+**ISO-8859-4 - Latin 4**
 Scandinavia/Baltic (mostly covered by 8859-1 also): Estonian, Latvian, and Lithuanian. It is an incomplete predecessor of Latin 6\.
 
-**ISO-8859-5 - Cyrillic**<br/>
+**ISO-8859-5 - Cyrillic**
 Bulgarian, Byelorussian, Macedonian, Russian, Serbian and Ukrainian.
 
-**ISO-8859-6 - Arabic**<br/>
+**ISO-8859-6 - Arabic**
 Non-accented Arabic.
 
-**ISO-8859-7 - Modern Greek**<br/>
+**ISO-8859-7 - Modern Greek**
 Greek.
 
-**ISO-8859-8 - Hebrew**<br/>
+**ISO-8859-8 - Hebrew**
 Non-accented Hebrew.
 
-**ISO-8859-9 - Latin 5**<br/>
+**ISO-8859-9 - Latin 5**
 Same as 8859-1 except for Turkish instead of Icelandic
 
-**ISO-8859-10 - Latin 6**<br/>
+**ISO-8859-10 - Latin 6**
 Latin6, for Lappish/Nordic/Eskimo languages: Adds the last Inuit (Greenlandic) and Sami (Lappish) letters that were missing in Latin 4 to cover the entire Nordic area.
 
 ## Variables

@@ -6,7 +6,7 @@ template: default.html
 
 # Listing Pages
 
-Couch has a powerful tag named [__*pages*__](../../tags-reference/pages.html) that can be used to list all pages belonging to a template.<br/>
+Couch has a powerful tag named [__*pages*__](../../tags-reference/pages.html) that can be used to list all pages belonging to a template.
 For example -
 
 ```
@@ -16,30 +16,30 @@ For example -
 </cms:pages>
 ```
 
-\- the snippet given above will fetch all pages cloned out of _blog.php_ template.<br/>
+\- the snippet given above will fetch all pages cloned out of _blog.php_ template.
 The _masterpage_ parameter stands for the template's name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.
 
 This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its page-view).
 
-[__*Pages*__](../../tags-reference/pages.html) tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
+[__*Pages*__](../../tags-reference/pages.html) tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.
 Please see the [**parameters**](../../tags-reference/pages.html#parameters) section for a comprehensive list.
 
 ### LISTING PAGES IN THE LIST-VIEWS (HOME-VIEW, FOLDER-VIEW AND ARCHIVE-VIEW)
 
 As shown in the previous chapter, for clonable templates, Couch considers certain URLS as those meant for listing pages cloned out of the template being accessed.
 
-For example:<br/>
-_http&#58;//www.mysite.com/blog/_<br/>
+For example:
+_http&#58;//www.mysite.com/blog/_
 \- is considered to be a **home-view** and a list to all the pages cloned out of _blog.php_ should be displayed in this view.
 
-_http&#58;//www.mysite.com/blog/hobbies/_<br/>
+_http&#58;//www.mysite.com/blog/hobbies/_
 \- is considered to be a **folder-view** and a list of all the pages cloned out of _blog.php_ that belong to 'hobbies' sub-folder should be displayed in this view.
 
-_http&#58;//www.mysite.com/blog/2010/05/_<br/>
+_http&#58;//www.mysite.com/blog/2010/05/_
 \- is considered to be an **archive-view** and a list of all the pages cloned out of _blog.php_ that have been published during the month of May in 2010 should be displayed in this view.
 
-When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.<br/>
-See: [**Variables available in views**](./variables-in-views.html).<br/>
+When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.
+See: [**Variables available in views**](./variables-in-views.html).
 It is ultimately upto you whether or not you choose to list pages in the expected manner.
 
 ### Handling home-view

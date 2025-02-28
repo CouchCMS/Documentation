@@ -6,7 +6,7 @@ template: default.html
 
 # excerpt
 
-The **excerpt** tag can be used to create an excerpt of any content that is enclosed within its opening and closing tags.<br/>
+The **excerpt** tag can be used to create an excerpt of any content that is enclosed within its opening and closing tags.
 Unlike the **excerptHTML** tag, the **excerpt** tag strips off all HTML tags (except those specified by its _allow_ parameter) from the excerpt it creates.
 
 ## Parameters
@@ -18,13 +18,13 @@ Unlike the **excerptHTML** tag, the **excerpt** tag strips off all HTML tags (ex
 
 ### count
 
-The maximum number of words/characters that the excerpt can contain. The default value is 50\.<br/>
-By default, this parameter is applied to the number of words in the excerpt.<br/>
+The maximum number of words/characters that the excerpt can contain. The default value is 50\.
+By default, this parameter is applied to the number of words in the excerpt.
 By setting the 'truncate\_chars' parameter (see below)  to '1', it can be made to apply to the number of characters in the excerpt instead.
 
 ### allow
 
-The HTML elements you wish to preserve in the excerpt.<br/>
+The HTML elements you wish to preserve in the excerpt.
 If you wish to preserve multiple tags, separate the tagnames by using comma e.g.
 
 ```
@@ -37,7 +37,7 @@ By default the produced excerpt is appended with '...' (three ellipses). You can
 
 ### truncate_chars
 
-By default, the 'count' paramater is considered to be the number of words the excerpt can contain.<br/>
+By default, the 'count' paramater is considered to be the number of words the excerpt can contain.
 By setting the 'truncate\_chars' to '1', the 'count' becomes the number of characters the excerpt can contain.
 
 ```

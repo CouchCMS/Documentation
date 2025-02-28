@@ -266,7 +266,7 @@ In the example above, Couch will allow input only if it matches that in another 
 
 #### regex
 
-This is a very powerful option and can actually mimic all the validators described above (and much more).<br/>
+This is a very powerful option and can actually mimic all the validators described above (and much more).
 It requires a little knowledge of Regular Expressions (as understood by PHP), though.
 
 ```
@@ -276,8 +276,8 @@ validator='regex=/(cat|dog)$/i'
 In the silly example, the input is considered valid only if it ends in either _cat_ or _dog_.
 
 ::: .success
-Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-<br/>
+Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -
+
 ```
 validator='alpha_num | min_len=6 | max_len=14'
 ```
@@ -294,8 +294,8 @@ validator_msg='required=What! You think you can get away with leaving this empty
 ```
 
 ::: .success
-Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-<br/>
+Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -
+
 ```
 validator_msg='required=Please enter something | min_len=Too short!'
 ```

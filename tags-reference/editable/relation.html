@@ -84,21 +84,21 @@
 <h3 id="name">name</h3>
 <p>Mandatory. Uniquely identifies an editable region.</p>
 <h3 id="masterpage">masterpage</h3>
-<p>This parameter specifies the template the cloned pages of which will be listed in this region.<br/>
+<p>This parameter specifies the template the cloned pages of which will be listed in this region.
 This represents the 'other' end of the relationship.</p>
 <pre><code>&lt;cms:editable type='relation' name='artist_albums' masterpage='albums.php' /&gt;
 </code></pre>
 <p>In the example above, the editable region will list all cloned pages of 'albums.php'</p>
 <h3 id="has">has</h3>
-<p>This parameter specifies with how many of the listed pages can the page being edited be related to.<br/>
-Acceptable values are 'one' and 'many' (where 'many' is the default).<br/>
+<p>This parameter specifies with how many of the listed pages can the page being edited be related to.
+Acceptable values are 'one' and 'many' (where 'many' is the default).
 If 'one' is specified, the listing is shown in a drop-drop allowing only a single selection, Whereas if 'many' is used, the listing gets shown as a series of check-boxes to allow multiple-selections.</p>
 <h3 id="reverse_has">reverse_has</h3>
-<p>This parameter specifies with how many pages of the current template can the listed pages be related to.<br/>
-Acceptable values are 'one' and 'many' (where 'many' is the default).<br/>
+<p>This parameter specifies with how many pages of the current template can the listed pages be related to.
+Acceptable values are 'one' and 'many' (where 'many' is the default).
 If 'one' is specified, the listing shows only the pages that have not yet been associated with any other page.</p>
 <h3 id="folder">folder</h3>
-<p>This parameter can be used to list only the page belonging to a particular folder (or folders).<br/>
+<p>This parameter can be used to list only the page belonging to a particular folder (or folders).
 Also supports negation (where pages of the specified folder(s) will be skipped).</p>
 <pre><code>&lt;cms:editable type='relation' name='artist_albums' masterpage='albums.php' folder='classical' /&gt;
 </code></pre>
@@ -110,7 +110,7 @@ Also supports negation (where pages of the specified folder(s) will be skipped).
 </code></pre>
 <p>The example above will list all pages of the template except those belonging to 'classical' or 'jazz' folders (and their sub-folders).</p>
 <h3 id="include_subfolders">include_subfolders</h3>
-<p>The default value of this parameter is '1' and this causes the 'folder' parameter mentioned above to list pages belonging to the specified folder AND all sub-folders in the hierarchy below it.<br/>
+<p>The default value of this parameter is '1' and this causes the 'folder' parameter mentioned above to list pages belonging to the specified folder AND all sub-folders in the hierarchy below it.
 Setting 'include_subfolders' to '0' will make this tag list only pages that are located directly within the specified folder.</p>
 <pre><code>&lt;cms:editable type='relation' name='artist_albums' masterpage='albums.php' folder='classical' include_subfolders='1' /&gt;
 </code></pre>
@@ -124,7 +124,7 @@ Setting 'include_subfolders' to '0' will make this tag list only pages that are 
 </ul>
 <p>If unspecified, 'publish_date' is used as the default value.</p>
 <h3 id="order_dir">order_dir</h3>
-<p>This parameter sets the sort direction of the listed pages.<br/>
+<p>This parameter sets the sort direction of the listed pages.
 The acceptable values are</p>
 <ul>
 <li>desc</li>

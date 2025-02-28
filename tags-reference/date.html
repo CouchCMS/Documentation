@@ -85,15 +85,14 @@
 <li>charset</li>
 </ul>
 <h3 id="date-1">date</h3>
-<p>The date to be formated.<br/>
+<p>The date to be formated.
 This parameter is expected to be in '<em>Y-m-d H:i:s</em>' format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. <em>k_page_date</em> etc., are in this format.</p>
 <h3 id="format">format</h3>
-<p>The <strong>date</strong> tag supports two different types of format characters - locale-aware and non locale-aware.<br/>
-With locale-aware characters, you can specify that the date is to formatted according to, for example, <em>french</em> locale or <em>italian</em> locale by setting the <em>locale</em> parameter.<br/>
+<p>The <strong>date</strong> tag supports two different types of format characters - locale-aware and non locale-aware.
+With locale-aware characters, you can specify that the date is to formatted according to, for example, <em>french</em> locale or <em>italian</em> locale by setting the <em>locale</em> parameter.
 The locale-aware characters all have a % sign prefixed to them.</p>
 <p class="error">The locale-aware and the non locale-aware characters cannot be intermixed.</p>
 <h4 id="non-locale-aware-format-characters">Non Locale-aware format characters</h4>
-<br/>
 <table>
 <thead>
 <tr>
@@ -295,9 +294,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 </tr>
 </tbody>
 </table>
-<br/>
 <h4 id="locale-aware-format-characters">Locale-aware format characters</h4>
-<br/>
 <table>
 <thead>
 <tr>
@@ -544,7 +541,6 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 </tr>
 </tbody>
 </table>
-<br/>
 <h3 id="gmt">gmt</h3>
 <p>By setting this parameter to '1', you can get the GMT equivalent of the date provided.</p>
 <h3 id="locale">locale</h3>
@@ -555,7 +551,7 @@ The locale-aware characters all have a % sign prefixed to them.</p>
 </code></pre>
 <p class="error">This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used.</p>
 <h3 id="charset">charset</h3>
-<p>Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.<br/>
+<p>Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.
 The <strong>date</strong> tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.</p>
 <p>For example -</p>
 <pre><code>&lt;cms:date k_page_date format='%B %d, %Y' locale='greek' charset='ISO-8859-7' /&gt;
@@ -563,25 +559,25 @@ The <strong>date</strong> tag can help converting the output to UTF8 if you can 
 <pre><code>&lt;cms:date k_page_date format='%B %d, %Y' locale='russian' charset='ISO-8859-5' /&gt;
 </code></pre>
 <p>The following is a rough list of the charset used by different languages -</p>
-<p><strong>ISO-8859-1 - Latin 1</strong><br/>
+<p><strong>ISO-8859-1 - Latin 1</strong>
 Western Europe and Americas: Afrikaans, Basque, Catalan, Danish, Dutch, English, Faeroese, Finnish, French, Galician, German, Icelandic, Irish, Italian, Norwegian, Portuguese, Spanish and Swedish.</p>
-<p><strong>ISO-8859-2 - Latin 2</strong><br/>
+<p><strong>ISO-8859-2 - Latin 2</strong>
 Latin-written Slavic and Central European languages: Czech, German, Hungarian, Polish, Romanian, Croatian, Slovak, Slovene.</p>
-<p><strong>ISO-8859-3 - Latin 3</strong><br/>
+<p><strong>ISO-8859-3 - Latin 3</strong>
 Esperanto, Galician, Maltese, and Turkish.</p>
-<p><strong>ISO-8859-4 - Latin 4</strong><br/>
+<p><strong>ISO-8859-4 - Latin 4</strong>
 Scandinavia/Baltic (mostly covered by 8859-1 also): Estonian, Latvian, and Lithuanian. It is an incomplete predecessor of Latin 6.</p>
-<p><strong>ISO-8859-5 - Cyrillic</strong><br/>
+<p><strong>ISO-8859-5 - Cyrillic</strong>
 Bulgarian, Byelorussian, Macedonian, Russian, Serbian and Ukrainian.</p>
-<p><strong>ISO-8859-6 - Arabic</strong><br/>
+<p><strong>ISO-8859-6 - Arabic</strong>
 Non-accented Arabic.</p>
-<p><strong>ISO-8859-7 - Modern Greek</strong><br/>
+<p><strong>ISO-8859-7 - Modern Greek</strong>
 Greek.</p>
-<p><strong>ISO-8859-8 - Hebrew</strong><br/>
+<p><strong>ISO-8859-8 - Hebrew</strong>
 Non-accented Hebrew.</p>
-<p><strong>ISO-8859-9 - Latin 5</strong><br/>
+<p><strong>ISO-8859-9 - Latin 5</strong>
 Same as 8859-1 except for Turkish instead of Icelandic</p>
-<p><strong>ISO-8859-10 - Latin 6</strong><br/>
+<p><strong>ISO-8859-10 - Latin 6</strong>
 Latin6, for Lappish/Nordic/Eskimo languages: Adds the last Inuit (Greenlandic) and Sami (Lappish) letters that were missing in Latin 4 to cover the entire Nordic area.</p>
 <h2 id="variables">Variables</h2>
 <p>This tag is self-closing and does not set any variables of its own.</p>

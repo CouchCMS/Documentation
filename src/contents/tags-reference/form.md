@@ -36,7 +36,7 @@ If the form fails to validate, the names of each failed fields, along with their
 
 ### anchor
 
-To understand this parameter, suppose a form is created somewhere at the bottom of a web page and requires the user to scroll down the page to reach it. Upon submission of this form, the page is reloaded and in doing so the the form seems to disappear because the refreshed page shows the top region and it will again need scrolling to reach the form. This will cause the user to miss any feedback (error or success messages) that might have been added to the form.<br/>
+To understand this parameter, suppose a form is created somewhere at the bottom of a web page and requires the user to scroll down the page to reach it. Upon submission of this form, the page is reloaded and in doing so the the form seems to disappear because the refreshed page shows the top region and it will again need scrolling to reach the form. This will cause the user to miss any feedback (error or success messages) that might have been added to the form.
 By setting the _anchor_ parameter to '1', Couch adds an HTML anchor ('\#') to the form so that the reloaded page scrolls back to the top of the form, thus mitigating the mentioned problem.
 
 ## Variables
@@ -52,8 +52,8 @@ If the form successfully validates, the names and values of each fields are conc
 
 If the form fails to validate, the names of each failed fields along with their error messages are concatenated using a '|' pipe character to get a single string and this string is placed in this variable.
 
-In addition to the two above mentioned variables, the values of the fields are also made available individually by setting discrete variables for each field. The names of the variables, however, differ between the success and error conditions.<br/>
-Suppose a form has two fields named _name_ and _password_. Upon successful validation of both fields, two variables named after the two fields will get set - *frm\_name* and *frm\_password*. Each will contain the value submitted through them.<br/>
+In addition to the two above mentioned variables, the values of the fields are also made available individually by setting discrete variables for each field. The names of the variables, however, differ between the success and error conditions.
+Suppose a form has two fields named _name_ and _password_. Upon successful validation of both fields, two variables named after the two fields will get set - *frm\_name* and *frm\_password*. Each will contain the value submitted through them.
 However, if any of the fields fail to validate, variables representing only those failed fields will get set. Suppose the password field is the one that fails. In this case a variable named *k\_error\_password* will get set. This variable will contain the error message set for the validating condition.
 
 ## Related Tags

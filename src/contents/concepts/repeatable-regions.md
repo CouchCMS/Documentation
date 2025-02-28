@@ -8,13 +8,13 @@ template: default.html
 
 An oft-requested feature has been the ability to define an editable region in a template only once and then, on each cloned page, dynamically add as many instances of the region as desired.
 
-A commonly encountered scenario requiring this feature goes something like this -<br/>
-We are building a portfolio section where each cloned page represents a single portfolio item.<br/>
-Each portfolio item will have, of other things, a number of images associated with it.<br/>
-We know that we can define an editable region of type 'image' for each image however the problem here is that **we cannot know beforehand exactly how many images any portfolio item might have**.<br/>
+A commonly encountered scenario requiring this feature goes something like this -
+We are building a portfolio section where each cloned page represents a single portfolio item.
+Each portfolio item will have, of other things, a number of images associated with it.
+We know that we can define an editable region of type 'image' for each image however the problem here is that **we cannot know beforehand exactly how many images any portfolio item might have**.
 Some item might require only a single image while another one might require 20 images (or even more).
 
-The solution used up till now ([http&#58;//www.couchcms.com/forum/viewtopic.php?p=790\#p790](https://www.couchcms.com/forum/viewtopic.php?p=790#p790)) has been to work out the maximum number of images an item could possibly have and then define as many editable regions.<br/>
+The solution used up till now ([http&#58;//www.couchcms.com/forum/viewtopic.php?p=790\#p790](https://www.couchcms.com/forum/viewtopic.php?p=790#p790)) has been to work out the maximum number of images an item could possibly have and then define as many editable regions.
 This works but it is far from perfect -
 
 *   It clutters up the admin panel. If suppose we define twenty regions for the images - while editing, every single portfolio page will display all the twenty regions even if the page requires only one image.
@@ -54,26 +54,26 @@ You can also sort the regions by manually dragging and dropping the rows. {.succ
 This was the 'Repeatable regions' feature in action and I'm sure you'll agree this is a much better way of doing things.
 
 ::: .notice
-At this point you might want to ask if 'image' is the only type of editable region that can be repeated.<br/>
-Well, no! Of the 12 native types of editable regions in Couch, the [**repeatable**](../../tags-reference/repeatable.html) tag supports the following 8 -<br/>
-**text**<br/>
-**password**<br/>
-**textarea**<br/>
-**image**<br/>
-**file**<br/>
-**radio**<br/>
-**checkbox**<br/>
-**dropdown**<br/>
-<br/>
-Out of the remaining 4 types that are unsupported, the 'message' and 'group' types actually make no sense getting repeated.<br/>
-However the 'richtext' and 'thumbnail' types are really far too important to be left out.<br/>
-The reason for the two being left out is rather technical however considering the importance that 'richtext' and 'thumbnail' types carry, Couch v1.3 offers us alternatives for both.<br/>
-<br/>
-Instead of using the 'richtext' type we can now use a new type of editable region named [**nicedit**](../../tags-reference/editable/nicedit.html).<br/>
-'nicedit' uses a very light-weight wysiwyg editor of the same name. It is not as full-featured as the CKEditor that 'richtext' uses however it gets the job done well and is light enough to be repeated any number of times on a single page (we'll find an example of its use below).<br/>
-<br/>
-**We can also use 'nicedit' type as a regular editable region (i.e. as the usual non-repeatable regions)**.<br/>
-<br/>
+At this point you might want to ask if 'image' is the only type of editable region that can be repeated.
+Well, no! Of the 12 native types of editable regions in Couch, the [**repeatable**](../../tags-reference/repeatable.html) tag supports the following 8 -
+**text**
+**password**
+**textarea**
+**image**
+**file**
+**radio**
+**checkbox**
+**dropdown**
+
+Out of the remaining 4 types that are unsupported, the 'message' and 'group' types actually make no sense getting repeated.
+However the 'richtext' and 'thumbnail' types are really far too important to be left out.
+The reason for the two being left out is rather technical however considering the importance that 'richtext' and 'thumbnail' types carry, Couch v1.3 offers us alternatives for both.
+
+Instead of using the 'richtext' type we can now use a new type of editable region named [**nicedit**](../../tags-reference/editable/nicedit.html).
+'nicedit' uses a very light-weight wysiwyg editor of the same name. It is not as full-featured as the CKEditor that 'richtext' uses however it gets the job done well and is light enough to be repeated any number of times on a single page (we'll find an example of its use below).
+
+**We can also use 'nicedit' type as a regular editable region (i.e. as the usual non-repeatable regions)**.
+
 As for the 'thumbnail' type, we do not have any substitute editable region for it but v1.3 has a new tag named [**thumbnail**](../../tags-reference/thumbnail.html) that does an identical job. Please see [**thumbnail**](../../tags-reference/thumbnail.html) documentation for this tag's use.
 :::
 
@@ -94,15 +94,15 @@ The edit panel now shows -
 
 ![](../../assets/img/contents/repeatable-regions-4.png)
 
-As you can see, the two editable regions form a 'row' that can be repeated.<br/>
+As you can see, the two editable regions form a 'row' that can be repeated.
 This is ideal for inputting tabular data where each row can represent a table's _&lt;TR&gt;_.
 
 ::: .notice
-Since all the editable regions forming the 'repeatable unit' appear side-by-side in a single row, you'll want to have more control over how wide individual region appears in a row.<br/>
-<br/>
-For this purpose, all editable regions in Couch v1.3 (when being used within the [**repeatable**](../../tags-reference/repeatable.html) tag) now support a **col\_width** parameter that sets how wide the containing column of the region will be.<br/>
-Additionally, the 'image' as well as the 'file' types also support a **input\_width** parameter that sets the width of the textbox the two regions display.<br/>
-<br/>
+Since all the editable regions forming the 'repeatable unit' appear side-by-side in a single row, you'll want to have more control over how wide individual region appears in a row.
+
+For this purpose, all editable regions in Couch v1.3 (when being used within the [**repeatable**](../../tags-reference/repeatable.html) tag) now support a **col\_width** parameter that sets how wide the containing column of the region will be.
+Additionally, the 'image' as well as the 'file' types also support a **input\_width** parameter that sets the width of the textbox the two regions display.
+
 Please take a look at the definition of the 'nicedit' type in the code above for an example of the use of these new parameters.
 :::
 
@@ -116,21 +116,21 @@ The following snippet placed in the page\_view of our template will display the 
 
 ```
 <cms:show_repeatable 'my_multiple_images' >
-    <b>Image: <img src="<cms:show my_image />" /> <br/>
+    <b>Image: <img src="<cms:show my_image />" /> 
     <b>Desc:</b> <cms:show my_desc />
     <hr>
 </cms:show_repeatable>
 ```
 
-Please note that the [**show\_repeatable**](../../tags-reference/show_repeatable.html) tag has to be given the name associated with a [**repeatable**](../../tags-reference/repeatable.html) tag (take care of using the quotes).<br/>
+Please note that the [**show\_repeatable**](../../tags-reference/show_repeatable.html) tag has to be given the name associated with a [**repeatable**](../../tags-reference/repeatable.html) tag (take care of using the quotes).
 It iterates through each row of regions in the set making available the values within each constituent region. These values then can be displayed using the regular [**show**](../../tags-reference/show.html) tag.
 
 Tag 'show\_repeatable' sets two variables of its own - 'k\_count' and 'k\_total\_records' as it iterates through the rows. It accepts a parameter named 'startcount' that can be set to specify the start value of 'k\_count' (default value being '1'). Following is the same snippet as above with the parameters and variables used.
 
 ```
 <cms:show_repeatable 'my_multiple_images' startcount='0' >
-    <cms:show k_count /> / <cms:show k_total_records /><br/>
-    <b>Image: <img src="<cms:show my_image />" /> <br/>
+    <cms:show k_count /> / <cms:show k_total_records />
+    <b>Image: <img src="<cms:show my_image />" /> 
     <b>Desc:</b> <cms:show my_desc />
     <hr>
 </cms:show_repeatable>

@@ -75,7 +75,7 @@
      &lt;cms:show k_page_title /&gt;&lt;br&gt;
 &lt;/cms:pages&gt;
 </code></pre>
-<p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.<br/>
+<p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.
 The <em>masterpage</em> parameter stands for the template's name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.</p>
 <p>This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its <a href="../../concepts/variables-in-views.html"><em>page-view</em></a>).</p>
 <p><strong>Pages</strong> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.</p>
@@ -151,8 +151,8 @@ The <em>masterpage</em> parameter stands for the template's name. If this parame
 <pre><code>&lt;cms:pages masterpage='blog.php' folder='NOT classic-bikes, super-bikes'&gt;&lt;/cms:pages&gt;
 </code></pre>
 <p>This example would fetch all pages cloned from blog.php except those belonging to folders named 'classic-bikes' or 'super-bikes'.</p>
-<p>By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).<br/>
-To include the pages that are within the subfolders of the given folder(s), set the <em>include_subfolders</em> parameter as well.<br/>
+<p>By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).
+To include the pages that are within the subfolders of the given folder(s), set the <em>include_subfolders</em> parameter as well.
 See below.</p>
 <p>In the <em>folder-view</em> (see <a href="../../concepts/views.html"><strong>Views</strong></a>), the <em>k_folder_name</em> variable is set to the name of the current folder. It can be used to list the right pages -</p>
 <pre><code>&lt;cms:pages folder=k_folder_name include_subfolders='1'&gt;&lt;/cms:pages&gt;
@@ -225,12 +225,11 @@ See below.</p>
 </code></pre>
 <p>This example would fetch all cloned pages of blog.php where the editable region 'my_blog_author' exactly matches either the term 'jeffrey' or 'arthur'.</p>
 <div class="notice">
-<p>Since a comma ',' is being used to separate two values, if any of the values contains a comma<br/>
-within itself you'll have to 'escape' the comma by prepending it with a backward slash -<br/>
-'my_blog_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci<br/>
-'my_blog_text=veni\, vidi\, veci' - contains the phrase 'veni, vidi, veci'.<br/>
-<br/>
-Similarly if any of the values contains a single quote ''' or double quote '&quot;', it can be escaped likewise.</p>
+<p>Since a comma ',' is being used to separate two values, if any of the values contains a comma
+within itself you'll have to 'escape' the comma by prepending it with a backward slash -
+'my_blog_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci
+'my_blog_text=veni\, vidi\, veci' - contains the phrase 'veni, vidi, veci'.</p>
+<p>Similarly if any of the values contains a single quote ''' or double quote '&quot;', it can be escaped likewise.</p>
 </div>
 <pre><code>&lt;cms:pages masterpage='blog.php' custom_field='my_blog_author!=jeffrey'&gt;&lt;/cms:pages&gt;
 </code></pre>
@@ -242,12 +241,12 @@ Similarly if any of the values contains a single quote ''' or double quote '&quo
 </code></pre>
 <p>This example would fetch all cloned pages of blog.php where the editable region 'my_blog_author' DOES NOT contain the words 'jeffrey' and 'arthur' anywhere within it.</p>
 <div class="error">
-<p>The above snippet might seem a little counter-intuitive.<br/>
-It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not<br/>
-have both jeffrey and arthur in the same field.<br/>
+<p>The above snippet might seem a little counter-intuitive.
+It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not
+have both jeffrey and arthur in the same field.
 For how to fetch pages that contain neither jeffrey nor arthur, use the multiple fields examples given below.</p>
 </div>
-<p>Multiple custom fields may be combined together with a pipe '|' character (The pipe stands for a boolean AND) -<br/>
+<p>Multiple custom fields may be combined together with a pipe '|' character (The pipe stands for a boolean AND) -
 The same custom field may be repeated.</p>
 <pre><code>&lt;cms:pages masterpage='blog.php' custom_field='my_blog_author!=jeffrey | my_blog_author!=arthur'&gt;&lt;/cms:pages&gt;
 </code></pre>
@@ -258,28 +257,25 @@ The same custom field may be repeated.</p>
 <pre><code>&lt;cms:pages masterpage='blog.php' custom_field='my_blog_author=jeffrey | my_blog_text=fellow countrymen'&gt;&lt;/cms:pages&gt;
 </code></pre>
 <p>This example would fetch all pages that contain 'jeffery' within 'my_blog_author' AND contain 'fellow countrymen' within 'my_blog_text'</p>
-<p>Custom fields can also be used for comparisions other than the equality and non-equality described above.<br/>
+<p>Custom fields can also be used for comparisions other than the equality and non-equality described above.
 For example, we can fetch pages that have the value of a certain editable region 'greater than' or 'less than' a particular value.</p>
 <div class="notice">
-<p>Please bear in mind that if an editable region will contain values that you plan to compare in this manner<br/>
-(i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -<br/>
-age &lt; 35<br/>
-salary &gt; 12500<br/>
-distance &gt;= 23.56<br/>
-price = 355.39<br/>
-<br/>
-Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -<br/>
-telephone_number &lt; 234567878<br/>
-<br/>
-For all such cases where the values will be numbers and you'd want to use them in the <em>custom_field</em> parameter, MAKE SURE to set the <em>search_type</em> parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
-<br/>
-Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search_type.</p>
+<p>Please bear in mind that if an editable region will contain values that you plan to compare in this manner
+(i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -
+age &lt; 35
+salary &gt; 12500
+distance &gt;= 23.56
+price = 355.39</p>
+<p>Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -
+telephone_number &lt; 234567878</p>
+<p>For all such cases where the values will be numbers and you'd want to use them in the <em>custom_field</em> parameter, MAKE SURE to set the <em>search_type</em> parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).</p>
+<p>Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search_type.</p>
 </div>
 <p>As an example of numeric fields -</p>
 <pre><code>&lt;cms:pages custom_field='distance&lt;50 | price&gt;=1000000 | price&lt;=3000000'&gt;&lt;/cms:pages&gt;
 </code></pre>
-<p>This example would fetch all pages with custom field distance containing a value less than 50<br/>
-AND custom field price 'greater than or equal to' 1000000<br/>
+<p>This example would fetch all pages with custom field distance containing a value less than 50
+AND custom field price 'greater than or equal to' 1000000
 AND custom field price 'less than or equal to' 3000000 (i.e. price between 1000000 and 3000000)</p>
 <p>The following comparisions can be done with numeric fields -</p>
 <ul>
@@ -292,9 +288,9 @@ AND custom field price 'less than or equal to' 3000000 (i.e. price between 10000
 <li>&gt; (greater than)</li>
 </ul>
 <h2 id="variables">Variables</h2>
-<p>As this tag iterates through all the fetched pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a <em>page-view</em> (see <a href="../../concepts/variables-in-views.html"><strong>Variables available in Views</strong></a>).<br/>
-Apart from this, several variables are also set that indicate the current status of the loop.<br/>
-These variables can be used to show the fetched pages in a paginated manner.<br/>
+<p>As this tag iterates through all the fetched pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a <em>page-view</em> (see <a href="../../concepts/variables-in-views.html"><strong>Variables available in Views</strong></a>).
+Apart from this, several variables are also set that indicate the current status of the loop.
+These variables can be used to show the fetched pages in a paginated manner.
 See <a href="../../concepts/pagination.html"><strong>Pagination</strong></a>.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

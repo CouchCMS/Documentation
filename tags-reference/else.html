@@ -69,9 +69,9 @@
             </form>
 
             <article><h1 id="else">else</h1>
-<p>The <strong>Else</strong> tag always occurs within an <strong>If</strong> tag block.<br/>
-Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met.<br/>
-<strong>Else</strong> provides this capability by extending the <strong>If</strong> tag. It does so by delimiting statements that will be executed when the condition given to the <strong>if</strong> does not evaluate to true.<br/>
+<p>The <strong>Else</strong> tag always occurs within an <strong>If</strong> tag block.
+Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met.
+<strong>Else</strong> provides this capability by extending the <strong>If</strong> tag. It does so by delimiting statements that will be executed when the condition given to the <strong>if</strong> does not evaluate to true.
 For example -</p>
 <pre><code>&lt;cms:if my_var == 'hello' &gt;
     &lt;h3&gt; Hello &lt;/h3&gt;
@@ -81,7 +81,7 @@ For example -</p>
 </code></pre>
 <p>In the snippet above, if variable 'my_var' contains 'hello', all the statements within the <strong>if</strong> tag block upto the <strong>else</strong> tag will be executed. In case 'my_var' contains any other value, all the statements within the <strong>if</strong> tag block starting from the <strong>else</strong> tag upto the end tag of <strong>if</strong>, will be executed. (In our example there are only single statements for both conditions but there can be any number of them).</p>
 <p class="notice">Notice that the <strong>else</strong> tag is a self closing tag.</p>
-<p>In cases where there are more than two outcomes of the condition, the <strong>else</strong> block can be made to contain another nested <strong>if</strong> block -<br/>
+<p>In cases where there are more than two outcomes of the condition, the <strong>else</strong> block can be made to contain another nested <strong>if</strong> block -
 For example, here is a snippet that shows the stage of life by evaluating the variable 'age'.</p>
 <pre><code>&lt;cms:if age lt '1' &gt;
     &lt;h3&gt;Infant&lt;/h3&gt;

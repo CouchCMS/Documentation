@@ -69,29 +69,29 @@
             </form>
 
             <article><h1 id="listing-pages">Listing Pages</h1>
-<p>Couch has a powerful tag named <a href="../../tags-reference/pages.html"><strong><em>pages</em></strong></a> that can be used to list all pages belonging to a template.<br/>
+<p>Couch has a powerful tag named <a href="../../tags-reference/pages.html"><strong><em>pages</em></strong></a> that can be used to list all pages belonging to a template.
 For example -</p>
 <pre><code>&lt;cms:pages masterpage='blog.php'&gt;
      &lt;!-- All the variables of each page cloned out of this template are available here --&gt;
      &lt;cms:show k_page_title /&gt;&lt;br&gt;
 &lt;/cms:pages&gt;
 </code></pre>
-<p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.<br/>
+<p>- the snippet given above will fetch all pages cloned out of <em>blog.php</em> template.
 The <em>masterpage</em> parameter stands for the template's name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.</p>
 <p>This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its page-view).</p>
-<p><a href="../../tags-reference/pages.html"><strong><em>Pages</em></strong></a> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.<br/>
+<p><a href="../../tags-reference/pages.html"><strong><em>Pages</em></strong></a> tag supports a number of parameters that can be used to fine tune the actual pages that get fetched.
 Please see the <a href="../../tags-reference/pages.html#parameters"><strong>parameters</strong></a> section for a comprehensive list.</p>
 <h3 id="listing-pages-in-the-list-views-(home-view%2C-folder-view-and-archive-view)">LISTING PAGES IN THE LIST-VIEWS (HOME-VIEW, FOLDER-VIEW AND ARCHIVE-VIEW)</h3>
 <p>As shown in the previous chapter, for clonable templates, Couch considers certain URLS as those meant for listing pages cloned out of the template being accessed.</p>
-<p>For example:<br/>
-<em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em><br/>
+<p>For example:
+<em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em>
 - is considered to be a <strong>home-view</strong> and a list to all the pages cloned out of <em>blog.php</em> should be displayed in this view.</p>
-<p><em><a href="http://www.mysite.com/blog/hobbies/">http://www.mysite.com/blog/hobbies/</a></em><br/>
+<p><em><a href="http://www.mysite.com/blog/hobbies/">http://www.mysite.com/blog/hobbies/</a></em>
 - is considered to be a <strong>folder-view</strong> and a list of all the pages cloned out of <em>blog.php</em> that belong to 'hobbies' sub-folder should be displayed in this view.</p>
-<p><em><a href="http://www.mysite.com/blog/2010/05/">http://www.mysite.com/blog/2010/05/</a></em><br/>
+<p><em><a href="http://www.mysite.com/blog/2010/05/">http://www.mysite.com/blog/2010/05/</a></em>
 - is considered to be an <strong>archive-view</strong> and a list of all the pages cloned out of <em>blog.php</em> that have been published during the month of May in 2010 should be displayed in this view.</p>
-<p>When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.<br/>
-See: <a href="./variables-in-views.html"><strong>Variables available in views</strong></a>.<br/>
+<p>When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view.
+See: <a href="./variables-in-views.html"><strong>Variables available in views</strong></a>.
 It is ultimately upto you whether or not you choose to list pages in the expected manner.</p>
 <h3 id="handling-home-view">Handling home-view</h3>
 <p>The <em>k_is_home</em> variable can be used to recognize this view and then the <a href="../../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag can be used to list all pages cloned from the template being accessed.</p>

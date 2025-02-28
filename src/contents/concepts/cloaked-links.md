@@ -6,8 +6,8 @@ template: default.html
 
 # Cloaked Links
 
-Sometimes it is required to conceal the real location of a file while still allowing people to access it.<br/>
-This file, for example, could be a digital product that resides on your server. After someone has made the neccessary payment, you'd want to provide him access to this file without disclosing the file's real location to him.<br/>
+Sometimes it is required to conceal the real location of a file while still allowing people to access it.
+This file, for example, could be a digital product that resides on your server. After someone has made the neccessary payment, you'd want to provide him access to this file without disclosing the file's real location to him.
 In such cases, you'd additionaly also wish to make this access temporary i.e. the link provided to the user should be valid for only a limited period of time.
 
 A similar requirement is as follows - You have a eBay affiliate website which lists several eBay products. A visitor upon clicking a product link is redirected to the eBay site. However, you do not wish the links displayed on your website to reveal to anyone, prima-fascie, that they'll lead to eBay.
@@ -41,18 +41,18 @@ In the snippet above we set the _redirect_ parameter to '1' because the link bei
 Let us now see how to make [__*cloak\_url*__](../../tags-reference/cloak_url.html) work with physical files.
 
 ::: .notice
-**IMP.** - While the use of [__*cloak\_url*__](../../tags-reference/cloak_url.html) with files will hide their real locations by obfuscating the links, you'll also want to ensure that the files are not directly accessible to anyone who happens to know their real locations (e.g. by intelligent guesswork)- one way of doing this would be by using the .htaccess file.<br/>
-Create a file named .htaccess, put the following lines into it and place it within the folder that will house the protected files.<br/>
-<br/>
+**IMP.** - While the use of [__*cloak\_url*__](../../tags-reference/cloak_url.html) with files will hide their real locations by obfuscating the links, you'll also want to ensure that the files are not directly accessible to anyone who happens to know their real locations (e.g. by intelligent guesswork)- one way of doing this would be by using the .htaccess file.
+Create a file named .htaccess, put the following lines into it and place it within the folder that will house the protected files.
+
 ```
 Options All -Indexes
 deny from all
 ```
-Files uploaded via Couch's editable region of type file, are by default saved in the 'uploads/file' folder within the 'couch' folder. A subfolder named 'secure' is present in this folder and already has the required .htaccess file in it.<br/>
+Files uploaded via Couch's editable region of type file, are by default saved in the 'uploads/file' folder within the 'couch' folder. A subfolder named 'secure' is present in this folder and already has the required .htaccess file in it.
 You can use this folder to store protected files that are uploaded via Couch.
 :::
 
-Suppose an image file _test.jpg_ is stored in the aforesaid 'uploads/file/secure' folder (so that it is not directly downloadable).<br/>
+Suppose an image file _test.jpg_ is stored in the aforesaid 'uploads/file/secure' folder (so that it is not directly downloadable).
 Placing the following snippet in your template -
 
 ```
@@ -63,7 +63,7 @@ Placing the following snippet in your template -
 
 ::: .success
 It is always a good idea to use &lt;cms:show k\_admin\_link/&gt; to output the full URL of the couch folder instead of hard coding it. Thus the above snippet will become
-<br/>
+
 ```
 <a href="<cms:cloak_url link="<cms:show k_admin_link/>uploads/file/secure/test.jpg" />">Test Link</a>
 ```
@@ -71,10 +71,10 @@ It is always a good idea to use &lt;cms:show k\_admin\_link/&gt; to output the f
 
 ### FORCING DOWNLOAD
 
-If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location.<br/>
+If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location.
 This is because [__*cloak\_url*__](../../tags-reference/cloak_url.html) tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.
 
-If you'd rather have the download box shown for all types of files, set the *force\_download* parameter to '1'.<br/>
+If you'd rather have the download box shown for all types of files, set the *force\_download* parameter to '1'.
 Thus the following link will always force the user to download the image file -
 
 ```
@@ -88,7 +88,7 @@ Thus the following link will always force the user to download the image file -
 
 ### SETTING AN EXPIRY TIME FOR THE CLOAKED LINKS
 
-The cloaked links can be made to expire after a fixed period by setting the _expiry_ parameter to the expiry period in seconds.<br/>
+The cloaked links can be made to expire after a fixed period by setting the _expiry_ parameter to the expiry period in seconds.
 Thus to allow a link to be valid for only 24 hours, the following snippet can be used -
 
 ```
@@ -119,8 +119,8 @@ Links can be configured to be accessible by only users of atleast a particular l
 ">Test Link</a>
 ```
 
-In the snippet above, only authenticated users with access level equal to or higher than 4 will be able to download the image file.<br/>
-If unauthenticated users try to access this link, they'll get a blank screen.<br/>
+In the snippet above, only authenticated users with access level equal to or higher than 4 will be able to download the image file.
+If unauthenticated users try to access this link, they'll get a blank screen.
 To prompt them to login to download the file, set the *prompt\_login* parameter to '1' -
 
 ```

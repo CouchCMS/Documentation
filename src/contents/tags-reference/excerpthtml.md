@@ -6,7 +6,7 @@ template: default.html
 
 # excerptHTML
 
-The **excerptHTML** tag can be used to create an excerpt of any HTML content that is enclosed within its opening and closing tags.<br/>
+The **excerptHTML** tag can be used to create an excerpt of any HTML content that is enclosed within its opening and closing tags.
 Unlike the **excerpt** tag,  excerptHTML preserves the HTML formatting of the truncated contents (except for the HTML tags specified in its _ignore_ parameter).
 
 Examples -
@@ -35,7 +35,7 @@ The maximum number of words that the excerpt can contain. The default value is 5
 
 ### ignore
 
-The HTML elements to weed out of the excerpt. For example, you might not want to have any images in the excerpt.<br/>
+The HTML elements to weed out of the excerpt. For example, you might not want to have any images in the excerpt.
 If you wish to ignore multiple tags, separate the tagnames by using comma e.g.
 
 ```

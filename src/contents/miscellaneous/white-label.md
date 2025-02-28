@@ -16,7 +16,7 @@ Once you have received our email confirming your purchase, there are two places 
 define( 'K_PAID_LICENSE', 0 );
 ```
 
-Immediately below the above setting you'll find the following lines.<br/>
+Immediately below the above setting you'll find the following lines.
 Uncomment the ones containing 'define' (i.e. remove the '//' prefixed to 'define') and add your own info -
 
 ```
@@ -42,6 +42,6 @@ $t['login_title'] = 'CouchCMS';
 ```
 
 ::: .error
-**IMP.** Rebranding **DOES NOT** however permit you to remove copyright notices in the source code of the Software.<br/>
+**IMP.** Rebranding **DOES NOT** however permit you to remove copyright notices in the source code of the Software.
 These copyright notices must remain intact **under any circumstances**.
 :::

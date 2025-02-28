@@ -88,7 +88,7 @@
 <p class="error"><strong>CAUTION:</strong> Please remember that since your code gets included into Couch core runtime, any PHP error within it might cause Couch not to execute at all!</p>
 <p>So the first step in creating a shortcode is to (if not already present) create a PHP script file named <em>kfunctions.php</em> and place it within your client's site along with the other Couch managed templates.</p>
 <h4 id="2.-define-the-shortcode-and-associate-it-with-the-markup-it-will-be-replaced-with">2. Define the shortcode and associate it with the markup it will be replaced with</h4>
-<p>This is where the real action lies.<br/>
+<p>This is where the real action lies.
 To explain this step, we'll create an ultra-simple shortcode named <strong>[hello]</strong> which when inserted into some content gets expanded to</p>
 <pre><code>&lt;h1&gt;Hello from a shortcode!&lt;/h1&gt;
 </code></pre>
@@ -109,11 +109,11 @@ function hello_handler( $params, $content=null ){
 </code></pre>
 <p>The code above is the <em>hello_handler</em> function that we instructed Couch to execute anytime it finds our shortcode named <em>hello</em>.</p>
 <p>Couch upon encountering a shortcode, executes the handler function associated with it and then <strong>replaces the shortcode with the return value</strong> of that function. Thus, in our shortcode the <em>[hello]</em> anywhere in the content will be replaced by the return value of <em>hello_handler</em> function and that is <em>&lt;h1&gt;Hello from a shortcode!&lt;/h1&gt;</em>.</p>
-<p>This is a trivial example but it illustrates clearly the logic behind shortcodes. You can make the handler function return any HTML code you wish.<br/>
+<p>This is a trivial example but it illustrates clearly the logic behind shortcodes. You can make the handler function return any HTML code you wish.
 At the end of this page you'll find some serious real world examples of shortcodes that you can use in your code.</p>
 <h4 id="3.-finally%2C-make-couch-search-for-the-shortcode-in-any-content-and-replace-it-with-the-associated-markup">3. Finally, make Couch search for the shortcode in any content and replace it with the associated markup</h4>
 <p>Couch, unlike most other CMSes, can have any number of editable regions. Therefore, it would have been too taxing to make it keep a watch for the registered shortcodes in all of them automatically. For Couch to search and replace any registered shortcode present within an editable region, you'll have to explicitly instruct it to do so.</p>
-<p>Suppose a template has an editable region of richtext type named <em>my_content</em>.<br/>
+<p>Suppose a template has an editable region of richtext type named <em>my_content</em>.
 This is how you'd probably be displaying the value contained within <em>my_content</em> in your template:</p>
 <pre><code>&lt;cms:show my_content /&gt;
 </code></pre>
@@ -131,7 +131,7 @@ This is how you'd probably be displaying the value contained within <em>my_conte
 <p>The shortcode we created above was a self-enclosing one. We can also create shortcodes that consist of the opening/closing tag pair. Such tags then can be used to enclose contents e.g.</p>
 <pre><code>[hello]What's up?[/hello]
 </code></pre>
-<p>Any enclosed content is made available by Couch to the handler function through the second parameter it passes to it (named <em>$content</em> in examples above).<br/>
+<p>Any enclosed content is made available by Couch to the handler function through the second parameter it passes to it (named <em>$content</em> in examples above).
 The handler function could then act on the passed content, modify it in any way and then return it back. Thus the enclosed content can be made to change the output of the shortcode. The complete block of the shortcode that finally gets replaced extends from its opening tag to the closing tag.</p>
 <p>As examples of shortcodes that act on enclosed content, take at look at the following shortcodes that mimic BBcode:</p>
 <pre><code>$FUNCS-&gt;register_shortcode( 'b', 'bold_handler' );
@@ -182,14 +182,14 @@ function underline_handler( $params, $content=null ){
 </code></pre>
 <p>In the code above <em>foo</em>, <em>bar</em> and <em>baz</em> are the names of the parameters and <em>hello</em>, <em>world</em> and <em>hi</em> are their respective values.</p>
 <p>Both the self-closing as well as the shortcodes with enclosed contents can have parameters. A parameter's value may be enclosed using double-quotes or single-quotes or may be without any quotes at all (if there are no spaces in the value).</p>
-<p>The name of a parameter can be omitted but then you need to enter the parameters in the strict order that its handler function expects.<br/>
+<p>The name of a parameter can be omitted but then you need to enter the parameters in the strict order that its handler function expects.
 e.g. the following shortcode is exactly the same as above:</p>
 <pre><code>[some_shortcode &quot;hello&quot; 'world' hi ]
 </code></pre>
 <p class="error">If there are multiple parameters, skipping the names makes the shortcode difficult to read hence do this only if there are few, say only a single, parameters.</p>
 <h4 id="handling-the-parameters">Handling the parameters</h4>
 <p>Couch delivers all the parameters that are provided to a shortcode to the relevant handler function as its first parameter (the one named <em>$params</em> in all the examples above) in the form of an array.</p>
-<p>Instead of dealing directly with the raw array, a helper function provided by Couch - <em>$FUNCS-&gt;get_named_vars()</em> - should be used.<br/>
+<p>Instead of dealing directly with the raw array, a helper function provided by Couch - <em>$FUNCS-&gt;get_named_vars()</em> - should be used.
 An example of how the parameters should ideally be handled is as follows:</p>
 <pre><code>$FUNCS-&gt;register_shortcode( 'googlemap', 'googlemap_handler' );
 
@@ -214,10 +214,10 @@ function googlemap_handler( $params, $content=null ){
 [googlemap src=&quot;http://maps.google.com/?ll=23.250652,77.402072&amp;spn=0.019912,0.038581&amp;z=15&quot; width='600' height='480']
 </code></pre>
 <p class="success">If you are wondering where that URL given as <em>src</em> came from, you can get it from <a href="http://maps.google.com/">http://maps.google.com/</a> by navigating to the desired geographical location and then clicking the 'link' button available at the top.</p>
-<p>That wraps up all that is there for you to know about shortcodes in Couch.<br/>
+<p>That wraps up all that is there for you to know about shortcodes in Couch.
 We end this section by providing some very useful (and real world) examples of shortcodes that you can use as guides for your own shortcodes or use them as-is in your projects.</p>
 <h2 id="ready-to-use-examples-of-shortcodes">Ready to use examples of shortcodes</h2>
-<p>Following is a sample <em>kfunctions.php</em> file, defining some useful shortcodes, which you can use directly within your projects:<br/>
+<p>Following is a sample <em>kfunctions.php</em> file, defining some useful shortcodes, which you can use directly within your projects:
 [<a href="https://www.couchcms.com/docs/code/kfunctions.zip"><strong>Download kfunctions.php</strong></a>]</p>
 <pre><code>&lt;?php
 

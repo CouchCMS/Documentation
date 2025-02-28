@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="each">each</h1>
-<p>The <strong>Each</strong> tag, given a string containing values separated by a known separator, splits it up along the separator and returns each value.<br/>
+<p>The <strong>Each</strong> tag, given a string containing values separated by a known separator, splits it up along the separator and returns each value.
 For example, assume we have a variable 'msg' -</p>
 <pre><code>&lt;cms:set msg='hello|world|how|do|you|do' /&gt;
 </code></pre>
@@ -102,16 +102,16 @@ do
 </code></pre>
 <p>both of the above are same.</p>
 <h3 id="as">as</h3>
-<p>Name of the variable as which each of the values obtained after splitting the string will be made available.<br/>
-By default, the variable is named 'item'.<br/>
+<p>Name of the variable as which each of the values obtained after splitting the string will be made available.
+By default, the variable is named 'item'.
 If you wish to use some other name, it can be specified thus -</p>
 <pre><code>&lt;cms:each msg as='my_var' &gt;
     &lt;cms:show my_var/&gt;&lt;br&gt;
 &lt;/cms:each&gt;
 </code></pre>
 <h3 id="sep">sep</h3>
-<p>The separator along which the provided string is split.<br/>
-By default, the pipe character '|' is assumed as the separator.<br/>
+<p>The separator along which the provided string is split.
+By default, the pipe character '|' is assumed as the separator.
 If any other character is being used in the string, it can be specified this way -</p>
 <pre><code>&lt;cms:each msg sep='@' &gt;..&lt;/cms:each&gt;
 </code></pre>
@@ -120,8 +120,8 @@ If any other character is being used in the string, it can be specified this way
 <li>item</li>
 </ul>
 <h3 id="item">item</h3>
-<p>This is the default variable that contains the value obtained.<br/>
-If any other variable is specified using the <strong>as</strong> parameter, as explained in parameters, then this variable will not be set.<br/>
+<p>This is the default variable that contains the value obtained.
+If any other variable is specified using the <strong>as</strong> parameter, as explained in parameters, then this variable will not be set.
 The specified variable will be set instead.</p>
 <h2 id="related-tags">Related Tags</h2>
 <ul>

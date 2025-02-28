@@ -70,7 +70,7 @@
 
             <article><h1 id="building-a-real-world-site">Building a real-world site</h1>
 <p>To demonstrate the power and ease of Couch, we'll build a complete real world site from scratch using it.</p>
-<p>The template we have chosen to do so is Aurelius.<a href="https://www.couchcms.com/docs/code/Aurelius.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a><br/>
+<p>The template we have chosen to do so is Aurelius.<a href="https://www.couchcms.com/docs/code/Aurelius.zip"><img alt="" src="../../assets/img/contents/download.png" style="border: 0; float: right;"/></a>
 It was originally created to be sold commercially at Themeforest. However the author later on changed his mind and very graciously released it as a free template.</p>
 <p>We chose this template because it has almost all the sections that you'll come across while building a similar site -</p>
 <ul>
@@ -82,33 +82,31 @@ It was originally created to be sold commercially at Themeforest. However the au
 </ul>
 <p>It can be found at <a href="http://net.tutsplus.com/articles/news/free-website-template/"><em>http://net.tutsplus.com/articles/news/free-website-template/</em></a>. You can choose to download it from the aforesaid link or get it from <a href="https://www.couchcms.com/docs/code/Aurelius.zip">here</a> (our version has all unnecessary files removed).</p>
 <h3 id="installing-aurelius">Installing Aurelius</h3>
-<p>Couch works by retrofitting within an existing working site. As such, our first step will be to get the static Aurelius site working.<br/>
+<p>Couch works by retrofitting within an existing working site. As such, our first step will be to get the static Aurelius site working.
 Unzip and upload all the files of Aurelius to your web server.</p>
 <div class="notice">
-<p>You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP'ing the modified files back to the server every time you make any changes.<br/>
-<br/>
-A more pragmatic approach would be to use <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> or <a href="http://www.wampserver.com/en/">WampServer</a> on your local machine. This way you can directly make changes to local files.<br/>
-<br/>
-For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.</p>
+<p>You can use any hosted space that you might have for the purpose of this tutorial. However that would entail FTP'ing the modified files back to the server every time you make any changes.</p>
+<p>A more pragmatic approach would be to use <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a> or <a href="http://www.wampserver.com/en/">WampServer</a> on your local machine. This way you can directly make changes to local files.</p>
+<p>For this tutorial, we'll assume that your web server is hosted locally and hence will simply say 'edit this file and save it' instead of 'edit this file locally and FTP it back to your server'.</p>
 </div>
 <p>If you are using the files downloaded from <em><a href="http://net.tutsplus.com/">http://net.tutsplus.com/</a></em>, remove the <em>Documentation</em> and <em>psd</em> folders as well as the <em>config.php</em>, <em>send_email.php</em> and <em>full_width.html</em> files as these will no longer be needed by us (this won't be necessary if you downloaded the template from our site).</p>
 <p>The resulting folder structure should look like this -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-1.gif" alt=""></p>
-<p>Confirm that all the pages of this template are now accessible through the browser.<br/>
+<p>Confirm that all the pages of this template are now accessible through the browser.
 With the website in place, we can now move on to install Couch within it.</p>
 <h3 id="installing-couch">Installing Couch</h3>
 <p>Download and unzip <em>couch.zip</em>. You'll get a folder named <em>couch</em> containing the following files -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-2.gif" alt=""></p>
-<p>Rename the file named <em>config.example.php</em> to <em>config.php</em>.<br/>
+<p>Rename the file named <em>config.example.php</em> to <em>config.php</em>.
 Open it in your text editor and find the following lines -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-3.png" alt=""></p>
 <p>Change the values to match those of your MySQL database.</p>
-<p>Upload the entire <em>couch</em> folder, along with the modified <em>config.php</em>, to your web server, which already contains the Aurelius files.<br/>
+<p>Upload the entire <em>couch</em> folder, along with the modified <em>config.php</em>, to your web server, which already contains the Aurelius files.
 The resulting site structure should now look like this with the <em>couch</em> folder appearing as a subfolder of your existing site -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-4.png" alt=""></p>
 <div class="notice">
-<p>The uploaded <em>couch</em> folder is your site's admin section.<br/>
-It is a good security measure to rename this folder to anything else you wish. This way you'll make it more difficult for unwanted visitors to try and access your admin section.<br/>
+<p>The uploaded <em>couch</em> folder is your site's admin section.
+It is a good security measure to rename this folder to anything else you wish. This way you'll make it more difficult for unwanted visitors to try and access your admin section.
 For this tutorial we'll assume you have chosen to go with the default name.</p>
 </div>
 <p>Access the admin section through your browser - <em><a href="http://www.mytestsite.com/couch/">http://www.mytestsite.com/couch/</a></em></p>
@@ -120,15 +118,14 @@ For this tutorial we'll assume you have chosen to go with the default name.</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-6.jpg" alt=""></p>
 <p>Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.</p>
 <div class="error">
-<p><strong>V. Imp:</strong> This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any 'structural' changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).<br/>
-<br/>
-Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account's password.</p>
+<p><strong>V. Imp:</strong> This account created for you by Couch is a very special one. This is the account you need to be logged in with, whenever you wish to make any 'structural' changes to the website as a designer - (which, for the site we are building now, is the entire duration of this tutorial).</p>
+<p>Only one such account can ever exist in one installation of Couch. Be sure to provide a valid email address during installation so that it could be used in password recovery if you happen to forget this account's password.</p>
 </div>
 <p>Login using the super-admin account you created and brace yourself for facing the most 'barren' admin section you'll ever come across -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-7.jpg" alt=""></p>
-<p>This almost bare admin panel is an important feature of Couch.<br/>
-We realize that the person most often logged into it is going to be the client that you'll be building the website for and, more often than not, he is not going to be as computer savvy as you are.<br/>
-Instead of overwhelming such a client with an admin panel that resembles the cockpit of an airliner, we wished to confront him with just as much information as is absolutely essential.<br/>
+<p>This almost bare admin panel is an important feature of Couch.
+We realize that the person most often logged into it is going to be the client that you'll be building the website for and, more often than not, he is not going to be as computer savvy as you are.
+Instead of overwhelming such a client with an admin panel that resembles the cockpit of an airliner, we wished to confront him with just as much information as is absolutely essential.
 As we move along with building the site, the admin panel will start displaying more information. This is the admin panel of our finished site -</p>
 <p><img src="../../../../assets/img/contents/portfolio-site-8.png" alt=""></p>
 <p>It is important to note that the admin panels of no two sites built with Couch are going to be identical. As the designer of a website, it is you who'll choose how much data gets exposed to the client within the admin section.</p>

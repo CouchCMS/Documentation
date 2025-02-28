@@ -42,7 +42,7 @@ So the first step in creating a shortcode is to (if not already present) create 
 
 #### 2. Define the shortcode and associate it with the markup it will be replaced with
 
-This is where the real action lies.<br/>
+This is where the real action lies.
 To explain this step, we'll create an ultra-simple shortcode named **\[hello\]** which when inserted into some content gets expanded to
 
 ```
@@ -77,14 +77,14 @@ The code above is the *hello\_handler* function that we instructed Couch to exec
 
 Couch upon encountering a shortcode, executes the handler function associated with it and then **replaces the shortcode with the return value** of that function. Thus, in our shortcode the _\[hello\]_ anywhere in the content will be replaced by the return value of *hello\_handler* function and that is _&lt;h1&gt;Hello from a shortcode!&lt;/h1&gt;_.
 
-This is a trivial example but it illustrates clearly the logic behind shortcodes. You can make the handler function return any HTML code you wish.<br/>
+This is a trivial example but it illustrates clearly the logic behind shortcodes. You can make the handler function return any HTML code you wish.
 At the end of this page you'll find some serious real world examples of shortcodes that you can use in your code.
 
 #### 3. Finally, make Couch search for the shortcode in any content and replace it with the associated markup
 
 Couch, unlike most other CMSes, can have any number of editable regions. Therefore, it would have been too taxing to make it keep a watch for the registered shortcodes in all of them automatically. For Couch to search and replace any registered shortcode present within an editable region, you'll have to explicitly instruct it to do so.
 
-Suppose a template has an editable region of richtext type named *my\_content*.<br/>
+Suppose a template has an editable region of richtext type named *my\_content*.
 This is how you'd probably be displaying the value contained within *my\_content* in your template:
 
 ```
@@ -119,7 +119,7 @@ The shortcode we created above was a self-enclosing one. We can also create shor
 [hello]What's up?[/hello]
 ```
 
-Any enclosed content is made available by Couch to the handler function through the second parameter it passes to it (named _$content_ in examples above).<br/>
+Any enclosed content is made available by Couch to the handler function through the second parameter it passes to it (named _$content_ in examples above).
 The handler function could then act on the passed content, modify it in any way and then return it back. Thus the enclosed content can be made to change the output of the shortcode. The complete block of the shortcode that finally gets replaced extends from its opening tag to the closing tag.
 
 As examples of shortcodes that act on enclosed content, take at look at the following shortcodes that mimic BBcode:
@@ -200,7 +200,7 @@ In the code above _foo_, _bar_ and _baz_ are the names of the parameters and _he
 
 Both the self-closing as well as the shortcodes with enclosed contents can have parameters. A parameter's value may be enclosed using double-quotes or single-quotes or may be without any quotes at all (if there are no spaces in the value).
 
-The name of a parameter can be omitted but then you need to enter the parameters in the strict order that its handler function expects.<br/>
+The name of a parameter can be omitted but then you need to enter the parameters in the strict order that its handler function expects.
 e.g. the following shortcode is exactly the same as above:
 
     [some_shortcode "hello" 'world' hi ]
@@ -211,7 +211,7 @@ If there are multiple parameters, skipping the names makes the shortcode difficu
 
 Couch delivers all the parameters that are provided to a shortcode to the relevant handler function as its first parameter (the one named _$params_ in all the examples above) in the form of an array.
 
-Instead of dealing directly with the raw array, a helper function provided by Couch - *$FUNCS-\>get\_named\_vars()* - should be used.<br/>
+Instead of dealing directly with the raw array, a helper function provided by Couch - *$FUNCS-\>get\_named\_vars()* - should be used.
 An example of how the parameters should ideally be handled is as follows:
 
 ```
@@ -246,12 +246,12 @@ The shortcode described above can be used by the end user in any of the followin
 
 If you are wondering where that URL given as _src_ came from, you can get it from http&#58;//maps.google.com/ by navigating to the desired geographical location and then clicking the 'link' button available at the top. {.success}
 
-That wraps up all that is there for you to know about shortcodes in Couch.<br/>
+That wraps up all that is there for you to know about shortcodes in Couch.
 We end this section by providing some very useful (and real world) examples of shortcodes that you can use as guides for your own shortcodes or use them as-is in your projects.
 
 ## Ready to use examples of shortcodes
 
-Following is a sample _kfunctions.php_ file, defining some useful shortcodes, which you can use directly within your projects:<br/>
+Following is a sample _kfunctions.php_ file, defining some useful shortcodes, which you can use directly within your projects:
 \[[**Download kfunctions.php**](https://www.couchcms.com/docs/code/kfunctions.zip)\]
 
 ```

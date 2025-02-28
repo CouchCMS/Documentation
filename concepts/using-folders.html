@@ -69,10 +69,10 @@
             </form>
 
             <article><h1 id="folders">Folders</h1>
-<p>Couch allows you to create 'virtual folders' to place your cloned pages in.<br/>
+<p>Couch allows you to create 'virtual folders' to place your cloned pages in.
 The primary purpose of this feature is to have super SEO friendly urls for your pages and the true power of this feature can be tapped only if you have enabled <a href="./pretty-urls.html"><strong>pretty-urls</strong></a>.</p>
-<p>Cloned pages in Couch, just like real pages on a hard-disk, can be placed in only one folder at a time.<br/>
-The folders themselves, just like real folders, can be nested within another folder which in turn might itself be within another folder.<br/>
+<p>Cloned pages in Couch, just like real pages on a hard-disk, can be placed in only one folder at a time.
+The folders themselves, just like real folders, can be nested within another folder which in turn might itself be within another folder.
 By judiciously creating an hierarchy of folders, almost any url structure can be mimicked in Couch.</p>
 <p>As an example, suppose for a clonable template named <em>news.php</em>, we require the following folder hierarchy for arranging the cloned pages representing the news items -</p>
 <pre><code>News (news.php) (root folder)
@@ -88,7 +88,7 @@ By judiciously creating an hierarchy of folders, almost any url structure can be
     |---Music News (sub-folder)
     |---Entertainment News (sub-folder)
 </code></pre>
-<p>For creating folders in Couch we use the <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag. Hierarchy can be created by nesting one <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag (the child) within another (the parent).<br/>
+<p>For creating folders in Couch we use the <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag. Hierarchy can be created by nesting one <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag (the child) within another (the parent).
 To create the folder structure mentined above, place the following snippet anywhere within the <em>news.php</em> template, and visit <em>news.php</em> in your browser while being logged-on as super-admin.</p>
 <pre><code>&lt;cms:folder name=&quot;world&quot; title=&quot;World News&quot;&gt;
     &lt;cms:folder name=&quot;north-america&quot; title=&quot;North American News&quot;&gt;
@@ -120,21 +120,19 @@ To create the folder structure mentined above, place the following snippet anywh
 <p><a href="http://www.yoursite.com/news/world/asia/a-hot-news.html">http://www.yoursite.com/news/world/asia/a-hot-news.html</a></p>
 <h4 id="placed-within-the-nevada-news-folder--">Placed within the Nevada News folder -</h4>
 <p><a href="http://www.yoursite.com/news/world/north-america/united-states/nevada/a-hot-news.html">http://www.yoursite.com/news/world/north-america/united-states/nevada/a-hot-news.html</a></p>
-<p>You can see how the page's url reflects with full fidelety its folder hierarchy.<br/>
+<p>You can see how the page's url reflects with full fidelety its folder hierarchy.
 We are sure you'll agree that if you are looking for SEO friendly urls, it cannot get any more friendly than this.</p>
 <div class="success">
-<p>SEO friendlyness has been uppermost in our minds.<br/>
-As an example - changing the location of an existing page is, quite understandably, considered a serious SEO faux pas. The original URL (link) of the page that has been recorded by Google will no longer be valid and you'll stand to lose all the PR ratings the page had garnered so far.<br/>
-<br/>
-One solution is to place a dummy page at the original url and make it send back a 'HTTP 301 Permenantly Moved' message to anyone accessing it and also informing him about the page's new location.<br/>
-Another solution is to add an entry for it in .htaccess file.<br/>
-All in all, the solutions are pretty messy and time consuming.<br/>
-<br/>
-Couch handles this situation automatically behind the scenes. You can freely change the location of your pages. Anytime a page is accessed via a url that is no longer valid, Couch sends back the visitor to the new loaction by using the 'HTTP 301 Permenantly Moved' message.<br/>
+<p>SEO friendlyness has been uppermost in our minds.
+As an example - changing the location of an existing page is, quite understandably, considered a serious SEO faux pas. The original URL (link) of the page that has been recorded by Google will no longer be valid and you'll stand to lose all the PR ratings the page had garnered so far.</p>
+<p>One solution is to place a dummy page at the original url and make it send back a 'HTTP 301 Permenantly Moved' message to anyone accessing it and also informing him about the page's new location.
+Another solution is to add an entry for it in .htaccess file.
+All in all, the solutions are pretty messy and time consuming.</p>
+<p>Couch handles this situation automatically behind the scenes. You can freely change the location of your pages. Anytime a page is accessed via a url that is no longer valid, Couch sends back the visitor to the new loaction by using the 'HTTP 301 Permenantly Moved' message.
 Try it by changing the folder of a page in the admin panel and accessing it through the previous url.</p>
 </div>
 <h3 id="listing-folders">LISTING FOLDERS</h3>
-<p>We have seen how folders are defined in Couch.<br/>
+<p>We have seen how folders are defined in Couch.
 There are times when your code needs to list the folders defined for a template. This could be to create a menu or breadcrumbs or a sitemap or simply a listing of folders that allows visitors to directly access pages placed within the folders (in the so-called <em>folder-view</em>).</p>
 <p>The <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag is used to get a list of all the folders in a template.</p>
 <p class="success">Notice the 's' suffixed to the tag. The <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag creates folders while the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag lists folders.</p>
@@ -156,26 +154,24 @@ Sports News
 United States News
 World News
 </code></pre>
-<p>Since the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag was provided with no information about which template's folders it should enumerate, it by default did so for the template it was called from, i.e. <em>news.php</em>.<br/>
+<p>Since the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag was provided with no information about which template's folders it should enumerate, it by default did so for the template it was called from, i.e. <em>news.php</em>.
 However it can be made to enumerate folders of any template by setting its <em>masterpage</em> parameter to the name of that template. Thus the following will also result in the same output as shown above -</p>
 <pre><code>&lt;cms:folders masterpage='news.php'&gt;
     &lt;cms:show k_folder_title /&gt; &lt;br&gt;
 &lt;/cms:folders&gt;
 </code></pre>
 <div class="notice">
-<p><em>k_folder_title</em> is only one of the variables made available by this tag to provide information about the folder being enumerated.<br/>
-Another important variable is <em>k_folder_link</em>. It gives you the URL that Couch considers to be the <em>folder-view</em> for the template.<br/>
-<br/></p>
+<p><em>k_folder_title</em> is only one of the variables made available by this tag to provide information about the folder being enumerated.
+Another important variable is <em>k_folder_link</em>. It gives you the URL that Couch considers to be the <em>folder-view</em> for the template.</p>
 <pre><code>&lt;cms:folders masterpage='news.php'&gt;
 &lt;a href=&quot;&lt;cms:show k_folder_link /&gt;&quot;&gt;&lt;cms:show k_folder_title /&gt;&lt;/a&gt; &lt;br&gt;
 &lt;/cms:folders&gt;
 </code></pre>
-<p>In the snippet given above, each folder will be hyper-linked to its <em>folder-view</em> where you can display a list of all the pages that reside in this folder.<br/>
-See: <a href="./listing-pages.html"><strong>Listing Pages</strong></a>.<br/>
-<br/>
-For a complete list of all the variables that get set by this tag please see the <a href="../../tags-reference/folders.html#parameters">reference</a> or use Couch tags <a href="../../tags-reference/dump.html"><strong><em>dump</em></strong></a> or <a href="../../tags-reference/dump_all.html"><strong><em>dump_all</em></strong></a> within the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag.</p>
+<p>In the snippet given above, each folder will be hyper-linked to its <em>folder-view</em> where you can display a list of all the pages that reside in this folder.
+See: <a href="./listing-pages.html"><strong>Listing Pages</strong></a>.</p>
+<p>For a complete list of all the variables that get set by this tag please see the <a href="../../tags-reference/folders.html#parameters">reference</a> or use Couch tags <a href="../../tags-reference/dump.html"><strong><em>dump</em></strong></a> or <a href="../../tags-reference/dump_all.html"><strong><em>dump_all</em></strong></a> within the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag.</p>
 </div>
-<p>Notice how the folders have simply been listed in the ascending alphabetical order of their names. Their hierarchical positions have not been preserved.<br/>
+<p>Notice how the folders have simply been listed in the ascending alphabetical order of their names. Their hierarchical positions have not been preserved.
 To list the folders in their hierarchical order, set the hierarchical parameter to 1. Thus -</p>
 <pre><code>&lt;cms:folders masterpage='news.php' hierarchical='1'&gt;
     &lt;cms:show k_folder_title /&gt; (&lt;cms:show k_level /&gt;) &lt;br&gt;
@@ -196,7 +192,7 @@ Ohio News [3]
 </code></pre>
 <p>We have also printed out the 'level' of the folders in the hierarchy.</p>
 <p>You can control what gets enumerated by the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag by setting its various <a href="../../tags-reference/folders.html#parameters"><strong>parameters</strong></a>.</p>
-<p>To enumerate the hierarchy tree only upto a certain level, set the <em>depth</em> parameter to the number of levels that should be traversed.<br/>
+<p>To enumerate the hierarchy tree only upto a certain level, set the <em>depth</em> parameter to the number of levels that should be traversed.
 Thus the following snippet will enumerate only one level of the hierarchy -</p>
 <pre><code>&lt;cms:folders masterpage='news.php' hierarchical='1' depth='1'&gt;
     &lt;cms:show k_folder_title /&gt; [&lt;cms:show k_level /&gt;] &lt;br&gt;
@@ -251,7 +247,7 @@ Nevada News [3]
 Ohio News [3]
 </code></pre>
 <h3 id="creating-a-menu-from-folders">CREATING A MENU FROM FOLDERS</h3>
-<p>A common requirement is to list folders in an ordered or unordered HTML list (a sidebar menu is a good example). Those of you who might have tried producing, via code, a &lt;UL&gt;&lt;LI&gt; list out of an hierarchical structure will agree that the process is notoriously complex.<br/>
+<p>A common requirement is to list folders in an ordered or unordered HTML list (a sidebar menu is a good example). Those of you who might have tried producing, via code, a &lt;UL&gt;&lt;LI&gt; list out of an hierarchical structure will agree that the process is notoriously complex.
 If the following is an unordered list that has to be produced, notice how the nested levels will need to be carefully tracked in order to properly close the tags.</p>
 <pre><code>&lt;ul&gt;
     &lt;li&gt;
@@ -276,7 +272,7 @@ If the following is an unordered list that has to be produced, notice how the ne
 &lt;/ul&gt;
 </code></pre>
 <p><a href="../../tags-reference/folders.html"><strong><em>Folders</em></strong></a> tag makes it easy for you to create lists like above. Please notice in the HTML code above how a &lt;UL&gt; marks the beginning of a new nested level and how a &lt;LI&gt; marks the beginning of a new element (folder in our case).</p>
-<p>Setting the <em>extended_info</em> parameter to 1 will make the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag provide extra information about every change in level as well as in current element. Our snippet simply has to respond to the reported changes.<br/>
+<p>Setting the <em>extended_info</em> parameter to 1 will make the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag provide extra information about every change in level as well as in current element. Our snippet simply has to respond to the reported changes.
 Thus the following snippet can be used to create an unordered HTML list out of a folder hierarchy -</p>
 <pre><code>&lt;cms:folders masterpage='news.php' childof='world' hierarchical='1' extended_info='1'&gt;
     &lt;cms:if k_level_start &gt;&lt;UL&gt;&lt;/cms:if&gt;
@@ -291,13 +287,13 @@ Thus the following snippet can be used to create an unordered HTML list out of a
 <p>Incidently, if a simple list is all that is needed there is a much simpler option than the one above - the <a href="../../tags-reference/listfolders.html"><strong><em>listfolders</em></strong></a> tag -</p>
 <pre><code>&lt;cms:listfolders masterpage='news.php' childof='world' hierarchical='1'/&gt;
 </code></pre>
-<p>The snippet above will produce a similar list.<br/>
+<p>The snippet above will produce a similar list.
 <a href="../../tags-reference/listfolders.html"><strong><em>Listfolders</em></strong></a> tag accepts the same parameters as <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> and is a quick way to get a generic list. The <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag, however, gives you absolute control over what needs to be output.</p>
 <p class="notice"><a href="../../tags-reference/listfolders.html"><strong><em>Listfolders</em></strong></a> takes one additional parameter - <em>show_count</em>. Setting this to 1 will make it display the number of pages contained within the folders after the folder name.</p>
 <h3 id="parents-and-children">PARENTS AND CHILDREN</h3>
-<p>Sometimes we need to find out if a folder (this could be the folder the current page resides in) is the child of a particular folder.<br/>
+<p>Sometimes we need to find out if a folder (this could be the folder the current page resides in) is the child of a particular folder.
 This often happens when designing an expandable sidemenu where by default only the top level folders are shown with only the one that is the ancestor of the page being viewed is shown expanded.</p>
-<p>The following snippet adds a css class named 'selected' to all the LI elements that are ancestors of the currently viewed folder (if in <em>folder-view</em>) or the folder of the current page (if in <em>page-view</em>).<br/>
+<p>The following snippet adds a css class named 'selected' to all the LI elements that are ancestors of the currently viewed folder (if in <em>folder-view</em>) or the folder of the current page (if in <em>page-view</em>).
 Using the appropriate CSS, this should be sufficient to highlight all ancestral folders of the current page or to expand only the immediate sub-tree of the folder while keeping collapsed the rest of the hierarchy.</p>
 <pre><code>&lt;cms:if k_is_page || k_is_folder &gt;
     &lt;cms:if k_folder_name &gt;&lt;cms:set current_folder=k_folder_name /&gt;&lt;/cms:if&gt;
@@ -319,10 +315,10 @@ Using the appropriate CSS, this should be sufficient to highlight all ancestral 
     &lt;cms:if k_level_end &gt;&lt;/UL&gt;&lt;/cms:if&gt;
 &lt;/cms:folders&gt;
 </code></pre>
-<p>Notice how we first set the variable <em>current_folder</em> to the folder of the current page or the folder being viewed (variable <em>k_folder_name</em> gets set only in <em>folder-view</em> while <em>k_page_foldername</em> gets set only in <em>page-view</em> if the page resides in a folder).<br/>
+<p>Notice how we first set the variable <em>current_folder</em> to the folder of the current page or the folder being viewed (variable <em>k_folder_name</em> gets set only in <em>folder-view</em> while <em>k_page_foldername</em> gets set only in <em>page-view</em> if the page resides in a folder).
 Rest of the snippet is a modified form of the standard <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> tag code using <em>extended_info</em>.</p>
-<p>When <em>k_element_start</em> variable is found set, we output the enumerated folder's name as usual.<br/>
-The only thing new is that we also find out if the folder (in <em>k_folder_name</em> variable) is one of the ancestors of the 'current_folder' we saved above by using the <a href="../../tags-reference/is_ancestor.html"><strong><em>is_ancestor</em></strong></a> tag.<br/>
+<p>When <em>k_element_start</em> variable is found set, we output the enumerated folder's name as usual.
+The only thing new is that we also find out if the folder (in <em>k_folder_name</em> variable) is one of the ancestors of the 'current_folder' we saved above by using the <a href="../../tags-reference/is_ancestor.html"><strong><em>is_ancestor</em></strong></a> tag.
 If it is, we simply set a class of 'selected' to the LI and SPAN elements being output.</p>
 <p>To list only the ancestors of a folder in the hierarchy, <a href="../../tags-reference/parentfolders.html"><strong><em>parentfolders</em></strong></a> tag can be used. It lists all the parents of a folder in sequence.</p>
 <pre><code>&lt;cms:parentfolders folder='china' &gt;
@@ -356,7 +352,7 @@ If it is, we simply set a class of 'selected' to the LI and SPAN elements being 
     &lt;/cms:if&gt;
 &lt;/cms:if&gt;
 </code></pre>
-<p>Using <a href="../../tags-reference/parentfolders.html"><strong><em>parentfolders</em></strong></a> gives you greater control on the HTML that is generated for the breadcrumb.<br/>
+<p>Using <a href="../../tags-reference/parentfolders.html"><strong><em>parentfolders</em></strong></a> gives you greater control on the HTML that is generated for the breadcrumb.
 Notice how in the snippet above we first check for the view we are in and then find the right folder name (<em>folder-view</em> sets the <em>k_folder_name</em> variable to the name of the folder being listed while <em>page-view</em> sets <em>k_page_foldername</em> variable to the folder [if any] the current page resides in <strong>[see <a href="./views.html">Views</a>]</strong>). Finally once a folder is found, it is passed on to <a href="../../tags-reference/parentfolders.html"><strong><em>parentfolders</em></strong></a> tag to get a list of its ancestors.</p>
 </article>
         </div>

@@ -53,7 +53,7 @@ This parameter takes a list of all the options that are displayed in the dropdow
 opt_values='Residential | Commercial | Rental'
 ```
 
-This results in the generation of a dropdown list with three options.<br/>
+This results in the generation of a dropdown list with three options.
 Whichever option is selected by the user gets saved as the value of the editable region. For example suppose the user selected _Rental_. The following code -
 
 ```
@@ -77,8 +77,8 @@ Printing out the value contained within the editable region -
 \- will now output '2'.
 
 ::: .notice
-  **NOTE:** A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.<br/>
-  <br/>
+  **NOTE:** A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.
+  
   ```
 opt_values='Please Select=- | Residential=0 | Commercial=1 | Rental=2'
   ```
@@ -111,7 +111,7 @@ will show **Rental** as the option selected by default.
 
 ### separator
 
-As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character<br/>
+As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -
 
 ```
@@ -140,7 +140,7 @@ Can be set to the following valid values -
 *   integer
 *   decimal
 
-The default *search\_type* is (as with all other types of editable regions) _text_.<br/>
+The default *search\_type* is (as with all other types of editable regions) _text_.
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either _numeric_ or _decimal_ (if the value can be fractional).
 
 It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../pages.html#custom_field). {.notice}

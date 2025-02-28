@@ -52,7 +52,7 @@ The above are the same as using '='.
 </cms:if>
 ```
 
-In the snippet above we are checking if the variable 'my\_var' does NOT hold the string 'hello' and output 'Not Hello' only if it is true.<br/>
+In the snippet above we are checking if the variable 'my\_var' does NOT hold the string 'hello' and output 'Not Hello' only if it is true.
 Instead of '!=' we can instead use 'ne' -
 
 ```
@@ -143,7 +143,7 @@ Both && as well as || can be used together in the same **if** tag
 <cms:if (age lt '18') || (age gt '40') && (sex == 'M')> .. </cms:if>
 ```
 
-In the snippet above it seems we are trying to do something only if the sex of a person is male and his age is less than 18 or more than 40\.<br/>
+In the snippet above it seems we are trying to do something only if the sex of a person is male and his age is less than 18 or more than 40\.
 Suppose that the variable 'age' holds a value of '13' while variable 'sex' holds 'F. For example -
 
 ```
@@ -155,7 +155,7 @@ Suppose that the variable 'age' holds a value of '13' while variable 'sex' holds
 </cms:if>
 ```
 
-You might be surprised to see the Welcome message appearing although the sex is clearly not 'M'.<br/>
+You might be surprised to see the Welcome message appearing although the sex is clearly not 'M'.
 This is because when || and && are used together, the && is given precedence over ||. Implicitly the condition that is being evaluated by **if** above is
 
 ```

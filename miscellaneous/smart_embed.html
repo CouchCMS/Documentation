@@ -133,10 +133,10 @@
 </code></pre>
 <p>That's right. Only a single line of code is required.</p>
 <div class="success">
-<p>The 'smartness' of the smart_embed tag lies in its capability to look into the snippets folder and then <strong>automatically choose the snippet best matching the current view and then embed it</strong>.<br/>
+<p>The 'smartness' of the smart_embed tag lies in its capability to look into the snippets folder and then <strong>automatically choose the snippet best matching the current view and then embed it</strong>.
 All we have to do is follow a simple file-naming convention to help smart_embed in figuring out the right snippet to template.</p>
 </div>
-<p>The 'smart_embed' takes into consideration two values as it goes looking for the right snippet - the current view and the current template.<br/>
+<p>The 'smart_embed' takes into consideration two values as it goes looking for the right snippet - the current view and the current template.
 For example, if the current template is 'movies.php' and it is being accessed in home-view, 'smart_embed' tag will</p>
 <ol>
 <li>Check if the snippets folder contains a file named '<em>movies-home</em>' (this search is extension agnostic. You can use whatever extension you desire). Notice how the name 'movies-home' combines both the name of the template as well as the view. If, for example, a snippet named 'movies-home.html' (or 'movies-home.txt' - the extension is not important) is indeed available in the snippets folder it would be used for embedding. However if no file of such name is found the tag now moves on to</li>
@@ -146,7 +146,6 @@ For example, if the current template is 'movies.php' and it is being accessed in
 <li>Check if a snippet named '<em>list</em>' is available. Once again the search moves on from specific to generic. No template name is involved so if, for example, a snippet named 'list.html' is available it can be used in all templates. Finally, if no such file is found the tag moves on to</li>
 <li>Check if a snippet named '<em>default</em>' is available.</li>
 </ol>
-<br/>
 <p>To summarize, for <strong>home-view</strong> of template 'movies.php', this is the sequence of the file-names that are searched for -</p>
 <ul>
 <li>movies-home</li>
@@ -165,7 +164,7 @@ For example, if the current template is 'movies.php' and it is being accessed in
 <li>list</li>
 <li>default</li>
 </ul>
-<p>For <strong>folder-view</strong> let us assume that we have two folders 'asian' and 'chinese' where 'chinese' is a child-folder of 'asian'.<br/>
+<p>For <strong>folder-view</strong> let us assume that we have two folders 'asian' and 'chinese' where 'chinese' is a child-folder of 'asian'.
 While visting folder 'asian' of template 'movies.php', the sequence becomes -</p>
 <ul>
 <li>movies-folder_ex-asian</li>
@@ -199,7 +198,7 @@ While visting folder 'asian' of template 'movies.php', the sequence becomes -</p
 <li>page</li>
 <li>default</li>
 </ul>
-<p><a href="../../concepts/nested-pages-aka-menu-maker.html"><strong>Nested pages</strong></a> behave more or less like folders.<br/>
+<p><a href="../../concepts/nested-pages-aka-menu-maker.html"><strong>Nested pages</strong></a> behave more or less like folders.
 For example, if we have a nested-page named 'harpoon' that is nested below another pages named 'chinese', this is the sequece of search while visiting 'harpoon' -</p>
 <ul>
 <li>movies-page_ex-harpoon</li>
@@ -217,14 +216,14 @@ For example, if we have a nested-page named 'harpoon' that is nested below anoth
 <li>default</li>
 </ul>
 <h2 id="chunking">CHUNKING</h2>
-<p>The real power of 'smart_embed' tag comes to fore when we combine it whith the practice of 'chunking' up of templates.<br/>
+<p>The real power of 'smart_embed' tag comes to fore when we combine it whith the practice of 'chunking' up of templates.
 By 'chunking' I mean the ubiqutous practice of breaking up templates into re-usable parts e.g. header.html, menu.html, footer.html etc and then using the parts on multiple templates.</p>
-<p>The 'smart_embed' tag accepts a second (optional) parameter using which we can specify the folder where the tags searches for the matching snippets.<br/>
+<p>The 'smart_embed' tag accepts a second (optional) parameter using which we can specify the folder where the tags searches for the matching snippets.
 For example, in the following code</p>
 <pre><code>&lt;cms:smart_embed 'header' /&gt;
 </code></pre>
 <p>the 'smart_embed' searches for the suitable snippet within a sub-folder named 'header' within the snippets folder.</p>
-<p>We can use this feature to organize our chunks within the snippets folder. For example this could be one way of doing so -<br/>
+<p>We can use this feature to organize our chunks within the snippets folder. For example this could be one way of doing so -
 snippets (folder)</p>
 <pre><code>|_header  (folder)
   |_default.html (file)
@@ -235,9 +234,9 @@ snippets (folder)</p>
 |_footer  (folder)
   |_default.html (file)
 </code></pre>
-<p>In the example above, we have created separate folders for the chunks.<br/>
+<p>In the example above, we have created separate folders for the chunks.
 The chunks we had (header.html, menu.html and footer.html) are all named 'default.html' and placed within the appropriate folders (the default.html within 'contents' folder can be an empty file for now).</p>
-<p>Now to test out the flexibility of this feature, use a couple of templates from your site - let us begin with index.php.<br/>
+<p>Now to test out the flexibility of this feature, use a couple of templates from your site - let us begin with index.php.
 Place the following code within it -</p>
 <pre><code>&lt;?php require_once( 'couch/cms.php' ); ?&gt;
 &lt;cms:template&gt;
@@ -252,8 +251,8 @@ Place the following code within it -</p>
 
 &lt;?php COUCH::invoke(); ?&gt;
 </code></pre>
-<p>Notice how the template contains no HTML markup within it at all. All the work is done by using snippets.<br/>
-Run this snippet and you'll find that the 'smart_embed' tag outputs the 'default.html' snippets for each chunk area.<br/>
+<p>Notice how the template contains no HTML markup within it at all. All the work is done by using snippets.
+Run this snippet and you'll find that the 'smart_embed' tag outputs the 'default.html' snippets for each chunk area.
 Nothing spectacular so far - we know the tag searched for</p>
 <ul>
 <li>index-default.*</li>
@@ -275,31 +274,31 @@ Nothing spectacular so far - we know the tag searched for</p>
 
 &lt;?php COUCH::invoke(); ?&gt;
 </code></pre>
-<p>Notice how this differs from our first template only in the editable regions it defines.<br/>
-What we are concerned with is that it uses *exactly* the same 'smart_embed' statements.<br/>
-Run this template and you'll find that it shows exactly the same content as index.php.<br/>
+<p>Notice how this differs from our first template only in the editable regions it defines.
+What we are concerned with is that it uses *exactly* the same 'smart_embed' statements.
+Run this template and you'll find that it shows exactly the same content as index.php.
 Please bear with me if you find this insipid. The real meat of the discussion comes now.</p>
-<p>In all probability, the 'header', 'menu' and 'footer' chunks are common to both index.php as well as about.php.<br/>
-The only part that differs is the 'content'.<br/>
-Create the chunk that shows the content for about.php, name it 'about-default.html' and place it within snippets/content folder.<br/>
+<p>In all probability, the 'header', 'menu' and 'footer' chunks are common to both index.php as well as about.php.
+The only part that differs is the 'content'.
+Create the chunk that shows the content for about.php, name it 'about-default.html' and place it within snippets/content folder.
 Access about.php again and we'll see that the new snippet is displayed for the content area while all the other snippets remain the same as used for index.php.</p>
 <p class="notice">The important thing to note is that <strong>we have not modified</strong> the about.php template at all. We can modify its output by simply placing the appropriately named snippets in the proper folders.</p>
-<p>You'll appreciate this flexibility when dealing with cloned templates. Let us assume that index.php is now made clonable.<br/>
-The two views that we wish to handle are the 'list' view and the 'page' view.<br/>
-Create the snippet that shows the page-view and name it 'index-page.html' and place it within 'content' folder.<br/>
+<p>You'll appreciate this flexibility when dealing with cloned templates. Let us assume that index.php is now made clonable.
+The two views that we wish to handle are the 'list' view and the 'page' view.
+Create the snippet that shows the page-view and name it 'index-page.html' and place it within 'content' folder.
 Access index.php in page-view and the above snippet will be displayed. Access index.php in any other view (home, list, folder, archive) and you'll find that the 'default.html' gets loaded. Create a new snippet named 'index-list.html', place the listing code within it and place this snippet within 'content' folder to handle this template's list-view.</p>
 <h3 id="using-smart_embed-tag-with-embed-tag">Using smart_embed tag with embed tag</h3>
-<p>In certain situations, we can also combine the 'smart_embed' with the regular <a href="../../tags-reference/embed.html"><strong>embed</strong></a> tag.<br/>
-Let us suppose the 'header' chunk of about.php template is different from the common 'header/default.html' it shared with the other templates.<br/>
-However, it differs in only a very minor way - say, it only adds a few HTML tags loading some additional JavaScript files.<br/>
-We know that we can place a snippet named 'about-default.html' within the 'header' folder and this snippet will be automatically picked up for about.php.<br/>
+<p>In certain situations, we can also combine the 'smart_embed' with the regular <a href="../../tags-reference/embed.html"><strong>embed</strong></a> tag.
+Let us suppose the 'header' chunk of about.php template is different from the common 'header/default.html' it shared with the other templates.
+However, it differs in only a very minor way - say, it only adds a few HTML tags loading some additional JavaScript files.
+We know that we can place a snippet named 'about-default.html' within the 'header' folder and this snippet will be automatically picked up for about.php.
 We create this snippet but instead of putting in the entire header code (which will duplicate the one used in 'default.html' snippet) we can do the following -</p>
 <pre><code>&lt;cms:embed 'header/default.html' /&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;cms:show k_site_link /&gt;js/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>Notice how in the snippet above we used the 'embed' tag to load a specific snippet named 'header/default.html' and then added the additional markup to it to create the new snippet.</p>
 <h3 id="debugging">Debugging</h3>
-<p>One drawback of using this method is that sometimes it gets confusing to know which embedded snippet gets called in which view.<br/>
+<p>One drawback of using this method is that sometimes it gets confusing to know which embedded snippet gets called in which view.
 An easy way to find this out is by using the 'debug' parameter of 'smart_embed'. With this parameter set, the 'smart_embed' goes about locating the most suitable snippet for the current view but instead of outputting the snippet, it outputs a list of all the canditate snippets that it looked for and the name of the snippet that it finally chose as being the most appropriate for displaying.</p>
 <p>As an example, the following statement</p>
 <pre><code>&lt;cms:smart_embed debug='1' /&gt;
@@ -317,13 +316,13 @@ An easy way to find this out is by using the 'debug' parameter of 'smart_embed'.
 Chosen file: home.html
 </code></pre>
 <div class="success">
-<p><strong>Tip:</strong><br/>
-I find it tedious to flip the debug parameter if there are multiple 'smart_embed' statements in my template.<br/>
-I use the following code to use a variable to do so. This way I need to turn on/off the debug setting at only one place<br/>
-<strong>&lt;cms:set my_debug='0' 'global' /&gt;</strong><br/>
-<strong>&lt;cms:smart_embed 'header' debug=my_debug /&gt;</strong><br/>
-<strong>&lt;cms:smart_embed 'menu' debug=my_debug /&gt;</strong><br/>
-<strong>&lt;cms:smart_embed 'content' debug=my_debug /&gt;</strong><br/>
+<p><strong>Tip:</strong>
+I find it tedious to flip the debug parameter if there are multiple 'smart_embed' statements in my template.
+I use the following code to use a variable to do so. This way I need to turn on/off the debug setting at only one place
+<strong>&lt;cms:set my_debug='0' 'global' /&gt;</strong>
+<strong>&lt;cms:smart_embed 'header' debug=my_debug /&gt;</strong>
+<strong>&lt;cms:smart_embed 'menu' debug=my_debug /&gt;</strong>
+<strong>&lt;cms:smart_embed 'content' debug=my_debug /&gt;</strong>
 <strong>&lt;cms:smart_embed 'footer' debug=my_debug /&gt;</strong></p>
 </div>
 <p>In conclusion, the 'smart_embed' tag represents the '<strong>convention over configuration (AKA also known as coding by convention)</strong>' approach and can prove to be an absolute life saver for certain types of sites. The examples we used above were the extreme cases where we delegated the entire display logic from the main templates to the snippets by using multiple 'smart_embed' tags. However, we can also use the 'smart_embed' tag to handle only certain regions by adding it to our regular templates.</p>

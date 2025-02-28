@@ -6,7 +6,7 @@ template: default.html
 
 # ignore
 
-The **Ignore** tag can be used to surround sections of code that you temporarily do not wish to execute (i.e. want to have the code present on the page yet not be executed).<br/>
+The **Ignore** tag can be used to surround sections of code that you temporarily do not wish to execute (i.e. want to have the code present on the page yet not be executed).
 This is somewhat akin to comenting out code in other languages to prevent execution.
 
 For example -

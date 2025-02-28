@@ -14,7 +14,7 @@ The hide tag is a very simple tag that can be used to prevent the output of code
 </cms:hide>
 ```
 
-This is useful when you wish to execute some Couch tags but do not wish their outputs to get displayed.<br/>
+This is useful when you wish to execute some Couch tags but do not wish their outputs to get displayed.
 Compare this with the **ignore** tag where the enclosed contents are not executed at all.
 
 ## Parameters

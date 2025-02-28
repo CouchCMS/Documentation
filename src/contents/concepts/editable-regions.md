@@ -6,7 +6,7 @@ template: default.html
 
 # Editable Regions
 
-With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the [__*Editable*__](../../tags-reference/editable.html) tag.<br/>
+With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the [__*Editable*__](../../tags-reference/editable.html) tag.
 You can use it to define areas within your HTML template that you wish to make editable.
 
 As an example, suppose the following is a chunk of HTML from a template named _property.php_ -
@@ -23,7 +23,7 @@ As an example, suppose the following is a chunk of HTML from a template named _p
 </div>
 ```
 
-The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.<br/>
+The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.
 To do so, simply enclose this part by an [__*editable*__](../../tags-reference/editable.html) tag -
 
 ```
@@ -42,7 +42,7 @@ To do so, simply enclose this part by an [__*editable*__](../../tags-reference/e
 
 [__*Editable*__](../../tags-reference/editable.html) tag accepts several parameters but only one is mandatory - _name_. It has to be unique within a template.
 
-Now, while being logged in as the super-admin, visit the template in your browser.<br/>
+Now, while being logged in as the super-admin, visit the template in your browser.
 For example, if the template was _property.php_, visit _http&#58;//www.yoursite.com/property.php_
 
 At the risk of repeating ourselves - for your changes to show up in the admin panel, you'll always need to run the modified template in the browser while being logged in as the super-admin. {.notice}
@@ -51,21 +51,21 @@ Now visit the admin panel and access _property.php_ and you'll find that Couch h
 
 ::: .success
 If you enclose some text between the opening and closing [__*Editable*__](../../tags-reference/editable.html) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [__*Editable*__](../../tags-reference/editable.html) tag as a self closing tag.
-<br/>
+
 ```
 <cms:editable name='prop_desc' />
 ```
 :::
 
-Input or edit the text within this textarea and save your changes.<br/>
+Input or edit the text within this textarea and save your changes.
 Visiting the template in your browser again should show up the edited text on the webpage.
 
 ### TYPES OF EDITABLE REGIONS
 
-In the example above, the type of the editable region that Couch created to allow editing was a textarea.<br/>
-You have a choice of several other types of editable regions that you can ask Couch to create, depending on the kind of data that will be inputted into it.<br/>
-For example, the textarea created above is suitable when you wish the users to input only plain text (i.e. not formatted by HTML tags). However, when the type of text that will be inputted requires HTML formatting, you can get Couch to create a richtext editor instead.<br/>
-Similarly, sometimes a single line of text input is all that is needed.<br/>
+In the example above, the type of the editable region that Couch created to allow editing was a textarea.
+You have a choice of several other types of editable regions that you can ask Couch to create, depending on the kind of data that will be inputted into it.
+For example, the textarea created above is suitable when you wish the users to input only plain text (i.e. not formatted by HTML tags). However, when the type of text that will be inputted requires HTML formatting, you can get Couch to create a richtext editor instead.
+Similarly, sometimes a single line of text input is all that is needed.
 The _type_ parameter of Editable text can bet set to the kind of editable region you wish to create.
 
 e.g. setting the type to 'richtext' -
@@ -111,8 +111,8 @@ Thus you can see that in the resulting webpage, the [__*editable*__](../../tags-
 
 **2\. As variables automatically set by Couch -**
 
-When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.<br/>
-Thus in the example above, since the name of the editable region is *prop\_desc*, a variable by the same name will also be set by Couch during the execution of this page.<br/>
+When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.
+Thus in the example above, since the name of the editable region is *prop\_desc*, a variable by the same name will also be set by Couch during the execution of this page.
 So if you use the following snippet anywhere within your template -
 
 ```
@@ -141,7 +141,7 @@ In the examples above we have been creating the editable regions exactly at the 
 
 In complex templates (_clonable_ templates, specifically) with several editable regions it is sometimes more manageable to define all the editable regions together at a single place.
 
-For such cases, we can use the [__*editable*__](../../tags-reference/editable.html) tag to only define the editable regions and use the [__*show*__](../../tags-reference/show.html) tag to display the contents.<br/>
+For such cases, we can use the [__*editable*__](../../tags-reference/editable.html) tag to only define the editable regions and use the [__*show*__](../../tags-reference/show.html) tag to display the contents.
 A good practice is to define together all editable regions used by the template somewhere at the very top of the template -
 
 ```

@@ -7,12 +7,12 @@ template: default.html
 
 # type = 'image'
 
-Editable region of type **image** is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images.<br/>
+Editable region of type **image** is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images.
 Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.
 
 ::: .notice
-**NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
-<br/>
+**NOTE:** By default, all uploaded images will be saved within the _**couch/uploads/image**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.
+
 ```
 // 12.
 // Upload folder if not using the default upload folder within 'couch'.
@@ -65,15 +65,15 @@ Apart from the parameters common to all types of editable regions, the regions o
 <cms:editable name='prop_image' width='300' height='200' type='image' />
 ```
 
-As mentioned above, when a user uploads an image, Couch saves it in a particular folder on the server. You can ask Couch to ensure that the saved image is of a **particular width and height** or **never exceeds certain width and height**.<br/>
+As mentioned above, when a user uploads an image, Couch saves it in a particular folder on the server. You can ask Couch to ensure that the saved image is of a **particular width and height** or **never exceeds certain width and height**.
 These dimensions (in pixels) are represented by the _width_ and _height_ parameter.
 
-How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -<br/>
+How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -
 *enforce\_max* and _crop_.
 
 ::: .notice
-**NOTE:** If **none** of the two dimensions are specified, e.g.<br/>
-<br/>
+**NOTE:** If **none** of the two dimensions are specified, e.g.
+
 ```
 <cms:editable name='prop_image' type='image' />
 ```
@@ -163,7 +163,7 @@ By setting this parameter to _1_ we also implicitly turn off *enforce\_max*. {.n
 
 #### Examples:
 
-<br/>
+
 
 #### Specifying only one dimension
 

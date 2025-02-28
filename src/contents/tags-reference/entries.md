@@ -23,7 +23,7 @@ This parameter limits the number of pages that this tag enumerates.
 
 ### skip_custom_fields
 
-As it enumerates the fetched pages, by default this tag makes available all the variables associated with every page - this includes the editable regions too.<br/>
+As it enumerates the fetched pages, by default this tag makes available all the variables associated with every page - this includes the editable regions too.
 If you simply require to display the names and links of the pages, the values contained within the editable regions of the pages can be skipped from being fetched by setting this parameter. This will result in a performance boost.
 
 ## Variables

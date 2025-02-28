@@ -27,7 +27,7 @@ The string to be logged.
 
 ### file
 
-The log file into which the _msg_ is to be logged. If this parameter is skipped, a log file named 'log.txt' in your site's root is used (created if not already existing) for logging.<br/>
+The log file into which the _msg_ is to be logged. If this parameter is skipped, a log file named 'log.txt' in your site's root is used (created if not already existing) for logging.
 You can specify a path with the file that is relative to the site's root.
 
 ```

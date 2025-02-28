@@ -8,7 +8,7 @@ template: default.html
 
 The **calendar** tag can be used to create a monthly calendar. It can be associated with a template to make it display cloned pages of the template as entries of the calendar.
 
-The calendar tag works together with the **weeks**, **days** and **entries** tags to fulfill its functionality.<br/>
+The calendar tag works together with the **weeks**, **days** and **entries** tags to fulfill its functionality.
 Please see [**Core Concepts - Events Calendar**](../../concepts/events-calendar.html) for a working example of this tag.
 
 ## Parameters
@@ -29,7 +29,7 @@ This parameter sets the month that is displayed by the calendar. If skipped, the
 
 ### week_starts
 
-This parameter sets the first day of the weeks as shown by the calendar.<br/>
+This parameter sets the first day of the weeks as shown by the calendar.
 It is a numeric value ranging from 0 (Sunday) to 6 (Saturday). If skipped, the default is 0 (Sunday).
 
 ## Variables

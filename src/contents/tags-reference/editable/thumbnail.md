@@ -69,7 +69,7 @@ Apart from the parameters common to all types of editable regions, the regions o
 
 ### height
 
-Parameters _width_ and _height_ specify the dimensions of the thumbnail.<br/>
+Parameters _width_ and _height_ specify the dimensions of the thumbnail.
 If neither _width_ nor _height_ are specified, the resulting thumbnail is of exactly the same dimensions as the associated image.
 
 Specifying a single dimension only will create a thumbnail with that dimension of the specified value and the other dimension of a value that retains the original proportion of the image. e.g.

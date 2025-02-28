@@ -6,7 +6,7 @@ template: default.html
 
 # sub
 
-The **sub** tag accepts two parameters and returns as its output the value obtained after subtracting the second parameter from the first.<br/>
+The **sub** tag accepts two parameters and returns as its output the value obtained after subtracting the second parameter from the first.
 The parameters may be literal strings, variables or output of other tags.
 
 ```

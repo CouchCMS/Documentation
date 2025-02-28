@@ -7,7 +7,7 @@ template: default.html
 
 # type = 'text'
 
-Editable region of _text_ type is used to allow users to input text when only one line of text is required.<br/>
+Editable region of _text_ type is used to allow users to input text when only one line of text is required.
 For this type, Couch creates a single line textbox for data input.
 
 An editable region of _text_ type can be defined this way -
@@ -25,8 +25,8 @@ The code above will result in -
 ![](../../../../assets/img/contents/editable-text.gif)
 
 ::: .notice
-Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
-<br/>
+Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
+
 ```
 <cms:editable name='prop_title' label='Title'
 desc='Enter title of property here'
@@ -78,7 +78,7 @@ Can be set to the following valid values -
 *   integer
 *   decimal
 
-The default *search\_type* is (as with all other types of editable regions) _text_.<br/>
+The default *search\_type* is (as with all other types of editable regions) _text_.
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either _integer_ or _decimal_ (if the value can be fractional).
 
 It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See [**Pages**](../pages.html#custom_field). {.notice}

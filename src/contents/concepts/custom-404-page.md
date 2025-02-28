@@ -29,7 +29,7 @@ Setting up your custom 404 page requires two steps -
 #ErrorDocument 404 /404.php
 ```
 
-The _404.php_ file you create above will now be used for all the kinds of non-existent files that are requested.<br/>
+The _404.php_ file you create above will now be used for all the kinds of non-existent files that are requested.
 Customize it to suit your needs. Make sure all links and image sources within it are defined absolutely. You can prefix **&lt;cms:show k\_site\_link /&gt;** to all the paths to make them absolute e.g.
 
 ```

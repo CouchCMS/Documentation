@@ -7,12 +7,12 @@ template: default.html
 
 # type = 'file'
 
-Editable region of type **file** is primarily used to allow the user to upload a file from his local computer onto the server. The user can also browse and select any of the previously uploaded files.<br/>
+Editable region of type **file** is primarily used to allow the user to upload a file from his local computer onto the server. The user can also browse and select any of the previously uploaded files.
 Once a file has been selected, this editable region then holds a fully qualified URL of the uploaded file.
 
 ::: .notice
-**NOTE:** By default, all uploaded files will be saved within the _**couch/uploads/file**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.<br/>
-<br/>
+**NOTE:** By default, all uploaded files will be saved within the _**couch/uploads/file**_ folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (*K\_UPLOAD\_DIR*) in _config.php_ and changing it to the desired location.
+
 ```
 // 12.
 // Upload folder if not using the default upload folder within 'couch'.

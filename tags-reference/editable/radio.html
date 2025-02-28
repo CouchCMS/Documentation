@@ -112,14 +112,12 @@
 </code></pre>
 <p>- will now output '2'.</p>
 <div class="success">
-<p><strong>TIP:</strong> Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.<br/>
-<br/></p>
+<p><strong>TIP:</strong> Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.</p>
 <pre><code>opt_values='Residential=0 | Commercial=1 | | Rental=2'
 </code></pre>
-<p>In the code above, actually four options have been specified - the third option (between <em>Commercial</em> and <em>Rental</em>) is empty.<br/>
-This results in -<br/>
-<br/>
-<img src="../../../../assets/img/contents/editable-radio-2.gif" alt=""></p>
+<p>In the code above, actually four options have been specified - the third option (between <em>Commercial</em> and <em>Rental</em>) is empty.
+This results in -</p>
+<p><img src="../../../../assets/img/contents/editable-radio-2.gif" alt=""></p>
 </div>
 <h3 id="opt_selected">opt_selected</h3>
 <p>By default, the first option in the list is shown as the selected option. You can show any other option as selected by setting <em>opt_selected</em> to the <strong>value</strong> of that option. For example -</p>
@@ -138,7 +136,7 @@ This results in -<br/>
 </code></pre>
 <p>will show <em>Rental</em> as the option selected by default.</p>
 <h3 id="separator">separator</h3>
-<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character.<br/>
+<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character.
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -</p>
 <pre><code>&lt;cms:editable name=&quot;my_property_type&quot; label=&quot;Property Type&quot; desc=&quot;Select one from these&quot;
   opt_values='Residential=0 * Commercial=1 * Rental=2'
@@ -158,7 +156,7 @@ This is the default separator used by Couch. For some reason if you do not wish 
 <li>integer</li>
 <li>decimal</li>
 </ul>
-<p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.<br/>
+<p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either <em>numeric</em> or <em>decimal</em> (if the value can be fractional).</p>
 <p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See <a href="../pages.html#custom_field"><strong>Pages</strong></a>.</p>
 <h2 id="related-tags">Related Tags</h2>

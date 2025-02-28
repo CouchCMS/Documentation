@@ -70,7 +70,7 @@
 
             <article><h1 id="tags">Tags</h1>
 <p>In Couch, tags are what make things happen.</p>
-<p>The tags have been modeled after XML tags and hence should appear familiar to you.<br/>
+<p>The tags have been modeled after XML tags and hence should appear familiar to you.
 Similar to the XML tags, a Couch tag is either <em>self-closing</em> or consists of a <em>start-tag/end-tag</em> pair.</p>
 <h4 id="self-closing%3A">Self Closing:</h4>
 <p>This is how a typical self closing Couch tag looks like -</p>
@@ -83,10 +83,10 @@ Similar to the XML tags, a Couch tag is either <em>self-closing</em> or consists
 &lt;/cms:repeat&gt;
 </code></pre>
 <p>Every thing between the start-tag and the end-tag is considered to be the input for the paired tag.</p>
-<p>Every Couch tag begins with '<strong>&lt;cms:</strong>' followed by the tag's name (<em>show</em> and <em>repeat</em> in the examples above).<br/>
+<p>Every Couch tag begins with '<strong>&lt;cms:</strong>' followed by the tag's name (<em>show</em> and <em>repeat</em> in the examples above).
 The name may be followed by zero to any number of parameters (this depends on the tag in question).</p>
 <p>Depending upon the parameters and the input, a tag executes some function (e.g. modify the input, create a folder or fetch content from somewhere). If the action results in any displayable output, the tag returns back this output else it returns back a blank.</p>
-<p class="notice">When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.<br/>
+<p class="notice">When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.
 Therefore, a Couch tag will never appear in the HTML that is returned to the browser.</p>
 <h3 id="parameters">PARAMETERS</h3>
 <p>Parameters are used to modify a tag's behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, 'Hello World' is a parameter and is the message that <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag is supposed to display.</p>
@@ -108,8 +108,7 @@ Therefore, a Couch tag will never appear in the HTML that is returned to the bro
 </code></pre>
 <p>- the above will be interpreted as count=1 and startcount=4, which is not what was meant.</p>
 <div class="success">
-<p>It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag above, in which case there can never be any ambiguity. In fact the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag ignores the name you give to the parameter totally, thus<br/>
-<br/></p>
+<p>It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag above, in which case there can never be any ambiguity. In fact the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag ignores the name you give to the parameter totally, thus</p>
 <pre><code>&lt;cms:show 'Hello' /&gt;
 &lt;cms:show var='Hello' /&gt;
 &lt;cms:show foobar='Hello' /&gt;

@@ -7,7 +7,7 @@ template: default.html
 
 # type = 'richtext'
 
-Editable region of _richtext_ type is used to allow users to easily input HTML formatted text without manually keying in the HTML tags.<br/>
+Editable region of _richtext_ type is used to allow users to easily input HTML formatted text without manually keying in the HTML tags.
 For this type, Couch creates an instance of a WYSIWYG richtext editor ([CKEditor](http://ckeditor.com/)) containing almost all the editing features present in desktop editing applications like MS Word.
 
 An editable region of _richtext_ type can be defined this way -
@@ -28,8 +28,8 @@ The code above will result in -
 ![](../../../../assets/img/contents/editable-richtext-1.jpg)
 
 ::: .notice
-Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
-<br/>
+Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
+
 ```
 <cms:editable name='prop_desc' label='Description'
     desc='Enter description of property here'
@@ -44,11 +44,11 @@ The contents of this region can be accessed, as with all other editable regions,
 ```
 
 ::: .success
-Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to _Comics Sans MS_.<br/>
-<br/>
-But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.<br/>
-<br/>
-The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.<br/>
+Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to _Comics Sans MS_.
+
+But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.
+
+The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.
 :::
 
 ## Parameters
@@ -361,14 +361,14 @@ A more practical example - here is how you can mimic the _medium_ type of toolba
 
 **Points to note in the example above -**
 
-A space can be introduced between two buttons by placing a '-' (hyphen) or '\_' (underscore) between them while related buttons can be grouped together by placing a '|' (pipe character) between two groups.<br/>
+A space can be introduced between two buttons by placing a '-' (hyphen) or '\_' (underscore) between them while related buttons can be grouped together by placing a '|' (pipe character) between two groups.
 Visually both might appear to be the same but when the toolbar needs to be broken up due to lack of space, buttons in the same group are treated as a unit and are kept together.
 
 Also note that you can force the toolbar to be break into a new row by specifying '|' twice (i.e. no buttons between two pipes - see how the group begining with the **cut** button has been forced into a new row).
 
 ::: .success
-**TIP** - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the [**Embed**](../embed.html) tag. Cut and paste the _value_ of the *custom\_toolbar* parameter (everything between the quotes) and save it in a file named, say, *my\_toolbar.inc*. Instruct the [**Embed**](../embed.html) tag to use this file.<br/>
-<br/>
+**TIP** - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the [**Embed**](../embed.html) tag. Cut and paste the _value_ of the *custom\_toolbar* parameter (everything between the quotes) and save it in a file named, say, *my\_toolbar.inc*. Instruct the [**Embed**](../embed.html) tag to use this file.
+
 ```
 <cms:editable name='desc' label='Description'
     desc='Enter description of property here'

@@ -219,14 +219,13 @@
 </code></pre>
 <p>In the example above, Couch will allow input only if it matches that in another editable region named <em>my_password</em>.</p>
 <h4 id="regex">regex</h4>
-<p>This is a very powerful option and can actually mimic all the validators described above (and much more).<br/>
+<p>This is a very powerful option and can actually mimic all the validators described above (and much more).
 It requires a little knowledge of Regular Expressions (as understood by PHP), though.</p>
 <pre><code>validator='regex=/(cat|dog)$/i'
 </code></pre>
 <p>In the silly example, the input is considered valid only if it ends in either <em>cat</em> or <em>dog</em>.</p>
 <div class="success">
-<p>Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-<br/></p>
+<p>Multiple validators can be applied together by separating them with a '|' (pipe) character. For example -</p>
 <pre><code>validator='alpha_num | min_len=6 | max_len=14'
 </code></pre>
 </div>
@@ -236,8 +235,7 @@ It requires a little knowledge of Regular Expressions (as understood by PHP), th
 <pre><code>validator_msg='required=What! You think you can get away with leaving this empty?'
 </code></pre>
 <div class="success">
-<p>Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -<br/>
-<br/></p>
+<p>Multiple messages can be applied together by separating them with a '|' (pipe) character. For example -</p>
 <pre><code>validator_msg='required=Please enter something | min_len=Too short!'
 </code></pre>
 </div>

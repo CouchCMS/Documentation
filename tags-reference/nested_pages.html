@@ -70,10 +70,10 @@
 
             <article><h1 id="nested_pages">nested_pages</h1>
 <p>The <strong>nested_pages</strong> tag is used to list <a href="../../concepts/nested-pages-aka-menu-maker.html">nested-pages</a>.</p>
-<p>Since the primary purpose of nested-pages (as explained in the <a href="../../concepts/nested-pages-aka-menu-maker.html">Core Concepts</a>) is to create a hierarchy of pages that can be represented as the site's menu, you'll find that usually the '<a href="./menu.html">menu</a>' tag will suffice for the purpose of creating a menu.<br/>
-However, sometimes you'll need more control over the generated menu than what the '<a href="./menu.html">menu</a>' tag offers.<br/>
+<p>Since the primary purpose of nested-pages (as explained in the <a href="../../concepts/nested-pages-aka-menu-maker.html">Core Concepts</a>) is to create a hierarchy of pages that can be represented as the site's menu, you'll find that usually the '<a href="./menu.html">menu</a>' tag will suffice for the purpose of creating a menu.
+However, sometimes you'll need more control over the generated menu than what the '<a href="./menu.html">menu</a>' tag offers.
 For such cases, the 'nested_pages' tag can be used as it is a lower level tag (in fact, the '<a href="./menu.html">menu</a>' tag uses the 'nested_pages' internally).</p>
-<p>To illustrate the use of 'nested_pages', we'll use the same sample hierarchy of elements that we used in the '<a href="../../concepts/using-folders.html">folders</a>' section. The difference being that in this case the elements represent pages instead of folders.<br/>
+<p>To illustrate the use of 'nested_pages', we'll use the same sample hierarchy of elements that we used in the '<a href="../../concepts/using-folders.html">folders</a>' section. The difference being that in this case the elements represent pages instead of folders.
 We'll assume that a template named 'index.php' has been used to create the nested-pages.</p>
 <pre><code>index.php
     |---World News
@@ -107,7 +107,7 @@ Music News
 Entertainment News
 </code></pre>
 <p>Notice how the hierarchical relationship between the pages has been preserved.</p>
-<p>As is the norm with other similar tags in Couch, the 'nested_pages' tag too, as it iterates through the pages within the tree, makes available all the information pertaining the page it is currently on by setting various variables.<br/>
+<p>As is the norm with other similar tags in Couch, the 'nested_pages' tag too, as it iterates through the pages within the tree, makes available all the information pertaining the page it is currently on by setting various variables.
 Place a <em>&lt;cms:dump /&gt;</em> statement inside the loop and you'll see that Couch provides all the information that was inputted in the admin-section for each nested-page.</p>
 <pre><code>&lt;cms:nested_pages masterpage='index.php'&gt;
    &lt;cms:dump /&gt;
@@ -137,7 +137,7 @@ Place a <em>&lt;cms:dump /&gt;</em> statement inside the loop and you'll see tha
 * k_menu_link: http://www.yourdomain.com/?p=1595
 * k_menu_title: United States News
 </code></pre>
-<p>As you can see, all the information that would be needed to create manually a menu markup is available.<br/>
+<p>As you can see, all the information that would be needed to create manually a menu markup is available.
 Let us use is to create one.</p>
 <h3 id="creating-menu-using-'nested_pages'-tag">Creating menu using 'nested_pages' tag</h3>
 <p>A menu is normally created using nested &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; elements. To make the task of doing so easy, the 'nested_pages' tag, like the '<a href="./folders.html">folders</a>' tag, supports the 'extended_info' parameter. Setting the 'extended_info' parameter to '1' makes the 'nested_pages' tag provide additional information that can be used to output the closing and opening &lt;UL&gt;/&lt;OL&gt; and &lt;LI&gt; tags without any pain.</p>
@@ -232,10 +232,9 @@ Nevada News
 <li>For performance reasons, data from the custom fields (i.e. the editable regions defined for the nested-pages template) is not made available by default. You can set the 'include_custom_fields' parameter to '1' to make the custom fields available.</li>
 </ol>
 <div class="notice">
-<p><strong>IMPORTANT:</strong> Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the 'pages' tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.<br/>
-One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).<br/>
-<br/>
-However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.<br/>
+<p><strong>IMPORTANT:</strong> Since, as you just saw, the nested pages can be listed in the conventional manner (like the one produced by the 'pages' tag), it is perfectly possible to create entire sections of a website using nested-pages instead of the regular cloned pages.
+One feature of the nested-pages that might make doing so more desirable is the ability to set their display order from the admin panel using simple up-down arrows (for regular pages this usually entailed tweaking their publish-dates).</p>
+<p>However, it is necessary to emphasize here that the nested-pages have been created (and hence optimized) for creating loose stand-alone pages in a site. Such pages, as opposed to the cloned pages within discrete sections like blog or portfolio, are not likely to be in very large numbers.
 You can definitely have hundreds of them, but if the number of pages is likely to reach into the thousands please use the regular cloned pages as they are optimized for handling larger numbers.</p>
 </div>
 <h2 id="parameters">Parameters</h2>
@@ -256,51 +255,51 @@ You can definitely have hundreds of them, but if the number of pages is likely t
 <li>startcount</li>
 </ul>
 <h3 id="masterpage">masterpage</h3>
-<p>This parameter is used to specify the template behind the nested-pages tree.<br/>
+<p>This parameter is used to specify the template behind the nested-pages tree.
 If left empty, the template of the currently executing page is assumed.</p>
 <h3 id="depth">depth</h3>
-<p>This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be listed by this tag.<br/>
+<p>This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be listed by this tag.
 This can be used, for example, to list only the top-level pages in the tree by setting the depth to 1. A depth of 0 means unlimited depth.</p>
 <h3 id="orderby">orderby</h3>
-<p>By default the pages are listed in the order they are arranged in the admin-panel.<br/>
+<p>By default the pages are listed in the order they are arranged in the admin-panel.
 This order can be changed by using the 'orderby' parameter. Valid values are: name, title, id.</p>
 <h3 id="order">order</h3>
-<p>Can be set to specify whether the pages are ordered in the ascending order or in descending order.<br/>
+<p>Can be set to specify whether the pages are ordered in the ascending order or in descending order.
 Valid values are asc and desc. Default is asc.</p>
 <h3 id="exclude">exclude</h3>
-<p>Pages can be excluded from being listed by specifying their names using this parameter.<br/>
-If an excluded page has children, they are excluded too.<br/>
+<p>Pages can be excluded from being listed by specifying their names using this parameter.
+If an excluded page has children, they are excluded too.
 If multiple pages are to be excluded, separate their names using comma.</p>
 <h3 id="ignore_show_in_menu">ignore_show_in_menu</h3>
-<p>The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.<br/>
-If that is unchecked, the page (an all its child pages) is not included by default in the listing.<br/>
+<p>The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.
+If that is unchecked, the page (an all its child pages) is not included by default in the listing.
 You can override this by setting 'ignore_show_in_menu' parameter to '1'</p>
 <h3 id="root">root</h3>
-<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
+<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.
 The page specified as the root is displayed along with all its children (compare with 'childof' parameter below where only the children are displayed).</p>
 <h3 id="childof">childof</h3>
-<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.<br/>
+<p>Only a sub-section of the nested-pages tree can be listed by specifying the name of a page as this parameter.
 Only the children of the page specified are displayed (compare with 'root' parameter above where the specified page is also included in the display).</p>
 <p class="notice">If both 'childof' and 'root' are set, the 'root' parameter gets precedence.</p>
 <h3 id="extended_info">extended_info</h3>
 <p>If this parameter is set, additional variables get set to report the changes in hierarchy encountered by the nested_pages tag, as it traverses through the tree. Please see the Variables section below.</p>
 <h3 id="include_custom_fields">include_custom_fields</h3>
-<p>By default, in a bid to enhance performance, the custom-field's data (i.e. data within the editable regions) are not made available as the nested_pages tag traverses through the pages in the tree.<br/>
+<p>By default, in a bid to enhance performance, the custom-field's data (i.e. data within the editable regions) are not made available as the nested_pages tag traverses through the pages in the tree.
 If the 'include_custom_fields' is set to '1', all the values within the editable regions of each page are made available as variables named after the regions.</p>
 <h3 id="paginate">paginate</h3>
-<p>To list the nested-pages in conventional manner (i.e. the way the 'pages' tag lists the regular cloned pages), set this parameter to '1'.<br/>
-One the 'paginate' parameter is set -<br/>
-<strong>a.</strong> 'extended_info' is automatically turned off so information about the changes in hierarchy levels in no longer available.<br/>
-<strong>b.</strong> All the variables that help in creating the pagination buttons become available (see <a href="../../concepts/pagination.html">Pagination</a>)<br/>
+<p>To list the nested-pages in conventional manner (i.e. the way the 'pages' tag lists the regular cloned pages), set this parameter to '1'.
+One the 'paginate' parameter is set -
+<strong>a.</strong> 'extended_info' is automatically turned off so information about the changes in hierarchy levels in no longer available.
+<strong>b.</strong> All the variables that help in creating the pagination buttons become available (see <a href="../../concepts/pagination.html">Pagination</a>)
 <strong>c.</strong> The 'limit', 'offset' and 'startcount' parameters described below become effective.</p>
 <h3 id="limit">limit</h3>
-<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.<br/>
+<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.
 It can be used to limit the number of pages listed before the pagination buttons leading to the next/prev set of pages appear.</p>
 <h3 id="offset">offset</h3>
-<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.<br/>
+<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.
 it can be used to skip any number of pages before beginning the listing.</p>
 <h3 id="startcount">startcount</h3>
-<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.<br/>
+<p>This parameter takes effect only when the 'paginate' parameter is set to '1'.
 The k_count, k_record_from, k_current_record and k_record_to variables (see <a href="../../concepts/pagination.html">Pagination</a>) start by default from '1'. This can be changed to any other value by setting this parameter.</p>
 <h2 id="variables">Variables</h2>
 <p>The following variables are set to provide information about each nested-page that gets enumerated -</p>

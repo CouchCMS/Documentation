@@ -70,7 +70,7 @@
 
             <article><h1 id="rss-feeds">RSS Feeds</h1>
 <p>Let us first see how a RSS feed is created manually (i.e. without using Couch or any other CMS) and then we'll see how to automate the task by retrofitting Couch into it.</p>
-<p>For our example, we'll suppose you publish news items on your website and wish to offer these news items as a RSS feed.<br/>
+<p>For our example, we'll suppose you publish news items on your website and wish to offer these news items as a RSS feed.
 Place the following snippet within a plain text file and name it, say, <em>rss.xml</em> (make sure there is no space between the beginning of the file and the <em>&lt;?xml version=&quot;1.0&quot;?&gt;</em> statement).</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rss version=&quot;2.0&quot;&gt;
@@ -110,19 +110,19 @@ Place the following snippet within a plain text file and name it, say, <em>rss.x
     &lt;/channel&gt;
 &lt;/rss&gt;
 </code></pre>
-<p>We have added two recent news items that were published.<br/>
+<p>We have added two recent news items that were published.
 Try visiting this <em>rss.xml</em> page in your browser or a news aggregator and the feed should come up without a hitch.</p>
-<p>RSS (Really Simple Syndication) seems to be really simple after all.<br/>
-However, manually adding every new news item published to the feed will be a painful chore.<br/>
+<p>RSS (Really Simple Syndication) seems to be really simple after all.
+However, manually adding every new news item published to the feed will be a painful chore.
 We'll now retrofit Couch into this feed to publish news items automatically.</p>
-<p>We'll suppose that the news items are cloned pages of a <em>news.php</em> template in Couch.<br/>
+<p>We'll suppose that the news items are cloned pages of a <em>news.php</em> template in Couch.
 Rename the <em>rss.xml</em> file to <em>rss.php</em> and add the usual PHP code that hooks Couch into this template.</p>
 <p>This conversion of the xml file to a php file is essential for Couch but it will raise two problems that we'll need to solve before going ahead -</p>
 <ol>
 <li>The '&lt;?' and '?&gt; in the line &lt;?xml version=&quot;1.0&quot;?&gt; will cause PHP to throw a parsing error because those characters mislead PHP into believing that the line is a php statement, which it is not.</li>
 <li>The web server always sends back to the browser the mime-type of any file that it is serving to fulfill the browser's request. The mime-type of an XML file should be <em>text/xml</em> but the new '.php' extension causes the web server to send back the default <em>text/html</em> mime-type, which will be rejected by the browser.</li>
 </ol>
-<p>The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.<br/>
+<p>The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.
 The following snippet using Couch's <a href="../../tags-reference/concat.html"><strong><em>concat</em></strong></a> tag will output exactly the same statement but because the '&lt;?' characters are now split up, PHP will have no problems.</p>
 <pre><code>&lt;cms:concat '&lt;' '?xml version=&quot;1.0&quot; encoding=&quot;' k_site_charset '&quot;?' '&gt;' /&gt;
 </code></pre>
@@ -186,10 +186,10 @@ The following snippet using Couch's <a href="../../tags-reference/concat.html"><
 &lt;/rss&gt;
 &lt;?php COUCH::invoke(); ?&gt;
 </code></pre>
-<p>We are assuming that an editable field named <em>my_news_text</em> contains the news text.<br/>
-The <a href="../../tags-reference/excerpthtml.html"><strong><em>excerptHTML</em></strong></a> tag can be used to output only an excerpt of your page.<br/>
+<p>We are assuming that an editable field named <em>my_news_text</em> contains the news text.
+The <a href="../../tags-reference/excerpthtml.html"><strong><em>excerptHTML</em></strong></a> tag can be used to output only an excerpt of your page.
 We need to wrap the output within <a href="../../tags-reference/html_encode.html"><strong><em>html_encode</em></strong></a> to encode certain characters that are not valid in XML.</p>
-<p>And that is it. Your automated RSS feed is ready.<br/>
+<p>And that is it. Your automated RSS feed is ready.
 Modify the snippet to suit your web-site's needs.</p>
 </article>
         </div>

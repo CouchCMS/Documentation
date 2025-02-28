@@ -99,7 +99,7 @@
 <p>This parameter takes a list of all the options that are displayed in the dropdown list.</p>
 <pre><code>opt_values='Residential | Commercial | Rental'
 </code></pre>
-<p>This results in the generation of a dropdown list with three options.<br/>
+<p>This results in the generation of a dropdown list with three options.
 Whichever option is selected by the user gets saved as the value of the editable region. For example suppose the user selected <em>Rental</em>. The following code -</p>
 <pre><code>&lt;cms:show my_property_type /&gt;
 </code></pre>
@@ -112,8 +112,7 @@ Whichever option is selected by the user gets saved as the value of the editable
 </code></pre>
 <p>- will now output '2'.</p>
 <div class="notice">
-<p><strong>NOTE:</strong> A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.<br/>
-<br/></p>
+<p><strong>NOTE:</strong> A value of '-' (hyphen) carries a special meaning for Couch. It can be used with options that are not considered as selectable e.g.</p>
 <pre><code>opt_values='Please Select=- | Residential=0 | Commercial=1 | Rental=2'
 </code></pre>
 <p>In the example above, out of the four options in the list, if the first option is selected, the selection is not considered to be made. If <em>required</em> parameter is set, an error is thrown upon saving the page.</p>
@@ -135,7 +134,7 @@ Whichever option is selected by the user gets saved as the value of the editable
 </code></pre>
 <p>will show <strong>Rental</strong> as the option selected by default.</p>
 <h3 id="separator">separator</h3>
-<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character<br/>
+<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -</p>
 <pre><code>&lt;cms:editable name=&quot;my_property_type&quot; label=&quot;Property Type&quot; desc=&quot;Select one from these&quot;
   opt_values='Please Select=- * Residential=0 * Commercial=1 * Rental=2'
@@ -155,7 +154,7 @@ This is the default separator used by Couch. For some reason if you do not wish 
 <li>integer</li>
 <li>decimal</li>
 </ul>
-<p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.<br/>
+<p>The default <em>search_type</em> is (as with all other types of editable regions) <em>text</em>.
 If you wish to use this region to input numeric values (e.g. age or salary), set the type to either <em>numeric</em> or <em>decimal</em> (if the value can be fractional).</p>
 <p class="notice">It is necessary to set an explicit numeric type on an editable region only when you wish to use the values contained within it to make comparisions (i.e. age &lt; 40) or to sort some output based on these values. See <a href="../pages.html#custom_field"><strong>Pages</strong></a>.</p>
 <h2 id="related-tags">Related Tags</h2>

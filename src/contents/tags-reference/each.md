@@ -6,7 +6,7 @@ template: default.html
 
 # each
 
-The **Each** tag, given a string containing values separated by a known separator, splits it up along the separator and returns each value.<br/>
+The **Each** tag, given a string containing values separated by a known separator, splits it up along the separator and returns each value.
 For example, assume we have a variable 'msg' -
 
 ```
@@ -58,8 +58,8 @@ both of the above are same.
 
 ### as
 
-Name of the variable as which each of the values obtained after splitting the string will be made available.<br/>
-By default, the variable is named 'item'.<br/>
+Name of the variable as which each of the values obtained after splitting the string will be made available.
+By default, the variable is named 'item'.
 If you wish to use some other name, it can be specified thus -
 
 ```
@@ -70,8 +70,8 @@ If you wish to use some other name, it can be specified thus -
 
 ### sep
 
-The separator along which the provided string is split.<br/>
-By default, the pipe character '|' is assumed as the separator.<br/>
+The separator along which the provided string is split.
+By default, the pipe character '|' is assumed as the separator.
 If any other character is being used in the string, it can be specified this way -
 
 ```
@@ -84,8 +84,8 @@ If any other character is being used in the string, it can be specified this way
 
 ### item
 
-This is the default variable that contains the value obtained.<br/>
-If any other variable is specified using the **as** parameter, as explained in parameters, then this variable will not be set.<br/>
+This is the default variable that contains the value obtained.
+If any other variable is specified using the **as** parameter, as explained in parameters, then this variable will not be set.
 The specified variable will be set instead.
 
 ## Related Tags

@@ -30,10 +30,10 @@ or use **concat** as follows -
 Here we supply **concat** with all parts of the string as unnamed parameters separated by spaces (i.e. 'Hello ', first\_name, ' ', last\_name, and '! We welcome you!' with space between each as separator) and **concat** simply returns back the concatenated string.
 
 ::: .success
-If many values are supplied to **concat**, the code sometimes becomes a little difficult to comprehend (as might be the case in the snippet above) because the only demarcation between the parameters is the space.<br/>
-<br/>
-In such cases, we can try naming the parameters (any arbitrary names can be used). Thus the above snippet could be written as -<br/>
-<br/>
+If many values are supplied to **concat**, the code sometimes becomes a little difficult to comprehend (as might be the case in the snippet above) because the only demarcation between the parameters is the space.
+
+In such cases, we can try naming the parameters (any arbitrary names can be used). Thus the above snippet could be written as -
+
 ```
 <cms:set welcome_message="<cms:concat p1='Hello ' p2=first_name p3=' ' p4=last_name p5='! We welcome you!' />" />
 ```
@@ -41,10 +41,10 @@ Hopefully that should make the snippet more legible.
 :::
 
 ::: .notice
-One benefit of **concat** over the first method is that it avoids using '&lt;cms:show /&gt;' with all variables used within the string.<br/>
-<br/>
-Another is that we can use '\\n' and '\\t' for inserting newline and tab characters in the string. For example -<br/>
-<br/>
+One benefit of **concat** over the first method is that it avoids using '&lt;cms:show /&gt;' with all variables used within the string.
+
+Another is that we can use '\\n' and '\\t' for inserting newline and tab characters in the string. For example -
+
 ```
 <cms:set msg = "<cms:concat 'item_name: ' pp_item_name '\n'
 'item_number: ' pp_item_number '\n'

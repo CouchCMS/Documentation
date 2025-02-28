@@ -15,7 +15,7 @@ template: default.html
 </cms:pages>
 ```
 
-\- the snippet given above will fetch all pages cloned out of _blog.php_ template.<br/>
+\- the snippet given above will fetch all pages cloned out of _blog.php_ template.
 The _masterpage_ parameter stands for the template's name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.
 
 This tag iterates through each of the fetched page and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed discretly via its URL (i.e. in its [_page-view_](../../concepts/variables-in-views.html)).
@@ -148,8 +148,8 @@ This example would fetch pages cloned from blog.php and belonging to folders nam
 
 This example would fetch all pages cloned from blog.php except those belonging to folders named 'classic-bikes' or 'super-bikes'.
 
-By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).<br/>
-To include the pages that are within the subfolders of the given folder(s), set the *include\_subfolders* parameter as well.<br/>
+By default Couch will only fetch pages that lie DIRECTLY within the given folder(s).
+To include the pages that are within the subfolders of the given folder(s), set the *include\_subfolders* parameter as well.
 See below.
 
 In the _folder-view_ (see [**Views**](../../concepts/views.html)), the *k\_folder\_name* variable is set to the name of the current folder. It can be used to list the right pages -
@@ -284,11 +284,11 @@ To fetch those pages where the editable region 'my\_blog\_author' exactly matche
 This example would fetch all cloned pages of blog.php where the editable region 'my\_blog\_author' exactly matches either the term 'jeffrey' or 'arthur'.
 
 ::: .notice
-Since a comma ',' is being used to separate two values, if any of the values contains a comma<br/>
-within itself you'll have to 'escape' the comma by prepending it with a backward slash -<br/>
-'my\_blog\_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci<br/>
-'my\_blog\_text=veni\\, vidi\\, veci' - contains the phrase 'veni, vidi, veci'.<br/>
-<br/>
+Since a comma ',' is being used to separate two values, if any of the values contains a comma
+within itself you'll have to 'escape' the comma by prepending it with a backward slash -
+'my\_blog\_text=veni, vidi, veci'  - contains any of the terms veni, vidi or veci
+'my\_blog\_text=veni\\, vidi\\, veci' - contains the phrase 'veni, vidi, veci'.
+
 Similarly if any of the values contains a single quote ''' or double quote '"', it can be escaped likewise.
 :::
 
@@ -311,13 +311,13 @@ This example would fetch all cloned pages of blog.php where the editable region 
 This example would fetch all cloned pages of blog.php where the editable region 'my\_blog\_author' DOES NOT contain the words 'jeffrey' and 'arthur' anywhere within it.
 
 ::: .error
-The above snippet might seem a little counter-intuitive.<br/>
-It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not<br/>
-have both jeffrey and arthur in the same field.<br/>
+The above snippet might seem a little counter-intuitive.
+It does not mean fetch all pages that contain neither jeffrey nor arthur. It means fetch only those pages that do not
+have both jeffrey and arthur in the same field.
 For how to fetch pages that contain neither jeffrey nor arthur, use the multiple fields examples given below.
 :::
 
-Multiple custom fields may be combined together with a pipe '|' character (The pipe stands for a boolean AND) -<br/>
+Multiple custom fields may be combined together with a pipe '|' character (The pipe stands for a boolean AND) -
 The same custom field may be repeated.
 
 ```
@@ -338,22 +338,22 @@ This example would fetch all pages that contain 'jeffery' AND contain 'arthur' s
 
 This example would fetch all pages that contain 'jeffery' within 'my\_blog\_author' AND contain 'fellow countrymen' within 'my\_blog\_text'
 
-Custom fields can also be used for comparisions other than the equality and non-equality described above.<br/>
+Custom fields can also be used for comparisions other than the equality and non-equality described above.
 For example, we can fetch pages that have the value of a certain editable region 'greater than' or 'less than' a particular value.
 
 ::: .notice
-Please bear in mind that if an editable region will contain values that you plan to compare in this manner<br/>
-(i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -<br/>
-age &lt; 35<br/>
-salary &gt; 12500<br/>
-distance &gt;= 23.56<br/>
-price = 355.39<br/>
-<br/>
-Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -<br/>
-telephone\_number &lt; 234567878<br/>
-<br/>
-For all such cases where the values will be numbers and you'd want to use them in the *custom\_field* parameter, MAKE SURE to set the *search\_type* parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).<br/>
-<br/>
+Please bear in mind that if an editable region will contain values that you plan to compare in this manner
+(i.e. test whether the value is greater or less than some value), most probably the value will be a 'number' -
+age &lt; 35
+salary &gt; 12500
+distance &gt;= 23.56
+price = 355.39
+
+Telephone number, though it might contain all numeric values, is not a 'number' because you are unlikely to do something like -
+telephone\_number &lt; 234567878
+
+For all such cases where the values will be numbers and you'd want to use them in the *custom\_field* parameter, MAKE SURE to set the *search\_type* parameter of the editable regions to either 'integer' (for values that will not be fractional e.g. number of bathrooms) or 'decimal' (for values that can be fractional e.g. price).
+
 Remember that only editable regions of types 'text', 'radio' and 'dropdown' can be made of 'integer'/'decimal' search\_type.
 :::
 
@@ -363,8 +363,8 @@ As an example of numeric fields -
 <cms:pages custom_field='distance<50 | price>=1000000 | price<=3000000'></cms:pages>
 ```
 
-This example would fetch all pages with custom field distance containing a value less than 50<br/>
-AND custom field price 'greater than or equal to' 1000000<br/>
+This example would fetch all pages with custom field distance containing a value less than 50
+AND custom field price 'greater than or equal to' 1000000
 AND custom field price 'less than or equal to' 3000000 (i.e. price between 1000000 and 3000000)
 
 The following comparisions can be done with numeric fields -
@@ -379,9 +379,9 @@ The following comparisions can be done with numeric fields -
 
 ## Variables
 
-As this tag iterates through all the fetched pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a _page-view_ (see [**Variables available in Views**](../../concepts/variables-in-views.html)).<br/>
-Apart from this, several variables are also set that indicate the current status of the loop.<br/>
-These variables can be used to show the fetched pages in a paginated manner.<br/>
+As this tag iterates through all the fetched pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a _page-view_ (see [**Variables available in Views**](../../concepts/variables-in-views.html)).
+Apart from this, several variables are also set that indicate the current status of the loop.
+These variables can be used to show the fetched pages in a paginated manner.
 See [**Pagination**](../../concepts/pagination.html).
 
 ## Related Tags

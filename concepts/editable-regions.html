@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="editable-regions">Editable Regions</h1>
-<p>With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag.<br/>
+<p>With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag.
 You can use it to define areas within your HTML template that you wish to make editable.</p>
 <p>As an example, suppose the following is a chunk of HTML from a template named <em>property.php</em> -</p>
 <pre><code>&lt;div class=&quot;prop_desc&quot;&gt;
@@ -82,7 +82,7 @@ You can use it to define areas within your HTML template that you wish to make e
     &lt;br class=&quot;clear&quot;/&gt;
 &lt;/div&gt;
 </code></pre>
-<p>The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.<br/>
+<p>The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part himself.
 To do so, simply enclose this part by an <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag -</p>
 <pre><code>&lt;div class=&quot;prop_desc&quot;&gt;
     &lt;b&gt;Property Description:&lt;/b&gt;
@@ -97,23 +97,22 @@ To do so, simply enclose this part by an <a href="../../tags-reference/editable.
 &lt;/div&gt;
 </code></pre>
 <p><a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag accepts several parameters but only one is mandatory - <em>name</em>. It has to be unique within a template.</p>
-<p>Now, while being logged in as the super-admin, visit the template in your browser.<br/>
+<p>Now, while being logged in as the super-admin, visit the template in your browser.
 For example, if the template was <em>property.php</em>, visit <em><a href="http://www.yoursite.com/property.php">http://www.yoursite.com/property.php</a></em></p>
 <p class="notice">At the risk of repeating ourselves - for your changes to show up in the admin panel, you'll always need to run the modified template in the browser while being logged in as the super-admin.</p>
 <p>Now visit the admin panel and access <em>property.php</em> and you'll find that Couch has created a textarea for the editable region.</p>
 <div class="success">
-<p>If you enclose some text between the opening and closing <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag as a self closing tag.
-<br/></p>
+<p>If you enclose some text between the opening and closing <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the <a href="../../tags-reference/editable.html"><strong><em>Editable</em></strong></a> tag as a self closing tag.</p>
 <pre><code>&lt;cms:editable name='prop_desc' /&gt;
 </code></pre>
 </div>
-<p>Input or edit the text within this textarea and save your changes.<br/>
+<p>Input or edit the text within this textarea and save your changes.
 Visiting the template in your browser again should show up the edited text on the webpage.</p>
 <h3 id="types-of-editable-regions">TYPES OF EDITABLE REGIONS</h3>
-<p>In the example above, the type of the editable region that Couch created to allow editing was a textarea.<br/>
-You have a choice of several other types of editable regions that you can ask Couch to create, depending on the kind of data that will be inputted into it.<br/>
-For example, the textarea created above is suitable when you wish the users to input only plain text (i.e. not formatted by HTML tags). However, when the type of text that will be inputted requires HTML formatting, you can get Couch to create a richtext editor instead.<br/>
-Similarly, sometimes a single line of text input is all that is needed.<br/>
+<p>In the example above, the type of the editable region that Couch created to allow editing was a textarea.
+You have a choice of several other types of editable regions that you can ask Couch to create, depending on the kind of data that will be inputted into it.
+For example, the textarea created above is suitable when you wish the users to input only plain text (i.e. not formatted by HTML tags). However, when the type of text that will be inputted requires HTML formatting, you can get Couch to create a richtext editor instead.
+Similarly, sometimes a single line of text input is all that is needed.
 The <em>type</em> parameter of Editable text can bet set to the kind of editable region you wish to create.</p>
 <p>e.g. setting the type to 'richtext' -</p>
 <pre><code>&lt;cms:editable name='prop_desc' type='richtext'&gt;..&lt;/cms:editable&gt;
@@ -145,8 +144,8 @@ The <em>type</em> parameter of Editable text can bet set to the kind of editable
 <p>The <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag, as its function, checks if the editable region has not already been created in the Admin Panel. If not, it creates one. After executing its function, the <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag fetches back the contents of the editable region and returns it as its output.</p>
 <p>Thus you can see that in the resulting webpage, the <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tags are replaced by the current contents of the associated editable regions.</p>
 <p><strong>2. As variables automatically set by Couch -</strong></p>
-<p>When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.<br/>
-Thus in the example above, since the name of the editable region is <em>prop_desc</em>, a variable by the same name will also be set by Couch during the execution of this page.<br/>
+<p>When a page is executed, Couch makes available the current contents of all the editable regions contained within the page as variables of the same names.
+Thus in the example above, since the name of the editable region is <em>prop_desc</em>, a variable by the same name will also be set by Couch during the execution of this page.
 So if you use the following snippet anywhere within your template -</p>
 <pre><code>&lt;cms:show prop_desc /&gt;
 </code></pre>
@@ -161,7 +160,7 @@ So if you use the following snippet anywhere within your template -</p>
 <h3 id="separating-the-definition-of-editable-region-from-its-display">SEPARATING THE DEFINITION OF EDITABLE REGION FROM ITS DISPLAY</h3>
 <p>In the examples above we have been creating the editable regions exactly at the spot where we wanted their outputs to appear. In effect we have been using the <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag to both define the editable regions as well as to display their contents.</p>
 <p>In complex templates (<em>clonable</em> templates, specifically) with several editable regions it is sometimes more manageable to define all the editable regions together at a single place.</p>
-<p>For such cases, we can use the <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag to only define the editable regions and use the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag to display the contents.<br/>
+<p>For such cases, we can use the <a href="../../tags-reference/editable.html"><strong><em>editable</em></strong></a> tag to only define the editable regions and use the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag to display the contents.
 A good practice is to define together all editable regions used by the template somewhere at the very top of the template -</p>
 <pre><code>&lt;cms:template title='Index' clonable='1' &gt;
     &lt;cms:editable name=&quot;body&quot; label=&quot;Body&quot; type=&quot;richtext&quot; /&gt;

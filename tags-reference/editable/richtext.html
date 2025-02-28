@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="type-%3D-'richtext'">type = 'richtext'</h1>
-<p>Editable region of <em>richtext</em> type is used to allow users to easily input HTML formatted text without manually keying in the HTML tags.<br/>
+<p>Editable region of <em>richtext</em> type is used to allow users to easily input HTML formatted text without manually keying in the HTML tags.
 For this type, Couch creates an instance of a WYSIWYG richtext editor (<a href="http://ckeditor.com/">CKEditor</a>) containing almost all the editing features present in desktop editing applications like MS Word.</p>
 <p>An editable region of <em>richtext</em> type can be defined this way -</p>
 <pre><code>&lt;cms:editable
@@ -84,8 +84,7 @@ For this type, Couch creates an instance of a WYSIWYG richtext editor (<a href="
 <p>The code above will result in -</p>
 <p><img src="../../../../assets/img/contents/editable-richtext-1.jpg" alt=""></p>
 <div class="notice">
-<p>Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the <strong>Editable</strong> tag self-closing e.g.<br/>
-<br/></p>
+<p>Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the <strong>Editable</strong> tag self-closing e.g.</p>
 <pre><code>&lt;cms:editable name='prop_desc' label='Description'
     desc='Enter description of property here'
     type='richtext' /&gt;
@@ -95,11 +94,9 @@ For this type, Couch creates an instance of a WYSIWYG richtext editor (<a href="
 <pre><code>&lt;cms:show prop_desc /&gt;
 </code></pre>
 <div class="success">
-<p>Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to <em>Comics Sans MS</em>.<br/>
-<br/>
-But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.<br/>
-<br/>
-The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.<br/></p>
+<p>Opinion is divided about providing a WYSIWYG editor to the end user (some CMS'es going as far as not providing one at all). After all it only takes a few clicks for a user to change the background color of your meticulously designed web-page to shocking red with the fonts set to <em>Comics Sans MS</em>.</p>
+<p>But ask any end user and the first feature he'll judge a CMS by would be the WYSIWYG editor. Not surprising considering the ease that it brings to him in editing his content.</p>
+<p>The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled power that it hands over to the end user. The approach of Couch is to allow the designer/coder to decide how much power is he willing to give to the end user. If the user is supposed to only make the text bold and italic, you can set that only these buttons are available. If you wish to constrain the user into applying to the page elements only a few styles that you have coded, you can make available only those styles to the editor. The parameters discussed below will go into more details.</p>
 </div>
 <h2 id="parameters">Parameters</h2>
 <p>In addition to the parameters common to all the types of editable regions, <em>richtext</em> accepts the following parameters</p>
@@ -327,12 +324,11 @@ The problem, in our humble opinion, is not the WYSIWYG editor but the unbridled 
 </code></pre>
 <p><img src="../../../../assets/img/contents/editable-richtext-8.gif" alt=""></p>
 <p><strong>Points to note in the example above -</strong></p>
-<p>A space can be introduced between two buttons by placing a '-' (hyphen) or '_' (underscore) between them while related buttons can be grouped together by placing a '|' (pipe character) between two groups.<br/>
+<p>A space can be introduced between two buttons by placing a '-' (hyphen) or '_' (underscore) between them while related buttons can be grouped together by placing a '|' (pipe character) between two groups.
 Visually both might appear to be the same but when the toolbar needs to be broken up due to lack of space, buttons in the same group are treated as a unit and are kept together.</p>
 <p>Also note that you can force the toolbar to be break into a new row by specifying '|' twice (i.e. no buttons between two pipes - see how the group begining with the <strong>cut</strong> button has been forced into a new row).</p>
 <div class="success">
-<p><strong>TIP</strong> - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the <a href="../embed.html"><strong>Embed</strong></a> tag. Cut and paste the <em>value</em> of the <em>custom_toolbar</em> parameter (everything between the quotes) and save it in a file named, say, <em>my_toolbar.inc</em>. Instruct the <a href="../embed.html"><strong>Embed</strong></a> tag to use this file.<br/>
-<br/></p>
+<p><strong>TIP</strong> - if you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the <a href="../embed.html"><strong>Embed</strong></a> tag. Cut and paste the <em>value</em> of the <em>custom_toolbar</em> parameter (everything between the quotes) and save it in a file named, say, <em>my_toolbar.inc</em>. Instruct the <a href="../embed.html"><strong>Embed</strong></a> tag to use this file.</p>
 <pre><code>&lt;cms:editable name='desc' label='Description'
     desc='Enter description of property here'
     toolbar='custom'

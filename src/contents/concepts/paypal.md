@@ -9,10 +9,10 @@ template: default.html
 Couch makes it very easy for you to sell single digital products (ebooks, software, images etc) online using PayPal.
 
 ::: .success
-Paypal can be used to accept _single-item purchase_ payments (the ones with Buy Now buttons), _contribution_ payments (Donate buttons), _recurring_ payments (Subscribe buttons) and _multi-items purchase_ payments (shopping cart buttons).<br/>
-<br/>
-The current version of Couch supports only accepting _single-item purchase_ payments.<br/>
-<br/>
+Paypal can be used to accept _single-item purchase_ payments (the ones with Buy Now buttons), _contribution_ payments (Donate buttons), _recurring_ payments (Subscribe buttons) and _multi-items purchase_ payments (shopping cart buttons).
+
+The current version of Couch supports only accepting _single-item purchase_ payments.
+
 Couch currently has no provisions for advanced features like shipping charges, volume/weight based pricing etc. These features are normally required only with physical goods and hence the caveat that this feature of Couch is suitable only for digital goods that can simply be downloaded. However, for such physical goods that do not require these advanced features, there is no reason why Couch's method cannot be used.
 :::
 
@@ -22,17 +22,17 @@ To understand how Couch makes the process easy, let us first review how PayPal i
 
 *   The process starts by placing a specially coded 'Buy Now' button for each item on the website. The code of each button has to be given data about the item associated with it i.e. the product's name, id, price etc.
 *   Clicking on a button takes the visitor to PayPal's website where, after adjusting the number of units he is buying, he makes the payment.
-*   PayPal immediately intimates the seller about the payment using IPN (Instant Payment Notification). IPN contains all the relevant data about the transaction, i.e. the item that was paid for, the number of units bought, the payment amount, the buyer's email etc.<br/>
+*   PayPal immediately intimates the seller about the payment using IPN (Instant Payment Notification). IPN contains all the relevant data about the transaction, i.e. the item that was paid for, the number of units bought, the payment amount, the buyer's email etc.
     To receive PayPal's IPN, the seller needs to place a specially coded script on his website that can decipher the incoming IPN and take necessary actions. The URL (address) of this script has to be provided beforehand to PayPal (normally this is placed in the button code mentioned in the first step above).
 *   Once the script receives the IPN, it is supposed to first of all verify that the IPN is arriving genuinely from PayPal and has not been spoofed by someone. Once this is verified, the script then goes on to validate the details of the transaction being reported - if the correct amount has been paid for the item sold, the amount has been deposited in the right account etc.
 *   Once everything checks out fine, it is now that the product is finally delivered to the buyer. This could be done by using the email.
 
 ### HOW COUCH INTEGRATES WITH PAYPAL
 
-As should be evident from the discussion above, the seemingly simple procedure of delivering a digital product to a buyer upon payment requires quite a bit of work. Specifically, out of the steps outlined above, placing the appropriately coded button and (more extensively) handling the incoming IPN require custom coding.<br/>
+As should be evident from the discussion above, the seemingly simple procedure of delivering a digital product to a buyer upon payment requires quite a bit of work. Specifically, out of the steps outlined above, placing the appropriately coded button and (more extensively) handling the incoming IPN require custom coding.
 Couch takes away the complexity from both the steps by making it as simple as placing a Couch tag for each in your template.
 
-In the following paragraphs we'll discuss how we can use Couch to do all the heavy lifting for us - but before we can do that, a little groundwork needs to be done.<br/>
+In the following paragraphs we'll discuss how we can use Couch to do all the heavy lifting for us - but before we can do that, a little groundwork needs to be done.
 First we need to inform Couch about some of our PayPal details. Open _config.php_ and set the following three values to that of yours.
 
 ```
@@ -52,20 +52,20 @@ define( 'K_PAYPAL_CURRENCY', 'USD' );
 ```
 
 ::: .notice
-Usually while testing you'll be using PayPal's Sandbox.<br/>
+Usually while testing you'll be using PayPal's Sandbox.
 Setup a test environment (sandbox) at https&#58;//developer.paypal.com/. Generate and use the fictitious accounts for testing (make sure to set K\_PAYPAL\_USE\_SANDBOX to 1 and K\_PAYPAL\_EMAIL to the fictitious seller's account, in _config.php_ mentioned above).
 :::
 
-For the next step, it is necessary to understand that each saleable item in Couch is represented by a separate cloned page.<br/>
-For our example, let us say we use a template named _product.php_ for this purpose.<br/>
+For the next step, it is necessary to understand that each saleable item in Couch is represented by a separate cloned page.
+For our example, let us say we use a template named _product.php_ for this purpose.
 Make this template clonable and define in it all [**editable regions**](./editable-regions.html) that are relevant to your products (e.g. ISBN number, Author, Link to the downloadable file etc.)
 
 Two fields are mandatory and need your special attention -
 
 1.  **Item's name** - every saleable item needs to have a name. However, you don't have to create a separate editable region for this because Couch expects the _Title_ field (present by default in all clonable pages and accessible via *k\_page\_title* variable) to be the item's name. Hence always input the item's name as the title of the page representing the item.
-2.  **Item's price** - this is an important one.<br/>
-    PayPal does not allow zero value transactions, hence it is mandatory for each saleable item to have a non-zero price.<br/>
-    We'll have to create an editable region to hold the item's price.<br/>
+2.  **Item's price** - this is an important one.
+    PayPal does not allow zero value transactions, hence it is mandatory for each saleable item to have a non-zero price.
+    We'll have to create an editable region to hold the item's price.
     The important point is that - Couch requires this editable region to be named *pp\_price*.
 
 As an example, the following snippet can be used to create such a field (as a good practice, we have added the vaiidations normally required for a price field) -
@@ -92,8 +92,8 @@ The image used as the button can be changed by setting the _image_ parameter of 
 
 Remember: If the **paypal\_button** tag fails to find a variable named *pp\_price*, that we mentioned in the previous section, it will not display any button at all. {.error}
 
-Create a few items and visit their pages to try out the buttons.<br/>
-Clicking any item's button should lead to PayPal's site with the item's name and price correctly supplied.<br/>
+Create a few items and visit their pages to try out the buttons.
+Clicking any item's button should lead to PayPal's site with the item's name and price correctly supplied.
 Clicking the return link on PayPal's site should lead one back to the item's page.
 
 Now we only need to handle the incoming IPN notification.
@@ -111,8 +111,8 @@ To see how it works, place the following snippet somewhere at the top of your _p
 In the snippet above we have set the _debug_ parameter to '1'. This causes this tag to output all the steps it takes, while handling a notification, into a log file placed within your website's root.
 
 ::: .success
-By default the name of the log file is _log.txt_. However you can set it to any other by setting the _logfile_ parameter -<br/>
-<br/>
+By default the name of the log file is _log.txt_. However you can set it to any other by setting the _logfile_ parameter -
+
 ```
 <cms:paypal_processor debug='1' logfile='paypal.log' />
 ```
@@ -122,7 +122,7 @@ The snippet given above will make *paypal\_processor* use a log file named _payp
 Try clicking an item's 'Buy Now' button and upon reaching the PayPal's site, complete the transaction by logging in and buying the item. Once the transaction completes, check in your website's root for the aforesaid log file.
 
 ::: .notice
-If you cannot find the log file, either something is wrong and PayPal's IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.<br/>
+If you cannot find the log file, either something is wrong and PayPal's IPN is not reaching your website or perhaps Couch was unable to create the log file on your server due to permission issues.
 Try creating a file named _log.txt_ (or whatever you have set using _logfile_ parameter) manually, make it writable and try once again.
 :::
 
@@ -185,7 +185,7 @@ Transaction OK
 Exiting
 ```
 
-The snippet above shows a successful transaction. If you find any error being reported in the log, you'll need to investigate it further.<br/>
+The snippet above shows a successful transaction. If you find any error being reported in the log, you'll need to investigate it further.
 This should give you a fair idea as to what PayPal sends back as details of the transaction and what goes on while processing an IPN.
 
 Once we are sure that the IPN is being handled properly, we can now go ahead and make [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) do whatever is supposed to be done on successfully getting paid for a product. We'll assume we are to send the buyer an email with a link to the item he bought.
@@ -206,7 +206,7 @@ Once [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) verif
 
 As should be obvious, these variables represent the values that PayPal provided through the IPN. We can use these values to take further actions. {.notice}
 
-[__*paypal\_processor*__](../../tags-reference/paypal_processor.html) then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch's database. Thus it makes sure that the amount paid is not less than the item's price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.<br/>
+[__*paypal\_processor*__](../../tags-reference/paypal_processor.html) then validates if the transaction was valid by using the IPN values and comparing them with the values stored in Couch's database. Thus it makes sure that the amount paid is not less than the item's price multiplied by the bought quantity, that the payment has been made in the right currency and that the payment has been made into the right account.
 If the transaction is valid, it sets another variable named *k\_paypal\_success* else it sets a variable named *k\_paypal\_error* and places the error message into it. Additionaly, it also makes available all the variables associated with the page representing the item.
 
 A skeletal snippet will look like the following -
@@ -250,6 +250,6 @@ A real world example could be -
 </cms:paypal_processor>
 ```
 
-In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) are being used in the [__*send\_mail*__](../../tags-reference/send_mail.html) tag.<br/>
-The email contains a link to the downloadable item (the variable *downloadable\_file* is an editable region of type file within the template and contains the item's link).<br/>
+In the snippet above, we are sending an email to the buyer on a successful transaction. Note how the variables set by [__*paypal\_processor*__](../../tags-reference/paypal_processor.html) are being used in the [__*send\_mail*__](../../tags-reference/send_mail.html) tag.
+The email contains a link to the downloadable item (the variable *downloadable\_file* is an editable region of type file within the template and contains the item's link).
 The [__*cloak\_url*__](../../tags-reference/cloak_url.html) tag is used to conceal the real path of the item.
