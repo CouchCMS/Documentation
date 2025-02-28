@@ -69,10 +69,10 @@
             </form>
 
             <article><h1 id="users-and-access-control">Users and Access Control</h1>
-<p>Couch supports creation of any number of user accounts.<br/>
+<p>Couch supports creation of any number of user accounts.
 Each user account can be assigned to one of the four groups discussed below and depending on the containing group, the account's access to the web-site is controlled.</p>
 <h4 id="1.-super-admin">1. Super Admin</h4>
-<p>The first user account that gets created during Couch's installation. It is an all-powerful account and only one such account can exist in Couch.<br/>
+<p>The first user account that gets created during Couch's installation. It is an all-powerful account and only one such account can exist in Couch.
 A Super Admin can do everything that a user possibly can in Couch. Specifically, he can -</p>
 <ul>
 <li>Create/manage templates and define editable regions, folders etc. within templates.</li>
@@ -80,11 +80,11 @@ A Super Admin can do everything that a user possibly can in Couch. Specifically,
 <li>Create/manage any number of lower level user accounts.</li>
 <li>Access the website.</li>
 </ul>
-<p>Usually it is the designer/coder building the site that uses this <em>super-admin</em> account. If you've gone through the creation of <a href="./editable-regions.html"><strong>editable regions</strong></a> and some other tags like the <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag, you'll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.<br/>
+<p>Usually it is the designer/coder building the site that uses this <em>super-admin</em> account. If you've gone through the creation of <a href="./editable-regions.html"><strong>editable regions</strong></a> and some other tags like the <a href="../../tags-reference/folder.html"><strong><em>folder</em></strong></a> tag, you'll recall that persisting the changes made to the template using these tags, requires visiting the web-page while logged in as this super-admin account.
 Hence this account is used by someone who makes structural changes to the web-site.</p>
 <h4 id="2.-administrator">2. Administrator</h4>
-<p>The <em>super-admin</em> can create any number of administrator level accounts.<br/>
-These accounts are meant to be used by the web-site owners who will be responsible for managing the contents and day to day operations of the web-site.<br/>
+<p>The <em>super-admin</em> can create any number of administrator level accounts.
+These accounts are meant to be used by the web-site owners who will be responsible for managing the contents and day to day operations of the web-site.
 An Administrator can -</p>
 <ul>
 <li>Access the Admin panel and create new pages and edit/delete all existing pages except those that have been marked by the Super Admin has having only super-admin access (usually done to prevent the site owners from accidently modifying them).</li>
@@ -93,27 +93,27 @@ An Administrator can -</p>
 </ul>
 <p>All the users belonging to the Administrator group have identical access permissions and can add/delete/modify each other's pages.</p>
 <h4 id="3.-registered-users">3. Registered Users</h4>
-<p>The super-admin/administrators can create registered users by placing them in either of these two lower-level accounts -<br/>
-<em>Authenticated User (Special)</em><br/>
-<em>Authenticated User</em><br/>
+<p>The super-admin/administrators can create registered users by placing them in either of these two lower-level accounts -
+<em>Authenticated User (Special)</em>
+<em>Authenticated User</em>
 These two accounts are meant for visitors who are registered with the website.</p>
 <p>Registered users can -</p>
 <ul>
 <li>Only access the website.</li>
 </ul>
 <h4 id="4.-unauthenticated">4. Unauthenticated</h4>
-<p>Every visitor to the website who is not logged-in is automatically placed in this group by Couch.<br/>
+<p>Every visitor to the website who is not logged-in is automatically placed in this group by Couch.
 Thus unregistered users as well as registered users who have not yet logged-in by providing their username/password are placed in this group.</p>
 <p>Unauthenticated users can -</p>
 <ul>
 <li>Only access the website.</li>
 </ul>
-<p>Only users belonging to the <em>Super Admin</em> and the <em>Administrator</em> groups can access the Couch's Admin panel.<br/>
-All users, as far as Couch is concerned, can equally access the website.<br/>
+<p>Only users belonging to the <em>Super Admin</em> and the <em>Administrator</em> groups can access the Couch's Admin panel.
+All users, as far as Couch is concerned, can equally access the website.
 It is you, who as the designer/coder decides which pages or portion of the pages within the website these users can access. Couch will simply, by setting relevant variables, indicate the group of the visitor so that your code can take appropriate action.</p>
 <h3 id="access-control">ACCESS CONTROL</h3>
-<p>To be honest, the access mechanism currently implemented is fairly coarse (you can expect some major changes in the coming versions).<br/>
-However some very powerful access control can be wired up by properly using the available functionality.<br/>
+<p>To be honest, the access mechanism currently implemented is fairly coarse (you can expect some major changes in the coming versions).
+However some very powerful access control can be wired up by properly using the available functionality.
 Before us see how, we need to know a few facts that we'll use -</p>
 <p>Upon the execution of every page, the following variables are set by Couch to give information about the visitor accessing the page -</p>
 <ul>
@@ -128,7 +128,7 @@ Before us see how, we need to know a few facts that we'll use -</p>
 <li>k_login_link</li>
 <li>k_logout_link</li>
 </ul>
-<p>The <em>k_logged_in</em> or <em>k_logged_out</em> variable can be used to figure out if the visitor is currently logged in and hence possesses an account on the website.<br/>
+<p>The <em>k_logged_in</em> or <em>k_logged_out</em> variable can be used to figure out if the visitor is currently logged in and hence possesses an account on the website.
 If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_title</em>, <em>k_user_email</em> and <em>k_user_access_level</em> can be used to get details about him.</p>
 <p>The <em>k_user_access_level</em> is an important variable and indicates the 'group' of the user by the following numeric values -</p>
 <ul>
@@ -150,7 +150,7 @@ If he is logged-in, the <em>k_user_id</em>, <em>k_user_name</em>, <em>k_user_tit
 <p>Access to any individual page can be controlled by selecting the minimum access level required from the dropdown list visible while editing the page in Admin Panel -</p>
 <p><img src="../../assets/img/contents/users.png" alt=""></p>
 <div class="notice">
-<p>In both the cases mentioned above, if a page is accessed by a user who is not logged-in, the login box is displayed to him to input his credentials.<br/>
+<p>In both the cases mentioned above, if a page is accessed by a user who is not logged-in, the login box is displayed to him to input his credentials.
 If the user is already logged-in but his current access level is less than that required to access the page, a message is displayed to him prompting him to logout and re-login with proper credentials.</p>
 </div>
 <h3 id="element-level-access">Element level access</h3>
@@ -168,12 +168,12 @@ If the user is already logged-in but his current access level is less than that 
     &lt;/cms:if&gt;
 &lt;/cms:if&gt;
 </code></pre>
-<p>In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.<br/>
-If it is not, it could either be that the user is not logged-in or that he is logged-in but the access level of his account is lesser than the required level.<br/>
-We check this by the <em>k_logged_out</em> variable and then show the appropriate message.<br/>
+<p>In the snippet given above, we first check if the access level of the current visitor is sufficient for him to see the text.
+If it is not, it could either be that the user is not logged-in or that he is logged-in but the access level of his account is lesser than the required level.
+We check this by the <em>k_logged_out</em> variable and then show the appropriate message.
 Note how we use the <em>k_login_link</em> and <em>k_logout_link</em> to diplay the links that the user can click to either login or logout.</p>
 <h3 id="access-control-of-discrete-files">Access control of discrete files</h3>
-<p>Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the <a href="../../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag.<br/>
+<p>Access control can be exercised upon discrete files placed on your server, e.g. image files and pdf files, by using the <a href="../../tags-reference/cloak_url.html"><strong><em>cloak_url</em></strong></a> tag.
 Please see <a href="./cloaked-links.html#allowing-only-registered-users-to-access-links"><strong>Cloaked links - Allowing only registered users to a access links</strong></a> section for a full discussion of this.</p>
 </article>
         </div>

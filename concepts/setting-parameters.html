@@ -78,7 +78,7 @@
     This line gets repeated
 &lt;/cms:repeat&gt;
 </code></pre>
-<p>In the snippets above, &quot;Hello World&quot; and '4' are literal values being used as parameters.<br/>
+<p>In the snippets above, &quot;Hello World&quot; and '4' are literal values being used as parameters.
 Please notice that <strong>an explicit value is ALWAYS enclosed within quotes (either single or double)</strong>.</p>
 <p><strong>2. By using a variable</strong> - e.g.</p>
 <pre><code>&lt;cms:show k_template_name /&gt;
@@ -89,26 +89,25 @@ Please notice that <strong>an explicit value is ALWAYS enclosed within quotes (e
     This line gets repeated
 &lt;/cms:repeat&gt;
 </code></pre>
-<p>In the snippets above, <em>k_template_name</em> and <em>my_count</em> are variables that are used as parameters.<br/>
+<p>In the snippets above, <em>k_template_name</em> and <em>my_count</em> are variables that are used as parameters.
 Please notice that <strong>any value that is NOT enclosed by quotes is considered by Couch to be a variable</strong>.</p>
 <p><strong>3. By using the output of another tag</strong> -</p>
-<p>We know that while rendering a template, every tag gets replaced by its output (which might be a blank).<br/>
+<p>We know that while rendering a template, every tag gets replaced by its output (which might be a blank).
 This feature can be utilized to set a tag's parameter by using the output of another tag.</p>
 <pre><code>&lt;cms:set message=&quot;&lt;cms:show 'Hello World' /&gt;&quot; /&gt;
 &lt;cms:show message /&gt;
 </code></pre>
-<p>In the snippet above, message will be set to 'Hello World' which was the output of the nested <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag.<br/>
+<p>In the snippet above, message will be set to 'Hello World' which was the output of the nested <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag.
 Please notice that <strong>the nested tag is ALWAYS enclosed within DOUBLE quotes</strong>.</p>
 <div class="notice">
-<p><strong>V.IMP -</strong><br/>
-<strong>If single quotes are used, Couch considers the parameter's value to be an explicit value.<br/>
-If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag.<br/>
-If no quotes are used, Couch considers the value to be a variable.</strong><br/>
-<br/>
-This is a very important point because it is very easy to forget the quotes while setting a parameter, e.g.<br/></p>
+<p><strong>V.IMP -</strong>
+<strong>If single quotes are used, Couch considers the parameter's value to be an explicit value.
+If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag.
+If no quotes are used, Couch considers the value to be a variable.</strong></p>
+<p>This is a very important point because it is very easy to forget the quotes while setting a parameter, e.g.</p>
 <pre><code>&lt;cms:repeat count=4&gt;&lt;/cms:repeat&gt;
 </code></pre>
-<p>- in the snippet above the value being passed to <em>count</em> is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value '4', will consider it to be a variable named 4 and try and use the value of a variable named '4' as the parameter. Incidently, it is illegal to begin a variable's name with a number and so Couch will throw an error. But had this value been a text string e.g.<br/></p>
+<p>- in the snippet above the value being passed to <em>count</em> is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value '4', will consider it to be a variable named 4 and try and use the value of a variable named '4' as the parameter. Incidently, it is illegal to begin a variable's name with a number and so Couch will throw an error. But had this value been a text string e.g.</p>
 <pre><code>&lt;cms:show var=Hello /&gt;
 </code></pre>
 <p>Couch would have used the value of an non-existent variable <em>Hello</em> as parameter for <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a>, which would then have printed nothing.</p>
@@ -117,7 +116,7 @@ This is a very important point because it is very easy to forget the quotes whil
 <p>There is no limit to how deeply tags may be thus nested. That is to say that a tag being used as a parameter of another tag can itself have another tag as its own parameter and so on. Thus -</p>
 <pre><code>&lt;cms:set message=&quot;&lt;cms:show &quot;&lt;cms:show 'hello' /&gt;&quot; /&gt; world&quot; /&gt;
 </code></pre>
-<p>Don't be confused by seeing a Couch tag being used as the parameter for another Couch tag.<br/>
+<p>Don't be confused by seeing a Couch tag being used as the parameter for another Couch tag.
 Begin from the innermost nested tag and try mentally replacing it with its output -</p>
 <pre><code>&lt;cms:set message=&quot;&lt;cms:show &quot;&lt;cms:show 'hello' /&gt;&quot; /&gt; world&quot; /&gt;
 &lt;cms:set message=&quot;&lt;cms:show &quot;hello&quot; /&gt; world&quot; /&gt;
@@ -131,18 +130,18 @@ Begin from the innermost nested tag and try mentally replacing it with its outpu
     &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre>
-<p>Don't worry, we'll replace the tags by their outputs and everything will start making perfect sense.<br/>
-The above snippet uses three new tags - <a href="../../tags-reference/if.html"><strong><em>if</em></strong></a>, <a href="../../tags-reference/exists.html"><strong><em>exists</em></strong></a> and <a href="../../tags-reference/embed.html"><strong><em>embed</em></strong></a>.<br/>
+<p>Don't worry, we'll replace the tags by their outputs and everything will start making perfect sense.
+The above snippet uses three new tags - <a href="../../tags-reference/if.html"><strong><em>if</em></strong></a>, <a href="../../tags-reference/exists.html"><strong><em>exists</em></strong></a> and <a href="../../tags-reference/embed.html"><strong><em>embed</em></strong></a>.
 You can find more about them in the documentation but for now a brief word about these tags will do.</p>
-<p>If the parameter passed to <a href="../../tags-reference/if.html"><strong><em>if</em></strong></a> tag is '1', it outputs anything contained between its start_tag and end_tag else it does not.<br/>
-<a href="../../tags-reference/exists.html"><strong><em>exists</em></strong></a> expects the parameter passed to it to be a file's (or folder's) name. It tests if the given file/folder is actually present and if it is, it outputs '1', else it outputs '0'.<br/>
+<p>If the parameter passed to <a href="../../tags-reference/if.html"><strong><em>if</em></strong></a> tag is '1', it outputs anything contained between its start_tag and end_tag else it does not.
+<a href="../../tags-reference/exists.html"><strong><em>exists</em></strong></a> expects the parameter passed to it to be a file's (or folder's) name. It tests if the given file/folder is actually present and if it is, it outputs '1', else it outputs '0'.
 Finally, the <a href="../../tags-reference/embed.html"><strong><em>embed</em></strong></a> tag expects the parameter passed to it to be a file's name. It then simply reads the file and returns back its contents as its own output.</p>
-<p>With this background, let us try replacing the tags with their respective outputs.<br/>
-Always begin from the innermost tag, which here happens to be the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag.<br/>
+<p>With this background, let us try replacing the tags with their respective outputs.
+Always begin from the innermost tag, which here happens to be the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag.
 We are already familiar with the <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag.</p>
 <pre><code>&lt;cms:show k_page_name/&gt;
 </code></pre>
-<p>- the parameter being passed to it has no quotes around it so it must be a variable.<br/>
+<p>- the parameter being passed to it has no quotes around it so it must be a variable.
 The <em>k_page_name</em> variable is set by Couch everytime a page (see <a href="./cloned-pages.html"><strong>pages</strong></a>) is executed to hold the page's name. Thus if the page being currently executed is <em>about-us</em>, the value of <em>k_page_name</em> will be <em>about_us</em> while if the page being executed is <em>contact-us</em>, <em>k_page_name</em> will be set to <em>contact-us</em>.</p>
 <p>Assuming that the current page is <em>about-us</em>, substituting <a href="../../tags-reference/show.html"><strong><em>show</em></strong></a> tag with its output will result in -</p>
 <pre><code>&lt;cms:if &quot;&lt;cms:exists &quot;about-us.inc&quot; /&gt;&quot; &gt;
@@ -154,14 +153,14 @@ The <em>k_page_name</em> variable is set by Couch everytime a page (see <a href=
     &lt;cms:embed &quot;&lt;cms:show k_page_name/&gt;.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre>
-<p>Since the parameter being passed to <em>if</em> is '1', it will go ahead and execute the contents within it and return the output.<br/>
+<p>Since the parameter being passed to <em>if</em> is '1', it will go ahead and execute the contents within it and return the output.
 - Resolve the contents of <a href="../../tags-reference/if.html"><strong><em>if</em></strong></a>, using our substitution method -</p>
 <pre><code>&lt;cms:if &quot;1&quot; &gt;
     &lt;cms:embed &quot;about-us.inc&quot; /&gt;
 &lt;/cms:if&gt;
 </code></pre>
-<p>Suppose the sole content of <em>about-us.inc</em> is -<br/>
-&lt;h1&gt;Hello I am About Us&lt;/h1&gt;,<br/>
+<p>Suppose the sole content of <em>about-us.inc</em> is -
+&lt;h1&gt;Hello I am About Us&lt;/h1&gt;,
 this will be the output of the <a href="../../tags-reference/embed.html"><strong><em>embed</em></strong></a> tag, so we end up being -</p>
 <pre><code>&lt;cms:if &quot;1&quot; &gt;
     &lt;h1&gt;Hello I am About Us&lt;/h1&gt;

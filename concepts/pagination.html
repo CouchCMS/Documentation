@@ -69,8 +69,8 @@
             </form>
 
             <article><h1 id="pagination">Pagination</h1>
-<p><a href="../../tags-reference/pages.html"><strong><em>Pages</em></strong></a>, <a href="../../tags-reference/search.html"><strong><em>search</em></strong></a> and <a href="../../tags-reference/comments.html"><strong><em>comments</em></strong></a> tags can fetch many more items than that set by the <em>limit</em> parameter.<br/>
-In such cases, it is normal to display the items in a paginated manner i.e. split across several pages with navigational buttons provided to access the pages.<br/>
+<p><a href="../../tags-reference/pages.html"><strong><em>Pages</em></strong></a>, <a href="../../tags-reference/search.html"><strong><em>search</em></strong></a> and <a href="../../tags-reference/comments.html"><strong><em>comments</em></strong></a> tags can fetch many more items than that set by the <em>limit</em> parameter.
+In such cases, it is normal to display the items in a paginated manner i.e. split across several pages with navigational buttons provided to access the pages.
 These tags, apart from the variables set to describe the current item being iterated through, set several variables that provide information about the current status of the tag's loop. Many of these variables can be used to display the fetched items in a paginated fashion.</p>
 <p>To explain these variables, we'll use the following snippet -</p>
 <pre><code>&lt;cms:pages masterpage='blog.php' limit='10' paginate='1'&gt;
@@ -78,45 +78,45 @@ These tags, apart from the variables set to describe the current item being iter
 &lt;/cms:pages&gt;
 </code></pre>
 <p class="notice">Although we are using the example of a <a href="../../tags-reference/pages.html"><strong><em>pages</em></strong></a> tag to explain pagination, please keep in mind that the following discussion holds equally good for the <a href="../../tags-reference/search.html"><strong><em>search</em></strong></a> and <a href="../../tags-reference/comments.html"><strong><em>comments</em></strong></a> tags as well.</p>
-<p>Suppose a total of 23 records have been fetched by the given snippet.<br/>
+<p>Suppose a total of 23 records have been fetched by the given snippet.
 Since the limit has been set to 10, splitting up the total in chunks of 10 records will result in requiring 3 pages to display all the records.</p>
 <p>The following variables get set as the tag iterates through each item fetched -</p>
 <h4 id="k_total_records">k_total_records</h4>
 <p>Total records fetched - 23 in our example</p>
 <h4 id="k_count">k_count</h4>
-<p>Will range from 1 to 10 on each page. Thus it points to the relative position of the current record on the page.<br/>
-Can be changed by setting 'startcount' parameter.<br/>
+<p>Will range from 1 to 10 on each page. Thus it points to the relative position of the current record on the page.
+Can be changed by setting 'startcount' parameter.
 Thus if 'startcount' is set to 0, <em>k_count</em> will range from 0-9 on each page.</p>
 <h4 id="k_record_from">k_record_from</h4>
-<p>First record on page. Thus it will be 1 for page 1, 11 for page 2 and 21 for page 3.<br/>
-Can be changed by setting 'startcount' parameter.<br/>
+<p>First record on page. Thus it will be 1 for page 1, 11 for page 2 and 21 for page 3.
+Can be changed by setting 'startcount' parameter.
 Thus if 'startcount' is set to 0, <em>k_record_from</em> will be 0 for page 1, 10 for page 2 and 20 for page 3.</p>
 <h4 id="k_current_record">k_current_record</h4>
-<p>Will range from 1-10 for page 1, 11-20 for page 2 and 21-23 for page 3.<br/>
-Thus it always points to the absolute position of the current record.<br/>
-Can be changed by setting 'startcount' parameter.<br/>
+<p>Will range from 1-10 for page 1, 11-20 for page 2 and 21-23 for page 3.
+Thus it always points to the absolute position of the current record.
+Can be changed by setting 'startcount' parameter.
 Thus if 'startcount' is set to 0, <em>k_current_record</em> will range from 0-9 for page 1, 10-19 for page 2 and 20 to 22 for page 3.</p>
 <h4 id="k_record_to">k_record_to</h4>
-<p>Last record on page. Thus it will be 10 for page 1, 20 for page 2 and 23 for page 3.<br/>
-Can be changed by setting 'startcount' parameter.<br/>
+<p>Last record on page. Thus it will be 10 for page 1, 20 for page 2 and 23 for page 3.
+Can be changed by setting 'startcount' parameter.
 Thus if 'startcount' is set to 0, <em>k_record_to</em> will be 9 for page 1, 19 for page 2 and 22 for page 3.</p>
 <h4 id="k_total_pages">k_total_pages</h4>
 <p>Total pages - 3 in our example.</p>
 <h4 id="k_current_page">k_current_page</h4>
 <p>Current page number - will change from 1 to 3 in our example.</p>
 <h4 id="k_paginated_top">k_paginated_top</h4>
-<p>'Pages' tag loops through 10 records on each page in our example.<br/>
-<em>k_paginated_top</em> gets set for the first record of each page.<br/>
+<p>'Pages' tag loops through 10 records on each page in our example.
+<em>k_paginated_top</em> gets set for the first record of each page.
 It can be used to output something at the very start of the loop.</p>
 <h4 id="k_paginated_bottom">k_paginated_bottom</h4>
-<p>'Pages' tag loops through 10 records on each page in our example.<br/>
-<em>k_paginated_bottom</em> gets set for the last record of each page.<br/>
+<p>'Pages' tag loops through 10 records on each page in our example.
+<em>k_paginated_bottom</em> gets set for the last record of each page.
 It can be used to output something at the very end of the loop.</p>
 <h4 id="k_paginator_required">k_paginator_required</h4>
-<p>When the total number of pages fetched exceeds the maximum set by the 'limit' parameter,<br/>
-(and 'paginate' parameter is also set), the fetched set of pages is split across pages and<br/>
-<em>k_paginator_required</em> gets set to indicate this.<br/>
-It can be used to figure out when to display text that makes sense only in such situation<br/>
+<p>When the total number of pages fetched exceeds the maximum set by the 'limit' parameter,
+(and 'paginate' parameter is also set), the fetched set of pages is split across pages and
+<em>k_paginator_required</em> gets set to indicate this.
+It can be used to figure out when to display text that makes sense only in such situation
 for example - the 'next' and 'forward' links or the 'Page 1 of 3'.</p>
 <h4 id="k_paginate_link_next">k_paginate_link_next</h4>
 <p>Link to the next page (if any)</p>

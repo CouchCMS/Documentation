@@ -69,68 +69,67 @@
             </form>
 
             <article><h1 id="views">Views</h1>
-<br/>
-### THE LIST VIEW AND THE PAGE VIEW
-<p>As discussed in the <a href="./cloned-pages.html"><strong>Cloned Pages</strong></a> section, a clonable template acquires a 'split personality'.<br/>
-To recap -<br/>
+<h3 id="the-list-view-and-the-page-view">THE LIST VIEW AND THE PAGE VIEW</h3>
+<p>As discussed in the <a href="./cloned-pages.html"><strong>Cloned Pages</strong></a> section, a clonable template acquires a 'split personality'.
+To recap -
 Suppose we have a template named <em>blog.php</em>.</p>
-<p>The simplest case is when this template has not yet been set as clonable (i.e. having similar pages created out of it). No views are associated with this page. The only possible way to execute this page is -<br/>
+<p>The simplest case is when this template has not yet been set as clonable (i.e. having similar pages created out of it). No views are associated with this page. The only possible way to execute this page is -
 <em><a href="http://www.yoursite.com/blog.php">http://www.yoursite.com/blog.php</a></em></p>
-<p>However, once <em>blog.php</em> is set as being clonable there can be multiple pages that have been cloned out of this template.<br/>
+<p>However, once <em>blog.php</em> is set as being clonable there can be multiple pages that have been cloned out of this template.
 Obviously, we now have atleast two scenarios <em>blog.php</em> may be executed in -</p>
-<p><strong>1.</strong> <em>blog.php</em> itself is executed -<br/>
-<em><a href="http://www.mysite.com/blog.php">http://www.mysite.com/blog.php</a></em> or<br/>
+<p><strong>1.</strong> <em>blog.php</em> itself is executed -
+<em><a href="http://www.mysite.com/blog.php">http://www.mysite.com/blog.php</a></em> or
 <em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em> (if pretty-urls activated)</p>
-<p><strong>2.</strong> A page created out of blog.php is executed -<br/>
-<em><a href="http://www.mysite.com/blog.php?p=12">http://www.mysite.com/blog.php?p=12</a></em> or<br/>
+<p><strong>2.</strong> A page created out of blog.php is executed -
+<em><a href="http://www.mysite.com/blog.php?p=12">http://www.mysite.com/blog.php?p=12</a></em> or
 <em><a href="http://www.mysite.com/blog/some_page_name.html">http://www.mysite.com/blog/some_page_name.html</a></em> (if pretty-urls activated)</p>
 <p>In the first scenario, <em>blog.php</em> is said to be executing in <strong>list view</strong> while in the second case it is said to be executing in <strong>page view</strong>.</p>
-<p>The <strong>page view</strong> is expected to show details relevant to the page being executed and hence makes available the pertinent variables.<br/>
+<p>The <strong>page view</strong> is expected to show details relevant to the page being executed and hence makes available the pertinent variables.
 The **list view **is expected to act like a listing page (e.g. list all the pages belonging to the blog etc.) and has a different set of variables available for this purpose.</p>
 <div class="notice">
-<p>When we say 'is expected to', that is exactly what we mean.<br/>
+<p>When we say 'is expected to', that is exactly what we mean.
 Couch simply sets certain variables to make it known to your script which view it is executing in. It is you who decides what to display in that view. It could be some specific page, several listings of other templates or just about anything you wish (see <a href="./listing-pages.html"><strong>Listing Pages</strong></a>).</p>
 </div>
-<p>Couch further supports two special URLs that are meant to list pages belonging to a partcular folder or to a particular time period.<br/>
+<p>Couch further supports two special URLs that are meant to list pages belonging to a partcular folder or to a particular time period.
 Thus the <em>list view</em> can be further categorised into two final views -</p>
-<p><strong>1. Folder view</strong> - while listing pages belonging to a particular folder -<br/>
-<em><a href="http://www.mysite.com/blog.php?f=3">http://www.mysite.com/blog.php?f=3</a></em> or<br/>
+<p><strong>1. Folder view</strong> - while listing pages belonging to a particular folder -
+<em><a href="http://www.mysite.com/blog.php?f=3">http://www.mysite.com/blog.php?f=3</a></em> or
 <em><a href="http://www.mysite.com/blog/some_subfolder/">http://www.mysite.com/blog/some_subfolder/</a></em> (if pretty-urls activated)</p>
-<p><strong>2. Archive view</strong> - while listing pages belonging to a particular time period -<br/>
-<em><a href="http://www.mysite.com/blog.php?d=201005">http://www.mysite.com/blog.php?d=201005</a></em> or<br/>
+<p><strong>2. Archive view</strong> - while listing pages belonging to a particular time period -
+<em><a href="http://www.mysite.com/blog.php?d=201005">http://www.mysite.com/blog.php?d=201005</a></em> or
 <em><a href="http://www.mysite.com/blog/2010/05/">http://www.mysite.com/blog/2010/05/</a></em> (if pretty-urls activated)</p>
 <p class="notice">The 'Folder view' and 'Archive view' URLs shown can be automatically generated by using the <a href="../../tags-reference/folders.html"><strong><em>folders</em></strong></a> and <a href="../../tags-reference/archives.html"><strong><em>archives</em></strong></a> tags.</p>
 <p>Once again, while accessing pages through these URLs, it is expected that you'll list pages belonging to the particular folder or the archive period. Couch sets variables that will help you in doing so, but you can choose to ignore everything and show whatever you desire.</p>
 <h3 id="how-to-recognize-a-view">HOW TO RECOGNIZE A VIEW</h3>
 <p>The following variables are set by Couch for your script to know the view it is executing in -</p>
-<p><strong>Page View</strong><br/>
+<p><strong>Page View</strong>
 k_is_page = '1'</p>
-<p><strong>List View</strong><br/>
-k_is_list = '1'<br/>
+<p><strong>List View</strong>
+k_is_list = '1'
 k_is_home = '1'</p>
-<p><strong>Folder View</strong><br/>
-k_is_list = '1'<br/>
+<p><strong>Folder View</strong>
+k_is_list = '1'
 k_is_folder = '1'</p>
-<p><strong>Archive View</strong><br/>
-k_is_list = '1'<br/>
-k_is_archive = '1'<br/>
-k_is_day = '1' (if daily archive)<br/>
-k_is_month = '1' (if monthly archive)<br/>
+<p><strong>Archive View</strong>
+k_is_list = '1'
+k_is_archive = '1'
+k_is_day = '1' (if daily archive)
+k_is_month = '1' (if monthly archive)
 k_is_year = '1' (if yearly archive)</p>
 <p>Notice how the variable <em>k_is_home</em> gets set only when <em>blog.php</em> gets executed in a simple <em>List view</em> that is neither a <em>Folder view</em> nor an <em>Archive view</em>. We can call this view - the <strong>Home view</strong>.</p>
-<p>Taking the example of <em>blog.php</em>, notice how the views and variables change according to the URL used to access it -<br/>
-<em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em><br/>
-k_is_list = 1<br/>
+<p>Taking the example of <em>blog.php</em>, notice how the views and variables change according to the URL used to access it -
+<em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em>
+k_is_list = 1
 k_is_home = 1</p>
-<p><em><a href="http://www.mysite.com/blog/some_subfolder/">http://www.mysite.com/blog/some_subfolder/</a></em><br/>
-k_is_list = 1<br/>
+<p><em><a href="http://www.mysite.com/blog/some_subfolder/">http://www.mysite.com/blog/some_subfolder/</a></em>
+k_is_list = 1
 k_is_folder = 1</p>
-<p><em><a href="http://www.mysite.com/blog/2010/05/">http://www.mysite.com/blog/2010/05/</a></em><br/>
-k_is_list = 1<br/>
+<p><em><a href="http://www.mysite.com/blog/2010/05/">http://www.mysite.com/blog/2010/05/</a></em>
+k_is_list = 1
 k_is_archive = 1</p>
-<p><em><a href="http://www.mysite.com/blog/some_page_name.html">http://www.mysite.com/blog/some_page_name.html</a></em><br/>
+<p><em><a href="http://www.mysite.com/blog/some_page_name.html">http://www.mysite.com/blog/some_page_name.html</a></em>
 k_is_page = 1</p>
-<p>For clonable templates, you'll have to recognize which view the template is being executed in (by testing the variables given above) and then display the relevant data.<br/>
+<p>For clonable templates, you'll have to recognize which view the template is being executed in (by testing the variables given above) and then display the relevant data.
 It could be something like the following -</p>
 <pre><code>&lt;cms:if k_is_page &gt;
     &lt;!-- Page view - display current page here --&gt;

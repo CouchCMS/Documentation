@@ -69,8 +69,8 @@
             </form>
 
             <article><h1 id="pretty-urls">Pretty URLS</h1>
-<p>Couch supports the use of Pretty URLS (aka search engine friendly - SEF URLs).<br/>
-This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages.<br/>
+<p>Couch supports the use of Pretty URLS (aka search engine friendly - SEF URLs).
+This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages.
 For Example, a URL like this -</p>
 <pre><code>http://www.mysite.com/blog.php?f=3
 </code></pre>
@@ -83,14 +83,14 @@ For Example, a URL like this -</p>
 <p>where 12 is the id of a cloned page named 'mobile-phones' which is in 'electronics' folder, will get converted to -</p>
 <pre><code>http://www.mysite.com/blog/electronics/mobile-phones.html
 </code></pre>
-<p>It is obvious that the 'pretty' versions of the URLs convey more meaning about the pages they represent.<br/>
+<p>It is obvious that the 'pretty' versions of the URLs convey more meaning about the pages they represent.
 Not only do they appear friendlier to the visitors but they also offer immense benefit from the SEO (Search Engine Optimization) perspective - something that cannot be ignored if you wish your pages to rank high in Google search.</p>
 <div class="notice">
-<p>For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod_rewrite' module enabled.<br/>
+<p>For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod_rewrite' module enabled.
 To make sure this module is indeed available at your server, <a href="https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832">please use this utility available at our forums</a>.</p>
 </div>
 <h3 id="enabling-pretty-urls">ENABLING PRETTY URLS</h3>
-<p>In Couch Pretty URLS apply only to clonable templates.<br/>
+<p>In Couch Pretty URLS apply only to clonable templates.
 By default, Pretty URLS are not enabled. It is strongly advised that you turn this feature on only after you have configured all your clonable templates.</p>
 <p>Enabling Pretty URLS is a two step process -</p>
 <p><strong>1.</strong> Find and modify the following line in <em>config.php</em> -</p>
@@ -100,14 +100,13 @@ By default, Pretty URLS are not enabled. It is strongly advised that you turn th
 define( 'K_PRETTY_URLS', 0 );
 </code></pre>
 <p>Set the K_PRETTY_URLS to 1.</p>
-<p><strong>2.</strong> Fire up your browser and visit the following page (substitute the domain name with that of yours) -<br/>
+<p><strong>2.</strong> Fire up your browser and visit the following page (substitute the domain name with that of yours) -
 <em><a href="http://www.yoursite.com/couch/gen_htaccess.php">http://www.yoursite.com/couch/gen_htaccess.php</a></em></p>
-<p>A list of rewrite rules should appear on the page.<br/>
+<p>A list of rewrite rules should appear on the page.
 Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it into a file named '.htaccess' and place this file in your website's root.</p>
 <div class="notice">
-<p>If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.<br/>
-<br/>
-<strong>EDIT:</strong> You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with <strong>double-quotes</strong>.</p>
+<p>If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.</p>
+<p><strong>EDIT:</strong> You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with <strong>double-quotes</strong>.</p>
 </div>
 <p>Try visiting your cloned pages from the Admin Panel and the pretty urls should be now seen in action.</p>
 <p>The rules that are copied and pasted into the .htaccess file pertain to all your clonable templates. If you happen to add other clonable templates after you have taken the steps outlined above, you'll have to regenerate the rewrite rules (using <em>gen_htaccess.php</em>) and replace the former contents of the <em>.htaccess</em> file with these new rules.</p>
@@ -118,7 +117,7 @@ Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it int
 <h4 id="1.-the-pages-throw-'internal-server-error'.">1. The pages throw 'Internal Server Error'.</h4>
 <p>Please make sure that your server has the required <em>mod_rewrite</em> module enabled. As mentioned above, <a href="https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832">you can use this utility for testing it</a>.</p>
 <h4 id="2.-the-pages-do-come-up-but-all-the-css%2C-js-or-image-links-are-broken.">2. The pages do come up but all the CSS, JS or image links are broken.</h4>
-<p>This happens if the links are 'relative'. Please convert them to 'absolute' to rectify this problem.<br/>
+<p>This happens if the links are 'relative'. Please convert them to 'absolute' to rectify this problem.
 For example, a link such as the follows</p>
 <pre><code>&lt;link href=&quot;css/lightbox.css&quot; rel=&quot;stylesheet&quot; /&gt;
 </code></pre>

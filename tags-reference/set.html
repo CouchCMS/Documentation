@@ -69,7 +69,7 @@
             </form>
 
             <article><h1 id="set">set</h1>
-<p>The <strong>Set</strong> tag is used to put some value in a variable. The variable, if not already present, is created.<br/>
+<p>The <strong>Set</strong> tag is used to put some value in a variable. The variable, if not already present, is created.
 (This tag is the counterpart of <a href="./show.html"><strong>Show</strong></a> tag which is used to display set variables)</p>
 <p>The following example will create a variable called 'greeting' and set its value to 'Hello'</p>
 <pre><code>&lt;cms:set greeting='Hello' /&gt;
@@ -77,14 +77,14 @@
 <p>The following will create another variable known as 'message' and set its value to 'Hello'</p>
 <pre><code>&lt;cms:set message=greeting /&gt;
 </code></pre>
-<p>As with all other tags, nested tags may be used in parameters (taking care to use double quotes).<br/>
+<p>As with all other tags, nested tags may be used in parameters (taking care to use double quotes).
 The following will set the value of 'message' to 'Hello World'.</p>
 <pre><code>&lt;cms:set message=&quot;&lt;cms:show greeting /&gt; World&quot; /&gt;
 </code></pre>
 <p class="notice">A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.</p>
 <p class="error"><strong>IMP.</strong> <strong>Set</strong> cannot be used to set system variables (i.e. those that begin with prefix 'k_').</p>
 <h2 id="parameters">Parameters</h2>
-<p>The first parameter, as illustrated above, is mandatory and is used to set a named variable to a certain value.<br/>
+<p>The first parameter, as illustrated above, is mandatory and is used to set a named variable to a certain value.
 The tag also uses an optional unnamed (i.e. only the value can be provided) second parameter that defines the <strong>scope</strong> within which the variable will be set.</p>
 <pre><code>&lt;cms:set message='hello' scope='global' /&gt;
 </code></pre>

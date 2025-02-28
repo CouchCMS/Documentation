@@ -80,7 +80,7 @@
 </code></pre>
 <p>The code above will result in -</p>
 <p><img src="../../../../assets/img/contents/editable-checkbox-1.gif" alt=""></p>
-<p>The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.<br/>
+<p>The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.
 Unlike its counterparts, <a href="./dropdown.html"><em>dropdown</em></a> and <a href="./radio.html"><em>radio</em></a> types, <em>checkbox</em> type can contain multiple selected options. In the example given above, if the user selected <em>Entertainment</em>, <em>Sports</em> and <em>Health</em>, the following code -</p>
 <pre><code>&lt;cms:show my_categories /&gt;
 </code></pre>
@@ -89,8 +89,7 @@ Unlike its counterparts, <a href="./dropdown.html"><em>dropdown</em></a> and <a 
 </code></pre>
 <p>As you can see, the value consists of all the three selected options clubbed together with a '|' (pipe) character separating them.</p>
 <div class="success">
-<p><strong>TIP:</strong> To access each of the individual selected option, you can use the <a href="../each.html"><strong>Each</strong></a> tag -<br/>
-<br/></p>
+<p><strong>TIP:</strong> To access each of the individual selected option, you can use the <a href="../each.html"><strong>Each</strong></a> tag -</p>
 <pre><code>&lt;cms:each my_categories as='cat'&gt;
   &lt;cms:show cat /&gt;&lt;br&gt;
 &lt;/cms:each&gt;
@@ -124,14 +123,12 @@ Unlike its counterparts, <a href="./dropdown.html"><em>dropdown</em></a> and <a 
 <p>- will now output '2'</p>
 <p class="notice">Multiple selections have been discussed above.</p>
 <div class="success">
-<p><strong>TIP:</strong> Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.<br/>
-<br/></p>
+<p><strong>TIP:</strong> Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.</p>
 <pre><code>opt_values='Entertainment=0 | | Computers=1 | | Sports=2 | | Health=3'
 </code></pre>
-<p>In the code above, actually seven options have been specified - three are empty (nothing between the pipes).<br/>
-This results in -<br/>
-<br/>
-<img src="../../../../assets/img/contents/editable-checkbox-2.gif" alt=""></p>
+<p>In the code above, actually seven options have been specified - three are empty (nothing between the pipes).
+This results in -</p>
+<p><img src="../../../../assets/img/contents/editable-checkbox-2.gif" alt=""></p>
 </div>
 <h3 id="opt_selected">opt_selected</h3>
 <p>You can show any option as selected by setting <em>opt_selected</em> to the value of that option. For example -</p>
@@ -154,7 +151,7 @@ This results in -<br/>
 </code></pre>
 <p>The above will show <em>Entertainment</em> and <em>Sports</em> selected by default.</p>
 <h3 id="separator">separator</h3>
-<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character and so are the values provided to <em>opt_selected</em>.<br/>
+<p>As seen in the examples above, the list provided to <em>opt_values</em> parameter consists of the options separated by a '|' (pipe) character and so are the values provided to <em>opt_selected</em>.
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -</p>
 <pre><code>&lt;cms:editable name=&quot;my_categories&quot; label=&quot;Categories&quot; desc=&quot;Check all applicable&quot;
   opt_values='Entertainment=0 * Computers=1 * Sports=2 * Health=3'

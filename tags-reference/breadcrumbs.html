@@ -81,7 +81,7 @@
 <h3 id="separator">separator</h3>
 <p>Set the separator to show between each item in the breadcrumbs. The default separator is '<em>&amp;nbsp;&gt;&amp;nbsp;</em>'.</p>
 <h3 id="include_template">include_template</h3>
-<p>By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to '1'.<br/>
+<p>By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to '1'.
 If this parameter is set, remember to check that the current view is either <em>folder-view</em> or <em>page-view</em> before invoking this tag, because for any other views the folder hierarchy is irrelevant and <strong>breadcrumbs</strong> tag rightly does not output any folder names, however the <em>include_template</em> parameter will cause the template's name to appear which might not be desirable.</p>
 <pre><code>&lt;cms:if k_is_page || k_is_folder &gt;
     &lt;cms:breadcrumbs separator='&amp;nbsp;&gt;&gt;&amp;nbsp;' include_template='1' /&gt;

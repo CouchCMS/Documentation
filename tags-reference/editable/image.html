@@ -69,11 +69,10 @@
             </form>
 
             <article><h1 id="type-%3D-'image'">type = 'image'</h1>
-<p>Editable region of type <strong>image</strong> is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images.<br/>
+<p>Editable region of type <strong>image</strong> is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images.
 Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.</p>
 <div class="notice">
-<p><strong>NOTE:</strong> By default, all uploaded images will be saved within the <em><strong>couch/uploads/image</strong></em> folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (<em>K_UPLOAD_DIR</em>) in <em>config.php</em> and changing it to the desired location.<br/>
-<br/></p>
+<p><strong>NOTE:</strong> By default, all uploaded images will be saved within the <em><strong>couch/uploads/image</strong></em> folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number 12 (<em>K_UPLOAD_DIR</em>) in <em>config.php</em> and changing it to the desired location.</p>
 <pre><code>// 12.
 // Upload folder if not using the default upload folder within 'couch'.
 // Should be relative to your site (don't forget to set write permissions on it).
@@ -111,13 +110,12 @@ define( 'K_UPLOAD_DIR', 'myuploads' );
 <h3 id="height">height</h3>
 <pre><code>&lt;cms:editable name='prop_image' width='300' height='200' type='image' /&gt;
 </code></pre>
-<p>As mentioned above, when a user uploads an image, Couch saves it in a particular folder on the server. You can ask Couch to ensure that the saved image is of a <strong>particular width and height</strong> or <strong>never exceeds certain width and height</strong>.<br/>
+<p>As mentioned above, when a user uploads an image, Couch saves it in a particular folder on the server. You can ask Couch to ensure that the saved image is of a <strong>particular width and height</strong> or <strong>never exceeds certain width and height</strong>.
 These dimensions (in pixels) are represented by the <em>width</em> and <em>height</em> parameter.</p>
-<p>How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -<br/>
+<p>How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -
 <em>enforce_max</em> and <em>crop</em>.</p>
 <div class="notice">
-<p><strong>NOTE:</strong> If <strong>none</strong> of the two dimensions are specified, e.g.<br/>
-<br/></p>
+<p><strong>NOTE:</strong> If <strong>none</strong> of the two dimensions are specified, e.g.</p>
 <pre><code>&lt;cms:editable name='prop_image' type='image' /&gt;
 </code></pre>
 <p>regardless of any settings of <em>enforce_max</em> and <em>crop</em>, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).</p>
@@ -266,7 +264,6 @@ These dimensions (in pixels) are represented by the <em>width</em> and <em>heigh
 <p>If both width and height are specified, very often while matching one dimension the other dimension overshoots the given value. In such cases, the overflowing part of it is cropped.</p>
 <p class="notice">By setting this parameter to <em>1</em> we also implicitly turn off <em>enforce_max</em>.</p>
 <h4 id="examples%3A-1">Examples:</h4>
-<br/>
 <h4 id="specifying-only-one-dimension-1">Specifying only one dimension</h4>
 <pre><code>&lt;cms:editable name='prop_image' label='Image' desc='Upload main image of property here'
     width='150'
