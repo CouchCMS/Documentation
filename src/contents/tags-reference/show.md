@@ -6,7 +6,7 @@ template: default.html
 
 # show
 
-The **Show** tag is used to display something on the page.<br/>
+The **Show** tag is used to display something on the page.
 It could be a literal string e.g.
 
 ```

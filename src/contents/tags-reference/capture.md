@@ -6,7 +6,7 @@ template: default.html
 
 # capture
 
-The **capture** tag can be used to store the output of its enclosed contents within any variable.<br/>
+The **capture** tag can be used to store the output of its enclosed contents within any variable.
 The enclosed contents can be regular HTML code as well as the Couch tags.
 
 ```
@@ -32,7 +32,7 @@ Name of the variable to store the output in.
 
 ### scope
 
-Scope of the aforesaid variable. Can be either _global_ or _parent_.<br/>
+Scope of the aforesaid variable. Can be either _global_ or _parent_.
 If set to _global_, the variable will be available anywhere throughout the page. If set to _parent_, the variable will only be available only within the  scope of the parent tag (if any) that is nesting the **capture** tag.
 
 ## Variables

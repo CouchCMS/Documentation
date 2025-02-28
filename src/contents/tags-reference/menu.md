@@ -52,7 +52,7 @@ menu.php
 
 ### masterpage
 
-This parameter is used to specify the template behind the nested-pages tree used to create the menu.<br/>
+This parameter is used to specify the template behind the nested-pages tree used to create the menu.
 If left empty, the template of the currently executing page is assumed (which is unlikely to be correct as you'll usually want to display the menu on all sections (templates) of your site - typically by using '[embed](./embed.html)' tag).
 
 ```
@@ -61,7 +61,7 @@ If left empty, the template of the currently executing page is assumed (which is
 
 ### depth
 
-This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be displayed in the menu.<br/>
+This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be displayed in the menu.
 This can be used, for example, to list only the top-level pages in the tree by setting the depth to 1\. A depth of 0 means unlimited depth.
 
 ```
@@ -79,7 +79,7 @@ Output:
 
 ### orderby
 
-By default the menu-items get displayed in the order they are arranged in the admin-panel.<br/>
+By default the menu-items get displayed in the order they are arranged in the admin-panel.
 This parameter can be set to order them according to the following criteria - name, title, id.
 
 ```
@@ -99,7 +99,7 @@ Output:
 
 ### order
 
-Can be set to specify whether the menu-items are ordered in the ascending order or in descending order.<br/>
+Can be set to specify whether the menu-items are ordered in the ascending order or in descending order.
 Valid values are 'asc' and 'desc'. Default is 'asc'.
 
 ```
@@ -119,8 +119,8 @@ Output:
 
 ### exclude
 
-Pages can be excluded from the menu by specifying their names using this parameter.<br/>
-If an excluded page has children, they are excluded too.<br/>
+Pages can be excluded from the menu by specifying their names using this parameter.
+If an excluded page has children, they are excluded too.
 If multiple pages are to be excluded, separate them using comma.
 
 ```
@@ -141,8 +141,8 @@ Output:
 
 ### ignore_show_in_menu
 
-The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.<br/>
-If that is unchecked, the page (an all its child pages) is not included by default in the menu.<br/>
+The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.
+If that is unchecked, the page (an all its child pages) is not included by default in the menu.
 You can override this by setting 'ignore\_show\_in\_menu' parameter to '1'.
 
 ```
@@ -151,7 +151,7 @@ You can override this by setting 'ignore\_show\_in\_menu' parameter to '1'.
 
 ### root
 
-Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.<br/>
+Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.
 The nested-page specified as the root is displayed along with all its children (compare with 'childof' parameter below where only the children are displayed).
 
 ```
@@ -168,7 +168,7 @@ Output:
 
 ### childof
 
-Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.<br/>
+Only a sub-section of the nested-pages tree can be displayed in the menu by specifying the name of a nested-page as this parameter.
 Only the children of the nested-page specified are displayed (compare with 'root' parameter above where the specified nested-page is also included in the display).
 
 If both 'childof' and 'root' are set, the 'root' parameter gets precedence. {.notice}
@@ -186,63 +186,63 @@ Output:
 
 ::: .notice
 <h4 id="dynamic-menu">Dynamic Menu</h4>
-<br/>
-Occasionally, you'll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.<br/>
-Thus we could have, for example, a top menu that shows only the top level pages of the site while another menu in the sidebar shows only the pages that occur immediately below the page currently selected in the top menu. There could be yet another menu in the footer that shows the pages below the page selected (if any) in the sidebar menu.<br/>
-The sidebar and the footer menu in the case above are examples of dynamic menus because their 'root' keeps on dynamically changing depending on the current page being visited.<br/>
-<br/>
-To help easily create such menus the 'childof' and 'root' parameter accept some special keywords. At runtime, the 'menu' tag dynamically calculates their values taking into consideration the current page.<br/>
-<br/>
-The special keywords are -<br/>
 
-+ **@n** (where n is a number starting from 1 e.g. @1, @2 etc.)<br/>
-    <br/>
-    By setting either the 'childof' and 'root' parameter to '@n', we ask Couch to use as the 'root' or 'childof' the page that is parent number 'n' of the current page being visited.<br/>
-    <br/>
-    For example -<br/>
+Occasionally, you'll come across sites where there is more than one menu on a single page with each of the discrete menus being inter-dependant.
+Thus we could have, for example, a top menu that shows only the top level pages of the site while another menu in the sidebar shows only the pages that occur immediately below the page currently selected in the top menu. There could be yet another menu in the footer that shows the pages below the page selected (if any) in the sidebar menu.
+The sidebar and the footer menu in the case above are examples of dynamic menus because their 'root' keeps on dynamically changing depending on the current page being visited.
+
+To help easily create such menus the 'childof' and 'root' parameter accept some special keywords. At runtime, the 'menu' tag dynamically calculates their values taking into consideration the current page.
+
+The special keywords are -
+
++ **@n** (where n is a number starting from 1 e.g. @1, @2 etc.)
+    
+    By setting either the 'childof' and 'root' parameter to '@n', we ask Couch to use as the 'root' or 'childof' the page that is parent number 'n' of the current page being visited.
+    
+    For example -
 
     ```
     <cms:menu masterpage='menu.php' root='@1' />
     ```
-    In the snippet above we are instructing Couch to find out all the parents of the current page and then use the top most parent (first parent) as the value for the 'root' parameter.<br/>
-    Thus, if the page being visited was<br/>
-    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
-    the first parent would be 'world-news' and that is the value that would be used as the 'root' parameter.<br/>
-    Whereas, in the following snippet<br/>
+    In the snippet above we are instructing Couch to find out all the parents of the current page and then use the top most parent (first parent) as the value for the 'root' parameter.
+    Thus, if the page being visited was
+    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)
+    the first parent would be 'world-news' and that is the value that would be used as the 'root' parameter.
+    Whereas, in the following snippet
 
     ```
     <cms:menu masterpage='menu.php' root='@2' />
     ```
-    the value used for the 'root' parameter would be 'north-american-news' as that is the second parent of the current page.<br/>
+    the value used for the 'root' parameter would be 'north-american-news' as that is the second parent of the current page.
 
-+ **@current**<br/>
-    By setting either the 'childof' and 'root' parameter to '@current', we ask Couch to use as the 'root' or 'childof' the current page itself that is being visited.<br/>
-    <br/>
-    For example -<br/>
++ **@current**
+    By setting either the 'childof' and 'root' parameter to '@current', we ask Couch to use as the 'root' or 'childof' the current page itself that is being visited.
+    
+    For example -
 
     ```
     <cms:menu masterpage='menu.php' root='@current' />
     ```
-    In the snippet above, if the page being visited was<br/>
-    'North American News' (http&#58;//www.yoursite.com/world-news/north-american-news/)<br/>
-    the value used for the 'root' parameter would be 'north-american-news'.<br/>
+    In the snippet above, if the page being visited was
+    'North American News' (http&#58;//www.yoursite.com/world-news/north-american-news/)
+    the value used for the 'root' parameter would be 'north-american-news'.
 
-+ **@current-n** (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)<br/>
-    By setting either the 'childof' and 'root' parameter to '@current-n', we ask Couch to use as the 'root' or 'childof' the parent page that is 'n' level above the page being visited.<br/>
-    <br/>
-    For example -<br/>
++ **@current-n** (where n is a number starting from 1 e.g. @current-1, @current-2 etc.)
+    By setting either the 'childof' and 'root' parameter to '@current-n', we ask Couch to use as the 'root' or 'childof' the parent page that is 'n' level above the page being visited.
+    
+    For example -
 
     ```
     <cms:menu masterpage='menu.php' root='@current-1' />
     ```
-    In the snippet above, if the page being visited was<br/>
-    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)<br/>
-    the value used for the 'root' parameter would be 'united-states-news' while for the following snippet<br/>
+    In the snippet above, if the page being visited was
+    'Nevada News' (http&#58;//www.yoursite.com/world-news/north-american-news/united-states-news/nevada-news/)
+    the value used for the 'root' parameter would be 'united-states-news' while for the following snippet
 
     ```
     <cms:menu masterpage='menu.php' root='@current-2' />
     ```
-    the value used would be 'north-american-news'.<br/>
+    the value used would be 'north-american-news'.
 
 Using these special keywords some very complex menu can be easily created without involving any programming.
 :::
@@ -251,7 +251,7 @@ Using these special keywords some very complex menu can be easily created withou
 
 ### list_type
 
-By default the HTML list element used to create the menu is &lt;UL&gt;.<br/>
+By default the HTML list element used to create the menu is &lt;UL&gt;.
 It can be set to &lt;OL&gt; but using this parameter.
 
 ```
@@ -260,7 +260,7 @@ It can be set to &lt;OL&gt; but using this parameter.
 
 ### menu_class
 
-This parameter can be used to add class names to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.<br/>
+This parameter can be used to add class names to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.
 This is useful for styling the menu using CSS.
 
 ```
@@ -275,7 +275,7 @@ Notice that in the second example we are applying two classes to the menu.
 
 ### menu_id
 
-This parameter can be used to apply an ID to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.<br/>
+This parameter can be used to apply an ID to the outermost list container (&lt;UL&gt; or &lt;OL&gt;) of the menu.
 This is useful for styling the menu using CSS.
 
 ```
@@ -284,8 +284,8 @@ This is useful for styling the menu using CSS.
 
 ### first_class
 
-The default behavior of the menu tag is to apply a special class 'first' to the very first menu-item at each level.<br/>
-This is useful for styling the menu using CSS.<br/>
+The default behavior of the menu tag is to apply a special class 'first' to the very first menu-item at each level.
+This is useful for styling the menu using CSS.
 A different class name can be set by using this parameter.
 
 ```
@@ -294,8 +294,8 @@ A different class name can be set by using this parameter.
 
 ### last_class
 
-The default behavior of the menu tag is to apply a special class 'last' to the last menu-item at each level.<br/>
-This is useful for styling the menu using CSS.<br/>
+The default behavior of the menu tag is to apply a special class 'last' to the last menu-item at each level.
+This is useful for styling the menu using CSS.
 A different class name can be set by using this parameter.
 
 ```
@@ -312,7 +312,7 @@ The default behavior of the menu tag is to apply a special class 'current' (can 
 
 ### selected_class
 
-The default behavior of the menu tag is to apply a special class 'current' to the menu-item that matches the page being visited.<br/>
+The default behavior of the menu tag is to apply a special class 'current' to the menu-item that matches the page being visited.
 A different class name can be set by using this parameter.
 
 ```
@@ -321,7 +321,7 @@ A different class name can be set by using this parameter.
 
 ### no_active_trail
 
-The default behavior of the menu tag is to apply a special class 'active' to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an 'active-trail' that can be used for CSS styling.<br/>
+The default behavior of the menu tag is to apply a special class 'active' to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an 'active-trail' that can be used for CSS styling.
 This behavior can be turned off by setting the 'no\_active\_trail' parameter to '1'.
 
 ```
@@ -330,7 +330,7 @@ This behavior can be turned off by setting the 'no\_active\_trail' parameter to 
 
 ### active_trail_class
 
-The default behavior of the menu tag is to apply a special class 'active' to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an 'active-trail' that can be used for CSS styling.<br/>
+The default behavior of the menu tag is to apply a special class 'active' to all the menu-items leading up to (and including) the menu-item that matches the current page - thus marking out an 'active-trail' that can be used for CSS styling.
 A different class name can be set by using this parameter.
 
 ```

@@ -11,16 +11,16 @@ template: default.html
 
 The _contact.html_ that comes with Aurelius provides a contact form as well as some contact details.
 
-Let us begin by attaching Couch to this template.<br/>
-Take the usual steps to do so -<br/>
-Change the extension of _contact.html_ to make it _contact.php_<br/>
+Let us begin by attaching Couch to this template.
+Take the usual steps to do so -
+Change the extension of _contact.html_ to make it _contact.php_
 Add the two lines of boilerplate PHP code to enclose the contents of this file and use the template tag to change the display-name of the template.
 
 ![](../../../../assets/img/contents/portfolio-site-148.png)
 
 ![](../../../../assets/img/contents/portfolio-site-149.png)
 
-Access _http&#58;//www.mytestsite.com/contact.php_ while logged on as the super-admin.<br/>
+Access _http&#58;//www.mytestsite.com/contact.php_ while logged on as the super-admin.
 This will hook up Couch to the template.
 
 ### Defining editable regions
@@ -29,7 +29,7 @@ As can be seen, there are three distinct parts to this template - An introductor
 
 ![](../../../../assets/img/contents/portfolio-site-150.png)
 
-Of these three, the contact form will be handled by the Couch form and input tags. The introductory top paragraph can be easily made into an editable region. The sidebar too can be turned into an editable region - we only need to decide how granular the division needs to be. We can, if needed, create an editable region each for the _Address_, _Email_ and _Social Profiles_ sections or create one single region for the entire sidebar.<br/>
+Of these three, the contact form will be handled by the Couch form and input tags. The introductory top paragraph can be easily made into an editable region. The sidebar too can be turned into an editable region - we only need to decide how granular the division needs to be. We can, if needed, create an editable region each for the _Address_, _Email_ and _Social Profiles_ sections or create one single region for the entire sidebar.
 For the purpose of this tutorial, we'll create one editable region that will span both the _Address_ as well as the _Email_ section and will sub-divide the _Social Profiles_ section into one editable region for each social site.
 
 Let us define the editable regions for the introductory paragraph and the address and email in the sidebar by directly enclosing these parts by Couch editable tags -
@@ -44,19 +44,19 @@ Refreshing _http&#58;//www.mytestsite.com/contact.php_ by revisiting it as super
 
 Editing any of these regions and saving the changes will cause the modifications to appear on the page immediately.
 
-As for the _Social Profiles_ section, instead of defining its editable regions by enclosing the actual elements with the editable tags in-situ (the way we did for the previous sections), we'll define them within the template tag (the way we did in _blog_ and _portfolio_ sections) and use variables to display them.<br/>
+As for the _Social Profiles_ section, instead of defining its editable regions by enclosing the actual elements with the editable tags in-situ (the way we did for the previous sections), we'll define them within the template tag (the way we did in _blog_ and _portfolio_ sections) and use variables to display them.
 The reason for this is that, as you'll soon see, we'll be outputting these social links conditionally (i.e. only under certain circumstances). If we place the definition of the editable regions within conditional tags, the condition where an editable region will not be output will also cause the region to be deleted.
 
 Make the following changes to the template tag at the top -
 
 ![](../../../../assets/img/contents/portfolio-site-154.png)
 
-Note how we have grouped the five text type editable regions by creating an editable region of type group and linking the other regions to it.<br/>
+Note how we have grouped the five text type editable regions by creating an editable region of type group and linking the other regions to it.
 Refresh _http&#58;//www.mytestsite.com/contact.php_ and then visit the admin section. The following regions should appear -
 
 ![](../../../../assets/img/contents/portfolio-site-155.png)
 
-Since we have defined these editable regions in the template tag, for their contents to appear on the web page we need to use the variables representing them at the required places.<br/>
+Since we have defined these editable regions in the template tag, for their contents to appear on the web page we need to use the variables representing them at the required places.
 The original HTML code for the profiles section is -
 
 ![](../../../../assets/img/contents/portfolio-site-156.png)
@@ -65,9 +65,9 @@ The same after using the variables set for the editable regions -
 
 ![](../../../../assets/img/contents/portfolio-site-157.png)
 
-Edit the ids in the admin section and the changes should get reflected in the generated page.<br/>
-So far there has been nothing that we have not already done.<br/>
-For the sake of illustrating an important and useful technique, let us now throw a little complexity into this profiles section.<br/>
+Edit the ids in the admin section and the changes should get reflected in the generated page.
+So far there has been nothing that we have not already done.
+For the sake of illustrating an important and useful technique, let us now throw a little complexity into this profiles section.
 What we wish is that a social icon should appear on the web page only if the user has placed any content within the editable region associated with the icon. If the user chooses to leave the textbox of an id blank, the icon for that should not appear.
 We can deploy simple conditional tags to handle this -
 
@@ -76,13 +76,13 @@ We can deploy simple conditional tags to handle this -
 We enclose each LI element representing an icon within Couch conditional if tag that tests for the result of Couch not\_empty tag. The not\_empty tag returns 1 only if the variable it is testing has any value within it. This way an icon is output only if the associated variable is not empty.
 
 ::: .notice
-In case you are wondering why we are using the construct<br/>
-**&lt;cms:if "&lt;cms:not\_empty flickr\_id /&gt;"&gt; Display this &lt;/cms:if&gt;**<br/>
-instead of the more straightforward<br/>
-**&lt;cms:if flickr\_id &gt; Display this &lt;/cms:if&gt;**<br/>
-The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some **&lt;BR/&gt;** or empty **&lt;P&gt;** elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.<br/>
-<br/>
-The not\_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.<br/>
+In case you are wondering why we are using the construct
+**&lt;cms:if "&lt;cms:not\_empty flickr\_id /&gt;"&gt; Display this &lt;/cms:if&gt;**
+instead of the more straightforward
+**&lt;cms:if flickr\_id &gt; Display this &lt;/cms:if&gt;**
+The answer is that for richtext type editable regions, even if seemingly the region is empty, the CKEditor used to create the editor silently places some **&lt;BR/&gt;** or empty **&lt;P&gt;** elements within it. This will cause the simpler version of if to fail as it will consider these empty elements to be the input of the region.
+
+The not\_empty tag, on the other hand, strips off these empty HTML tags and returns 1 only if some value remains after this cleansing.
 The editable regions in the case of profiles section above are not of richtext type, hence the simpler conditional check would have worked the same as the one we used.
 :::
 
@@ -94,7 +94,7 @@ Now remove values from all the five social links regions and see the output -
 
 ![](../../../../assets/img/contents/portfolio-site-160.png)
 
-As you can see that no icons appear in the output, however, the heading 'Social Profiles' still does.<br/>
+As you can see that no icons appear in the output, however, the heading 'Social Profiles' still does.
 What we wish to accomplish is that this heading should appear only if at least one social link is output.
 
 This can be achieved by enclosing the heading in a conditional tag that checks for the presence of all the five variables but we'll use another very powerful method, the technique we hinted about before, to achieve the same result.
@@ -107,13 +107,13 @@ Enclose the _profiles_ section we are working on within the capture tag like thi
 
 ![](../../../../assets/img/contents/portfolio-site-161.png)
 
-Notice that we are instructing the capture tag to buffer all output of its enclosed content into a variable named *profiles\_output*. Also note that at the end we are showing this *profiles\_output* variable.<br/>
+Notice that we are instructing the capture tag to buffer all output of its enclosed content into a variable named *profiles\_output*. Also note that at the end we are showing this *profiles\_output* variable.
 Try removing this show statement and the entire profiles block will disappear.
 
 The value of buffering everything into one variable and then outputting the single variable is that now we can conditionally output the single variable.
 
-What we'll do is, within the block enclosed by the capture tag, everyplace where we check whether or not a social link variable is present, if the variable is indeed present we set a variable named has\_profile to 1\.<br/>
-If even one social link variable is present, the *has\_profile* variable will be set to 1 else this variable will simply not be present.<br/>
+What we'll do is, within the block enclosed by the capture tag, everyplace where we check whether or not a social link variable is present, if the variable is indeed present we set a variable named has\_profile to 1\.
+If even one social link variable is present, the *has\_profile* variable will be set to 1 else this variable will simply not be present.
 Finally, we'll check for this variable as the condition to output the contents buffered within *profiles\_output*.
 
 ![](../../../../assets/img/contents/portfolio-site-162.png)
@@ -128,15 +128,15 @@ What is left to configure now is the contact form itself.
 
 ### FORM
 
-Couch has two tags that are used for building forms - the form tag and the input tag.<br/>
-If you already have an existing form, it is straightforward to port it to Couch, as we'll soon see. But first we must ask the question that if we already have an HTML form, why would we want to port it to Couch at all?<br/>
-The reason is that having a HTML form is only half the story. The other half is processing the submitted form. This includes validating all submitted values, reporting errors if any and taking the desired action after successful form submission.<br/>
-This processing of a form normally requires a custom coded PHP script, which usually is a painful task for a web-designer.<br/>
-A form created using Couch tags, on the other hand, doesn't require any such processing script. The Couch tags have enough intelligence built into themselves to handle all the required processing.<br/>
+Couch has two tags that are used for building forms - the form tag and the input tag.
+If you already have an existing form, it is straightforward to port it to Couch, as we'll soon see. But first we must ask the question that if we already have an HTML form, why would we want to port it to Couch at all?
+The reason is that having a HTML form is only half the story. The other half is processing the submitted form. This includes validating all submitted values, reporting errors if any and taking the desired action after successful form submission.
+This processing of a form normally requires a custom coded PHP script, which usually is a painful task for a web-designer.
+A form created using Couch tags, on the other hand, doesn't require any such processing script. The Couch tags have enough intelligence built into themselves to handle all the required processing.
 This makes it immensely easy, even for someone who is not very comfortable with PHP, to build web forms of almost any complexity.
 
-The _contact.php_ we have been working on already has a web form. Let us see how to port it to Couch.<br/>
-Let us begin by converting the HTML form tag to its Couch counterpart.<br/>
+The _contact.php_ we have been working on already has a web form. Let us see how to port it to Couch.
+Let us begin by converting the HTML form tag to its Couch counterpart.
 The original opening HTML form tag was -
 
 ![](../../../../assets/img/contents/portfolio-site-163.png)
@@ -145,7 +145,7 @@ Replace the tag with its Couch equivalent -
 
 ![](../../../../assets/img/contents/portfolio-site-164.png)
 
-Notice how the modification required only adding the 'cms:' prefix to the form tag. Also that the action attribute, pointing to the PHP script that processed the submitted form, is no longer needed and hence is set to blank.<br/>
+Notice how the modification required only adding the 'cms:' prefix to the form tag. Also that the action attribute, pointing to the PHP script that processed the submitted form, is no longer needed and hence is set to blank.
 Don't forget to modify the closing tag too -
 
 ![](../../../../assets/img/contents/portfolio-site-165.png)
@@ -159,19 +159,19 @@ After replacing with Couch tags -
 
 ![](../../../../assets/img/contents/portfolio-site-167.png)
 
-Note how all the HTML input tags simply needed the 'cms:' prefix to convert them to their Couch equivalents.<br/>
+Note how all the HTML input tags simply needed the 'cms:' prefix to convert them to their Couch equivalents.
 The textarea tag required a little more work. It had to be replaced by its Couch input tag that had a type of 'textarea'.
 
-Access _http&#58;//www.mytestsite.com/contact.php_ and the form should appear, as well as work, exactly the same as it did with the original HTML tags.<br/>
-Uptil now we've used the Couch tags to simply generate the form. The real power of these tags, however, lies in processing the submitted form.<br/>
-The form, as it was originally built, makes use of JavaScript to validate the inputs and display the errors (try submitting the form with empty fields to see it in action).<br/>
-JavaScript is, of course, a client-side technology and cannot be relied upon for validating forms because it is only trivial to turn off JavaScript in a browser.<br/>
-Server-side validation is an absolute must for validating forms. The Couch tags we used provide this server-side validation. To see this in action we'll first have to remove the existing JavaScript validation.<br/>
+Access _http&#58;//www.mytestsite.com/contact.php_ and the form should appear, as well as work, exactly the same as it did with the original HTML tags.
+Uptil now we've used the Couch tags to simply generate the form. The real power of these tags, however, lies in processing the submitted form.
+The form, as it was originally built, makes use of JavaScript to validate the inputs and display the errors (try submitting the form with empty fields to see it in action).
+JavaScript is, of course, a client-side technology and cannot be relied upon for validating forms because it is only trivial to turn off JavaScript in a browser.
+Server-side validation is an absolute must for validating forms. The Couch tags we used provide this server-side validation. To see this in action we'll first have to remove the existing JavaScript validation.
 To do so, scroll up the _contact.php_ template and you'll find the following script tags -
 
 ![](../../../../assets/img/contents/portfolio-site-168.png)
 
-Remove these lines and this will remove the JavaScript code that was being used for validation.<br/>
+Remove these lines and this will remove the JavaScript code that was being used for validation.
 One more step is required. The JavaScript code upon validation failure made visible the following HTML blocks -
 
 ![](../../../../assets/img/contents/portfolio-site-169.png)
@@ -194,17 +194,17 @@ Don't worry though. We'll now make Couch display these messages upon validation 
 
 ### Validating submitted values
 
-To make Couch validate the submitted values, the input tags need to have validation constrains placed upon them.<br/>
-The most common constrain is to make sure an input is not left empty. This can be enforced by setting the _required_ parameter of input tag to 1\.<br/>
-There are several other kinds of validations available (e.g. *min\_len*, *max\_len* etc.) which are set using the _validator_ parameter (see Forms).<br/>
-We'll use the _validator='email'_ with the input meant for email address.<br/>
+To make Couch validate the submitted values, the input tags need to have validation constrains placed upon them.
+The most common constrain is to make sure an input is not left empty. This can be enforced by setting the _required_ parameter of input tag to 1\.
+There are several other kinds of validations available (e.g. *min\_len*, *max\_len* etc.) which are set using the _validator_ parameter (see Forms).
+We'll use the _validator='email'_ with the input meant for email address.
 The modified code with the validation constrains in place -
 
 ![](../../../../assets/img/contents/portfolio-site-173.png)
 
-Once the validation constrains are imposed, Couch validates the submitted values accordingly at each form submission.<br/>
-If any of the constrains are violated, the form tag sets up a variable named *k\_error* to indicate this.<br/>
-Additionally, it also sets up variables named after the input tags that failed the validation, prefixing their names with a 'k\_error\_' string. Thus for example, in the case of our form here, if the input tag named 'email' fails to validate, a variable named *k\_error\_email* will be set up.<br/>
+Once the validation constrains are imposed, Couch validates the submitted values accordingly at each form submission.
+If any of the constrains are violated, the form tag sets up a variable named *k\_error* to indicate this.
+Additionally, it also sets up variables named after the input tags that failed the validation, prefixing their names with a 'k\_error\_' string. Thus for example, in the case of our form here, if the input tag named 'email' fails to validate, a variable named *k\_error\_email* will be set up.
 We can test for the presence of these variables to find whether a validation error has occurred and take actions accordingly.
 
 On the flip side of it, if all the inputs pass the validation constrains successfully, the form tag also signals this by setting up similar variables. On successful submission of form a variable named *k\_success* gets set up. In addition to it, variables named after all the input tags, with 'frm\_' prefixed to their names, are set up. These variables contain the respective submitted values.
@@ -215,8 +215,8 @@ For the form we are configuring, we'll use the 'k\_error\_tagname' variables to 
 
 Try using the form by leaving some inputs empty and placing malformed email address. The error messages should display correctly.
 
-Now to handle the success condition.<br/>
-We'll make use of the *k\_success* variable to detect this condition and take appropriate action.<br/>
+Now to handle the success condition.
+We'll make use of the *k\_success* variable to detect this condition and take appropriate action.
 The form already has a message for successful condition -
 
 ![](../../../../assets/img/contents/portfolio-site-175.png)
@@ -231,7 +231,7 @@ Test out the form by filling in all the values and the success message should ge
 
 ### Taking action
 
-On successful submission of form, you usually will want to do something more than just display the success message.<br/>
+On successful submission of form, you usually will want to do something more than just display the success message.
 In the case of this form, we'd wish to send an email to the site owner, informing him about the contact request and providing him the submitted data.
 
 ![](../../../../assets/img/contents/portfolio-site-177.png)

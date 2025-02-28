@@ -29,7 +29,7 @@ This parameter sets the message displayed within the search textbox. By default 
 
 ### processor
 
-This parameter sets the _action_ parameter of the generated form. This needs to be set to the URL of the page that has the **pages** tag on it.<br/>
+This parameter sets the _action_ parameter of the generated form. This needs to be set to the URL of the page that has the **pages** tag on it.
 If left empty, the **pages** tag is expected to be on the same page as the **search\_form** tag.
 
 ## Variables

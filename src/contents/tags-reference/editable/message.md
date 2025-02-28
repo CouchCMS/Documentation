@@ -13,7 +13,7 @@ An example of this type -
 
 ```
 <cms:editable name='banner' type='message'>
-<blockquote><p>The "free" distribution of unwelcome or misleading messages to thousands of people is an annoying and sometimes destructive use of the Internet's unprecedented efficiency.<br/>
+<blockquote><p>The "free" distribution of unwelcome or misleading messages to thousands of people is an annoying and sometimes destructive use of the Internet's unprecedented efficiency.
 <span style="color: rgb(51, 51, 51);">Bill Gates, New York Times, 1998</span></p></blockquote>
 </cms:editable>
 ```

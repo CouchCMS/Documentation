@@ -7,7 +7,7 @@ template: default.html
 
 # type = 'nicedit'
 
-Editable region of type nicedit can be used as a light-weight alternative to editable region of type [**richtext**](./richtext.html).<br/>
+Editable region of type nicedit can be used as a light-weight alternative to editable region of type [**richtext**](./richtext.html).
 It is primarily meant to be used with [**repeatable regions**](../../../../concepts/repeatable-regions.html) (<s>as type 'richtext' does not support being repeated</s>), however it can be used as an independent editable region too.
 
 Unlike 'richtext' that uses CKEditor - a full fledged Wysiwyg editor, 'nicedit' is somewhat limited in the wysiwyg features it offers but is perfect for situations where only basic HTML editing capability is required.
@@ -61,7 +61,7 @@ This parameter can be used to specify which buttons are displayed in the toolbar
     buttons='italic, bold' />
 ```
 
-This parameter takes a comma seperated string containing the names of the buttons.<br/>
+This parameter takes a comma seperated string containing the names of the buttons.
 Following are the values that can be used:
 
 *   bold
@@ -90,7 +90,7 @@ Following are the values that can be used:
 *   image
 *   source
 
-If the 'buttons' parameter is not specified, the following set of buttons is used as the default:<br/>
+If the 'buttons' parameter is not specified, the following set of buttons is used as the default:
 bold, italic, underline, ol, ul, link, unlink, image, removeformat, source
 
 ## Related Tags

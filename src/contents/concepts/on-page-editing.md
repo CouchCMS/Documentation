@@ -28,7 +28,7 @@ This addon recognizes the fact that there are two different ways editable region
 *   **Inline editing:** The classic 'in place' editing. Simply click on the content itself and edit it right there. However, it works with text content only (specifically, 'text', 'textarea', 'richtext' and 'nicedit' types of editable regions).
 *   **Popup editing:** For non-textual regions or hidden text regions, this plugin outputs a link that can be placed nearby the contents. Clicking on the link brings up a popup window with only the relevant region(s) available for editing. This method will work for all editable regions - even the textual ones if you so desire.
 
-Let us take a deeper look at how the two kinds of on-page editing work. But before we do that, we need to enable the addon first.<br/>
+Let us take a deeper look at how the two kinds of on-page editing work. But before we do that, we need to enable the addon first.
 It requires the usual procedure of making an entry in the '_couch/addons/kfunctions.php_' file.
 
 If there is no '_kfunctions.php_' in the 'addons' folder, please rename the '_kfunctions.example.php_' file to '_kfunctions.php_'. {.notice}
@@ -47,7 +47,7 @@ To demonstrate how onpage editing works in Couch, I've gone ahead and completely
 
 You can [**download the ported version**](https://www.couchcms.com/docs/code/miniport.zip) and take it for a spin to see for yourself how everything works.
 
-For this particular tutorial, I'll take you step-by-step through the process of adding onpage editing to only the first section of the template.<br/>
+For this particular tutorial, I'll take you step-by-step through the process of adding onpage editing to only the first section of the template.
 Following is the section we'll be working with.
 
 ![](../../assets/img/contents/on-page-editing-2.png)
@@ -64,8 +64,8 @@ The modified HTML markup with Couch's editable regions added in now looks like t
 
 ![](../../assets/img/contents/on-page-editing-4.png)
 
-So far we have proceeded exactly how we would have with any normal Couch managed template.<br/>
-In fact, if there were no onpage editing to be added, this would have finished our work on the section with nothing more to do.<br/>
+So far we have proceeded exactly how we would have with any normal Couch managed template.
+In fact, if there were no onpage editing to be added, this would have finished our work on the section with nothing more to do.
 However, for implementing onpage editing a finished Couch template is where we start. So lets begin.
 
 Adding onpage editing to a template is a two-step procedure -
@@ -86,15 +86,15 @@ which becomes the following after adding the mentioned tag -
 
 This step takes care of loading all the JS/CSS libraries required by the tags we'll add in the second step below.
 
-**2\.** This second step is where all the fun happens.<br/>
+**2\.** This second step is where all the fun happens.
 Here we'll add the tags that 'inject' onpage editing to existing editable regions.
 
 Take a look again at the four existing editable regions in the section we are working on -
 
 ![](../../assets/img/contents/on-page-editing-7.png)
 
-If you remember from our earlier discussion, onpage editing can take two forms -<br/>
-**a.** Inline editing for text elements<br/>
+If you remember from our earlier discussion, onpage editing can take two forms -
+**a.** Inline editing for text elements
 **b.** Popup editing for non-text (or hidden textual) elements
 
 As you can see from the image above, the regions highlighted in red are text. Of the regions in green, the image is, of course, non-textual. The button text, although it looks textual, is actually a link element and hence has to be treated as non-text.
@@ -127,7 +127,7 @@ Saving the template and visiting it as admin will show the following change
 Notice the 'Edit' link where we placed the **popup\_edit** tag.
 
 ::: .notice
-The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '*link\_text*' parameter of the **popup\_edit** tag.<br/>
+The text shown for the link can be changed from the default 'Edit' to anything of your choice using the '*link\_text*' parameter of the **popup\_edit** tag.
 You can also style this link anyway you like - it is a regular anchor element with its class set as 'k\_inline'. You can add you own classes using the '_class_' parameter.  This can be used, for example, to show a pencil icon instead of the text.
 :::
 
@@ -135,7 +135,7 @@ Clicking on the link will bring up the promised popup.
 
 ![](../../assets/img/contents/on-page-editing-9.png)
 
-You'll recognize that the editable region shown is the same as you see in the backend admin-panel.<br/>
+You'll recognize that the editable region shown is the same as you see in the backend admin-panel.
 A new image can be selected exactly the way we do in the admin-panel - the 'Browse server' button will bring up the image-explorer with all its related paraphernalia.
 
 The second non-text region i.e. the button text can be handled identically.
@@ -200,8 +200,8 @@ Clicking anywhere within the text will display the editing toolbar
 Changing the heading now only requires editing it directly and clicking the 'save' icon.
 
 ::: .notice
-If the light-yellow outline, demarcating the inline editable regions, bothers you, it can be turned off by setting the 'no\_border' parameter of the **load\_edit** tag we placed in the header<br/>
-<br/>
+If the light-yellow outline, demarcating the inline editable regions, bothers you, it can be turned off by setting the 'no\_border' parameter of the **load\_edit** tag we placed in the header
+
 ```
 <cms:load_edit no_border='1' />
 ```
@@ -233,7 +233,7 @@ The result -
 
 ## Wrapping up...
 
-From our discussion so far, we've really seen everything that needs to be known about implementing onpage editing.<br/>
+From our discussion so far, we've really seen everything that needs to be known about implementing onpage editing.
 In short, adding onpage editing to any Couch managed template involves only judiciously placing the two tags i.e. **inline\_edit** and **popup\_edit** at the right spots.
 
 You must have certainly noticed one behaviour of these tags by now - they come into action only when the person visiting the webpage is a Couch admin. For everybody else, the tags practically do not exist.
@@ -248,7 +248,7 @@ Place the following statement somewhere at the top of the template (i.e. before 
 
 and you'll find that the onpage editing functionality disappears from our template completely.
 
-Of course, that is not much good. It'd be better if the admin could selectively 'toggle' this **no\_edit** tag on/off.<br/>
+Of course, that is not much good. It'd be better if the admin could selectively 'toggle' this **no\_edit** tag on/off.
 We can use the standard Couch tags for doing that. I'll describe one quick method of doing so below.
 
 Please bear in mind that the following method is just one of the N number of ways we could implement the toggle - feel free to code/design you own if this method does no suit you. {.notice}
@@ -293,7 +293,7 @@ Place the following FORM code somewhere at the bottom of the template
 
 Submitting the form simply toggles the value of the session variable named **inline\_edit\_on** and refreshes the page. The current state of the variable then dictates whether or not onpage editing becomes available.
 
-That brings us to the end of our little tutorial.<br/>
+That brings us to the end of our little tutorial.
 Following is a complete documentation of all the tags made available by the **inline** module.
 
 ## Tags Documentation:
@@ -406,7 +406,7 @@ Name of the editable region into which the inline contents will be saved. Only a
 
 #### toolbar
 
-The default set of buttons shown in the toolbar can be modified by setting this parameter.<br/>
+The default set of buttons shown in the toolbar can be modified by setting this parameter.
 Please see the 'toolbar' parameter of [Editable region type: richtext](../../tags-reference/editable/richtext.html) for details as the two work exactly the same.
 
 #### custom_toolbar

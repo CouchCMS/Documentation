@@ -7,7 +7,7 @@ template: default.html
 
 # type = 'textarea'
 
-Editable region of _textarea_ type is used to allow users to input multiple lines of text. It is suitable for inputting multiple lines of unformatted text (i.e. not requiring HTML tags) although the user can format the text by manually adding HTML tags to the input.<br/>
+Editable region of _textarea_ type is used to allow users to input multiple lines of text. It is suitable for inputting multiple lines of unformatted text (i.e. not requiring HTML tags) although the user can format the text by manually adding HTML tags to the input.
 For this type, Couch creates a multi-line textbox for data input.
 
 An editable region of _textarea_ type can be defined this way -
@@ -42,8 +42,8 @@ The default type of an editable region is _textarea_. Hence if the code example 
 will result in an identical textbox.
 
 ::: .notice
-Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.<br/>
-<br/>
+Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
+
 ```
 <cms:editable name='prop_desc' label='Description' desc='Enter description of property here' />
 ```

@@ -6,7 +6,7 @@ template: default.html
 
 # mul
 
-The **mul** tag accepts two parameters and returns as its output the value obtained after multiplying them.<br/>
+The **mul** tag accepts two parameters and returns as its output the value obtained after multiplying them.
 The parameters may be literal strings, variables or output of other tags.
 
 ```

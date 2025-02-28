@@ -24,7 +24,7 @@ The code above will result in -
 
 ![](../../../../assets/img/contents/editable-checkbox-1.gif)
 
-The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.<br/>
+The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.
 Unlike its counterparts, [_dropdown_](./dropdown.html) and [_radio_](./radio.html) types, _checkbox_ type can contain multiple selected options. In the example given above, if the user selected _Entertainment_, _Sports_ and _Health_, the following code -
 
 ```
@@ -40,8 +40,8 @@ Entertainment|Sports|Health
 As you can see, the value consists of all the three selected options clubbed together with a '|' (pipe) character separating them.
 
 ::: .success
-**TIP:** To access each of the individual selected option, you can use the [**Each**](../each.html) tag -<br/>
-<br/>
+**TIP:** To access each of the individual selected option, you can use the [**Each**](../each.html) tag -
+
 ```
 <cms:each my_categories as='cat'>
   <cms:show cat /><br>
@@ -94,14 +94,14 @@ Printing out the value contained within the editable region -
 Multiple selections have been discussed above. {.notice}
 
 ::: .success
-**TIP:** Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.<br/>
-<br/>
+**TIP:** Specifying an empty option makes Couch generate a break '&lt;BR&gt;'. e.g.
+
 ```
 opt_values='Entertainment=0 | | Computers=1 | | Sports=2 | | Health=3'
 ```
-In the code above, actually seven options have been specified - three are empty (nothing between the pipes).<br/>
-This results in -<br/>
-<br/>
+In the code above, actually seven options have been specified - three are empty (nothing between the pipes).
+This results in -
+
 ![](../../../../assets/img/contents/editable-checkbox-2.gif)
 :::
 
@@ -139,7 +139,7 @@ The above will show _Entertainment_ and _Sports_ selected by default.
 
 ### separator
 
-As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character and so are the values provided to *opt\_selected*.<br/>
+As seen in the examples above, the list provided to *opt\_values* parameter consists of the options separated by a '|' (pipe) character and so are the values provided to *opt\_selected*.
 This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows -
 
 ```

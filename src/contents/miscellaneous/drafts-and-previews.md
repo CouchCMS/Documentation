@@ -6,11 +6,11 @@ template: default.html
 
 # Drafts and Previews
 
-Consider the following scenario -<br/>
+Consider the following scenario -
 A client wishes to make changes to some of his already published pages but does not want the changes to become immediately visible to the world. There could be several reasons for this -
 
-**A\.** He is likely to make several tentative changes to the pages before settling for the final versions and does not want to mess up the live pages in the process.<br/>
-**B\.** He wishes to show the revised pages to someone else before making the changes go live.<br/>
+**A\.** He is likely to make several tentative changes to the pages before settling for the final versions and does not want to mess up the live pages in the process.
+**B\.** He wishes to show the revised pages to someone else before making the changes go live.
 **C\.** He wishes to make changes to a bunch of pages and then make the changes go online all at once sometime in the future.
 
 Each of the situation listed above can now easily be handled by creating the draft versions of the pages and modifying the drafts instead of the original live pages.

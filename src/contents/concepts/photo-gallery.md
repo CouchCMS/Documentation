@@ -10,10 +10,10 @@ One of the most demanded features in Couch has been the image gallery.
 
 In all fairness, it has always been possible to create functional image galleries using the native features of Couch.
 
-The workflow could go something like this -<br/>
-**1\.** Create a clonable template<br/>
-**2\.** Define (at least) two editable regions - one of type 'image' for the main image and another of type 'thumbnail' that is associated with the main image.<br/>
-**3\.** Add images to the gallery by creating a cloned page for each image. The folders may be used to create individual albums.<br/>
+The workflow could go something like this -
+**1\.** Create a clonable template
+**2\.** Define (at least) two editable regions - one of type 'image' for the main image and another of type 'thumbnail' that is associated with the main image.
+**3\.** Add images to the gallery by creating a cloned page for each image. The folders may be used to create individual albums.
 **4\.** Finally display the gallery on the website by using the cms:pages tag.
 
 The method outlined above works but the step number 3 of manually creating a page each for every gallery item is what quickly proves to be tedious. This is especially so for albums those are required to be created by adding a large number of images at the same time.
@@ -26,7 +26,7 @@ This new feature is built upon the existing functionality of Couch and requires 
 
 #### 1. Create a clonable template
 
-The process begins, as is the norm, by creating a cloned template for the gallery. For our example, let us assume the name of our template is 'gallery.php'.<br/>
+The process begins, as is the norm, by creating a cloned template for the gallery. For our example, let us assume the name of our template is 'gallery.php'.
 We use the regular method of declaring the template as clonable -
 
 ```
@@ -80,23 +80,23 @@ Let us add the following declarations to the code above -
 </cms:template>
 ```
 
-As you can see, we are using the regular way to define the two editable regions.<br/>
-The only new part in this step is that **the gallery module expects the two regions to have specific names**.<br/>
-It is mandatory to name the region of type 'image' as **gg\_image** while the region of type 'thumbnail' is required to be named as **gg\_thumb**.<br/>
+As you can see, we are using the regular way to define the two editable regions.
+The only new part in this step is that **the gallery module expects the two regions to have specific names**.
+It is mandatory to name the region of type 'image' as **gg\_image** while the region of type 'thumbnail' is required to be named as **gg\_thumb**.
 This is necessary because later on while automatically creating the cloned pages, Couch will populate these regions without requiring any user intervention. To do so, it will need to know the names of the regions.
 
-You can tweak all other parameters of the two regions to your fill but the names cannot be changed if Couch is to recognize them.<br/>
+You can tweak all other parameters of the two regions to your fill but the names cannot be changed if Couch is to recognize them.
 You can, of course, also create as many other editable regions as you wish (e.g. a region for 'description' is a usual addition).
 
 The thumbnail region **gg\_thumb** is used by Couch for displaying the image thumbnails in the admin panel as such it is not advised to modify the dimensions of it. You can always create another associated thumbnail region if you wish to use thumbnails of other dimensions. {.success}
 
-To persist the changes made to the template, make the mandatory visit to the template using your browser while being logged on as the super-admin.<br/>
+To persist the changes made to the template, make the mandatory visit to the template using your browser while being logged on as the super-admin.
 This will add the template to Couch admin. We are now all set to begin adding images to our gallery.
 
 #### 3. Creating cloned pages
 
-This is the step where everything is now very different.<br/>
-The first thing that you'll notice is that there is no 'add new' button in the admin-panel of this template (this is the 'gallery' parameter in action).<br/>
+This is the step where everything is now very different.
+The first thing that you'll notice is that there is no 'add new' button in the admin-panel of this template (this is the 'gallery' parameter in action).
 Instead you have an 'Upload' button
 
 ![](../../assets/img/contents/photo-gallery-1.gif)
@@ -107,8 +107,8 @@ Clicking on this 'Upload' button will bring up the following window
 
 ![](../../assets/img/contents/photo-gallery-2.gif)
 
-This is the new mass uploader that ships with Couch.<br/>
-Click on the 'Add images' button at the bottom of it and select multiple images from your local machine (you can also drag-n-drop if your browser supports the facility).<br/>
+This is the new mass uploader that ships with Couch.
+Click on the 'Add images' button at the bottom of it and select multiple images from your local machine (you can also drag-n-drop if your browser supports the facility).
 Once all the images are queued up, click 'Start upload'
 
 ![](../../assets/img/contents/photo-gallery-3.gif)
@@ -118,8 +118,8 @@ You'll see Couch uploading and processing the images one after another.
 Errors that might occur in the process will be reported as they are encountered - one common error is trying to upload an image that is too large. For now only a **maximum size of 2MB** is supported. {.success}
 
 ::: .error
-You might receive errors at this point stating something like 'Access not allowed' or 'Failed to open stream' etc. This can happen if your server is running under **SAFE MODE restrictions** (this mode has been deprecated but you still might run into some paranoid hosts insisting on using it).<br/>
-To by-pass these restrictions you'll have to lend a helping hand to PHP by creating some folders and setting their permissions manually.<br/>
+You might receive errors at this point stating something like 'Access not allowed' or 'Failed to open stream' etc. This can happen if your server is running under **SAFE MODE restrictions** (this mode has been deprecated but you still might run into some paranoid hosts insisting on using it).
+To by-pass these restrictions you'll have to lend a helping hand to PHP by creating some folders and setting their permissions manually.
 This thread of our forum discusses the procedure in detail - [**http&#58;//www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703**](https://www.couchcms.com/forum/viewtopic.php?f=4&t=6912&p=8703).
 :::
 
@@ -137,9 +137,9 @@ You'll notice that Couch has used the uploaded image's name as the page's title 
 
 #### 4. Displaying the gallery
 
-With the pages already created, it is time to display them on your site.<br/>
-This step is no different to what is used with the regular templates.<br/>
-The markup, as always, will be yours and you can use the cms:pages tag to output the list of the images in your gallery the regular way.<br/>
+With the pages already created, it is time to display them on your site.
+This step is no different to what is used with the regular templates.
+The markup, as always, will be yours and you can use the cms:pages tag to output the list of the images in your gallery the regular way.
 Example -
 
 ```
@@ -168,12 +168,12 @@ For gallery pages, the [**cms:pages**](../../tags-reference/pages.html) tag also
 
 ## EXIF data
 
-EXIF (Exchangeable image file) format is a specification for image files used by digital cameras to add meta-data to images.<br/>
+EXIF (Exchangeable image file) format is a specification for image files used by digital cameras to add meta-data to images.
 Couch can extract this data from uploaded images and make it available as simple variables.
 
 ::: .notice
-As this addition is more likely to be useful to only professional photographers, it is turned off by default. To turn this feature on, please set the following directive in 'config.php' to 1<br/>
-<br/>
+As this addition is more likely to be useful to only professional photographers, it is turned off by default. To turn this feature on, please set the following directive in 'config.php' to 1
+
 ```
 // 25
 // Set the following to '1' if you wish to extract EXIF data from images uploaded to Gallery
@@ -225,7 +225,7 @@ Following is the complete list of variables that may become available (depending
 *   exif\_xresolution
 *   exif\_yresolution
 
-These variables, however, are not available for direct use.<br/>
+These variables, however, are not available for direct use.
 To get to them, you need to make use of a new tag named 'exif'. The usage is simply -
 
 ```
@@ -246,14 +246,14 @@ To get to them, you need to make use of a new tag named 'exif'. The usage is sim
 As can be seen, the 'exif' tag makes available all the Exif data within its opening and closing tags.
 
 ::: .error
-**A note of caution here:**<br/>
-<br/>
-The GD library used on the server side (by Couch as well as most other scripts) for image manipulation has the property of discarding away the Exif data for good from the image being manipulated (resized for example).<br/>
-<br/>
-As such, once the you turn on the setting to capture Exif data from images, Couch will **NOT resize** the uploaded images at all.<br/>
-This is to keep the exif data within the image intact.<br/>
-Please remember that with this setting on, you'll have to upload the images already resized on your local machine using any Exif savvy program (like IrfanView).<br/>
-<br/>
+**A note of caution here:**
+
+The GD library used on the server side (by Couch as well as most other scripts) for image manipulation has the property of discarding away the Exif data for good from the image being manipulated (resized for example).
+
+As such, once the you turn on the setting to capture Exif data from images, Couch will **NOT resize** the uploaded images at all.
+This is to keep the exif data within the image intact.
+Please remember that with this setting on, you'll have to upload the images already resized on your local machine using any Exif savvy program (like IrfanView).
+
 If this is not possible for the client, a workaround could be to define a new thumbnail associated with the main image that has the proper dimension. The original image will be left untouched however the thumbnail can now be used instead of the original image itself.
 :::
 
@@ -261,7 +261,7 @@ If this is not possible for the client, a workaround could be to define a new th
 
 To jump-start your development, here is a complete sample gallery template that can be used as a guide (or even 'as-is' if you are in a hurry - the markup is neutral enough to go with almost any design).
 
-[**Download the template here**](https://www.couchcms.com/docs/code/gallery.zip).<br/>
+[**Download the template here**](https://www.couchcms.com/docs/code/gallery.zip).
 [**Download the Slimbox version here**](https://www.couchcms.com/docs/code/gallery_using_slimbox.zip) (this is another version of the same template using JavaScript (Slimbox) to display the images).
 
 ![](../../assets/img/contents/photo-gallery-6.jpg)
@@ -270,6 +270,6 @@ To jump-start your development, here is a complete sample gallery template that 
 
 ## Summary
 
-To sum up, to use the new gallery feature you are only required making the following changes -<br/>
-**1\.** Declare your clonable template with the **gallery** attribute.<br/>
+To sum up, to use the new gallery feature you are only required making the following changes -
+**1\.** Declare your clonable template with the **gallery** attribute.
 **2\.** Declare an editable region of type 'image' with the name **gg\_image** and an associated editable region of type thumbnail with the name **gg\_thumb**.

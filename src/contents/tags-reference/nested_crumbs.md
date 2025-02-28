@@ -9,7 +9,7 @@ template: default.html
 The **nested\_crumbs** tag can be used to easily create breadcrumbs out of [nested-pages](../../concepts/nested-pages-aka-menu-maker.html).
 
 ::: .notice
-There is another tag named '[breadcrumbs](./breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.<br/>
+There is another tag named '[breadcrumbs](./breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.
 'nested\_crumbs' on the other hand works with nested-pages only.
 :::
 
@@ -42,13 +42,13 @@ where 'masterpage' points to the template behind the nested-pages tree.
 
 ### masterpage
 
-This parameter is used to specify the template behind the nested-pages used to create the breadcrumbs.<br/>
+This parameter is used to specify the template behind the nested-pages used to create the breadcrumbs.
 If left empty, the template of the currently executing page is assumed.
 
 ### ignore_show_in_menu
 
-The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.<br/>
-If that is unchecked, the page is not included by default in the breadcrumbs.<br/>
+The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.
+If that is unchecked, the page is not included by default in the breadcrumbs.
 You can override this by setting 'ignore\_show\_in\_menu' parameter to '1'.
 
 ### prepend

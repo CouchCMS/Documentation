@@ -30,7 +30,7 @@ The name of the template that defines the editable region. This parameter is man
 
 ### page
 
-The name of the page that contains the editable region.<br/>
+The name of the page that contains the editable region.
 For non-clonable pages this parameter can be skipped.
 
 ```

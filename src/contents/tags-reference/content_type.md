@@ -6,7 +6,7 @@ template: default.html
 
 # content_type
 
-The **content\_type** tag can be used to make the web server send back the contents with the desired Content-Type in the HTTP header.<br/>
+The **content\_type** tag can be used to make the web server send back the contents with the desired Content-Type in the HTTP header.
 By default every web page is send back as '_text/html_'.
 
 As an example, the RSS feed requires it content type to be set as '_text/xml_' for the browsers to properly recognize the feed. The following snippet does the job -

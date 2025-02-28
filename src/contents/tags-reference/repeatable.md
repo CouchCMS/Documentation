@@ -18,5 +18,5 @@ A unique name identifying the repeatable block created by this tag. This paramet
 
 ## Variables
 
-This tag does not set any variables of its own.<br/>
+This tag does not set any variables of its own.
 To get the values entered into the editable regions enclosed by this block, use [**show\_repeatable**](./show_repeatable.html) tag.

@@ -6,7 +6,7 @@ template: default.html
 
 # mod
 
-The **mod** tag accepts two parameters and returns as its output the remainder obtained after dividing the first parameter by the second.<br/>
+The **mod** tag accepts two parameters and returns as its output the remainder obtained after dividing the first parameter by the second.
 The parameters may be literal strings, variables or output of other tags.
 
 ```

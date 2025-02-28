@@ -7,7 +7,7 @@ template: default.html
 
 # type = 'group'
 
-Editable region of type _group_, in fact, is not editable at all.<br/>
+Editable region of type _group_, in fact, is not editable at all.
 It is meant to group together related editable regions and thus improve end user experience.
 
 As an example, suppose a template has the following editable regions -

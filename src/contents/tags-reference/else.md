@@ -6,9 +6,9 @@ template: default.html
 
 # else
 
-The **Else** tag always occurs within an **If** tag block.<br/>
-Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met.<br/>
-**Else** provides this capability by extending the **If** tag. It does so by delimiting statements that will be executed when the condition given to the **if** does not evaluate to true.<br/>
+The **Else** tag always occurs within an **If** tag block.
+Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met.
+**Else** provides this capability by extending the **If** tag. It does so by delimiting statements that will be executed when the condition given to the **if** does not evaluate to true.
 For example -
 
 ```
@@ -23,7 +23,7 @@ In the snippet above, if variable 'my\_var' contains 'hello', all the statements
 
 Notice that the **else** tag is a self closing tag. {.notice}
 
-In cases where there are more than two outcomes of the condition, the **else** block can be made to contain another nested **if** block -<br/>
+In cases where there are more than two outcomes of the condition, the **else** block can be made to contain another nested **if** block -
 For example, here is a snippet that shows the stage of life by evaluating the variable 'age'.
 
 ```

@@ -8,8 +8,8 @@ template: default.html
 
 Couch v1.3 introduces a powerful new feature that can be used to establish relationships between pages of two templates.
 
-Some example scenarios where this feature will come in handy -<br/>
-**1\.** Your site has two discrete sections - 'products' and 'manufacturers'.<br/>
+Some example scenarios where this feature will come in handy -
+**1\.** Your site has two discrete sections - 'products' and 'manufacturers'.
 Pages of the two sections are related to each other in a way that a manufacturer may have several products whereas a product can be related to only a single manufacturer.
 
 **2\.** Two discrete sections - 'artists' and 'albums' can be related to each other in a way that an artist may have several albums while an album in turn can also have several artists associated with it.
@@ -18,7 +18,7 @@ Pages of the two sections are related to each other in a way that a manufacturer
 
 Any relationship, necessarily, will involve two parties (actually the templates representing them). Taking the second example mentioned above, 'artists' and 'albums' are the two parties that are involved in the relationship (we'll assume the name of their respective templates to be 'artists.php' and 'albums.php').
 
-To define a relationship between the two templates, we use a new type of editable region introduced by Couch v1.3 - [**relation**](../../tags-reference/editable/relation.html).<br/>
+To define a relationship between the two templates, we use a new type of editable region introduced by Couch v1.3 - [**relation**](../../tags-reference/editable/relation.html).
 Place the following code snippet in the 'artists.php' template.
 
 ```
@@ -29,15 +29,15 @@ Make the mandatory visit to the template as super-admin. Coming back to the admi
 
 ![](../../assets/img/contents/relationships-1.png)
 
-As can be seen, Couch shows us a list of all the cloned pages of 'albums.php'.<br/>
+As can be seen, Couch shows us a list of all the cloned pages of 'albums.php'.
 We can choose all the albums from this list that are related to the artist being edited.
 
 ::: .success
 By default, all the pages of the related template are show in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the 'editable' tag of type [**relation**](../../tags-reference/editable/relation.html) -
-<br/>
-[**folder**](../../tags-reference/editable/relation.html#parameters)<br/>
-[**include\_subfolders**](../../tags-reference/editable/relation.html#parameters)<br/>
-[**orderby**](../../tags-reference/editable/relation.html#parameters)<br/>
+
+[**folder**](../../tags-reference/editable/relation.html#parameters)
+[**include\_subfolders**](../../tags-reference/editable/relation.html#parameters)
+[**orderby**](../../tags-reference/editable/relation.html#parameters)
 [**order_dir**](../../tags-reference/editable/relation.html#parameters)
 :::
 
@@ -45,11 +45,11 @@ Important points to note in the code above -
 
 **1\.** It is the 'masterpage' parameter that specifies the template at the 'other' end of the relationship - i.e. we have placed this code in 'albums.php' that implicitly makes it one of the two templates involved in the relationship - the 'masterpage' parameter explicitly specifies the second one.
 
-**2\.** Although there are two templates involved in the relationship, we can place the code defining the relationship in only one of the two.<br/>
+**2\.** Although there are two templates involved in the relationship, we can place the code defining the relationship in only one of the two.
 Which of the two templates is used to define the relationship is sometimes purely an arbitrary decision, although there is an important behavior that might help us in making the choice -
 
-While being edited, it is only the pages of the template that carries the relation defining editable tag (let us call this template the 'primary' template) that display a list of pages of the opposite template to choose from.<br/>
-In our example we have chosen the 'artists.php' template to be the 'primary' template in the relationship. While editing any page of this template, we'll be shown a list of all the 'albums' to choose from and hence relate to the artist being edited.<br/>
+While being edited, it is only the pages of the template that carries the relation defining editable tag (let us call this template the 'primary' template) that display a list of pages of the opposite template to choose from.
+In our example we have chosen the 'artists.php' template to be the 'primary' template in the relationship. While editing any page of this template, we'll be shown a list of all the 'albums' to choose from and hence relate to the artist being edited.
 The reverse is not true - i.e. while editing an 'album', there will no such list of 'artists' to choose from.
 
 Apart from this distinction, the two templates are equal partners in the relationship. Given an 'artist', we can query all the 'albums' related to it and likewise given an 'album' we can find all the 'artists' related to it with equal ease.
@@ -60,16 +60,16 @@ Apart from this distinction, the two templates are equal partners in the relatio
 
 ### Many-to-Many relation
 
-In our example above, an artist can be associated with multiple albums. Conversely, an album may also be associated with multiple artists.<br/>
+In our example above, an artist can be associated with multiple albums. Conversely, an album may also be associated with multiple artists.
 This is what is known in database parlance as a 'Many-to-Many relation'. It is the default type of relation that we get unless we specify otherwise while defining the relation (using the parameters discussed below).
 
 ### One-to-Many relation
 
 To illustrate this type of relationship, let us assume that an artist can still have multiple albums but an album can be associated with only a single artist (no more 'bands' - only solo albums permitted).
 
-This is a 'One-to-Many relation' and is very commonly encountered. It might seem a little contrived for our artists and albums example but consider the following entities -<br/>
-**a.** Authors and books (An author can write multiple books but a book can be written by only one author)<br/>
-**b.** Albums and songs (an album consists of multiple songs but a song can only be in a single album)<br/>
+This is a 'One-to-Many relation' and is very commonly encountered. It might seem a little contrived for our artists and albums example but consider the following entities -
+**a.** Authors and books (An author can write multiple books but a book can be written by only one author)
+**b.** Albums and songs (an album consists of multiple songs but a song can only be in a single album)
 **c.** Orders and order-items (an e-commerce classic - an order can have multiple order-items but an order-item can only be related to a single order).
 
 To define a One-to-Many relation in Couch, we make a small change to our code -
@@ -104,7 +104,7 @@ This is what the edit-panel shows now.
 
 As can be seen, instead of a list with checkboxes allowing multiple choices, we now have a drop-down list that allows a single choice only.
 
-Once again, this type of relation looks mighty contrived for our artists and albums example. But in realty, it is actually only the 'One-to-Many relation' we saw above in reverse.<br/>
+Once again, this type of relation looks mighty contrived for our artists and albums example. But in realty, it is actually only the 'One-to-Many relation' we saw above in reverse.
 It would make a lot more sense if, instead of the 'artists' template, we define the relationship in the 'albums' templates (thus making the 'albums' template the 'primary' template).
 
 ```
@@ -133,8 +133,8 @@ The resulting edit-panel shows a drop-down (allowing a single selection) of only
 
 ## Displaying the related pages
 
-With the relationship having been defined between the two templates and the 'album' pages associated with their 'artists', now comes the time to display the related pages with the page they are related to e.g.<br/>
-While showing an 'artist' page, display all the albums associated with this artist or<br/>
+With the relationship having been defined between the two templates and the 'album' pages associated with their 'artists', now comes the time to display the related pages with the page they are related to e.g.
+While showing an 'artist' page, display all the albums associated with this artist or
 while showing an 'album' page, display all the artists associated with this album.
 
 Couch provides two different tags to do this enumeration for us -
@@ -144,7 +144,7 @@ Couch provides two different tags to do this enumeration for us -
 
 ### related_pages
 
-We use the **related\_pages** tag to list pages of the opposite template that are related to a page of a primary template (i.e. the one defining the relationship).<br/>
+We use the **related\_pages** tag to list pages of the opposite template that are related to a page of a primary template (i.e. the one defining the relationship).
 In our example, the 'artists' template is the primary so we use the following code in 'artists.php' -
 
 ```
@@ -155,7 +155,7 @@ In our example, the 'artists' template is the primary so we use the following co
    <h3>Related albums:</h3>
    <cms:related_pages 'artist_albums' >
       <!-- All variables of 'albums.php' are available here -->
-      <cms:show k_page_title /><br/>
+      <cms:show k_page_title />
    </cms:related_pages>
 </cms:if>
 ```
@@ -164,8 +164,8 @@ Please notice that in the code above, we have specified the name of the relation
 
 ### reverse_related_pages
 
-We use the **reverse\_related\_pages** to list the pages of the primary template that are related to page belonging to the opposite template.<br/>
-In our example it is the 'albums' template that falls at the opposite end of the relationship.<br/>
+We use the **reverse\_related\_pages** to list the pages of the primary template that are related to page belonging to the opposite template.
+In our example it is the 'albums' template that falls at the opposite end of the relationship.
 To list all 'artists' that are associated with the 'album' page being visited, we place the following code into 'albums.php' -
 
 ```
@@ -176,23 +176,23 @@ To list all 'artists' that are associated with the 'album' page being visited, w
    <h3>Artists:</h3>
    <cms:reverse_related_pages 'artist_albums' masterpage='artists.php' >
       <!-- All variables of 'artists.php' are available here -->
-      <cms:show k_page_title /><br/>
+      <cms:show k_page_title />
    </cms:reverse_related_pages>
 </cms:if>
 ```
 
 Please notice in the code above that, like 'related\_pages' tag, we have specified the name of the relation field ('artist\_albums'). This can be omitted if there is only a single editable region of type 'relation' in the 'primary' template.
 
-Unlike 'related\_pages' tag, however, in 'reverse\_related\_pages' it is mandatory to provide the name of the template that contains the relation field (i.e. the 'primary' template that defines the relationship - 'artists.php' in our example).<br/>
+Unlike 'related\_pages' tag, however, in 'reverse\_related\_pages' it is mandatory to provide the name of the template that contains the relation field (i.e. the 'primary' template that defines the relationship - 'artists.php' in our example).
 Come to think about it - this code is executing within 'albums.php' while the definition of the relationship is contained in 'artists.php'. There is nothing in 'albums.php' that makes it aware about the relationship formed by 'artists.php'. Therefore, when working with the 'opposite' template, we have to specify the 'primary' template also.
 
 ## Context where these tags are used
 
-In both the code examples above you might have noticed that we did NOT provide the name or id of the page the pages related to which are fetched.<br/>
-This is because we used the 'related\_pages' and 'reverse\_related\_pages' tags in context of a 'page-view' (the enclosing 'if k\_is\_page' statement ensures this).<br/>
+In both the code examples above you might have noticed that we did NOT provide the name or id of the page the pages related to which are fetched.
+This is because we used the 'related\_pages' and 'reverse\_related\_pages' tags in context of a 'page-view' (the enclosing 'if k\_is\_page' statement ensures this).
 All the information regarding the page being currently viewed is already available in this view and 'related\_pages'/'reverse\_related\_pages' tags pick up this info from the context thus displaying the pages related to whatever page is being viewed.
 
-In fact, both the 'related\_pages' as well as the 'reverse\_related\_pages' tags cannot be directly given the id/name of a page to fetch the related pages of. They will only work if used in context of a page. For places where the context of a single-page is not available (e.g. list-view or even page-view of a different template), we can provide it with the context of the right page by using the 'pages' tag.<br/>
+In fact, both the 'related\_pages' as well as the 'reverse\_related\_pages' tags cannot be directly given the id/name of a page to fetch the related pages of. They will only work if used in context of a page. For places where the context of a single-page is not available (e.g. list-view or even page-view of a different template), we can provide it with the context of the right page by using the 'pages' tag.
 For example, the following code will get all related albums of John Lennon -
 
 ```
@@ -200,7 +200,7 @@ For example, the following code will get all related albums of John Lennon -
    <h3>Albums of John Lennon:</h3>
    <cms:related_pages 'artist_albums' >
       <!-- All variables of 'albums.php' are available here -->
-      <cms:show k_page_title /><br/>
+      <cms:show k_page_title />
    </cms:related_pages>
 </cms:pages>
 ```

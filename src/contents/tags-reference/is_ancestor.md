@@ -6,7 +6,7 @@ template: default.html
 
 # is_ancestor
 
-The **is\_ancestor** tag can be used to find whether or not a folder is the ancestor of another folder.<br/>
+The **is\_ancestor** tag can be used to find whether or not a folder is the ancestor of another folder.
 Outputs '1' if true, else outputs '0'. This makes it possible to use this tag with the conditional **if** tag.
 
 ```

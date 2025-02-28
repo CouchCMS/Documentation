@@ -6,7 +6,7 @@ template: default.html
 
 # add
 
-The **add** tag accepts two parameters and returns as its output the value obtained after adding together the two parameters.<br/>
+The **add** tag accepts two parameters and returns as its output the value obtained after adding together the two parameters.
 The parameters may be literal strings, variables or output of other tags.
 
 ```

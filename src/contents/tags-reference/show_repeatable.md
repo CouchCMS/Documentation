@@ -19,7 +19,7 @@ Default parameter (usually left unnamed). The name of the [**repeatable**](./rep
 
 ```
 <cms:show_repeatable 'my_multiple_images' >
-   <b>Image: <img src="<cms:show my_image />" /> <br/>
+   <b>Image: <img src="<cms:show my_image />" /> 
    <b>Desc:</b> <cms:show my_desc />
    <hr>
 </cms:show_repeatable>
@@ -38,7 +38,7 @@ One of the variables set by this tag is *k\_count*. The value of this variable i
 
 ### k_count
 
-As this tag iterates through the rows of repeated regions, this variable keeps track of the number of current iteration.<br/>
+As this tag iterates through the rows of repeated regions, this variable keeps track of the number of current iteration.
 By default, the first iteration is numbered from '1' but the **startcount** parameter mentioned above can be used to change this.
 
 ### k_total_records

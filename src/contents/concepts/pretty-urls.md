@@ -6,8 +6,8 @@ template: default.html
 
 # Pretty URLS
 
-Couch supports the use of Pretty URLS (aka search engine friendly - SEF URLs).<br/>
-This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages.<br/>
+Couch supports the use of Pretty URLS (aka search engine friendly - SEF URLs).
+This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages.
 For Example, a URL like this -
 
 ```
@@ -32,17 +32,17 @@ where 12 is the id of a cloned page named 'mobile-phones' which is in 'electroni
 http://www.mysite.com/blog/electronics/mobile-phones.html
 ```
 
-It is obvious that the 'pretty' versions of the URLs convey more meaning about the pages they represent.<br/>
+It is obvious that the 'pretty' versions of the URLs convey more meaning about the pages they represent.
 Not only do they appear friendlier to the visitors but they also offer immense benefit from the SEO (Search Engine Optimization) perspective - something that cannot be ignored if you wish your pages to rank high in Google search.
 
 ::: .notice
-For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod\_rewrite' module enabled.<br/>
+For Pretty URLS to work in Couch, the Apache server it is hosted on must have the 'mod\_rewrite' module enabled.
 To make sure this module is indeed available at your server, [please use this utility available at our forums](https://www.couchcms.com/forum/viewtopic.php?p=11832#p11832).
 :::
 
 ### ENABLING PRETTY URLS
 
-In Couch Pretty URLS apply only to clonable templates.<br/>
+In Couch Pretty URLS apply only to clonable templates.
 By default, Pretty URLS are not enabled. It is strongly advised that you turn this feature on only after you have configured all your clonable templates.
 
 Enabling Pretty URLS is a two step process -
@@ -58,15 +58,15 @@ define( 'K_PRETTY_URLS', 0 );
 
 Set the K\_PRETTY\_URLS to 1\.
 
-**2\.** Fire up your browser and visit the following page (substitute the domain name with that of yours) -<br/>
+**2\.** Fire up your browser and visit the following page (substitute the domain name with that of yours) -
 *http&#58;//www.yoursite.com/couch/gen\_htaccess.php*
 
-A list of rewrite rules should appear on the page.<br/>
+A list of rewrite rules should appear on the page.
 Select and copy the ENTIRE content of the page (press Ctrl + A) and paste it into a file named '.htaccess' and place this file in your website's root.
 
 ::: .notice
-If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.<br/>
-<br/>
+If you are on a Windows machine, your OS might not allow you to create a file which only has an extension and no name. For such cases name the file temporarily to anything e.g. 'dummy.htaccess', upload it to your server and then rename it to remove the name.
+
 **EDIT:** You can also use Notepad to create a new file and when asked for a name while saving it, enclose the name with **double-quotes**.
 :::
 
@@ -88,7 +88,7 @@ Please make sure that your server has the required *mod\_rewrite* module enabled
 
 #### 2. The pages do come up but all the CSS, JS or image links are broken.
 
-This happens if the links are 'relative'. Please convert them to 'absolute' to rectify this problem.<br/>
+This happens if the links are 'relative'. Please convert them to 'absolute' to rectify this problem.
 For example, a link such as the follows
 
 ```

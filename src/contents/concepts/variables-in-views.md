@@ -6,7 +6,7 @@ template: default.html
 
 # Variables available in Views
 
-From what we have read so far, we know that a template can be either _clonable_ or _non-clonable_.<br/>
+From what we have read so far, we know that a template can be either _clonable_ or _non-clonable_.
 A _clonable_ template will necessarily have cloned pages associated with it hence it is said to be executing within a _page-view_ when a cloned page of it is accessed while it is said to be executing within a _list-view_ if it is accessed in a stand alone manner.
 
 A _non-clonable_ template always represents one single page and hence it has no such views associated with it.
@@ -40,7 +40,7 @@ The following variables are available in ALL the cases, irrespective of the clon
 
 ### NON-CLONABLE TEMPLATE -
 
-If _blog.php_ is non-clonable, the only way it can be accessed is -<br/>
+If _blog.php_ is non-clonable, the only way it can be accessed is -
 _http&#58;//www.mysite.com/blog.php_
 
 \- and the available variables are -
@@ -59,7 +59,7 @@ If _blog.php_ is made clonable, the different views it can be accessed in and th
 
 #### PAGE VIEW
 
-e.g. *http&#58;//www.mysite.com/blog/some\_page\_name.html*<br/>
+e.g. *http&#58;//www.mysite.com/blog/some\_page\_name.html*
 In this view, variables giving information about the current page, the containing folder (if the page resides in one) and the contents of the page's editable regions are made available.
 
 The folowing variables carry information about the page in question -
@@ -89,7 +89,7 @@ Finally the contents of editable regions -
 
 #### FOLDER VIEW
 
-e.g. *http&#58;//www.mysite.com/blog/some\_subfolder/*<br/>
+e.g. *http&#58;//www.mysite.com/blog/some\_subfolder/*
 In this view, variables giving information about the folder mentioned in the URL are set.
 
 *   k\_is\_list
@@ -103,7 +103,7 @@ In this view, variables giving information about the folder mentioned in the URL
 
 #### ARCHIVE VIEW
 
-e.g. _http&#58;//www.mysite.com/blog/2010/05/_<br/>
+e.g. _http&#58;//www.mysite.com/blog/2010/05/_
 In this view, variables giving information about the archive's time period (as given in the URL) are set.
 
 *   k\_is\_list

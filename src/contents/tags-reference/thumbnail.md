@@ -6,7 +6,7 @@ template: default.html
 
 # thumbnail
 
-Tag **thumbnail** can be used as an alternative to editable region of type [**thumbnail**](./editable/thumbnail.html).<br/>
+Tag **thumbnail** can be used as an alternative to editable region of type [**thumbnail**](./editable/thumbnail.html).
 Unlike the editable region, this method is a simple tag and does not create anything to edit within the admin-panel and thus might (in certain situations) prove to be more flexible and dynamic than the former.
 
 The immediate reason for the introduction of this tag is to use it with [**repeatable regions**](../../concepts/repeatable-regions.html) as its editable region counterpart does not support being repeated.
@@ -52,7 +52,7 @@ and this is how we create and output the above image's thumbnail
 <img src="<cms:thumbnail my_image width='150' height='150' enforce_max='1' />" />
 ```
 
-These parameters work exactly the same way as the parameters with the same names work for editable region of type [**thumbnail**](./editable/thumbnail.html).<br/>
+These parameters work exactly the same way as the parameters with the same names work for editable region of type [**thumbnail**](./editable/thumbnail.html).
 Please see [**Editable region - thumbnail**](./editable/thumbnail.html#parameters) for details of the parameters.
 
 ## Variables

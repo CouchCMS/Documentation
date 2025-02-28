@@ -21,7 +21,7 @@ The processing of IPN by this tag is a background operation which makes it diffi
 
 ### logfile
 
-The log file into which the steps are to be logged. If this parameter is skipped, a log file named 'log.txt' in your site's root is used (created if not already existing) for logging.<br/>
+The log file into which the steps are to be logged. If this parameter is skipped, a log file named 'log.txt' in your site's root is used (created if not already existing) for logging.
 You can specify a path with the file that is relative to the site's root.
 
 ```

@@ -16,7 +16,7 @@ Please see [**Core Concepts - PayPal**](../../concepts/paypal.html) for a detail
 
 ### image
 
-This parameter is used to set the image used as the button.<br/>
+This parameter is used to set the image used as the button.
 You can either choose to use an image of your own or you may use one of the buttons made available by PayPal.
 
 **Using your own image -**

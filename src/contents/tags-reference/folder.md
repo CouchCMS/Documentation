@@ -19,7 +19,7 @@ Please see [**Core Concepts - Folders**](../../concepts/using-folders.html) for 
 
 ### name
 
-The mandatory name of the folder. Has to be unique for the template.<br/>
+The mandatory name of the folder. Has to be unique for the template.
 Only lowercase\[a-z\], numerals\[0-9\] hyphen and underscore permitted
 
 ### title

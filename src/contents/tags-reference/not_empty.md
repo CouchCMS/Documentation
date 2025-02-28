@@ -8,7 +8,7 @@ template: default.html
 
 The **not\_empty** tag can be used to find out whether or not an editable region contains any value.
 
-It returns a '1' if the variable representing the editable region contains some value (i.e. is not empty) else it returns a '0'.<br/>
+It returns a '1' if the variable representing the editable region contains some value (i.e. is not empty) else it returns a '0'.
 This property makes it possible to use it with conditional tags, like **if** and **else**.
 
 ```

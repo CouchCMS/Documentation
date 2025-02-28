@@ -6,7 +6,7 @@ template: default.html
 
 # template
 
-The **template** tag can be used to modify the attributes of the template this tag is used on.<br/>
+The **template** tag can be used to modify the attributes of the template this tag is used on.
 It is customary to place this tag somewhere at the beginning of a template. This tag outputs nothing and this makes it a good place to put the structural Couch tags, like **editable** and **folders**, within it.
 
 ## Parameters
@@ -21,7 +21,7 @@ It is customary to place this tag somewhere at the beginning of a template. This
 
 ### title
 
-This parameter is used to set the display name of the template in Couch admin panel.<br/>
+This parameter is used to set the display name of the template in Couch admin panel.
 If this parameter is skipped, the name of the template (will have the .php extension) is used instead.
 
 ### clonable

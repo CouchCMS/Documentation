@@ -8,7 +8,7 @@ template: default.html
 
 In Couch, tags are what make things happen.
 
-The tags have been modeled after XML tags and hence should appear familiar to you.<br/>
+The tags have been modeled after XML tags and hence should appear familiar to you.
 Similar to the XML tags, a Couch tag is either _self-closing_ or consists of a _start-tag/end-tag_ pair.
 
 #### Self Closing:
@@ -31,12 +31,12 @@ This is how a typical paired tag looks like -
 
 Every thing between the start-tag and the end-tag is considered to be the input for the paired tag.
 
-Every Couch tag begins with '**&lt;cms:**' followed by the tag's name (_show_ and _repeat_ in the examples above).<br/>
+Every Couch tag begins with '**&lt;cms:**' followed by the tag's name (_show_ and _repeat_ in the examples above).
 The name may be followed by zero to any number of parameters (this depends on the tag in question).
 
 Depending upon the parameters and the input, a tag executes some function (e.g. modify the input, create a folder or fetch content from somewhere). If the action results in any displayable output, the tag returns back this output else it returns back a blank.
 
-When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.<br/>
+When a template containing Couch tags gets finally rendered in a browser, each of the tag is replaced by its individual output.
 Therefore, a Couch tag will never appear in the HTML that is returned to the browser. {.notice}
 
 ### PARAMETERS
@@ -75,8 +75,8 @@ In Couch, naming the parameters is entirely optional but then you'll have to mak
 \- the above will be interpreted as count=1 and startcount=4, which is not what was meant.
 
 ::: .success
-It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus<br/>
-<br/>
+It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [__*show*__](../../tags-reference/show.html) tag above, in which case there can never be any ambiguity. In fact the [__*show*__](../../tags-reference/show.html) tag ignores the name you give to the parameter totally, thus
+
 ```
 <cms:show 'Hello' />
 <cms:show var='Hello' />

@@ -52,7 +52,7 @@ Can be set to specify whether the enumerated folders are ordered in the ascendin
 
 ### exclude
 
-Folders can be excluded from being enumerated by specifying them with this parameter. If an excluded folder has children, they are excluded too.<br/>
+Folders can be excluded from being enumerated by specifying them with this parameter. If an excluded folder has children, they are excluded too.
 If multiple folders are to be excluded, separate them with comma.
 
 ### extended_info

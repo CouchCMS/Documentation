@@ -72,7 +72,7 @@ The **input** tag shares this parameter with the **editable** tag. Please see th
 
 ### opt_selected
 
-The _separator_, *val\_separator*, *opt\_values* and *opt\_selected* parameters are valid for only _radio_, _checkbox_ and _dropdown_ input types.<br/>
+The _separator_, *val\_separator*, *opt\_values* and *opt\_selected* parameters are valid for only _radio_, _checkbox_ and _dropdown_ input types.
 The **input** tag shares these parameters with the **editable** tag. Please see the parameters of [**radio**](./editable/radio.html#parameters), [**checkbox**](./editable/checkbox.html#parameters) and [**dropdown**](./editable/dropdown.html#parameters) types of editable regions for details of these.
 
 ### width

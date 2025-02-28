@@ -6,7 +6,7 @@ template: default.html
 
 # get
 
-The **get** tag is used to output the value of the variable the name of which is supplied to it as its parameter.<br/>
+The **get** tag is used to output the value of the variable the name of which is supplied to it as its parameter.
 For example -
 
 ```
@@ -14,7 +14,7 @@ For example -
 <cms:get 'my_var' />
 ```
 
-In the snippet given above,  'my\_var' is the name of the variable the value of which is output by the **get** tag.<br/>
+In the snippet given above,  'my\_var' is the name of the variable the value of which is output by the **get** tag.
 The output of the snippet is '10'.
 
 Compare the **get** tag with the **show** tag that takes a value (not the name) as its parameter.

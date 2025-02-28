@@ -16,7 +16,7 @@ If you need an end date for your events, you can create an editable region of ty
 
 ### Displaying the calendar
 
-The calender tag we mentioned has three auxillary tags associated with it - weeks, days and entries.<br/>
+The calender tag we mentioned has three auxillary tags associated with it - weeks, days and entries.
 These three tags are slightly different from all the other Couch tags we have seen so far in that they are meant to be used only within certain tags. The weeks tag will work only when nested within a calendar tag, the days tag is meant to be used only within the weeks tag and finally the entries tag is expected to be placed only within the days tag.
 
 The following example will make the relationship clear where we are displaying a calendar for the current month -
@@ -45,14 +45,14 @@ As you can see, the generated calendar is an HTML table, where the weeks tag was
 
 Depending on the month of the calendar, the weeks tag will repeat as many times as there are weeks in that month (will range from 4 to 6). The days tag will always repeat seven times within each week. Each of the iterated day can belong to either the previous month, the month being displayed or the next month.
 
-As with the other Couch tags, these tags too set up variables to provide more information about the objects they represent.<br/>
+As with the other Couch tags, these tags too set up variables to provide more information about the objects they represent.
 Some of the variables that can be used are -
 
 #### calendar
 
-*k\_count\_weeks* - Number of weeks in the month<br/>
-*k\_calendar\_date* - The month being displayed in yyyy-mm-dd format (e.g. 2010-10-01 for October, 2010)<br/>
-*k\_next\_calendar\_date* - The month that comes after the one being displayed<br/>
+*k\_count\_weeks* - Number of weeks in the month
+*k\_calendar\_date* - The month being displayed in yyyy-mm-dd format (e.g. 2010-10-01 for October, 2010)
+*k\_next\_calendar\_date* - The month that comes after the one being displayed
 *k\_prev\_calendar\_date* - The month that came before the one being displayed
 
 #### weeks
@@ -61,12 +61,12 @@ Some of the variables that can be used are -
 
 #### days
 
-*k\_date* - date of the day being iterated<br/>
-*k\_day* - Number representing the day<br/>
-*k\_month* - Number representing the month of the day<br/>
-*k\_year* - Number representing the year of the day<br/>
-*k\_day\_of\_week* - Number representing the day of the week the day falls on<br/>
-*k\_position* - One of these three values: *previous\_month*, *current\_month* or *next\_month*<br/>
+*k\_date* - date of the day being iterated
+*k\_day* - Number representing the day
+*k\_month* - Number representing the month of the day
+*k\_year* - Number representing the year of the day
+*k\_day\_of\_week* - Number representing the day of the week the day falls on
+*k\_position* - One of these three values: *previous\_month*, *current\_month* or *next\_month*
 *k\_timeline\_position* - One of these three values: _past_, _present_ or _future_
 
 We can use these variables to format the display of the calendar more finely.
@@ -100,7 +100,7 @@ The result of the changes -
 
 ![](../../assets/img/contents/calendar-2.png)
 
-Next we'll format the table cells to indicate whether the day represented by a cell lies in the past, present or future.<br/>
+Next we'll format the table cells to indicate whether the day represented by a cell lies in the past, present or future.
 The modified code of our calendar -
 
 ```
@@ -140,7 +140,7 @@ The modified code of our calendar -
 
 Notice how for days that belong to previous and next months we set up a class named 'other\_month'. Also note how for the current day amongst the days of the month being shown, we mark the cell with a 'today' class.
 
-The calendar generated is for the current date. To generate one for any arbitrary date, use the calendar tag's _date_ parameter.<br/>
+The calendar generated is for the current date. To generate one for any arbitrary date, use the calendar tag's _date_ parameter.
 For example, the following addition to our code will display the calendar for month of September, 2010 -
 
 ```
@@ -151,9 +151,9 @@ For example, the following addition to our code will display the calendar for mo
 
 ### Attaching a template to the calendar
 
-A clonable template can be attached to a calendar, like the one we have created so far, by setting the _masterpage_ parameter.<br/>
-Once a template gets associated with a calendar, the days tag starts supporting another tag named entries within it.<br/>
-The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through.<br/>
+A clonable template can be attached to a calendar, like the one we have created so far, by setting the _masterpage_ parameter.
+Once a template gets associated with a calendar, the days tag starts supporting another tag named entries within it.
+The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through.
 The days tag also sets a variable named *k\_count\_entries* to indicate the number of entries (i.e. cloned pages) present for each day.
 
 ```
@@ -199,7 +199,7 @@ Result of the changes -
 
 ![](../../assets/img/contents/calendar-4.png)
 
-The calendar above is well suited to be placed in a sidebar.<br/>
+The calendar above is well suited to be placed in a sidebar.
 Notice how we are displaying the dates that have cloned pages in a different color and how that cell is linked to an archive\_view (daily archive) of the template that can be used to display all pages belonging to a particular day in a list-view.
 
 If we wish, we can display the names and links of pages right within the table cell they fall in by creating a bigger table.
@@ -254,8 +254,8 @@ The changes will result in the following -
 
 ![](../../assets/img/contents/calendar-5.png)
 
-Notice how we used the class 'calendar\_big' with the table.<br/>
-Also notice how we used the entries tag to enumerate two of the cloned pages available within a day.<br/>
+Notice how we used the class 'calendar\_big' with the table.
+Also notice how we used the entries tag to enumerate two of the cloned pages available within a day.
 The 'skip\_custom\_fields' parameter is set to '1' to avoid the overhead of fetching in all the values contained within the editable regions of the cloned pages, as we won't be needing them here.
 
 The date of the calendar shown is still hard-coded. As final modification, let us change that by providing the date via the querystring via a parameter named cal.
@@ -382,9 +382,9 @@ Points to note in the code above -
 1.  We have defined editable regions to capture details about events.
 2.  In the page-view of this template we display the details of the event in question.
 3.  In the list-view we display the calendar. The events show up as calendar entries and are linked to their page-views.
-4.  We are using a querystring variable named 'cal' to set the _date_ parameter of calendar tag.<br/>
-    The Couch gpc tag is used to get the value of this variable from the querystring.<br/>
+4.  We are using a querystring variable named 'cal' to set the _date_ parameter of calendar tag.
+    The Couch gpc tag is used to get the value of this variable from the querystring.
     When this variable is not present in the querystring and hence the _date_ parameter turns up empty, the calendar tag uses the current date instead.
 5.  We have set a link to the previous month and another to the next month by using the *k\_prev\_calendar\_date* and *k\_next\_calendar\_date* variables that are set by the calendar tag.
-6.  The calendar tag accepts all the parameters that are normally used with the pages tag. Similar to the pages tag, this tag too does not fetch pages that have their publication dates set in the future.<br/>
+6.  The calendar tag accepts all the parameters that are normally used with the pages tag. Similar to the pages tag, this tag too does not fetch pages that have their publication dates set in the future.
     Since events will normally be for the future, we have set the *show\_future\_entries* parameter to '1' to prevent the calendar tag from skipping future entries.

@@ -31,7 +31,7 @@ Name of the variable to fetch the value of.
 
 ### method
 
-This can be one of the following - _get_, _post_, _cookie_.<br/>
+This can be one of the following - _get_, _post_, _cookie_.
 If this parameter is not specified, all the three are searched.
 
 ## Variables
