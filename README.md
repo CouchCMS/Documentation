@@ -4,7 +4,7 @@ This repository contains the official documentation for CouchCMS, a user-friendl
 
 The documentation is built with [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/), providing a modern, fast, and user-friendly documentation experience.
 
-## �� Project Structure
+## Project Structure
 
 The documentation is built with Astro + Starlight and has the following structure:
 
@@ -27,7 +27,7 @@ Images can be added to `src/assets/` and embedded in Markdown with a relative li
 
 Static assets like favicons can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project:
 
@@ -40,7 +40,7 @@ All commands are run from the root of the project:
 | `pnpm astro ...`       | Run CLI commands like `astro add`          |
 | `pnpm astro -- --help` | Get help using the Astro CLI               |
 
-## 📚 Contributing to Documentation
+## Contributing to Documentation
 
 1. Fork this repository
 2. Create a new branch for your changes
@@ -49,7 +49,7 @@ All commands are run from the root of the project:
 5. Commit your changes
 6. Open a Pull Request
 
-## 🔗 Useful Links
+## Useful Links
 
 ### Project Links
 - [CouchCMS Website](https://www.couchcms.com)
