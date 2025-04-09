@@ -1,0 +1,58 @@
+---
+title: templates
+category: tag
+description: The templates tag enumerates all Couch-managed templates, providing access to template properties and configuration details.
+keywords: [templates, tag, PHP, template management, enumeration, configuration, admin panel]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The **templates** tag can be used to enumerate all the templates that are managed by Couch.
+
+Example -
+
+```php
+<cms:templates show_hidden='1' order='desc'>
+    <cms:dump />
+</cms:templates>
+```
+
+## Parameters
+
+- show_hidden
+- orderby
+- order
+
+### show_hidden
+
+By default the hidden templates are not enumerated. This can be changed by setting this parameter to 1\.
+
+### orderby
+
+The templates can be ordered by one of these attributes - _name_, _title_ or _order_. The default is _order_.
+
+### order
+
+Can be set to either _asc_ or _desc_.
+
+## Variables
+
+- k_template_access_level
+- k_template_desc
+- k_template_id
+- k_template_is_clonable
+- k_template_is_commentable
+- k_template_is_executable
+- k_template_is_hidden
+- k_template_link
+- k_template_name
+- k_template_order
+- k_template_title
+- k_total
+
+## Related Tags
+
+- [archives](../archives.html)
+- [comments](../comments.html)
+- [folders](../folders.html)
+- [pages](../pages.html)

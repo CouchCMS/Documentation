@@ -1,0 +1,36 @@
+{
+  "default": true,
+  "MD007": { "indent": 4 },
+  "MD013": false,
+  "MD024": false,
+  "MD025": {
+    "front_matter_title": ""
+  },
+  "MD029": false,
+  "MD033": {
+    "allowed_elements": [
+      "Card",
+      "CardGrid",
+      "YouTubeCard",
+      "LinkButton",
+      "Steps",
+      "FileTree",
+      "note",
+      "tip",
+      "caution",
+      "danger",
+      "code",
+      "h4",
+      "s"
+    ]
+  },
+  "MD041": false,
+  "MD049": { 
+    "style": "asterisk"
+  },
+  "MD050": { 
+    "style": "asterisk"
+  },
+  "emphasis-style": "asterisk",
+  "strong-style": "asterisk"
+} 

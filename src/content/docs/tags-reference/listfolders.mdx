@@ -1,0 +1,44 @@
+---
+title: listfolders
+category: tag
+description: The listfolders tag creates a quick HTML unordered list of folders belonging to a template, with optional count display and hierarchical structure.
+keywords: [listfolders, tag, PHP, folders, HTML, list, hierarchy]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The **listfolders** tag can be used to create a quick-n-dirty HTML unordered list of the folders belonging to a template.
+
+```php
+<cms:listfolders masterpage='news.php' />
+```
+
+## Parameters
+
+Supports the same parameter as the **folders** tag. In addition, takes one more parameter - _show_count_.
+
+- masterpage
+- root
+- childof
+- hierarchical
+- depth
+- orderby
+- order
+- exclude
+- extended_info
+- show_count
+
+Please see the [**folders**](../folders.html#parameters) documentation for an explanation of these parameters.
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [breadcrumbs](../breadcrumbs.html)
+- [dropdownfolders](../dropdownfolders.html)
+- [folder](../folder.html)
+- [folders](../folders.html)
+- [is_ancestor](../is_ancestor.html)
+- [parentfolders](../parentfolders.html)

@@ -1,0 +1,72 @@
+---
+title: Advanced Tutorial
+description: "Learn how to build a complete web application using CouchCMS's advanced features including relations, data-bound forms, extended users, and custom routes."
+keywords:
+    - advanced tutorial
+    - web application
+    - CouchCMS features
+    - relations
+    - data-bound forms
+    - extended users
+    - custom routes
+    - Notejam
+    - application development
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+sidebar:
+    order: 1
+    badge:
+        text: Updated
+        variant: tip
+slug: tutorials/advanced-tutorial
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+In this tutorial we'll bring together some of the more advanced features of Couch to create a, not-so-simple, 'application' (as opposed to a regular site that Couch is usually used for). We'll discuss the following concepts:
+- [**Relations**](../../concepts/relationships/)
+- [**DataBound Forms**](../../concepts/databound-forms/)
+- [**Extended Users**](../../concepts/extended-users/)
+- [**Custom Routes**](../../concepts/custom-routes/)
+
+So what shall we be building? Please take a look at [Notejam](https://github.com/komarserjio/notejam) for that.
+
+Notejam is a unified sample web application implemented using different server-side frameworks (like Laravel, Yii etc.). In this tutorial, we'll attempt to implement it using [**CouchCMS**](https://github.com/CouchCMS/CouchCMS).
+
+Broadly speaking, following is what this sample application does (details can be found at [Notejam Application Overview](https://github.com/komarserjio/notejam/blob/master/contribute.rst#application-overview)):
+
+<Steps>
+
+1. Visitors can sign up/in/out
+2. Logged-in users can create/view/edit/delete their own 'notes'
+3. The notes can be grouped in 'pads' (functionally equivalent to our 'folders' but user specific)
+4. Logged-in users can create/view/edit/delete their own 'pads'
+
+</Steps>
+
+![Notejam Login Screen](./img/1.png)
+> Login screen of the Notejam application
+
+![Notejam Notes Overview](./img/2.png)
+> Overview of notes in the Notejam application
+
+![Notejam Edit Note](./img/3.png)
+> Editing a note in Notejam
+
+For this tutorial, instead of starting off with a blank slate and developing the features step-by-step (as done in our first tutorial [**Building a Real-World Site Tutorial**](../portfolio-site/)), we'll take a different approach - we'll start with a fully developed and functional application and then analyze it by going through all its code line-by-line.
+
+Here are the two versions of the application:
+
+- [**HTML version**](./Notejam-static-HTML.zip) - Static HTML design of Notejam application
+- [**Couchified version**](./Notejam-Couchified.zip) - Complete CouchCMS implementation
+
+:::note[Installation Note]
+Before we begin our tour through this application's codebase to see how it was implemented using Couch, I think you'd find it helpful to have it up and running on your local system. This way you can explore its functionality first-hand as we discuss the code behind it.
+
+So please bear through this, unavoidably bland, preparatory step of installing a working copy of Notejam on your system before we dive into its code which is where all the excitement lies.
+:::
+
+---
+
+[Next Chapter: **Installing the application**](./installing-the-application/)

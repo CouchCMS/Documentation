@@ -1,0 +1,83 @@
+---
+title: Upgrading
+description: "Learn how to upgrade your CouchCMS installation to the latest version."
+keywords:
+    - CouchCMS
+    - upgrade
+    - web design
+category: getting-started
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Before starting the upgrade process, make sure to:
+
+- Back up your entire website
+- Back up your database
+- Note down any custom modifications you've made
+
+<Steps>
+
+1. **Download and Extract**
+   - Download the latest version from [CouchCMS.com](https://www.couchcms.com/)
+   - Extract the ZIP file to your local computer
+   - Inside the extracted folder, find the `couch` directory
+
+2. **Clean Up New Files**
+   Remove these from the new `couch` directory:
+   - `snippets` folder
+   - `uploads` folder
+   - `config.example.php`
+
+3. **Prepare Current Installation**
+   In your existing CouchCMS installation:
+   - Rename `couch/includes/ckeditor` to `couch/includes/ckeditor_old`
+   - Make a backup of your `config.php`
+
+4. **Upload New Files**
+   - Upload all remaining files from the new `couch` directory
+   - This will overwrite the core files while preserving:
+     - Your `snippets` folder with custom code
+     - Your `uploads` folder with media
+     - Your `config.php` with settings
+
+5. **Post-Upload Steps**
+   - Delete the old `ckeditor_old` folder
+   - If using a commercial license, verify in `config.php`:
+
+     ```php title="couch/config.php"
+     define( 'K_PAID_LICENSE', 1 );
+     ```
+
+   - Clear your browser cache
+
+6. **Verify Installation**
+   - Log in to the admin panel
+   - Check if all your templates work
+   - Verify if custom modifications still function
+   - Test core features like editing and uploading
+
+</Steps>
+
+:::danger[Important Security Notes]
+
+- If you renamed `index.php` for security:
+  1. Delete your current renamed file
+  2. Upload the new `index.php`
+  3. Rename it to your secure filename
+- Always maintain a backup until you've verified everything works
+
+:::
+
+:::tip[Common Issues]
+
+- White screen after upgrade? Clear PHP cache
+- Login issues? Clear browser cookies
+- Missing styles? Clear browser cache
+- Database errors? Verify MySQL version compatibility
+
+:::
+
+For any problems, consult the [CouchCMS Forum](https://www.couchcms.com/forum/) or check the error logs.

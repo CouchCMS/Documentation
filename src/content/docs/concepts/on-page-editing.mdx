@@ -1,0 +1,254 @@
+---
+title: On-Page Editing
+description: "Learn how to implement on-page editing functionality in Couch to allow content editing directly on the frontend"
+keywords:
+    - on-page editing
+    - inline editing
+    - popup editing
+    - content management
+    - frontend editing
+    - visual editing
+    - WYSIWYG
+    - user interface
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 30
+---
+
+import { Steps, Card } from "@astrojs/starlight/components";
+
+When a site-owner notices some content on their website that needs alteration, the current workflow in Couch (as in most other CMSes) dictates that they leave the page being currently viewed to enter the admin panel. Once in the admin panel, they need to hunt down the page in question, find the relevant editable region, make the desired changes to it and finally save the page for the changes to appear on the frontend.
+
+Apart from the obvious disconnect between the place where change is required and where the change needs to be done, there is one more issue with this approach - usually the way the text being edited appears in the admin panel is nothing like how it does on the frontend (the typography, the colors etc. seldom match). This necessitates jumping back and forth between the admin panel and the frontend to make sure the changes display as expected.
+
+An alternative to the mentioned dedicated admin panel paradigm could be where the user simply clicks right on the place that requires changes (or on a nearby link), edits the content on the page itself and saves. This is "On-Page" editing. Hardly a new concept really, and with the obvious benefits discussed so far you might well ask why most CMSes (including Couch) do not use it?
+
+The reason is that implementing on-page editing entails some very sticky technical issues that, almost always, outweigh the expected advantages. This issue has been [**discussed before on our forums**](https://www.couchcms.com/forum/viewtopic.php?p=10146#p10146) as has been [**done by others elsewhere**](https://allinthehead.com/retro/357/the-lure-of-on-page-editing).
+
+<Steps>
+
+1. On-page editing lends itself naturally to only "text" fields. Non-text editable regions (like image, repeatable-regions etc.) or regions that normally are not output on the frontend (folders, page-name etc.) will require quite a bit of bending backwards - which brings up the second point.
+
+2. Whatever method is used to implement on-page editing needs to be as unobtrusive as possible. Since the solution needs to work on any possible frontend design, it cannot assume any particular JS library to be present. Neither can it afford to wantonly inject its own libraries into the frontend as this could risk breaking the site's design.
+
+</Steps>
+
+## Couch's Solution: The Inline Addon
+
+As a possible solution to the two, seemingly, mutually exclusive requirements, please allow me to introduce the "inline" addon of Couch.
+
+This addon recognizes the fact that there are two different ways editable regions need to be handled in on-page editing and so offers two distinct ways of doing so:
+
+<Steps>
+
+1. **Inline editing**: The classic "in place" editing. Simply click on the content itself and edit it right there. Note that this method is limited to text-based content, including the following editable region types:
+    - `text`
+    - `textarea`
+    - `richtext`
+    - `nicedit`
+
+2. **Popup editing**: For non-textual regions or hidden text regions, this plugin outputs a link that can be placed nearby the contents. Clicking on the link brings up a popup window with only the relevant region(s) available for editing. This method will work for all editable regions - even the textual ones if you so desire.
+
+</Steps>
+
+## Implementation
+
+### Activating the Addon
+
+Let us take a deeper look at how the two kinds of on-page editing work. But before we do that, we need to enable the addon first. It requires the usual procedure of making an entry in the `couch/addons/kfunctions.php` file.
+
+:::note[Setup]
+If there is no `kfunctions.php` in the "addons" folder, please rename the `kfunctions.example.php` file to `kfunctions.php`.
+:::
+
+Open `kfunctions.php` in your text editor and add the following line to it:
+
+```php title="couch/addons/kfunctions.php"
+require_once( K_COUCH_DIR.'addons/inline/inline.php' );
+```
+
+With the addon enabled, we can now use the tags provided by it to implement on-page editing on any template.
+
+### Basic Setup
+
+For each template where you want to use on-page editing:
+
+<Steps>
+
+1. Add the required libraries in the `<head>` section:
+
+    ```php title="Load Edit Libraries"
+    <cms:load_edit />
+    ```
+
+2. Implement the desired editing method:
+
+   #### For Inline Editing
+
+    ```php title="Inline Edit Example"
+    <div <cms:inline_edit "field_name" /> >
+        <cms:show field_name />
+    </div>
+    ```
+
+   #### For Popup Editing
+
+    ```php title="Popup Edit Example"
+    <cms:show field_name />
+    <cms:popup_edit "field_name" />
+    ```
+
+</Steps>
+
+<Card icon="star" title="Tutorial">
+
+The best way to learn Couch's on-page editing is through our [**On-Page Editing**](../../tutorials/on-page-editing/on-page-editing/) tutorial, that shows how to edit content directly on your website's frontend.
+
+</Card>
+
+Following is a complete documentation of all the tags made available by the **inline** module.
+
+## Tags Documentation
+
+The following 4 tags are made available by this module:
+
+### 1. `load_edit`
+
+This tag needs to be placed in the `<head>` to load the JS/CSS libraries required by the other tags. This is always first step in implementing on-page editing in any template.
+
+```php title="Load Edit Tag"
+<cms:load_edit />
+```
+
+The `load_edit` tag supports the following optional parameters:
+
+#### `skip_ckeditor`
+
+The component working behind inline editing (as opposed to popup editing) is CKEditor. In case you want to use only popup editing, the inline editing can be done away with by setting this parameter to `1`.
+
+#### `no_border`
+
+By default, inline editing places a light-yellow border around the editable container element. This behaviour can be turned off by setting this parameter to `1`.
+
+#### `prompt_text`
+
+If the user tries to navigate away from a page with unsaved contents, they are asked to confirm their action. The text used for the prompt can be changed by setting it as the value of this parameter.
+
+### 2. `popup_edit`
+
+This tag is used to output an anchor element clicking on which opens up a popup window. The window shows the specified editable regions sought to be edited.
+
+```php title="Basic Popup Edit"
+<cms:popup_edit "my_text" />
+```
+
+Multiple editable regions may be specified by using the `|` (pipe) character between their names e.g.:
+
+```php title="Multiple Fields"
+<cms:popup_edit "my_text|my_richtext|k_page_folder_id" />
+```
+
+:::note[Context]
+Please note in the examples above that we have specified only the field-names. There is no mention about the template or (if the template is clonable) the page to which the field(s) belong. This is because the `popup_edit` tag picks up the information about template and page from the context in which the tag is used.
+:::
+
+So, for example, if the `popup_edit` tag is used within the page_view of a template, it'll use the current template and the page in context.
+
+If, however, you wish to edit regions belonging to a different template or page than the one where this tag is being used (e.g. editing regions belonging to `globals.php` with the link placed on `blog.php`), the right context needs to be specifically provided. This can be done by wrapping the `popup_edit` tag around by a `pages` tag block that fetches the template/page containing the editable regions being edited e.g.:
+
+```php title="Global Settings Example"
+<cms:pages masterpage="globals.php" >
+    <cms:popup_edit "site_name|meta_desc" />
+</cms:pages>
+```
+
+or:
+
+```php title="Specific Page Example"
+<cms:pages masterpage="portfolio.php" page_name="some-work" >
+    <cms:popup_edit "description" />
+</cms:pages>
+```
+
+The `popup_edit` tag supports the following parameters:
+
+#### `fields`
+
+Names of the editable regions to be displayed in the popup for editing. Use the `|` (pipe) character to separate multiple names.
+
+#### `link_text`
+
+The default text shown for the link is "Edit". This can be changed by specifying a custom text as value of this parameter.
+
+#### `prompt_text`
+
+Upon saving changes within the popup window, the parent page is always refreshed for the changes to be seen. If it happens that there is any inline editable region on the page (created by the `inline_edit` tag below) with modified but unsaved changes, this refresh will cause the changes to be lost.
+
+To prevent this from happening, in such cases, Couch prompts you to first save the inline modifications. The text used for the prompt may be changed by this parameter.
+
+#### `class`
+
+The anchor element of the link always has a class `k_inline`. If required, you can set any additional classes using this parameter.
+
+### 3. `inline_edit`
+
+This tag is used to convert any block-level HTML element into a true inline editor.
+
+For example, suppose a template has a richtext editable region named "my_description" and this is how it is being output on the frontend (without inline-editing being implemented yet):
+
+```php title="Original Output"
+<div id="desc" >
+    <cms:show my_description />
+</div>
+```
+
+This is how we can convert the container `div` element into an inline editor that saves back its contents into the "my_description" field:
+
+```php title="Adding Inline Edit"
+<div id="desc" <cms:inline_edit "my_description" /> >
+    <cms:show my_description />
+</div>
+```
+
+:::note[HTML Element]
+Please notice that we need to add the `inline_edit` tag as if it were an unnamed parameter of the element being converted.
+:::
+
+The `inline_edit` tag supports the following parameters:
+
+#### `fields`
+
+Name of the editable region into which the inline contents will be saved. Only a single region can be specified.
+
+#### `toolbar`
+
+The default set of buttons shown in the toolbar can be modified by setting this parameter. Please see the "toolbar" parameter of [**Editable Region Type: richtext**](../../tags-reference/editable/richtext/) for details as the two work exactly the same.
+
+#### `custom_toolbar`
+
+Please see the `custom_toolbar` parameter of [**Editable Region Type: richtext**](../../tags-reference/editable/richtext/).
+
+#### `custom_styles`
+
+Please see the `custom_styles` parameter of [**Editable Region Type: richtext**](../../tags-reference/editable/richtext/).
+
+### 4. `no_edit`
+
+This tag disables any of the three above-mentioned tags that come after it in a template.
+
+## Best Practices
+
+**Use inline editing for:**
+
+- Headings and titles
+- Paragraphs
+- Short text blocks
+
+**Use popup editing for:**
+
+- Images
+- Files
+- Complex form fields
+- Multiple fields at once

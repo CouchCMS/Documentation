@@ -1,0 +1,206 @@
+---
+title: Installing the Application
+description: "Learn how to install and set up the advanced tutorial application in CouchCMS, including database configuration and initial setup steps."
+keywords:
+    - installation
+    - setup
+    - advanced tutorial
+    - CouchCMS
+    - database configuration
+    - template registration
+    - initial setup
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-04-05
+sidebar:
+    order: 2
+    badge:
+        text: Updated
+        variant: tip
+slug: tutorials/advanced-tutorial/installing-the-application
+---
+
+import { Steps, FileTree } from '@astrojs/starlight/components';
+
+If not already downloaded, please get the [**Notejam-Couchified.zip**](https://www.couchcms.com/docs/code/advanced-tutorial/site.zip) now.
+
+It is a zip file, extracting which will yield a folder named `site`. Place the contents of the folder (i.e. excluding the `site` folder itself) into your webserver's root.
+
+<FileTree>
+- css/
+- snippets/
+- users/
+- index.php
+- notes.php
+- pads.php
+</FileTree>
+
+:::note[File Structure]
+Important files are our templates (the `users` folder contains templates concerned with user accounts, login, registration etc.) and the `snippets` folder that contains much of our application logic (we'll see all that in detail soon).
+
+Notice that there is no `couch` folder in there yet.
+:::
+
+Please download the [**latest version of Couch**](https://www.couchcms.com/products/) and place the `couch` folder within the site's root.
+
+<FileTree>
+- **couch/**
+- css/
+- snippets/
+- users/
+- index.php
+- notes.php
+- pads.php
+</FileTree>
+
+<Steps>
+
+1. Rename `couch/config.example.php` to `couch/config.php` and add to it the required database information. Important to this tutorial, edit the following settings:
+
+    ```php title="couch/config.php"
+    // 12.
+    // Upload folder if not using the default upload folder within 'couch'.
+    // Should be relative to your site (don't forget to set write permissions on it).
+    // No leading or trailing slashes please.
+    -//define('K_UPLOAD_DIR', 'myuploads');
+    +define('K_UPLOAD_DIR', 'myuploads');
+
+    // 12b.
+    // Folder containing the embedded snippets if not using the default 'snippets' folder within 'couch'.
+    // Should be relative to your site. No leading or trailing slashes please.
+    -//define('K_SNIPPETS_DIR', 'mysnippets');
+    +define('K_SNIPPETS_DIR', 'mysnippets');
+    ```
+
+2. With the changes made to the config file, access `https://www.yoursite.com/couch` to complete Couch's installation.
+
+3. Once Couch is installed, let us activate the addons that will be used by our application. Rename `couch/addons/kfunctions.example.php` to `couch/addons/kfunctions.php` and then uncomment (i.e. remove the leading double-slashes `//`) from the following lines within the file:
+
+    ```diff lang="php" title="couch/addons/kfunctions.php"
+    -//require_once( K_COUCH_DIR.'addons/extended/extended-users.php' );
+    -//require_once( K_COUCH_DIR.'addons/routes/routes.php' );
+    +require_once( K_COUCH_DIR.'addons/extended/extended-users.php' );
+    +require_once( K_COUCH_DIR.'addons/routes/routes.php' );
+    ```
+
+</Steps>
+
+:::tip[Configuration Note]
+As shown above, we are changing the default locations of `uploads` and `snippets` folder from within the `couch` folder to directly beneath the site's root. The `snippets` folder is already present in the site's root. The `uploads` folder will get created automatically when we upload any asset through Couch.
+:::
+
+We can now move on to registering our templates.
+
+## Template Registration
+
+As mentioned before, the Notejam application comprises of three distinct 'entities':
+- **users**
+- **notes**
+- **pads**
+
+As is the norm with Couch, we use clonable templates to represent each of these entities. The `notes.php` and `pads.php` templates can be found in the site's root while the users template can be found within the `users` folders as `index.php`.
+
+We'll begin with registering the users template (users/index.php) first as the other two templates will refer to this in their relation fields.
+
+### Users Template
+
+This part of our application has been built using the [**Extended Users**](../../../concepts/extended-users/) module.
+
+:::note[Template Files]
+The `users` folder contains all the templates that the `extended-users` module requires to implement the various staple functionalities of a user registration system e.g. login, logout, reset-password etc.
+
+For now, we'll concern ourselves only with the `users/index.php` template as this is the one the cloned pages of which will represent our user accounts. The rest of the templates can be registered and used after our application is complete as the default functions that ship with Couch (e.g. login, logout etc.) will suffice during the development period.
+:::
+
+The process of setting up the user accounts template is described in detail in the docs [**Extended Users**](../../../concepts/extended-users/) but I'll repeat the steps here for the sake of completeness:
+
+<Steps>
+
+1. Register `users/index.php` by visiting `https://www.yoursite.com/users/index.php` as super-admin.
+
+2. Coming back to the admin-panel, rename its default page to **"DO NOT DELETE"** and unpublish it.
+
+    ![Default page renaming](./img/do-not.png)
+    > Renaming the default page to "DO NOT DELETE"
+
+    ![Unpublishing the page](./img/do-not2.png)
+    > Unpublishing the default page
+
+    :::caution[Important Practice]
+    You might remember that if the default page is deleted, Couch recreates it automatically and seeing a strangely named page suddenly appear in listings could be disconcerting to the site-owner:
+
+    ```txt title="Default Page Title"
+    Default page for users/index.php \* PLEASE CHANGE THIS TITLE \*
+    ```
+
+    By unpublishing and clearly stating not to delete this page, we avoid this scenario. This is a good practice for all clonable templates and we'll follow the same for the other templates too.
+    :::
+
+3. Rename `couch/addons/extended/config.example.php` to `couch/addons/extended/config.php` and add `'users/index.php'` to the following setting:
+
+    ```php title="couch/addons/extended/config.php" ins="'users/index.php'"
+    // Names of the required templates
+    $t['users_tpl'] = 'users/index.php';
+    ```
+
+    This will make the module use cloned pages of this template as user accounts.
+
+4. Visit `https://www.yoursite.com/users/index.php` as super-admin once again. This action will trigger the `extended-users` module to add all the necessary editable regions to our template.
+
+5. Check that everything works as expected by coming back to the admin-panel and creating a cloned page from the template. This should cause an equivalent user account to be created automatically. Open the super-admin account for editing and simply hit 'save' without changing anything. This should cause an equivalent cloned-page to be created in the users template.
+
+</Steps>
+
+Our users template is now completely configured and we can forget it for now and turn our attention to the other 
+two templates.
+
+### Notes and Pads Templates
+
+Fortunately, registering these templates is a much simpler affair. Visit the folowwing pages as super-admin
+
+<Steps>
+
+1. `https://www.yoursite.com/pads.php`
+2. `https://www.yoursite.com/notes.php`
+
+</Steps>
+
+:::note[Registration Order]
+The sequence is important as a relation field within `notes.php` references `pads.php`.
+:::
+
+Coming back to the admin-panel, you should see the two templates appear in the sidebar along with the user template we registered before them.
+
+## Adding Test Data
+
+Before we move onto the front-end to work directly with the application, create some 'seeding' data for the application:
+
+Before we move onto the front-end to work directly with the application, create some 'seeding' data for the 
+application. To do so, use the admin-panel to create a couple of pads (i.e. cloned-pages of `pads.php`). Associate 
+them with 'admin' for now. Now create some notes and associate them with the pads we created above and user 
+'admin'.
+
+<Steps>
+
+1. Create a couple of pads (i.e. cloned-pages of `pads.php`). Associate them with 'admin' for now.
+2. Create some notes and associate them with the pads we created above and user 'admin'.
+3. Unpublish the default pages of both the templates, as we did with the users template above.
+
+</Steps>
+
+:::tip[Testing the Application]
+The application is now ready to be tested.
+
+- Visit `https://www.yoursite.com/notes.php` and you should see the notes and pads we created above.
+- Try creating some new pads and notes and editing/deleting them.
+- Create a new user (for now from the admin-panel).
+- Logoff as admin and login as the new user. The pads/notes belonging to the admin will not be shown to the new user.
+- Try creating some notes and pads for this user.
+:::
+
+With the working application at hand, time to finally explore the code that created it.
+
+---
+
+[Next Chapter: **Code Walkthrough**](../code-walkthrough/)

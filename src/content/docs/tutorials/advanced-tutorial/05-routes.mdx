@@ -1,0 +1,195 @@
+---
+title: Routes
+description: "Learn how to implement custom URLs and routing in the Notejam application using CouchCMS's routing module, including list, create, edit, and delete operations."
+keywords:
+    - custom routes
+    - URL routing
+    - route filters
+    - route validators
+    - CouchCMS
+    - advanced tutorial
+    - URL patterns
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+sidebar:
+    order: 5
+slug: tutorials/advanced-tutorial/routes
+---
+
+:::danger[Important]
+The discussion in this section assumes you have already gone through the 'Custom routes' tutorial - see [**Custom Routes**](../../../concepts/custom-routes/).
+:::
+
+The `notes.php` template makes use of the 'routes' module to implement custom URLs. You'll notice that it does this by defining the template as 'routable':
+
+```php
+<cms:template title='Notes' clonable='1'  routable='1'>
+```
+
+and then asking Couch not to apply the default URLs to it:
+
+```php
+<?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
+```
+
+If you play around with Notejam, you'll see the various URLs that the 'notes' part of it responds to when listing, editing, creating or deleting the notes.
+
+Below are all those URLs and the corresponding routes defining them in the template.
+
+### 1. List View
+
+Shows a list of all the notes related to the logged-in user.
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/
+http://www.yoursite.com/notes.php (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route name='list_view' path='' filters='authenticated'/>
+```
+
+### 2. Page View
+
+Shows the content of the note specified by the id (`16` in the sample URLs below).
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/16
+http://www.yoursite.com/notes.php?q=16 (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route
+    name='page_view'
+    path='{:id}'
+    filters='authenticated | note_exists | owns_note'
+    >
+
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+### 3. Create View
+
+Shows a form that can be used to create a new note.
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/create
+http://www.yoursite.com/notes.php?q=create (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route name='create_view' path='create' filters='authenticated' />
+```
+
+### 4. Create With Pad View
+
+This is identical to 'create_view' above except that it automatically adds the new note to the pad specified by the id (`12` in the sample URLs below). (Click on a pad in side bar to see the notes within it. Now press the 'New note' button to invoke this URL).
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/12/create
+http://www.yoursite.com/notes.php?q=12/create (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route
+    name='create_with_pad_view'
+    path='{:id}/create'
+    filters='authenticated | pad_exists | owns_pad'
+    >
+
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+### 5. Edit View
+
+Shows a form that can be used to edit the note specified by the id (`16` in the sample URLs below).
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/16/edit
+http://www.yoursite.com/notes.php?q=16/edit (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route
+    name='edit_view'
+    path='{:id}/edit'
+    filters='authenticated | note_exists | owns_note'
+    >
+
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+### 6. Delete View
+
+Shows a form that can be used to seek confirmation and subsequently delete the note specified by the id (`16` in the sample URLs below).
+
+**Sample URLs:**
+
+```txt
+http://www.yoursite.com/notes/16/delete
+http://www.yoursite.com/notes.php?q=16/delete (without prettyURLs)
+```
+
+**Route definition:**
+
+```php
+<cms:route
+    name='delete_view'
+    path='{:id}/delete'
+    filters='authenticated | note_exists | owns_note'
+    >
+
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+The routes above reflect the entire range of operations that are supported by notes.
+
+Please notice in the route definitions above how we use `cms:route_validators` to ensure only a valid ID is provided as URL parameter:
+
+```php
+<cms:route_validators
+    id='non_zero_integer'
+/>
+```
+
+Notice also how the 'filters' used in the routes enforce that only an authenticated user can access the notes section and that they can see only notes that belong to them.
+
+I think we should take a closer look at how the filters have been implemented.
+
+---
+
+**Next: [Filters →](../filters/)**

@@ -1,0 +1,182 @@
+---
+title: Setting a Tag's Parameters
+description: "Learn how to set parameters for CouchCMS tags using different methods"
+keywords: 
+    - parameters
+    - tags
+    - variables
+    - nested tags
+    - tag parameters
+    - parameter values
+    - parameter types
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 4
+---
+
+There are three ways a tag's parameter may be set:
+
+## 1. Using an Explicit Value
+
+For example:
+
+```php title="Explicit Value Example"
+<cms:show "Hello World" />
+```
+
+or
+
+```php title="Numeric Value Example"
+<cms:repeat count='4'>
+    This line gets repeated
+</cms:repeat>
+```
+
+In the snippets above, "Hello World" and '4' are literal values being used as parameters. Please notice that **an explicit value is ALWAYS enclosed within quotes (either single or double)**.
+
+## 2. Using a Variable
+
+For example:
+
+```php title="Variable Parameter Example"
+<cms:show k_template_name />
+```
+
+or
+
+```php title="Variable with Set Example"
+<cms:set my_count='4' />
+<cms:repeat count=my_count>
+    This line gets repeated
+</cms:repeat>
+```
+
+In the snippets above, `k_template_name` and `my_count` are variables that are used as parameters. Please notice that **any value that is NOT enclosed by quotes is considered by Couch to be a variable**.
+
+## 3. Using the Output of Another Tag
+
+We know that while rendering a template, every tag gets replaced by its output (which might be blank).
+This feature can be utilized to set a tag's parameter by using the output of another tag.
+
+```php title="Nested Tag Example"
+<cms:set message="<cms:show 'Hello World' />" />
+<cms:show message />
+```
+
+In the snippet above, message will be set to 'Hello World' which was the output of the nested [**show**](../../tags-reference/show/) tag. Please notice that **the nested tag is ALWAYS enclosed within DOUBLE quotes**.
+
+:::danger[Quote Usage Rules]
+If single quotes are used, Couch considers the parameter's value to be an explicit value. If double quotes are used, Couch considers the value to be either an explicit value OR the output from a nested tag. If no quotes are used, Couch considers the value to be a variable.
+
+This is a very important point because it is very easy to forget the quotes while setting a parameter, for example:
+
+```php title="Missing Quotes - Error"
+<cms:repeat count=4></cms:repeat>
+```
+
+In the snippet above the value being passed to *count* is not enclosed within quotes and thus Couch, instead of considering it to be an explicit value '4', will consider it to be a variable named 4 and try and use the value of a variable named '4' as the parameter. Incidentally, it is illegal to begin a variable's name with a number and so Couch will throw an error. But had this value been a text string e.g.
+
+```php title="Missing Quotes - Silent Failure"
+<cms:show var=Hello />
+```
+
+Couch would have used the value of a non-existent variable *Hello* as parameter for [**show**](../../tags-reference/show/), which would then have printed nothing.
+:::
+
+## Nesting Parameters
+
+There is no limit to how deeply tags may be thus nested. That is to say that a tag being used as a parameter of another tag can itself have another tag as its own parameter and so on. Thus:
+
+```php title="Deep Nesting Example"
+<cms:set message="<cms:show "<cms:show 'hello' />" /> world" />
+```
+
+Don't be confused by seeing a Couch tag being used as the parameter for another Couch tag. Begin from the innermost nested tag and try mentally replacing it with its output:
+
+```php title="Nesting Resolution Steps"
+<cms:set message="<cms:show "<cms:show 'hello' />" /> world" />
+<cms:set message="<cms:show "hello" /> world" />
+<cms:set message="hello world" />
+```
+
+and everything should make sense.
+
+The example given above is rather extreme and futile but using the output of one tag as input for another is a very powerful mechanism and we'll be using it very often to solve some otherwise very sticky problems.
+
+:::caution[Advanced Usage]
+Skip the following section if you are not keen to delve any deeper into nested tags.
+:::
+
+As a more practical example consider the following very useful snippet:
+
+```php title="Practical Nesting Example"
+<cms:if "<cms:exists "<cms:show k_page_name/>.inc" />" >
+    <cms:embed "<cms:show k_page_name/>.inc" />
+</cms:if>
+```
+
+Don't worry, we'll replace the tags by their outputs and everything will start making perfect sense. The above snippet uses three new tags:
+- [**if**](../../tags-reference/if/)
+- [**exists**](../../tags-reference/exists/)  
+- [**embed**](../../tags-reference/embed/)
+You can find more about them in the documentation but for now a brief word about these tags will do.
+
+If the parameter passed to [**if**](../../tags-reference/if/) tag is `1`, it outputs anything contained between its 'start_tag' and 'end_tag' else it does not.
+[**exists**](../../tags-reference/exists/) expects the parameter passed to it to be a file's (or folder's) name. It tests if the given file/folder is actually present and if it is, it outputs `1`, else it outputs `0`.
+Finally, the [**embed**](../../tags-reference/embed/) tag expects the parameter passed to it to be a file's name. It then simply reads the file and returns back its contents as its own output.
+
+With this background, let us try replacing the tags with their respective outputs. Always begin from the innermost tag, which here happens to be the [**show**](../../tags-reference/show/) tag. We are already familiar with the [**show**](../../tags-reference/show/) tag.
+
+```php title="Step 1: Inner Show Tag"
+<cms:show k_page_name/>
+```
+
+The parameter being passed to it has no quotes around it so it must be a variable. The `k_page_name` variable is set by Couch everytime a page (see [**pages**](../cloned-pages/)) is executed to hold the page's name. Thus if the page being currently executed is *about-us*, the value of `k_page_name` will be *about_us* while if the page being executed is *contact-us*, `k_page_name` will be set to *contact-us*.
+
+Assuming that the current page is *about-us*, substituting [**show**](../../tags-reference/show/) tag with its output will result in:
+
+```php title="Step 2: After First Resolution"
+<cms:if "<cms:exists "about-us.inc" />" >
+    <cms:embed "<cms:show k_page_name/>.inc" />
+</cms:if>
+```
+
+Assume that file named `about-us.inc` does exist. In this case the output of [**exists**](../../tags-reference/exists/) tag will be `1`. Substituting exists with its output results in:
+
+```php title="Step 3: After Exists Check"
+<cms:if "1" >
+    <cms:embed "<cms:show k_page_name/>.inc" />
+</cms:if>
+```
+
+Since the parameter being passed to `if` is `1`, it will go ahead and execute the contents within it and return the output. Resolve the contents of [**if**](../../tags-reference/if/), using our substitution method:
+
+```php title="Step 4: Inside If Block"
+<cms:if "1" >
+    <cms:embed "about-us.inc" />
+</cms:if>
+```
+
+Suppose the sole content of `about-us.inc` is:
+
+```html title="about-us.inc"
+<h1>Hello I am About Us</h1>
+```
+
+This will be the output of the [**embed**](../../tags-reference/embed/) tag, so we end up being:
+
+```php title="Step 5: After Embed"
+<cms:if "1" >
+    <h1>Hello I am About Us</h1>
+</cms:if>
+```
+
+and finally the output of `if`:
+
+```html title="Final Output"
+<h1>Hello I am About Us</h1>
+```
+
+With the information we have had so far, we are ready to move on to the [**Editable Regions**](../editable-regions/).

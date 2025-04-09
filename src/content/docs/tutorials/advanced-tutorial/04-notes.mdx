@@ -1,0 +1,62 @@
+---
+title: Notes
+description: "Learn how to implement relationships between notes, users, and pads in CouchCMS using editable regions and relation fields."
+keywords:
+    - notes template
+    - relationships
+    - editable regions
+    - relation fields
+    - CouchCMS
+    - advanced tutorial
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+sidebar:
+    order: 4
+slug: tutorials/advanced-tutorial/notes
+---
+
+The template implementing notes is `notes.php`. Please open it in your favorite text editor. You'll notice the following within it:
+
+### Editable Regions
+
+This template defines only a single editable region of type 'textarea' for inputting content.
+
+What is important is how it defines the template's relationship with the 'pads' and 'users' templates:
+
+```php
+<cms:editable
+    name='note_owner'
+    type='relation'
+    has='one'
+    masterpage='users/index.php'
+    label='Owner'
+    required='1'
+    no_guix='1'
+/>
+
+<cms:editable
+    name='note_pad'
+    type='relation'
+    has='one'
+    masterpage='pads.php'
+    label='Pad'
+    required='1'
+    no_guix='1'
+/>
+```
+
+As explained in the docs on [**relations**](../../../concepts/relationships/), the two regions above serve to relate the notes template in a 'Many-to-one' manner with both the users as well as the pads template.
+
+You'll recall that we don't have to explicitly relate the users and pads template back to notes as, in Couch, we need to define only one end of the relationship and the other end is implied without stating.
+
+Please notice the `no_guix='1'` in the definitions. There is actually no parameter named `no_guix`. It should really have been `no_gui='1'`. I've added the `x` so that Couch now does not recognize it and hence ignore it.
+
+This parameter hides the GUI of the 'relation' editable (a dropdown in our case) from the admin-panel. This is useful when the relations are meant to be set programmatically from the front-end (as opposed to done manually from the admin-panel), as will be done by our application. We'll remove the `x` when the application is complete. For now, to help in debugging, we'll keep the dropdown visible.
+
+Following the definitions of the editable region, you'll find the definitions of the routes of this template.
+
+---
+
+**Next: [Routes →](../routes/)**

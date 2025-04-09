@@ -1,0 +1,240 @@
+---
+title: Views
+description: "Understanding the different views in CouchCMS - List View, Page View, Folder View, and Archive View"
+keywords:
+    - views
+    - list view
+    - page view
+    - folder view
+    - archive view
+    - templates
+    - view types
+    - content display
+    - url patterns
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 7
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Views in Couch determine how your content is displayed based on the URL and context. Understanding these different views is crucial for creating dynamic content presentations.
+
+## List View and Page View
+
+As discussed in the [**Cloned Pages**](../cloned-pages/) section, a clonable template acquires a 'split personality'.
+To recap -
+Suppose we have a template named `blog.php`.
+
+:::note[Non-Clonable Templates]
+The simplest case is when this template has not yet been set as clonable (i.e. having similar pages created out of it). No views are associated with this page. The only possible way to execute this page is:
+
+```txt title="Basic Template URL"
+https://www.yoursite.com/blog.php
+```
+:::
+
+However, once `blog.php` is set as being clonable there can be multiple pages that have been cloned out of this template. Obviously, we now have at least two scenarios `blog.php` may be executed in:
+
+<Steps>
+
+1. `blog.php` itself is executed:
+
+    ```txt title="Direct Template Access"
+    https://www.mysite.com/blog.php
+    ```
+
+    or with pretty-urls activated:
+
+    ```txt title="Pretty URL Format"
+    https://www.mysite.com/blog/
+    ```
+
+2. A page created out of `blog.php` is executed:
+
+    ```txt title="Page Access with ID"
+    https://www.mysite.com/blog.php?p=12
+    ```
+
+    or with pretty-urls activated:
+
+    ```txt title="Pretty URL with Page Name"
+    https://www.mysite.com/blog/some_page_name.html
+    ```
+
+</Steps>
+
+In the first scenario, `blog.php` is said to be executing in **list view** while in the second case it is said to be executing in **page view**.
+
+:::note[View Behavior]
+The **page view** is expected to show details relevant to the page being executed and hence makes available the pertinent variables.
+The **list view** is expected to act like a listing page (e.g. list all the pages belonging to the blog etc.) and has a different set of variables available for this purpose.
+
+When we say 'is expected to', that is exactly what we mean. Couch simply sets certain variables to make it known to your script which view it is executing in. It is you who decides what to display in that view. It could be some specific page, several listings of other templates or just about anything you wish (see [**Listing Pages**](../listing-pages/)).
+:::
+
+## Special Views
+
+Couch further supports two special URLs that are meant to list pages belonging to a particular folder or to a particular time period. Thus the *list view* can be further categorized into two final views:
+
+### Folder View
+
+Used for listing pages belonging to a particular folder:
+
+```txt title="Folder View with ID"
+https://www.mysite.com/blog.php?f=3
+```
+
+or with pretty-urls activated:
+
+```txt title="Pretty URL Folder View"
+https://www.mysite.com/blog/some_subfolder/
+```
+
+### Archive View
+
+Used for listing pages belonging to a particular time period:
+
+```txt title="Archive View with Date"
+https://www.mysite.com/blog.php?d=201005
+```
+
+or with pretty-urls activated:
+
+```txt title="Pretty URL Archive View"
+https://www.mysite.com/blog/2010/05/
+```
+
+:::tip[URL Generation]
+The 'Folder view' and 'Archive view' URLs shown can be automatically generated using the [**folders**](../../tags-reference/folders/) and [**archives**](../../tags-reference/archives/) tags.
+:::
+
+Once again, while accessing pages through these URLs, it is expected that you'll list pages belonging to the particular folder or the archive period. Couch sets variables that will help you in doing so, but you can choose to ignore everything and show whatever you desire.
+
+## View Recognition Variables
+
+The following variables are set by Couch for your script to know the view it is executing in:
+
+### Page View
+
+```php title="Page View Variables"
+$k_is_page = '1';
+```
+
+### List View
+
+```php title="List View Variables"
+$k_is_list = '1';
+$k_is_home = '1';
+```
+
+### Folder View
+
+```php title="Folder View Variables"
+$k_is_list = '1';
+$k_is_folder = '1';
+```
+
+### Archive View
+
+```php title="Archive View Variables"
+$k_is_list = '1';
+$k_is_archive = '1';
+$k_is_day = '1';    # if daily archive
+$k_is_month = '1';  # if monthly archive
+$k_is_year = '1';   # if yearly archive
+```
+
+:::note[Home View]
+Notice how the variable `$k_is_home` gets set only when `blog.php` gets executed in a simple *List view* that is neither a *Folder view* nor an *Archive view*. We can call this view - the **Home view**.
+:::
+
+## Example URLs and Their Views
+
+Taking the example of `blog.php`, notice how the views and variables change according to the URL used to access it:
+
+### Home View
+
+```txt title="Home View URL"
+https://www.mysite.com/blog/
+```
+
+```php title="Home View Variables"
+$k_is_list = 1;
+$k_is_home = 1;
+```
+
+### Folder View
+
+```txt title="Folder View URL"
+https://www.mysite.com/blog/some_subfolder/
+```
+
+```php title="Folder View Variables"
+$k_is_list = 1;
+$k_is_folder = 1;
+```
+
+### Archive View
+
+```txt title="Archive View URL"
+https://www.mysite.com/blog/2010/05/
+```
+
+```php title="Archive View Variables"
+$k_is_list = 1;
+$k_is_archive = 1;
+```
+
+### Page View
+
+```txt title="Page View URL"
+https://www.mysite.com/blog/some_page_name.html
+```
+
+```php title="Page View Variables"
+$k_is_page = 1;
+```
+
+## Implementing Views
+
+For clonable templates, you'll have to recognize which view the template is being executed in (by testing the variables given above) and then display the relevant data.
+It could be something like the following:
+
+```php title="Complete View Implementation"
+<cms:if k_is_page >
+    <!-- Page view - display current page here -->
+<cms:else />
+    <!-- List view -->
+    <cms:if k_is_folder >
+        <!-- Folder view - display a list of pages belonging to this folder here -->
+    </cms:if>
+
+    <cms:if k_is_archive >
+        <!-- Archive view - display a list of pages belonging to this time period here -->
+    </cms:if>
+
+    <cms:if k_is_home >
+        <!-- Neither a folder view nor archive view - display a list of ALL pages cloned from this template here -->
+    </cms:if>
+</cms:if>
+```
+
+Or a simpler version:
+
+```php title="Simple View Implementation"
+<cms:if k_is_list >
+    <!-- List view - display list of pages here -->
+<cms:else />
+    <!-- Page view - display current page here -->
+</cms:if>
+```
+
+## Related Topics
+
+Please see:
+
+- [**Variables Available in Views**](../variables-in-views) for a comprehensive list of variables that become available during the different views
+- [**Listing Pages**](../listing-pages) for how to list pages in concordance to the views

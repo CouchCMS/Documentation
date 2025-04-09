@@ -1,0 +1,49 @@
+---
+title: dropdownfolders
+category: tag
+description: "The dropdownfolders tag creates an HTML dropdown list of folders belonging to a template"
+keywords: 
+  - dropdownfolders
+  - folders
+  - navigation
+  - templates
+  - hierarchy
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `dropdownfolders` tag creates an HTML dropdown list of the folders belonging to a template.
+
+```php title="Basic Dropdown Example"
+<cms:dropdownfolders masterpage="news.php" />
+```
+
+## Parameters
+
+Supports the same parameters as the `folders` tag, plus one additional parameter - `show_count`.
+
+- `masterpage`: Template to list folders from
+- `root`: Root folder to start listing from
+- `childof`: Show only children of specified folder
+- `hierarchical`: Show folders in hierarchical order
+- `depth`: Maximum depth of folders to show
+- `orderby`: Field to sort folders by
+- `order`: Sort order (`asc`/`desc`)
+- `exclude`: Folders to exclude
+- `extended_info`: Include additional folder information
+- `show_count`: Show number of items in each folder
+
+Please see the [**folders**](../folders) documentation for an explanation of these parameters.
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [**folder**](../folder)
+- [**folders**](../folders)
+- [**listfolders**](../listfolders)
+- [**parentfolders**](../parentfolders)
+- [**is_ancestor**](../is_ancestor)
+- [**breadcrumbs**](../breadcrumbs)
