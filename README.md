@@ -2,7 +2,9 @@
 
 This repository contains the official documentation for CouchCMS, a user-friendly and flexible Content Management System.
 
-## 🚀 Project Structure
+The documentation is built with [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/), providing a modern, fast, and user-friendly documentation experience.
+
+## �� Project Structure
 
 The documentation is built with Astro + Starlight and has the following structure:
 
@@ -49,6 +51,12 @@ All commands are run from the root of the project:
 
 ## 🔗 Useful Links
 
+### Project Links
 - [CouchCMS Website](https://www.couchcms.com)
 - [CouchCMS Forum](https://www.couchcms.com/forum/)
 - [CouchCMS GitHub](https://github.com/CouchCMS/Couch)
+
+### Technology
+- [Astro Documentation](https://docs.astro.build)
+- [Starlight Documentation](https://starlight.astro.build)
+- [Starlight on GitHub](https://github.com/withastro/starlight)
