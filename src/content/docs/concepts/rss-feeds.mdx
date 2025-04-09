@@ -1,0 +1,170 @@
+---
+title: RSS Feeds
+description: "Learn how to create and configure RSS feeds in CouchCMS for content syndication"
+keywords:
+    - RSS
+    - feeds
+    - syndication
+    - XML
+    - content distribution
+    - feed generation
+    - news feeds
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 21
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+Let us first see how a RSS feed is created manually (i.e. without using Couch or any other CMS) and then we'll see how to automate the task by retrofitting Couch into it.
+
+For our example, we'll suppose you publish news items on your website and wish to offer these news items as a RSS feed. Place the following snippet within a plain text file and name it, say, `rss.xml` (make sure there is no space between the beginning of the file and the `<?xml version="1.0"?>` statement).
+
+```xml title="Basic RSS Feed Structure"
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>My Explosive News</title>
+        <link>http://www.mysite.com</link>
+        <description>News and articles written by me</description>
+        <language>en-us</language>
+        <pubDate>Fri, 30 Jul 2010 05:49:44 GMT</pubDate>
+    </channel>
+</rss>
+```
+
+In the snippet above, we are declaring one RSS channel that will carry your news items. You'll need to modify the title, link and description tags to match your channel.
+
+Now add the individual news items to this channel:
+
+```xml title="RSS Feed with News Items"
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>My Explosive News</title>
+        <link>http://www.mysite.com</link>
+        <description>News and articles written by me</description>
+        <language>en-us</language>
+        <pubDate>10 Jul 2007</pubDate>
+
+        <item>
+            <title>My Second News</title>
+            <link>http://www.mysite.com/breaking/my-second-news.html</link>
+            <description>This is my second news item.</description>
+            <pubDate>10 Jul 2007</pubDate>
+        </item>
+
+        <item>
+            <title>My First News</title>
+            <link>http://www.mysite.com/my-first-news.html</link>
+            <description>This is my first news item.</description>
+            <pubDate>10 Jul 2007</pubDate>
+        </item>
+    </channel>
+</rss>
+```
+
+We have added two recent news items that were published. Try visiting this `rss.xml` page in your browser or a news aggregator and the feed should come up without a hitch.
+
+RSS (Really Simple Syndication) seems to be really simple after all. However, manually adding every new news item published to the feed will be a painful chore. We'll now retrofit Couch into this feed to publish news items automatically.
+
+We'll suppose that the news items are cloned pages of a `news.php` template in Couch. Rename the `rss.xml` file to `rss.php` and add the usual PHP code that hooks Couch into this template.
+
+This conversion of the xml file to a php file is essential for Couch but it will raise two problems that we'll need to solve before going ahead:
+
+<Steps>
+
+1. The `<?` and `?>` in the line `<?xml version="1.0"?>` will cause PHP to throw a parsing error because those characters mislead PHP into believing that the line is a php statement, which it is not.
+
+2. The web server always sends back to the browser the mime-type of any file that it is serving to fulfill the browser's request. The mime-type of an XML file should be `text/xml` but the new `.php` extension causes the web server to send back the default `text/html` mime-type, which will be rejected by the browser.
+
+</Steps>
+
+The first problem can be rectified by breaking up the XML statement in a way that it does not confuse PHP.
+The following snippet using Couch's [**concat**](../../tags-reference/concat/) tag will output exactly the same statement but because the `<?` characters are now split up, PHP will have no problems:
+
+```php title="XML Declaration Using Concat"
+<cms:concat '<' '?xml version="1.0" encoding="' k_site_charset '"?' '>' />
+```
+
+:::note[Character Set]
+The `k_site_charset` variable contains the value set in `config.php` for the character set used by your web-site.
+:::
+
+The second problem can be rectified by using Couch's [**content_type**](../../tags-reference/content_type/) tag. This tag instructs the web server to output the desired mime-type. We'll use it to output `text/xml`.
+
+The modified snippet should now look like this:
+
+```php title="RSS Feed Template with Couch"
+<?php require_once( 'couch/cms.php' ); ?>
+<cms:content_type 'text/xml' /><cms:concat '<' '?xml version="1.0" encoding="' k_site_charset '"?' '>' />
+<rss version="2.0">
+  <channel>
+    <title>My Explosive News</title>
+    <link>http://www.mysite.com</link>
+    <description>News and articles written by me</description>
+    <language>en-us</language>
+    <pubDate>10 Jul 2007</pubDate>
+
+    <item>
+        <title>My Second News</title>
+        <link>http://www.mysite.com/breaking/my-second-news.html</link>
+        <description>This is my second news item.</description>
+        <pubDate>10 Jul 2007</pubDate>
+    </item>
+
+    <item>
+        <title>My First News</title>
+        <link>http://www.mysite.com/my-first-news.html</link>
+        <description>This is my first news item.</description>
+        <pubDate>10 Jul 2007</pubDate>
+    </item>
+  </channel>
+</rss>
+<?php COUCH::invoke(); ?>
+```
+
+:::danger[XML Declaration]
+Do not split the [**content_type**](../../tags-reference/content_type/) statement and the [**concat**](../../tags-reference/concat/) statement into separate lines. This will cause an empty line to be output before the xml declaration and will invalidate the feed.
+:::
+
+We can now fetch the news items from the `news.php` template by using [**pages**](../../tags-reference/pages/) tag and add it to our feed to make it dynamic:
+
+```php title="Dynamic RSS Feed Template"
+<?php require_once( 'couch/cms.php' ); ?>
+<cms:content_type 'text/xml' /><cms:concat '<' '?xml version="1.0" encoding="' k_site_charset '"?' '>' />
+<rss version="2.0">
+  <channel>
+    <title>My News Channel</title>
+    <link><cms:show k_site_link /></link>
+    <description>Description of this channel.</description>
+    <language>en-us</language>
+    <pubDate><cms:date format='D, d M Y H:i:s' gmt='1'/> GMT</pubDate>
+    <generator>CouchCMS</generator>
+
+    <cms:pages masterpage='property.php' limit="10">
+    <item>
+        <title><cms:show k_page_title /></title>
+        <link><cms:show k_page_link /></link>
+        <description>
+            <cms:html_encode>
+                <cms:excerptHTML><cms:show my_news_text /></cms:excerptHTML>
+            </cms:html_encode>
+        </description>
+
+        <pubDate><cms:date k_page_date format='D, d M Y H:i:s' gmt='1'/> GMT</pubDate>
+    </item>
+    </cms:pages>
+ </channel>
+</rss>
+<?php COUCH::invoke(); ?>
+```
+
+We are assuming that an editable field named `my_news_text` contains the news text.
+
+The [**excerptHTML**](../../tags-reference/excerpthtml/) tag can be used to output only an excerpt of your page.
+We need to wrap the output within [**html_encode**](../../tags-reference/html_encode/) to encode certain characters that are not valid in XML.
+
+And that is it. Your automated RSS feed is ready. Modify the snippet to suit your web-site's needs.

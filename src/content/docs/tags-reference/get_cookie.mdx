@@ -1,0 +1,33 @@
+---
+title: get_cookie
+category: tag
+description: The get_cookie tag retrieves values stored in cookies that were previously set using the set_cookie tag.
+keywords: [get_cookie, tag, PHP, cookies, storage, retrieval]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The **get_cookie** tag can be used to fetch value contained within any cookie set by the **set_cookie** tag.
+
+```php
+<cms:get_cookie 'my_test_cookie' />
+```
+
+The snippet above will retrieve the value set within the cookie named 'my_test_cookie'
+
+## Parameters
+
+- name
+
+### name
+
+The name of the cookie the value of which is to be retrieved.
+
+## Variables
+
+This is a self closing tag and sets no variables of its own.
+
+## Related Tags
+
+- [delete_cookie](../delete_cookie.html)
+- [set_cookie](../set_cookie.html)

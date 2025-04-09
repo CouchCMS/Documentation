@@ -1,0 +1,103 @@
+---
+title: folders
+description: "The folders tag enumerates virtual folders defined for a template, providing hierarchical organization and navigation capabilities."
+keywords:
+    - folders
+    - tag
+    - PHP
+    - enumeration
+    - hierarchy
+    - navigation
+    - virtual
+category: tag
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `folders` tag can be used to enumerate the virtual folders that have been defined for a template.
+
+Please see [**Core Concepts - Folders**](../../concepts/folders/) for an in-depth discussion of this tag.
+
+## Parameters
+
+- `masterpage`
+- `root`
+- `childof`
+- `hierarchical`
+- `depth`
+- `orderby`
+- `order`
+- `exclude`
+- `extended_info`
+
+### `masterpage`
+
+This parameter can be used to specify the template the folders of which are to be enumerated. If skipped, the template this tag is being used from is used.
+
+### `root`
+
+Only a sub-section of the folders tree can be enumerated by specifying a folder as this parameter. The folder specified as the root is returned along with all its children.
+
+### `childof`
+
+Only a sub-section of the folders tree can be enumerated by specifying a folder as this parameter. Only the children of the specified folder are returned.
+
+### `hierarchical`
+
+By setting this parameter the **folders** tag can be made to enumerate the folders in their hierarchical order. If skipped, the folders are enumerated in the alphabetical order of their names.
+
+### `depth`
+
+This parameter can be set to specify the maximum level in hierarchy (i.e. depth) that will be reached during enumeration. This can be used, for example, to list only the top folders in the tree by setting the depth to 1\. A depth of 0 means unlimited depth.
+
+### `orderby`
+
+This parameter can be set to order the enumerated folders according to the following: `name`, `title`, `id`, `count` or `weight`. If skipped, `name` is used as default.
+
+### `order`
+
+Can be set to specify whether the enumerated folders are ordered in the ascending order or in descending order. Valid values are `asc` and `desc`. Default is `asc`.
+
+### `exclude`
+
+Folders can be excluded from being enumerated by specifying them with this parameter. If an excluded folder has children, they are excluded too. If multiple folders are to be excluded, separate them with comma.
+
+### `extended_info`
+
+If this parameter is set, additional variables get set to report the changes in hierarchy encountered by the **folders** tag, as it traverses through the folder tree. Please see the **Variables** section below.
+
+## Variables
+
+The following variables are set to provide information about each folder that gets enumerated:
+
+- `k_folder_id`
+- `k_folder_name`
+- `k_folder_title`
+- `k_folder_desc`
+- `k_folder_link`
+- `k_folder_pagecount`
+- `k_folder_totalpagecount`
+- `k_level`
+
+If the `hierarchical` parameter is set to `1`, the following variables also get set to indicate the current position in the hierarchy as this tag enumerates the folders:
+
+- `k_level_start`
+- `k_element_start`
+- `k_element_end`
+- `k_level_end`
+
+You can use these variables to easily create HTML ordered or unordered lists. Please see [**Folders** in **Core Concepts**](../../concepts/folders/).
+
+## Related Tags
+
+- [**archives**](../archives/)
+- [**breadcrumbs**](../breadcrumbs/)
+- [**comments**](../comments/)
+- [**dropdownfolders**](../dropdownfolders/)
+- [**folder**](../folder/)
+- [**folders**](../folders/)
+- [**is_ancestor**](../is_ancestor/)
+- [**listfolders**](../listfolders/)
+- [**pages**](../pages/)
+- [**parentfolders**](../parentfolders/)
+- [**templates**](../templates/)

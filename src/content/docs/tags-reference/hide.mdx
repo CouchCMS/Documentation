@@ -1,0 +1,31 @@
+---
+title: hide
+category: tag
+description: The hide tag prevents the output of enclosed code from being displayed while still executing the code, useful for executing Couch tags without showing their results.
+keywords: [hide, tag, PHP, output, execution, visibility, control]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The hide tag is a very simple tag that can be used to prevent the output of code enclosed within it from being displayed.
+
+```php
+<cms:hide>
+   ...Everything here will get executed but the output will never appear on the webpage...
+</cms:hide>
+```
+
+This is useful when you wish to execute some Couch tags but do not wish their outputs to get displayed.
+Compare this with the **ignore** tag where the enclosed contents are not executed at all.
+
+## Parameters
+
+This tag takes no parameters. All enclosed contents serve as its input.
+
+## Variables
+
+This tag sets no variables of its own.
+
+## Related Tags
+
+- [ignore](../ignore.html)

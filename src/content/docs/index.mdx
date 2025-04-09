@@ -1,0 +1,42 @@
+---
+title: CouchCMS Documentation
+description: Get started building your sites with CouchCMS.
+template: splash
+hero:
+  tagline: Relax, you are on the Couch now!
+  image:
+    file: ../../assets/img/couchcms-devices.png
+  actions:
+    - text: Getting Started
+      link: /concepts/templates/
+      icon: right-arrow
+    - text: Visit the official CouchCMS site
+      link: https://couchcms.com/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## What makes CouchCMS perfect for web designers?
+
+<CardGrid stagger>
+ <Card title="No Knowledge of PHP Expected!" icon="seti:php">
+  Take any HTML design you have created, add some familiar XHTML like Couch tags into it and make it CMS managed within minutes.
+ </Card>
+ <Card title="Your Markup Remains Untouched" icon="seti:html">
+  Add Couch does not add a single byte of its own markup into your design. The CMSified site remains 100% fidel to your original static design.
+ </Card>
+ <Card title="Clients Love the Simple Admin Panel" icon="heart">
+  Couch gives you an absolutely blank admin-panel to begin with. Add to it only the elements that are editable by the clients.
+ </Card>
+ <Card title="Simple But Not For Only Simple Sites!" icon="rocket">
+  Use Couch's powerful features like 'relations', 'saving form submissions into database', 'custom routes' etc. to create sites that would otherwise require you to be a PHP Ninja!
+ </Card>
+ <Card title="Time-Tested and Secure" icon="seti:clock">
+  Couch has been around for nearly six years now and is used by thousands of sites world-wide. You can trust it to keep your site safe from web hacks like XSS, CSRF etc.
+ </Card>
+ <Card title="Open Source and Free!" icon="seti:github">
+  You get all this for free! Compare it to similar commercial solutions that will cost you anything from $100 to $300. In case you happen to need it, support is only a call away.
+ </Card>
+</CardGrid>

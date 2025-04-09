@@ -1,0 +1,109 @@
+/* Dark mode colors. */
+:root {
+    --sl-color-accent-low: #2a221f;
+    --sl-color-accent: #806257;
+    --sl-color-accent-high: #d1c6c1;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eceef2;
+    --sl-color-gray-2: #c6c8ce;
+    --sl-color-gray-3: #a0a4ae;
+    --sl-color-gray-4: #545861;
+    --sl-color-gray-5: #353841;
+    --sl-color-gray-6: #24272f;
+    --sl-color-black: #17181c;
+}
+
+/* Light mode colors. */
+:root[data-theme='light'] {
+    --sl-color-accent-low: #ddd5d1;
+    --sl-color-accent: #64483d;
+    --sl-color-accent-high: #3c2f2a;
+    --sl-color-white: #17181c;
+    --sl-color-gray-1: #24272f;
+    --sl-color-gray-2: #353841;
+    --sl-color-gray-3: #545861;
+    --sl-color-gray-4: #888b96;
+    --sl-color-gray-5: #c0c2c7;
+    --sl-color-gray-6: #eceef2;
+    --sl-color-gray-7: #f5f6f8;
+    --sl-color-black: #ffffff;
+}
+
+/* Markdown blockquote styling */
+blockquote {
+    font-size: 0.9em;
+    color: var(--sl-color-gray-3);
+    border-left: 3px solid var(--sl-color-gray-4);
+    padding-left: 1em;
+    margin: 1em 0;
+}
+
+/* Splash page specific styling - must come before general image styling */
+article[data-pagefind-body][data-page-type="splash"] img {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Target documentation and content images */
+main img:not(.site-title img):not([data-page-type="splash"] img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+/* Image comparison tables */
+.table-50 {
+    margin: 2em 0;
+}
+
+.table-50 table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 1em;
+    border: none;
+    min-width: 100%;
+}
+
+.table-50 th,
+.table-50 td {
+    width: 50%;
+    text-align: left;
+    padding: 0;
+    border: none;
+    min-width: 50%;
+}
+
+.table-50 tr:last-child td {
+    font-size: 0.9em;
+}
+
+.table-50 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+/* Force equal column widths */
+.table-50 colgroup col {
+    width: 50%;
+}
+
+.table-50 table {
+    table-layout: fixed;
+}
+
+/* Remove borders from splash page images */
+.card-grid img,
+.hero img {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

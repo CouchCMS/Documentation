@@ -1,0 +1,7 @@
+{
+  "extends": ".markdownlint.json",
+  "ignores": ["node_modules", ".git", "dist"],
+  "formats": {
+    ".mdc": "markdown"
+  }
+} 

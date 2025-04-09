@@ -1,0 +1,51 @@
+---
+title: Google Maps
+description: "Learn how to integrate Google Maps in your Couch website"
+keywords:
+    - google maps
+    - maps integration
+    - geolocation
+    - contact page
+    - location services
+    - map embedding
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+category: concept
+sidebar:
+    order: 20
+---
+
+It is common now to find websites integrating with Google Maps. The **Contact Us** page usually displays one although maps are often also found associated with individual items being represented by pages e.g. properties, members etc.
+
+Couch abstracts away the complexity of creating a Google map behind a simple tag - the [**google_map**](../../tags-reference/google_map/) tag.
+
+You'll need a key from Google to use its API. If you don't have one, get one free from the site mentioned below and set it at the following location `config.php`:
+
+```php title="config.php"
+// 16.
+// Google Maps API Key.
+// You'll have to get one for your site from 'http://code.google.com/apis/maps/'
+// if your site makes use of Google maps.
+define( 'K_GOOGLE_KEY', 'ABQIAAAAD7z_FToS5NSqosnG9No1ABQYPrehWcZJH1ec0SZqipYFbK_nfRT1ryCGKzl5KGpFG3y5jyPe_uClVg' );
+```
+
+The following snippet will quickly create a map showing the given address:
+
+```php title="Basic Map Example"
+<cms:google_map
+    name='my_map'
+    address='1600 Amphitheatre Parkway, Mountain View, CA'
+/>
+```
+
+You can use the latitude and longitude of a place instead of its address:
+
+```php title="Map with Coordinates"
+<cms:google_map
+    name='my_map'
+    latitude='37.423021'
+    longitude='-122.083739'
+/>
+```
+
+For a comprehensive list of all parameters supported by the `google_map` tag, please refer to the [**google_map**](../../tags-reference/google_map/).

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://beta.frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [{
+      "title": "Concepts",
+      "path": "[[workspace]]/src/content/docs/concepts",
+      "previewPath": "concepts"
+    },
+    {
+      "title": "Tags-Reference",
+      "path": "[[workspace]]/src/content/docs/tags-reference",
+      "previewPath": "tags-reference"
+    },
+    {
+      "title": "Tutorials",
+      "path": "[[workspace]]/src/content/docs/tutorials",
+      "previewPath": "tutorials"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+---
+title: "Users"
+description: "Learn about user management implementation in CouchCMS using the extended-users module, including account registration, profile management, and password recovery."
+keywords:
+    - user management
+    - account registration
+    - profile management
+    - password recovery
+    - extended users
+    - CouchCMS
+    - advanced tutorial
+    - authentication
+    - user accounts
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+sidebar:
+    order: 16
+slug: tutorials/advanced-tutorial/users
+---
+
+The finished Notejam application will allow visitors to register their accounts from the front-end, manage their profile, reclaim lost passwords etc. (i.e. all the paraphernalia that is usually associated with a membership site).
+
+As already explained at the outset of this tutorial, we are using the [**Extended Users**](../../../concepts/extended-users/) module  to implement the mentioned functionalities.
+
+## Current Implementation
+
+So far, we have made use of only one of the functionalities offered by that module - the creation of users using a custom template. The config file in `couch/addons/extended`, as it exists at this point, shows the fact:
+
+```php title="couch/addons/extended/config.php - Extended Users Configuration"
+// Names of the required templates
+$t['users_tpl'] = 'users/index.php';
+$t['login_tpl'] = '';
+$t['lost_password_tpl'] = '';
+$t['registration_tpl'] = '';
+```
+
+## Next Steps
+
+To put the rest of the functionalities in place, please refer to the [Extended Users » User accounts](../../../concepts/extended-users/#user-accounts) documentation.
+
+With that we can now finally wrap up this tutorial.
+
+---
+
+**Next: [Wrapping up →](../wrapping-up/)**

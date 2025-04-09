@@ -1,0 +1,55 @@
+---
+title: parentfolders
+category: tag
+description: The parentfolders tag lists all ancestor folders of a given folder, providing hierarchical navigation and breadcrumb functionality.
+keywords: [parentfolders, tag, PHP, folders, hierarchy, navigation, breadcrumbs]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The **parentfolders** tag enumerates all the ancestor folders of a given folder.
+
+```php
+<cms:parentfolders folder='china' >
+    <a href="<cms:show k_folder_link/>"><cms:show k_folder_title/></a>&nbsp;>
+</cms:parentfolders>
+```
+
+The snippet above will iterate through all the ancestor folders of the folder named 'china', starting from the topmost ancestor.
+
+Please see [**Core Concepts - Folders**](../../concepts/using-folders.html#parents-and-children) for more info.
+
+## Parameters
+
+- folder
+- masterpage
+
+### folder
+
+The folder the parents of which are to be enumerated.
+
+### masterpage
+
+The template containing the folder above. If skipped, the template of the current executing page is used.
+
+## Variables
+
+At each iteration, this tag sets variables that describe the parent folder being enumerated.
+
+- k_folder_id
+- k_folder_name
+- k_folder_title
+- k_folder_desc
+- k_folder_link
+- k_folder_pagecount
+- k_folder_totalpagecount
+- k_level
+
+## Related Tags
+
+- [breadcrumbs](../breadcrumbs.html)
+- [dropdownfolders](../dropdownfolders.html)
+- [folder](../folder.html)
+- [folders](../folders.html)
+- [is_ancestor](../is_ancestor.html)
+- [listfolders](../listfolders.html)

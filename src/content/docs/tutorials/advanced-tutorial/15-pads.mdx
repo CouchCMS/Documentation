@@ -1,0 +1,46 @@
+---
+title: "Pads"
+description: "Learn about the Pads section implementation in CouchCMS, which shares similarities with the Notes section while handling pad-specific functionality and note organization."
+keywords:
+    - pads
+    - note organization
+    - template structure
+    - view implementation
+    - CouchCMS
+    - advanced tutorial
+    - code reusability
+    - routing system
+    - data relationships
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+sidebar:
+    order: 15
+slug: tutorials/advanced-tutorial/pads
+---
+The good thing about the 'Pads' section is that it is almost a copy of the [**Notes**](../notes/)section that we've already studied in excruciating detail.
+
+So, instead of hand-holding you through its template and view snippets, I'll encourage you to take a look at the source files yourselves. There shouldn't be a single point in there that we haven't already covered and so you should really find everything easy.
+
+## Implementation Structure
+
+Begin from the `pads.php` template examining the routes defining its various views. Then move over to the `snippets/views/pads` folder to take a look at the snippets implementing those views.
+
+## Key Differences
+
+Let me highlight the few minor points that are slightly different in this section:
+
+### View Structure
+
+1. You won't find a `list_view`. It isn't required for pads as we list all the pads in the sidebar of the 'notes' section.
+
+2. The `page_view` of pads, instead of showing details of a single pad, shows all the notes belonging to that pad. So it is almost identical to the `list_view` of notes.
+
+## Next Steps
+
+We'll now take a look at the final section of Notejam - Users.
+
+---
+
+**Next: [Users →](../users/)**

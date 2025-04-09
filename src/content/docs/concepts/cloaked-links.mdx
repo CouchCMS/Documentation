@@ -1,0 +1,140 @@
+---
+title: Cloaked Links
+category: concept
+description: "Secure and protect downloadable files and links using CouchCMS's cloak_url tag"
+keywords:
+    - cloak_url
+    - secure links
+    - protected files
+    - temporary access
+    - forced downloads
+    - user access control
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 19
+---
+
+Sometimes it is required to conceal the real location of a file while still allowing people to access it. This file, for example, could be a digital product that resides on your server. After someone has made the necessary payment, you'd want to provide him access to this file without disclosing the file's real location to him. In such cases, you'd additionally also wish to make this access temporary i.e. the link provided to the user should be valid for only a limited period of time.
+
+A similar requirement is as follows - You have a eBay affiliate website which lists several eBay products. A visitor upon clicking a product link is redirected to the eBay site. However, you do not wish the links displayed on your website to reveal to anyone, prima-facie, that they'll lead to eBay.
+
+You can use Couch's [**cloak_url**](../../tags-reference/cloak_url/) tag to do all the above very easily.
+
+:::note
+This feature was added to augment the [**PayPal**](../paypal/) functionality by providing secure and controlled access to the downloadable digital products being sold. However it can be used with any other links that have similar needs.
+:::
+
+## Cloaking Links to Webpages
+
+To get a gist of [**cloak_url**](../../tags-reference/cloak_url/), suppose following is a link in your template:
+
+```html
+<a href="https://www.google.com">Visit Site</a>
+```
+
+A visitor to your site will only see 'Visit Site' displayed but it cannot be made hidden from him that this link leads to Google (hovering over the link will show Google in the status bar, the source code will have Google's link etc.)
+
+Now consider the following modification made to the link above:
+
+```php
+<a href="<cms:cloak_url link='https://www.google.com' redirect='1' />" >Visit Site</a>
+```
+
+Take a look at the generated URL and how clicking it still leads to Google. This is classic 'URL cloaking'.
+
+In the snippet above we set the `redirect` parameter to `1` because the link being cloaked was that of a webpage and not of a physical file.
+
+## Cloaking Links of Files
+
+Let us now see how to make [**cloak_url**](../../tags-reference/cloak_url/) work with physical files.
+
+:::danger[Important]
+While the use of [**cloak_url**](../../tags-reference/cloak_url/) with files will hide their real locations by obfuscating the links, you'll also want to ensure that the files are not directly accessible to anyone who knows their real locations (e.g. by intelligent guesswork). One way of doing this would be by using the `.htaccess` file.
+
+Create a file named `.htaccess`, put the following lines into it and place it within the folder that will house the protected files:
+
+```apache title=".htaccess"
+Options All -Indexes
+deny from all
+```
+
+Files uploaded via Couch's editable region of type file, are by default saved in the 'uploads/file' folder within the 'couch' folder. A subfolder named 'secure' is present in this folder and already has the required `.htaccess` file in it. You can use this folder to store protected files that are uploaded via Couch.
+:::
+
+Suppose an image file `test.jpg` is stored in the aforesaid `uploads/file/secure` folder (so that it is not directly downloadable). Placing the following snippet in your template:
+
+```php
+<a href="<cms:cloak_url link='http://yoursite.com/couch/uploads/file/secure/test.jpg' />">Test Link</a>
+```
+
+Will display a link that when clicked should show the (otherwise inaccessible) image in the browser.
+
+:::tip
+It is always a good idea to use `<cms:show k_admin_link/>` to output the full URL of the couch folder instead of hard coding it. Thus the above snippet will become:
+
+```php
+<a href="<cms:cloak_url link="<cms:show k_admin_link/>uploads/file/secure/test.jpg" />">Test Link</a>
+```
+
+:::
+
+## Forcing Download
+
+If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location. This is because [**cloak_url**](../../tags-reference/cloak_url/) tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.
+
+If you'd rather have the download box shown for all types of files, set the `force_download` parameter to `1`. Thus the following link will always force the user to download the image file:
+
+```php
+<a href="
+    <cms:cloak_url
+    link='https://yoursite.com/couch/uploads/file/secure/test.jpg'
+    force_download='1'
+    />
+">Test Link</a>
+```
+
+## Setting an Expiry Time for the Cloaked Links
+
+The cloaked links can be made to expire after a fixed period by setting the `expiry` parameter to the expiry period in seconds. Thus to allow a link to be valid for only 24 hours, the following snippet can be used:
+
+```php
+<a href="
+    <cms:cloak_url
+    link='https://yoursite.com/couch/uploads/file/secure/test.jpg'
+    force_download='1'
+    expiry='86400'
+    />
+">Test Link</a>
+```
+
+Where **86400** is, of course, the number of seconds in 24 hours (24 * 60 * 60).
+
+## Allowing Only Registered Users to Access Links
+
+If you have gone through the [**Users and Access Control**](../users) section, you'll recall that Couch allots every visitor a numeric value denoting his access level. This depends on the group the user belongs to - thus an *Administrator* will have an access level of `7` while an *Authenticated User (Special)* will have a value of `4`. Users not logged-in have an access level of `0`.
+
+Links can be configured to be accessible by only users of at least a particular level by setting the `access_level` parameter:
+
+```php
+<a href="
+    <cms:cloak_url
+    link='https://yoursite.com/couch/uploads/file/secure/test.jpg'
+    force_download='1'
+    access_level='4'
+    />
+">Test Link</a>
+```
+
+In the snippet above, only authenticated users with access level equal to or higher than `4` will be able to download the image file. If unauthenticated users try to access this link, they'll get a blank screen. To prompt them to login to download the file, set the `prompt_login` parameter to `1`:
+
+```php
+<a href="
+    <cms:cloak_url
+    link='https://yoursite.com/couch/uploads/file/secure/test.jpg'
+    force_download='1'
+    access_level='4'
+    prompt_login='1'
+    />
+">Test Link</a>
+```

@@ -1,0 +1,721 @@
+---
+description: "Comprehensive style guide for CouchCMS documentation"
+globs: ["**/*.md", "**/*.mdx"]
+alwaysApply: true
+---
+
+# CouchCMS Documentation Style Guide
+
+This comprehensive style guide outlines all rules for writing CouchCMS documentation. The primary goals are consistency, readability, maintainability, and accessibility.
+
+## 1. Document Organization
+
+### 1.1. Required Frontmatter
+
+Every document MUST begin with frontmatter:
+
+```yaml title="Required Frontmatter"
+---
+title: Document Title
+description: "A clear, concise description"
+keywords:
+  - keyword1
+  - keyword2
+  - keyword3
+category: tag
+subCategory: editable
+author: First Last
+lastUpdated: YYYY-MM-DD
+sidebar:
+  order: N
+  badge:
+    text: New|Beta|Deprecated
+    variant: tip|caution|danger
+---
+```
+
+SEO Requirements:
+
+- Title: 50-60 characters, include main keyword
+- Description: 150-160 characters, clear and descriptive (use quotes if contains
+  special chars)
+- Keywords: 3-5 relevant terms
+- Use descriptive slugs for URLs
+- Include meta descriptions
+
+### 1.2. Document Layout
+
+1. Frontmatter
+2. Import statements
+3. Brief introduction
+4. Main content
+5. Related content links
+
+Spacing:
+
+- Two blank lines between major sections (H2)
+- One blank line between subsections (H3, H4)
+- One blank line before/after code blocks and admonitions
+
+### 1.3. Document Ending
+
+The end of each document should follow this structure:
+
+1. Three underscores on their own line to create a horizontal rule:
+
+   ```markdown title="Horizontal Rule"
+   ---
+   ```
+
+2. Next chapter link (if applicable):
+   - Use bold for the chapter title
+   - Include in square brackets
+   - Example:
+   ```markdown title="Next Chapter Link"
+   [Next Chapter: **Starting Simple - The About Us Page**](../about-us/)
+   ```
+
+Example of a complete document ending:
+
+```markdown title="Document Ending Example"
+// ... content ends ...
+
+---
+
+[Next Chapter: **Starting Simple - The About Us Page**](../about-us/)
+```
+
+## 2. Content Guidelines
+
+### 2.1. Text Formatting
+
+Use consistent formatting:
+
+- Product Name:
+
+  - Use "Couch" in regular text and documentation
+  - Only use "CouchCMS" in titles, formal references, or when specifically referring to the full product name
+  - Never use bold for the product name unless in headers or warnings
+  - Examples:
+    - Regular text: "Couch provides many features"
+    - Formal: "Welcome to CouchCMS Documentation"
+
+- UI Elements and Page Names:
+
+  - Use bold (\*\*) for any UI element or page name that users will see in the interface
+  - Use Title Case without hyphens
+  - Examples:
+    - Pages: The **About Us** page contains...
+    - Sections: Navigate to the **Portfolio** section
+    - UI elements: Click the **Save Changes** button
+
+- Technical Terms:
+
+  - Module names: `mod_rewrite`
+  - File names: `.htaccess`, `config.php`
+  - Configuration constants: `K_PRETTY_URLS`
+  - Function names: `gen_htaccess.php`
+  - Variables: `my_variable`
+  - Parameters: `type`, `name`
+  - File paths: `views/template.php` (use forward slashes)
+  - Code snippets: `echo $value`
+  - HTML tags: `<div>`
+  - Technical terms: `dropdown`
+  - Boolean values: `true`, `false`
+  - Filenames: `file.php`
+
+- Tag References:
+
+  - Use bold and lowercase: [**editable**](../../tags-reference/editable/)
+  - Never capitalize tag names in references
+  - Include the link to reference documentation
+  - Example: [**show**](../../tags-reference/show/), [**template**](../../tags-reference/template/)
+
+- Documentation References:
+
+  - Use bold and Title Case for all documentation types except tags
+  - Examples:
+    - Concepts: [**Variables Available in Views**](../../concepts/variables-in-views/)
+    - Tutorials: [**Getting Started with Templates**](../../tutorials/templates/)
+    - Guides: [**Advanced Templating Guide**](../../guides/advanced-templating/)
+    - API: [**Template API**](../../api/template/)
+  - Only tags-reference uses lowercase: [**editable**](../../tags-reference/editable/)
+  - Include the link to documentation
+
+- Underscores (\_) for italic text:
+
+  - Output values: _Rental_
+  - Emphasis: _important_
+  - Quoted values: The value _true_
+
+- Double asterisks (\*\*) for bold text:
+
+  - Section headers
+  - Critical warnings
+  - Important notes
+
+- Never mix styles (e.g., don't use both \* and ` for same term)
+
+### 2.2. Quote Usage
+
+Use double quotes (") consistently in Markdown:
+
+- Use double quotes (") for:
+  - All Markdown attributes: `php title="index.php"`
+  - Link titles: [Link](url "Title")
+  - Frontmatter strings with special chars:
+    `description: "A: clear, description!"`
+  - Code block titles: `php title="Example"`
+  - Admonition titles: :::note[Info] "Additional context" :::
+
+Exception: Only use single quotes (') within code examples for:
+
+- HTML/XML attributes: `<cms:template title='Home'>`
+- Simple strings in code: `name='prop_desc'`
+- Parameter values: `type='richtext'`
+
+Never mix quote styles within the same context.
+
+Note: In YAML frontmatter, only use quotes when the text contains special
+characters like:
+
+- Colons (:)
+- Curly braces ({})
+- Square brackets ([])
+- Commas (,)
+- Ampersands (&)
+- Asterisks (\*)
+- Hash symbols (#)
+- Question marks (?)
+- Pipes (|)
+- Dashes at start (-)
+- Angle brackets (<>)
+- Equals signs (=)
+- Exclamation marks (!)
+- Percent signs (%)
+- At symbols (@)
+- Backslashes (\)
+
+To enforce this style, use this Prettier configuration:
+
+```json title=".prettierrc"
+{
+  "singleQuote": false,
+  "proseWrap": "preserve",
+  "embeddedLanguageFormatting": "auto",
+  "overrides": [
+    {
+      "files": ["*.md", "*.mdx"],
+      "options": {
+        "singleQuote": false,
+        "printWidth": 120
+      }
+    }
+  ]
+}
+```
+
+This ensures Prettier will:
+
+- Use double quotes for Markdown files
+- Force admonitions onto multiple lines
+- Preserve line breaks and formatting
+- Preserve single quotes in code examples
+- Maintain consistent formatting
+
+### 2.3. Code Examples
+
+- Include complete, working examples
+- Add descriptive titles using these patterns:
+
+  For configuration files:
+
+  ```php title="config.php"
+  // Configuration example
+  ```
+
+  For URLs:
+
+  ```txt title="Default URL"
+  https://example.com/page.php?id=1
+  ```
+
+  ```txt title="Pretty URL"
+  https://example.com/page/title/
+  ```
+
+  For code changes:
+
+  ```diff title="Code Changes"
+  - old code
+  + new code
+  ```
+
+- CRITICAL: Never modify code block titles that contain filenames:
+
+  - If title shows a filename like `php title="blog.php"`, keep it exactly as is
+  - Only add descriptive titles for code blocks without filenames
+  - Preserve the exact filename, extension and quotes in the title
+  - Examples of titles to preserve:
+    - `php title="config.php"`
+    - `html title="index.html"`
+    - `js title="script.js"`
+    - `css title="style.css"`
+
+- CRITICAL: Never modify diff code blocks:
+
+  - Always preserve the exact content of diff blocks
+  - Never remove or change the '+' and '-' markers
+  - Keep the exact indentation and spacing
+  - Preserve all line breaks
+  - Example of a diff block to preserve exactly:
+    ```diff title="example.php"
+    - old code
+    + new code
+      unchanged code
+    ```
+
+- Use proper syntax highlighting
+- Add comments for complex code
+- Show changes with diff syntax when relevant
+
+- CRITICAL: Respect and preserve original content:
+
+  - Never remove or modify ANY existing content unless ABSOLUTELY necessary
+  - Keep all original explanations, examples and context intact
+  - Preserve the author's (Kamran Kashif) writing style and voice
+  - If changes are needed, make minimal adjustments while keeping as much original text as possible
+  - When in doubt, keep the original content
+
+- IMPORTANT: Never modify any code blocks unless explicitly instructed to do so. This includes:
+
+  - Preserving all existing code comments (e.g. `<!-- Page view - display current page here -->`)
+  - Maintaining exact spacing and indentation
+  - Keeping all line breaks
+  - Preserving all syntax and formatting
+  - Not removing or changing any code unless specifically requested
+
+- IMPORTANT: Never remove lines with '+' or '-' at the beginning of lines in diff code blocks
+- Always maintain the exact formatting of diff blocks to preserve the meaning of the changes being shown
+- For partial code, use language-appropriate markers:
+
+  For PHP:
+
+  ```php
+  // ... existing code ...
+  ```
+
+  For HTML:
+
+  ```html
+  <!-- ... existing code ... -->
+  ```
+
+  For CSS:
+
+  ```css
+  /* ... existing code ... */
+  ```
+
+### 2.4. Version Documentation
+
+Use version badges to indicate feature availability:
+
+```markdown title="Version Example"
+:::version[v2.0+]
+Feature available from v2.0 onwards
+:::
+
+:::caution[Breaking Changes]
+Version 2.1 changes:
+
+- Change 1
+- Change 2
+  :::
+```
+
+Use version badges to:
+
+- Indicate minimum version requirements
+- Mark breaking changes
+- Show deprecated features
+- Highlight new features
+
+### 2.5. Components and UI Elements
+
+Import components at the top after frontmatter:
+
+```markdown title="Component Example"
+---
+title: Page Title
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+<Steps>
+
+1. First step
+2. Second step
+
+</Steps>
+```
+
+When using the Steps component:
+
+- Keep instructions clear and concise
+- Combine related instructions into single steps
+- Use code blocks with descriptive titles within steps
+- Add empty lines before and after the component
+
+Note: Always add a blank line after opening and before closing the Steps component.
+
+#### Card Component
+
+The Card component has specific formatting rules:
+
+- Never indent the Card component or its content
+- Keep original spacing and line breaks
+- Example:
+
+```markdown title="Card Example"
+<Card icon="download" title="Download Code">
+
+[Download Couchified Code](https://www.couchcms.com/docs/code/blog.zip)
+
+</Card>
+```
+
+#### FileTree Component
+
+The FileTree component has specific formatting rules:
+
+- Do NOT use backticks for files and directories
+- Use plain text without any formatting
+- Example:
+  ```markdown title="FileTree Example"
+  <FileTree>
+  - couch/
+  - css/
+  - images/
+  - js/
+  - about.html
+  - blog.html
+  - index.php
+  </FileTree>
+  ```
+
+### 2.6. Media and Assets
+
+Requirements:
+
+- Descriptive alt text explaining content/purpose
+- Max width: 1200px for screenshots, 300px for thumbnails
+- WebP format preferred
+- Optimize for web
+- Avoid using images for text content
+- Ensure sufficient resolution
+- Use meaningful filenames that describe content
+- Place images in appropriate directories:
+  - `/assets/img/contents/` for content images
+  - `/assets/img/ui/` for UI elements
+  - `/assets/img/diagrams/` for flowcharts and diagrams
+
+Format:
+
+- Filename: `feature-action-context.webp`
+- Alt text: Brief description of image content
+- Caption: Detailed explanation if needed
+
+```markdown title="Image Examples"
+// Basic image with caption
+![Login Form](./login.webp)
+
+> Form showing validation error message
+
+// Screenshot with detailed caption
+![Dashboard Overview](../../../assets/img/contents/dashboard-main.webp)
+
+> Main dashboard showing recent activity, user statistics and system status
+
+// UI element
+![Save Button](../../../assets/img/ui/button-save.webp)
+
+> Primary save button in hover state
+```
+
+Guidelines:
+
+1. **Alt Text**
+
+   - Should be concise but descriptive
+   - Focus on function/purpose, not appearance
+   - Don't start with "Image of" or "Picture of"
+   - Include text content if shown in image
+
+2. **Captions**
+
+   - Place on new line after image
+   - Use blockquote syntax (>)
+   - Can be longer and more detailed than alt text
+   - Explain context or highlight important features
+   - Optional for decorative images
+
+3. **File Organization**
+
+   - Use consistent naming pattern
+   - Group related images in subdirectories
+   - Keep original files in separate directory
+   - Use relative paths from document location
+
+4. **Technical Requirements**
+
+   - Resolution: minimum 72dpi for web
+   - Format: WebP preferred, fallback to PNG/JPG if needed
+   - Size: optimize for web loading
+   - Dimensions: maintain aspect ratio
+   - Compression: use lossy for photos, lossless for UI
+
+5. **Accessibility**
+   - Always include alt text
+   - Use semantic captions
+   - Consider color contrast
+   - Avoid text in images where possible
+   - Provide transcripts for complex diagrams
+
+Example directory structure:
+
+```
+assets/
+  img/
+    contents/
+      feature-screenshots/
+      tutorial-images/
+    ui/
+      buttons/
+      icons/
+    diagrams/
+      flowcharts/
+      architecture/
+```
+
+Note: Always place the caption on a new line after the image using a blockquote (>) prefix. This ensures the caption is properly displayed and accessible to screen readers.
+
+### 2.7. Links and References
+
+Internal links:
+
+- Use relative paths
+- Include meaningful text that indicates destination
+- Add context in quotes after URL
+- Never use "click here" or "read more"
+- Ensure links are distinguishable
+- Use proper hierarchy in navigation
+- ALWAYS use trailing slashes in markdown links
+- NEVER use trailing slashes in frontmatter slugs or sidebar config
+
+```markdown title="URL Best Practices"
+# ✅ In markdown links - ALWAYS use trailing slash
+
+[Next Chapter: **Installing the application**](./installing-the-application/)
+[See Documentation](../../concepts/templates/)
+
+# ❌ In markdown links - NEVER omit trailing slash
+
+[Next Chapter: **Installing the application**](./installing-the-application)
+[See Documentation](../../concepts/templates)
+
+# ✅ In frontmatter slugs - NEVER use trailing slash
+
+---
+
+slug: tutorials/advanced-tutorial
+
+# ✅ In sidebar config - NEVER use trailing slash
+
+items: [
+'tutorials/advanced-tutorial',
+'tutorials/advanced-tutorial/installing-the-application'
+]
+```
+
+This ensures:
+
+- Consistent URL structure
+- Prevents redirect requests
+- Better SEO (no duplicate content issues)
+- Follows Starlight conventions
+
+```markdown title="Link Examples"
+[User Authentication](../auth/guide.md "Complete setup guide")
+[CouchCMS Documentation](https://docs.couchcms.com)
+```
+
+### 2.8. Tables and Lists
+
+#### Tables
+
+- Use standard markdown table syntax
+- Align columns consistently:
+  ```markdown
+  | Header 1 | Header 2 | Header 3 |
+  | :------- | :------: | -------: |
+  | Left     |  Center  |    Right |
+  ```
+- Use hyphen (-) for empty cells
+- Minimum 3 dashes for header separation
+- Always include header row
+
+#### Lists
+
+- Unordered lists: Use hyphen (-)
+- Ordered lists: Use 1. for all items
+- Nested lists: 4 space indentation
+- Group related items
+- Use parallel structure
+- Example:
+
+  ```markdown
+  - Main item
+    - Sub item
+      - Sub-sub item
+
+  1. First step
+     - Sub point
+     - Another sub point
+  2. Second step
+  ```
+
+### 2.9. Admonitions and Callouts
+
+Use appropriate admonition types:
+
+```markdown
+:::note[Context]
+For background information or prerequisites
+:::
+
+:::tip[Best Practice]
+For recommended approaches
+:::
+
+:::caution[Important]
+For version-specific or limitation notes
+:::
+
+:::danger[Warning]
+For critical warnings or breaking changes
+:::
+```
+
+Rules for admonitions:
+
+- Use descriptive titles that explain the content
+- Choose appropriate type based on content:
+  - note: Requirements, prerequisites, context
+  - tip: Best practices, recommendations
+  - caution: Limitations, version requirements
+  - danger: Critical warnings, breaking changes
+- Keep content focused and concise
+- Don't nest admonitions
+- Use consistent formatting
+- Choose appropriate type based on content importance
+
+### 2.10. Paragraph Structure
+
+Guidelines for clear and readable paragraphs:
+
+- Combine related short paragraphs that form a single thought
+- Keep paragraphs focused on a single topic
+- Use line breaks between distinct topics or sections
+- Start with the main point
+- Use clear transitions between topics
+
+Example:
+
+```markdown title="Good Paragraph Structure"
+Couch supports the use of Pretty URLs (aka search engine friendly - SEF URLs). This feature uses URL rewriting to transform the default Couch URLs containing querystrings into URLs that appear more friendly and relevant to the web pages. For example, a URL like this:
+```
+
+## 3. Technical Standards
+
+### 3.1. Line Length and Wrapping
+
+- Maximum line length: 80 characters for content
+- Code blocks may extend to 120 characters
+- Use soft wrapping for long content
+- Break URLs between path segments
+
+### 3.2. Indentation and Spacing
+
+- Always use 4 spaces for indentation everywhere EXCEPT for code blocks
+- One blank line before and after:
+  - Headers
+  - Code blocks
+  - Lists
+  - Tables
+  - Admonitions
+- Use 4 spaces for nested lists
+- Use 4 spaces for code blocks
+- Use 4 spaces for blockquotes
+- Use 4 spaces for admonitions
+- Never use tabs, only spaces
+
+### 3.3. Special Characters
+
+- Use UTF-8 encoding
+- Escape special characters when needed:
+  - Backslash: `\\`
+  - Backtick: `` ` ``
+  - Asterisk: `\*`
+- Use HTML entities for:
+  - Copyright: &copy;
+  - Trademark: &trade;
+  - Registered: &reg;
+
+### 3.4. Emoji Usage
+
+- Use emojis sparingly and only when they add value
+- Common acceptable uses:
+  - ✅ Success or completion
+  - ⚠️ Warning or caution
+  - ℹ️ Information or note
+  - 🚫 Error or prohibition
+
+## 4. Quality Standards
+
+✅ Complete frontmatter with SEO-friendly content
+✅ Proper heading hierarchy (no skipped levels)
+✅ Descriptive titles and headings
+✅ Technical terms in backticks
+✅ Valid and meaningful links
+✅ Clear image descriptions and alt text
+✅ Consistent spacing and formatting
+✅ Working code examples
+✅ Helpful admonitions
+✅ Accessible content structure
+
+## 5. Code Preservation
+
+1. Never modify code unless instructed
+2. Keep exact spacing and format
+3. Preserve attribute order in HTML
+4. Maintain original line breaks
+5. Use language-appropriate markers for partial code:
+   - PHP: `// ... existing code ...`
+   - HTML: `<!-- ... existing code ... -->`
+   - CSS: `/* ... existing code ... */`
+   - JavaScript: `// ... existing code ...`
+   - Python: `# ... existing code ...`
+
+## 6. Common Corrections
+
+Fix common spelling mistakes:
+
+| Incorrect   | Correct      |
+| :---------- | :----------- |
+| neccessary  | necessary    |
+| additionaly | additionally |
+| permenantly | permanently  |
+| fidelety    | fidelity     |
+| incidently  | incidentally |
+| seperate    | separate     |

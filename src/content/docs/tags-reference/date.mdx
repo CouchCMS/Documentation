@@ -1,0 +1,231 @@
+---
+title: date
+category: tag
+description: "The date tag outputs a string according to the given format parameter using the given date parameter."
+keywords:
+    - date
+    - CouchCMS
+    - Couch
+    - tags
+    - PHP
+    - formatting
+    - locale
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+
+The `date` tag outputs a string according to the given `format` parameter using the given `date` parameter. If no `date` provided, the current time is used.
+
+
+## Basic Usage
+
+```php title="Basic Date Output"
+<cms:date />
+```
+
+```php title="Using Page Date"
+<cms:date k_page_date />
+```
+
+```php title="Custom Date Format"
+<cms:date k_page_date format='jS M, Y' />
+```
+
+
+## Parameters
+
+This tag accepts the following parameters:
+
+- `date`
+- `format`
+- `gmt`
+- `locale`
+- `charset`
+
+
+### date
+
+The date to be formated.
+This parameter is expected to be in `Y-m-d H:i:s` format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. `k_page_date` etc., are in this format.
+
+
+### format
+
+The `date` tag supports two different types of format characters - locale-aware and non locale-aware.
+With locale-aware characters, you can specify that the date is to formatted according to, for example, `french` locale or `italian` locale by setting the `locale` parameter.
+The locale-aware characters all have a % sign prefixed to them.
+
+:::caution
+The locale-aware and the non locale-aware characters cannot be intermixed.
+:::
+
+#### Non Locale-aware format characters
+
+| Format | Description | Example values |
+| :--- | :--- | :--- |
+| **Day** | | |
+| `d` | Day of the month, 2 digits with leading zeros | `01` to `31` |
+| `D` | A textual representation of a day, three letters | `Mon` through `Sun` |
+| `j` | Day of the month without leading zeros | `1` to `31` |
+| `l` | A full textual representation of the day of the week | `Sunday` through `Saturday` |
+| `S` | English ordinal suffix for the day of the month | `st`, `nd`, `rd` or `th` |
+| `w` | Numeric representation of the day of the week | `0` (Sunday) through `6` (Saturday) |
+| `z` | The day of the year (starting from 0) | `0` through `365` |
+| **Week** | | |
+| `W` | ISO-8601 week number of year | `42` (42nd week in the year) |
+| **Month** | | |
+| `F` | Full textual representation of a month | `January` through `December` |
+| `m` | Month with leading zeros | `01` through `12` |
+| `M` | Short textual representation of a month | `Jan` through `Dec` |
+| `n` | Month without leading zeros | `1` through `12` |
+| `t` | Number of days in the month | `28` through `31` |
+| **Year** | | |
+| `L` | Whether it's a leap year | `1` if leap year, `0` otherwise |
+| `Y` | Full numeric year, 4 digits | `1999` or `2003` |
+| `y` | Two digit year | `99` or `03` |
+| **Time** | | |
+| `a` | Lowercase Ante/Post meridiem | `am` or `pm` |
+| `A` | Uppercase Ante/Post meridiem | `AM` or `PM` |
+| `B` | Swatch Internet time | `000` through `999` |
+| `g` | 12-hour format without leading zeros | `1` through `12` |
+| `G` | 24-hour format without leading zeros | `0` through `23` |
+| `h` | 12-hour format with leading zeros | `01` through `12` |
+| `H` | 24-hour format with leading zeros | `00` through `23` |
+| `i` | Minutes with leading zeros | `00` to `59` |
+| `s` | Seconds with leading zeros | `00` through `59` |
+| **Timezone** | | |
+| `I` | Daylight Saving Time | `1` if DST, `0` otherwise |
+| `O` | Difference to GMT in hours | `+0200` |
+| `T` | Timezone abbreviation | `EST`, `MDT` |
+| `Z` | Timezone offset in seconds | `-43200` through `50400` |
+| **Full Date/Time** | | |
+| `r` | RFC 2822 formatted date | `Thu, 21 Dec 2000 16:01:07 +0200` |
+| `U` | Unix Epoch seconds | Seconds since January 1 1970 00:00:00 GMT |
+
+#### Locale-aware format characters
+
+| Format | Description | Example values |
+| :--- | :--- | :--- |
+| **Day** | | |
+| `%a` | Abbreviated day name | `Sun` through `Sat` |
+| `%A` | Full day name | `Sunday` through `Saturday` |
+| `%d` | Day with leading zeros | `01` to `31` |
+| `%e` | Day with space prefix | `1` to `31` |
+| `%j` | Day of year with leading zeros | `001` to `366` |
+| `%u` | ISO-8601 day of week | `1` (Monday) through `7` (Sunday) |
+| `%w` | Day of week | `0` (Sunday) through `6` (Saturday) |
+| **Week** | | |
+| `%U` | Week number, Sunday start | `13` (13th week) |
+| `%V` | ISO-8601 week number | `01` through `53` |
+| `%W` | Week number, Monday start | `46` (46th week) |
+| **Month** | | |
+| `%b` | Abbreviated month name | `Jan` through `Dec` |
+| `%B` | Full month name | `January` through `December` |
+| `%h` | Same as %b | `Jan` through `Dec` |
+| `%m` | Month with leading zeros | `01` through `12` |
+| **Year** | | |
+| `%C` | Century number | `19` for 20th Century |
+| `%g` | ISO-8601 2-digit year | `09` for week of Jan 6, 2009 |
+| `%G` | ISO-8601 4-digit year | `2008` for week of Jan 3, 2009 |
+| `%y` | 2-digit year | `09` for 2009, `79` for 1979 |
+| `%Y` | 4-digit year | `2038` |
+| **Time** | | |
+| `%H` | 24-hour with leading zeros | `00` through `23` |
+| `%I` | 12-hour with leading zeros | `01` through `12` |
+| `%l` | 12-hour with space prefix | `1` through `12` |
+| `%M` | Minutes with leading zeros | `00` through `59` |
+| `%p` | Uppercase AM/PM | `AM` for 00:31, `PM` for 22:23 |
+| `%P` | Lowercase am/pm | `am` for 00:31, `pm` for 22:23 |
+| `%r` | Time in 12-hour format | `09:34:17 PM` |
+| `%R` | Time in 24-hour format | `00:35` or `16:44` |
+| `%S` | Seconds with leading zeros | `00` through `59` |
+| `%T` | Time in 24-hour format | `21:34:17` |
+| `%X` | Locale's time format | `03:59:16` or `15:59:16` |
+| `%z` | Timezone offset | `-0500` or `EST` |
+| `%Z` | Timezone name | `-0500` or `EST` |
+| **Date Stamps** | | |
+| `%c` | Preferred date/time stamp | `Tue Feb 5 00:45:10 2009` |
+| `%D` | Date in MM/DD/YY | `02/05/09` |
+| `%F` | Date in YYYY-MM-DD | `2009-02-05` |
+| `%s` | Unix Epoch timestamp | `305815200` |
+| `%x` | Locale's date format | `02/05/09` |
+| **Special** | | |
+| `%n` | Newline character | `\n` |
+| `%t` | Tab character | `\t` |
+| `%%` | Literal percent sign | `%` |
+
+### gmt
+
+By setting this parameter to '1', you can get the GMT equivalent of the date provided.
+
+### locale
+
+If you use the locale-aware format characters mentioned above, this parameter can be set to the locale desired for formatting the provided date.
+
+```php title="French Date Format"
+<cms:date k_page_date format='%B %d, %Y' locale='french' />
+```
+
+```php title="Italian Date Format"
+<cms:date k_page_date format='%B %d, %Y' locale='italian' />
+```
+
+:::caution
+This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used.
+:::
+
+### charset
+
+Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.
+The `date` tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.
+
+For example:
+
+```php title="Greek Date Format"
+<cms:date k_page_date format='%B %d, %Y' locale='greek' charset='ISO-8859-7' />
+```
+
+```php title="Russian Date Format"
+<cms:date k_page_date format='%B %d, %Y' locale='russian' charset='ISO-8859-5' />
+```
+
+The following is a rough list of the charset used by different languages:
+
+**ISO-8859-1 - Latin 1**
+Western Europe and Americas: Afrikaans, Basque, Catalan, Danish, Dutch, English, Faeroese, Finnish, French, Galician, German, Icelandic, Irish, Italian, Norwegian, Portuguese, Spanish and Swedish.
+
+**ISO-8859-2 - Latin 2**
+Latin-written Slavic and Central European languages: Czech, German, Hungarian, Polish, Romanian, Croatian, Slovak, Slovene.
+
+**ISO-8859-3 - Latin 3**
+Esperanto, Galician, Maltese, and Turkish.
+
+**ISO-8859-4 - Latin 4**
+Scandinavia/Baltic (mostly covered by 8859-1 also): Estonian, Latvian, and Lithuanian. It is an incomplete predecessor of Latin 6.
+
+**ISO-8859-5 - Cyrillic**
+Bulgarian, Byelorussian, Macedonian, Russian, Serbian and Ukrainian.
+
+**ISO-8859-6 - Arabic**
+Non-accented Arabic.
+
+**ISO-8859-7 - Modern Greek**
+Greek.
+
+**ISO-8859-8 - Hebrew**
+Non-accented Hebrew.
+
+**ISO-8859-9 - Latin 5**
+Same as 8859-1 except for Turkish instead of Icelandic
+
+**ISO-8859-10 - Latin 6**
+Latin6, for Lappish/Nordic/Eskimo languages: Adds the last Inuit (Greenlandic) and Sami (Lappish) letters that were missing in Latin 4 to cover the entire Nordic area.
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [number_format](../number_format.html)

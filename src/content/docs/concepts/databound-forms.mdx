@@ -1,0 +1,59 @@
+---
+title: DataBound Forms
+description: "Learn how to create databound forms in Couch to allow users to create, update, and delete data from the database."
+keywords:
+    - databound forms
+    - form
+    - database
+    - create
+    - update
+    - delete
+    - user interface
+    - web development
+    - CMS templates
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-04-01
+sidebar:
+    order: 29
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+Any database driven application (and Couch happens to be one), essentially constitutes of just four basic operations:
+- **Create**
+- **Read**
+- **Update**
+- **Delete** (CRUD as it is known)
+
+Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the "Read" operation through its [**pages**](../../tags-reference/pages/) tag. The rest mandated the use of the back-end (i.e. the admin-panel) and thus were limited to only admins and super-admins. So, for example, to create, modify or delete a cloned-page one had to be logged-in as admin and then make use of the back-end to do so.
+
+This arrangement works well and is very secure, however, there are situations where it becomes necessary to allow the Create/Update/Delete operations to happen beyond these usual constraints. That is to say, allow ordinary users (non-admins) to do so and that too from the front-end.
+
+:::note[Examples]
+Here are some common use cases:
+
+<Steps>
+
+1. Allow visitors to submit contents like articles or job postings
+2. Allow visitors to submit their reviews and ratings
+3. Allow a group of registered users to create/manage their own pages
+
+</Steps>
+:::
+
+In all the examples above, notice that the submitted content needs to get persisted in the database as ordinary cloned-pages of Couch and this needs to be done by non-admin users without ever accessing the admin-panel.
+
+With v1.4, Couch now makes this possible by introducing some new tags. These tags, like all other Couch tags, can be used on regular templates and thus bring the elusive Create/Update/Delete functionality right to the front-end exposed to ordinary visitors.
+
+:::caution[Security Note]
+Of course, this is powerful stuff and, as Peter Parker's uncle would have us remember, with great power comes great responsibility. Allowing faceless visitors a portal into your database requires appropriate checks and balances in place to prevent potential misuse. As we'll see later, Couch also provides you all necessary security tools to safely realize the potential of this newfound power.
+:::
+
+## A Real-World Example
+
+Instead of dryly documenting the new tags, I'll walk you through a real-world example: [**Creating a Job Application Form**](../../tutorials/job-application-form/01-getting-started/). This tutorial will assist you in setting up a form, managing form submissions, and saving the submitted data in CouchCMS.
+
+By the end of the tutorial, you will have a fully functional job application form that allows users to submit their details and resumes, with all data being stored securely in the database for easy access and management.
+
+Let's dive into the [**tutorial**](../../tutorials/job-application-form/01-getting-started/) and see how DataBound Forms can be used to create a robust job application system.

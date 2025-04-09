@@ -1,0 +1,113 @@
+---
+title: Listing Pages
+description: "Learn how to list and display pages in Couch using the pages tag"
+keywords:
+    - pages
+    - listing
+    - views
+    - folders
+    - archives
+    - page display
+    - content organization
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 9
+---
+
+Couch has a powerful tag named [**pages**](../../tags-reference/pages/) that can be used to list all pages belonging to a template. For example:
+
+```php title="Basic Page Listing"
+<cms:pages masterpage="blog.php">
+    <!-- All the variables of each page cloned out of this template are available here -->
+    <cms:show k_page_title /><br>
+</cms:pages>
+```
+
+The snippet given above will fetch all pages cloned out of `blog.php` template. The `masterpage` parameter stands for the template's name. If this parameter is omitted, the name of the current template (i.e. the template this snippet is placed in) will be used.
+
+This tag iterates through each of the fetched pages and makes available all the data associated with the page as variables. The variables are exactly the same as those made available had the page been accessed directly via its URL (i.e. in its page-view).
+
+The [**pages**](../../tags-reference/pages/) tag supports a number of parameters that can be used to fine-tune the actual pages that get fetched. Please see the [**parameters**](../../tags-reference/pages/#parameters) section for a comprehensive list.
+
+### Listing Pages in the List-Views
+
+As shown in the previous chapter, for clonable templates, Couch considers certain URLs as those meant for listing pages cloned out of the template being accessed.
+
+For example:
+
+```txt title="Home View URL"
+https://www.mysite.com/blog/
+```
+
+This is considered to be a **home-view** and a list of all the pages cloned out of `blog.php` should be displayed in this view.
+
+```txt title="Folder View URL"
+https://www.mysite.com/blog/hobbies/
+```
+
+This is considered to be a **folder-view** and a list of all the pages cloned out of `blog.php` that belong to "hobbies" sub-folder should be displayed in this view.
+
+```txt title="Archive View URL"
+https://www.mysite.com/blog/2010/05/
+```
+
+This is considered to be an **archive-view** and a list of all the pages cloned out of `blog.php` that have been published during the month of May in 2010 should be displayed in this view.
+
+When a template is accessed using the URLs mentioned above, Couch recognizes the view and sets certain variables that can be used by you to list the pages as is expected for the particular view. See: [**Variables Available in Views**](../variables-in-views/). It is ultimately up to you whether or not you choose to list pages in the expected manner.
+
+### Handling Home-View
+
+The `k_is_home` variable can be used to recognize this view and then the [**pages**](../../tags-reference/pages/) tag can be used to list all pages cloned from the template being accessed.
+
+```php title="Home View Example"
+<cms:if k_is_home >
+    <cms:pages>
+        <!-- All the variables of each page cloned out of this template are available here -->
+    </cms:pages>
+</cms:if>
+```
+
+### Handling Folder-View
+
+The `k_is_folder` variable can be used to recognize this view. The `k_folder_name` variable made available by Couch in this view can then be used as a parameter of the [**pages**](../../tags-reference/pages/) tag to list pages belonging to that folder:
+
+```php title="Folder View Example"
+<cms:if k_is_folder >
+    <cms:pages folder=k_folder_name include_subfolders='1' >
+        <!-- All the variables of each page in this folder are available here -->
+    </cms:pages>
+</cms:if>
+```
+
+### Handling Archive-View
+
+The `k_is_archive` can be used to recognize this view. In this view, Couch makes available the `k_archive_date` and `k_next_archive_date` variables that denote the boundaries of the archive's period. These two variables can then be used as parameters of the [**pages**](../../tags-reference/pages/) tag to list pages belonging to that time period:
+
+```php title="Archive View Example"
+<cms:if k_is_archive >
+    <cms:pages start_on=k_archive_date stop_before=k_next_archive_date >
+        <!-- All the variables of each page belonging to this archive period are available here -->
+    </cms:pages>
+</cms:if>
+```
+
+### A Unified Way of Handling All List-Views
+
+The three list views can be handled separately if the way the pages and their contents are displayed differs between the views. However, if there is no difference in the way the list is displayed, the following is the preferred way of handling all the three list-views together:
+
+```php title="Unified List View Example"
+<cms:if k_is_list >
+    <cms:pages folder=k_folder_name include_subfolders='1' start_on=k_archive_date stop_before=k_next_archive_date >
+        <!-- All the variables of each page belonging to this view are available here -->
+    </cms:pages>
+</cms:if>
+```
+
+:::note[List View Parameters]
+The snippet given above can handle all the list-views because:
+- In **home-view**, the `k_folder_name`, `k_archive_date` and `k_next_archive_date` will not be set and hence these parameters will have no effect on the pages fetched
+- In **folder-view** the `k_archive_date` and `k_next_archive_date` will not be set
+- In **archive-view** the `k_folder_name` will not be set
+:::

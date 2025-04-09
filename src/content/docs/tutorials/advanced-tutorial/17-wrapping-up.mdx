@@ -1,0 +1,47 @@
+---
+title: "Wrapping Up"
+description: "Complete the Notejam application tutorial by implementing final configurations and understanding the core principles of CouchCMS application development."
+keywords:
+    - tutorial conclusion
+    - final setup
+    - index configuration
+    - redirection setup
+    - CouchCMS
+    - advanced tutorial
+    - application completion
+    - best practices
+    - web development
+category: tutorial
+subCategory: advanced-tutorial
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+sidebar:
+    order: 17
+slug: tutorials/advanced-tutorial/wrapping-up
+---
+
+Finally time to say good-bye 👋
+
+But before we do that, let us tidy up one little thing - the `index.php` template.
+
+Our application does not need one but web-servers usually insist on having an `index.php` (or `index.html`) in the
+site's root so you'll find a template by that name in 'site' folder.
+
+Register it by visiting it as super-admin. You'll see that the template is empty (contains only the two PHP lines to
+make it a Couch managed template). You are, of course, free to place whatever is required by your app here but for our
+Notejam application we'll simply make it redirect to the notes template.
+
+To do that place the following line in it:
+
+```php title="index.php"
+<cms:redirect "<cms:link 'notes.php' />" />
+```
+
+Ok, so I suppose that really ends our tutorial.
+
+It was a deceptively simple application but it covered almost all the principles that you'll need to create more complex
+applications.
+
+Do let us know if you have any questions.
+
+Bye 👋

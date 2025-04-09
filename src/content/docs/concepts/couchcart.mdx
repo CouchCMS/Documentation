@@ -1,0 +1,194 @@
+---
+title: CouchCart
+description: "CouchCart is a lightweight shopping cart component for CouchCMS that enables basic e-commerce functionality while maintaining design flexibility"
+keywords:
+    - couchcart
+    - shopping cart
+    - e-commerce
+    - paypal integration
+category: concept
+author: Kamran Kashif
+lastUpdated: 2025-03-20
+sidebar:
+    order: 28
+---
+
+import { Steps, Card } from '@astrojs/starlight/components';
+
+## Introduction
+
+CouchCart is a lightweight shopping cart component designed specifically for Couch. It's perfect for websites that need basic e-commerce functionality without the complexity of full-featured e-commerce platforms.
+
+### Key Features
+
+- **Design-First Approach**: CouchCart integrates seamlessly with your existing HTML design
+- **PayPal Integration**: Built-in support for PayPal payments
+- **Flexible Product Options**: Support for product variations (size, color, etc.)
+- **Cart Management**: Add, update, and remove items
+- **Price Calculations**: Handle subtotals, taxes, shipping, and discounts
+- **Coupon System**: Support for promotional codes and discounts
+
+## Getting Started
+
+<Card icon="star" title="Tutorial">
+The best way to learn CouchCart is through our comprehensive [**Shopping Cart Tutorial**](../../tutorials/shopping-cart/01-shopping-cart-1/) that shows how to convert a static HTML template into a fully functional e-commerce site.
+</Card>
+
+## Core Components
+
+### Product Management
+
+<Steps>
+
+1. **Product Form**
+
+   ```php title="Product Form Example"
+   <cms:pp_product_form>
+   ```
+
+   Generates the form used to add products to the cart.
+
+2. **Product Options**
+
+   ```php title="Product Options Example"
+   <cms:pp_product_options>
+   ```
+
+   Iterates through product options (e.g., Size, Color).
+
+3. **Option Values**
+
+   ```php title="Option Values Example"
+   <cms:pp_option_values>
+   ```
+
+   Creates dropdowns or radio buttons for option values.
+
+</Steps>
+
+### Cart Management
+
+<Steps>
+
+1. **Cart Form**
+
+   ```php title="Cart Form Example"
+   <cms:pp_cart_form>
+   ```
+
+   Generates the form for updating cart items.
+
+2. **Cart Items**
+
+   ```php title="Cart Items Example"
+   <cms:pp_cart_items>
+   ```
+
+   Iterates through items in the cart.
+
+3. **Selected Options**
+
+   ```php title="Selected Options Example"
+   <cms:pp_selected_options>
+   ```
+
+   Displays selected options for cart items.
+
+</Steps>
+
+### Payment & Checkout
+
+<Steps>
+
+1. **Payment Gateway**
+
+   ```php title="Payment Gateway Example"
+   <cms:pp_payment_gateway>
+   ```
+
+   Handles PayPal integration.
+
+2. **Checkout Link**
+
+   ```php title="Checkout Link Example"
+   <cms:pp_checkout_link>
+   ```
+
+   Generates the checkout button/link.
+
+</Steps>
+
+## Cart Calculations
+
+### Basic Calculations
+
+- `pp_count_items`: Total number of items in cart
+- `pp_count_unique_items`: Number of unique products
+- `pp_count_shippable_items`: Number of items requiring shipping
+- `pp_sub_total`: Cart subtotal
+- `pp_discount`: Applied discounts
+- `pp_sub_total_discounted`: Subtotal after discounts
+- `pp_taxes`: Calculated taxes
+- `pp_shipping`: Shipping charges
+- `pp_total`: Final total
+
+### Cart Actions
+
+- `pp_refresh_cart`: Refreshes cart calculations
+- `pp_empty_cart`: Clears the cart
+- `pp_cart_link`: Links to cart page
+- `pp_add_item_link`: Adds items to cart
+- `pp_update_item_link`: Updates cart items
+- `pp_remove_item_link`: Removes items from cart
+
+## Configuration
+
+CouchCart can be configured through the `config.php` file in the `addons/cart` directory. This allows you to set up:
+
+- Currency settings
+- PayPal configuration
+- Shipping calculations
+- Tax rates
+- Discount rules
+
+## Best Practices
+
+While dedicated scripts like osCommerce or Magento have their places, they seem overkill for sites requiring only basic e-commerce facility. Couch now ships with a shopping cart component designed to fill this niche - CouchCart.
+
+True to Couch's philosophy where it is your design that always takes center-stage (the CMS always getting 'retrofitted' within the existing HTML markup), CouchCart simply provides a set of tags that can be added to any HTML shopping cart design to convert it into a fully functional e-store in no time.
+
+To demonstrate the use of these tags, we created a tutorial that takes a sample HTML template (kindly provided by [@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)) and converts it into a working e-commerce site.
+
+The tutorial is available [here](../../tutorials/shopping-cart/shopping-cart-1/).
+
+## Appendix
+
+A complete list of all tags that come with CouchCart:
+
+- `pp_product_form`
+- `pp_product_options`
+- `pp_option_values`
+- `pp_cart_form`
+- `pp_cart_items`
+- `pp_selected_options`
+- `pp_payment_gateway`
+- `pp_count_items`
+- `pp_count_unique_items`
+- `pp_count_shippable_items`
+- `pp_sub_total`
+- `pp_discount`
+- `pp_sub_total_discounted`
+- `pp_taxes`
+- `pp_shipping`
+- `pp_total`
+- `pp_custom_var`
+- `pp_currency_symbol`
+- `pp_refresh_cart`
+- `pp_config`
+- `pp_add_item_link`
+- `pp_update_item_link`
+- `pp_remove_item_link`
+- `pp_empty_cart_link`
+- `pp_checkout_link`
+- `pp_cart_link`
+- `pp_empty_cart`
