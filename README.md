@@ -6,6 +6,7 @@ The documentation is built with [Astro](https://astro.build/) + [Starlight](http
 
 ## Project Structure
 
+
 The documentation is built with Astro + Starlight and has the following structure:
 
 ```
