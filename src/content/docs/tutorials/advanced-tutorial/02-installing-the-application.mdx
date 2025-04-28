@@ -58,7 +58,7 @@ Please download the [**latest version of Couch**](https://www.couchcms.com/produ
 
 1. Rename `couch/config.example.php` to `couch/config.php` and add to it the required database information. Important to this tutorial, edit the following settings:
 
-    ```php title="couch/config.php"
+    ```diff lang="php" title="couch/config.php"
     // 12.
     // Upload folder if not using the default upload folder within 'couch'.
     // Should be relative to your site (don't forget to set write permissions on it).
@@ -152,7 +152,7 @@ The process of setting up the user accounts template is described in detail in t
 
 </Steps>
 
-Our users template is now completely configured and we can forget it for now and turn our attention to the other 
+Our users template is now completely configured and we can forget it for now and turn our attention to the other
 two templates.
 
 ### Notes and Pads Templates
@@ -176,9 +176,9 @@ Coming back to the admin-panel, you should see the two templates appear in the s
 
 Before we move onto the front-end to work directly with the application, create some 'seeding' data for the application:
 
-Before we move onto the front-end to work directly with the application, create some 'seeding' data for the 
-application. To do so, use the admin-panel to create a couple of pads (i.e. cloned-pages of `pads.php`). Associate 
-them with 'admin' for now. Now create some notes and associate them with the pads we created above and user 
+Before we move onto the front-end to work directly with the application, create some 'seeding' data for the
+application. To do so, use the admin-panel to create a couple of pads (i.e. cloned-pages of `pads.php`). Associate
+them with 'admin' for now. Now create some notes and associate them with the pads we created above and user
 'admin'.
 
 <Steps>
