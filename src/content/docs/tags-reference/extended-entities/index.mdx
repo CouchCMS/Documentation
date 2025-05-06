@@ -1,0 +1,54 @@
+---
+title: Extended Entities
+description: "Learn about Couch's Extended Users module for implementing user management, authentication, and profile handling"
+keywords:
+    - extended users
+    - user management
+    - authentication
+    - user profiles
+    - registration
+    - login system
+    - password recovery
+    - user roles
+category: tags
+author: Kamran Kashif
+lastUpdated: 2025-04-29
+sidebar:
+    order: 1
+    label: Overview
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+:::note[Historical Context]
+This feature was initially introduced on **30 Mar 2014** as the members module. See [thread](https://www.couchcms.com/forum/viewtopic.php?f=5&t=8063). However, this addon has since been replaced by extended users functionality. Refer to [thread](https://www.couchcms.com/forum/viewtopic.php?f=5&t=8581) as part of the Couch 1.4.5 partial release on **22 Oct 2014**.
+:::
+
+Anyone who has worked with Couch for any length of time would realize that 'pages' are at the heart of almost everything that Couch does. There are other 'entities' available too namely 'folders', 'comments' and 'users' but when it comes to flexibility, these are almost second-grade citizens when compared to 'pages'. Quite unlike pages, none of the other entities allow any kind of customization to the data captured through them. For example, comments offer a fixed number of fields - take it or leave it. There is no provision for defining your own fields in comments.
+
+'Users' suffer from the same problem. Almost all our community members would know that the '[Members](http://www.couchcms.com/forum/viewtopic.php?f=5&t=8063)' module attempted to alleviate this problem by replacing the system 'user' entity with those 'simulated' using normal cloned pages.
+
+For most part it worked well but also brought in its own set of complications - we now had two set of 'users' to contend with in coding (the system 'users' and the custom 'members'). 'Members' did not replace 'users'. Rather the two co-existed in the same sphere often overlapping each other's functionality thus leading to confusion.
+
+The 'extended' addon attempts to fix these problems by following a unique tack. Like the 'members' module, it relies on normal cloned pages to do its job but, importantly, unlike the former the cloned pages do not try to 'simulate' the existing entities. Instead, they 'extend' them.
+
+Allow me to explain (this is a bird's eye view. We'll go into the specifics later). We use 'extended' addon to add custom fields to 'users', 'folders' and 'comments'. To do so, we simply use a normal clonable template and associate it with the entity of our choosing.
+
+Let us suppose, we do that with 'folders'. Now, any editable region we add to our template will *show up in the folders edit screen*. The system 'folder' object, in a sense, borrows the editable regions from our template and in this way the template 'extends' it.
+
+What happens when we create a new folder? The system automatically creates in the background a hidden cloned-page associated with the folder. Delete a folder and the associated cloned page gets deleted automatically.
+
+The same thing holds true for 'comments' and 'users' also.
+
+Compare this approach to 'members' addon and you'll see that with the new approach, the cloned-pages play second fiddle to the core objects. They don't attemt to supplant or replace the original entities. Rather, they remain relegated to the background, working silently to enhance the entities they are associated with. The enhanced entities continue to work just the same as before (e.g. everything you know about working with 'users' remains unchanged) only now with additional features.
+
+Now that we have a bird's eye view of the way 'extended' addon works, let us see in detail how to put it to use with each of the mentioned entities (have split these into separate pages to keep this post manageable).
+
+- [**Extended Users**](extended-users/)
+
+- [**Extended Folders**](extended-folders/)
+
+- [**Extended Comments**](extended-comments/)
+
+
+
