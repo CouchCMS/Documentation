@@ -19,7 +19,7 @@ sidebar:
 ---
 
 Some templates represent one single page of a website, e.g. `about-us.php` and `contact-us.php`.
-To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the [**editable**](../../tags-reference/editable/) tags and Couch will make them editable.
+To make these pages updatable by the users, it is sufficient to mark out the updatable HTML areas in the templates using the [**editable**](../../tags-reference/core/editable/) tags and Couch will make them editable.
 
 Some other templates, e.g. `blog.php` or `property.php`, cannot possibly represent one single page. A website will have several blog pages, each page representing a single blog entry. Similarly, there will be several property pages where each page would stand for a single property.
 
@@ -37,7 +37,7 @@ Couch's answer is to 'clone' the new page out of the original `blog.php` templat
 
 To create cloned pages out of a template, the template first needs to be marked as being _clonable_.
 
-A template can be marked as being clonable by using the [**template**](../../tags-reference/template/) tag somewhere within it and setting its `clonable` parameter to `1`. Place the following snippet somewhere at the beginning of the template (within the `<head>` tag will do just fine):
+A template can be marked as being clonable by using the [**template**](../../tags-reference/core/template/) tag somewhere within it and setting its `clonable` parameter to `1`. Place the following snippet somewhere at the beginning of the template (within the `<head>` tag will do just fine):
 
 ```php title="Enable Cloning"
 <cms:template clonable='1' > </cms:template>
@@ -93,7 +93,7 @@ And this brings us to the important concept we mentioned above. When a template 
 https://www.yoursite.com/about-us.php
 ```
 
-\- is unequivocally one single page.
+The above page is unequivocally one single page.
 
 In contrast, as in the case with `blog.php` above, once a template is declared clonable, it can now represent one to any number of pages that might be cloned out of it. Thus:
 
