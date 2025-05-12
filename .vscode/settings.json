@@ -1,5 +1,7 @@
 {
     "editor.fontSize": 15,
     "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 120
+    "editor.wordWrapColumn": 120,
+    "markdown.validate.enabled": true,
+    "markdown.validate.ignoredLinks": ["../../../concepts/extended-users/"]
 }
