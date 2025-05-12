@@ -14,28 +14,31 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
-Editable region of type `nicedit` can be used as a light-weight alternative to editable region of type [**richtext**](../richtext/). It is primarily meant to be used with [**Repeatable Regions**](../../../concepts/repeatable-regions/), however it can be used as an independent editable region too.
+import { Image } from 'astro:assets';
+import niceditImg from '../../../../../assets/img/contents/editable-nicedit.png';
+
+Editable region of type `nicedit` can be used as a light-weight alternative to editable region of type [**richtext**](../richtext/). It is primarily meant to be used with [**Repeatable Regions**](../../../../concepts/repeatable-regions/), however it can be used as an independent editable region too.
 
 Unlike `richtext` that uses CKEditor - a full fledged Wysiwyg editor, `nicedit` is somewhat limited in the wysiwyg features it offers but is perfect for situations where only basic HTML editing capability is required.
 
-![NicEdit Interface](../../../../assets/img/contents/editable-nicedit.png "NicEdit editor showing basic formatting options")
+<Image src={niceditImg} alt="NicEdit editor showing basic formatting options" />
 
 A region of this type may be defined in two ways:
 
 ```php title="Basic NicEdit Example"
-<cms:editable 
-    type="nicedit" 
-    label="Description" 
-    name="my_desc" 
+<cms:editable
+    type="nicedit"
+    label="Description"
+    name="my_desc"
 />
 ```
 
 Or with default content:
 
 ```php title="NicEdit with Default Content"
-<cms:editable 
-    type="nicedit" 
-    label="Description" 
+<cms:editable
+    type="nicedit"
+    label="Description"
     name="my_desc"
 >
     This enclosed text will appear as the default value of the editor
@@ -60,13 +63,13 @@ In addition to the parameters common to all types of editable regions, `nicedit`
 The dimensions of the editor can be changed by setting the `width`, `height`, and `maxheight` parameters. For example:
 
 ```php title="Setting Editor Dimensions"
-<cms:editable 
-    type="nicedit" 
-    label="Description" 
+<cms:editable
+    type="nicedit"
+    label="Description"
     name="my_desc"
     width="400"
     height="200"
-    maxheight="600" 
+    maxheight="600"
 />
 ```
 
@@ -77,11 +80,11 @@ This will make the editor `400px` wide and `200px` high, expanding up to `600px`
 This parameter can be used to specify which buttons are displayed in the toolbar of the editor:
 
 ```php title="Customizing Toolbar Buttons"
-<cms:editable 
-    type="nicedit" 
-    label="Description" 
+<cms:editable
+    type="nicedit"
+    label="Description"
     name="my_desc"
-    buttons="italic, bold" 
+    buttons="italic, bold"
 />
 ```
 
