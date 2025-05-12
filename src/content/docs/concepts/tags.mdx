@@ -49,13 +49,13 @@ When a template containing Couch tags gets finally rendered in a browser, each o
 
 ## Parameters
 
-Parameters are used to modify a tag's behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, 'Hello World' is a parameter and is the message that [**show**](../../tags-reference/show/) tag is supposed to display.
+Parameters are used to modify a tag's behaviour. They provide the tag with specific information about what it is supposed to do. In the following example, 'Hello World' is a parameter and is the message that [**show**](../../tags-reference/core/show/) tag is supposed to display.
 
 ```php title="Parameter Example"
 <cms:show 'Hello World' />
 ```
 
-In the following example, `4` is the parameter and it is the number of times that the [**repeat**](../../tags-reference/repeat/) tag will repeat the contents enclosed by it.
+In the following example, `4` is the parameter and it is the number of times that the [**repeat**](../../tags-reference/core/repeat/) tag will repeat the contents enclosed by it.
 
 ```php title="Parameter with Count"
 <cms:repeat count='4'>
@@ -67,7 +67,7 @@ In the following example, `4` is the parameter and it is the number of times tha
 
 Please notice that in the second example above, we are explicitly naming the parameter (`count='4'` - where `count` is the name and `4` is the value of the parameter), whereas in the first example the parameter was passed unnamed.
 
-In Couch, naming the parameters is entirely optional but then you'll have to make sure that you pass the parameters in the exact sequence the tag expects them in. Thus, for example, [**repeat**](../../tags-reference/repeat/) tag can take two parameters `count` and `startcount` where `startcount` is expected to be the second parameter. If we explicitly name the parameters, e.g.:
+In Couch, naming the parameters is entirely optional but then you'll have to make sure that you pass the parameters in the exact sequence the tag expects them in. Thus, for example, [**repeat**](../../tags-reference/core/repeat/) tag can take two parameters `count` and `startcount` where `startcount` is expected to be the second parameter. If we explicitly name the parameters, e.g.:
 
 ```php title="Named Parameters"
 <cms:repeat count='4' startcount='1'></cms:repeat>
@@ -83,7 +83,7 @@ The sequence of the parameters does not matter as there is no ambiguity. However
 The above will be interpreted as count=1 and startcount=4, which is not what was meant.
 
 :::tip[Parameter Naming]
-It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [**show**](../../tags-reference/show/) tag above, in which case there can never be any ambiguity. In fact the [**show**](../../tags-reference/show/) tag ignores the name you give to the parameter totally, thus:
+It is a good practice to always name the parameters unless the tag takes only one parameter e.g. the [**show**](../../tags-reference/core/show/) tag above, in which case there can never be any ambiguity. In fact the [**show**](../../tags-reference/core/show/) tag ignores the name you give to the parameter totally, thus:
 
 ```php title="Show Tag Parameters"
 <cms:show 'Hello' />
