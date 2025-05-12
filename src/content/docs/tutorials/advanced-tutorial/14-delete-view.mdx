@@ -14,15 +14,18 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-03-27
+lastUpdated: 2025-05-12
 sidebar:
     order: 14
 slug: tutorials/advanced-tutorial/delete-view
 ---
 
+import { Image } from 'astro:assets';
+import deleteViewImg from './img/scr6.png';
+
 The *delete_view*, reached by clicking the 'Delete it' link found on the *page_view*, shows a prominent button asking for confirmation about the action (and a 'Cancel' link that leads back to the *page_view* of the note):
 
-![Delete Note Confirmation Screen](./img/scr6.png)
+<Image src={deleteViewImg} alt="Delete Note Confirmation Screen" />
 
 The overall logic of this view is pretty simple - pressing the confirmation button submits a form. The `k_success` code of the form then effects the actual deletion.
 
@@ -96,7 +99,3 @@ In our snippet that we discussed above, the DataBound Form hosting the `cms:db_d
 That completes our line-by-line tour through all the code that implements the 'Notes' portion of the Notejam application.
 
 We'll move to the 'Pads' section next.
-
----
-
-**Next: [Pads →](../pads/)**
