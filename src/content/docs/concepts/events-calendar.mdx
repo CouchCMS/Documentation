@@ -15,8 +15,14 @@ sidebar:
 ---
 
 import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import calendar1 from '../../../assets/img/contents/calendar-1.png';
+import calendar2 from '../../../assets/img/contents/calendar-2.png';
+import calendar3 from '../../../assets/img/contents/calendar-3.png';
+import calendar4 from '../../../assets/img/contents/calendar-4.png';
+import calendar5 from '../../../assets/img/contents/calendar-5.png';
 
-Couch has a handy tag named [**calendar**](../../tags-reference/calendar/) that can be used to quickly display the traditional matrix of weeks and days belonging to a month. Additionally, we can associate a clonable template with this tag to make it display the pages cloned from the template as entries of the calendar.
+Couch has a handy tag named [**calendar**](../../tags-reference/core/calendar/) that can be used to quickly display the traditional matrix of weeks and days belonging to a month. Additionally, we can associate a clonable template with this tag to make it display the pages cloned from the template as entries of the calendar.
 
 It shouldn't be difficult to see that to build an Events Calendar, we can create a regular clonable template (let us call it `events.php`). Each cloned page will then represent an event. The publish date of a cloned page can represent the scheduled date for the event it represents. For all the other data that needs to be displayed for an event, editable regions can be created the usual way.
 
@@ -28,7 +34,7 @@ If you need an end date for your events, you can create an editable region of ty
 
 ### Displaying the calendar
 
-The [**calendar**](../../tags-reference/calendar/) tag we mentioned has three auxiliary tags associated with it - [**weeks**](../../tags-reference/weeks/), [**days**](../../tags-reference/days/) and [**entries**](../../tags-reference/entries/). These three tags are slightly different from all the other Couch tags we have seen so far in that they are meant to be used only within certain tags. The [**weeks**](../../tags-reference/weeks/) tag will work only when nested within a calendar tag, the [**days**](../../tags-reference/days/) tag is meant to be used only within the weeks tag and finally the [**entries**](../../tags-reference/entries/) tag is expected to be placed only within the days tag.
+The [**calendar**](../../tags-reference/core/calendar/) tag we mentioned has three auxiliary tags associated with it - [**weeks**](../../tags-reference/core/weeks/), [**days**](../../tags-reference/core/days/) and [**entries**](../../tags-reference/core/entries/). These three tags are slightly different from all the other Couch tags we have seen so far in that they are meant to be used only within certain tags. The [**weeks**](../../tags-reference/core/weeks/) tag will work only when nested within a calendar tag, the [**days**](../../tags-reference/core/days/) tag is meant to be used only within the weeks tag and finally the [**entries**](../../tags-reference/core/entries/) tag is expected to be placed only within the days tag.
 
 The following example will make the relationship clear where we are displaying a calendar for the current month:
 
@@ -50,9 +56,7 @@ The following example will make the relationship clear where we are displaying a
 For all the examples of calendar on this page, we'll use [**calendar.css**](https://www.couchcms.com/docs/code/calendar.css) to format the display. You can use the same CSS for your work or create your own CSS.
 :::
 
-Executing the code given above should result in the following:
-
-![Basic Calendar View](../../../assets/img/contents/calendar-1.png)
+<Image src={calendar1} alt="Basic Calendar View" />
 > Calendar showing basic month view
 
 As you can see, the generated calendar is an HTML table, where the weeks tag was used within the calendar tag to produce the rows of the table and the days tag was used within each row to produce seven cells each representing a day.
@@ -112,7 +116,7 @@ Let us start by adding a few headers:
 
 The result of the changes:
 
-![Calendar with Headers](../../../assets/img/contents/calendar-2.png)
+<Image src={calendar2} alt="Calendar with Headers" />
 > Calendar showing month and day headers
 
 Next we'll format the table cells to indicate whether the day represented by a cell lies in the past, present or future. The modified code of our calendar:
@@ -150,7 +154,7 @@ Next we'll format the table cells to indicate whether the day represented by a c
 </cms:calendar>
 ```
 
-![Calendar with Timeline Formatting](../../../assets/img/contents/calendar-3.png)
+<Image src={calendar3} alt="Calendar with Timeline Formatting" />
 > Calendar showing past, present and future dates
 
 Notice how for days that belong to previous and next months we set up a class named `other_month`. Also note how for the current day amongst the days of the month being shown, we mark the cell with a `today` class.
@@ -165,7 +169,7 @@ The calendar generated is for the current date. To generate one for any arbitrar
 
 ### Attaching a template to the calendar
 
-A clonable template can be attached to a calendar, like the one we have created so far, by setting the `masterpage` parameter. Once a template gets associated with a calendar, the days tag starts supporting another tag named [**entries**](../../tags-reference/entries/) within it. The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through. The days tag also sets a variable named `k_count_entries` to indicate the number of entries (i.e. cloned pages) present for each day.
+A clonable template can be attached to a calendar, like the one we have created so far, by setting the `masterpage` parameter. Once a template gets associated with a calendar, the days tag starts supporting another tag named [**entries**](../../tags-reference/core/entries/) within it. The entries tag, when used within the days tag, will iterate through all cloned pages of the template that were published on the day being iterated through. The days tag also sets a variable named `k_count_entries` to indicate the number of entries (i.e. cloned pages) present for each day.
 
 ```php title="Calendar with Template Example"
 <cms:calendar date='2010-09-01' masterpage='events.php'>
@@ -208,7 +212,7 @@ A clonable template can be attached to a calendar, like the one we have created 
 
 Result of the changes:
 
-![Calendar with Template](../../../assets/img/contents/calendar-4.png)
+<Image src={calendar4} alt="Calendar with Template" />
 > Calendar showing linked event dates
 
 The calendar above is well suited to be placed in a sidebar. Notice how we are displaying the dates that have cloned pages in a different color and how that cell is linked to an archive_view (daily archive) of the template that can be used to display all pages belonging to a particular day in a list-view.
@@ -263,7 +267,7 @@ If we wish, we can display the names and links of pages right within the table c
 
 The changes will result in the following:
 
-![Calendar with Event Details](../../../assets/img/contents/calendar-5.png)
+<Image src={calendar5} alt="Calendar with Event Details" />
 > Calendar showing event titles in cells
 
 Notice how we used the class `calendar_big` with the table. Also notice how we used the entries tag to enumerate two of the cloned pages available within a day. The `skip_custom_field` parameter is set to `1` to avoid the overhead of fetching in all the values contained within the editable regions of the cloned pages, as we won't be needing them here.
@@ -394,7 +398,7 @@ Points to note in the code above:
 1. We have defined editable regions to capture details about events.
 2. In the page-view of this template we display the details of the event in question.
 3. In the list-view we display the calendar. The events show up as calendar entries and are linked to their page-views.
-4. We are using a querystring variable named `cal` to set the `date` parameter of calendar tag. The Couch [**gpc**](../../tags-reference/gpc/) tag is used to get the value of this variable from the querystring. When this variable is not present in the querystring and hence the `date` parameter turns up empty, the calendar tag uses the current date instead.
+4. We are using a querystring variable named `cal` to set the `date` parameter of calendar tag. The Couch [**gpc**](../../tags-reference/core/gpc/) tag is used to get the value of this variable from the querystring. When this variable is not present in the querystring and hence the `date` parameter turns up empty, the calendar tag uses the current date instead.
 5. We have set a link to the previous month and another to the next month by using the `k_prev_calendar_date` and `k_next_calendar_date` variables that are set by the calendar tag.
 6. The calendar tag accepts all the parameters that are normally used with the pages tag. Similar to the pages tag, this tag too does not fetch pages that have their publication dates set in the future. Since events will normally be for the future, we have set the `show_future_entries` parameter to `1` to prevent the calendar tag from skipping future entries.
 
