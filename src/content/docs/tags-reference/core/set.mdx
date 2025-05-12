@@ -1,0 +1,74 @@
+---
+title: set
+category: tag
+description: "The set tag creates or updates variables with specified values, supporting different scopes and nested tag usage"
+keywords:
+    - set
+    - variables
+    - scope
+    - data
+    - storage
+    - templates
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `set` tag creates or updates variables with specific values.
+(This tag is the counterpart of [**show**](../show) tag which displays set variables)
+
+The following example creates a variable called `greeting` and sets its value to `Hello`:
+
+```php title="Basic Variable Setting"
+<cms:set greeting="Hello" />
+```
+
+This example creates another variable `message` and sets its value to the contents of `greeting`:
+
+```php title="Variable Reference"
+<cms:set message=greeting />
+```
+
+As with all tags, nested tags may be used in parameters (using double quotes).
+This example sets `message` to `Hello World`:
+
+```php title="Nested Tags"
+<cms:set message="<cms:show greeting /> World" />
+```
+
+A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.
+
+:::note[Important]
+`set` cannot modify system variables (those beginning with `k_`).
+:::
+
+## Parameters
+
+The first parameter is mandatory and sets a named variable to a value.
+An optional second parameter defines the **scope** of the variable:
+
+```php title="Global Scope Example"
+<cms:set message="hello" scope="global" />
+```
+
+Or using the shorthand form:
+
+```php title="Shorthand Scope"
+<cms:set message="hello" "global" />
+```
+
+Valid scope values are:
+
+- `local`: Variable is only accessible in the current block
+- `parent`: Variable is accessible in the parent block
+- `global`: Variable is accessible throughout the template
+
+## Variables
+
+This tag does not set any variables of its own.
+
+## Related Tags
+
+- [**get**](../get)
+- [**get_custom_field**](../get_custom_field)
+- [**pages**](../pages)
+- [**show**](../show)
