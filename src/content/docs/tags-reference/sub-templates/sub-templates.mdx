@@ -19,6 +19,15 @@ slug: tags-reference/sub-templates
 ---
 
 import { FileTree, Steps, Card } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import subTemplates01 from '../../../../assets/img/contents/sub-templates-01.png';
+import subTemplates02 from '../../../../assets/img/contents/sub-templates-02.png';
+import subTemplates03 from '../../../../assets/img/contents/sub-templates-03.png';
+import subTemplates04 from '../../../../assets/img/contents/sub-templates-04.png';
+import subTemplates05 from '../../../../assets/img/contents/sub-templates-05.png';
+import subTemplates06 from '../../../../assets/img/contents/sub-templates-06.png';
+import subTemplates07 from '../../../../assets/img/contents/sub-templates-07.png';
+import subTemplates08 from '../../../../assets/img/contents/sub-templates-08.png';
 
 <Card icon="star">
 
@@ -41,8 +50,7 @@ This number, though, was not a problem; the problem was that the products were d
 
 The products were, of course, cloned pages of a single template and so all the required editable regions had to be defined in that template - multiply 150 regions by 70 categories and you get a total that runs into thousands. Which meant that any time a product (i.e. a cloned page) is loaded by Couch, it would require fetching those many thousands of regions from the database (where only 150 of those regions actually pertained to that product - the rest were deadwood). Imagine doing this to create a listing of 100 pages through `<cms:pages>` and you can see the problem Ivo was struggling with.
 
-![Product Filter Example](../../../../assets/img/contents/sub-templates-01.png)
-
+<Image src={subTemplates01} alt="Product Filter Example" />
 > Example of a product filter with layered navigation
 
 The second problem was another feature that the e-commerce site required - it needed a 'product filter' (AKA 'Layered Navigation') of the kind shown above, where selecting a value from one (or more) filter(s) causes all other filters to show only the products that satisfy the condition imposed by the selected filter(s). For example, selecting 'red' from the 'color' filter should make the 'size' filter show sizes that apply only to products of red color.
@@ -143,8 +151,7 @@ Our approach to implementing this use case would be to:
 
     Once again visit the products template on the front-end as super-admin and then, coming back to the admin-panel, try creating a cloned page. You'll notice the first difference between a normal template and a template with sub-templates -
 
-    ![Sub-templates dropdown](../../../../assets/img/contents/sub-templates-02.png)
-
+    <Image src={subTemplates02} alt="Sub-templates dropdown" />
     > Sub-templates dropdown in the admin panel
 
     You'll notice that, although we have defined several editable regions in the template, none of them show up when we try to create a cloned page. The editable regions will appear only once we select a sub-template for the page.
@@ -159,8 +166,7 @@ Our approach to implementing this use case would be to:
 
     'Product Type' seems to be an apt label for our use-case:
 
-    ![Sub-template selector dropdown](../../../../assets/img/contents/sub-templates-03.png)
-
+    <Image src={subTemplates03} alt="Sub-template selector dropdown" />
     > Sub-template selector dropdown in the admin panel
 
     The `subtpl_selector_is_advanced` can be set to `1` to make Couch show a popup window (instead of a dropdown) for the selector - comes in handy when we have a large number of sub-templates to contend with.
@@ -169,8 +175,7 @@ Our approach to implementing this use case would be to:
 3. Declare our sub-templates.
     We have two types of products, so we define two sub-templates for them and allocate relevant editable regions to each:
 
-    ![Sub-template example](../../../../assets/img/contents/sub-templates-04.png)
-
+    <Image src={subTemplates04} alt="Sub-template example" />
     > Example of sub-template configuration in the admin panel
 
     ```php
@@ -274,17 +279,18 @@ Visit the modified template on the front-end as super-admin and return to the ad
 
 Try selecting 'Monitors' sub-template and see how only the editable regions allotted to it show up for editing (as do the two common fields too).
 
-![Sub-templates Example](../../../../assets/img/contents/sub-templates-05.png)
-
+<Image src={subTemplates05} alt="Sub-templates Example" />
 > Example of sub-templates in action
 
 Without saving the page, try selecting the 'Mobiles' sub-template and see how a new set of fields show up:
 
-![Example of fields for Mobiles sub-template](../../../../assets/img/contents/sub-templates-06.png)
+<Image src={subTemplates06} alt="Example of fields for Mobiles sub-template" />
+> Example of fields for Mobiles sub-template
 
 Now save the page. You'll notice that once the page is saved, the selector dropdown disappears and we are no longer allowed to change the sub-template we chose while saving the page.
 
-![Example of fields for saved page](../../../../assets/img/contents/sub-templates-07.png)
+<Image src={subTemplates07} alt="Example of fields for saved page" />
+> Example of fields for saved page
 
 This is an important point to remember - so long as a page remains in an unsaved state (i.e. is new), we can freely change the selected sub-template (the offered fields will change accordingly). However, once we hit the save button, the selected sub-template (and hence the set of editable regions associated with the page) can no longer be changed.
 
@@ -405,7 +411,7 @@ OK, now that we have seen the creation of cloned pages using sub-templates, let 
 
 ## Listing pages with sub-templates
 
-The dropdown selector for the sub-templates that you have already seen is actually a regular editable region of type 'relation' named '_sub_template'. You can use it with `<cms:pages>` the usual way (as documented at this [tread](viewtopic.php?f=5&t=8581) under '2. Enhanced cms:pages tag') e.g. as follows:
+The dropdown selector for the sub-templates that you have already seen is actually a regular editable region of type 'relation' named '_sub_template'. You can use it with `<cms:pages>` the usual way (as documented at this [tread](https://www.couchcms.com/forum/viewtopic.php?f=5&t=8581) under '2. Enhanced cms:pages tag') e.g. as follows:
 
 ```php title="products.php"
 <cms:pages masterpage='products.php' custom_field="_sub_template=monitors"  >
@@ -443,7 +449,8 @@ There is no restriction on placing pages of different sub-templates within the s
 And now we move to the second feature of this release, the layered navigation or filtering.
 If you care to take a look again at the screenshot of the sample layered navigation at the beginning of this discussion, you'll notice that there are three distinct types of inputs serving as filters:
 
-![Layered Navigation Example](../../../../assets/img/contents/sub-templates-08.png)
+<Image src={subTemplates08} alt="Layered Navigation Example" />
+> Layered Navigation Example
 
 1. **Dropdown**: Allows selection of discrete 'text' values like 'red' or 'green' for 'colors' or 'medium' and 'large' for 'sizes'.
 2. **Slider**: Allows selection of a range (maximum and minimum) from 'numeric' values e.g. all mobiles from 1GB to 32GB of memory.
