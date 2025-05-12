@@ -1,5 +1,5 @@
 ---
-description: Specification for media card component system architecture and YouTube integration patterns
+description: Documentation for media card component system including base display and YouTube video patterns
 globs: src/components/card-*.astro,src/content.config.ts
 alwaysApply: false
 ---
@@ -7,30 +7,21 @@ alwaysApply: false
 
 # component-architecture
 
-The media card component system implements a specialized content presentation architecture:
+The media card component system implements a two-tiered architecture for content display:
 
-## Core Component Structure
+1. Base Media Card (`src/components/card-media.astro`)
+- Core presentation component for standard media content
+- Parent template defining common display patterns
 
-`src/components/card-media.astro`:
-- Base media card component providing foundational content display
-- Conditional rendering between link/span based on href property
-- Enforced 16:9 aspect ratio container
+2. YouTube Extension (`src/components/card-youtube.astro`)
+- Specialized card implementation for YouTube content
+- Inherits base media card structure
+- Adds YouTube-specific embedding capabilities
 
-`src/components/card-youtube.astro`: 
-- Extension of base media card specifically for YouTube content
-- Inherits core media card properties
-- Adds video embedding capabilities
+The architecture follows a template inheritance pattern with specialized media type implementations extending from the base card component.
 
-## Component Relationships
-
-The architecture follows an extension pattern where:
-1. Base media cards define the core content structure
-2. YouTube cards extend this with video-specific features while maintaining consistent layout rules
-3. Both components share aspect ratio and container behaviors
-
-Importance Score: 45
-- Standard component architecture pattern
-- Limited unique business rules
-- Basic media display organization
+Business Importance Score: 45
+- While providing content structure, the components primarily handle presentation without complex business rules
+- Template inheritance pattern enables consistent media display across the CMS
 
 $END$
