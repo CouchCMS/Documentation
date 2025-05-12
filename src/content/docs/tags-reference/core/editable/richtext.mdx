@@ -16,6 +16,16 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import richtextImg1 from '../../../../../assets/img/contents/editable-richtext-1.jpg';
+import richtextImg2 from '../../../../../assets/img/contents/editable-richtext-2.gif';
+import richtextImg3 from '../../../../../assets/img/contents/editable-richtext-3.gif';
+import richtextImg4 from '../../../../../assets/img/contents/editable-richtext-4.gif';
+import richtextImg5 from '../../../../../assets/img/contents/editable-richtext-5.gif';
+import richtextImg6 from '../../../../../assets/img/contents/editable-richtext-6.gif';
+import richtextImg7 from '../../../../../assets/img/contents/editable-richtext-7.gif';
+import richtextImg8 from '../../../../../assets/img/contents/editable-richtext-8.gif';
+
 Editable region of type `richtext` is used to allow users to easily input HTML formatted text without manually keying in the HTML tags. For this type, Couch creates an instance of a WYSIWYG richtext editor ([**CKEditor**](https://ckeditor.com/)) containing almost all the editing features present in desktop editing applications like MS Word.
 
 An editable region of type `richtext` can be defined this way:
@@ -33,17 +43,17 @@ An editable region of type `richtext` can be defined this way:
 
 The code above will result in:
 
-![Richtext Editor](../../../../assets/img/contents/editable-richtext-1.jpg "CKEditor interface showing property description")
+<Image src={richtextImg1} alt="CKEditor interface showing property description" />
 
 :::note[Default Text]
 Any text enclosed between the opening and the closing tags will appear as the default text within the editor. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
 
 ```php title="Empty Richtext"
-<cms:editable 
-    name="prop_desc" 
+<cms:editable
+    name="prop_desc"
     label="Description"
     desc="Enter description of property here"
-    type="richtext" 
+    type="richtext"
 />
 ```
 :::
@@ -80,8 +90,8 @@ In addition to the parameters common to all types of editable regions, `richtext
 ### `width`
 
 ```php title="Setting Editor Dimensions"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     height="100"
@@ -99,8 +109,8 @@ If you have used other CMSes that use WYSIWYG editors, you might have noticed th
 In order to make the appearance of the content within the editor as similar as possible to what it would look like on the published page, the `css` parameter can be set to a CSS stylesheet containing matching styles. Sometimes even setting it to the same stylesheet as that of the main site can do the trick:
 
 ```php title="Setting Editor Styles"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="styles/editor_styles.css"
@@ -113,8 +123,8 @@ If a fully qualified path (URL) is not provided, the path is assumed to be relat
 The full URL of the stylesheet can also be used:
 
 ```php title="Using Full URL"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="http://www.mysite.com/styles/editor_styles.css"
@@ -125,8 +135,8 @@ The full URL of the stylesheet can also be used:
 If a URL is specified, the stylesheet need not necessarily be located within your website. It can be anywhere on the Internet. However, if it is situated within your website, the following is the most appropriate way of setting its full path:
 
 ```php title="Using Site URL"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="<cms:show k_site_link />styles/editor_styles.css"
@@ -137,8 +147,8 @@ If a URL is specified, the stylesheet need not necessarily be located within you
 Multiple stylesheets may also be specified by separating each by a pipe `|`:
 
 ```php title="Multiple Stylesheets"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="<cms:show k_site_link />styles/editor_styles.css | styles/my_styles.css"
@@ -165,8 +175,8 @@ Suppose the contents of the WYSIWYG editor will eventually appear on the webpage
 In this case, to style the contents within the editor with the CSS rules given above, set the `css` parameter to a stylesheet that contains the statement given above and set the `body_id` parameter to `prop_desc`. This way, CSS will treat the WYSIWYG editor as having this `id` and all the contents within it will be rendered accordingly:
 
 ```php title="Using body_id"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="<cms:show k_site_link />styles/editor_styles.css"
@@ -178,8 +188,8 @@ In this case, to style the contents within the editor with the CSS rules given a
 Similarly, if the CSS rules are applicable to an element of a certain class, to make the editor take on those rules, set the `body_class` parameter to that class. Unlike `body_id`, `body_class` can be set to multiple classes, each separated by a space. e.g. in the snippet below, the editor will have two classes applied - `class1` and `class2`:
 
 ```php title="Using body_class"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     css="<cms:show k_site_link />styles/editor_styles.css"
@@ -192,7 +202,7 @@ Similarly, if the CSS rules are applicable to an element of a certain class, to 
 
 The toolbar above the editor contains a drop-down list that allows the user to apply some very generic formats to his content:
 
-![Style Dropdown](../../../../assets/img/contents/editable-richtext-2.gif "CKEditor style dropdown menu")
+<Image src={richtextImg2} alt="CKEditor style dropdown menu" />
 
 [**CKEditor**](https://ckeditor.com/) provides a method to display **your** custom styles in a similar drop-down list.
 
@@ -236,8 +246,8 @@ Notice the highlighted part - `my_styles`. It is a requirement of [**CKEditor**]
 Next we need to inform [**CKEditor**](https://ckeditor.com/) to use the elements defined in this file to create a drop-down list. Couch makes this part easy. Simply set the `custom_styles` parameter of the **Editable** tag in the following manner:
 
 ```php title="Using Custom Styles"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     custom_styles="my_styles=styles/custom_styles.js"
@@ -251,7 +261,7 @@ Notice how we have provided the value of `custom_styles` in two parts - name giv
 
 The resulting drop-down list:
 
-![Custom Styles](../../../../assets/img/contents/editable-richtext-3.gif "CKEditor custom styles dropdown")
+<Image src={richtextImg3} alt="CKEditor custom styles dropdown" />
 
 :::tip[Cache Note]
 Everytime you modify the JavaScript file, you might need to clear your browser's cache to make the editor pickup the changed file.
@@ -271,8 +281,8 @@ This parameter can take one of the following four values:
 #### `basic`
 
 ```php title="Basic Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="basic"
@@ -282,13 +292,13 @@ This parameter can take one of the following four values:
 
 results in:
 
-![Basic Toolbar](../../../../assets/img/contents/editable-richtext-4.gif "CKEditor basic toolbar configuration")
+<Image src={richtextImg4} alt="CKEditor basic toolbar configuration" />
 
 #### `medium`
 
 ```php title="Medium Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="medium"
@@ -298,7 +308,7 @@ results in:
 
 results in:
 
-![Medium Toolbar](../../../../assets/img/contents/editable-richtext-5.gif "CKEditor medium toolbar configuration")
+<Image src={richtextImg5} alt="CKEditor medium toolbar configuration" />
 
 :::note[Default Value]
 `medium` is the default value and hence if `toolbar` parameter is omitted, this is what is used.
@@ -307,8 +317,8 @@ results in:
 #### `full`
 
 ```php title="Full Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="full"
@@ -318,13 +328,13 @@ results in:
 
 results in:
 
-![Full Toolbar](../../../../assets/img/contents/editable-richtext-6.gif "CKEditor full toolbar configuration")
+<Image src={richtextImg6} alt="CKEditor full toolbar configuration" />
 
 #### `custom`
 
 ```php title="Custom Toolbar Setup"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="custom"
@@ -395,8 +405,8 @@ The last two buttons are hyphen and underscore. Both can be used to create a sep
 As a very simple (and unrealistic) example, here is a toolbar containing only two buttons (bold and italic):
 
 ```php title="Simple Custom Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="custom"
@@ -405,13 +415,13 @@ As a very simple (and unrealistic) example, here is a toolbar containing only tw
 />
 ```
 
-![Simple Toolbar](../../../../assets/img/contents/editable-richtext-7.gif "CKEditor custom toolbar with two buttons")
+<Image src={richtextImg7} alt="CKEditor custom toolbar with two buttons" />
 
 A more practical example - here is how you can mimic the `medium` type of toolbar discussed above:
 
 ```php title="Medium Custom Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="custom"
@@ -425,11 +435,11 @@ A more practical example - here is how you can mimic the `medium` type of toolba
     image, flash, table, horizontalrule, smiley, specialchar, pagebreak |
     link, unlink, anchor |
     showblocks, preview, maximize, -, source"
-    type="richtext" 
+    type="richtext"
 />
 ```
 
-![Medium Custom Toolbar](../../../../assets/img/contents/editable-richtext-8.gif "CKEditor custom toolbar with medium configuration")
+<Image src={richtextImg8} alt="CKEditor custom toolbar with medium configuration" />
 
 **Points to note in the example above:**
 
@@ -442,13 +452,13 @@ Also note that you can force the toolbar to be break into a new row by specifyin
 If you find yourself reusing a custom toolbar at many places, instead of repeating the quite large chunk of code everywhere, use the [**embed**](../../embed/) tag. Cut and paste the _value_ of the `custom_toolbar` parameter (everything between the quotes) and save it in a file named, say, `my_toolbar.inc`. Instruct the [**embed**](../../embed/) tag to use this file:
 
 ```php title="Embedding Toolbar"
-<cms:editable 
-    name="desc" 
+<cms:editable
+    name="desc"
     label="Description"
     desc="Enter description of property here"
     toolbar="custom"
     custom_toolbar="<cms:embed 'my_toolbar.inc' />"
-    type="richtext" 
+    type="richtext"
 />
 ```
 :::
