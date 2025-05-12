@@ -16,6 +16,17 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import thumbImg1 from '../../../../../assets/img/contents/editable-thumbnail-1.jpg';
+import thumbImg2 from '../../../../../assets/img/contents/editable-thumbnail-2.jpg';
+import thumbImg3 from '../../../../../assets/img/contents/editable-thumbnail-3.jpg';
+import thumbImg4 from '../../../../../assets/img/contents/editable-thumbnail-4.jpg';
+import thumbImg5 from '../../../../../assets/img/contents/editable-thumbnail-5.jpg';
+import thumbImg6 from '../../../../../assets/img/contents/editable-thumbnail-6.jpg';
+import thumbImg7 from '../../../../../assets/img/contents/editable-thumbnail-7.jpg';
+import thumbImg8 from '../../../../../assets/img/contents/editable-thumbnail-8.jpg';
+import thumbImg9 from '../../../../../assets/img/contents/editable-thumbnail-9.gif';
+
 Editable region of type `thumbnail`, as the name suggests, is used to automatically create thumbnail images.
 
 The `thumbnail` type is different from all other types of editable regions in that the user does not directly edit anything within it. Instead it is attached to an existing editable region of type `image` which then becomes the source for the thumbnail. Any time the content of the `image` type is edited, the thumbnail attached to it also gets automatically updated.
@@ -31,11 +42,11 @@ The thumbnail gets created in the same folder as that of the main image.
 Suppose we have an editable region, named `my_image`, of type `image`:
 
 ```php title="Basic Image Region Example" "type="image""
-<cms:editable 
-    name="my_image" 
-    label="Image" 
-    desc="Upload main image here" 
-    type="image" 
+<cms:editable
+    name="my_image"
+    label="Image"
+    desc="Upload main image here"
+    type="image"
 />
 ```
 
@@ -55,12 +66,12 @@ To create a thumbnail automatically for any image that gets selected into it, we
 
 The code above will result in something like this below the parent `image` type editable region:
 
-![Thumbnail Preview Interface](../../../../assets/img/contents/editable-thumbnail-1.jpg)
+<Image src={thumbImg1} alt="Thumbnail Preview Interface" />
 > Thumbnail Preview Interface
 
 Once the user selects an image into the main image region (and saves the page), the thumbnail gets created automatically:
 
-![Automatic Thumbnail Generation](../../../../assets/img/contents/editable-thumbnail-2.jpg)
+<Image src={thumbImg2} alt="Automatic Thumbnail Generation" />
 > Automatic Thumbnail Generation
 
 Anytime the user changes the main image (and saves the changes), the thumbnail automatically reflects the changes.
@@ -94,21 +105,21 @@ Parameters `width` and `height` specify the dimensions of the thumbnail. If neit
 Specifying a single dimension only will create a thumbnail with that dimension of the specified value and the other dimension of a value that retains the original proportion of the image. e.g.:
 
 ```php title="Width-Only Thumbnail Example" "width="100""
-<cms:editable 
-    name="my_image_thumb" 
-    label="Image Thumbnail" 
+<cms:editable
+    name="my_image_thumb"
+    label="Image Thumbnail"
     desc="Thumbnail of main image"
     width="100"
     show_preview="1"
     assoc_field="my_image"
-    type="thumbnail" 
+    type="thumbnail"
 />
 ```
 
-![Original Image](../../../../assets/img/contents/editable-thumbnail-3.jpg)
+<Image src={thumbImg3} alt="Original Image" />
 > Parent Image (200 x 300)
 
-![Resulting Thumbnail](../../../../assets/img/contents/editable-thumbnail-4.jpg)
+<Image src={thumbImg4} alt="Resulting Thumbnail" />
 > Thumbnail (100 x 150)
 
 :::note[Proportional Scaling]
@@ -118,22 +129,22 @@ The width was made 100px and the height was proportionately scaled to 150px so t
 Specifying both the dimensions will create a thumbnail with each dimension of the specified values. The original proportion between the dimensions is preserved and hence this could lead to cropping off of any dimension that overshoots the specified value in the attempt to retain proportion. e.g.:
 
 ```php title="Fixed Dimensions Example" "width="100"" "height="80""
-<cms:editable 
-    name="my_image_thumb" 
-    label="Image Thumbnail" 
+<cms:editable
+    name="my_image_thumb"
+    label="Image Thumbnail"
     desc="Thumbnail of main image"
     width="100"
     height="80"
     show_preview="1"
     assoc_field="my_image"
-    type="thumbnail" 
+    type="thumbnail"
 />
 ```
 
-![Original Image](../../../../assets/img/contents/editable-thumbnail-5.jpg)
+<Image src={thumbImg5} alt="Original Image" />
 > Parent Image (200 x 300)
 
-![Cropped Thumbnail](../../../../assets/img/contents/editable-thumbnail-6.jpg)
+<Image src={thumbImg6} alt="Cropped Thumbnail" />
 > Thumbnail (100 x 80)
 
 :::note[Cropping Behavior]
@@ -142,12 +153,12 @@ The width was made 100px and the height was proportionately scaled resulting in 
 
 As is obvious from the second example above, if both the dimensions are specified and the thumbnail's ratio does not match that of the parent image, the cropping that inevitably occurs can sometimes lead to unacceptable results. In the thumbnail above the most important part of the image has been cropped off. This can be rectified by asking Couch to recreate the thumbnail but this time aligning it to the top of the parent image instead of the default center.
 
-![Cropped Thumbnail Aligned to Top](../../../../assets/img/contents/editable-thumbnail-7.jpg) 
+<Image src={thumbImg7} alt="Parent image with top alignment indicator" />
 > Parent image with top alignment indicator
 
 The following is the resulting thumbnail:
 
-![Cropped Thumbnail Aligned to Top](../../../../assets/img/contents/editable-thumbnail-8.jpg)
+<Image src={thumbImg8} alt="Resulting thumbnail aligned to top" />
 > Resulting thumbnail aligned to top
 
 ### `enforce_max`
@@ -157,15 +168,15 @@ Setting this parameter will cause Couch to simply scale (instead of cropping as 
 ### `quality`
 
 ```php title="Quality Parameter Example" "quality="50""
-<cms:editable 
-    name="my_image_thumb" 
-    label="Image Thumbnail" 
+<cms:editable
+    name="my_image_thumb"
+    label="Image Thumbnail"
     desc="Thumbnail of main image"
     width="100"
     show_preview="1"
     quality="50"
     assoc_field="my_image"
-    type="thumbnail" 
+    type="thumbnail"
 />
 ```
 
@@ -174,20 +185,20 @@ You can set `quality` from `0` (worst quality, smaller file) to `100` (best qual
 ### `show_preview`
 
 ```php title="Preview Parameter Example" "show_preview="1""
-<cms:editable 
-    name="my_image_thumb" 
-    label="Image Thumbnail" 
+<cms:editable
+    name="my_image_thumb"
+    label="Image Thumbnail"
     desc="Thumbnail of main image"
     width="100"
     show_preview="1"
     assoc_field="my_image"
-    type="thumbnail" 
+    type="thumbnail"
 />
 ```
 
 Setting `show_preview` to `1` makes Couch display a preview of the created thumbnail (as visible in the examples above). Omitting this parameter or explicitly setting it to `0` will make Couch display only a link to the thumbnail instead of the preview image.
 
-![Preview Display Option](../../../../assets/img/contents/editable-thumbnail-9.gif)
+<Image src={thumbImg9} alt="Preview Display Option" />
 > Preview Display Option
 
 ### `preview_width` and `preview_height`
@@ -195,15 +206,15 @@ Setting `show_preview` to `1` makes Couch display a preview of the created thumb
 As noted above, setting `show_preview` to `1` causes a preview of the thumbnail to appear. The dimensions of this preview can be set by using `preview_width` and `preview_height` (needless to say, these two parameters take effect only with `show_preview` set to `1`).
 
 ```php title="Preview Size Example" "show_preview="1"" "preview_width="80""
-<cms:editable 
-    name="my_image_thumb" 
-    label="Image Thumbnail" 
+<cms:editable
+    name="my_image_thumb"
+    label="Image Thumbnail"
     desc="Thumbnail of main image"
     width="100"
     show_preview="1"
     preview_width="80"
     assoc_field="my_image"
-    type="thumbnail" 
+    type="thumbnail"
 />
 ```
 
