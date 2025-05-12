@@ -7,10 +7,9 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
-The **excerptHTML** tag can be used to create an excerpt of any HTML content that is enclosed within its opening and closing tags.
-Unlike the **excerpt** tag, excerptHTML preserves the HTML formatting of the truncated contents (except for the HTML tags specified in its _ignore_ parameter).
+The **excerptHTML** tag can be used to create an excerpt of any HTML content that is enclosed within its opening and closing tags. Unlike the [**excerpt**](../excerpt/) tag, excerptHTML preserves the HTML formatting of the truncated contents (except for the HTML tags specified in its `ignore` parameter).
 
-Examples -
+Examples:
 
 ```php
 <cms:excerptHTML><cms:show content /></cms:excerptHTML>
@@ -22,36 +21,35 @@ Examples -
 </cms:excerptHTML>
 ```
 
-The snippets are outputting an excerpt of the value contained within the _content_ variable.
+The snippets are outputting an excerpt of the value contained within the `content` variable.
 
 ## Parameters
 
-- count
-- ignore
-- trail
+- `count`
+- `ignore`
+- `trail`
 
-### count
+### `count`
 
 The maximum number of words that the excerpt can contain. The default value is 50 words.
 
-### ignore
+### `ignore`
 
-The HTML elements to weed out of the excerpt. For example, you might not want to have any images in the excerpt.
-If you wish to ignore multiple tags, separate the tagnames by using comma e.g.
+The HTML elements to weed out of the excerpt. For example, you might not want to have any images in the excerpt. If you wish to ignore multiple tags, separate the tagnames by using comma e.g.:
 
 ```php
 ignore='img, table'
 ```
 
-### trail
+### `trail`
 
-By default the produced excerpt is appended with '...' (three ellipses). You can change this by using this parameter.
+By default the produced excerpt is appended with `...` (three ellipses). You can change this by using this parameter.
 
 ```php
 <cms:excerptHTML trail="&nbsp;(<a href=\"<cms:show k_page_link />\">read more..</a>)"><cms:show blog_content /></cms:excerptHTML>
 ```
 
-The snippet above will append a '_read more.._' link leading to the page-view of the item being shown in excerpted form.
+The snippet above will append a `read more..` link leading to the page-view of the item being shown in excerpted form.
 
 ## Variables
 
@@ -59,4 +57,4 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-- [excerpt](../excerpt.html)
+- [**excerpt**](../excerpt/)
