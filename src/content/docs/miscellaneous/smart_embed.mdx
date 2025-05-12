@@ -15,16 +15,13 @@ author: Kamran Kashif
 lastUpdated: 2025-04-05
 sidebar:
     order: 6
-    badge:
-        text: Updated
-        variant: tip
 ---
 
 import { FileTree, Steps } from "@astrojs/starlight/components";
 
 ## An Alternative Method of Structuring Sites
 
-If you have been using Couch for anytime now, you are no doubt familiar with the various [**views**](../../concepts/views) encountered while dealing with clonable pages.
+If you have been using Couch for anytime now, you are no doubt familiar with the various [**views**](../../../concepts/views/) encountered while dealing with clonable pages.
 
 ## Traditional View Handling
 
@@ -61,7 +58,7 @@ or
 
 ### Using Snippets
 
-In the above approach, a prudent way of coding up the various views is to create separate snippets for each of them and then [**embedding**](../../tags-reference/embed.html) at the appropriate place.
+In the above approach, a prudent way of coding up the various views is to create separate snippets for each of them and then [**embedding**](../../../tags-reference/embed/) at the appropriate place.
 
 So, for example, if we had snippets named `page_view.html`, `folder_view.html` etc. for the respective views, the snippet given above would now become:
 
@@ -194,9 +191,9 @@ While visting folder `chinese` of template `movies.php`, the sequence becomes:
 Notice how for a child folder, all the parent folders are also taken into consideration. Thus a snippet meant for folder `asian` e.g. `movies-folder-asian.html` will also be valid for the child folder `chinese` as seen above.
 
 :::tip[Exclusive Folders]
-If, however, we wish to use a snippet exclusively for a particular parent folder only and not for its child 
-folders we can use the term `folder_ex` with it. In the examples above the snippet `movies-folder_ex-asian.html`, 
-if present, will only be used only for the `asian` folder and not for the `chinese` folder which is its child 
+If, however, we wish to use a snippet exclusively for a particular parent folder only and not for its child
+folders we can use the term `folder_ex` with it. In the examples above the snippet `movies-folder_ex-asian.html`,
+if present, will only be used only for the `asian` folder and not for the `chinese` folder which is its child
 folder.
 :::
 
@@ -210,7 +207,7 @@ For **page-view**, e.g. while visting a page named `harpoon` of template `movies
 - page
 - default
 
-[**Nested pages**](../../concepts/nested-pages) behave more or less like folders. For example, if we have a nested-page named `harpoon` that is nested below another pages named `chinese`, this is the sequence of search while visiting `harpoon`:
+[**Nested pages**](../../../concepts/nested-pages/) behave more or less like folders. For example, if we have a nested-page named `harpoon` that is nested below another pages named `chinese`, this is the sequence of search while visiting `harpoon`:
 
 - movies-page_ex-harpoon
 - movies-page-harpoon
