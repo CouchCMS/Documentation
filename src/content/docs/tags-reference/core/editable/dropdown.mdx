@@ -14,6 +14,10 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import dropdownImg1 from '../../../../../assets/img/contents/editable-dropdown-1.gif';
+import dropdownImg2 from '../../../../../assets/img/contents/editable-dropdown-2.gif';
+
 Editable region of `dropdown` type is used to allow the user to choose one option from several presented to them in the form of a dropdown list.
 
 An editable region of `dropdown` type can be defined this way:
@@ -30,11 +34,11 @@ An editable region of `dropdown` type can be defined this way:
 
 The code above will result in:
 
-![Dropdown Example](../../../../assets/img/contents/editable-dropdown-1.gif "Dropdown Example")
+<Image src={dropdownImg1} alt="Dropdown Example" />
 
 After clicking it appears as:
 
-![Dropdown Expanded](../../../../assets/img/contents/editable-dropdown-2.gif "Dropdown Expanded")
+<Image src={dropdownImg2} alt="Dropdown Expanded" />
 
 The option selected in this region can be accessed, as with all other editable regions, by using the variable named after it:
 
