@@ -9,13 +9,13 @@ lastUpdated: 2025-03-27
 
 The **number_format** tag can be used to properly format numeric values.
 
-For example
+For example:
 
 ```php
 <cms:number_format '1234567890' />
 ```
 
-The snippet above will output
+The snippet above will output:
 
 ```php
 1,234,567,890.00
@@ -23,16 +23,16 @@ The snippet above will output
 
 ## Parameters
 
-- number
-- decimal_precision
-- decimal_character
-- thousands_separator
+- `number`
+- `decimal_precision`
+- `decimal_character`
+- `thousands_separator`
 
-### number
+### `number`
 
 The number to be formatted.
 
-### decimal_precision
+### `decimal_precision`
 
 By default two numeric characters are outputted after the decimal point. This can be changed by this parameter.
 
@@ -40,27 +40,27 @@ By default two numeric characters are outputted after the decimal point. This ca
 <cms:number_format '1234567890' decimal_precision='0' />
 ```
 
-will output
+Will output:
 
 ```php
 1,234,567,890
 ```
 
-### decimal_character
+### `decimal_character`
 
 The default character used as the decimal point can be changed by this parameter.
 
-### thousands_separator
+### `thousands_separator`
 
 The default character used as the thousand separator is the comma. It can be changed by this parameter.
 
-The following snippet can be used to format a number in French notation
+The following snippet can be used to format a number in French notation:
 
 ```php
 <cms:number_format '1234.56' decimal_character=',' thousands_separator=' ' />
 ```
 
-Output -
+Output:
 
 ```php
 1 234,56
@@ -72,4 +72,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-- [date](../date.html)
+- [**date**](../date/)
