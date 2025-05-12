@@ -1,0 +1,44 @@
+---
+description: Documents how content sections are structured and integrated within the CMS documentation system
+globs: src/content/**/*,.htaccess,*.config.*,src/components/card-*.astro
+alwaysApply: false
+---
+
+
+# content-structure
+
+## Documentation Hierarchy
+The content structure follows a domain-specific organization pattern:
+
+Primary Sections:
+- Getting Started
+- Concepts
+- Tags Reference
+- Add-Ons
+- Tutorials
+
+Special "New" Documentation Sections:
+- Sub-Templates
+- Template Inheritance
+- Custom Routes
+- Extended Entities
+
+Importance Score: 85
+These sections represent core knowledge domains specific to CouchCMS functionality.
+
+## Media Integration Structure
+Media content follows specialized organization patterns:
+
+1. Card-based content structure:
+   - Base media cards (`src/components/card-media.astro`)
+   - YouTube extensions (`src/components/card-youtube.astro`) 
+
+2. Content hierarchy supports:
+   - Linked vs. non-linked media presentations
+   - Integrated video content
+   - Standardized media aspect ratios
+
+Importance Score: 45
+While structured, these patterns primarily support standard documentation needs.
+
+$END$
