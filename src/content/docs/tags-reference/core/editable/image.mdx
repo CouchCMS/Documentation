@@ -14,6 +14,38 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import img1 from '../../../../../assets/img/contents/editable-image-1.gif';
+import img2 from '../../../../../assets/img/contents/editable-image-2.jpg';
+import img3 from '../../../../../assets/img/contents/editable-image-3.jpg';
+import img4 from '../../../../../assets/img/contents/editable-image-4.jpg';
+import img5 from '../../../../../assets/img/contents/editable-image-5.jpg';
+import img6 from '../../../../../assets/img/contents/editable-image-6.jpg';
+import img7 from '../../../../../assets/img/contents/editable-image-7.jpg';
+import img8 from '../../../../../assets/img/contents/editable-image-8.jpg';
+import img9 from '../../../../../assets/img/contents/editable-image-9.jpg';
+import img10 from '../../../../../assets/img/contents/editable-image-10.jpg';
+import img11 from '../../../../../assets/img/contents/editable-image-11.jpg';
+import img12 from '../../../../../assets/img/contents/editable-image-12.jpg';
+import img13 from '../../../../../assets/img/contents/editable-image-13.jpg';
+import img14 from '../../../../../assets/img/contents/editable-image-14.jpg';
+import img15 from '../../../../../assets/img/contents/editable-image-15.jpg';
+import img16 from '../../../../../assets/img/contents/editable-image-16.jpg';
+import img17 from '../../../../../assets/img/contents/editable-image-17.jpg';
+import img18 from '../../../../../assets/img/contents/editable-image-18.jpg';
+import img19 from '../../../../../assets/img/contents/editable-image-19.jpg';
+import img20 from '../../../../../assets/img/contents/editable-image-20.jpg';
+import img21 from '../../../../../assets/img/contents/editable-image-21.jpg';
+import img22 from '../../../../../assets/img/contents/editable-image-22.jpg';
+import img23 from '../../../../../assets/img/contents/editable-image-23.jpg';
+import img24 from '../../../../../assets/img/contents/editable-image-24.jpg';
+import img25 from '../../../../../assets/img/contents/editable-image-25.jpg';
+import img26 from '../../../../../assets/img/contents/editable-image-26.jpg';
+import img27 from '../../../../../assets/img/contents/editable-image-27.jpg';
+import img28 from '../../../../../assets/img/contents/editable-image-28.jpg';
+import img29 from '../../../../../assets/img/contents/editable-image-29.jpg';
+import img30 from '../../../../../assets/img/contents/editable-image-30.jpg';
+
 Editable region of type `image` is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images. Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.
 
 :::note
@@ -41,7 +73,7 @@ An editable region of type `image` can be defined this way:
 
 The code will result in:
 
-![Editable Image Upload Interface](../../../../../assets/img/contents/editable-image-1.gif "Image upload interface showing browse and upload options")
+<Image src={img1} alt="Image upload interface showing browse and upload options" />
 
 Clicking the **Browse Server** button will bring up a window which can be used to browse previously uploaded images on the server or upload a new image from the local machine.
 
@@ -113,7 +145,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (300 x 200) | After (150 x 100) |
 |:---|:---|
-| ![Original Image](../../../../../assets/img/contents/editable-image-2.jpg "300 x 200") | ![Processed Image](../../../../../assets/img/contents/editable-image-3.jpg "150 x 100") |
+| <Image src={img2} alt="300 x 200" /> | <Image src={img3} alt="150 x 100" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The width constrained to 150px, height scaled proportionally |
 
@@ -123,7 +155,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (200 x 300) | After (150 x 225) |
 |:---|:---|
-| ![Original Image](../../../../../assets/img/contents/editable-image-4.jpg "200 x 300") | ![Processed Image](../../../../../assets/img/contents/editable-image-5.jpg "150 x 225") |
+| <Image src={img4} alt="200 x 300" /> | <Image src={img5} alt="150 x 225" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The width constrained to 150px, height scaled proportionally |
 
@@ -133,7 +165,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (100 x 75) | After (100 x 75) |
 |:---|:---|
-| ![Original Image](../../../../../assets/img/contents/editable-image-6.jpg "100 x 75") | ![Processed Image](../../../../../assets/img/contents/editable-image-7.jpg "100 x 75") |
+| <Image src={img6} alt="100 x 75" /> | <Image src={img7} alt="100 x 75" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The width was already smaller than the required 150px, hence no changes made to the image. |
 
@@ -156,7 +188,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (300 x 200) | After (150 x 100) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-8.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-9.jpg) |
+| <Image src={img8} alt="Uploaded Image" /> | <Image src={img9} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 | | The width was constrained to 150px while also decreasing the height proportionately. The resulting height of 100px was smaller than the required 150px hence no further changes were made. |
 
@@ -166,7 +198,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (200 x 300) | After (100 x 150) |
 |:---|:---|
-| ![](../../../../../assets/img/contents/editable-image-10.jpg) | ![](../../../../../assets/img/contents/editable-image-11.jpg) |
+| <Image src={img10} alt="Uploaded Image" /> | <Image src={img11} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The width was constrained to 150px while also decreasing the height proportionately. The resulting height of 225px was larger than the required 150px hence the image was proportionately scaled further till the height became 150px. In doing so the width became smaller than 150px. |
 
@@ -176,7 +208,7 @@ If both height and width are specified, enforcing the limit of one dimension mig
 
 | Before (100 x 75) | After (100 x 75) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-12.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-13.jpg) |
+| <Image src={img12} alt="Uploaded Image" /> | <Image src={img13} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The width as well as the height were already smaller than the required 150px, hence no changes made to the image. |
 
@@ -204,7 +236,7 @@ In such cases, since height and width are no longer enforcing maximum dimensions
 
 | Before (200 x 300) | After (150 x 150) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-14.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-15.jpg) |
+| <Image src={img14} alt="Uploaded Image" /> | <Image src={img15} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The image was simply resized to a width of 150px and a height of 150px. No attempt was made to mantain proportion and the resulting image is visibily squashed. |
 
@@ -241,7 +273,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (300 x 200) | After (150 x 100) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-16.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-17.jpg) |
+| <Image src={img16} alt="Uploaded Image" /> | <Image src={img17} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The required width (150px) is smaller than the actual (300px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with `enforce_max` on one dimension. |
 
@@ -251,7 +283,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (200 x 300) | After (150 x 225) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-18.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-19.jpg) |
+| <Image src={img18} alt="Uploaded Image" /> | <Image src={img19} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The required width (150px) is smaller than the actual (200px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with `enforce_max` on one dimension. |
 
@@ -261,7 +293,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (100 x 75) | After (150 x 112) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-20.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-21.jpg) |
+| <Image src={img20} alt="Uploaded Image" /> | <Image src={img21} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The required width (150px) is larger than the actual (100px), hence the width was increased to 150px while also increasing the height proportionately. Note how the result differs from `enforce_max` on one dimension. |
 
@@ -285,7 +317,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (300 x 200) | After (150 x 150) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-22.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-23.jpg) |
+| <Image src={img22} alt="Uploaded Image" /> | <Image src={img23} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
 
@@ -295,7 +327,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (200 x 300) | After (150 x 150) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-24.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-25.jpg) |
+| <Image src={img24} alt="Uploaded Image" /> | <Image src={img25} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
 
@@ -305,7 +337,7 @@ By setting this parameter to `1` we also implicitly turn off `enforce_max`.
 
 | Before (100 x 75) | After (150 x 150) |
 |:---|:---|
-| ![Uploaded Image](../../../../../assets/img/contents/editable-image-26.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-27.jpg) |
+| <Image src={img26} alt="Uploaded Image" /> | <Image src={img27} alt="Saved Image" /> |
 | **Uploaded Image** | **Saved Image** |
 |  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
 
@@ -336,12 +368,12 @@ You can set `quality` from `0` (worst quality, smaller file) to `100` (best qual
 
 Setting `show_preview` to `1` makes Couch display a preview of the selected image above the upload control.
 
-![Preview of selected image](../../../../../assets/img/contents/editable-image-28.jpg)
+<Image src={img28} alt="Preview of selected image" />
 > Preview of selected image
 
 If `show_preview` is not set at all or is set to `0`, upon selecting an image a link is added below the upload control for previewing the selected image.
 
-![Preview of selected image](../../../../../assets/img/contents/editable-image-29.jpg)
+<Image src={img29} alt="Preview of selected image" />
 > Preview of selected image with no dimensions set
 
 ### `preview_width` and `preview_height`
@@ -359,7 +391,7 @@ As illustrated above, setting `show_preview` to `1` causes a preview of the sele
 />
 ```
 
-![Preview of selected image](../../../../../assets/img/contents/editable-image-30.jpg)
+<Image src={img30} alt="Preview of selected image" />
 > Preview of selected image with dimensions set
 
 
