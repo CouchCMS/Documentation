@@ -19,9 +19,12 @@ sidebar:
 slug: tutorials/advanced-tutorial/page-view
 ---
 
+import { Image } from 'astro:assets';
+import pageViewImg from './img/scr2.png';
+
 This view shows the contents of a single note with links to its 'edit_view' and 'delete_view':
 
-![Note Page View](./img/scr2.png)
+<Image src={pageViewImg} alt="Note Page View" />
 
 Please open `views/notes/page_view.html` snippet in your text editor and we'll take a look at the code that implements this view:
 
@@ -44,7 +47,6 @@ Please open `views/notes/page_view.html` snippet in your text editor and we'll t
 
 <cms:embed 'views/layout_with_sidebar.html' />
 ```
-
 Compared to the last view we studied, this code is rather simple.
 
 ### Pages Block
@@ -104,6 +106,3 @@ The last line simply hands over the `my_title` and `my_content` variables to the
 
 Next we'll take a look at the 'create_view'.
 
----
-
-**Next: [Create View →](../create-view/)**
