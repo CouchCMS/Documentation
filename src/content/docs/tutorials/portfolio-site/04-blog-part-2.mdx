@@ -301,7 +301,7 @@ Find the following sidebar code in `blog.php`.
         <li><a href="">Aurelius for sale</a></li>
         <li><a href="">Themeforest goes bust</a></li>
     </ul>
-    
+
     <h4>Archives</h4>
     <ul class="sidebar">
         <li><a href="">January 2010</a></li>
@@ -475,11 +475,11 @@ The '`?d=201010`' after the `blog.php` signals to Couch that an archive-view is 
 Once again it is the pages tag that we placed within the `blog_list.html` (that handles list-view) that needs a little modification. Pages tag supports two parameters that can be set to constrain the fetched pages to belong to a certain time period - `start_on` and `stop_before`. We'll set the values of these parameters by using two variables that are set by Couch in archive-view that denote the start and end dates of the archive period - `k_archive_date` and `k_next_archive_date`. The modified pages tag should look like:
 
 ```diff lang="html" title="blog_list.html"
-<cms:pages masterpage='blog.php' 
-            folder="k_folder_name" 
-            limit="3" 
-            paginate="1" 
-+            start_on="k_archive_date" 
+<cms:pages masterpage='blog.php'
+            folder="k_folder_name"
+            limit="3"
+            paginate="1"
++            start_on="k_archive_date"
 +            stop_before="k_next_archive_date" >
 
 <!-- Blog Post -->
@@ -540,7 +540,7 @@ This is done by setting the `commentable` attribute to `1` in the template tag p
 <?php require_once( 'couch/cms.php' ); ?>
 <cms:template title='Blog' clonable='1' commentable='1'>
     <cms:editable name='blog_content' type='richtext' />
- 
+
     <cms:editable name='blog_image'
         crop='1'
         width='610'
@@ -556,31 +556,31 @@ Let us add the form used to submit comments in the page-view. Within `blog.php`,
 
 ```php title="blog.php"
 <!-- Comment Form -->
-<form id="comment_form" action="" method="post"> 
+<form id="comment_form" action="" method="post">
     <h3>Add a comment</h3>
     <div class="hr dotted clearfix">&nbsp;</div>
     <ul>
-        <li class="clearfix"> 
-            <label for="name">Your Name</label> 
-            <input id="name" name="name" type="text" /> 
-        </li> 
-        <li class="clearfix"> 
-            <label for="email">Your Email</label> 
-            <input id="email" name="email" type="text" /> 
-        </li> 
-        <li class="clearfix"> 
-            <label for="email">Your Website</label> 
-            <input id="website" name="website" type="text" /> 
-        </li> 
-        <li class="clearfix"> 
-            <label for="message">Comment</label> 
-            <textarea id="message" name="message" rows="3" cols="40"></textarea> 
-        </li> 
+        <li class="clearfix">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" />
+        </li>
+        <li class="clearfix">
+            <label for="email">Your Email</label>
+            <input id="email" name="email" type="text" />
+        </li>
+        <li class="clearfix">
+            <label for="email">Your Website</label>
+            <input id="website" name="website" type="text" />
+        </li>
+        <li class="clearfix">
+            <label for="message">Comment</label>
+            <textarea id="message" name="message" rows="3" cols="40"></textarea>
+        </li>
         <li class="clearfix">
             <!-- Add Comment Button -->
             <a type="submit" class="button medium black right">Add comment</a>
-        </li> 
-    </ul> 
+        </li>
+    </ul>
 </form>
 ```
 
@@ -638,19 +638,19 @@ To put the comments tag into use, follow the usual method of isolating a single 
 
 <ol class="commentlist">
 +    <cms:comments page_id=k_page_id order='asc' >
-    <li class="comment"> 
-        <div class="gravatar"> 
+    <li class="comment">
+        <div class="gravatar">
             <img alt="" src='images/gravatar.png' height='48' width='48' />
-            <a class="comment-reply-link" href=''>Reply</a>     
-        </div> 
-        <div class="comment_content"> 
+            <a class="comment-reply-link" href=''>Reply</a>
+        </div>
+        <div class="comment_content">
             <div class="clearfix">
-                <cite class="author_name"><a href="">Joe Bloggs</a></cite>       
-                <div class="comment-meta commentmetadata">January 6, 2010 at 6:26 am</div> 
+                <cite class="author_name"><a href="">Joe Bloggs</a></cite>
+                <div class="comment-meta commentmetadata">January 6, 2010 at 6:26 am</div>
             </div>
-            <div class="comment_text"> 
-                <p>Donec leo. Aliquam risus elit, luctus vel, interdum vitae, malesuada eget, elit. Nulla vitae ipsum. Donec ligula ante, bibendum sit amet, elementum quis, viverra eu, ante. Fusce tincidunt. Mauris pellentesque, arcu eget feugiat accumsan, ipsum mi molestie orci, ut pulvinar sapien lorem nec dui.</p> 
-            </div> 
+            <div class="comment_text">
+                <p>Donec leo. Aliquam risus elit, luctus vel, interdum vitae, malesuada eget, elit. Nulla vitae ipsum. Donec ligula ante, bibendum sit amet, elementum quis, viverra eu, ante. Fusce tincidunt. Mauris pellentesque, arcu eget feugiat accumsan, ipsum mi molestie orci, ut pulvinar sapien lorem nec dui.</p>
+            </div>
         </div>
     </li>
 +   </cms:comments>
@@ -668,19 +668,19 @@ Follow this with the usual step of replacing the static content with the variabl
 
 <ol class="commentlist">
     <cms:comments page_id=k_page_id order='asc' >
-    <li class="comment"> 
-        <div class="gravatar"> 
+    <li class="comment">
+        <div class="gravatar">
             <cms:gravatar email="<cms:show k_comment_author_email />" size="60" />
-            <a name="<cms:show k_comment_anchor />">     
-        </div> 
-        <div class="comment_content"> 
+            <a name="<cms:show k_comment_anchor />">
+        </div>
+        <div class="comment_content">
             <div class="clearfix">
-                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>       
-                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div> 
+                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>
+                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div>
             </div>
-            <div class="comment_text"> 
-                <p><cms:show k_comment /></p> 
-            </div> 
+            <div class="comment_text">
+                <p><cms:show k_comment /></p>
+            </div>
         </div>
     </li>
    </cms:comments>
@@ -690,9 +690,9 @@ Follow this with the usual step of replacing the static content with the variabl
 Notice the use of the `gravatar` tag. Also please notice the use of the following code:
 
 ```diff lang="php" title="blog.php"
-<div class="gravatar"> 
+<div class="gravatar">
     <cms:gravatar email="<cms:show k_comment_author_email />" size="60" />
-+    <a name="<cms:show k_comment_anchor />">    
++    <a name="<cms:show k_comment_anchor />">
 </div>
 ```
 
@@ -703,19 +703,19 @@ If you wish you can add pagination to this list of comments. The method is the s
 ```php title="blog.php" ins="<cms:paginator />" ins="limit='5' paginate='1'"
 <ol class="commentlist">
     <cms:comments page_id=k_page_id order='asc' limit='5' paginate='1' >
-    <li class="comment"> 
-        <div class="gravatar"> 
+    <li class="comment">
+        <div class="gravatar">
             <cms:gravatar email="<cms:show k_comment_author_email />" size="60" />
-            <a name="<cms:show k_comment_anchor />">     
-        </div> 
-        <div class="comment_content"> 
+            <a name="<cms:show k_comment_anchor />">
+        </div>
+        <div class="comment_content">
             <div class="clearfix">
-                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>       
-                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div> 
+                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>
+                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div>
             </div>
-            <div class="comment_text"> 
-                <p><cms:show k_comment /></p> 
-            </div> 
+            <div class="comment_text">
+                <p><cms:show k_comment /></p>
+            </div>
         </div>
     </li>
     <cms:paginator />
@@ -723,7 +723,7 @@ If you wish you can add pagination to this list of comments. The method is the s
 </ol>
 ```
 
-For the pagination, we have opted to use the Couch paginator instead of the usual '*next*' and '*prev*' buttons. This tag automatically generates a Google style pagination. You'll need to add a bit of CSS though to make the looks suit your needs (please see the [Pagination](../../../concepts/pagination.html) documentation for a sample CSS)
+For the pagination, we have opted to use the Couch paginator instead of the usual '*next*' and '*prev*' buttons. This tag automatically generates a Google style pagination. You'll need to add a bit of CSS though to make the looks suit your needs (please see the [Pagination](../../../concepts/pagination/) documentation for a sample CSS)
 
 As a final tweak, we'll add a conditional tag to display this list only if the page has any comments available else show a '*No comments*' message. The final code:
 
@@ -735,19 +735,19 @@ As a final tweak, we'll add a conditional tag to display this list only if the p
 +<cms:if k_comments_count >
 <ol class="commentlist">
     <cms:comments page_id=k_page_id order='asc' limit='5' paginate='1' >
-    <li class="comment"> 
-        <div class="gravatar"> 
+    <li class="comment">
+        <div class="gravatar">
             <cms:gravatar email="<cms:show k_comment_author_email />" size="60" />
-            <a name="<cms:show k_comment_anchor />">     
-        </div> 
-        <div class="comment_content"> 
+            <a name="<cms:show k_comment_anchor />">
+        </div>
+        <div class="comment_content">
             <div class="clearfix">
-                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>       
-                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div> 
+                <cite class="author_name"><a href=""><cms:show k_comment_author /></a></cite>
+                <div class="comment-meta commentmetadata"><cms:date k_comment_date format='F j, Y'/> at <cms:date k_comment_date format='h:ia'/></a></div>
             </div>
-            <div class="comment_text"> 
-                <p><cms:show k_comment /></p> 
-            </div> 
+            <div class="comment_text">
+                <p><cms:show k_comment /></p>
+            </div>
         </div>
     </li>
     <cms:paginator />
