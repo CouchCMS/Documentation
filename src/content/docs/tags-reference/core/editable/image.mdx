@@ -1,0 +1,386 @@
+---
+title: "type = 'image'"
+category: tag
+subCategory: editable
+description: "Editable region of type image is primarily used to allow the user to upload an image from his local computer onto the server."
+keywords:
+    - image
+    - CouchCMS
+    - Couch
+    - tags
+    - PHP
+    - editable
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+Editable region of type `image` is primarily used to allow the user to upload an image from his local computer onto the server. The user can also browse and select any of the previously uploaded images. Once an image has been selected, this editable region then holds a fully qualified URL of the uploaded image.
+
+:::note
+By default, all uploaded images will be saved within the `couch/uploads/image` folder (or any subfolders created by the user within it). You can set the location to any other folder by uncommenting entry number **12** (`K_UPLOAD_DIR`) in `config.php` and changing it to the desired location.
+
+```php title="config.php"
+// 12.
+// Upload folder if not using the default upload folder within 'couch'.
+// Should be relative to your site (don't forget to set write permissions on it).
+define( 'K_UPLOAD_DIR', 'myuploads' );
+```
+
+:::
+
+An editable region of type `image` can be defined this way:
+
+```php title="Basic Image Example"
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    type="image"
+/>
+```
+
+The code will result in:
+
+![Editable Image Upload Interface](../../../../../assets/img/contents/editable-image-1.gif "Image upload interface showing browse and upload options")
+
+Clicking the **Browse Server** button will bring up a window which can be used to browse previously uploaded images on the server or upload a new image from the local machine.
+
+The contents of this region can be accessed, as with all other editable regions, by using the variable named after it:
+
+```php title="Displaying Uploaded Image"
+<img src="<cms:show prop_image />" />
+```
+
+## Parameters
+
+Apart from the parameters common to all types of editable regions, the regions of `image` type can take the following parameters:
+
+- `width`
+- `height`
+- `enforce_max`
+- `crop`
+- `quality`
+- `show_preview`
+- `preview_width`
+- `preview_height`
+
+### `width` and `height`
+
+```php title="Setting Image Dimensions"
+<cms:editable name="prop_image" width="300" height="200" type="image" />
+```
+
+As mentioned above, when a user uploads an image, Couch saves it in a particular folder on the server. You can ask Couch to ensure that the saved image is of a **particular width and height** or **never exceeds certain width and height**. These dimensions (in pixels) are represented by the `width` and `height` parameter.
+
+How these dimensions are interpreted by Couch depends on the settings of two other (mutually exclusive) parameters -
+`enforce_max` and `crop`.
+
+:::note
+If **none** of the two dimensions are specified, e.g.:
+
+```php
+<cms:editable name='prop_image' type='image' />
+```
+
+regardless of any settings of `enforce_max` and `crop`, the saved image will always be of exactly the same dimensions as the one uploaded (i.e. not resized at all).
+:::
+
+### `enforce_max`
+
+With `enforce_max` set to `1` (the default), the `width` and `height` parameters are interpreted as being the maximum permitted values of the saved image's width and height.
+
+If any of the dimensions of an uploaded image exceeds the provided value, Couch resizes the image (preserving the existing proportion between width and height) till that dimension is reduced to the supplied value.
+
+If both height and width are specified, enforcing the limit of one dimension might end up making the other dimension smaller than what was specified (_see examples below_).
+
+**By default _enforce_max_ is always on so you do not have to explicitly set it.** It can be turned off either by specifically setting it to `0` (`enforce*max='0'`) or by turning on `crop` (`crop='1'`).
+
+#### Examples:
+
+#### Specifying only one dimension
+
+```php "width="150""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    type="image"
+/>
+```
+
+<div class="table-50">
+
+| Before (300 x 200) | After (150 x 100) |
+|:---|:---|
+| ![Original Image](../../../../../assets/img/contents/editable-image-2.jpg "300 x 200") | ![Processed Image](../../../../../assets/img/contents/editable-image-3.jpg "150 x 100") |
+| **Uploaded Image** | **Saved Image** |
+|  | The width constrained to 150px, height scaled proportionally |
+
+</div>
+
+<div class="table-50">
+
+| Before (200 x 300) | After (150 x 225) |
+|:---|:---|
+| ![Original Image](../../../../../assets/img/contents/editable-image-4.jpg "200 x 300") | ![Processed Image](../../../../../assets/img/contents/editable-image-5.jpg "150 x 225") |
+| **Uploaded Image** | **Saved Image** |
+|  | The width constrained to 150px, height scaled proportionally |
+
+</div>
+
+<div class="table-50">
+
+| Before (100 x 75) | After (100 x 75) |
+|:---|:---|
+| ![Original Image](../../../../../assets/img/contents/editable-image-6.jpg "100 x 75") | ![Processed Image](../../../../../assets/img/contents/editable-image-7.jpg "100 x 75") |
+| **Uploaded Image** | **Saved Image** |
+|  | The width was already smaller than the required 150px, hence no changes made to the image. |
+
+</div>
+
+#### Specifying both dimensions
+
+```php "width="150"" "height="150""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    height="150"
+    type="image"
+/>
+```
+
+<div class="table-50">
+
+| Before (300 x 200) | After (150 x 100) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-8.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-9.jpg) |
+| **Uploaded Image** | **Saved Image** |
+| | The width was constrained to 150px while also decreasing the height proportionately. The resulting height of 100px was smaller than the required 150px hence no further changes were made. |
+
+</div>
+
+<div class="table-50">
+
+| Before (200 x 300) | After (100 x 150) |
+|:---|:---|
+| ![](../../../../../assets/img/contents/editable-image-10.jpg) | ![](../../../../../assets/img/contents/editable-image-11.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The width was constrained to 150px while also decreasing the height proportionately. The resulting height of 225px was larger than the required 150px hence the image was proportionately scaled further till the height became 150px. In doing so the width became smaller than 150px. |
+
+</div>
+
+<div class="table-50">
+
+| Before (100 x 75) | After (100 x 75) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-12.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-13.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The width as well as the height were already smaller than the required 150px, hence no changes made to the image. |
+
+</div>
+
+
+#### Sidenote:
+
+A short discussion is necessary about what happens if `enforce_max` is explicitly set to `0` instead of implicitly doing it by setting `crop` - e.g.:
+
+```php "enforce_max="0""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    height="150"
+    enforce_max="0"
+    type="image" />
+```
+
+In such cases, since height and width are no longer enforcing maximum dimensions, these values are interpreted as being the absolute dimensions for the saved image. While resizing the image to these values **no effort is made to preserve the existing proportion** between original height and width. The new image is simply resized to the given values and thus if the ratio of the new dimensions do not match that of the original ones you'll end up with having a distorted image. Thus:
+
+<div class="table-50">
+
+| Before (200 x 300) | After (150 x 150) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-14.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-15.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The image was simply resized to a width of 150px and a height of 150px. No attempt was made to mantain proportion and the resulting image is visibily squashed. |
+
+</div>
+
+### `crop`
+
+With `crop` set to `1`, the `width` and `height` parameters are interpreted as specifying the dimensions using which the uploaded image should be saved.
+
+If any of the dimensions of an uploaded image is lesser or greater than the value provided as parameters, Couch resizes the image (preserving the existing proportion between width and height) till that dimension is equal to the supplied value.
+
+If both width and height are specified, very often while matching one dimension the other dimension overshoots the given value. In such cases, the overflowing part of it is cropped.
+
+:::note
+By setting this parameter to `1` we also implicitly turn off `enforce_max`.
+:::
+
+#### Examples:
+
+#### Specifying only one dimension
+
+```php "width="150""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    crop="1"
+    type="image"
+/>
+```
+
+<div class="table-50">
+
+| Before (300 x 200) | After (150 x 100) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-16.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-17.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The required width (150px) is smaller than the actual (300px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with `enforce_max` on one dimension. |
+
+</div>
+
+<div class="table-50">
+
+| Before (200 x 300) | After (150 x 225) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-18.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-19.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The required width (150px) is smaller than the actual (200px), hence the width was reduced to 150px while also decreasing the height proportionately. The result is the same as with `enforce_max` on one dimension. |
+
+</div>
+
+<div class="table-50">
+
+| Before (100 x 75) | After (150 x 112) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-20.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-21.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The required width (150px) is larger than the actual (100px), hence the width was increased to 150px while also increasing the height proportionately. Note how the result differs from `enforce_max` on one dimension. |
+
+</div>
+
+#### Specifying both dimensions
+
+```php "width="150"" "height="150""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    height="150"
+    crop="1"
+    type="image"
+/>
+```
+
+<div class="table-50">
+
+| Before (300 x 200) | After (150 x 150) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-22.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-23.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
+
+</div>
+
+<div class="table-50">
+
+| Before (200 x 300) | After (150 x 150) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-24.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-25.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
+
+</div>
+
+<div class="table-50">
+
+| Before (100 x 75) | After (150 x 150) |
+|:---|:---|
+| ![Uploaded Image](../../../../../assets/img/contents/editable-image-26.jpg) | ![Saved Image](../../../../../assets/img/contents/editable-image-27.jpg) |
+| **Uploaded Image** | **Saved Image** |
+|  | The image is proportionately scaled until one of the two dimensions is _equal_ to the required value and the other is either _equal or larger_ than the required value. In case the other dimension is larger, the surplus area is cropped off. |
+
+</div>
+
+### `quality`
+
+```php "quality="50""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    width="150"
+    quality="50"
+    type="image"
+/>
+```
+
+You can set `quality` from `0` (worst quality, smaller file) to `100` (best quality, biggest file). The default value is `80`.
+
+### `show_preview`
+
+```php "show_preview='1'"
+<cms:editable name='prop_image' label='Image' desc='Upload main image of property here'
+    show_preview='1'
+    type='image' />
+```
+
+Setting `show_preview` to `1` makes Couch display a preview of the selected image above the upload control.
+
+![Preview of selected image](../../../../../assets/img/contents/editable-image-28.jpg)
+> Preview of selected image
+
+If `show_preview` is not set at all or is set to `0`, upon selecting an image a link is added below the upload control for previewing the selected image.
+
+![Preview of selected image](../../../../../assets/img/contents/editable-image-29.jpg)
+> Preview of selected image with no dimensions set
+
+### `preview_width` and `preview_height`
+
+As illustrated above, setting `show_preview` to `1` causes a preview of the selected image to appear. The dimensions of this preview can be set by using `preview_width` and `preview_height` (needless to say, these two parameters take effect only with `show_preview` set to `1`).
+
+```php "preview_width=\"150\""
+<cms:editable
+    name="prop_image"
+    label="Image"
+    desc="Upload main image of property here"
+    show_preview="1"
+    preview_width="150"
+    type="image"
+/>
+```
+
+![Preview of selected image](../../../../../assets/img/contents/editable-image-30.jpg)
+> Preview of selected image with dimensions set
+
+
+:::tip
+It is always a good idea to set at least one of the two dimensions while using `show_preview`.
+:::
+
+## Related Tags
+
+- [**editable**](../../editable/)
+- [editable (**checkbox**)](../checkbox/)
+- [editable (**dropdown**)](../dropdown/)
+- [editable (**file**)](../file/)
+- [editable (**group**)](../group/)
+- [editable (**image**)](../image/)
+- [editable (**message**)](../message/)
+- [editable (**nicedit**)](../nicedit/)
+- [editable (**password**)](../password/)
+- [editable (**radio**)](../radio/)
+- [editable (**relation**)](../relation/)
+- [editable (**richtext**)](../richtext/)
+- [editable (**text**)](../text/)
+- [editable (**textarea**)](../textarea/)
+- [editable (**thumbnail**)](../thumbnail/)
