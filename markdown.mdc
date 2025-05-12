@@ -1,0 +1,98 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+### 2.6. Media and Assets
+
+**Algemene eisen:**
+
+- Alt-tekst is verplicht, beschrijvend en functioneel
+- Max breedte: 1200px voor screenshots, 300px voor thumbnails
+- WebP heeft de voorkeur, PNG/JPG als fallback
+- Optimaliseer voor web
+- Gebruik geen afbeeldingen voor tekst
+- Zorg voor voldoende resolutie
+- Gebruik betekenisvolle bestandsnamen
+- Zet afbeeldingen in de juiste submap:
+    - `/assets/img/contents/` voor content
+    - `/assets/img/ui/` voor UI
+    - `/assets/img/diagrams/` voor diagrammen
+
+**Bestandsformaat:**
+
+- Bestandsnaam: `feature-action-context.webp`
+- Alt-tekst: korte beschrijving van de inhoud
+- Caption: optioneel, uitleg of context, direct onder de afbeelding met `>`
+
+**Gebruik in `.mdx` bestanden:**
+
+- Gebruik altijd de Astro `<Image />` component:
+    - Importeer de afbeelding bovenin:
+        ```js
+        import img1 from "./img/voorbeeld.png";
+        ```
+    - Importeer de component:
+        ```js
+        import { Image } from "astro:assets";
+        ```
+    - Gebruik in de content:
+        ```mdx
+        <Image src={img1} alt="Beschrijving" />> Caption direct onder de
+        afbeelding
+        ```
+- Alt-tekst is verplicht.
+- Caption altijd direct onder de afbeelding met een `>`.
+
+**Gebruik in `.md` bestanden:**
+
+- Gebruik klassieke markdown image syntax:
+
+    ```md
+    ![Alt tekst](./img/voorbeeld.png)
+
+    > Caption direct onder de afbeelding
+    ```
+
+- Alt-tekst is verplicht.
+- Caption altijd direct onder de afbeelding met een `>`.
+
+**Voorbeeld `.mdx`:**
+
+```mdx
+import { Image } from "astro:assets";
+import loginImg from "./img/login.png";
+
+<Image src={loginImg} alt="Login scherm" />> Login screen van de applicatie
+```
+
+**Voorbeeld `.md`:**
+
+```md
+![Login scherm](./img/login.png)
+
+> Login screen van de applicatie
+```
+
+**Let op:**
+
+- Gebruik nooit markdown image syntax in `.mdx` bestanden.
+- Caption altijd direct onder de afbeelding, met een `>` blockquote.
+- Zie directory-voorbeeld hieronder voor structuur.
+
+**Directory structuur:**
+
+```
+assets/
+  img/
+    contents/
+      feature-screenshots/
+      tutorial-images/
+    ui/
+      buttons/
+      icons/
+    diagrams/
+      flowcharts/
+      architecture/
+```
