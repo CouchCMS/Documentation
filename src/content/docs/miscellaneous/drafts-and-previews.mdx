@@ -12,6 +12,14 @@ sidebar:
     order: 1
 ---
 
+import { Image } from 'astro:assets';
+import drafts1 from '../../../assets/img/contents/drafts-1.png';
+import drafts2 from '../../../assets/img/contents/drafts-2.png';
+import drafts3 from '../../../assets/img/contents/drafts-3.png';
+import drafts4 from '../../../assets/img/contents/drafts-4.png';
+import drafts5 from '../../../assets/img/contents/drafts-5.png';
+import drafts6 from '../../../assets/img/contents/drafts-6.png';
+
 Consider the following scenario -
 A client wishes to make changes to some of his already published pages but does not want the changes to become immediately visible to the world. There could be several reasons for this:
 
@@ -23,27 +31,33 @@ Each of the situation listed above can now easily be handled by creating the dra
 
 A draft of any published page can be created by accessing the 'Advanced settings' of the page and then clicking the 'Create Draft' button that now shows up there.
 
-![Creating a draft through Advanced Settings](../../../assets/img/contents/drafts-1.png)
+<Image src={drafts1} alt="Creating a draft through Advanced Settings" />
+> Creating a draft through Advanced Settings
 
 A draft is actually a separate page in itself that has its data copied over from the original page.
 
-![Draft page structure](../../../assets/img/contents/drafts-2.png)
+<Image src={drafts2} alt="Draft page structure" />
+> Draft page structure
 
 All the drafts are stored in a separate new section called drafts that shows up only if there are any available drafts in the system.
 
-![Drafts section in admin panel](../../../assets/img/contents/drafts-3.png)
+<Image src={drafts3} alt="Drafts section in admin panel" />
+> Drafts section in admin panel
 
 The drafts are internally linked to their original pages and can also be accessed from the following link that shows up alongside the original pages that have any drafts available.
 
-![Draft access link](../../../assets/img/contents/drafts-4.png)
+<Image src={drafts4} alt="Draft access link" />
+> Draft access link
 
 The user can safely work on a draft page without disturbing the original page at all. He can save the draft just as he would save any of the regular pages. He can also preview the changes he makes to the draft.
 
-![Draft preview options](../../../assets/img/contents/drafts-5.png)
+<Image src={drafts5} alt="Draft preview options" />
+> Draft preview options
 
 Once he is satisfied with his changes, he can either choose to update the original page (this will move the data from the draft into the original page and then delete the draft itself)
 
-![Publishing draft changes](../../../assets/img/contents/drafts-6.png)
+<Image src={drafts6} alt="Publishing draft changes" />
+> Publishing draft changes
 
 or discard the draft.
 
