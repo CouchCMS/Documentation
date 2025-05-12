@@ -12,16 +12,16 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-04-05
+lastUpdated: 2025-05-12
 sidebar:
     order: 2
-    badge:
-        text: Updated
-        variant: tip
 slug: tutorials/advanced-tutorial/installing-the-application
 ---
 
 import { Steps, FileTree } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import doNotImg from './img/do-not.png';
+import doNot2Img from './img/do-not2.png';
 
 If not already downloaded, please get the [**Notejam-Couchified.zip**](https://www.couchcms.com/docs/code/advanced-tutorial/site.zip) now.
 
@@ -109,7 +109,7 @@ We'll begin with registering the users template (users/index.php) first as the o
 
 ### Users Template
 
-This part of our application has been built using the [**Extended Users**](../../../concepts/extended-users/) module.
+This part of our application has been built using the [**Extended Users**](../../../tags-reference/extended-entities/extended-users/) module.
 
 :::note[Template Files]
 The `users` folder contains all the templates that the `extended-users` module requires to implement the various staple functionalities of a user registration system e.g. login, logout, reset-password etc.
@@ -117,7 +117,7 @@ The `users` folder contains all the templates that the `extended-users` module r
 For now, we'll concern ourselves only with the `users/index.php` template as this is the one the cloned pages of which will represent our user accounts. The rest of the templates can be registered and used after our application is complete as the default functions that ship with Couch (e.g. login, logout etc.) will suffice during the development period.
 :::
 
-The process of setting up the user accounts template is described in detail in the docs [**Extended Users**](../../../concepts/extended-users/) but I'll repeat the steps here for the sake of completeness:
+The process of setting up the user accounts template is described in detail in the docs [**Extended Users**](../../../tags-reference/extended-entities/extended-users/) but I'll repeat the steps here for the sake of completeness:
 
 <Steps>
 
@@ -125,10 +125,10 @@ The process of setting up the user accounts template is described in detail in t
 
 2. Coming back to the admin-panel, rename its default page to **"DO NOT DELETE"** and unpublish it.
 
-    ![Default page renaming](./img/do-not.png)
+    <Image src={doNotImg} alt="Default page renaming" />
     > Renaming the default page to "DO NOT DELETE"
 
-    ![Unpublishing the page](./img/do-not2.png)
+    <Image src={doNot2Img} alt="Unpublishing the page" />
     > Unpublishing the default page
 
     :::caution[Important Practice]
@@ -204,7 +204,3 @@ The application is now ready to be tested.
 :::
 
 With the working application at hand, time to finally explore the code that created it.
-
----
-
-[Next Chapter: **Code Walkthrough**](../code-walkthrough/)
