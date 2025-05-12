@@ -27,13 +27,11 @@ import { Steps, FileTree } from "@astrojs/starlight/components";
 This feature was first introduced on **July 13, 2017** in the [**CouchCMS Forum**](https://www.couchcms.com/forum/viewtopic.php?f=5&t=10984&p=39753&hilit=twig#p28250/).
 :::
 
-More often than not, the templates used in most sites share many common markup elements like header, sidebar, footer etc.
-For reusing such elements across templates, the standard method in Couch, as I am sure you know, is isolating them as 'snippets' and then incorporating them back through the use of `<cms:embed>` tag (people often call this process 'chunking').
+More often than not, the templates used in most sites share many common markup elements like header, sidebar, footer etc. For reusing such elements across templates, the standard method in Couch, as I am sure you know, is isolating them as 'snippets' and then incorporating them back through the use of `<cms:embed>` tag (people often call this process 'chunking').
 
 Couch, true to its philosophy, does not mandate or prescribe any hard-and-fast procedure for this chunking. One is free to follow any way that suits the use-case - often the best way is simply isolating the header and footer parts of the layout and embedding those in all templates.
 
-However, for sites with more complex needs, following certain well established patterns of chunking the layout makes life a lot easier for developers.
-One such pattern is the 'decorator' pattern. You can find a discussion on it at [**Advanced Tutorial - Views**](../../tutorials/advanced-tutorial/views/) where we use it in our 'Advanced tutorial'.
+However, for sites with more complex needs, following certain well established patterns of chunking the layout makes life a lot easier for developers. One such pattern is the 'decorator' pattern. You can find a discussion on it at [**Advanced Tutorial - Views**](../../tutorials/advanced-tutorial/views/) where we use it in our 'Advanced tutorial'.
 
 Our implementation of it mentioned above is rather simple but serves the needs of that particular use-case.
 PHP heavy-weights like Symfony (and also others like Laravel) have used a different take in their implementation of it (if it interests you, you can find details about it at [**Symfony Template Inheritance**](https://symfony.com/doc/current/templating.html#template-inheritance-and-layouts/)).
