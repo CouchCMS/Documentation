@@ -17,6 +17,17 @@ sidebar:
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import databoundForms1 from '../../../../assets/img/contents/databound-forms-1.png';
+import databoundForms2 from '../../../../assets/img/contents/databound-forms-2.png';
+import databoundForms3 from '../../../../assets/img/contents/databound-forms-3.png';
+import databoundForms4 from '../../../../assets/img/contents/databound-forms-4.png';
+import databoundForms5 from '../../../../assets/img/contents/databound-forms-5.png';
+import databoundForms6 from '../../../../assets/img/contents/databound-forms-6.png';
+import databoundForms7 from '../../../../assets/img/contents/databound-forms-7.png';
+import databoundForms8 from '../../../../assets/img/contents/databound-forms-8.png';
+import databoundForms9 from '../../../../assets/img/contents/databound-forms-9.png';
+import databoundForms10 from '../../../../assets/img/contents/databound-forms-10.png';
 
 Please refer to [**DataBound Forms** in **Core Concepts**](../../../concepts/databound-forms/) for more information.
 
@@ -61,8 +72,8 @@ If, for a moment, we ignore the requirement of persisting the submitted front-en
 
 <Steps>
 
-1. The [**cms:form**](../../tags-reference/form/) and [**cms:input**](../../tags-reference/input/) tags to implement the front-end form.
-2. A clonable template with [**cms:editable**](../../tags-reference/editable/) tags to hold data.
+1. The [**cms:form**](../../../tags-reference/core/form/) and [**cms:input**](../../../tags-reference/core/input/) tags to implement the front-end form.
+2. A clonable template with [**cms:editable**](../../../tags-reference/core/editable/) tags to hold data.
 
 </Steps>
 
@@ -72,7 +83,7 @@ This is where the new 'databound form' feature comes in. You see, this simply co
 
 So, when working with databound forms, we always start off with two concepts that are already well known to us - [**Form**](../forms/) and [**Editable Regions**](../editable-regions/). This is the form we'll be working on (kindly provided by [@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919)):
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-1.png)
+<Image src={databoundForms1} alt="DataBound Forms" />
 
 Following is a stripped-down code of the same form to show only relevant HTML markup. Link for downloading the styled form (both original and couchified) can be found at the end of this post.
 
@@ -357,11 +368,11 @@ Used without any parameters, this tag simply pulls in the submitted values (from
 
 Try submitting some filled forms from the front-end. Coming back to the admin-panel, you should see a list of cloned pages that were created for all successful form submissions.
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-2.png)
+<Image src={databoundForms2} alt="DataBound Forms" />
 
 Try editing any such page and you should see all the data that was submitted.
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-3.png)
+<Image src={databoundForms3} alt="DataBound Forms" />
 
 This is how our form stands right now:
 
@@ -687,12 +698,12 @@ If you are prepared to put in just a little more work, Couch 1.4 now allows you 
 
 Let us start with the listing page of our `applications.php` template. This is how the default listing looks like:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-4.png)
+<Image src={databoundForms4} alt="DataBound Forms" />
 
 As you can see, it shows the auto-generated titles assigned to the cloned pages and it looks real ugly. We'd rather have the applicant's 'Name', 'EMail' and the 'Position' applied for shown here.
 Let us do just that.
 
-We'll begin by creating a snippet, say named `my_list.html`, and saving it in the `snippets` folder of Couch (or in whichever folder you have configured to hold the snippets. If you've used the [**cms:embed**](../../tags-reference/embed.html) tag this process will seem familiar).
+We'll begin by creating a snippet, say named `my_list.html`, and saving it in the `snippets` folder of Couch (or in whichever folder you have configured to hold the snippets. If you've used the [**cms:embed**](../../../tags-reference/core/embed/) tag this process will seem familiar).
 
 For a quick test, let us put the following in the snippet:
 
@@ -712,13 +723,13 @@ $FUNCS->register_admin_listview( 'application.php', 'my_list.html' );
 
 Visit the admin-panel and access the 'applications.php' template. Here is what should appear:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-5.png)
+<Image src={databoundForms5} alt="DataBound Forms" />
 
 That is our snippet in action. Not doing anything useful though, I agree, but the point to note is that it has completely replaced the default listing shown by Couch.
 
-Place a [**cms:dump**](../../tags-reference/dump/) tag in the snippet and you'll find that for all practical purposes our code thinks it is executing in the 'home-view' of masterpage `applications.php`.
+Place a [**cms:dump**](../../../tags-reference/core/dump/) tag in the snippet and you'll find that for all practical purposes our code thinks it is executing in the 'home-view' of masterpage `applications.php`.
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-6.png)
+<Image src={databoundForms6} alt="DataBound Forms" />
 
 So now we have the full arsenal of our familiar Couch tags at our disposal to come up with any kind of display. Create a table, create a stacked display, show images, use custom CSS, JS ... whatever.
 Everything that can be used on the front-end can now be used in identical fashion on the backend.
@@ -755,17 +766,17 @@ and:
 
 This is what our listing now looks like:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-7.png)
+<Image src={databoundForms7} alt="DataBound Forms" />
 
 Here is another example done on a different site:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-8.png)
+<Image src={databoundForms8} alt="DataBound Forms" />
 
 #### Custom edit screen
 
 In all fairness, our 'applications' module does not need any change to the way Couch displays its edit screen. However, there are situations where rendering the edit screen in a custom manner can make a world of difference. Consider, for example, the following screenshot from a site using a custom edit screen:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-9.png)
+<Image src={databoundForms9} alt="DataBound Forms" />
 
 Notice how related editable regions (e.g. the 'Max Power' and 'Max Torque' fields seen above actually have three separate editable regions displayed in one row) when placed adjacent to each other make editing so much easier and intuitive for the end user as compared to the default way where they are displayed as separate unconnected blocks.
 
@@ -777,7 +788,7 @@ The procedure is very similar to what we used for custom listing above. It begin
 $FUNCS->register_admin_pageview( 'application.php', 'my_edit.html', 1 ); // '1' for showing the 'advanced setting dropdown'
 ```
 
-As with the custom listing, Couch forgoes everything it normally does while rendering the edit screen and delegates the process to our snippet. If we place a [**cms:dump**](../../tags-reference/dump/) in our snippet, we'll find that our code thinks it is executing in a 'page-view' (where the current page is the one being edited).
+As with the custom listing, Couch forgoes everything it normally does while rendering the edit screen and delegates the process to our snippet. If we place a [**cms:dump**](../../../tags-reference/core/dump/) in our snippet, we'll find that our code thinks it is executing in a 'page-view' (where the current page is the one being edited).
 
 So, although we can do anything we wish through our snippet it is only fair to assume that we'd want to provide the editing functionality here (after all it is the edit screen). If we take a look at the code used by Couch's default edit screen (using browser tools), we'll find that it uses an HTML form for the purpose. That is hardly surprising as anything related to editing database fields in a browser invariably has to use a form. Speaking of which, remember our databound form? I think you get the connection - yes, we'll use the databound form in our snippet to handle page editing.
 
@@ -792,7 +803,7 @@ The other minor modifications consist of adding a few in-page CSS styles and lin
 
 Here is what our rendered edit screen looks like:
 
-![DataBound Forms](../../../../assets/img/contents/databound-forms-10.png)
+<Image src={databoundForms10} alt="DataBound Forms" />
 
 Not very different from the default screen provided by Couch but now since the output is completely controlled by us there is a lot we can accomplish that cannot be done otherwise. For example:
 
@@ -819,4 +830,4 @@ Keeping my fingers crossed :-)
 
 ---
 
-Please refer to [**Core Concepts - DataBound Forms**](../../../concepts/databound-forms.html) for more information.
+Please refer to [**Core Concepts - DataBound Forms**](../../../../concepts/databound-forms/) for more information.
