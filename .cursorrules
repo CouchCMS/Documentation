@@ -1,8 +1,8 @@
 
 START SPECIFICATION:
 ---
-description: Applied when documenting the high-level structure of a documentation system, specifically focused on CouchCMS domain organization and content presentation patterns
-globs: *.ts,*.astro,*.mjs
+description: Documentation overview for CouchCMS, focusing on the core documentation structure and domain-specific features implemented through Astro and Starlight
+globs: *.mjs,*.ts,*.astro
 alwaysApply: false
 ---
 
@@ -18,31 +18,34 @@ alwaysApply: false
 - Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
 
 
-The documentation system is organized around core CouchCMS domain concepts, structured in a hierarchical manner:
+CouchCMS Documentation implements a specialized knowledge hierarchy organized around domain-specific concepts and features:
 
-## Documentation Structure
-- Domain-specific sections divide content into logical areas:
-  - Getting Started
-  - Concepts 
-  - Tags Reference
-  - Add-Ons
-  - Tutorials
+Core Documentation Structure:
+- Getting Started
+- Core Concepts
+- Tags Reference
+- Add-Ons
+- Tutorials by complexity
 
-## New Feature Documentation
-Specially marked sections highlight recent platform additions:
-- Sub-Templates functionality
-- Template Inheritance system
-- Custom Routes implementation
-- Extended Entities framework
+Domain Features:
+1. Template Management
+   - Sub-Templates (New Feature)
+   - Template Inheritance (New Feature)
+   - Core tag implementations
 
-## Media Integration
-A specialized media presentation system handles documentation content:
-- Unified media card system for consistent content display
-- Integrated video documentation support through YouTube embedding
-- Maintained aspect ratio standards for visual documentation elements
+2. Custom Routing System
+   - Extended routing capabilities
+   - Custom route definitions
+   - URL management
 
-Importance Score: 45
-Primary value comes from the domain-specific organization of CouchCMS documentation components, though implementation remains fairly standard.
+3. Entity Framework
+   - Extended Entities (New Feature)
+   - Entity relationships
+   - Custom data models
+
+Components containing business logic are organized into presentation layers for media content and documentation structure, with specific focus on CMS-specific implementations and content organization patterns.
+
+Importance Score: 75 - Represents key documentation organization for core CMS functionality
 
 $END$
 END SPECIFICATION
