@@ -7,10 +7,7 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
-The **Else** tag always occurs within an **If** tag block.
-Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met.
-**Else** provides this capability by extending the **If** tag. It does so by delimiting statements that will be executed when the condition given to the **if** does not evaluate to true.
-For example -
+The **Else** tag always occurs within an **If** tag block. Often you'd want to execute a certain set of statements when a given condition is met and a different set when the condition is not met. **Else** provides this capability by extending the **If** tag. It does so by delimiting statements that will be executed when the condition given to the **if** does not evaluate to true. For example:
 
 ```php
 <cms:if my_var == 'hello' >
@@ -20,14 +17,13 @@ For example -
 </cms:if>
 ```
 
-In the snippet above, if variable 'my_var' contains 'hello', all the statements within the **if** tag block upto the **else** tag will be executed. In case 'my_var' contains any other value, all the statements within the **if** tag block starting from the **else** tag upto the end tag of **if**, will be executed. (In our example there are only single statements for both conditions but there can be any number of them).
+In the snippet above, if variable `my_var` contains `hello`, all the statements within the **if** tag block upto the **else** tag will be executed. In case `my_var` contains any other value, all the statements within the **if** tag block starting from the **else** tag upto the end tag of **if**, will be executed. (In our example there are only single statements for both conditions but there can be any number of them).
 
 :::note
 Notice that the **else** tag is a self closing tag.
 :::
 
-In cases where there are more than two outcomes of the condition, the **else** block can be made to contain another nested **if** block -
-For example, here is a snippet that shows the stage of life by evaluating the variable 'age'.
+In cases where there are more than two outcomes of the condition, the **else** block can be made to contain another nested **if** block - For example, here is a snippet that shows the stage of life by evaluating the variable `age`.
 
 ```php
 <cms:if age lt '1' >
@@ -67,4 +63,4 @@ This tag does not set any variables of its own.
 
 ## Related Tags
 
-- [if](../if.html)
+- [**if**](../if/)
