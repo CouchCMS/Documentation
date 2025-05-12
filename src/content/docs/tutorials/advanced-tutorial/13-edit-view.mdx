@@ -14,15 +14,18 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-03-27
+lastUpdated: 2025-05-12
 sidebar:
     order: 13
 slug: tutorials/advanced-tutorial/edit-view
 ---
 
+import { Image } from 'astro:assets';
+import editViewImg from './img/scr5.png';
+
 This view shows a form with the content of the page being edited pre-populated in the inputs for further editing:
 
-![Edit Note Form with Pre-populated Fields](./img/scr5.png)
+<Image src={editViewImg} alt="Edit Note Form with Pre-populated Fields" />
 
 ## Implementation Details
 
@@ -145,7 +148,3 @@ Depending on your particular application's needs, the `k_page_name` might be edi
 ## Next Steps
 
 We've covered the edit_view. We'll cover the last view of 'notes' next - the 'delete_view'.
-
----
-
-**Next: [Delete View →](../delete-view/)**
