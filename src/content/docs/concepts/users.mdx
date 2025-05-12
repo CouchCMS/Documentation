@@ -18,6 +18,8 @@ sidebar:
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import usersImg from '../../../assets/img/contents/users.png';
 
 Couch supports creation of any number of user accounts. Each user account can be assigned to one of the four groups discussed below and depending on the containing group, the account's access to the web-site is controlled.
 
@@ -32,7 +34,7 @@ The first user account that gets created during Couch's installation. It is an a
 - Create/manage any number of lower level user accounts
 - Access the website
 
-Usually it is the designer/coder building the site that uses this **super-admin** account. If you've gone through the creation of [**editable regions**](../editable-regions/) and some other tags like the [**folder**](../../tags-reference/folder/) tag, you'll recall that persisting the changes made to the template using these tags requires visiting the web-page while logged in as this super-admin account. Hence this account is used by someone who makes structural changes to the web-site.
+Usually it is the designer/coder building the site that uses this **super-admin** account. If you've gone through the creation of [**editable regions**](../editable-regions/) and some other tags like the [**folder**](../../tags-reference/core/folder/) tag, you'll recall that persisting the changes made to the template using these tags requires visiting the web-page while logged in as this super-admin account. Hence this account is used by someone who makes structural changes to the web-site.
 
 ### 2. Administrator
 
@@ -106,7 +108,7 @@ As can be seen, the higher the number, the more powerful an account is deemed to
 
 ### Template Level Access
 
-All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the `access_level` parameter of the [**template**](../../tags-reference/template/) tag to the minimum level required. Thus:
+All the pages cloned from a particular template can be configured to be accessible by only users of a certain level by simply setting the `access_level` parameter of the [**template**](../../tags-reference/core/template/) tag to the minimum level required. Thus:
 
 ```php title="Template Access Control"
 <cms:template title='News' clonable='1' access_level='2'>
@@ -120,7 +122,7 @@ To access any of the pages cloned from the template above the user must at least
 
 Access to any individual page can be controlled by selecting the minimum access level required from the dropdown list visible while editing the page in Admin Panel:
 
-![Access level selection dropdown in admin panel](../../../assets/img/contents/users.png)
+<Image src={usersImg} alt="Access level selection dropdown in admin panel" />
 
 > Page access level selection in the admin panel
 
@@ -161,4 +163,4 @@ In the snippet given above, we first check if the access level of the current vi
 
 ### Access Control of Discrete Files
 
-Access control can be exercised upon discrete files placed on your server, e.g. image files and PDF files, by using the [**cloak_url**](../../tags-reference/cloak_url/) tag. Please see [**Cloaked Links - Allowing Only Registered Users to Access Links**](../cloaked-links/#allowing-only-registered-users-to-access-links) section for a full discussion of this.
+Access control can be exercised upon discrete files placed on your server, e.g. image files and PDF files, by using the [**cloak_url**](../../tags-reference/core/cloak_url/) tag. Please see [**Cloaked Links - Allowing Only Registered Users to Access Links**](../cloaked-links/#allowing-only-registered-users-to-access-links) section for a full discussion of this.
