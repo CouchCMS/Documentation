@@ -19,9 +19,13 @@ sidebar:
 slug: tutorials/advanced-tutorial/list-view
 ---
 
+import { Image } from 'astro:assets';
+import listViewImg1 from './img/scr1.png';
+
 Take a look at how this view renders on the website and you'll see that it simply lists all the notes belonging to the logged-in user.
 
-![Notes List View](./img/scr1.png)
+<Image src={listViewImg1} alt="List view screenshot 1" />
+> List view showing all notes for the user
 
 The listed notes are also linked to their 'page_views' (where you can see one single note in full) and a 'New note' button at the bottom leads to the 'create_view'.
 
@@ -237,7 +241,3 @@ The sidebar code will remain common for all other views so we won't discuss it a
 This completes our tour through the list_view.
 
 Time for tackling the next view - the **page_view**.
-
----
-
-**Next: [Page View →](../page-view/)**
