@@ -1,0 +1,36 @@
+---
+description: Specification for media card component system architecture and YouTube integration patterns
+globs: src/components/card-*.astro,src/content.config.ts
+alwaysApply: false
+---
+
+
+# component-architecture
+
+The media card component system implements a specialized content presentation architecture:
+
+## Core Component Structure
+
+`src/components/card-media.astro`:
+- Base media card component providing foundational content display
+- Conditional rendering between link/span based on href property
+- Enforced 16:9 aspect ratio container
+
+`src/components/card-youtube.astro`: 
+- Extension of base media card specifically for YouTube content
+- Inherits core media card properties
+- Adds video embedding capabilities
+
+## Component Relationships
+
+The architecture follows an extension pattern where:
+1. Base media cards define the core content structure
+2. YouTube cards extend this with video-specific features while maintaining consistent layout rules
+3. Both components share aspect ratio and container behaviors
+
+Importance Score: 45
+- Standard component architecture pattern
+- Limited unique business rules
+- Basic media display organization
+
+$END$
