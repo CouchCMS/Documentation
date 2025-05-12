@@ -14,7 +14,10 @@ sidebar:
     order: 14
 ---
 
-Couch allows the submission of comments on pages created by it but this must first be permitted by you. To do so, the `commentable` parameter of the [**template**](../../tags-reference/template/) tag has to be set to `1` for each template that you wish to allow comments for. Thus if, for example, comments are to be turned on for pages cloned out of `blog.php`, the following change needs to be done to the [**template**](../../tags-reference/template/) tag (usually placed in the HTML head tag) within `blog.php`:
+import { Image } from 'astro:assets';
+import commentsImg from '../../../assets/img/contents/comments.png';
+
+Couch allows the submission of comments on pages created by it but this must first be permitted by you. To do so, the `commentable` parameter of the [**template**](../../tags-reference/core/template/) tag has to be set to `1` for each template that you wish to allow comments for. Thus if, for example, comments are to be turned on for pages cloned out of `blog.php`, the following change needs to be done to the [**template**](../../tags-reference/core/template/) tag (usually placed in the HTML head tag) within `blog.php`:
 
 ```php title="blog.php"
 <cms:template title='Blog' clonable='1' commentable='1'>
@@ -24,7 +27,7 @@ Couch allows the submission of comments on pages created by it but this must fir
 
 Once commenting is turned on for a template, each of the page created out of it will have the following option available as its advanced setting in the admin panel while editing it:
 
-![Comments Setting](../../../assets/img/contents/comments.png)
+<Image src={commentsImg} alt="Comments Setting" />
 > Comments setting in admin panel
 
 By default, '*Allow users to comment*' is checked for every new page. You can check this option off to disallow comments on a particular page. If you turn this off after a page has already had some comments, the existing comments will be retained but any further comments will be disallowed.
