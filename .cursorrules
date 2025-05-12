@@ -1,0 +1,48 @@
+
+START SPECIFICATION:
+---
+description: Applied when documenting the high-level structure of a documentation system, specifically focused on CouchCMS domain organization and content presentation patterns
+globs: *.ts,*.astro,*.mjs
+alwaysApply: false
+---
+
+
+# main-overview
+
+## Development Guidelines
+
+- Only modify code directly relevant to the specific request. Avoid changing unrelated functionality.
+- Never replace code with placeholders like `# ... rest of the processing ...`. Always include complete code.
+- Break problems into smaller steps. Think through each step separately before implementing.
+- Always provide a complete PLAN with REASONING based on evidence from code and logs before making changes.
+- Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
+
+
+The documentation system is organized around core CouchCMS domain concepts, structured in a hierarchical manner:
+
+## Documentation Structure
+- Domain-specific sections divide content into logical areas:
+  - Getting Started
+  - Concepts 
+  - Tags Reference
+  - Add-Ons
+  - Tutorials
+
+## New Feature Documentation
+Specially marked sections highlight recent platform additions:
+- Sub-Templates functionality
+- Template Inheritance system
+- Custom Routes implementation
+- Extended Entities framework
+
+## Media Integration
+A specialized media presentation system handles documentation content:
+- Unified media card system for consistent content display
+- Integrated video documentation support through YouTube embedding
+- Maintained aspect ratio standards for visual documentation elements
+
+Importance Score: 45
+Primary value comes from the domain-specific organization of CouchCMS documentation components, though implementation remains fairly standard.
+
+$END$
+END SPECIFICATION
