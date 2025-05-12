@@ -14,6 +14,10 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import checkboxImg1 from '../../../../../assets/img/contents/editable-checkbox-1.gif';
+import checkboxImg2 from '../../../../../assets/img/contents/editable-checkbox-2.gif';
+
 Editable region of `checkbox` type is used to allow the user to choose multiple options from several presented to them in the form of check boxes.
 
 An editable region of `checkbox` type can be defined this way:
@@ -29,7 +33,7 @@ An editable region of `checkbox` type can be defined this way:
 
 The code above will result in:
 
-![Checkbox Example](../../../../../assets/img/contents/editable-checkbox-1.gif)
+<Image src={checkboxImg1} alt="Checkbox Example" />
 
 The options selected in this region can be accessed, as with all other editable regions, by using the variable named after it.
 Unlike its counterparts, [**dropdown**](../dropdown/) and [**radio**](../radio/) types, `checkbox` type can contain multiple selected options. In the example given above, if the user selected _Entertainment_, _Sports_ and _Health_, the following code:
@@ -111,7 +115,7 @@ opt_values='Entertainment=0 | | Computers=1 | | Sports=2 | | Health=3'
 
 In the code above, actually seven options have been specified - three are empty (nothing between the pipes). This results in:
 
-![Checkbox Options Example](../../../../../assets/img/contents/editable-checkbox-2.gif)
+<Image src={checkboxImg2} alt="Checkbox Options Example" />
 :::
 
 ### `opt_selected`
