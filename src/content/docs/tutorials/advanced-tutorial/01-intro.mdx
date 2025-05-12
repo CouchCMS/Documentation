@@ -14,15 +14,17 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
+lastUpdated: 2025-05-12
 sidebar:
     order: 1
-    badge:
-        text: Updated
-        variant: tip
 slug: tutorials/advanced-tutorial
 ---
 
 import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import img1 from './img/1.png';
+import img2 from './img/2.png';
+import img3 from './img/3.png';
 
 In this tutorial we'll bring together some of the more advanced features of Couch to create a, not-so-simple, 'application' (as opposed to a regular site that Couch is usually used for). We'll discuss the following concepts:
 - [**Relations**](../../concepts/relationships/)
@@ -45,13 +47,13 @@ Broadly speaking, following is what this sample application does (details can be
 
 </Steps>
 
-![Notejam Login Screen](./img/1.png)
+<Image src={img1} alt="Notejam Login Screen" />
 > Login screen of the Notejam application
 
-![Notejam Notes Overview](./img/2.png)
+<Image src={img2} alt="Notejam Notes Overview" />
 > Overview of notes in the Notejam application
 
-![Notejam Edit Note](./img/3.png)
+<Image src={img3} alt="Notejam Edit Note" />
 > Editing a note in Notejam
 
 For this tutorial, instead of starting off with a blank slate and developing the features step-by-step (as done in our first tutorial [**Building a Real-World Site Tutorial**](../portfolio-site/)), we'll take a different approach - we'll start with a fully developed and functional application and then analyze it by going through all its code line-by-line.
@@ -66,7 +68,3 @@ Before we begin our tour through this application's codebase to see how it was i
 
 So please bear through this, unavoidably bland, preparatory step of installing a working copy of Notejam on your system before we dive into its code which is where all the excitement lies.
 :::
-
----
-
-[Next Chapter: **Installing the application**](./installing-the-application/)
