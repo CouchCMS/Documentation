@@ -14,6 +14,10 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import groupImg1 from '../../../../../assets/img/contents/editable-group-1.gif';
+import groupImg2 from '../../../../../assets/img/contents/editable-group-2.gif';
+
 Editable region of type `group`, in fact, is not editable at all. It is meant to group together related editable regions and thus improve end user experience.
 
 As an example, suppose a template has the following editable regions:
@@ -38,7 +42,7 @@ As an example, suppose a template has the following editable regions:
 
 This is how they look like in the admin panel -
 
-![Editable regions in admin panel](../../../../../assets/img/contents/editable-group-1.gif "Default display of editable regions in the admin panel")
+<Image src={groupImg1} alt="Editable regions in admin panel" />
 
 Of the four regions, three are closely related (`prop_image`, `prop_image_thumb` and `prop_document`) since they need the user to upload something from his machine to the server.
 
@@ -73,7 +77,7 @@ Next link the three aforementioned editable regions to this group by setting the
 
 And here is the result:
 
-![Grouped editable regions](../../../../../assets/img/contents/editable-group-2.gif "Editable regions organized in a group panel")
+<Image src={groupImg2} alt="Grouped editable regions" />
 
 As you can see, the three regions have been grouped together in a panel.
 
