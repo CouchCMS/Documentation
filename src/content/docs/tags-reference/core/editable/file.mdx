@@ -14,6 +14,9 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import fileImg from '../../../../../assets/img/contents/editable-file.gif';
+
 Editable region of type `file` is primarily used to allow the user to upload a file from their local computer onto the server. The user can also browse and select any of the previously uploaded files. Once a file has been selected, this editable region then holds a fully qualified URL of the uploaded file.
 
 :::note[Default Upload Folder]
@@ -40,7 +43,7 @@ An editable region of `file` type can be defined this way:
 
 The code above will result in:
 
-![Editable File Example](../../../../../assets/img/contents/editable-file.gif "Editable File Example")
+<Image src={fileImg} alt="Editable File Example" />
 
 Clicking the **Browse Server** button will bring up a window that can be used to browse previously uploaded files on the server or upload a new file from the local machine.
 
