@@ -44,17 +44,14 @@ This tag accepts the following parameters:
 - `charset`
 
 
-### date
+### `date`
 
-The date to be formated.
-This parameter is expected to be in `Y-m-d H:i:s` format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. `k_page_date` etc., are in this format.
+The date to be formated. This parameter is expected to be in `Y-m-d H:i:s` format (e.g. 2010-05-30 21:35:54). All date related variables set by Couch tags, e.g. `k_page_date` etc., are in this format.
 
 
-### format
+### `format`
 
-The `date` tag supports two different types of format characters - locale-aware and non locale-aware.
-With locale-aware characters, you can specify that the date is to formatted according to, for example, `french` locale or `italian` locale by setting the `locale` parameter.
-The locale-aware characters all have a % sign prefixed to them.
+The `date` tag supports two different types of format characters - locale-aware and non locale-aware. With locale-aware characters, you can specify that the date is to formatted according to, for example, `french` locale or `italian` locale by setting the `locale` parameter. The locale-aware characters all have a % sign prefixed to them.
 
 :::caution
 The locale-aware and the non locale-aware characters cannot be intermixed.
@@ -155,11 +152,11 @@ The locale-aware and the non locale-aware characters cannot be intermixed.
 | `%t` | Tab character | `\t` |
 | `%%` | Literal percent sign | `%` |
 
-### gmt
+### `gmt`
 
 By setting this parameter to '1', you can get the GMT equivalent of the date provided.
 
-### locale
+### `locale`
 
 If you use the locale-aware format characters mentioned above, this parameter can be set to the locale desired for formatting the provided date.
 
@@ -175,10 +172,9 @@ If you use the locale-aware format characters mentioned above, this parameter ca
 This feature depends entirely on the indicated locale being available at your web server. If the locale is not available, the default 'english' locale is used.
 :::
 
-### charset
+### `charset`
 
-Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output.
-The `date` tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.
+Some locales do not provide their output in UTF8 character set. This causes strange ?? characters to appear in the output. The `date` tag can help converting the output to UTF8 if you can provide it with information about the charset used by the locale.
 
 For example:
 
@@ -228,4 +224,4 @@ This tag is self-closing and does not set any variables of its own.
 
 ## Related Tags
 
-- [number_format](../number_format.html)
+- [**number_format**](../number_format/)
