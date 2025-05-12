@@ -9,28 +9,27 @@ lastUpdated: 2025-03-27
 
 import { Steps } from '@astrojs/starlight/components';
 
-The **nested_crumbs** tag can be used to easily create breadcrumbs out of [nested-pages](../../concepts/nested-pages-aka-menu-maker.html).
+The **nested_crumbs** tag can be used to easily create breadcrumbs out of [**nested-pages**](../../../concepts/nested-pages/).
 
 :::note
-There is another tag named '[breadcrumbs](../breadcrumbs.html)', which is used with the folder hierarchy associated with normal cloned pages.
-'nested_crumbs' on the other hand works with nested-pages only.
+There is another tag named [**breadcrumbs**](../breadcrumbs/), which is used with the folder hierarchy associated with normal cloned pages. The `nested_crumbs` tag on the other hand works with nested-pages only.
 :::
 
 ### Usage
 
-This tag can be used in two ways -
+This tag can be used in two ways:
 
 <Steps>
 
-1. As self-closing tag. e.g.
+1. As self-closing tag. e.g.:
 
     ```php
     <cms:nested_crumbs masterpage='index.php' />
     ```
 
-    where 'masterpage' points to the template behind the nested-pages tree.
+    where `masterpage` points to the template behind the nested-pages tree.
 
-2. As a tag-pair for better control over the generated breadcrumbs markup. e.g.
+2. As a tag-pair for better control over the generated breadcrumbs markup. e.g.:
 
     ```php
     <cms:nested_crumbs masterpage='index.php' ignore_show_in_menu='1' prepend='<ul class="breadcrumb">' append='</ul>'>
@@ -42,27 +41,25 @@ This tag can be used in two ways -
 
 ## Parameters
 
-- masterpage
-- ignore_show_in_menu
-- prepend
-- append
+- `masterpage`
+- `ignore_show_in_menu`
+- `prepend`
+- `append`
 
-### masterpage
+### `masterpage`
 
 This parameter is used to specify the template behind the nested-pages used to create the breadcrumbs.
 If left empty, the template of the currently executing page is assumed.
 
-### ignore_show_in_menu
+### `ignore_show_in_menu`
 
-The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'.
-If that is unchecked, the page is not included by default in the breadcrumbs.
-You can override this by setting 'ignore_show_in_menu' parameter to '1'.
+The 'Advanced Settings' of each nested-page has a checkbox labeled 'Show in menu'. If that is unchecked, the page is not included by default in the breadcrumbs. You can override this by setting `ignore_show_in_menu` parameter to `1`.
 
-### prepend
+### `prepend`
 
 While using the tag as a tag-pair (see Usage above), this parameter can be used to output anything before the first crumb.
 
-### append
+### `append`
 
 While using the tag as a tag-pair (see Usage above), this parameter can be used to output anything after the last crumb.
 
@@ -70,19 +67,19 @@ While using the tag as a tag-pair (see Usage above), this parameter can be used 
 
 When used as a self-closing tag, this tag sets no variables.
 
-When used as a tag-pair, the following variables are set for each crumb -
+When used as a tag-pair, the following variables are set for each crumb:
 
-- k_crumb_id
-- k_crumb_name
-- k_crumb_text
-- k_crumb_link
-- k_crumb_is_nested_page
-- k_crumb_is_folder
-- k_crumb_open_external
-- k_crumb_is_last
+- `k_crumb_id`
+- `k_crumb_name`
+- `k_crumb_text`
+- `k_crumb_link`
+- `k_crumb_is_nested_page`
+- `k_crumb_is_folder`
+- `k_crumb_open_external`
+- `k_crumb_is_last`
 
 ## Related Tags
 
-- [breadcrumbs](../breadcrumbs.html)
-- [menu](../menu.html)
-- [nested_pages](../nested_pages.html)
+- [**breadcrumbs**](../breadcrumbs/)
+- [**menu**](../menu/)
+- [**nested_pages**](../nested_pages/)
