@@ -14,15 +14,18 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-03-27
+lastUpdated: 2025-05-12
 sidebar:
     order: 11
 slug: tutorials/advanced-tutorial/create-view
 ---
 
+import { Image } from 'astro:assets';
+import createViewImg from './img/scr3.png';
+
 Click on the 'New note' button and you'll reach this view. It displays a form that can be used to create a new note:
 
-![Create Note Form](./img/scr3.png)
+<Image src={createViewImg} alt="Create Note Form" />
 > Form for creating a new note with name, content and pad selection fields
 
 ## Basic Structure
@@ -225,7 +228,3 @@ If the creation process completes without any error, we redirect the user to the
 ## Next Steps
 
 So that brings us to the end of the 'create_view'. Next we'll take a look at the 'create_with_pad_view' which actually 'piggy-backs' on the create view we just discussed.
-
----
-
-**Next: [Create View (with Pad) →](../create-view-with-pad/)**
