@@ -1,0 +1,69 @@
+---
+title: cloak_email
+description: "The cloak_email tag can be used to hide email addresses from spambots using JavaScript encryption."
+keywords:
+  - cloak_email
+  - CouchCMS
+  - Couch
+  - tags
+  - PHP
+category: tag
+author: "Kamran Kashif"
+lastUpdated: 2025-03-27
+---
+
+The `cloak_email` tag hides email addresses from spambots (email harvesters). This tag creates a JavaScript encrypted mailto link that remains inaccessible to spambots.
+
+```php title="Basic Email Cloaking"
+<cms:cloak_email "johndoe@gmail.com" />
+```
+
+The code above will produce the following HTML but only if accessed using JavaScript:
+
+```html title="Generated HTML"
+<a href="mailto:johndoe@gmail.com">johndoe@gmail.com</a>
+```
+
+When accessed with JavaScript disabled, a message prompting the visitor to enable JavaScript is shown instead.
+
+## Parameters
+
+- `email`: The email address to cloak
+- `title`: The visible text for the mailto link
+- `msg`: Custom message for when JavaScript is disabled
+
+### email
+
+The email address to cloak.
+
+```php title="Email Parameter"
+<cms:cloak_email email="johndoe@gmail.com" />
+```
+
+### title
+
+The visible text of the mailto link. If omitted, the `email` parameter is used.
+
+```php title="Custom Link Text"
+<cms:cloak_email email="johndoe@gmail.com" title="Contact Me!" />
+```
+
+### msg
+
+Message to display if JavaScript is disabled. Default message is:
+
+```txt
+*(Please enable JavaScript to view this email address)*
+```
+
+```php title="Custom Message"
+<cms:cloak_email email="johndoe@gmail.com" title="Contact Me!" msg="No JavaScript ?!!" />
+```
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [**cloak_url**](../cloak_url/)
