@@ -1,44 +1,37 @@
 ---
-description: Documents how content sections are structured and integrated within the CMS documentation system
-globs: src/content/**/*,.htaccess,*.config.*,src/components/card-*.astro
+description: Handles documentation organization patterns and hierarchy for CMS content
+globs: src/content/**.md,src/content/**.mdx,astro.config.mjs,src/content.config.ts
 alwaysApply: false
 ---
 
 
 # content-structure
 
-## Documentation Hierarchy
-The content structure follows a domain-specific organization pattern:
+The documentation implements a domain-specific hierarchy for CMS content organization:
 
-Primary Sections:
-- Getting Started
-- Concepts
-- Tags Reference
-- Add-Ons
-- Tutorials
+## Core Documentation Structure
+- `Getting Started`: Onboarding documentation
+- `Core Concepts`: Fundamental CMS principles 
+- `Tags Reference`: Command reference divided into:
+  - Core Tags
+  - Sub-Templates
+  - Template Inheritance
+  - Extended Features
 
-Special "New" Documentation Sections:
-- Sub-Templates
-- Template Inheritance
-- Custom Routes
-- Extended Entities
+## Feature Classification
+The structure uses dedicated badges to highlight new CMS capabilities:
+- Sub-Templates System 
+- Template Inheritance Framework
+- Custom Routes Engine
+- Extended Entities Model
 
-Importance Score: 85
-These sections represent core knowledge domains specific to CouchCMS functionality.
+## Integration Points
+Documentation sections are organized by:
+1. Functional domain (templating, routing, entities)
+2. Feature maturity (core vs extended)
+3. Implementation complexity (basic to advanced)
 
-## Media Integration Structure
-Media content follows specialized organization patterns:
-
-1. Card-based content structure:
-   - Base media cards (`src/components/card-media.astro`)
-   - YouTube extensions (`src/components/card-youtube.astro`) 
-
-2. Content hierarchy supports:
-   - Linked vs. non-linked media presentations
-   - Integrated video content
-   - Standardized media aspect ratios
-
-Importance Score: 45
-While structured, these patterns primarily support standard documentation needs.
+Importance Score: 75
+Rationale: The content structure directly impacts how users understand and implement the CMS features, making it a key integration point for developer experience.
 
 $END$
