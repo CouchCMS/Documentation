@@ -22,7 +22,7 @@ Don't get put off by that programming term. A variable is simply a place that ca
 
 ## Setting Variables
 
-You can use the Couch tag named [**set**](../../tags-reference/set/) to place values within variables. For example:
+You can use the Couch tag named [**set**](../../tags-reference/core/set/) to place values within variables. For example:
 
 ```php title="Setting a Variable"
 <cms:set my_message='Hello World' />
@@ -39,7 +39,7 @@ For example, in the following snippet:
 <cms:show 'Hello' />
 ```
 
-We are passing 'Hello' as the parameter for [**show**](../../tags-reference/show/) to display. If instead we do the following:
+We are passing 'Hello' as the parameter for [**show**](../../tags-reference/core/show/) to display. If instead we do the following:
 
 ```php title="Variable Value Example"
 <cms:show my_message />
@@ -58,7 +58,7 @@ For example:
 <cms:show my_message />
 ```
 
-[**show**](../../tags-reference/show/) will now display 'Salut!'.
+[**show**](../../tags-reference/core/show/) will now display 'Salut!'.
 
 ## Types of Variables
 
@@ -90,7 +90,7 @@ See [**Variables Available in Views**](../variables-in-views/) for a complete ov
 
 A Paired tag usually sets certain variables that pertain to the task the tag does. These variables remain available only within the start-tag and the end-tag.
 
-For example - we have already seen how the [**repeat**](../../tags-reference/repeat/) tag simply repeats the contents enclosed within it the number of times specified by the `count` parameter. At each iteration, the [**repeat**](../../tags-reference/repeat/) tag sets a variable named `k_count` that is set to the count of the current iteration:
+For example - we have already seen how the [**repeat**](../../tags-reference/core/repeat/) tag simply repeats the contents enclosed within it the number of times specified by the `count` parameter. At each iteration, the [**repeat**](../../tags-reference/core/repeat/) tag sets a variable named `k_count` that is set to the count of the current iteration:
 
 ```php title="Tag Variable Example"
 <cms:repeat count='4'>
