@@ -18,11 +18,7 @@ export default defineConfig({
     },
     integrations: [
         starlight({
-            plugins: [
-                starlightLinksValidator({
-                    errorOnRelativeLinks: false,
-                }),
-            ],
+            plugins: [starlightLinksValidator()],
             title: "CouchCMS Documentation",
             customCss: ["./src/assets/styles/custom.css"],
             logo: {
