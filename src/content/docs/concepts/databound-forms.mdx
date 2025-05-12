@@ -26,7 +26,7 @@ Any database driven application (and Couch happens to be one), essentially const
 - **Update**
 - **Delete** (CRUD as it is known)
 
-Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the "Read" operation through its [**pages**](../../tags-reference/pages/) tag. The rest mandated the use of the back-end (i.e. the admin-panel) and thus were limited to only admins and super-admins. So, for example, to create, modify or delete a cloned-page one had to be logged-in as admin and then make use of the back-end to do so.
+Of these four operations, Couch (up to v1.3.5) exposed only one to the front-end and that was the "Read" operation through its [**pages**](../../tags-reference/core/pages/) tag. The rest mandated the use of the back-end (i.e. the admin-panel) and thus were limited to only admins and super-admins. So, for example, to create, modify or delete a cloned-page one had to be logged-in as admin and then make use of the back-end to do so.
 
 This arrangement works well and is very secure, however, there are situations where it becomes necessary to allow the Create/Update/Delete operations to happen beyond these usual constraints. That is to say, allow ordinary users (non-admins) to do so and that too from the front-end.
 
@@ -52,8 +52,8 @@ Of course, this is powerful stuff and, as Peter Parker's uncle would have us rem
 
 ## A Real-World Example
 
-Instead of dryly documenting the new tags, I'll walk you through a real-world example: [**Creating a Job Application Form**](../../tutorials/job-application-form/). This tutorial will assist you in setting up a form, managing form submissions, and saving the submitted data in CouchCMS.
+Instead of dryly documenting the new tags, I'll walk you through a real-world example: [**Creating a Job Application Form**](../../../tutorials/job-application-form/). This tutorial will assist you in setting up a form, managing form submissions, and saving the submitted data in CouchCMS.
 
 By the end of the tutorial, you will have a fully functional job application form that allows users to submit their details and resumes, with all data being stored securely in the database for easy access and management.
 
-Let's dive into the [**tutorial**](../../tutorials/job-application-form/) and see how DataBound Forms can be used to create a robust job application system.
+Let's dive into the [**tutorial**](../../../tutorials/job-application-form/) and see how DataBound Forms can be used to create a robust job application system.
