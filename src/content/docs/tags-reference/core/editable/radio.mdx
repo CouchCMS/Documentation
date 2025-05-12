@@ -14,6 +14,10 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import radioImg1 from '../../../../../assets/img/contents/editable-radio-1.gif';
+import radioImg2 from '../../../../../assets/img/contents/editable-radio-2.gif';
+
 Editable region of type `radio` is used to allow the user to choose one option from several presented to him in the form of radio buttons.
 
 An editable region of type `radio` can be defined this way:
@@ -30,7 +34,7 @@ An editable region of type `radio` can be defined this way:
 
 The code above will result in:
 
-![Radio Buttons Example](../../../../assets/img/contents/editable-radio-1.gif "Radio buttons showing property type options")
+<Image src={radioImg1} alt="Radio buttons showing property type options" />
 
 The option selected in this region can be accessed, as with all other editable regions, by using the variable named after it:
 
@@ -53,9 +57,9 @@ In addition to the parameters common to all types of editable regions, `radio` a
 This parameter takes a list of all the options that are displayed as radio buttons:
 
 ```php title="Setting Radio Options" "opt_values='Residential | Commercial | Rental'"
-<cms:editable 
-    name="my_property_type" 
-    label="Property Type" 
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
     desc="Select one from these"
     opt_values="Residential | Commercial | Rental"
     type="radio"
@@ -73,9 +77,9 @@ will output **Rental**.
 As can be seen, the saved value is the same as the option's name. However we can specify a different value that can get saved into the editable region by using the following syntax:
 
 ```php title="Radio Options with Custom Values" "opt_values='Residential=0 | Commercial=1 | Rental=2'"
-<cms:editable 
-    name="my_property_type" 
-    label="Property Type" 
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
     desc="Select one from these"
     opt_values="Residential=0 | Commercial=1 | Rental=2"
     type="radio"
@@ -99,7 +103,7 @@ opt_values="Residential=0 | Commercial=1 | | Rental=2"
 
 In the code above, four options have been specified - the third option (between **Commercial** and **Rental**) is empty. This results in:
 
-![Radio Buttons with Break](../../../../assets/img/contents/editable-radio-2.gif "Radio buttons with line break between options")
+<Image src={radioImg2} alt="Radio buttons with line break between options" />
 :::
 
 ### `opt_selected`
@@ -107,9 +111,9 @@ In the code above, four options have been specified - the third option (between 
 By default, the first option in the list is shown as the selected option. You can show any other option as selected by setting `opt_selected` to the **value** of that option:
 
 ```php title="Setting Default Selected Option" "opt_selected='Rental'"
-<cms:editable 
-    name="my_property_type" 
-    label="Property Type" 
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
     desc="Select one from these"
     opt_values="Residential | Commercial | Rental"
     opt_selected="Rental"
@@ -120,9 +124,9 @@ By default, the first option in the list is shown as the selected option. You ca
 Or when using custom values:
 
 ```php title="Setting Default Selected Value" "opt_selected='2'"
-<cms:editable 
-    name="my_property_type" 
-    label="Property Type" 
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
     desc="Select one from these"
     opt_values="Residential=0 | Commercial=1 | Rental=2"
     opt_selected="2"
@@ -151,8 +155,8 @@ Note how the `opt_values` are separated by `*`.
 Similar to the problem outlined above, sometimes the options in the list contain the `=` (equals to) character. This makes it imposible to use `=` between the option's name and value. You can set any other character for this purpose by setting this parameter. For example:
 
 ```php title="Custom Value Separator" "val_separator=':'"
-<cms:editable 
-    name="my_property_type" 
+<cms:editable
+    name="my_property_type"
     label="Property Type"
     opt_values="Residential:0 | Commercial:1 | Rental:2"
     val_separator=":"
