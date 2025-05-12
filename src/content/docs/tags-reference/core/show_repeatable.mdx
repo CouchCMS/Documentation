@@ -7,16 +7,16 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
-Please see [**Core Concepts - Repeatable Regions**](../../concepts/repeatable-regions.html#displaying-the-values) for an in-depth discussion about this tag.
+Please see [**Core Concepts - Repeatable Regions**](../../../concepts/repeatable-regions/#displaying-the-values) for an in-depth discussion about this tag.
 
 ## Parameters
 
-- var (default)
-- startcount
+- `var` (default)
+- `startcount`
 
-### var
+### `var`
 
-Default parameter (usually left unnamed). The name of the [**repeatable**](../repeatable.html) tag defining the repeatable regions.
+Default parameter (usually left unnamed). The name of the [**repeatable**](../repeatable/) tag defining the repeatable regions.
 
 ```php
 <cms:show_repeatable 'my_multiple_images' >
@@ -26,22 +26,21 @@ Default parameter (usually left unnamed). The name of the [**repeatable**](../re
 </cms:show_repeatable>
 ```
 
-In the snippet above the string 'my_multiple_images' is the name of a [**repeatable**](../repeatable.html) tag.
+In the snippet above the string `my_multiple_images` is the name of a [**repeatable**](../repeatable/) tag.
 
-### startcount
+### `startcount`
 
-One of the variables set by this tag is _k_count_. The value of this variable increases with each iteration. By default, the first iteration is numbered 1\. The _startcount_ parameter can be used to make _k_count_ begin from any arbitrary number.
+One of the variables set by this tag is `k_count`. The value of this variable increases with each iteration. By default, the first iteration is numbered 1. The `startcount` parameter can be used to make `k_count` begin from any arbitrary number.
 
 ## Variables
 
-- k_count
-- k_total_records
+- `k_count`
+- `k_total_records`
 
-### k_count
+### `k_count`
 
-As this tag iterates through the rows of repeated regions, this variable keeps track of the number of current iteration.
-By default, the first iteration is numbered from '1' but the **startcount** parameter mentioned above can be used to change this.
+As this tag iterates through the rows of repeated regions, this variable keeps track of the number of current iteration. By default, the first iteration is numbered from `1` but the `startcount` parameter mentioned above can be used to change this.
 
-### k_total_records
+### `k_total_records`
 
 The total number of rows that will be iterated.
