@@ -15,6 +15,9 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import textImg from '../../../../../assets/img/contents/editable-text.gif';
+
 Editable region of type `text` is used to allow users to input text when only one line of text is required. For this type, Couch creates a single line textbox for data input.
 
 An editable region of type `text` can be defined this way:
@@ -29,17 +32,17 @@ An editable region of type `text` can be defined this way:
 
 The code above will result in:
 
-![Text Input](../../../../assets/img/contents/editable-text.gif "Single-line text input field")
+<Image src={textImg} alt="Single-line text input field" />
 
 :::note[Default Text]
 Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
 
 ```php title="Empty Text Input"
-<cms:editable 
-    name="prop_title" 
+<cms:editable
+    name="prop_title"
     label="Title"
     desc="Enter title of property here"
-    type="text" 
+    type="text"
 />
 ```
 :::
@@ -63,8 +66,8 @@ In addition to the parameters common to all types of editable regions, `text` ac
 The width of the generated textbox can be changed by setting this parameter. For example, the following will make the textbox 200px wide:
 
 ```php title="Setting Width"
-<cms:editable 
-    name="prop_title" 
+<cms:editable
+    name="prop_title"
     label="Title"
     desc="Enter title of property here"
     width="200"
@@ -76,8 +79,8 @@ The width of the generated textbox can be changed by setting this parameter. For
 The maximum number of characters that can be inputted by the user in this textbox can be constrained by setting this parameter. For example, the following code will prevent the user from entering more than 40 characters:
 
 ```php title="Setting Maximum Length"
-<cms:editable 
-    name="prop_title" 
+<cms:editable
+    name="prop_title"
     label="Title"
     desc="Enter title of property here"
     maxlength="40"
