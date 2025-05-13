@@ -50,7 +50,7 @@ define( 'K_COMMENTS_INTERVAL', 5 * 60 );
 Once submission of comments has been allowed, a form needs to be displayed on every commentable page to allow the users to avail this facility.
 
 :::caution[About Forms]
-The following discussion about the comment form assumes that you are already familiar with the [**form**](../../tags-reference/form/) tag which is used to create it.
+The following discussion about the comment form assumes that you are already familiar with the [**form**](../../tags-reference/core/form/) tag which is used to create it.
 :::
 
 ### Comment Submission
@@ -59,7 +59,7 @@ Roughly speaking, a comment form needs to have three inputs (of type text) named
 
 Only the `k_comment` field is mandatory for Couch to save the comments. However, if needed, you can make any of the other fields mandatory too by setting their `required` parameter.
 
-On successful submission of the form, the [**process_comment**](../../tags-reference/process_comment/) Couch tag can be invoked to process the submitted comment and save it into the database.
+On successful submission of the form, the [**process_comment**](../../tags-reference/core/process_comment/) Couch tag can be invoked to process the submitted comment and save it into the database.
 
 Following is a complete snippet that generates such a form:
 
@@ -162,7 +162,7 @@ Following is a complete snippet that generates such a form:
 ```
 
 :::tip[About Comment Form]
-The above snippet can be saved into a file named, for example, `comment-form.inc` within the snippets folder and then be used in any template by using the [**embed**](../../tags-reference/embed/) tag:
+The above snippet can be saved into a file named, for example, `comment-form.inc` within the snippets folder and then be used in any template by using the [**embed**](../../tags-reference/core/embed/) tag:
 
 ```php title="Include Comment Form"
 <cms:embed 'comment-form.inc' />
@@ -178,7 +178,7 @@ To fight spam always use a captcha during comment submission and always require 
 
 Note that we first check that no registered user is logged in (`k_logged_out`) before showing the input fields for name, email, link and the captcha. If a user is already logged in, the values for these inputs can be had from his registration profile and hence only the textbox for inputting comments needs to be displayed to him.
 
-On successful submission of the form (`k_success`), we simply invoke the [**process_comment**](../../tags-reference/process_comment/) tag.
+On successful submission of the form (`k_success`), we simply invoke the [**process_comment**](../../tags-reference/core/process_comment/) tag.
 This tag processes the submitted values and attempts to save the comment into the database. If it succeeds, it sets the `k_process_comment_success` variable else the `k_process_comment_error` is set.
 Upon finding the `k_process_comment_success` set, an email is sent to the admin informing him about the pending comment that awaits his approval.
 
@@ -189,8 +189,8 @@ Use the *comments* tab of the Couch admin panel to administrate the submitted co
 Once the submission of comments is in its place as explained above, one would now like to list all the submitted comments.
 Usually only the comments belonging to a particular page need to be listed on that page. However, we can list comments belonging to all (or any) of the commentable pages or belonging to only pages cloned out of some of the templates etc (e.g. the latest 5 comments that are routinely displayed on the home pages of sites) on any page.
 
-The [**comments**](../../tags-reference/comments/) tag is used to list comments based on the parameters passed to it.
-It is closely related to the [**pages**](../../tags-reference/pages/) tag and hence shares several of the [**parameters**](../../tags-reference/pages/#parameters) accepted by the pages tag.
+The [**comments**](../../tags-reference/core/comments/) tag is used to list comments based on the parameters passed to it.
+It is closely related to the [**pages**](../../tags-reference/core/pages/) tag and hence shares several of the [**parameters**](../../tags-reference/core/pages/#parameters) accepted by the pages tag.
 
 ```php title="List Recent Comments"
 <cms:comments limit='5'>
@@ -223,15 +223,15 @@ In addition to these variables, the pagination related variables that describe t
 
 #### Parameters
 
-Normally [**comments**](../../tags-reference/comments/) tag will fetch all the available approved comments.
+Normally [**comments**](../../tags-reference/core/comments/) tag will fetch all the available approved comments.
 It can be constrained into fetching comments from only certain pages by setting the `masterpage`, `page_id` and `page_name` parameters.
 
-Please see: [**comments**](../../tags-reference/comments/#parameters) for a complete list of parameters that are accepted by this tag and how they can be used.
+Please see: [**comments**](../../tags-reference/core/comments/#parameters) for a complete list of parameters that are accepted by this tag and how they can be used.
 
 ### Example
 
-As an example of the [**comments**](../../tags-reference/comments/) tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.
-Notice the use of the variable `k_page_id` (always set by Couch to the id of the current page in *page-view*) to constrain the `comments` tag to fetch only comments belonging to the current page. Also notice the use of the [**gravatar**](../../tags-reference/gravatar/) tag.
+As an example of the [**comments**](../../tags-reference/core/comments/) tag, the following is a real world snippet that when placed in a template, shows the comments belonging to the cloned page that is currently displayed.
+Notice the use of the variable `k_page_id` (always set by Couch to the id of the current page in *page-view*) to constrain the `comments` tag to fetch only comments belonging to the current page. Also notice the use of the [**gravatar**](../../tags-reference/core/gravatar/) tag.
 
 ```php title="Display Page Comments"
 <cms:if k_is_page >
