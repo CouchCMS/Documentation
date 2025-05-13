@@ -7,6 +7,9 @@ author: Kamran Kashif
 lastUpdated: 2025-03-27
 ---
 
+import { Image } from 'astro:assets';
+import paypalButton from '../../../../assets/img/contents/paypal_button.png';
+
 Please see [**Core Concepts - PayPal**](../../../../concepts/paypal/) for a detailed discussion about this tag and its usage.
 
 ## Parameters
@@ -36,7 +39,7 @@ To use these images, set the _image_ parameter to a number ranging from 0 to 8.
 
 The numbers represent the folllowing images:
 
-![Paypal Button](../../../../assets/img/contents/paypal_button.png)
+<Image src={paypalButton} alt="Paypal Button" />
 
 ### `processor`
 
