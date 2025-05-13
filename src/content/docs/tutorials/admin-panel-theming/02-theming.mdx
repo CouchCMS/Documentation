@@ -1,0 +1,110 @@
+---
+title: Theming
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 2
+---
+
+import { FileTree } from "@astrojs/starlight/components";
+
+Please try exploring the `couch/theme/_system` folder in the extracted source code. This is where all the snippets used to render the default admin-panel design reside.
+
+I'd suggest you start with the `main.html` in there. Open it in your favorite text editor and you'll immediately see that this template serves as the base for all the admin pages. You'll also recognize the familiar Couch tags interspersed with normal HTML tags. You'll also come across several new tags (e.g. the (e.g. the `<cms:render />` tag) but, more or less, the code within the file should appear no different from what we have always used on normal front-end Couch templates.
+
+You'll find the same to be true for all other snippets in the folder. I'd like to draw attention to one particular snippet - `content_form.html`. Open it in your editor and you should recognize that it is a standard **Data-Bound Form**. This particular snippet is used by the default **Admin Panel** to render *all* "edit" screens - be it for **Pages**, **Drafts**, **Folders**, **Comments** or **Users**. So, I think, you'll find it interesting to note that **the same Data-bound form is used to edit all entities** in Couch now.
+
+To render the *list* screens, each entity has its own snippet, such as:
+
+- `content_list_inner_gallery.html`
+- `content_list_inner_drafts.html`
+- `content_list_inner_folders.html`
+
+etc. If you examine them, you'll see how we use either `<cms:pages>` or `<cms:query>` to generate the listings.
+
+Okay, so now that we have seen that the snippets used for rendering all elements in the admin-panel are just regular Couch snippets, it should be easy to see that to modify any particular element we just need to modify the snippet rendering that element.
+
+However, instead of directly modifying the snippets (in the `_system` folder) used by the system theme, **the correct method is to 'override' them by creating your own theme**. Allow me to explain this concept a bit.
+
+If you take a look at the `couch/theme` folder, you'll find a folder named `sample` that is a sibling of the `_system` folder. To create your own theme, you may either use this folder as-is or you may rename it (or create a new folder of any name of your choice within the `themes` folder).
+
+Let us assume we use the `sample` as our custom theme. Edit `couch/config.php` and find the following line:
+
+```diff lang="php" title="config.php"
+// 26
+// If the admin-panel uses a custom theme, set the following to the folder-name of the theme.
+// Theme folder is expected to be within the 'couch/theme' folder. No leading or trailing slashes please.
+-//define( 'K_ADMIN_THEME', 'sample' );
++define( 'K_ADMIN_THEME', 'sample' );
+```
+
+Uncomment the last line (i.e remove the leading `//` from it) to activate your theme. In case you chose to rename the `sample` folder to something else, use that name in the setting instead.
+
+And that is it. **With your theme activated, while rendering any element Couch will always check first if the snippet used to render it is present in the custom theme folder (`sample` in our example). If yes, it will use that snippet. Else, it will use the default from the `_system` folder.**
+
+So you can see now, that to modify any particular element of the admin-panel, we can place its rendering snippet in our theme folder. Let us try it out. For our example, let us try and modify the outermost HTML of the admin-panel. We have already seen that the `main.html` snippet is used for rendering it. Instead of creating a blank new snippet in the `sample` folder, let us copy the existing `main.html` from the `_system` folder to the new location and modify it.
+
+Edit the `main.html` copied to the new location and make some changes - you can change anything or everything you want but for this discussion let us just change the following line from:
+
+```php title="main.html"
+<a href="https://www.couchcms.com/">CouchCMS Version <cms:show k_cms_version /> (<cms:show k_cms_build />)</a>
+```
+
+to:
+
+```php title="main.html"
+<a href="<cms:show k_site_link />">My CMS</a>
+```
+
+Visit the admin-panel and you should see that the link has changed. Congrats! Couch is now using your snippet to render the entire shell of the admin-panel.
+
+Let us make some changes to the CSS styling next. You would have noticed that the `sample` folder already contained some files (three to be exact - `styles.css`, `kfunctions.php` and `icons.php`).
+
+<FileTree>
+
+- sample
+    - styles.css
+    - kfunctions.php
+    - icons.php
+
+</FileTree>
+
+Although all the three are optional and can be deleted if you don't require them, they can be useful later on so it is advisable to keep them.
+
+The `kfunctions.php` file is useful when PHP code is required for advanced theming (we'll come to that in just a bit). The `styles.css` file, if it exists in the custom theme folder, is always included by Couch when rendering the `main.html` snippet. So, if you just wish to change the CSS styling of the admin-panel, you can simply put in your styles in this file and no overriding is required.
+
+For our example, let us assume that we wish to include an additional CSS file (say, named `sample.css` present in a folder named `styles`) in the admin-panel. Once you have created such a file, add the following at the appropriate location in `main.html`:
+
+```html title="main.html"
+<link href="<cms:show k_theme_link />styles/sample.css" rel="stylesheet" />
+```
+
+You'll find that the `<cms:show k_theme_link />` statement gets resolved to your `sample` theme folder. Please notice that we use `<cms:show k_system_theme_link />` for accessing the system theme folder (i.e. `couch/themes/_system`).
+
+So, hopefully now you can see how we can override and modify targeted sections of the admin-panel design.
+
+## Advanced theming
+
+There is much more to this overriding mechanism than what we have seen so far.
+
+To give you a taste of it - till now we have seen that if a snippet (`main.html` in our example above) is present in the theme folder, it is chosen over the default snippet. What if we wanted this override to happen only for a particular logged-in user? Or only while editing a particular section (e.g. 'users')? Or only at a particular time of the day (joking :-))? Not a problem. We can do all of that with just a bit of PHP thrown in the kfunctions.php file (details will be in the coming up tutorial).
+
+:::note[Additional Information]
+You may see the following thread for an example of the kind of 'selective' overriding mentioned above:
+[**Selective Theming**](https://www.couchcms.com/forum/viewtopic.php?f=2&t=10438&p=25693#p25693)
+:::
+
+One more thing - if you take a look, for example, at the toolbar in the admin-panel while listing the pages of any cloned page, you'll likely see three buttons namely **Add new**, **Manage folders** and **View**. The snippet that renders these buttons is `toolbar.html`. If you take a look at it, you'll see how it outputs the markup for each button. However, you'll also notice that it is specified nowhere in the code that three buttons are to be rendered.
+It is actually looping through `<cms:admin_actions childof='toolbar'>` tag that feeds it with the number of toolbar buttons to render (exactly like we loop through [**pages**](../../tags-reference/core/pages/) while rendering a list of pages). This arrangement makes it possible for addons (and also your PHP code) to tweak and set the buttons that are to be shown. For example, we could have a simple addon in the future that adds a 'Clone page' button to the toolbar.
+
+This pattern of setting data elsewhere in the code and then using Couch tags in the snippets to render that data is all-pervasive in the current admin architecture. Almost everything that you see rendered has its data defined somewhere where it can be intercepted and tweaked at some point to make things work like never before. For example, the sidebar actually loops through data that can tweaked to add/hide/delete items conditionally. Same applies to the list of fields shown in the list page or the edit page.
+
+I think the discussion so far would have made amply clear that nothing whatsoever in the current admin-panel architecture is 'set in stone', as was the case with the previous admin-panel. If I had to use a single word to describe what makes this admin-panel architecture different from the last one, it would be 'flexibility'.
