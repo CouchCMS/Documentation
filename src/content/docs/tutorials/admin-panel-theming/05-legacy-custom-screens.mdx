@@ -1,0 +1,261 @@
+---
+title: Old Custom Admin Screens
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 5
+---
+
+import { Image } from 'astro:assets';
+import theming16 from '../admin-panel-theming/img/16.jpg';
+import theming17 from '../admin-panel-theming/img/17.jpg';
+import theming18 from '../admin-panel-theming/img/18.jpg';
+import theming19 from '../admin-panel-theming/img/19.jpg';
+
+You must have noticed that the customization of the list and form screens described in detail above essentially consisted of tweaking bits and parts of the screens as rendered in a default manner by Couch.
+
+If for some cases, that tweaking is not sufficient you can take over the process from Couch completely and render yourself the full screens (as opposed to only parts as done so far).
+
+If you have been with Couch for the past few versions, I am sure you know that previously this was done by the feature: [**Custom Admin Screens**](../../../../tutorials/job-application-form/#custom-admin-screens).
+
+That feature has been retained in v2.0, although, strictly speaking going by how it worked, the term 'custom screen' seems redundant as now every screen in the new admin-panel is a custom screen :-).
+
+Anyway, let us see how it is done now in v2.0. The process is almost the same as before (actually has become easier) except for one change that I'll mention below.
+
+Let us begin with the list screen first.
+
+**Old method of custom list screen**<br />
+Reiterating what the [**docs**](../../../../tutorials/job-application-form/#custom-admin-screens) said -
+To create a custom screen for the list view, create a snippet, say named `my_list.html`, and save it in the `snippets` folder of Couch (or in whichever folder you have configured to hold the snippets. If you've used the cms:embed tag this process will seem familiar).
+
+For a quick test, let us put the following in the snippet:
+
+```html file="my_list.html
+<cms:repeat '4'>
+    <h3>Hello <cms:show k_template_title />!</h3>
+</cms:repeat>
+```
+
+Next, edit the `kfunctions.php` file present in `couch/addons` folder and place the following bit of code within it (replacing `test.php` with the actual template name the screen is being created):
+
+```php title="kfunctions.php"
+$FUNCS->register_admin_listview( 'test.php', 'my_list.html' );
+```
+
+Visit the admin-panel and access the `test.php` template (or whatever template specified above). Here is what should appear:
+
+<Image src={theming16} alt="Custom admin panel list view showing repeated greeting" />
+> Custom admin panel list view showing repeated greeting
+
+This is where things differ a little from the previous versions. Previously, a list custom screen used to cover the following region:
+
+<Image src={theming17} alt="Previous version's custom list view coverage area" />
+> Previous version's custom list view coverage area
+
+Please notice how it was necessary before to include in your snippet code for the folders dropdown, the paginator and the actions at the bottom in addition to the code doing the actual listing.
+
+Now the area covered by the custom list view has been constrained to the following:
+
+<Image src={theming18} alt="Current version's custom list view coverage area" />
+> Current version's custom list view coverage area
+
+So now your custom code needs to be concerned only with listing the pages in whatever manner is desired and not worry about the accessory functions. This eases things considerably as now you can focus on only the task at hand.
+
+:::note
+If, however, you do need to custom render the entire screen then go ahead and use the new **theming** technique. With that you can override anything and everything you wish.
+:::
+
+Now go ahead and place the following in the `my_list.html` snippet:
+
+```html file="my_list.html
+<table class="table table-primary table-list">
+    <thead>
+        <tr>
+            <cms:render 'list_header' />
+        </tr>
+    </thead>
+    <tbody id="listing">
+        <cms:pages
+                masterpage       = k_template_name
+                id               = k_selected_pageids
+                folder           = k_selected_foldername
+                orderby          = k_selected_orderby
+                order            = k_selected_order
+                custom_field     = k_selected_custom_field
+                paginate         = '1'
+                limit            = k_selected_limit
+                show_unpublished = '1'
+                page_name        = "<cms:if k_selected_exclude>NOT <cms:show k_selected_exclude /></cms:if>"
+                start_on         = k_selected_start_on
+                stop_before      = k_selected_stop_before
+                base_link        = k_route_link
+                token            = k_cur_token
+            >
+
+            <cms:if k_paginated_bottom >
+                <cms:set my_paginator="<cms:render 'paginator' />" 'parent' />
+            </cms:if>
+
+            <tr>
+                <cms:render 'list_row' />
+            </tr>
+
+        </cms:pages>
+    </tbody>
+</table>
+```
+
+You'll see that now the list screen renders *exactly* the same as the default listing.
+
+<Image src={theming19} alt="Default admin panel list view with standard columns" />
+> Default admin panel list view with standard columns
+
+Hardly surprising as I have lifted the code above straight from `couch/theme/_system/content_list_inner.html` snippet that is used by the theme layer to render the normal listing pages (check it).
+
+You can now hardcode within the `<tr></tr>` whatever `<td>`s you want (or ditch the table layout and show the listing in whatever way you desire).
+
+Let us now move to how the old method of custom edit screen can now be implemented.
+
+**Old method of custom edit screen**<br />
+There are no breaking changes here (things have actually become simpler e.g no need to code the advanced settings dropdown). Again reiterating from the original docs ([**Custom Edit Screen**](../../../../tutorials/job-application-form/#custom-admin-screens)), begin by creating a snippet file in Couch's snippets folder and then registering it for the template in `kfunctions.php`. Assuming the snippet we use is named `my_edit.html`, this is what needs to be placed in `kfunctions.php`:
+
+```php title="kfunctions.php"
+$FUNCS->register_admin_pageview( 'test.php', 'my_edit.html' );
+```
+
+To do the preliminary test, place just the following in the `my_edit.html` snippet:
+
+```html title="my_edit.html"
+<cms:dump_all />
+```
+
+In the admin-panel, clicking on any cloned page of the template to edit it will now load the snippet above and you should see the dump showing all the variables available.
+
+With that tested as working, replace the contents of the snippet with the following:
+
+```html title="my_edit.html"
+<cms:form
+    masterpage = k_selected_masterpage
+    mode = k_selected_form_mode
+    page_id = k_selected_page_id
+    enctype = 'multipart/form-data'
+    method = 'post'
+    anchor = '0'
+    add_security_token = '0'
+    id = k_cur_form
+    name = k_cur_form
+    token = k_cur_token
+    >
+
+    <div class="tab-pane fade active in" id="tab-pane-edit-<cms:show k_route_module />">
+
+        <cms:if k_success >
+
+            <cms:db_persist_form
+                _token=k_cur_token
+            />
+
+            <cms:if k_success >
+                <cms:if k_redirect_link >
+                    <cms:set_flash name='submit_success' value='1' />
+                    <cms:redirect k_redirect_link />
+                </cms:if>
+            </cms:if>
+        </cms:if>
+
+        <cms:if k_error >
+            <cms:show_error>
+                <cms:each k_error >
+                    <cms:show item /><br>
+                </cms:each>
+            </cms:show_error>
+        </cms:if>
+
+        <cms:render 'group_advanced_settings' />
+
+        <!-- custom editable regions begin -->
+
+        <!-- custom editable regions end -->
+
+        <div class="ctrl-bot">
+            <cms:render 'page_actions' />
+        </div>
+
+        <input type="hidden" id="k_custom_action" name="k_custom_action" value="">
+    </div>
+</cms:form>
+```
+
+That is the bare essential shell required for the proper rendering of the edit screen (has been adapted from the `couch/theme/_system/content_form.html` snippet that is used by the theme layer to render the normal form screens).
+
+Test it and you'll get a fully functional (albeit showing no fields in the main screen) form screen complete with the advanced settings dropdown.
+
+You can now out your bound inputs within the block marked as follows above.
+
+```html
+<!-- custom editable regions begin -->
+
+<!-- custom editable regions end -->
+```
+
+One sample implementation for reference:
+
+```html
+<!-- custom editable regions begin -->
+<div id="my_wrapper">
+    <div id="k_page_folder_id" class="k_element">
+        <b>Manufacturer:</b><br />
+        <cms:input type="bound" name="k_page_folder_id" />
+    </div>
+
+    <div id="k_page_title" class="k_element">
+        <b>Model:</b><br />
+        <cms:input type="bound" name="k_page_title" />
+    </div>
+
+    <div id="image" class="k_element">
+        <b>Photo:</b><br />
+        <cms:input type="bound" name="image" />
+    </div>
+</div>
+<!-- custom editable regions end -->
+```
+
+To style the custom fields, you can use the following in the snippet below the form:
+
+```css
+<cms:admin_add_css>
+    /* for example */
+    label{
+        font-size: 16px;
+        padding-top: 10px;
+    }
+</cms:admin_add_css>
+```
+
+If some custom JS is required, use the following:
+
+```js
+<cms:admin_add_js>
+    /* for example */
+    $(function(){
+        // ... existing code ...
+    });
+</cms:admin_add_js>
+```
+
+The two tags above work just the same as the `<cms:style>` and `<cms:script>` tags we used earlier within the `<cms:config_list_view>` and `<cms:config_form_view>` tag blocks - the crucial difference being that the latter are used within frontend templates but inject their contents in the backend admin-panel while the former are used directly within backend snippets (like the `my_edit.html` above).
+
+You'll find the `<cms:admin_add_css>` and `<cms:admin_add_js>` tags being used pretty extensively by the theme layer snippets (i.e. those within `couch/theme/_system/`) used by Couch to render the admin panel.
+
+Ok, so that wraps up our custom admin screens section.
+
+What else remains to be covered? Oh, there is one feature that has to be termed as the most requested feature of all time. Let's move on to that in the next section.
