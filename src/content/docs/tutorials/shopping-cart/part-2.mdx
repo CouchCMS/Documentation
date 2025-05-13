@@ -18,6 +18,12 @@ slug: tutorials/shopping-cart/part-2
 ---
 
 import { Steps, Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import shoppingCart16 from '../../../../assets/img/contents/shopping-cart-16.png';
+import shoppingCart17 from '../../../../assets/img/contents/shopping-cart-17.png';
+import shoppingCart18 from '../../../../assets/img/contents/shopping-cart-18.png';
+import shoppingCart19 from '../../../../assets/img/contents/shopping-cart-19.png';
+import shoppingCart20 from '../../../../assets/img/contents/shopping-cart-20.png';
 
 <Card icon="star" title="CouchCart">
 
@@ -133,7 +139,7 @@ where the string above stands for '3 for more than 0, 7 for more than 5, 10 for 
 
 To enable specifying shipping charges on individual products, **an editable region named `pp_shipping_scale` needs to be defined** in the product template. If you are using the editable region definitions contained in our sample template, this region is already defined and you can enter the shipping scale for each product in the following panel:
 
-![Shopping Cart Example](../../../../assets/img/contents/shopping-cart-16.png)
+<Image src={shoppingCart16} alt="Shopping Cart Example" />
 
 This region allows you to set up for each product a sliding scale of shipping charges that is based on the number of the product ordered. For example, if you charge $3 to deliver one to five units, $7 to ship six to 15 units, and $10 to ship more than 15 units, set it to:
 
@@ -147,7 +153,7 @@ where the string above stands for '3 for more than 0, 7 for more than 5, 10 for 
 The shipping charges will be **calculated for only** those items that have their `pp_requires_shipping` editable region set to 'Yes'.
 :::
 
-![Shopping Cart Example](../../../../assets/img/contents/shopping-cart-17.png)
+<Image src={shoppingCart17} alt="Shopping Cart Example" />
 
 All the 5 calculation methods discussed above are **cumulative**. That is, if you choose to set more than one, the values returned by each of them will be **added together** to arrive at a single shipping charge for the cart.
 
@@ -209,7 +215,7 @@ This property can be used to implement **Quantity based pricing** (also known as
 
 This method **requires defining an editable region named `pp_discount_scale`** in the products template. If you are using the editable region definitions contained in our sample template, this region is already defined and you can enter the discount scale for each product in the following panel:
 
-![Shopping Cart Example](../../../../assets/img/contents/shopping-cart-18.png)
+<Image src={shoppingCart18} alt="Shopping Cart Example" />
 
 Using the editable region, individual products can now be set with a sliding scale for price-reductions (discounts). For example:
 
@@ -273,7 +279,7 @@ The 'End Date' field defined by this template makes use of the [**Date-Picker ad
 
 Let us create one. This is what the edit-panel for a coupon looks like.
 
-![Shopping Cart Example](../../../../assets/img/contents/shopping-cart-19.png)
+<Image src={shoppingCart19} alt="Shopping Cart Example" />
 
 A short description of what the fields stand for is in order.
 
@@ -315,7 +321,7 @@ With the coupons created (and the coded distributed to the buyers or displayed o
 
 The `checkout.php` template found in the finished version of our sample site shows how this can be done.
 
-![Shopping Cart Example](../../../../assets/img/contents/shopping-cart-20.png)
+<Image src={shoppingCart20} alt="Shopping Cart Example" />
 
 The cart summary is a simple modification of the code we used to display the cart in `cart.php` and `cart-modal.php` (this one does not allow editing of values). As for the input box for coupon code, we've used Couch's `form` tag to handle its submission. You can simply copy the entire form code (every thing between the `<!-- START COUPON FORM -->` to `<!-- END COUPON FORM -->`) and paste it in your own templates to allow buyers to enter their coupons.
 
