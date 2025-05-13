@@ -20,6 +20,20 @@ slug: tutorials/portfolio-site/blog-part-2
 ---
 
 import { Steps, Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite74 from '../../../../assets/img/contents/portfolio-site-74.png';
+import portfolioSite76 from '../../../../assets/img/contents/portfolio-site-76.png';
+import portfolioSite79 from '../../../../assets/img/contents/portfolio-site-79.png';
+import portfolioSite81 from '../../../../assets/img/contents/portfolio-site-81.png';
+import portfolioSite82 from '../../../../assets/img/contents/portfolio-site-82.png';
+import portfolioSite83 from '../../../../assets/img/contents/portfolio-site-83.png';
+import portfolioSite90 from '../../../../assets/img/contents/portfolio-site-90.png';
+import portfolioSite105 from '../../../../assets/img/contents/portfolio-site-105.png';
+import portfolioSite107 from '../../../../assets/img/contents/portfolio-site-107.png';
+import portfolioSite110 from '../../../../assets/img/contents/portfolio-site-110.png';
+import portfolioSite111 from '../../../../assets/img/contents/portfolio-site-111.png';
+import portfolioSite113 from '../../../../assets/img/contents/portfolio-site-113.png';
+import portfolioSite114 from '../../../../assets/img/contents/portfolio-site-114.png';
 
 <Card icon="download" title="Download Code">
 
@@ -33,7 +47,7 @@ As already discussed, `https://www.mytestsite.com/blog.php` is the view where we
 
 The way we have configured it, template `blog.php` is using an embedded template `blog_list.html` to render the list-view. File `blog_list.html` is where we'll make the changes now. Open it up in your text editor.
 
-Couch has a tag named [**pages**](../../../tags-reference/pages/) that is used to enumerate or list pages belonging to a particular template. Let us take a little overview of how this tag works before putting it into real use. The syntax of pages tag is pretty simple.
+Couch has a tag named [**pages**](../../../tags-reference/core/pages/) that is used to enumerate or list pages belonging to a particular template. Let us take a little overview of how this tag works before putting it into real use. The syntax of pages tag is pretty simple.
 
 ```php title="Pages Tag Example"
 <cms:pages masterpage='blog.php'>
@@ -57,7 +71,8 @@ anywhere within `blog_list.html` (I chose just after the `<body>` tag) and acces
 
 You'll see that the heading _Hi, I am a page!_ appears twice.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-74.png)
+<Image src={portfolioSite74} alt="Portfolio Site Example" />
+> Pages tag output: heading repeated for each page
 
 The `blog.php` currently has only two cloned pages. As the pages tag loops through the two cloned pages, it executes the contents nested within itself at each iteration and hence the `<h1>` tag gets output twice.
 
@@ -75,12 +90,13 @@ Since at each iteration it also makes available all the variables belonging to t
 
 And it will show:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-76.png)
+<Image src={portfolioSite76} alt="Portfolio Site Example" />
+> Pages tag output: title and content for each page
 
 As you can see we can access all variables belonging to each cloned pages just the way we did when the page was accessed in its page-view.
 
 :::note
-The [**pages**](../../../tags-reference/pages/) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please refer to the [documentation](../../../tags-reference/pages/) for a comprehensive discussion.
+The [**pages**](../../../tags-reference/core/pages/) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please refer to the [documentation](../../../tags-reference/core/pages/) for a comprehensive discussion.
 :::
 
 With this ability to list cloned pages and access their data, we can now make changes to the `blog_list.html` snippet to display the cloned pages instead of its hard coded content.
@@ -141,7 +157,8 @@ We have already been through this step of finding relevant regions within the HT
 
 Visit `http://www.mytestsite.com/blog.php` to see the two cloned pages listed on it:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-79.png)
+<Image src={portfolioSite79} alt="Portfolio Site Example" />
+> Two cloned pages listed in blog.php
 
 Click on the title of any post to verify that it loads the page-view of that post.
 
@@ -161,15 +178,18 @@ Couch has two tags that can be used to get an excerpt from any input provided to
 
 Note that we have fixed the '*Read More..*' link too. Try it out by editing '*My second blog entry*', placing several paragraphs of text within it and then compare its page-view:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-81.png)
+<Image src={portfolioSite81} alt="Portfolio Site Example" />
+> Page-view: full blog post content
 
 with the list-view:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-82.png)
+<Image src={portfolioSite82} alt="Portfolio Site Example" />
+> List-view: excerpt of blog post content
 
 Our blog is beginning to take its final shape. To illustrate the remaining features, we'll add three more blog entries (i.e. create cloned pages of `blog.php`). We'll place two pages in '*clients*' folder, two in '*philosophy*' and leave one in the root (i.e. within no folder).
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-83.png)
+<Image src={portfolioSite83} alt="Portfolio Site Example" />
+> Five blog entries in different folders
 
 As we keep on adding new blog entries, the list-view faithfully keeps showing them all. It is okay for a few pages but as soon as the number of pages grows it soon becomes untenable to display all of them on a single page.The solution? Show the pages in fixed chunks of, say, ten pages at a time and give visitors the option to navigate to other chunks by providing links. This is pagination and Couch supports it natively.
 
@@ -272,7 +292,8 @@ Visit `blog.php` again and the pagination should work perfectly. Time to move ou
 
 The sidebar of both the views is almost identical. Both show a listing of *Categories* and *Archive periods*.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-90.png)
+<Image src={portfolioSite90} alt="Portfolio Site Example" />
+> Sidebar with categories, latest news, and archives
 
 The one shown in page-view has an additional list showing the '*Latest News*'. It is difficult to say what the original designer of Aurelius had in mind as there is no '*news*' section. We'll list our latest four blog posts here.
 
@@ -527,7 +548,8 @@ Notice that we have set the limit to four.
 
 Visit any blog entry (page-view) and the latest four blog entries should be found listed in the sidebar.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-105.png)
+<Image src={portfolioSite105} alt="Portfolio Site Example" />
+> Latest News in sidebar
 
 That wraps up all the sidebar sections. The only features left to complete now are the comments listing and comments form. Let us move on to them to finally finish the blog in Aurelius.
 
@@ -548,7 +570,8 @@ This is done by setting the `commentable` attribute to `1` in the template tag p
 
 Access `blog.php` in your browser while being logged-in as the super-admin. Visit the admin section and you'll find that as soon as a template is declared as commentable, a new item is added to the sidebar:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-107.png)
+<Image src={portfolioSite107} alt="Portfolio Site Example" />
+> Comments admin section in sidebar
 
 This will be used to administrate all the submitted comments. For now there are no comments for us to administrate so we'll come back to it a little latter.
 
@@ -593,11 +616,13 @@ We could modify this form to make Couch fit into it. However, since a comments s
 
 This will cause the following to display when you are logged in:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-110.png)
+<Image src={portfolioSite110} alt="Portfolio Site Example" />
+> Comment form for logged-in user
 
 while the following form is shown to non logged-in users:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-111.png)
+<Image src={portfolioSite111} alt="Portfolio Site Example" />
+> Comment form for non-logged-in user
 
 You can style the input elements within this form yourself or simply substitute them with those found in the original Aurelius code.
 
@@ -617,11 +642,13 @@ Don't forget to change them.
 
 Try submitting a few comments being logged in as admin and otherwise. Comments submitted by non-admins are, by default, not published immediately but are enqueued for moderation. (This can be changed by editing the `config.php` but we strongly advice against doing this.)
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-113.png)
+<Image src={portfolioSite113} alt="Portfolio Site Example" />
+> Submitted comments in admin panel
 
 Visit your admin panel and click on the comments item in the sidebar that we mentioned previously. All the submitted comments should be available here.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-114.png)
+<Image src={portfolioSite114} alt="Portfolio Site Example" />
+> Approved comments listed in admin panel
 
 Approve the comments that need approval and now we can move on to getting all the approved comments listed on the page they were submitted to.
 
