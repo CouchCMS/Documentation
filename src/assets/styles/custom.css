@@ -14,7 +14,7 @@
 }
 
 /* Light mode colors. */
-:root[data-theme='light'] {
+:root[data-theme="light"] {
     --sl-color-accent-low: #ddd5d1;
     --sl-color-accent: #64483d;
     --sl-color-accent-high: #3c2f2a;
@@ -106,4 +106,8 @@ main img:not(.site-title img):not([data-page-type="splash"] img) {
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+.content-panel img {
+    margin-top: 16px !important;
 }
