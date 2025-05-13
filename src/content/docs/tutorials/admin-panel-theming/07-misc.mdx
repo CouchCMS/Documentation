@@ -1,0 +1,125 @@
+---
+title: Misc
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 7
+---
+
+import { Steps, Card } from '@astrojs/starlight/components';
+
+There are several small changes but two deserve a proper mention.
+
+<Steps>
+
+1. As you, of course, know that all Couch tags are executed only on the server side and the parser removes them from the outputted HTML that is served to the browser. As long time Couch users would have noticed, this removal of the Couch tags used to leave behind some very characteristic white-spaces in the output (seen with a `view-source://`). White spaces do not affect how HTML renders in the browser so this was not a big issue but the white-spaces did seem disconcerting to anyone taking a look at the generated source code.
+
+    Couch v2.0 fixes that and it does that following the exact method used by the PHP parser. Now any Couch tag that has a newline immediately following its terminal `>` bracket, will get the newline removed.
+
+    This improves the readability of the generated code considerably. However, there is one place where this can break existing code (which is actually the reason for discussing this change).
+
+    The `<cms:send_mail>` tag (while sending plain text emails) relies upon the presence of newlines in its enclosed contents to format the email correctly. For example, in previous versions of Couch the body of the email send by the following code:
+
+    ```php
+    <cms:send_mail from="xyz@xyz.com" to="abc@abc.com" subject='Feedback from your site'>
+        The following is an email sent by a visitor to your site:
+        <cms:show frm_name />
+        <cms:show frm_email />
+    </cms:send_mail>
+    ```
+
+    could look like this:
+
+    ```txt
+    The following is an email sent by a visitor to your site:
+    John Doe
+    john@doe,com
+    ```
+
+    With v2.0 now stripping off the newlines, the body of the email would now turn up as follows:
+
+    ```txt
+    The following is an email sent by a visitor to your site:    John Doe    john@doe,com
+    ```
+
+    That is definitely cause for concern but worry not! It is trivial to fix that. The fix lies in the 'immediately' of the statement I made above:
+
+    :::note
+    Now any Couch tag that **has a newline immediately following its terminal `>` bracket**, will get the newline removed.
+    :::
+
+    To prevent Couch from stripping off the newlines we need to place some space characters (even a single character will do) immediately after the closing `>` (just press the spacebar). By doing so, the newline does not come immediately after the tag and is hence not stripped away. This, incidentally, is precisely how PHP parser works while stripping off PHP tags from source code.
+
+    This is a breaking change introduced with v2.0 that will necessitate your taking some corrective actions on existing code.
+
+2. The second change is rather cosmetic but should be a welcome one.
+
+    It concerns the way `<cms:editable>` regions are grouped together. Till now we had to use something like this to do so:
+
+    ```php
+    <cms:editable name="prop_uploads" label="Uploads" desc="Your main uploads" type="group" />
+
+    <cms:editable
+        name="prop_image"
+        label="Image"
+        desc="Upload main image here"
+        show_preview="1"
+        group="prop_uploads"
+        type="image"
+    />
+
+    <cms:editable
+        name="prop_document"
+        label="Downloadable File"
+        desc="Upload the file here"
+        group="prop_uploads"
+        type="file"
+    />
+    ```
+
+    As you can see above, the type `group` region is defined separate from the regions it encloses and then the two are linked together using the `group=prop_uploads` statement.
+
+    With v2.0, now we can use the following to achieve the same results:
+
+    ```php
+    <cms:editable name="prop_uploads" label="Uploads" desc="Your main uploads" type="group">
+        <cms:editable name="prop_image" label="Image" desc="Upload main image here" show_preview="1" type="image" />
+
+        <cms:editable name="prop_document" label="Downloadable File" desc="Upload the file here" type="file" />
+    </cms:editable>
+    ```
+
+    The group region can now be defined explicitly enclosing the regions contained within it (i.e. using a tag-pair syntax) and the child regions no longer have to use the `group` parameter. Way cleaner than the original, right? One more new feature has been added to the type `group` editable region.With multiple groups in the same template, Couch shows only the first group in an expanded state. The rest are all shown collapsed. You can override this default behaviour by setting the `collapsed` parameter. For example, the following will always show the defined group in an initially expanded state no matter what its position is amongst other groups:
+
+    ```php
+    <cms:editable name="prop_uploads" label="Uploads" desc="Your main uploads" type="group" collapsed="0">
+        <!-- Group contents here -->
+    </cms:editable>
+    ```
+
+    Vice versa, you can set the parameter to `1` to always show a group in an initially collapsed state.
+
+</Steps>
+
+## The End (of this discussion)
+
+So with that this particular discussion finally comes to an end.
+
+The new admin-panel architecture finally makes possible the creation of more powerful and flexible addons/modules that can interact with and modify the admin-panel without requiring any change to existing code. You can expect some pretty radical addons soon (the repeatable-region addon is first in line for a total make-over).
+
+For now, please try out this version and let me know how your thoughts on it. I sincerely hope you find it useful - would make the toil of the past so many months worthwhile for me :-)
+
+Thanks.
+
+Credits:
+[@cheesypoof](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=11919) - for the meticulous admin-panel design,
+[@trendoman](https://www.couchcms.com/forum/memberlist.php?mode=viewprofile&u=18478) - for painstakingly weeding out bugs pre-release,
+Everyone - for your unflagging support :-) Thank you.
