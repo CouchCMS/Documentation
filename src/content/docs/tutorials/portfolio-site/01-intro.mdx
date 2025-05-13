@@ -20,6 +20,11 @@ slug: tutorials/portfolio-site
 ---
 
 import { FileTree, Steps, Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite5 from '../../../../assets/img/contents/portfolio-site-5.jpg';
+import portfolioSite6 from '../../../../assets/img/contents/portfolio-site-6.jpg';
+import portfolioSite7 from '../../../../assets/img/contents/portfolio-site-7.jpg';
+import portfolioSite8 from '../../../../assets/img/contents/portfolio-site-8.png';
 
 To demonstrate the power and ease of Couch, we'll build a complete real world site from scratch using it.
 
@@ -92,7 +97,7 @@ Couch works by retrofitting within an existing working site. As such, our first 
 
 2. **Extract Files**
    - Unzip `couch.zip` to get the following structure:
-   
+
    <FileTree>
    - addons/
    - auth/
@@ -167,7 +172,7 @@ Couch works by retrofitting within an existing working site. As such, our first 
    - The resulting site structure should now look like this with the `couch` folder appearing as a subfolder of your existing site:
 
    Upload the `couch` folder to your web server alongside Aurelius files:
-   
+
    <FileTree>
    - **couch/**
    - css/
@@ -201,7 +206,8 @@ Couch works by retrofitting within an existing working site. As such, our first 
 
     Couch will sense that installation is required and will display the following form for you to fill:
 
-    ![Installation Form](../../../../assets/img/contents/portfolio-site-5.jpg "Installation Form")
+    <Image src={portfolioSite5} alt="Installation Form" />
+    > Installation Form
 
     :::caution[Server Error]
     If you get a '500 Internal Server Error', try deleting the `.htaccess` file in the `couch` folder. Some hosts (notably GoDaddy) have issues with its directives.
@@ -214,7 +220,8 @@ Couch works by retrofitting within an existing working site. As such, our first 
 
     Press install and in a little while you should be prompted with the following screen:
 
-    ![Login Screen](../../../../assets/img/contents/portfolio-site-6.jpg "Login Screen")
+    <Image src={portfolioSite6} alt="Login Screen" />
+    > Login Screen
 
     Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.
 
@@ -228,11 +235,13 @@ Couch works by retrofitting within an existing working site. As such, our first 
 
     Login using the super-admin account you created and brace yourself for facing the most 'barren' admin section you'll ever come across:
 
-   ![Initial Admin Panel](../../../../assets/img/contents/portfolio-site-7.jpg "Empty Admin Panel")
+    <Image src={portfolioSite7} alt="Initial Admin Panel" />
+    > Empty Admin Panel
 
    This almost bare admin panel is an important feature of Couch. We realize that the person most often logged into it is going to be the client that you'll be building the website for and, more often than not, he is not going to be as computer savvy as you are. Instead of overwhelming such a client with an admin panel that resembles the cockpit of an airliner, we wished to confront him with just as much information as is absolutely essential. As we move along with building the site, the admin panel will start displaying more information. This is the admin panel of our finished site:
 
-   ![Completed Admin Panel](../../../../assets/img/contents/portfolio-site-8.png "Completed Admin Panel")
+    <Image src={portfolioSite8} alt="Completed Admin Panel" />
+    > Completed Admin Panel
 
    :::note[Admin Panel]
    It is important to note that the admin panels of no two sites built with Couch are going to be identical. As the designer of a website, it is you who'll choose how much data gets exposed to the client within the admin section.
