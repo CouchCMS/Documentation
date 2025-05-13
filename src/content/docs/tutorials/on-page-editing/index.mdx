@@ -17,6 +17,17 @@ lastUpdated: 2025-04-04
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import onPageEditing1 from '../../../../assets/img/contents/on-page-editing-1.png';
+import onPageEditing2 from '../../../../assets/img/contents/on-page-editing-2.png';
+import onPageEditing7 from '../../../../assets/img/contents/on-page-editing-7.png';
+import onPageEditing8 from '../../../../assets/img/contents/on-page-editing-8.png';
+import onPageEditing9 from '../../../../assets/img/contents/on-page-editing-9.png';
+import onPageEditing10 from '../../../../assets/img/contents/on-page-editing-10.png';
+import onPageEditing11 from '../../../../assets/img/contents/on-page-editing-11.png';
+import onPageEditing12 from '../../../../assets/img/contents/on-page-editing-12.png';
+import onPageEditing13 from '../../../../assets/img/contents/on-page-editing-13.png';
+import onPageEditing14 from '../../../../assets/img/contents/on-page-editing-14.png';
 
 Before we proceed, we must enable the addon first. This involves the standard process of adding an entry in the `couch/addons/kfunctions.php` file.
 
@@ -34,7 +45,7 @@ With the addon enabled, we can now use the tags provided by it to implement on-p
 
 To demonstrate how onpage editing works in Couch, I've gone ahead and completely Couchified (adding onpage editing as well) the popular single-page HTML5 template - [Miniport](https://html5up.net/miniport/).
 
-![Miniport Template](../../../../assets/img/contents/on-page-editing-1.png)
+<Image src={onPageEditing1} alt="Miniport Template" />
 
 > Miniport template with on-page editing enabled
 
@@ -42,7 +53,7 @@ You can [**download the ported version**](https://www.couchcms.com/docs/code/min
 
 For this particular tutorial, I'll take you step-by-step through the process of adding onpage editing to only the first section of the template. Following is the section we'll be working with.
 
-![Template Section](../../../../assets/img/contents/on-page-editing-2.png)
+<Image src={onPageEditing2} alt="Template Section" />
 
 > First section of the template that we'll modify
 
@@ -147,29 +158,29 @@ Adding onpage editing to a template is a two-step procedure:
         <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
         <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
-        
+
     +   <cms:load_edit />
 
     </head>
     ```
-    
+
     This step takes care of loading all the JS/CSS libraries required by the tags we'll add in the second step below.
 
 2. This second step is where all the fun happens. Here we'll add the tags that "inject" onpage editing to existing editable regions.
 
     Take a look again at the four existing editable regions in the section we are working with:
 
-    ![Editable Regions](../../../../assets/img/contents/on-page-editing-7.png)
+    <Image src={onPageEditing7} alt="Editable Regions" />
 
     > Overview of editable regions in the template
 
     If you remember from our earlier discussion, onpage editing can take two forms:
-    
+
     <Steps>
-    
+
     1. **Inline editing** for text elements
     2. **Popup editing** for non-text (or hidden textual) elements
-    
+
     </Steps>
 
     As you can see from the image above, the regions highlighted in red are text. Of the regions in green, the image is, of course, non-textual. The button text, although it looks textual, is actually a link element and hence has to be treated as non-text.
@@ -199,7 +210,7 @@ We'll add a **popup_edit** tag near it specifying the name of the editable regio
 
 Saving the template and visiting it as admin will show the following change:
 
-![Popup Edit Link](../../../../assets/img/contents/on-page-editing-8.png)
+<Image src={onPageEditing8} alt="Popup Edit Link" />
 
 > Edit link appears next to the image
 
@@ -211,7 +222,7 @@ The text shown for the link can be changed from the default "Edit" to anything o
 
 Clicking on the link will bring up the promised popup:
 
-![Edit Popup](../../../../assets/img/contents/on-page-editing-9.png)
+<Image src={onPageEditing9} alt="Edit Popup" />
 
 > Image editing popup window
 
@@ -232,7 +243,7 @@ can be appended with a **popup_edit** tag:
 +   <cms:popup_edit 'intro_button' link_text='Edit button' />
 ```
 
-![Button Edit](../../../../assets/img/contents/on-page-editing-10.png)
+<Image src={onPageEditing10} alt="Button Edit" />
 
 > Edit link appears next to the button
 
@@ -244,7 +255,7 @@ In both the cases above, we've specified only one editable region as parameter t
 
 would show all the three specified regions in the popup:
 
-![Multiple Regions](../../../../assets/img/contents/on-page-editing-11.png)
+<Image src={onPageEditing11} alt="Multiple Regions" />
 
 > Popup showing multiple editable regions
 
@@ -278,13 +289,13 @@ Please notice that the **inline_edit** tag is always added as a parameter to a b
 
 Visiting the template should show the following:
 
-![Inline Edit Region](../../../../assets/img/contents/on-page-editing-12.png)
+<Image src={onPageEditing12} alt="Inline Edit Region" />
 
 > Title with inline editing enabled
 
 Clicking anywhere within the text will display the editing toolbar:
 
-![Edit Toolbar](../../../../assets/img/contents/on-page-editing-13.png)
+<Image src={onPageEditing13} alt="Edit Toolbar" />
 
 > Inline editing toolbar appears
 
@@ -320,7 +331,7 @@ As you can see, we chose to add a parent DIV element and then add the **inline_e
 
 The result:
 
-![Final Edit Region](../../../../assets/img/contents/on-page-editing-14.png)
+<Image src={onPageEditing14} alt="Final Edit Region" />
 
 > Text region with inline editing enabled
 
