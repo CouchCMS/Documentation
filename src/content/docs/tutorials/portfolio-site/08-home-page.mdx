@@ -19,6 +19,11 @@ slug: tutorials/portfolio-site/home-page
 ---
 
 import { Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite181 from '../../../../assets/img/contents/portfolio-site-181.png';
+import portfolioSite182 from '../../../../assets/img/contents/portfolio-site-182.png';
+import portfolioSite185 from '../../../../assets/img/contents/portfolio-site-185.png';
+import portfolioSite190 from '../../../../assets/img/contents/portfolio-site-190.png';
 
 <Card icon="download" title="Download Code">
 [Download Couchified Code](https://www.couchcms.com/docs/code/home.zip)
@@ -31,7 +36,7 @@ Having configured all the other sections of this web site, configuring the **Hom
 Let us begin by attaching Couch to this template.
 Take the usual steps to do so -
 Change the extension of `index.html` to make it `index.php`
-Add the two lines of boilerplate PHP code to enclose the contents of this file and use the [**template**](../../tags-reference/template/) tag to change the display-name of the template.
+Add the two lines of boilerplate PHP code to enclose the contents of this file and use the [**template**](../../../../tags-reference/core/template/) tag to change the display-name of the template.
 
 ```php title="index.php" ins="<?php require_once( 'couch/cms.php' ); ?>" ins="<cms:template title='Home Page' />" ins="<?php COUCH::invoke(); ?>"
 <?php require_once( 'couch/cms.php' ); ?>
@@ -58,14 +63,16 @@ Visit the admin panel. An new entry '**Home Page**' should appear in the list of
 
 Take a look at the home page:
 
-![Home page layout with carousel and content boxes](../../../../assets/img/contents/portfolio-site-181.png "Aurelius home page with portfolio carousel and content sections")
+<Image src={portfolioSite181} alt="Home page layout with carousel and content boxes" />
+> Aurelius home page with portfolio carousel and content sections
 
 It has two distinct regions that will need to be handled.
 The top region shows images of the five latest **Portfolio** entries in a carousel while the bottom region displays four separate boxes that have some content.
 The **Portfolio** images will be fetched from the existing portfolio pages and hence do not require the creation of any editable regions.
 The boxes at the bottom need to be looked at a little closer:
 
-![Four content boxes from the home page](../../../../assets/img/contents/portfolio-site-182.png "Content boxes with headings, descriptions and links")
+<Image src={portfolioSite182} alt="Four content boxes from the home page" />
+> Content boxes with headings, descriptions and links
 
 The three marked elements can do with an editable region each. A fourth editable region will be required to hold the link of the page that this box leads to.
 
@@ -97,7 +104,7 @@ This is the original code for the boxes with the proposed editable regions marke
 <div class="hr grid_12 clearfix">&nbsp;</div>
 ```
 
-Create editable regions out of the marked regions by enclosing them with [**editable**](../../tags-reference/editable/) tags.
+Create editable regions out of the marked regions by enclosing them with [**editable**](../../../../tags-reference/core/editable/) tags.
 Here is how the editable regions are created for all the boxes:
 
 ```php title="index.php" ins="<cms:editable name='box1_group' label='Box 1' type='group' />" ins="<cms:editable name='box1_link' label='Link' group='box1_group' type='text'>" ins="<cms:editable name='box1_title' label='Title' group='box1_group' type='text'>" ins="<cms:editable name='box1_text' label='Text' group='box1_group' type='textarea'>" ins="</cms:editable>" ins="<cms:editable name='box1_image' label='Image' width='150' height='125' group='box1_group' type='image'>"
@@ -132,12 +139,13 @@ Here is how the editable regions are created for all the boxes:
 If defining the editable regions in-line seems too cluttered to you, you can define them, the way we did for **Blog** and **Portfolio**, within the template tag instead. In that case, you'll need to show only the variables representing the editable regions at the marked regions.
 
 Please note in the code above that the labels of several regions are the same however, as is mandatory, their names are different.
-Also note that we have grouped together the editable regions belonging to each box by creating [**group**](../../tags-reference/editable/) type editable regions for each box and linking them to the regions.
+Also note that we have grouped together the editable regions belonging to each box by creating [**group**](../../../../tags-reference/core/editable/) type editable regions for each box and linking them to the regions.
 
 Refresh the home page by visiting `https://www.mytestsite.com/` logged-in as the super-admin.
 Visit the admin panel and you should find the following:
 
-![Admin panel showing editable regions for home page](../../../../assets/img/contents/portfolio-site-185.png "Couch admin interface with home page editable regions")
+<Image src={portfolioSite185} alt="Admin panel showing editable regions for home page" />
+> Couch admin interface with home page editable regions
 
 Edit the links to make the boxes lead to the proper sections and we can then move on.
 
@@ -185,8 +193,7 @@ This is the original code:
 ```
 
 As you can see, it consists of an unordered list with each LI representing one portfolio item.
-You must have guessed that we'll use the Couch [**pages**](../../tags-reference/pages/) tag to fetch the pages cloned from `portfolio.php` template.
-We'll proceed the way we have done several times while working with the enumerator tags ([**pages**](../../tags-reference/pages/), [**folders**](../../tags-reference/folders/), [**archives**](../../tags-reference/archives/)) in **Blog** and **Portfolio** sections -
+You must have guessed that we'll use the Couch [**pages**](../../../../tags-reference/core/pages/) tag to fetch the pages cloned from `portfolio.php` template. We'll proceed the way we have done several times while working with the enumerator tags ([**pages**](../../../../tags-reference/core/pages/), [**folders**](../../../../tags-reference/core/folders/), [**archives**](../../../../tags-reference/core/archives/)) in **Blog** and **Portfolio** sections -
 Delete all items representing the object to be enumerated (the pages, in this case), except one.
 
 ```php title="index.php"
@@ -242,7 +249,8 @@ Finally, use the variables set by the enumerator tag belonging to each fetched o
 
 Visit `https://www.mytestsite.com/` to see the results of your work:
 
-![Final home page with dynamic carousel](../../../../assets/img/contents/portfolio-site-190.png "Finished home page with portfolio items in carousel")
+<Image src={portfolioSite190} alt="Final home page with dynamic carousel" />
+> Finished home page with portfolio items in carousel
 
 Couldn't have been any easier.
 
