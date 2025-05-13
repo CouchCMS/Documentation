@@ -1,0 +1,371 @@
+---
+title: Customizing the List Screen
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 3
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import theming01 from '../admin-panel-theming/img/01.jpg';
+import theming02 from '../admin-panel-theming/img/02.jpg';
+import theming03 from '../admin-panel-theming/img/03.jpg';
+import theming04 from '../admin-panel-theming/img/04.jpg';
+import theming05 from '../admin-panel-theming/img/05.jpg';
+import theming06 from '../admin-panel-theming/img/06.jpg';
+import theming07 from '../admin-panel-theming/img/07.jpg';
+import theming08 from '../admin-panel-theming/img/08.jpg';
+import theming09 from '../admin-panel-theming/img/09.jpg';
+
+Apart from the theming mechanism briefly discussed above, v2.0 has several more handy methods for tweaking your admin-panel. Allow me to demonstrate this in a hands-on manner. Suppose you have a clonable Couch template named `test.php` registered in your setup. Following is what its list screen might look like in the admin-panel:
+
+<Image src={theming01} alt="Default admin panel list view" />
+> Default view of the admin panel list screen
+
+Now please add the following code within its `<cms:template>` block:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' />
+</cms:config_list_view>
+```
+
+Visit the changed template as super-admin and come back to the admin-panel. You should see the following:
+
+<Image src={theming02} alt="Customized list view with checkbox and title" />
+> List view showing only checkbox and title fields
+
+Coming back to the admin-panel after the mandatory visit to the template as super-admin, following is what the list screen should look like:
+
+<Image src={theming03} alt="Reordered list view fields" />
+> List view with reordered checkbox and title fields
+
+I think you can guess what the `<cms:config_list_view>` we added above is doing. To check it further, change the code to the following (we are swapping the position of the two `<cms:field>` tags):
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_page_title' />
+    <cms:field 'k_selector_checkbox' />
+</cms:config_list_view>
+```
+
+Coming back to the admin-panel after the mandatory visit to the template as super-admin, following is what the list screen should look like:
+
+<Image src={theming03} alt="Reordered list view fields" />
+> List view with reordered checkbox and title fields
+
+So that should settle what the code we put above does - it defines the fields we want to show in the list screen and also their positions. One point to remember here is that if we skipped all the `<cms:field>` tags from the `<cms:config_list_view>` block e.g. as follows:
+
+```php title="test.php"
+<cms:config_list_view>
+
+</cms:config_list_view>
+```
+
+It won't result in no fields being listed, as you might expect. Rather, it would make Couch revert back to showing the default set of fields. This default set of fields shown for a normal clonable template, when we do not explicitly specify the fields to display, is equivalent to the following code:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_page_date' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+For nested-pages, the default set of fields is just a tad different:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_up_down' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+As you can see, for nested-pages the `k_page_date` and `k_page_foldertitle` fields are removed while the `k_up_down` field (for manual sorting) gets added.
+
+The `<cms:field>` tag accepts several parameters that can help us tweak the listing's display. For example, the code below will display 'Authors', instead of the default 'Title', for the second column of normal clonable template:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' header='Authors' />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_page_date' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+<Image src={theming04} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+Sticking with the second column, instead of a self-closing tag, if we were to define it as a tag-pair e.g. as follows:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+
+    <cms:field 'k_page_title' header='Authors' >
+        <cms:repeat '3'>
+            <cms:show k_page_title />
+        </cms:repeat>
+    </cms:field>
+
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_page_date' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+You'll see that the content enclosed within the tag pair is used as the content displayed in the cells:
+
+<Image src={theming05} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+In our example above, I rather sillily chose to repeat the page *title thrice, but the point I am trying to draw your attention to is that we had placed the code in the front-end template but it was dynamically executed in the admin-panel's contex*. This is powerful stuff as now we can use any Couch code, normally used on the front-end, to show the fields' content in the admin-panel.
+
+Till now we have only played with the default set of system fields used by Couch for the listing. There is no problem at all if we put into the mix any custom fields (i.e. editable regions) we defined for the template. So, for example, supposing an editable region named `my_text` is defined in the template, the following would add a column to the page listing showing that field:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' />
+    <cms:field 'my_text' header='Some text' />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_page_date' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+Please notice that if we add a field as a self-closing tag, Couch will show the contents as a simple `<cms:show whatever_field_name />`. So, in the example above the following definition:
+
+```php title="test.php"
+<cms:field 'my_text' header='Some text' />
+```
+
+was equivalent to the following:
+
+```php title="test.php"
+<cms:field 'my_text' header='Some text' >
+    <cms:show my_text />
+</cms:field>
+```
+
+If the custom column requires some addition styling, we can add CSS classes to the header as follows:
+
+```php title="test.php"
+<cms:field 'my_text' header='Some text' class='my_text no-hide' />
+```
+
+Speaking of CSS styling, suppose we added the classes as shown above. Where do we add the CSS rules? One place, obviously, would be the `styles.css` file in the theme folder we discussed earlier. Another could be right within the `<cms:config_list_view>` tag block where we defined `<cms:field />`s. Please take a look at the following:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title' />
+    <cms:field 'my_text' header='Some text' class='my_text no-hide' />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_page_date' />
+    <cms:field 'k_actions' />
+
+    <cms:style>
+        .col-my_text{
+            width: 25%; important!
+        }
+    </cms:style>
+
+</cms:config_list_view>
+```
+
+The `<cms:style>` block used within the `<cms:config_list_view>` above actually injects whatever is specified within it neatly within a HTML `<style>` block of the document's HEAD tag - do a view-source of the page to confirm this.
+
+Curiously, the contents of the `<cms:style>` can be dynamic (i.e. can contain regular Couch tags), for example as follows:
+
+```php title="test.php"
+<cms:style>
+    <cms:repeat '2' startcount='1'>
+    .test{
+        border:solid blue <cms:show k_count />px;
+    }
+    </cms:repeat>
+</cms:style>
+```
+
+Please do a view-source to see its output.
+
+The `<cms:style>` has two sibling tags that work very similarly - `<cms:script>` and `<cms:html>`.
+Consider the following code:
+
+```php title="test.php"
+<cms:config_list_view>
+
+    <cms:style>
+        <cms:repeat '2' startcount='1'>
+        .test{
+            border:solid blue <cms:show k_count />px;
+        }
+        </cms:repeat>
+    </cms:style>
+
+    <cms:script>
+        <cms:repeat '3' startcount='1'>
+        function test(){
+            alert( 'Hello<cms:show k_count />' );
+        }
+        </cms:repeat>
+    </cms:script>
+
+    <cms:html>
+        <cms:repeat '3' startcount='1'>
+            <h<cms:show k_count />>Hello</h<cms:show k_count />>
+        </cms:repeat>
+    </cms:html>
+
+</cms:config_list_view>
+```
+
+The `<cms:script>` tag injects its contents within a `<script type="text/javascript">` block at the end of the document, while the `<cms:html>` tag injects its contents at the top of the content pane. Both tags, like `<cms:style>`, can contain dynamic contents. Please do a view-source to see the output of the code above.
+
+A more practical example of `<cms:html>` tag's usage could be this:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:html>
+        <cms:show_warning heading="Important"> Please do not delete any of these pages! </cms:show_warning>
+    </cms:html>
+</cms:config_list_view>
+```
+
+<Image src={theming06} alt="Admin panel list view with custom warning" />
+> Admin panel list view with custom warning
+
+Or this:
+
+```php title="test.php"
+<cms:config_list_view>
+    <cms:html>
+        <cms:show_info heading=""> These pages have been created automatically! </cms:show_info>
+    </cms:html>
+</cms:config_list_view>
+```
+
+<Image src={theming07} alt="Admin panel list view with custom info" />
+> Admin panel list view with custom info
+
+Let us wrap up the customizing the list-screen topic with a related topic:
+
+## Manually reorder normal cloned pages
+
+As you know, the nested-pages have a useful feature where we can manually reorder them from the admin-panel. We can now do the same with normal cloned pages too. Here is how:
+
+A little up we mentioned the default set of fields used by Couch to create the listing screens.
+If you recall, the set used for nested-pages had the following field normally not found in the other cloned pages.
+
+```php title="test.php"
+<cms:field 'k_up_down' />
+```
+
+To make a normal clonable template sortable manually, we can add the `k_up_down` field to it as follows:
+
+```php
+<cms:config_list_view  orderby='weight' order='asc'>
+    <cms:field 'k_selector_checkbox' />
+    <cms:field 'k_page_title'  sortable='0'  />
+    <cms:field 'k_comments_count' />
+    <cms:field 'k_page_foldertitle' />
+    <cms:field 'k_up_down' />
+    <cms:field 'k_actions' />
+</cms:config_list_view>
+```
+
+Just add the code above to any normal clonable template and it should become manually sortable:
+
+<Image src={theming08} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+Please note the following points in the code above:
+
+1. We have replaced the default `k_page_date` field with `k_up_down`.
+2. The `k_up_down` field works by tweaking the `weight` field of cloned pages.
+
+For manual sorting to work, we need to display the pages always sorted by this weight field.
+We have done this by:
+
+- **a**. specifying the sort field (i.e. weight) as the `orderby` parameter of `<cms:config_list_view>` with the `order` set to `asc` (if needed, you can make this `desc`).
+
+- **b**. by default, Couch makes normal cloned pages sortable by the `k_page_title` and `k_page_date` fields (where we can click the header to sort by these fields). Since now it is necessary that the pages be sorted only by their weights, we have turned sorting by `k_page_title` off using the `sortable` parameter of `<cms:field>`. There is no `k_page_date` so we didnt need to do any such thing with it but if you choose to display date as well, make sure to turn off its sorting.
+
+Making a `gallery` template manually sortable is even easier. Just use the following code somewhere in its `<cms:template>` block:
+
+```php title="test.php"
+<cms:config_list_view  orderby='weight'>
+    <cms:field 'k_up_down' />
+</cms:config_list_view>
+```
+
+:::note
+On the frontend, if are showing a list of pages and wish that listing to match the manually sorted order as displayed in the admin-panel, you'll have to use matching values for the `orderby` and `order` parameters of `<cms:pages>` tage.g. as follows:
+
+```php title="test.php"
+<cms:pages orderby="weight" order="asc">
+    // ... existing code ...
+</cms:pages>
+```
+:::
+
+Moving ahead with the discussion - you must have noticed above that the `<cms:config_list_view>` tag accepts parameters of its own that affect how the pages are listed. We have already seen its `orderby` and `order` parameters. There are a few more that can come in useful:
+
+<Steps>
+
+1. **limit**
+    This sets the number of pages shown on a single screen when pagination is required. e.g.:
+
+    ```php
+    <cms:config_list_view limit="20" />
+    ```
+
+2. **exclude**
+    Can be set to the (comma-separated) `names` of pages that are to be excluded from the listing.
+    One use of this feature could be to exclude the vexing `default` page that Couch automatically creates for all clonable templates.
+    Previously we had to resort to unpublish this default page and then rename it to something like 'PLEASE DO NOT DELETE' and hope that the warning is heeded. Now we can, after unpublishing the default page, rename it to something simpler like **default-page** and then set the `exclude` parameter of `<cms:config_list_view>` to skip this page from the listing e.g.:
+
+    ```php
+    <cms:config_list_view exclude="default-page" />
+    ```
+
+3. **searchable**
+    If this parameter is set to `1`, a search box appears above the page listing:
+
+    ```php
+    <cms:config_list_view searchable="1" />
+    ```
+
+    <Image src={theming09} alt="Admin panel list view with search box" />
+    > Admin panel list view with search box
+
+</Steps>
+
+:::caution[Important Limitation]
+This search box uses the same `<cms:search />` [**search**](../../tags-reference/core/search/) tag as used on the front-end. As such, it suffers from the same limitation of not searching for words shorter than 4 characters (a limitation MySQL fulltext search). This might limit the usefulness of the search in certain cases.
+:::
+
+With that, we can move on to customizing the **Edit** and **Create New** screens (lumped together as **Form** screens).
