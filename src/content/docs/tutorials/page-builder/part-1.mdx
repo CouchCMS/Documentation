@@ -17,13 +17,26 @@ lastUpdated: 2025-04-06
 sidebar:
     order: 1
 slug: tutorials/page-builder
-
 ---
 
-import YouTubeCard from '../../../../components/card-youtube.astro';
 import { LinkButton, Steps, FileTree } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import YouTubeCard from '../../../../components/card-youtube.astro';
+import pageBuilderCovers from '../../../../assets/img/contents/page-builder-covers.png';
+import pageBuilderAbout from '../../../../assets/img/contents/page-builder-about.png';
+import pageBuilder00 from '../../../../assets/img/contents/page-builder-00.png';
+import pageBuilder01 from '../../../../assets/img/contents/page-builder-01.png';
+import pageBuilder03 from '../../../../assets/img/contents/page-builder-03.png';
+import pageBuilder04 from '../../../../assets/img/contents/page-builder-04.png';
+import pageBuilder05 from '../../../../assets/img/contents/page-builder-05.png';
+import pageBuilder06 from '../../../../assets/img/contents/page-builder-06.png';
+import pageBuilder07 from '../../../../assets/img/contents/page-builder-07.png';
+import pageBuilder08 from '../../../../assets/img/contents/page-builder-08.png';
+import pageBuilder09 from '../../../../assets/img/contents/page-builder-09.png';
 
+:::note[Historical Context]
 The page builder feature was implemented in [CouchCMS 2.3](https://www.couchcms.com/forum/viewtopic.php?f=5&t=13148).
+:::
 
 The defining feature of this version is the **PageBuilder** which offers a new way of building sites for your clients.
 
@@ -68,19 +81,19 @@ Unzip the downloaded file.
 
 Place contents of the extracted 'www' folder within your site root (for this tutorial, I'll assume the site is http://test.local/).
 
-Try accessing: 
+Try accessing:
 
 ```txt
 http://test.local/covers.html
 ```
 
-![page-builder-covers.png](../../../../assets/img/contents/page-builder-covers.png)
+<Image src={pageBuilderCovers} alt="Page Builder Covers" />
 
 ```txt
 http://test.local/about.html
 ```
 
-![page-builder-about.png](../../../../assets/img/contents/page-builder-about.png)
+<Image src={pageBuilderAbout} alt="Page Builder About" />
 
 These are the 2 sections and the 4 blocks I mentioned which we'll now convert into reusable blocks.
 
@@ -105,7 +118,7 @@ Nothing new here - am repeating the steps just for the sake of completeness:
 3. Access http://test.local/couch/ to complete the installation.
 
 </Steps>
-![page-builder-00.png](../../../../assets/img/contents/page-builder-00.png)
+<Image src={pageBuilder00} alt="Page Builder 00" />
 
 ## Enable PageBuilder
 
@@ -169,7 +182,7 @@ Complete the mandatory 'visit the modified template as super-admin' step to pers
 
 Coming back to the admin-panel, you should find the covers template displaying a **mosaic** field with buttons for adding the two **tiles**:
 
-![page-builder-01.png](../../../../assets/img/contents/page-builder-01.png)
+<Image src={pageBuilder01} alt="Page Builder 01" />
 
 Of course, at this point if you try adding any of the **tiles**, you'll see a (self-explanatory) "No Editable Regions defined" message.
 
@@ -205,7 +218,7 @@ Following is how I defined those regions:
 
 The result:
 
-![page-builder-03.png](../../../../assets/img/contents/page-builder-03.png)
+<Image src={pageBuilder03} alt="Page Builder 03" />
 
 You'll recognize that I have used the [Bootstrap grid](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11023) to arrange the regions in a more manageable way.
 
@@ -341,11 +354,11 @@ Alright, let us try and create some tiles now.
 
 Click 'CR01' button, input some data and save.
 
-![page-builder-04.png](../../../../assets/img/contents/page-builder-04.png)
+<Image src={pageBuilder04} alt="Page Builder 04" />
 
 You should get something like this:
 
-![page-builder-05.png](../../../../assets/img/contents/page-builder-05.png)
+<Image src={pageBuilder05} alt="Page Builder 05" />
 
 The output above is the classic output one would expect from **mosaic**; which shouldn't be surprising as we have been working with a regular mosaic upto this point.
 
@@ -378,7 +391,7 @@ For now, visit the modified `blocks/covers.php` template as super-admin and then
 
 Now when you save it, you should get.. this:
 
-![page-builder-06.png](../../../../assets/img/contents/page-builder-06.png)
+<Image src={pageBuilder06} alt="Page Builder 06" />
 > "Override "pb_tile" from the front-end."
 
 Wow! Isn't that a wonderfully helpful message?
@@ -510,7 +523,7 @@ We haven't yet told pagebuilder anything about how to find them (that is coming 
 <html>
     <head>
         <title>Covers</title>
-        <link rel="stylesheet" href="assets/css/style.css" />   
+        <link rel="stylesheet" href="assets/css/style.css" />
         <script src="assets/js/script.js"></script>
         ...
     </head>
@@ -701,7 +714,7 @@ The two parts combined will point to `couch/snippets/pb/covers/theme/CR01.html` 
             - embed/
             - theme/
                 - pb_wrapper.html
-                
+
 </FileTree>
 
 Similarly, for rendering **CR02**, it will search for `CR02.html` in the same location as shown above.
@@ -710,7 +723,7 @@ Create two files by the names of `CR01.html` and `CR02.html`, copy the code for 
 
 Coming back to the admin panel, hit the edit button for the block again and save it (so as to re-render it) and you should get the following:
 
-![page-builder-07.png](../../../../assets/img/contents/page-builder-07.png)
+<Image src={pageBuilder07} alt="Page Builder 07" />
 
 The styling is missing (because the markup happens to use relative paths) but we can see that pagebuilder has rendered the correct files.
 
@@ -726,7 +739,7 @@ To fix the styling, edit the wrapper file (`couch/snippets/pb/misc/theme/pb_wrap
 
 Re-edit the block and, finally, here is the output we have been trying so hard for:
 
-![page-builder-08.png](../../../../assets/img/contents/page-builder-08.png)
+<Image src={pageBuilder08} alt="Page Builder 08" />
 
 It does not show the data we inputted in the form but fixing that is staple fare if you have worked with Couch before.
 
@@ -774,7 +787,7 @@ After replacements:
 
 Re-edit the block and save to get the following:
 
-![page-builder-09.png](../../../../assets/img/contents/page-builder-09.png)
+<Image src={pageBuilder09} alt="Page Builder 09" />
 
 That completes configuring our first block. You may use it as a guide to configure the second cover block.
 
@@ -833,7 +846,7 @@ These steps can also be considered as an overview of the conversion procedure.
                 - theme/
 
     </FileTree>
-    
+
 3. Place the definition of all editable regions used by the two blocks in their snippets within `embed` folder above.
 4. Place the markup code used by the blocks in their snippets within `theme` folder above (no need for the 'wrapper' as it is already present).
 </Steps>
