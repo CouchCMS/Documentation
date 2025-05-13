@@ -1,0 +1,128 @@
+---
+title: Grouping Templates in the Sidebar
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 6
+---
+
+import { Image } from 'astro:assets';
+import theming20 from '../admin-panel-theming/img/20.jpg';
+import theming21 from '../admin-panel-theming/img/21.jpg';
+import theming22 from '../admin-panel-theming/img/22.jpg';
+import theming23 from '../admin-panel-theming/img/23.jpg';
+
+If you take a look at the sidebar in the admin-panel, you'll see that by default all the items listed in it are placed in two groups. All the regular front-end templates are grouped under **Templates** while all the system modules (e.g. _users_, _drafts_ and _comments_) are grouped under **Administration**. Internally, the two groups are known as **templates** and **modules** respectively.
+
+Now try the following -
+Edit any of your front-end template (we are using `test.php` in our example) and place the following in its `<cms:template>` tag definition:
+
+```html
+<cms:template clonable="1" title="Test" parent="_modules_"></cms:template>
+```
+
+Visit the template as super-admin for the change to persist. Coming back to the admin-panel, you should now see that your template is now placed in the **Administration** group along with the system modules.
+
+<Image src={theming20} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+I think you can see what has happened. The code we added to the `<cms:template>` specified the *parent* group of the template as **modules** (i.e. **Administration**) and that is where the template ended up moving from its default **templates** (i.e. **Templates**) group.
+
+So, if we could somehow add a new group to the two existing default groups, it should be easy to place any template within that group simply by specifying the group's name as the template's _parent_. Let us do just that.
+
+Edit your `couch/addons/kfunctions.php` file and add the following to it:
+
+```php title="couch/addons/kfunctions.php"
+if( defined('K_ADMIN') ){
+    $FUNCS->add_event_listener( 'register_admin_menuitems', 'my_register_admin_menuitems' );
+
+    function my_register_admin_menuitems(){
+        global $FUNCS;
+
+        $FUNCS->register_admin_menuitem( array(
+            'name' => '_my_test_',
+            'title' => 'Test',
+            'is_header' => 1,
+            'weight' => 1
+        ));
+        $FUNCS->register_admin_menuitem( array(
+            'name' => '_my_another_test_',
+            'title' => 'Another Test',
+            'is_header' => 1,
+            'weight' => 2
+        ));
+    }
+}
+```
+
+The important line in the code above is this:
+
+```php
+$FUNCS->register_admin_menuitem( array('name'=>'_my_test_', 'title'=>'Test', 'is_header'=>'1', 'weight'=>'1') );
+```
+
+Come to the admin-panel and you should see a third group added to the sidebar.
+
+<Image src={theming21} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+As I am sure you can make out, the `title` we set above is used for displaying the group in the sidebar while the `weight` decides where amongst all other groups it is situated (incidentally, the default weight of `'_templates_'` is 0 while that of `_modules_` is 10. So the `1` we set for our custom group makes it fall between the two).
+
+We can now use the `name` we set for our new group (`_my_test_`), with any template (test.php in our example) e.g.:
+
+```html
+<cms:template clonable="1" title="Test" parent="_my_test_"></cms:template>
+```
+
+<Image src={theming22} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+By default, a template's entry is shown with an icon of 'layers' if it is a clonable template and with no icon at all if it is not. You can specify which icon to use by setting it in the `<cms:template>` tag e.g. as follows:
+
+```php
+<cms:template clonable="1" title="Test" parent="_my_test_" icon="audio-spectrum">
+```
+
+<Image src={theming23} alt="Admin Panel List Screen" />
+> Admin Panel List Screen
+
+:::note
+So which icon names can we use? For now, any of those listed here: [Open Iconic](https://useiconic.com/open#icons). Those are the names used by Open Iconic icon set used by the default system theme. If any custom theme decides to use another icon set, it will have to provide a 'translation' between the two sets. Please see the `icons.php` file found in the sample theme (`couch/theme/sample`).
+:::
+
+Not too difficult, eh? Just to make sure that you get the PHP syntax right, let us add another group to the sidebar and we can then wrap up this topic:
+
+```php
+if( defined('K_ADMIN') ){
+    $FUNCS->add_event_listener( 'register_admin_menuitems', 'my_register_admin_menuitems' );
+
+    function my_register_admin_menuitems(){
+        global $FUNCS;
+
+        $FUNCS->register_admin_menuitem( array('name'=>'_my_test_', 'title'=>'Test', 'is_header'=>'1', 'weight'=>'1')  );
+        $FUNCS->register_admin_menuitem( array('name'=>'_my_another_test_', 'title'=>'Another Test', 'is_header'=>'1', 'weight'=>'2')  );
+
+    }
+}
+```
+
+To add another group, simply copy the full `$FUNCS->register_admin_menuitem` line and paste it below the last such line. Then make sure you change at least the `name` parameter.
+
+:::note
+At this point it might cross your mind - how to change the title of the two default menu-groups? We could do that using some PHP code in `kfunctions.php` but I think you'd find it easier to do so by editing the `couch/lang/EN.php` file where you'll find their texts listed as:
+
+```php
+$t['menu_templates'] = 'Templates';
+$t['menu_modules'] = 'Administration';
+```
+:::
+
+For a real-world example of further customizing the sidebar to accommodate a large number of templates, please see the following [**post**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11547).
