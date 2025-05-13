@@ -198,17 +198,17 @@ export default defineConfig({
                             },
                         },
                         {
+                            label: "Admin Panel Theming",
+                            collapsed: true,
+                            autogenerate: {
+                                directory: "tutorials/admin-panel-theming",
+                            },
+                        },
+                        {
                             label: "Page Builder",
                             collapsed: true,
                             autogenerate: {
                                 directory: "tutorials/page-builder",
-                            },
-                        },
-                        {
-                            label: "Admin Panel",
-                            collapsed: true,
-                            autogenerate: {
-                                directory: "tutorials/admin-panel",
                             },
                         },
                         {
@@ -220,6 +220,11 @@ export default defineConfig({
                             link: "tutorials/job-application-form",
                         },
                     ],
+                },
+                {
+                    label: "Tips & Tricks",
+                    collapsed: true,
+                    autogenerate: { directory: "tips-and-tricks" },
                 },
             ],
         }),
