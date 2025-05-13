@@ -19,6 +19,11 @@ slug: tutorials/portfolio-site/about-us
 ---
 
 import { Steps, Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite11 from '../../../../assets/img/contents/portfolio-site-11.jpg';
+import portfolioSite12 from '../../../../assets/img/contents/portfolio-site-12.png';
+import portfolioSite17 from '../../../../assets/img/contents/portfolio-site-17.png';
+import portfolioSite19 from '../../../../assets/img/contents/portfolio-site-19.png';
 
 <Card icon="download" title="Download">
 [Download Couch Code](https://www.couchcms.com/docs/code/about.zip)
@@ -58,7 +63,7 @@ Before proceeding further, make sure that you are logged into Couch using the su
 
    ```diff title="Code Changes"
    +   <?php require_once( 'couch/cms.php' ); ?>
-       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
        <html xmlns="http://www.w3.org/1999/xhtml">
        <head>
            <title>Aurelius | About Us</title>
@@ -81,7 +86,7 @@ Before proceeding further, make sure that you are logged into Couch using the su
 
    ```diff title="Code Changes"
         </div><!--end wrapper-->
-   
+
        </body>
        </html>
    +   <?php COUCH::invoke(); ?>
@@ -93,7 +98,8 @@ These two boilerplate lines of code are the only PHP that you should ever need t
 
 Refresh the template within your browser by revisiting `about.php` and now visit the admin section once again.
 
-![Admin Panel Showing About Template](../../../../assets/img/contents/portfolio-site-11.jpg "Admin Panel View")
+<Image src={portfolioSite11} alt="Admin Panel Showing About Template" />
+> Admin Panel View
 
 Notice how `about.php` now appears in the list of templates in the sidebar on the left and how the right panel informs you that `about.php` has no editable regions defined yet.
 
@@ -104,11 +110,12 @@ These steps are all that you need to take in order to port any template to Couch
 With Couch now hooked into `about.php`, let us now decide which regions within the template should be editable by the client.
 Looking at `about.php` in the browser, it appears that these two regions are the ones that the client will want to edit:
 
-![Editable Regions in About Us Page](../../../../assets/img/contents/portfolio-site-12.png "Editable Regions")
+<Image src={portfolioSite12} alt="Editable Regions in About Us Page" />
+> Editable Regions
 
 ### Main Content Region
 
-Find the HTML block representing the main content region and surround it with Couch's [**editable**](../../tags-reference/editable/) tags:
+Find the HTML block representing the main content region and surround it with Couch's [**editable**](../../../tags-reference/core/editable/) tags:
 
 ```php title="Main Content Region"
 <cms:editable name='main_content' type='richtext'> original content </cms:editable>
@@ -120,16 +127,16 @@ Find the HTML block representing the main content region and surround it with Co
     <div class="grid_8">
         <h4 class="page_title">Our mission</h4>
         <div class="hr dotted clearfix">&nbsp;</div>
-        <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</i></p> 
+        <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</i></p>
         <h4 class="page_title">So who are we?</h4>
         <div class="hr dotted clearfix">&nbsp;</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p> 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
         <h4 class="page_title">Staff</h4>
         <div class="hr dotted clearfix">&nbsp;</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p> 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
         <h4 class="page_title">Clients</h4>
         <div class="hr dotted clearfix">&nbsp;</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p> 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor. Phasellus cursus augue ac purus. Curabitur faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
     </div>
 +   </cms:editable>
 ```
@@ -148,21 +155,21 @@ Similarly for the sidebar content:
     <div class="grid_4">
         <h4>Our History</h4>
         <div class="hr dotted clearfix">&nbsp;</div>
-        <dl class="history"> 
-            <dt>1994</dt> 
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd> 
-        
-            <dt>1996</dt> 
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd> 
-        
-            <dt>2000</dt> 
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd> 
-        
-            <dt>2003</dt> 
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd> 
-        
-            <dt>2009</dt> 
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd> 
+        <dl class="history">
+            <dt>1994</dt>
+            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd>
+
+            <dt>1996</dt>
+            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd>
+
+            <dt>2000</dt>
+            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd>
+
+            <dt>2003</dt>
+            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd>
+
+            <dt>2009</dt>
+            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel diam id mauris accumsan egestas. Sed sed lorem. Integer id mi vel sapien fermentum vehicula. Pellentesque vitae lacus a sem posuere fringilla. Vestibulum dolor.</dd>
         </dl>
     </div>
 +   </cms:editable>
@@ -171,13 +178,14 @@ Similarly for the sidebar content:
 Refresh `about.php` by revisiting it in your browser. Go to the admin section and click on `about.php` in the list on the left.
 The right panel should now display:
 
-![Admin Panel with Editable Regions](../../../../assets/img/contents/portfolio-site-17.png "Admin Panel View")
+<Image src={portfolioSite17} alt="Admin Panel with Editable Regions" />
+> Admin Panel View
 
 As you can see, Couch has now created the two editable regions for you.
 Try editing the contents in them and revisit `about.php` after saving your changes. Your changes should now appear on the website.
 
 :::note
-The [**editable**](../../tags-reference/editable/) tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client's need. Please refer to the [**Editable Regions**](../../../../concepts/editable-regions/) for more information.
+The [**editable**](../../../tags-reference/core/editable/) tag, particularly the richtext type, has a plethora of options that you can set to tailor the created editable region to your client's need. Please refer to the [**Editable Regions**](../../../concepts/editable-regions/) for more information.
 :::
 
 ## Enhancing the Admin Experience
@@ -188,7 +196,7 @@ To further refine the experience for your client, a few minor enhancements can b
 ### Customizing Template Name
 
 The name of the template appears as `about.php` in the admin panel. Let's make it appear as **About Us**.
-Add the following line containing the [**template**](../../tags-reference/template/) tag somewhere at the top of the page (below the boilerplate PHP include code):
+Add the following line containing the [**template**](../../../tags-reference/core/template/) tag somewhere at the top of the page (below the boilerplate PHP include code):
 
 ```php title="Template Configuration"
 <cms:template title='About Us' />
@@ -197,13 +205,14 @@ Add the following line containing the [**template**](../../tags-reference/templa
 ```diff lang="php"
     <?php require_once( 'couch/cms.php' ); ?>
 +   <cms:template title='About Us' />
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 ```
 
 Repeat the mandatory step of refreshing the template in browser and then revisit the admin panel.
 The template should now be listed as 'About Us' instead of its file-name.
 
-![Template Listed as About Us](../../../../assets/img/contents/portfolio-site-19.png "Updated Admin Panel")
+<Image src={portfolioSite19} alt="Template Listed as About Us" />
+> Updated Admin Panel
 
 In the next chapter we'll tackle the templates that will be used to create multiple cloned pages.
 
