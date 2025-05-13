@@ -126,10 +126,10 @@ Use consistent formatting:
 
 - Tag References:
 
-    - Use bold and lowercase: [**editable**](../../tags-reference/editable/)
+    - Use bold and lowercase: [**editable**](../../tags-reference/core/editable/)
     - Never capitalize tag names in references
     - Include the link to reference documentation
-    - Example: [**show**](../../tags-reference/show/), [**template**](../../tags-reference/template/)
+    - Example: [**show**](../../tags-reference/core/show/), [**template**](../../tags-reference/core/template/)
 
 - Documentation References:
 
@@ -139,7 +139,7 @@ Use consistent formatting:
         - Tutorials: [**Getting Started with Templates**](../../tutorials/templates/)
         - Guides: [**Advanced Templating Guide**](../../guides/advanced-templating/)
         - API: [**Template API**](../../api/template/)
-    - Only tags-reference uses lowercase: [**editable**](../../tags-reference/editable/)
+    - Only tags-reference uses lowercase: [**editable**](../../tags-reference/core/editable/)
     - Include the link to documentation
 
 - Underscores (\_) for italic text:
