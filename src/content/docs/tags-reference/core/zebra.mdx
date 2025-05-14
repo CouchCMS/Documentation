@@ -1,0 +1,57 @@
+---
+title: zebra
+category: tag
+description: The zebra tag cycles through parameters for alternating output in repeating contexts, commonly used for alternating row styles in tables.
+keywords: [zebra, tag, PHP, alternating styles, table rows, iteration, CSS classes]
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The **zebra** tag, when used within any Couch tag that repeats its contents (e.g. repeat, while, pages, folders, templates etc.), outputs its first parameter at the first iteration, its second parameter at the second iteration and so on. If the number of iterations exceed the number of its parameters, it wraps around and starts from the first parameter.
+
+The **zebra** tag can be used to output a different class to every alternate row of a table, thus creating a 'zebra' striping that gives this tag its name.
+
+Some examples:
+
+```php
+<cms:repeat count='5'>
+    <cms:zebra 'one' 'two' 'three' /><br>
+</cms:repeat>
+```
+
+The snippet above will output:
+
+```html
+one two three one two
+```
+
+A more practical example:
+
+```php
+<table>
+    <cms:repeat count='4' >
+        <tr class="<cms:zebra 'row' 'alternate_row' />">
+            <cms:repeat count='6' startcount='1' >
+                <td>
+                    <cms:show k_count />
+                </td>
+            </cms:repeat>
+        </tr>
+    </cms:repeat>
+</table>
+```
+
+In the snippet above, we are using the repeat tag to create a table. The zebra tag will alternately output 'row' and 'alternate_row' as class names for the table rows. This can be used to color alternate rows differently.
+
+## Parameters
+
+This tag can accept any number of unnamed parameters.
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [**each**](../each/)
+- [**repeat**](../repeat/)

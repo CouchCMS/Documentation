@@ -1,0 +1,14 @@
+[
+  {
+    "fileName": "main-overview.mdc",
+    "description": "High-level overview of the documentation system architecture, content organization, and key components"
+  },
+  {
+    "fileName": "component-architecture.mdc",
+    "description": "Detailed documentation of the media card component system, including base implementation and YouTube extension patterns"
+  },
+  {
+    "fileName": "content-structure.mdc",
+    "description": "Documentation of the content hierarchy, section organization, and how new documentation sections are integrated"
+  }
+]

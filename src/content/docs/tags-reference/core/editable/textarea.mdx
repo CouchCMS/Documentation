@@ -1,0 +1,131 @@
+---
+title: "type = 'textarea'"
+category: tag
+subCategory: editable
+description: "The textarea type editable region provides a multi-line textbox for users to input multiple lines of text, with optional HTML formatting support."
+keywords:
+    - textarea
+    - editable
+    - tag
+    - PHP
+    - input
+    - form
+    - multi-line
+    - HTML
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+import { Image } from 'astro:assets';
+import textareaImg from '../../../../../assets/img/contents/editable-textarea.gif';
+
+Editable region of type `textarea` is used to allow users to input multiple lines of text. It is suitable for inputting multiple lines of unformatted text (i.e. not requiring HTML tags) although the user can format the text by manually adding HTML tags to the input. For this type, Couch creates a multi-line textbox for data input.
+
+An editable region of type `textarea` can be defined this way:
+
+```php title="Basic Textarea Input"
+<cms:editable
+    name="prop_desc"
+    label="Description"
+    desc="Enter description of property here"
+    type="textarea">
+    Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
+    Signature Golf Course.
+</cms:editable>
+```
+
+The code above will result in:
+
+<Image src={textareaImg} alt="Multi-line text input field" />
+
+The default type of an editable region is `textarea`. Hence if the code example given above were to be written without explicitly setting the `type` parameter, the result would have been just the same:
+
+```php title="Default Type Example"
+<cms:editable
+    name="prop_desc"
+    label="Description"
+    desc="Enter description of property here">
+    Condo pricing starts at just under $700,000. Waterfront Private Residences. Jack Nicklaus
+    Signature Golf Course.
+</cms:editable>
+```
+
+:::note[Default Text]
+Any text enclosed between the opening and the closing tags will appear as the default text within the textbox. If you do not wish to have any default text, simply make the **Editable** tag self-closing e.g.
+
+```php title="Empty Textarea"
+<cms:editable
+    name="prop_desc"
+    label="Description"
+    desc="Enter description of property here"
+/>
+```
+:::
+
+The contents of this region can be accessed, as with all other editable regions, by using the variable named after it:
+
+```php title="Displaying Content"
+<cms:show prop_desc />
+```
+
+## Parameters
+
+In addition to the parameters common to all types of editable regions, `textarea` accepts the following parameters:
+
+- `width`
+- `height`
+- `no_xss_check`
+
+### `width` and `height`
+
+The dimensions of the textarea can be changed by setting the `width` and `height` parameters. For example, the following will make it 400px wide and 200px high:
+
+```php title="Setting Dimensions"
+<cms:editable
+    name="prop_desc"
+    label="Description"
+    desc="Enter description of property here"
+    width="400"
+    height="200"
+    type="textarea"
+/>
+```
+
+### `no_xss_check`
+
+XSS (Cross Site Scripting) is a type of Web Application vulnerability which is caused by user managing to inject malicious script code into a webpage. Couch, by default, sanitizes all user input and that includes all inputs through all types of editable regions.
+
+In some cases though, you'll wish to allow your user to input Javascript code, or even script containing Couch tags, into an editable region. This could be, for example, when you have created a textarea type editable region into which the user is supposed to enter his Google AdSense code. In such cases, to instruct Couch to leave the input alone and not to sanitize it, set the `no_xss_check` to `1`. As an example:
+
+```php title="Disabling XSS Check" "no_xss_check="1""
+<cms:editable
+    name="my_adsense"
+    label="Adsense Code"
+    desc="Enter your Adsense code here"
+    height="100"
+    no_xss_check="1"
+    type="textarea"
+/>
+```
+
+:::caution[Security Warning]
+Without the `no_xss_check` explicitly set, Couch would disable all Javascript code contained within the AdSense code and thus make it useless. Only use this parameter when you trust the input source.
+:::
+
+## Related Tags
+
+- [**editable**](../../editable/)
+- [editable (**checkbox**)](../checkbox/)
+- [editable (**dropdown**)](../dropdown/)
+- [editable (**file**)](../file/)
+- [editable (**group**)](../group/)
+- [editable (**image**)](../image/)
+- [editable (**message**)](../message/)
+- [editable (**nicedit**)](../nicedit/)
+- [editable (**password**)](../password/)
+- [editable (**radio**)](../radio/)
+- [editable (**relation**)](../relation/)
+- [editable (**richtext**)](../richtext/)
+- [editable (**text**)](../text/)
+- [editable (**textarea**)](../textarea/)
+- [editable (**thumbnail**)](../thumbnail/)

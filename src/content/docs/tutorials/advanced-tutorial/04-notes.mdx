@@ -11,7 +11,7 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-03-27
+lastUpdated: 2025-05-12
 sidebar:
     order: 4
 slug: tutorials/advanced-tutorial/notes
@@ -21,7 +21,7 @@ The template implementing notes is `notes.php`. Please open it in your favorite 
 
 ### Editable Regions
 
-This template defines only a single editable region of type 'textarea' for inputting content.
+This template defines only a single editable region of type `textarea` for inputting content.
 
 What is important is how it defines the template's relationship with the 'pads' and 'users' templates:
 
@@ -56,7 +56,3 @@ Please notice the `no_guix='1'` in the definitions. There is actually no paramet
 This parameter hides the GUI of the 'relation' editable (a dropdown in our case) from the admin-panel. This is useful when the relations are meant to be set programmatically from the front-end (as opposed to done manually from the admin-panel), as will be done by our application. We'll remove the `x` when the application is complete. For now, to help in debugging, we'll keep the dropdown visible.
 
 Following the definitions of the editable region, you'll find the definitions of the routes of this template.
-
----
-
-**Next: [Routes →](../routes/)**

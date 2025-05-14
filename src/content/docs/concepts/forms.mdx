@@ -16,6 +16,10 @@ sidebar:
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import forms1 from '../../../assets/img/contents/forms-1.png';
+import forms2 from '../../../assets/img/contents/forms-2.png';
+import forms3 from '../../../assets/img/contents/forms-3.png';
 
 Forms are an essential part of any website and even the simplest website is likely to have at least one form - the contact form. Creating a form in HTML is relatively simple. What is not so simple is creating a validation routine that allows only a properly filled form to be submitted. This usually entails coding a PHP script that handles all the validations upon form submission and takes necessary actions on success or failure.
 
@@ -47,7 +51,7 @@ Note how with just a little modification, an existing HTML form was transformed 
 
 <Steps>
 
-1. The [**form**](../../tags-reference/form/) and [**input**](../../tags-reference/input/) tags were converted to their Couch equivalents by adding `cms:` prefix
+1. The [**form**](../../tags-reference/core/form/) and [**input**](../../tags-reference/core/input/) tags were converted to their Couch equivalents by adding `cms:` prefix
 2. Couch expects its single tags to be properly self-closed hence the two input tags were fitted with the closing slashes
 3. The `name` parameter is mandatory for an input tag in Couch hence the submit type was given a name
 4. Since Couch will be handling all the validation chores, the `action` attribute is removed
@@ -78,7 +82,7 @@ It should be evident from the discussion above that for both the success as well
 Before we demonstrate how to use both ways, let us first place some validation constraints on the input fields. The most common validation that is required is making sure that a field has not been left empty. This can be done by setting the `required` parameter to `1`.
 
 :::tip[Form Validation]
-For a `required` field further several kinds of validations can be enforced. The input tags use the same validators that are used by the [**Editable Regions**](../editable-regions/). Please see the [**validators**](../../tags-reference/editable/#validator) section of [**editable**](../../tags-reference/editable/) tag for a list of all the validators that can be used.
+For a `required` field further several kinds of validations can be enforced. The input tags use the same validators that are used by the [**Editable Regions**](../editable-regions/). Please see the [**validators**](../../tags-reference/core/editable/#validator) section of [**editable**](../../tags-reference/core/editable/) tag for a list of all the validators that can be used.
 :::
 
 For our example we'll make both the fields required and further ensure that a valid email is always inputted in the email field by setting the `email` validator. Modify the input fields as follows:
@@ -176,14 +180,14 @@ In our examples given above we have simply been echoing back the submitted value
 </cms:form>
 ```
 
-Notice how we use the `k_success` variable to email the data via [**send_mail**](../../tags-reference/send_mail/).
+Notice how we use the `k_success` variable to email the data via [**send_mail**](../../tags-reference/core/send_mail/).
 
 ### Input Types
 
-As seen in the snippets above, Couch employs its own variations of the [**form**](../../tags-reference/form/) tag and the [**input**](../../tags-reference/input/) tags to create and validate forms. Most (but not all) of the input types of Couch have one to one correlation with their HTML counterparts. The types of input tags that are currently supported by Couch and how they relate with the HTML equivalents are given below.
+As seen in the snippets above, Couch employs its own variations of the [**form**](../../tags-reference/core/form/) tag and the [**input**](../../tags-reference/core/input/) tags to create and validate forms. Most (but not all) of the input types of Couch have one to one correlation with their HTML counterparts. The types of input tags that are currently supported by Couch and how they relate with the HTML equivalents are given below.
 
 :::note[Available Parameters]
-For a full list of all the parameters accepted by the [**input**](../../tags-reference/input/) tag, please see its [**parameters**](../../tags-reference/input/#parameters) section.
+For a full list of all the parameters accepted by the [**input**](../../tags-reference/core/input/) tag, please see its [**parameters**](../../tags-reference/core/input/#parameters) section.
 :::
 
 **The following four input types are almost identical to the HTML types.**
@@ -276,7 +280,7 @@ Select your favorite cartoon characters:
 
 Couch equivalent:
 
-```php title="Couch Checkboxes" ins="cms:" ins="opt_values="Goofy | Donald | Bugs Bunny=Bugs | Scooby Doo=Scoob"" 
+```php title="Couch Checkboxes" ins="cms:" ins="opt_values="Goofy | Donald | Bugs Bunny=Bugs | Scooby Doo=Scoob""
 Select your favorite cartoon characters:
 <cms:input type="checkbox" name="toon" opt_values="Goofy | Donald | Bugs Bunny=Bugs | Scooby Doo=Scoob" />
 ```
@@ -351,7 +355,7 @@ The captcha type, unlike the other input types, is a composite input and consist
 
 You can use the `format` parameter to control which of the three constituent elements are shown and in which order. The `format` parameter expects a text string that can consist of 4 different characters:
 - "t" = textbox
-- "i" = image  
+- "i" = image
 - "r" = reload link
 - "-" = HTML break
 
@@ -363,8 +367,7 @@ Since each of these characters represent a constituent element of the captcha, i
 
 Shows:
 
-![Captcha Example 1](../../../assets/img/contents/forms-1.png)
-
+<Image src={forms1} alt="Captcha Example 1" />
 > Captcha with image above reload link and textbox
 
 While:
@@ -375,8 +378,7 @@ While:
 
 Shows:
 
-![Captcha Example 2](../../../assets/img/contents/forms-2.png)
-
+<Image src={forms2} alt="Captcha Example 2" />
 > Captcha with reload link above image and textbox
 
 If you do not wish the three elements to be separated by `<br>`s, use this:
@@ -402,7 +404,7 @@ Couch, as of the current version, does not support file uploads e.g.
 
 As demonstrated so far, an easy way to create a working form in Couch is to start with an existing HTML coded form and convert the existing form and input tags to their Couch equivalents. This way you can add validation to any of your existing forms.
 
-However, if are required to code a form from scratch, you can use the [**fieldset**](../../tags-reference/fieldset/) tag of Couch to give you a helping hand. Couch's version of this tag is the exact equivalent of its HTML counterpart and serves the same purpose of grouping together related form elements. Additionally it also outputs `<dl>`, `<dt>` and `<dd>` tags to wrap correctly the child input tags. This way you can quickly get a semantically correct form quite easily.
+However, if are required to code a form from scratch, you can use the [**fieldset**](../../tags-reference/core/fieldset/) tag of Couch to give you a helping hand. Couch's version of this tag is the exact equivalent of its HTML counterpart and serves the same purpose of grouping together related form elements. Additionally it also outputs `<dl>`, `<dt>` and `<dd>` tags to wrap correctly the child input tags. This way you can quickly get a semantically correct form quite easily.
 
 The following Couch snippet:
 
@@ -428,7 +430,7 @@ Outputs:
 ```
 
 :::tip[Fieldset Labels]
-For input tags that are wrapped within [**fieldset**](../../tags-reference/fieldset/) tags, you can set the `label` and `desc` parameters to properly label the fields.
+For input tags that are wrapped within [**fieldset**](../../tags-reference/core/fieldset/) tags, you can set the `label` and `desc` parameters to properly label the fields.
 :::
 
 ### Example of a Full Form
@@ -527,8 +529,7 @@ Following is an example of a real-world form:
 
 The code above results in the following form:
 
-![Complete Form Example](../../../assets/img/contents/forms-3.png)
-
+<Image src={forms3} alt="Complete Form Example" />
 > Contact form with all input types and validation
 
 :::note[Styling]

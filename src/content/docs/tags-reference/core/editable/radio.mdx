@@ -1,0 +1,201 @@
+---
+title: "type = 'radio'"
+category: tag
+subCategory: editable
+description: "Editable region of radio type is used to allow the user to choose one option from several presented to him in the form of radio buttons."
+keywords:
+    - radio
+    - editable
+    - tag
+    - PHP
+    - form
+    - input
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+import { Image } from 'astro:assets';
+import radioImg1 from '../../../../../assets/img/contents/editable-radio-1.gif';
+import radioImg2 from '../../../../../assets/img/contents/editable-radio-2.gif';
+
+Editable region of type `radio` is used to allow the user to choose one option from several presented to him in the form of radio buttons.
+
+An editable region of type `radio` can be defined this way:
+
+```php title="Basic Radio Buttons" "type='radio'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    desc="Select one from these"
+    opt_values="Residential | Commercial | Rental"
+    type="radio"
+/>
+```
+
+The code above will result in:
+
+<Image src={radioImg1} alt="Radio buttons showing property type options" />
+
+The option selected in this region can be accessed, as with all other editable regions, by using the variable named after it:
+
+```php title="Displaying Selected Value"
+<cms:show my_property_type />
+```
+
+## Parameters
+
+In addition to the parameters common to all types of editable regions, `radio` accepts the following parameters:
+
+- `opt_values`
+- `opt_selected`
+- `separator`
+- `val_separator`
+- `search_type`
+
+### `opt_values`
+
+This parameter takes a list of all the options that are displayed as radio buttons:
+
+```php title="Setting Radio Options" "opt_values='Residential | Commercial | Rental'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    desc="Select one from these"
+    opt_values="Residential | Commercial | Rental"
+    type="radio"
+/>
+```
+
+The selected option will get saved as the value of the editable region. For example, if the user selected **Rental**, the following code:
+
+```php title="Showing Selected Option"
+<cms:show my_property_type />
+```
+
+will output **Rental**.
+
+As can be seen, the saved value is the same as the option's name. However we can specify a different value that can get saved into the editable region by using the following syntax:
+
+```php title="Radio Options with Custom Values" "opt_values='Residential=0 | Commercial=1 | Rental=2'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    desc="Select one from these"
+    opt_values="Residential=0 | Commercial=1 | Rental=2"
+    type="radio"
+/>
+```
+
+Printing out the value contained within the editable region:
+
+```php title="Showing Custom Value"
+<cms:show my_property_type />
+```
+
+will output `2`.
+
+:::tip[Line Breaks]
+Specifying an empty option makes Couch generate a `<br>` tag. For example:
+
+```php title="Radio Options with Line Break"
+opt_values="Residential=0 | Commercial=1 | | Rental=2"
+```
+
+In the code above, four options have been specified - the third option (between **Commercial** and **Rental**) is empty. This results in:
+
+<Image src={radioImg2} alt="Radio buttons with line break between options" />
+:::
+
+### `opt_selected`
+
+By default, the first option in the list is shown as the selected option. You can show any other option as selected by setting `opt_selected` to the **value** of that option:
+
+```php title="Setting Default Selected Option" "opt_selected='Rental'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    desc="Select one from these"
+    opt_values="Residential | Commercial | Rental"
+    opt_selected="Rental"
+    type="radio"
+/>
+```
+
+Or when using custom values:
+
+```php title="Setting Default Selected Value" "opt_selected='2'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    desc="Select one from these"
+    opt_values="Residential=0 | Commercial=1 | Rental=2"
+    opt_selected="2"
+    type="radio"
+/>
+```
+
+will show _Rental_ as the option selected by default.
+
+### `separator`
+
+As seen in the examples above, the list provided to `opt_values` parameter consists of the options separated by a `|` (pipe) character. This is the default separator used by Couch. For some reason if you do not wish to have a pipe as separator (e.g. if any of the options contains the pipe character within itself, obviously the same character cannot be used as the separator), any other character can be designated as the separator by setting this parameter. For example as in follows:
+
+```php "*"
+<cms:editable name="my_property_type" label="Property Type" desc="Select one from these"
+    opt_values='Residential=0 * Commercial=1 * Rental=2'
+    separator='*'
+    type='dropdown'
+/>
+```
+
+Note how the `opt_values` are separated by `*`.
+
+### `val_separator`
+
+Similar to the problem outlined above, sometimes the options in the list contain the `=` (equals to) character. This makes it imposible to use `=` between the option's name and value. You can set any other character for this purpose by setting this parameter. For example:
+
+```php title="Custom Value Separator" "val_separator=':'"
+<cms:editable
+    name="my_property_type"
+    label="Property Type"
+    opt_values="Residential:0 | Commercial:1 | Rental:2"
+    val_separator=":"
+    type="radio"
+/>
+```
+
+### `search_type`
+
+Can be set to the following valid values:
+
+- `text` (default)
+- `integer`
+- `decimal`
+
+The default `search_type` is `text`. If you wish to use this region to input numeric values (e.g. age or salary), set the type to either `integer` or `decimal` (if the value can be fractional).
+
+:::note[Search Type Usage]
+Set an explicit numeric type only when you need to:
+- Make numeric comparisons (e.g., `age < 40`)
+- Sort output based on these values
+
+See [**Pages**](../../pages/#custom_field) for more details.
+:::
+
+## Related Tags
+
+- [**editable**](../../editable/)
+- [editable (**checkbox**)](../checkbox/)
+- [editable (**dropdown**)](../dropdown/)
+- [editable (**file**)](../file/)
+- [editable (**group**)](../group/)
+- [editable (**image**)](../image/)
+- [editable (**message**)](../message/)
+- [editable (**nicedit**)](../nicedit/)
+- [editable (**password**)](../password/)
+- [editable (**radio**)](../radio/)
+- [editable (**relation**)](../relation/)
+- [editable (**richtext**)](../richtext/)
+- [editable (**text**)](../text/)
+- [editable (**textarea**)](../textarea/)
+- [editable (**thumbnail**)](../thumbnail/)

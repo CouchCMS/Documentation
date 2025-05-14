@@ -6,89 +6,123 @@ The documentation is built with [Astro](https://astro.build/) + [Starlight](http
 
 ## Project Structure
 
-
-The documentation is built with Astro + Starlight and has the following structure:
-
 ```
 .
-├── public/          # Static files like images
+├── public/                         # Static files (favicons, robots.txt, etc.)
 ├── src/
-│   ├── assets/     # Documentation images and media
-│   ├── content/    # Markdown/MDX documentation files
-│   │   ├── docs/   # Main documentation
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   ├── assets/                     # Images and media
+│   │   ├── content/                # Markdown/MDX documentation files
+│   │   │   ├── docs/               # Main documentation (MDX)
+│   │   │   └── content.config.ts   # Configuration file for the documentation
+│   │   └── img/                    # Image assets
+│   ├── astro.config.mjs
+│   ├── package.json
+│   └── tsconfig.json
 ```
 
-The documentation consists of `.mdx` files in the `src/content/docs/` directory. Each file is converted to a route based on its filename.
+- Documentation lives in `src/content/docs/` as `.mdx` files (Markdown + JSX).
+- Images and media go in `src/assets/img/` and its subfolders.
+- Static assets (not processed by Astro) go in `public/`.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+---
 
-Static assets like favicons can be placed in the `public/` directory.
+## Getting Started
 
-## Commands
+1. **Fork** this repository.
+2. **Clone** your fork:
+    ```sh
+    git clone https://github.com/YOUR_USERNAME/CouchCMS-Documentation.git
+    ```
+3. **Install dependencies:**
+    ```sh
+    pnpm install
+    ```
+4. **Start the dev server:**
+    ```sh
+    pnpm dev
+    ```
+5. **Preview:**
+   Visit [http://localhost:4321](http://localhost:4321) in your browser.
 
-All commands are run from the root of the project:
+---
+
+## Working with Documentation
+
+- All docs are written in MDX (`.mdx` files in `src/content/docs/`).
+- **Follow the [CouchCMS Documentation Style Guide](./STYLEGUIDE.md) for all formatting, code, and content rules.**
+- Use clear, concise language and proper heading hierarchy.
+- Add code examples and screenshots where relevant.
+- Always include descriptive alt text for images and a caption if relevant.
+
+---
+
+## Image Usage in MDX
+
+- **Never use classic Markdown image syntax in `.mdx` files.**
+- Always use the Astro `<Image />` component.
+- Place images in the correct subfolder under `src/assets/img/` (see style guide).
+- The import path for images depends on the location of your MDX file relative to the asset. Adjust the path as needed.
+- Captions must always be placed directly below the image using a `>` blockquote, as specified in the style guide.
+- Example:
+
+    ```js
+    import { Image } from "astro:assets";
+    import loginImg from "../assets/img/contents/login.png";
+    // Adjust the path above depending on your MDX file location
+    ```
+
+    ```mdx
+    <Image src={loginImg} alt="Login screen" />
+    > Login screen of the application
+    ```
+
+---
+
+## Making Changes
+
+1. Create a new feature branch:
+    ```sh
+    git checkout -b my-feature
+    ```
+2. Make your changes and test locally (`pnpm dev`).
+3. Commit your changes:
+    ```sh
+    git commit -m "Describe your changes"
+    ```
+4. Push your branch:
+    ```sh
+    git push origin my-feature
+    ```
+5. Open a Pull Request to the `gh-pages` branch.
+
+---
+
+## Useful Commands
 
 | Command                | Action                                     |
 | :--------------------- | :----------------------------------------- |
 | `pnpm install`         | Install dependencies                       |
 | `pnpm dev`             | Start local dev server at `localhost:4321` |
 | `pnpm build`           | Build production site to `./dist/`         |
-| `pnpm preview`         | Preview build locally, before deploying    |
-| `pnpm astro ...`       | Run CLI commands like `astro add`          |
+| `pnpm preview`         | Preview build locally before deploying     |
+| `pnpm astro ...`       | Run Astro CLI commands                     |
 | `pnpm astro -- --help` | Get help using the Astro CLI               |
 
-## Contributing to Documentation
+---
 
-### Getting Started
+## Resources
 
-1. Fork this repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/CouchCMS-Documentation.git`
-3. Install dependencies: `pnpm install`
-4. Start the dev server: `pnpm dev`
-5. Visit `http://localhost:4321` to preview the documentation
-
-### Making Changes
-
-- All documentation files are in `src/content/docs/`
-- Files are written in MDX format (Markdown + JSX)
-- Images should be placed in `src/assets/img/`
-- Follow the [Starlight Markdown guidelines](https://starlight.astro.build/guides/authoring-content/) for formatting
-
-### Style Guidelines
-
-- Use clear, concise language
-- Include code examples where relevant
-- Add screenshots for UI-related features
-- Keep paragraphs short and focused
-- Use proper heading hierarchy
-- Include alt text for images
-
-### Submitting Changes
-
-1. Make your changes
-2. Test locally with `pnpm dev`
-3. Commit your changes: `git commit -m "Description of changes"`
-4. Push to your fork: `git push origin gh-pages`
-5. Open a Pull Request from your fork to the `gh-pages` branch of the main repository
-
-### Need Help?
-
-- Check the [Starlight documentation](https://starlight.astro.build)
-- Visit the [CouchCMS Forum](https://www.couchcms.com/forum/)
-- Open an issue in this repository
-
-## Useful Links
-
-### Project Links
 - [CouchCMS Website](https://www.couchcms.com)
 - [CouchCMS Forum](https://www.couchcms.com/forum/)
 - [CouchCMS GitHub](https://github.com/CouchCMS/Couch)
-
-### Technology
 - [Astro Documentation](https://docs.astro.build)
 - [Starlight Documentation](https://starlight.astro.build)
-- [Starlight on GitHub](https://github.com/withastro/starlight)
+
+---
+
+## Need Help?
+
+- Check the [CouchCMS Documentation Style Guide](./STYLEGUIDE.md)
+- See [Starlight authoring guide](https://starlight.astro.build/guides/authoring-content/)
+- Visit the [CouchCMS Forum](https://www.couchcms.com/forum/)
+- Open an issue in this repository

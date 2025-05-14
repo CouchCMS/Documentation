@@ -1,0 +1,27 @@
+---
+description: Documentation for media card component system including base display and YouTube video patterns
+globs: src/components/card-*.astro,src/content.config.ts
+alwaysApply: false
+---
+
+
+# component-architecture
+
+The media card component system implements a two-tiered architecture for content display:
+
+1. Base Media Card (`src/components/card-media.astro`)
+- Core presentation component for standard media content
+- Parent template defining common display patterns
+
+2. YouTube Extension (`src/components/card-youtube.astro`)
+- Specialized card implementation for YouTube content
+- Inherits base media card structure
+- Adds YouTube-specific embedding capabilities
+
+The architecture follows a template inheritance pattern with specialized media type implementations extending from the base card component.
+
+Business Importance Score: 45
+- While providing content structure, the components primarily handle presentation without complex business rules
+- Template inheritance pattern enables consistent media display across the CMS
+
+$END$

@@ -1,0 +1,37 @@
+---
+description: Handles documentation organization patterns and hierarchy for CMS content
+globs: src/content/**.md,src/content/**.mdx,astro.config.mjs,src/content.config.ts
+alwaysApply: false
+---
+
+
+# content-structure
+
+The documentation implements a domain-specific hierarchy for CMS content organization:
+
+## Core Documentation Structure
+- `Getting Started`: Onboarding documentation
+- `Core Concepts`: Fundamental CMS principles 
+- `Tags Reference`: Command reference divided into:
+  - Core Tags
+  - Sub-Templates
+  - Template Inheritance
+  - Extended Features
+
+## Feature Classification
+The structure uses dedicated badges to highlight new CMS capabilities:
+- Sub-Templates System 
+- Template Inheritance Framework
+- Custom Routes Engine
+- Extended Entities Model
+
+## Integration Points
+Documentation sections are organized by:
+1. Functional domain (templating, routing, entities)
+2. Feature maturity (core vs extended)
+3. Implementation complexity (basic to advanced)
+
+Importance Score: 75
+Rationale: The content structure directly impacts how users understand and implement the CMS features, making it a key integration point for developer experience.
+
+$END$

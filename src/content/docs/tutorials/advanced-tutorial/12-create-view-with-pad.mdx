@@ -14,11 +14,14 @@ keywords:
 category: tutorial
 subCategory: advanced-tutorial
 author: Kamran Kashif
-lastUpdated: 2025-03-27
+lastUpdated: 2025-05-12
 sidebar:
     order: 12
 slug: tutorials/advanced-tutorial/create-view-with-pad
 ---
+
+import { Image } from 'astro:assets';
+import createWithPadImg from './img/scr4.png';
 
 ## Context-Aware Note Creation
 
@@ -26,7 +29,7 @@ Click one of the pads listed in the sidebar and you'll see a list of notes that 
 
 On this screen if we click 'New note', we get the same 'create_view' we discussed in the [**previous section**](../create-view/), except that now the pad we were browsing in the last step appears to be selected automatically:
 
-![Create Note with Pre-selected Pad](./img/scr4.png)
+<Image src={createWithPadImg} alt="Create Note with Pre-selected Pad" />
 
 ## Implementation Overview
 
@@ -91,7 +94,3 @@ Notice how it uses the `my_current_pad` set by this view to pre-select the pad s
 ## Next Steps
 
 With that we now move on to the 'edit_view'.
-
----
-
-**Next: [Edit View →](../edit-view/)**

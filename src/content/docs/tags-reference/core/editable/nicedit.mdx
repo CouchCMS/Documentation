@@ -1,0 +1,150 @@
+---
+title: "type = 'nicedit'"
+category: tag
+subCategory: editable
+description: "Editable region of type nicedit can be used as a light-weight alternative to editable region of type richtext."
+keywords:
+    - nicedit
+    - editable
+    - tag
+    - PHP
+    - richtext
+    - wysiwyg
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+import { Image } from 'astro:assets';
+import niceditImg from '../../../../../assets/img/contents/editable-nicedit.png';
+
+Editable region of type `nicedit` can be used as a light-weight alternative to editable region of type [**richtext**](../richtext/). It is primarily meant to be used with [**Repeatable Regions**](../../../../concepts/repeatable-regions/), however it can be used as an independent editable region too.
+
+Unlike `richtext` that uses CKEditor - a full fledged Wysiwyg editor, `nicedit` is somewhat limited in the wysiwyg features it offers but is perfect for situations where only basic HTML editing capability is required.
+
+<Image src={niceditImg} alt="NicEdit editor showing basic formatting options" />
+
+A region of this type may be defined in two ways:
+
+```php title="Basic NicEdit Example"
+<cms:editable
+    type="nicedit"
+    label="Description"
+    name="my_desc"
+/>
+```
+
+Or with default content:
+
+```php title="NicEdit with Default Content"
+<cms:editable
+    type="nicedit"
+    label="Description"
+    name="my_desc"
+>
+    This enclosed text will appear as the default value of the editor
+</cms:editable>
+```
+
+## Parameters
+
+In addition to the parameters common to all types of editable regions, `nicedit` accepts the following parameters:
+
+- `width`
+- `height`
+- `maxheight`
+- `buttons`
+
+### `width`
+
+### `height`
+
+### `maxheight`
+
+The dimensions of the editor can be changed by setting the `width`, `height`, and `maxheight` parameters. For example:
+
+```php title="Setting Editor Dimensions"
+<cms:editable
+    type="nicedit"
+    label="Description"
+    name="my_desc"
+    width="400"
+    height="200"
+    maxheight="600"
+/>
+```
+
+This will make the editor `400px` wide and `200px` high, expanding up to `600px` high as content is entered.
+
+### `buttons`
+
+This parameter can be used to specify which buttons are displayed in the toolbar of the editor:
+
+```php title="Customizing Toolbar Buttons"
+<cms:editable
+    type="nicedit"
+    label="Description"
+    name="my_desc"
+    buttons="italic, bold"
+/>
+```
+
+This parameter takes a comma-separated string containing the names of the buttons.
+The following values can be used:
+
+- `bold`
+- `italic`
+- `underline`
+- `left`
+- `center`
+- `right`
+- `justify`
+- `ol`
+- `ul`
+- `subscript`
+- `superscript`
+- `strikethrough`
+- `removeformat`
+- `indent`
+- `outdent`
+- `hr`
+- `fontsize`
+- `fontfamily`
+- `fontformat`
+- `link`
+- `unlink`
+- `forecolor`
+- `bgcolor`
+- `image`
+- `source`
+
+:::note[Default Buttons]
+If the `buttons` parameter is not specified, the following set of buttons is used by default:
+- `bold`
+- `italic`
+- `underline`
+- `ol`
+- `ul`
+- `link`
+- `unlink`
+- `image`
+- `removeformat`
+- `source`
+:::
+
+## Related Tags
+
+- [**editable**](../../editable/)
+- [editable (**checkbox**)](../checkbox/)
+- [editable (**dropdown**)](../dropdown/)
+- [editable (**file**)](../file/)
+- [editable (**group**)](../group/)
+- [editable (**image**)](../image/)
+- [editable (**message**)](../message/)
+- [editable (**nicedit**)](../nicedit/)
+- [editable (**password**)](../password/)
+- [editable (**radio**)](../radio/)
+- [editable (**relation**)](../relation/)
+- [editable (**richtext**)](../richtext/)
+- [editable (**text**)](../text/)
+- [editable (**textarea**)](../textarea/)
+- [editable (**thumbnail**)](../thumbnail/)

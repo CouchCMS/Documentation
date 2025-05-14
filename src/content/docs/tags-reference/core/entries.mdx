@@ -1,0 +1,52 @@
+---
+title: entries
+category: tag
+description: "The entries tag is a special tag that works only within the calendar tag, specifically within the days tag, to enumerate all pages published on a specific day."
+keywords:
+    - entries
+    - calendar
+    - tag
+    - PHP
+    - events
+    - pages
+    - enumeration
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `entries` tag is a special tag that works only within the `calendar` tag - specifically within the `days` tag present within the `calendar` tag.
+
+This tag enumerates all the pages published on the day being enumerated by the `days` tag. The pages will belong to the template specified by the `masterpage` parameter of the calendar tag.
+
+Please see [**Core Concepts - Events Calendar**](../../../concepts/events-calendar/) for a working example of this tag in action.
+
+## Parameters
+
+- `limit`
+- `skip_custom_fields`
+
+### `limit`
+
+```php title="Limiting Results"
+limit='5'
+```
+
+This parameter limits the number of pages that this tag enumerates.
+
+### `skip_custom_fields`
+
+```php title="Skipping Custom Fields"
+skip_custom_fields='1'
+```
+
+As it enumerates the fetched pages, by default this tag makes available all the variables associated with every page - this includes the editable regions too. If you simply require to display the names and links of the pages, the values contained within the editable regions of the pages can be skipped from being fetched by setting this parameter. This will result in a performance boost.
+
+## Variables
+
+As this tag iterates through the pages, at each iteration it sets all the variables that one normally finds set when that page is accessed in a *page-view* (see [**Variables available in Views**](../../../concepts/variables-in-views/)).
+
+## Related Tags
+
+- [**calendar**](../calendar/)
+- [**days**](../days/)
+- [**weeks**](../weeks/)

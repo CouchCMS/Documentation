@@ -1,14 +1,15 @@
 {
-  "singleQuote": false,
-  "proseWrap": "preserve",
-  "embeddedLanguageFormatting": "auto",
-  "overrides": [
-    {
-      "files": ["*.md", "*.mdx"],
-      "options": {
-        "singleQuote": false,
-        "printWidth": 120
-      }
-    }
-  ]
+    "singleQuote": false,
+    "proseWrap": "preserve",
+    "embeddedLanguageFormatting": "auto",
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["*.md", "*.mdx"],
+            "options": {
+                "singleQuote": false,
+                "printWidth": 120
+            }
+        }
+    ]
 }

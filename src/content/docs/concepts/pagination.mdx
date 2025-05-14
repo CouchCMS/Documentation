@@ -18,8 +18,10 @@ sidebar:
 ---
 
 import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import paginationImg from '../../../assets/img/contents/pagination.png';
 
-The [**pages**](../../tags-reference/pages/), [**search**](../../tags-reference/search/) and [**comments**](../../tags-reference/comments/) tags can fetch more items than specified by the `limit` parameter. In such cases, it's common to display items in a paginated manner - split across several pages with navigation buttons. These tags provide several variables that help implement pagination.
+The [**pages**](../../tags-reference/core/pages/), [**search**](../../tags-reference/core/search/) and [**comments**](../../tags-reference/core/comments/) tags can fetch more items than specified by the `limit` parameter. In such cases, it's common to display items in a paginated manner - split across several pages with navigation buttons. These tags provide several variables that help implement pagination.
 
 ## Basic Usage
 
@@ -32,10 +34,10 @@ Here's a basic example to demonstrate pagination:
 ```
 
 :::note[Tag Compatibility]
-While we use the [**pages**](../../tags-reference/pages/) tag in examples, all pagination variables work identically with [**search**](../../tags-reference/search/) and [**comments**](../../tags-reference/comments/) tags.
+While we use the [**pages**](../../tags-reference/core/pages/) tag in examples, all pagination variables work identically with [**search**](../../tags-reference/core/search/) and [**comments**](../../tags-reference/core/comments/) tags.
 :::
 
-Suppose a total of 23 records have been fetched by the given snippet. Since the limit has been set to 10, splitting up 
+Suppose a total of 23 records have been fetched by the given snippet. Since the limit has been set to 10, splitting up
 the total in chunks of 10 records will result in:
 - Page 1: Records **1-10**
 - Page 2: Records **11-20**
@@ -108,7 +110,7 @@ Current page number - will change from 1 to 3 in our example.
 The `pages` tag loops through 10 records on each page in our example. The `k_paginated_top` gets set for the first record of each page. It can be used to output something at the very start of the loop.
 
 #### `k_paginated_bottom`
-The `pages` tag loops through 10 records on each page in our example. The `k_paginated_bottom` gets set for the last 
+The `pages` tag loops through 10 records on each page in our example. The `k_paginated_bottom` gets set for the last
 record of each page. It can be used to output something at the very end of the loop.
 
 ### Navigation
@@ -151,7 +153,7 @@ Link to previous page (if available)
 
 ### Using Paginator Tag
 
-Instead of manually coding the 'next' and 'prev' buttons for navigating through the pages, use the [**paginator**](../../tags-reference/paginator/) tag for a more polished look:
+Instead of manually coding the 'next' and 'prev' buttons for navigating through the pages, use the [**paginator**](../../tags-reference/core/paginator/) tag for a more polished look:
 
 ```php title="Using Paginator Tag"
 <cms:pages masterpage="blog.php" limit="10" paginate="1">
@@ -171,7 +173,7 @@ Instead of manually coding the 'next' and 'prev' buttons for navigating through 
 
 ### Styling the Paginator
 
-If the [**paginator**](../../tags-reference/paginator/) tag is used to generate the navigation buttons, the following 
+If the [**paginator**](../../tags-reference/core/paginator/) tag is used to generate the navigation buttons, the following
 CSS code may be used to properly style the buttons:
 
 ```css title="Paginator Styling"
@@ -219,5 +221,5 @@ div.pagination span.page_disabled {
 
 Here's how the paginator looks with the styling applied:
 
-![Paginator Example](../../../assets/img/contents/pagination.png)
+<Image src={paginationImg} alt="Paginator Example" />
 > Example of styled pagination output

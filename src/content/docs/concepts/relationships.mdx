@@ -17,6 +17,11 @@ sidebar:
 ---
 
 import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import relationships1 from '../../../assets/img/contents/relationships-1.png';
+import relationships2 from '../../../assets/img/contents/relationships-2.png';
+import relationships3 from '../../../assets/img/contents/relationships-3.png';
+import relationships4 from '../../../assets/img/contents/relationships-4.png';
 
 Couch v1.3 introduces a powerful new feature that can be used to establish relationships between pages of two templates.
 
@@ -34,7 +39,7 @@ Some example scenarios where this feature will come in handy:
 
 Any relationship, necessarily, will involve two parties (actually the templates representing them). Taking the second example mentioned above, 'artists' and 'albums' are the two parties that are involved in the relationship (we'll assume the name of their respective templates to be `artists.php` and `albums.php`).
 
-To define a relationship between the two templates, we use a new type of editable region introduced by Couch v1.3 - [**relation**](../../tags-reference/editable/relation/).
+To define a relationship between the two templates, we use a new type of editable region introduced by Couch v1.3 - [**relation**](../../tags-reference/core/editable/relation/).
 Place the following code snippet in the `artists.php` template:
 
 ```php title="artists.php"
@@ -43,17 +48,17 @@ Place the following code snippet in the `artists.php` template:
 
 Make the mandatory visit to the template as super-admin. Coming back to the admin-panel and editing any of `artist.php`'s cloned pages will show us something like this:
 
-![Album Selection Interface](../../../assets/img/contents/relationships-1.png)
+<Image src={relationships1} alt="Album Selection Interface" />
 
 > Interface showing the list of available albums that can be associated with an artist
 
 :::tip[Relationship Control]
-By default, all the pages of the related template are shown in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the 'editable' tag of type [**relation**](../../tags-reference/editable/relation/):
+By default, all the pages of the related template are shown in the list. We can exert some control over which pages get listed (and how) by using the following parameters of the 'editable' tag of type [**relation**](../../tags-reference/core/editable/relation/):
 
-- [**folder**](../../tags-reference/editable/relation/#parameters)
-- [**include_subfolders**](../../tags-reference/editable/relation/#parameters)
-- [**orderby**](../../tags-reference/editable/relation/#parameters)
-- [**order_dir**](../../tags-reference/editable/relation/#parameters)
+- [**folder**](../../tags-reference/core/editable/relation/#parameters)
+- [**include_subfolders**](../../tags-reference/core/editable/relation/#parameters)
+- [**orderby**](../../tags-reference/core/editable/relation/#parameters)
+- [**order_dir**](../../tags-reference/core/editable/relation/#parameters)
 :::
 
 Important points to note in the code above:
@@ -98,8 +103,7 @@ The `reverse_has` parameter simply specifies that a page of the template related
 
 Returning back to the edit-panel we find that we still have a multi-select list but this list of 'albums' only shows the albums that are not associated with any other artist.
 
-![One-to-Many Selection Interface](../../../assets/img/contents/relationships-2.png)
-
+<Image src={relationships2} alt="One-to-Many Selection Interface" />
 > Interface showing only albums that are not yet associated with any other artist
 
 If we were to select any albums to associate them with the artist being edited and then move on to edit another artist, the albums we associated with the previous artist will not be available with this artist.
@@ -118,8 +122,7 @@ The `has` parameter specifies that the 'primary' template (the one this code is 
 
 This is what the edit-panel shows now:
 
-![Many-to-One Selection Interface](../../../assets/img/contents/relationships-3.png)
-
+<Image src={relationships3} alt="Many-to-One Selection Interface" />
 > Interface showing a dropdown for selecting a single album
 
 As can be seen, instead of a list with checkboxes allowing multiple choices, we now have a drop-down list that allows a single choice only.
@@ -152,8 +155,7 @@ This is how we define this type of relation:
 
 The resulting edit-panel shows a drop-down (allowing a single selection) of only those albums that are not yet associated with any other artist.
 
-![One-to-One Selection Interface](../../../assets/img/contents/relationships-4.png)
-
+<Image src={relationships4} alt="One-to-One Selection Interface" />
 > Interface showing a dropdown with only unassociated albums
 
 ## Displaying the related pages
@@ -162,8 +164,8 @@ With the relationship having been defined between the two templates and the 'alb
 
 Couch provides two different tags to do this enumeration for us:
 
-- [**related_pages**](../../tags-reference/related_pages/)
-- [**reverse_related_pages**](../../tags-reference/reverse_related_pages/)
+- [**related_pages**](../../tags-reference/core/related_pages/)
+- [**reverse_related_pages**](../../tags-reference/core/reverse_related_pages/)
 
 ### related_pages
 
@@ -221,4 +223,4 @@ In fact, both the `related_pages` as well as the `reverse_related_pages` tags ca
 </cms:pages>
 ```
 
-The `related_pages` and `reverse_related_pages` tags are almost identical to the [**pages**](../../tags-reference/pages/) tag we know so well. Just like the [**pages**](../../tags-reference/pages/) tag, these two tags also make available all the variables associated with the (related) page being iterated. They also support almost [all the parameters](../../tags-reference/pages/#parameters) that the [**pages**](../../tags-reference/pages/) tag supports.
+The `related_pages` and `reverse_related_pages` tags are almost identical to the [**pages**](../../tags-reference/core/pages/) tag we know so well. Just like the [**pages**](../../tags-reference/core/pages/) tag, these two tags also make available all the variables associated with the (related) page being iterated. They also support almost [all the parameters](../../tags-reference/core/pages/#parameters) that the [**pages**](../../tags-reference/core/pages/) tag supports.

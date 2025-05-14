@@ -1,0 +1,264 @@
+---
+title: Customizing the Form Screen
+description: "A comprehensive guide to customizing the CouchCMS admin panel interface through theming"
+keywords:
+    - admin panel
+    - backend
+    - sidebar
+    - navigation
+category: tutorial
+subCategory: admin-panel-theming
+author: Kamran Kashif
+lastUpdated: 2025-05-13
+sidebar:
+    order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import theming10 from '../admin-panel-theming/img/10.jpg';
+import theming11 from '../admin-panel-theming/img/11.jpg';
+import theming16 from '../admin-panel-theming/img/16.jpg';
+import theming17 from '../admin-panel-theming/img/17.jpg';
+import theming18 from '../admin-panel-theming/img/18.jpg';
+import theming19 from '../admin-panel-theming/img/19.jpg';
+
+After having seen the `<cms:config_list_view />` tag above for customizing the list screen, you'd expect something similar for customizing the form screen as well and you won't be wrong. That tag is `<cms:config_form_view>`.
+
+Just like its list screen counterpart, the `<cms:config_form_view>` is meant to be placed within a template's `<cms:template>` block. It also accepts as its child tags the `<cms:field>`, `<cms:style>`, `<cms:script>` and `<cms:html>` tags. The last three of the child tags named above work exactly the same as we saw them used in customizing the list screen above. The `<cms:field>` tag, however, works in a slightly different manner.
+
+You'll recall from how we used `<cms:field>` tag while customizing the list screen above that it serves two purposes:
+
+<Steps>
+
+1. Defining which fields are displayed in the listing and in which order
+2. Customizing the look and contents of those fields.
+
+</Steps>
+
+While working with the form screen (i.e. while creating a new page or editing an existing one), you know that the fields shown are those defined in the template using the `<cms:editable>` tags. So, the first of the two purposes listed above is already covered. That leaves us with only the second purpose (i.e. customizing the look and contents) for which to use the `<cms:field>` tag while customizing the form screen.
+
+In fact, the `<cms:editable>` tag also customizes the look and contents, to a certain extent (e.g. `label`, `order`, `desc` etc.), of the custom fields. Though the `<cms:field>` tag can be used to further tweak these custom fields, its real utility emerges in doing the same with _system_ fields (e.g. _name_, _title_, _folder_, _publish_date_ etc.) - something that was not possible before without serious bending over backwards. Let us see it in action.
+
+Place the following within the `<cms:template>` block of any clonable template:
+
+```php
+<cms:config_form_view>
+    <cms:field 'k_page_title' desc='hello!' label='Greetings!' order='100' group='_advanced_settings_' class='my_class' />
+</cms:config_form_view>
+```
+
+Visit the template on the front-end as super-admin. Coming back to the admin-panel you should find that the **Title** field (the first displayed field, by default, in clonable templates) has disappeared! Worry not as we can find it now within the **Advanced Settings** dropdown:
+
+<Image src={theming10} alt="Admin panel list view with title field moved to Advanced settings" />
+> Admin panel list view with title field moved to Advanced settings
+
+Notice also how it is now showing a different label and description.
+
+The parameters we used for the `<cms:field>` tag in the code above should be self-explanatory except, perhaps, the value used with the `group` parameter (i.e. `_advanced_settings_`). Actually, Couch by default groups together the fields seen on the form page into three separate groups:
+
+- **a**. the system fields shown before the custom fields are placed within the `_system_fields_` group,
+
+- **b**. the system fields contained within the **Advanced Settings** dropdown are placed within the `_advanced_settings_` group
+
+- **c**. while all the custom fields defined by you fall within the `_custom_fields_` group.
+
+Any custom groups you define (using type `group` editable region) are actually created as children of the `_custom_fields_` group with the fields within those custom groups then in turn falling beneath them - it's an hierarchical structure.
+
+In the code above we simply used the `group` parameter to move the **Title** field from its default `_system_fields_` group to the `_advanced_settings_` group which made it move to the advanced settings dropdown. In fact, if you so wish you can move any system field from its default location to any custom `group` defined by you so as to place them anywhere on the screen e.g.:
+
+```php
+<cms:field 'k_page_title'  group='my_group'  />
+```
+
+<Image src={theming11} alt="Admin panel list view with title field moved to custom group" />
+> Admin panel list view with title field moved to custom group
+
+Admittedly, this is not something you'd normally like to do but the example above serves only to demonstrate what the various parameters of `<cms:field>` do.
+
+There are three more parameters we can use with `<cms:field>`. A little word about each:
+
+`skip`
+If set to `1` for a field, that field is not rendered at all on the screen.
+
+`hide`
+If set to `1` for a field, that field (unlike `skip` above) is rendered but its visibility is set to hidden.
+
+`no_wrapper`
+Normally when a field is rendered it comprises of two components:
+
+- **a**. the field per se (e.g. the _text_ input)
+- **b**. enclosing markup e.g. the _label_, _description_, _error message_ etc.
+
+With `no_wrapper` set to `1` for a field, the second component is skipped and only the naked field is rendered.
+
+Speaking of the two components of a rendered field, till now we have seen the `<cms:field>` used as a self-closing tag.
+If, however, it is used as a tag-pair, then anything enclosed within the tags would be used to render the `a` component mentioned above.
+Try this:
+
+```php
+<cms:field 'k_page_title'>
+    hello
+</cms:field>
+```
+
+<Image src={theming16} alt="Custom admin panel list view showing repeated greeting" />
+> Custom admin panel list view showing repeated greeting
+
+Of course that is silly :-) Now try this:
+
+```php
+<cms:field 'k_page_title'>
+    <cms:input name=k_field_name type='bound' trust_mode='1' />
+</cms:field>
+```
+
+That should render the field as normal:
+
+<Image src={theming17} alt="Previous version's custom list view coverage area" />
+> Previous version's custom list view coverage area
+
+Basically when we use the `<cms:field>` as a self-closing tag e.g. like this:
+
+```php
+<cms:field 'k_page_title' />
+```
+
+It is actually equivalent to this:
+
+```php
+<cms:field 'k_page_title'>
+    <cms:input name=k_field_name type='bound' trust_mode='1' />
+</cms:field>
+```
+
+I am sure you'll recognize the type `bound` `<cms:input>` in the code above. Anyway, point is that by using a tag-pair we can specify any custom markup for the field. This could be helpful in many cases e.g.:
+
+- **a**. we can augment the type `bound` `<cms:input>` by adding custom elements around it
+
+- **b**. Please note that the enclosed content is dynamic and is actually executed in the context of the admin screen. We can use this, e.g. to make a type `message` editable regions contents dynamic (this required the use of snippets in previous Couch versions). So suppose we have defined a type `message` region named `my_message`. Placing the following within the same template's `<cms:config_form_view>` block will make that region show dynamic contents in the admin-panel:
+
+```php
+<cms:field 'my_message' >
+    <cms:repeat '3' startcount='1'>
+        <h<cms:show k_count />>Hello!</h<cms:show k_count />>
+    </cms:repeat>
+</cms:field>
+```
+
+<Image src={theming18} alt="Admin panel list view with repeated greeting" />
+> Admin panel list view with repeated greeting
+
+- **c**. an advanced use of this ability to put custom markup in fields would be to inject fields into the form that were never defined for the template. Please take a look at the following (somewhat advanced) code:
+
+```php
+<cms:config_form_view>
+
+    <cms:persist
+        k_publish_date="<cms:if frm_my_publish_status='0'>0000-00-00 00:00:00<cms:else/><cms:show frm_my_publish_date /></cms:if>"
+        _auto_title='1'
+    />
+
+    <cms:field 'my_publish_status'>
+        <cms:input type='radio'
+              name=k_field_input_name
+              opt_selected="<cms:if k_page_date='0000-00-00 00:00:00' >0<cms:else />1</cms:if>"
+              opt_values='Unpublished=0 || Published=1'
+            />
+    </cms:field>
+
+    <cms:field 'my_publish_date' no_wrapper='1'>
+        <div id="my-date-dropdown" style="margin-top: 6px; <cms:if k_page_date='0000-00-00 00:00:00' >visibility:hidden;</cms:if>">
+            <cms:input
+                name=k_field_input_name
+                type='datetime'
+                format='mdy'
+                fields_separator=','
+                default_time="<cms:if k_cur_form_mode='edit' && k_page_date!='0000-00-00 00:00:00'><cms:show k_page_date /><cms:else />@current</cms:if>"
+                required='1'
+            />
+        </div>
+    </cms:field>
+
+    <cms:script>
+        $( function(){
+            $('#my_publish_status0').on('click', function(e){
+                $('#my-date-dropdown').css('visibility', 'hidden')
+            });
+            $('#my_publish_status1').on('click', function(e){
+                $('#my-date-dropdown').css('visibility', 'visible')
+            });
+        });
+    </cms:script>
+
+</cms:config_form_view>
+```
+
+The code above will result in the following being shown on the main screen.
+
+<Image src={theming19} alt="Admin panel list view with publish date moved to main screen" />
+> Admin panel list view with publish date moved to main screen
+
+Please notice that the new fields that you see on the screen are not defined anywhere as editable regions. Changes made to them, however, will be mirrored by the actual publish_date field in the advanced settings dropdown (try it).
+
+A little explanation about the code:
+
+The `<cms:field 'my_publish_status'>` and `<cms:field 'my_publish_date'>` fields, as already mentioned, are not defined as `<cms:editable>` in the template. We are simply using them to inject out custom markup as fields. We use the `no_wrapper` with the second field to make Couch skip outputting the label etc. for it as we'll be outputting that ourselves.
+
+I am sure you'll recognize the `<cms:script>` tag from our previous discussion. We use it to inject some JS that handles how the two fields interact with each other.
+
+Finally the new tag `<cms:persist>` - as you can see, the two fields above are injecting plain `<cms:input>`s into the form (i.e. not data-bound). So, although those inputs will accept data, throw validation errors etc. when it comes to saving the page, the databound form containing these inputs wouldn't know what to do with them. If you have worked with databound forms, you'll recall that we can explicitly set values of `<cms:db_persist_form>` tag in `k_success` condition as follows:
+
+```php
+<cms:form>
+    <cms:if k_success>
+        <cms:db_persist_form k_page_name="<cms:random_name />" k_publish_date="0000-00-00 00:00:00" />
+
+        // ... existing code ...
+    </cms:if>
+
+    // ... existing code ...
+</cms:form>
+```
+
+In our case, however, the databound form is in the background and is not directly available. The `<cms:persist>` tag we used in our code above actually reaches out to that background databound form and injects its own parameters into the form's `<cms:db_persist_form>` tag.
+
+So the following code we used above:
+
+```php
+<cms:persist
+    k_publish_date="<cms:if frm_my_publish_status='0'>0000-00-00 00:00:00<cms:else/><cms:show frm_my_publish_date /></cms:if>"
+    _auto_title="1"
+/>
+```
+
+would be exactly the same as if we had used the following in the databound form:
+
+```php
+<cms:form>
+    <cms:if k_success>
+        <cms:db_persist_form
+            k_publish_date="<cms:if frm_my_publish_status='0'>0000-00-00 00:00:00<cms:else/><cms:show frm_my_publish_date /></cms:if>"
+            _auto_title="1"
+        />
+
+        // ... existing code ...
+    </cms:if>
+
+    // ... existing code ...
+</cms:form>
+```
+
+I think you can see that we are simply pushing the submitted values of our non-bound fields into the page being saved.
+
+Realistically speaking, the example above is not of much practical utility because if we only wished to display the publish date field on the main screen, we could have simply used the following and the publish_date would move from the advanced settings dropdown onto the main screen (use `order` to tweak its position):
+
+```php
+<cms:field 'k_publish_date' group='_custom_fields_'  />
+```
+
+The real utility of the example is in illustrating the power that we now have to tweak the form screen. I am sure there will be situations where you'd adapt the code above to do something we could never do in Couch before.
+
+:::caution[**A Caveat**]
+As you can see, we can now inject dynamic Couch code with wanton abandon within the admin panel. Sooner or later, it is bound to happen that you manage to introduce some malformed code that results in parsing error. When that happens, do not panic. All the code is controlled from the frontend template so simply temporarily remove whatever custom code you defined there and visit the template as super-admin. That should give you a blank slate on the admin side to begin experimentation again.
+:::

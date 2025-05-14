@@ -19,7 +19,7 @@ Sometimes it is required to conceal the real location of a file while still allo
 
 A similar requirement is as follows - You have a eBay affiliate website which lists several eBay products. A visitor upon clicking a product link is redirected to the eBay site. However, you do not wish the links displayed on your website to reveal to anyone, prima-facie, that they'll lead to eBay.
 
-You can use Couch's [**cloak_url**](../../tags-reference/cloak_url/) tag to do all the above very easily.
+You can use Couch's [**cloak_url**](../../tags-reference/core/cloak_url/) tag to do all the above very easily.
 
 :::note
 This feature was added to augment the [**PayPal**](../paypal/) functionality by providing secure and controlled access to the downloadable digital products being sold. However it can be used with any other links that have similar needs.
@@ -27,7 +27,7 @@ This feature was added to augment the [**PayPal**](../paypal/) functionality by 
 
 ## Cloaking Links to Webpages
 
-To get a gist of [**cloak_url**](../../tags-reference/cloak_url/), suppose following is a link in your template:
+To get a gist of [**cloak_url**](../../tags-reference/core/cloak_url/), suppose following is a link in your template:
 
 ```html
 <a href="https://www.google.com">Visit Site</a>
@@ -47,10 +47,10 @@ In the snippet above we set the `redirect` parameter to `1` because the link bei
 
 ## Cloaking Links of Files
 
-Let us now see how to make [**cloak_url**](../../tags-reference/cloak_url/) work with physical files.
+Let us now see how to make [**cloak_url**](../../tags-reference/core/cloak_url/) work with physical files.
 
 :::danger[Important]
-While the use of [**cloak_url**](../../tags-reference/cloak_url/) with files will hide their real locations by obfuscating the links, you'll also want to ensure that the files are not directly accessible to anyone who knows their real locations (e.g. by intelligent guesswork). One way of doing this would be by using the `.htaccess` file.
+While the use of [**cloak_url**](../../tags-reference/core/cloak_url/) with files will hide their real locations by obfuscating the links, you'll also want to ensure that the files are not directly accessible to anyone who knows their real locations (e.g. by intelligent guesswork). One way of doing this would be by using the `.htaccess` file.
 
 Create a file named `.htaccess`, put the following lines into it and place it within the folder that will house the protected files:
 
@@ -81,7 +81,7 @@ It is always a good idea to use `<cms:show k_admin_link/>` to output the full UR
 
 ## Forcing Download
 
-If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location. This is because [**cloak_url**](../../tags-reference/cloak_url/) tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.
+If the file cloaked above was a zip file, the browser would have displayed the familiar dialog-box prompting for the download location. This is because [**cloak_url**](../../tags-reference/core/cloak_url/) tries to figure out the mime type of the linked file and accordingly asks the browser to either display the file directly or prompt for download.
 
 If you'd rather have the download box shown for all types of files, set the `force_download` parameter to `1`. Thus the following link will always force the user to download the image file:
 
@@ -112,7 +112,7 @@ Where **86400** is, of course, the number of seconds in 24 hours (24 * 60 * 60).
 
 ## Allowing Only Registered Users to Access Links
 
-If you have gone through the [**Users and Access Control**](../users) section, you'll recall that Couch allots every visitor a numeric value denoting his access level. This depends on the group the user belongs to - thus an *Administrator* will have an access level of `7` while an *Authenticated User (Special)* will have a value of `4`. Users not logged-in have an access level of `0`.
+If you have gone through the [**Users and Access Control**](../users/) section, you'll recall that Couch allots every visitor a numeric value denoting his access level. This depends on the group the user belongs to - thus an *Administrator* will have an access level of `7` while an *Authenticated User (Special)* will have a value of `4`. Users not logged-in have an access level of `0`.
 
 Links can be configured to be accessible by only users of at least a particular level by setting the `access_level` parameter:
 

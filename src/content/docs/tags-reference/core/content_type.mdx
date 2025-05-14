@@ -1,0 +1,48 @@
+---
+title: content_type
+category: tag
+description: "The content_type tag can be used to make the web server send back the contents with the desired Content-Type in the HTTP header."
+keywords:
+    - content_type
+    - CouchCMS
+    - Couch
+    - tags
+    - PHP
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `content_type` tag can be used to make the web server send back the contents with the desired Content-Type in the HTTP header. By default every web page is send back as `text/html`.
+
+## Basic Usage
+
+As an example, the RSS feed requires its content type to be set as `text/xml` for the browsers to properly recognize the feed. The following snippet does the job:
+
+```php title="Setting XML Content Type"
+<cms:content_type 'text/xml' />
+```
+
+Please see [**Core Concepts - RSS Feeds**](../../../concepts/rss-feeds/) for an example of the usage of this tag.
+
+
+## Parameters
+
+This tag accepts a single parameter:
+
+- `value`
+
+
+### `value`
+
+The desired content type. Common examples include:
+- `text/xml`
+- `text/plain`
+- `text/css`
+- `image/gif`
+- `application/pdf`
+- `application/zip`
+
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.

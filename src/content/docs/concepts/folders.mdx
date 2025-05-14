@@ -37,7 +37,7 @@ As an example, suppose for a clonable template named `news.php`, we require the 
     - Entertainment&nbsp;News/ (sub-folder)
 </FileTree>
 
-For creating folders in Couch we use the [**folder**](../../tags-reference/folder/) tag. Hierarchy can be created by nesting one [**folder**](../../tags-reference/folder/) tag (the child) within another (the parent). To create the folder structure mentioned above, place the following snippet anywhere within the `news.php` template, and visit `news.php` in your browser while being logged-on as super-admin:
+For creating folders in Couch we use the [**folder**](../../tags-reference/core/folder/) tag. Hierarchy can be created by nesting one [**folder**](../../tags-reference/core/folder/) tag (the child) within another (the parent). To create the folder structure mentioned above, place the following snippet anywhere within the `news.php` template, and visit `news.php` in your browser while being logged-on as super-admin:
 
 ```php title="news.php"
 <cms:folder name="world" title="World News">
@@ -58,7 +58,7 @@ For creating folders in Couch we use the [**folder**](../../tags-reference/folde
 ```
 
 :::note[Best Practice]
-These tags can be placed anywhere as they have no output of their own. However it is a good practice to define all the folders of a template (along with all the editable regions) within the [**template**](../../tags-reference/template/) tag placed somewhere at the top of the template.
+These tags can be placed anywhere as they have no output of their own. However it is a good practice to define all the folders of a template (along with all the editable regions) within the [**template**](../../tags-reference/core/template/) tag placed somewhere at the top of the template.
 :::
 
 :::tip[Dynamic Folders]
@@ -112,10 +112,10 @@ Couch handles this situation automatically behind the scenes. You can freely cha
 
 We have seen how folders are defined in Couch. There are times when your code needs to list the folders defined for a template. This could be to create a menu or breadcrumbs or a sitemap or simply a listing of folders that allows visitors to directly access pages placed within the folders (in the so-called _folder-view_).
 
-The [**folders**](../../tags-reference/folders/) tag is used to get a list of all the folders in a template.
+The [**folders**](../../tags-reference/core/folders/) tag is used to get a list of all the folders in a template.
 
 :::tip[Tag Names]
-Notice the "s" suffixed to the tag. The [**folder**](../../tags-reference/folder/) tag creates folders while the [**folders**](../../tags-reference/folders/) tag lists folders.
+Notice the "s" suffixed to the tag. The [**folder**](../../tags-reference/core/folder/) tag creates folders while the [**folders**](../../tags-reference/core/folders/) tag lists folders.
 :::
 
 To illustrate the use of this tag we'll continue with the folder hierarchy created for `news.php` above.
@@ -142,7 +142,7 @@ United States News
 World News
 ```
 
-Since the [**folders**](../../tags-reference/folders/) tag was provided with no information about which template's folders it should enumerate, it by default did so for the template it was called from, i.e. `news.php`. However it can be made to enumerate folders of any template by setting its `masterpage` parameter to the name of that template. Thus the following will also result in the same output as shown above:
+Since the [**folders**](../../tags-reference/core/folders/) tag was provided with no information about which template's folders it should enumerate, it by default did so for the template it was called from, i.e. `news.php`. However it can be made to enumerate folders of any template by setting its `masterpage` parameter to the name of that template. Thus the following will also result in the same output as shown above:
 
 ```php title="Template-specific Folder Listing"
 <cms:folders masterpage='news.php'>
@@ -161,7 +161,7 @@ The `k_folder_title` parameter is only one of the variables made available by th
 
 In the snippet given above, each folder will be hyper-linked to its _folder-view_ where you can display a list of all the pages that reside in this folder. See: [**Listing Pages**](../listing-pages/)
 
-For a complete list of all the variables that get set by this tag please see the [**reference**](../../tags-reference/folders/#parameters) or use Couch tags [**dump**](../../tags-reference/dump/) or [**dump_all**](../../tags-reference/dump_all/) within the [**folders**](../../tags-reference/folders/) tag.
+For a complete list of all the variables that get set by this tag please see the [**reference**](../../tags-reference/core/folders/#parameters) or use Couch tags [**dump**](../../tags-reference/core/dump/) or [**dump_all**](../../tags-reference/core/dump_all/) within the [**folders**](../../tags-reference/core/folders/) tag.
 :::
 
 Notice how the folders have simply been listed in the ascending alphabetical order of their names. Their hierarchical positions have not been preserved. To list the folders in their hierarchical order, set the `hierarchical` parameter to `1`. Thus:
@@ -190,7 +190,7 @@ Ohio News [3]
 
 We have also printed out the "level" of the folders in the hierarchy.
 
-You can control what gets enumerated by the [**folders**](../../tags-reference/folders/) tag by setting its various [**parameters**](../../tags-reference/folders/#parameters).
+You can control what gets enumerated by the [**folders**](../../tags-reference/core/folders/) tag by setting its various [**parameters**](../../tags-reference/core/folders/#parameters).
 
 To enumerate the hierarchy tree only up to a certain level, set the `depth` parameter to the number of levels that should be traversed. Thus the following snippet will enumerate only one level of the hierarchy:
 
@@ -299,9 +299,9 @@ If the following is an unordered list that has to be produced, notice how the ne
 </ul>
 ```
 
-The [**folders**](../../tags-reference/folders/) tag makes it easy for you to create lists like above. Please notice in the HTML code above how a `<ul>` marks the beginning of a new nested level and how a `<li>` marks the beginning of a new element (folder in our case).
+The [**folders**](../../tags-reference/core/folders/) tag makes it easy for you to create lists like above. Please notice in the HTML code above how a `<ul>` marks the beginning of a new nested level and how a `<li>` marks the beginning of a new element (folder in our case).
 
-Setting the `extended_info` parameter to `1` will make the [**folders**](../../tags-reference/folders/) tag provide extra information about every change in level as well as in current element. Our snippet simply has to respond to the reported changes. Thus the following snippet can be used to create an unordered HTML list out of a folder hierarchy:
+Setting the `extended_info` parameter to `1` will make the [**folders**](../../tags-reference/core/folders/) tag provide extra information about every change in level as well as in current element. Our snippet simply has to respond to the reported changes. Thus the following snippet can be used to create an unordered HTML list out of a folder hierarchy:
 
 ```php title="Dynamic Menu Creation"
 <cms:folders masterpage='news.php' childof='world' hierarchical='1' extended_info='1'>
@@ -314,21 +314,21 @@ Setting the `extended_info` parameter to `1` will make the [**folders**](../../t
 </cms:folders>
 ```
 
-With `extended_info` set, the [**folders**](../../tags-reference/folders/) tag walks through the folder tree and sends back information about its current position in the hierarchy (by setting different variables). Simply outputting the HTML tag relevant to the current state will create a perfect list.
+With `extended_info` set, the [**folders**](../../tags-reference/core/folders/) tag walks through the folder tree and sends back information about its current position in the hierarchy (by setting different variables). Simply outputting the HTML tag relevant to the current state will create a perfect list.
 
 :::tip[Quick Lists]
-Incidentally, if a simple list is all that is needed there is a much simpler option than the one above - the [**listfolders**](../../tags-reference/listfolders/) tag:
+Incidentally, if a simple list is all that is needed there is a much simpler option than the one above - the [**listfolders**](../../tags-reference/core/listfolders/) tag:
 
 ```php title="Simple List Creation"
 <cms:listfolders masterpage='news.php' childof='world' hierarchical='1'/>
 ```
 
 The snippet above will produce a similar list.
-The [**listfolders**](../../tags-reference/listfolders/) tag accepts the same parameters as [**folders**](../../tags-reference/folders/) and is a quick way to get a generic list. The [**folders**](../../tags-reference/folders/) tag, however, gives you absolute control over what needs to be output.
+The [**listfolders**](../../tags-reference/core/listfolders/) tag accepts the same parameters as [**folders**](../../tags-reference/core/folders/) and is a quick way to get a generic list. The [**folders**](../../tags-reference/core/folders/) tag, however, gives you absolute control over what needs to be output.
 :::
 
 :::note[Show Count]
-The [**listfolders**](../../tags-reference/listfolders/) takes one additional parameter - `show_count`. Setting this to `1` will make it display the number of pages contained within the folders after the folder name.
+The [**listfolders**](../../tags-reference/core/listfolders/) takes one additional parameter - `show_count`. Setting this to `1` will make it display the number of pages contained within the folders after the folder name.
 :::
 
 ### Parents and Children
@@ -359,11 +359,11 @@ The following snippet adds a CSS class named "selected" to all the LI elements t
 </cms:folders>
 ```
 
-Notice how we first set the variable `current_folder` to the folder of the current page or the folder being viewed (variable `k_folder_name` gets set only in _folder-view_ while `k_page_foldername` gets set only in _page-view_ if the page resides in a folder). Rest of the snippet is a modified form of the standard [**folders**](../../tags-reference/folders/) tag code using `extended_info`.
+Notice how we first set the variable `current_folder` to the folder of the current page or the folder being viewed (variable `k_folder_name` gets set only in _folder-view_ while `k_page_foldername` gets set only in _page-view_ if the page resides in a folder). Rest of the snippet is a modified form of the standard [**folders**](../../tags-reference/core/folders/) tag code using `extended_info`.
 
-When `k_element_start` variable is found set, we output the enumerated folder's name as usual. The only thing new is that we also find out if the folder (in `k_folder_name` variable) is one of the ancestors of the "current_folder" we saved above by using the [**is_ancestor**](../../tags-reference/is_ancestor/) tag. If it is, we simply set a class of "selected" to the `<li>` and `<span>` elements being output.
+When `k_element_start` variable is found set, we output the enumerated folder's name as usual. The only thing new is that we also find out if the folder (in `k_folder_name` variable) is one of the ancestors of the "current_folder" we saved above by using the [**is_ancestor**](../../tags-reference/core/is_ancestor/) tag. If it is, we simply set a class of "selected" to the `<li>` and `<span>` elements being output.
 
-To list only the ancestors of a folder in the hierarchy, [**parentfolders**](../../tags-reference/parentfolders/) tag can be used. It lists all the parents of a folder in sequence.
+To list only the ancestors of a folder in the hierarchy, [**parentfolders**](../../tags-reference/core/parentfolders/) tag can be used. It lists all the parents of a folder in sequence.
 
 ```php title="Parent Folders Example"
 <cms:parentfolders folder='china' >
@@ -383,7 +383,7 @@ Breadcrumbs is a common accessibility pattern used in web design where the folde
 
 Showing the folder hierarchy makes sense only when the template is in _folder view_ or _page view_ (i.e. when either the contents of a folder are displayed or a page itself is displayed).
 
-The [**breadcrumbs**](../../tags-reference/breadcrumbs/) tag can be used to quickly create a breadcrumb:
+The [**breadcrumbs**](../../tags-reference/core/breadcrumbs/) tag can be used to quickly create a breadcrumb:
 
 ```php title="Basic Breadcrumbs"
 <cms:if k_is_page || k_is_folder >
@@ -399,7 +399,7 @@ News > World News > Asian News > China News
 
 The `include_template` parameter adds the current template ("News" in this case) as the first element.
 
-The same output can be obtained by using the [**parentfolders**](../../tags-reference/parentfolders/) tag mentioned above:
+The same output can be obtained by using the [**parentfolders**](../../tags-reference/core/parentfolders/) tag mentioned above:
 
 ```php title="Custom Breadcrumbs"
 <cms:if k_is_page || k_is_folder >
@@ -414,4 +414,4 @@ The same output can be obtained by using the [**parentfolders**](../../tags-refe
 </cms:if>
 ```
 
-Using [**parentfolders**](../../tags-reference/parentfolders/) gives you more control over the HTML generated for the breadcrumb. In the snippet above, we first check the current view. If it's a _folder-view_, the `k_folder_name` variable is set to the folder being listed. If it's a _page-view_, the `k_page_foldername` variable is set to the folder (if any) the current page belongs to [**Views**](../views/). Once the folder is identified, it is passed to the [**parentfolders**](../../tags-reference/parentfolders/) tag to get a list of its ancestors.
+Using [**parentfolders**](../../tags-reference/core/parentfolders/) gives you more control over the HTML generated for the breadcrumb. In the snippet above, we first check the current view. If it's a _folder-view_, the `k_folder_name` variable is set to the folder being listed. If it's a _page-view_, the `k_page_foldername` variable is set to the folder (if any) the current page belongs to [**Views**](../views/). Once the folder is identified, it is passed to the [**parentfolders**](../../tags-reference/core/parentfolders/) tag to get a list of its ancestors.

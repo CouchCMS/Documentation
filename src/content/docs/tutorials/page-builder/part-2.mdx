@@ -19,6 +19,10 @@ sidebar:
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import pageBuilder10 from '../../../../assets/img/contents/page-builder-10.png';
+import pageBuilder11 from '../../../../assets/img/contents/page-builder-11.png';
+import pageBuilder12 from '../../../../assets/img/contents/page-builder-12.png';
 
 This is the part where we put the source blocks we created above into use.
 
@@ -49,15 +53,15 @@ Visit the template as super-admin to register it.
 
 Coming back to the admin-panel, you should see something like this:
 
-![page-builder-10.png](../../../../assets/img/contents/page-builder-10.png)
+<Image src={pageBuilder10} alt="Page Builder 10" />
 
 Clicking 'Covers' should show a listing of all blocks we created in 'covers' template:
 
-![page-builder-11.png](../../../../assets/img/contents/page-builder-11.png)
+<Image src={pageBuilder11} alt="Page Builder 11" />
 
 while clicking 'About' show a listing of all blocks we created in the 'about' template:
 
-![page-builder-12.png](../../../../assets/img/contents/page-builder-12.png)
+<Image src={pageBuilder12} alt="Page Builder 12" />
 
 The user can now mix-n-match all blocks of her choice and edit the contents to create unique pages.
 

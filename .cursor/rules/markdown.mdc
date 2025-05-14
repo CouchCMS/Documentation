@@ -19,18 +19,18 @@ Every document MUST begin with frontmatter:
 title: Document Title
 description: "A clear, concise description"
 keywords:
-  - keyword1
-  - keyword2
-  - keyword3
+    - keyword1
+    - keyword2
+    - keyword3
 category: tag
 subCategory: editable
 author: First Last
 lastUpdated: YYYY-MM-DD
 sidebar:
-  order: N
-  badge:
-    text: New|Beta|Deprecated
-    variant: tip|caution|danger
+    order: N
+    badge:
+        text: New|Beta|Deprecated
+        variant: tip|caution|danger
 ---
 ```
 
@@ -63,17 +63,17 @@ The end of each document should follow this structure:
 
 1. Three underscores on their own line to create a horizontal rule:
 
-   ```markdown title="Horizontal Rule"
-   ---
-   ```
+    ```markdown title="Horizontal Rule"
+    ---
+    ```
 
 2. Next chapter link (if applicable):
-   - Use bold for the chapter title
-   - Include in square brackets
-   - Example:
-   ```markdown title="Next Chapter Link"
-   [Next Chapter: **Starting Simple - The About Us Page**](../about-us/)
-   ```
+    - Use bold for the chapter title
+    - Include in square brackets
+    - Example:
+    ```markdown title="Next Chapter Link"
+    [Next Chapter: **Starting Simple - The About Us Page**](../about-us/)
+    ```
 
 Example of a complete document ending:
 
@@ -93,66 +93,66 @@ Use consistent formatting:
 
 - Product Name:
 
-  - Use "Couch" in regular text and documentation
-  - Only use "CouchCMS" in titles, formal references, or when specifically referring to the full product name
-  - Never use bold for the product name unless in headers or warnings
-  - Examples:
-    - Regular text: "Couch provides many features"
-    - Formal: "Welcome to CouchCMS Documentation"
+    - Use "Couch" in regular text and documentation
+    - Only use "CouchCMS" in titles, formal references, or when specifically referring to the full product name
+    - Never use bold for the product name unless in headers or warnings
+    - Examples:
+        - Regular text: "Couch provides many features"
+        - Formal: "Welcome to CouchCMS Documentation"
 
 - UI Elements and Page Names:
 
-  - Use bold (\*\*) for any UI element or page name that users will see in the interface
-  - Use Title Case without hyphens
-  - Examples:
-    - Pages: The **About Us** page contains...
-    - Sections: Navigate to the **Portfolio** section
-    - UI elements: Click the **Save Changes** button
+    - Use bold (\*\*) for any UI element or page name that users will see in the interface
+    - Use Title Case without hyphens
+    - Examples:
+        - Pages: The **About Us** page contains...
+        - Sections: Navigate to the **Portfolio** section
+        - UI elements: Click the **Save Changes** button
 
 - Technical Terms:
 
-  - Module names: `mod_rewrite`
-  - File names: `.htaccess`, `config.php`
-  - Configuration constants: `K_PRETTY_URLS`
-  - Function names: `gen_htaccess.php`
-  - Variables: `my_variable`
-  - Parameters: `type`, `name`
-  - File paths: `views/template.php` (use forward slashes)
-  - Code snippets: `echo $value`
-  - HTML tags: `<div>`
-  - Technical terms: `dropdown`
-  - Boolean values: `true`, `false`
-  - Filenames: `file.php`
+    - Module names: `mod_rewrite`
+    - File names: `.htaccess`, `config.php`
+    - Configuration constants: `K_PRETTY_URLS`
+    - Function names: `gen_htaccess.php`
+    - Variables: `my_variable`
+    - Parameters: `type`, `name`
+    - File paths: `views/template.php` (use forward slashes)
+    - Code snippets: `echo $value`
+    - HTML tags: `<div>`
+    - Technical terms: `dropdown`
+    - Boolean values: `true`, `false`
+    - Filenames: `file.php`
 
 - Tag References:
 
-  - Use bold and lowercase: [**editable**](../../tags-reference/editable/)
-  - Never capitalize tag names in references
-  - Include the link to reference documentation
-  - Example: [**show**](../../tags-reference/show/), [**template**](../../tags-reference/template/)
+    - Use bold and lowercase: [**editable**](../../tags-reference/core/editable/)
+    - Never capitalize tag names in references
+    - Include the link to reference documentation
+    - Example: [**show**](../../tags-reference/core/show/), [**template**](../../tags-reference/core/template/)
 
 - Documentation References:
 
-  - Use bold and Title Case for all documentation types except tags
-  - Examples:
-    - Concepts: [**Variables Available in Views**](../../concepts/variables-in-views/)
-    - Tutorials: [**Getting Started with Templates**](../../tutorials/templates/)
-    - Guides: [**Advanced Templating Guide**](../../guides/advanced-templating/)
-    - API: [**Template API**](../../api/template/)
-  - Only tags-reference uses lowercase: [**editable**](../../tags-reference/editable/)
-  - Include the link to documentation
+    - Use bold and Title Case for all documentation types except tags
+    - Examples:
+        - Concepts: [**Variables Available in Views**](../../concepts/variables-in-views/)
+        - Tutorials: [**Getting Started with Templates**](../../tutorials/templates/)
+        - Guides: [**Advanced Templating Guide**](../../guides/advanced-templating/)
+        - API: [**Template API**](../../api/template/)
+    - Only tags-reference uses lowercase: [**editable**](../../tags-reference/core/editable/)
+    - Include the link to documentation
 
 - Underscores (\_) for italic text:
 
-  - Output values: _Rental_
-  - Emphasis: _important_
-  - Quoted values: The value _true_
+    - Output values: _Rental_
+    - Emphasis: _important_
+    - Quoted values: The value _true_
 
 - Double asterisks (\*\*) for bold text:
 
-  - Section headers
-  - Critical warnings
-  - Important notes
+    - Section headers
+    - Critical warnings
+    - Important notes
 
 - Never mix styles (e.g., don't use both \* and ` for same term)
 
@@ -161,12 +161,12 @@ Use consistent formatting:
 Use double quotes (") consistently in Markdown:
 
 - Use double quotes (") for:
-  - All Markdown attributes: `php title="index.php"`
-  - Link titles: [Link](url "Title")
-  - Frontmatter strings with special chars:
-    `description: "A: clear, description!"`
-  - Code block titles: `php title="Example"`
-  - Admonition titles: :::note[Info] "Additional context" :::
+    - All Markdown attributes: `php title="index.php"`
+    - Link titles: [Link](url "Title")
+    - Frontmatter strings with special chars:
+      `description: "A: clear, description!"`
+    - Code block titles: `php title="Example"`
+    - Admonition titles: :::note[Info] "Additional context" :::
 
 Exception: Only use single quotes (') within code examples for:
 
@@ -200,18 +200,18 @@ To enforce this style, use this Prettier configuration:
 
 ```json title=".prettierrc"
 {
-  "singleQuote": false,
-  "proseWrap": "preserve",
-  "embeddedLanguageFormatting": "auto",
-  "overrides": [
-    {
-      "files": ["*.md", "*.mdx"],
-      "options": {
-        "singleQuote": false,
-        "printWidth": 120
-      }
-    }
-  ]
+    "singleQuote": false,
+    "proseWrap": "preserve",
+    "embeddedLanguageFormatting": "auto",
+    "overrides": [
+        {
+            "files": ["*.md", "*.mdx"],
+            "options": {
+                "singleQuote": false,
+                "printWidth": 120
+            }
+        }
+    ]
 }
 ```
 
@@ -228,52 +228,52 @@ This ensures Prettier will:
 - Include complete, working examples
 - Add descriptive titles using these patterns:
 
-  For configuration files:
+    For configuration files:
 
-  ```php title="config.php"
-  // Configuration example
-  ```
+    ```php title="config.php"
+    // Configuration example
+    ```
 
-  For URLs:
+    For URLs:
 
-  ```txt title="Default URL"
-  https://example.com/page.php?id=1
-  ```
+    ```txt title="Default URL"
+    https://example.com/page.php?id=1
+    ```
 
-  ```txt title="Pretty URL"
-  https://example.com/page/title/
-  ```
+    ```txt title="Pretty URL"
+    https://example.com/page/title/
+    ```
 
-  For code changes:
+    For code changes:
 
-  ```diff title="Code Changes"
-  - old code
-  + new code
-  ```
+    ```diff title="Code Changes"
+    - old code
+    + new code
+    ```
 
 - CRITICAL: Never modify code block titles that contain filenames:
 
-  - If title shows a filename like `php title="blog.php"`, keep it exactly as is
-  - Only add descriptive titles for code blocks without filenames
-  - Preserve the exact filename, extension and quotes in the title
-  - Examples of titles to preserve:
-    - `php title="config.php"`
-    - `html title="index.html"`
-    - `js title="script.js"`
-    - `css title="style.css"`
+    - If title shows a filename like `php title="blog.php"`, keep it exactly as is
+    - Only add descriptive titles for code blocks without filenames
+    - Preserve the exact filename, extension and quotes in the title
+    - Examples of titles to preserve:
+        - `php title="config.php"`
+        - `html title="index.html"`
+        - `js title="script.js"`
+        - `css title="style.css"`
 
 - CRITICAL: Never modify diff code blocks:
 
-  - Always preserve the exact content of diff blocks
-  - Never remove or change the '+' and '-' markers
-  - Keep the exact indentation and spacing
-  - Preserve all line breaks
-  - Example of a diff block to preserve exactly:
-    ```diff title="example.php"
-    - old code
-    + new code
-      unchanged code
-    ```
+    - Always preserve the exact content of diff blocks
+    - Never remove or change the '+' and '-' markers
+    - Keep the exact indentation and spacing
+    - Preserve all line breaks
+    - Example of a diff block to preserve exactly:
+        ```diff title="example.php"
+        - old code
+        + new code
+          unchanged code
+        ```
 
 - Use proper syntax highlighting
 - Add comments for complex code
@@ -281,41 +281,41 @@ This ensures Prettier will:
 
 - CRITICAL: Respect and preserve original content:
 
-  - Never remove or modify ANY existing content unless ABSOLUTELY necessary
-  - Keep all original explanations, examples and context intact
-  - Preserve the author's (Kamran Kashif) writing style and voice
-  - If changes are needed, make minimal adjustments while keeping as much original text as possible
-  - When in doubt, keep the original content
+    - Never remove or modify ANY existing content unless ABSOLUTELY necessary
+    - Keep all original explanations, examples and context intact
+    - Preserve the author's (Kamran Kashif) writing style and voice
+    - If changes are needed, make minimal adjustments while keeping as much original text as possible
+    - When in doubt, keep the original content
 
 - IMPORTANT: Never modify any code blocks unless explicitly instructed to do so. This includes:
 
-  - Preserving all existing code comments (e.g. `<!-- Page view - display current page here -->`)
-  - Maintaining exact spacing and indentation
-  - Keeping all line breaks
-  - Preserving all syntax and formatting
-  - Not removing or changing any code unless specifically requested
+    - Preserving all existing code comments (e.g. `<!-- Page view - display current page here -->`)
+    - Maintaining exact spacing and indentation
+    - Keeping all line breaks
+    - Preserving all syntax and formatting
+    - Not removing or changing any code unless specifically requested
 
 - IMPORTANT: Never remove lines with '+' or '-' at the beginning of lines in diff code blocks
 - Always maintain the exact formatting of diff blocks to preserve the meaning of the changes being shown
 - For partial code, use language-appropriate markers:
 
-  For PHP:
+    For PHP:
 
-  ```php
-  // ... existing code ...
-  ```
+    ```php
+    // ... existing code ...
+    ```
 
-  For HTML:
+    For HTML:
 
-  ```html
-  <!-- ... existing code ... -->
-  ```
+    ```html
+    <!-- ... existing code ... -->
+    ```
 
-  For CSS:
+    For CSS:
 
-  ```css
-  /* ... existing code ... */
-  ```
+    ```css
+    /* ... existing code ... */
+    ```
 
 ### 2.4. Version Documentation
 
@@ -392,97 +392,95 @@ The FileTree component has specific formatting rules:
 - Do NOT use backticks for files and directories
 - Use plain text without any formatting
 - Example:
-  ```markdown title="FileTree Example"
-  <FileTree>
-  - couch/
-  - css/
-  - images/
-  - js/
-  - about.html
-  - blog.html
-  - index.php
-  </FileTree>
-  ```
+    ```markdown title="FileTree Example"
+    <FileTree>
+    - couch/
+    - css/
+    - images/
+    - js/
+    - about.html
+    - blog.html
+    - index.php
+    </FileTree>
+    ```
 
 ### 2.6. Media and Assets
 
-Requirements:
+**General requirements:**
 
-- Descriptive alt text explaining content/purpose
+- Alt text is required, descriptive, and functional
 - Max width: 1200px for screenshots, 300px for thumbnails
-- WebP format preferred
+- WebP preferred, PNG/JPG as fallback
 - Optimize for web
-- Avoid using images for text content
+- Do not use images for text content
 - Ensure sufficient resolution
-- Use meaningful filenames that describe content
-- Place images in appropriate directories:
-  - `/assets/img/contents/` for content images
-  - `/assets/img/ui/` for UI elements
-  - `/assets/img/diagrams/` for flowcharts and diagrams
+- Use meaningful filenames
+- Place images in the correct subdirectory:
+    - `/assets/img/contents/` for content images
+    - `/assets/img/ui/` for UI elements
+    - `/assets/img/diagrams/` for diagrams
 
-Format:
+**File format:**
 
 - Filename: `feature-action-context.webp`
-- Alt text: Brief description of image content
-- Caption: Detailed explanation if needed
+- Alt text: short description of the content
+- Caption: optional, explanation or context, placed directly below the image with `>`
 
-```markdown title="Image Examples"
-// Basic image with caption
-![Login Form](./login.webp)
+**Usage in `.mdx` files:**
 
-> Form showing validation error message
+- Always use the Astro `<Image />` component:
+    - Import the image at the top:
+        ```js
+        import img1 from "./img/example.png";
+        ```
+    - Import the component:
+        ```js
+        import { Image } from "astro:assets";
+        ```
+    - Use in the content:
+        ```mdx
+        <Image src={img1} alt="Description" />> Caption directly below the image
+        ```
+- Alt text is required.
+- Caption always directly below the image with a `>`.
 
-// Screenshot with detailed caption
-![Dashboard Overview](../../../assets/img/contents/dashboard-main.webp)
+**Usage in `.md` files:**
 
-> Main dashboard showing recent activity, user statistics and system status
+- Use classic markdown image syntax:
 
-// UI element
-![Save Button](../../../assets/img/ui/button-save.webp)
+    ```md
+    ![Alt text](./img/example.png)
 
-> Primary save button in hover state
+    > Caption directly below the image
+    ```
+
+- Alt text is required.
+- Caption always directly below the image with a `>`.
+
+**Example `.mdx`:**
+
+```mdx
+import { Image } from "astro:assets";
+import loginImg from "./img/login.png";
+
+<Image src={loginImg} alt="Login screen" />> Login screen of the application
 ```
 
-Guidelines:
+**Example `.md`:**
 
-1. **Alt Text**
+```md
+![Login screen](./img/login.png)
 
-   - Should be concise but descriptive
-   - Focus on function/purpose, not appearance
-   - Don't start with "Image of" or "Picture of"
-   - Include text content if shown in image
+> Login screen of the application
+```
 
-2. **Captions**
+**Note:**
 
-   - Place on new line after image
-   - Use blockquote syntax (>)
-   - Can be longer and more detailed than alt text
-   - Explain context or highlight important features
-   - Optional for decorative images
+- Never use markdown image syntax in `.mdx` files.
+- Caption must always be directly below the image, using a `>` blockquote.
+- See the directory example below for structure.
 
-3. **File Organization**
-
-   - Use consistent naming pattern
-   - Group related images in subdirectories
-   - Keep original files in separate directory
-   - Use relative paths from document location
-
-4. **Technical Requirements**
-
-   - Resolution: minimum 72dpi for web
-   - Format: WebP preferred, fallback to PNG/JPG if needed
-   - Size: optimize for web loading
-   - Dimensions: maintain aspect ratio
-   - Compression: use lossy for photos, lossless for UI
-
-5. **Accessibility**
-   - Always include alt text
-   - Use semantic captions
-   - Consider color contrast
-   - Avoid text in images where possible
-   - Provide transcripts for complex diagrams
-
-Example directory structure:
+**Directory structure:**
 
 ```
 assets/
@@ -497,8 +495,6 @@ assets/
       flowcharts/
       architecture/
 ```
-
-Note: Always place the caption on a new line after the image using a blockquote (>) prefix. This ensures the caption is properly displayed and accessible to screen readers.
 
 ### 2.7. Links and References
 
@@ -556,11 +552,11 @@ This ensures:
 
 - Use standard markdown table syntax
 - Align columns consistently:
-  ```markdown
-  | Header 1 | Header 2 | Header 3 |
-  | :------- | :------: | -------: |
-  | Left     |  Center  |    Right |
-  ```
+    ```markdown
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | Left     |  Center  |    Right |
+    ```
 - Use hyphen (-) for empty cells
 - Minimum 3 dashes for header separation
 - Always include header row
@@ -574,16 +570,16 @@ This ensures:
 - Use parallel structure
 - Example:
 
-  ```markdown
-  - Main item
-    - Sub item
-      - Sub-sub item
+    ```markdown
+    - Main item
+        - Sub item
+            - Sub-sub item
 
-  1. First step
-     - Sub point
-     - Another sub point
-  2. Second step
-  ```
+    1. First step
+        - Sub point
+        - Another sub point
+    2. Second step
+    ```
 
 ### 2.9. Admonitions and Callouts
 
@@ -611,10 +607,10 @@ Rules for admonitions:
 
 - Use descriptive titles that explain the content
 - Choose appropriate type based on content:
-  - note: Requirements, prerequisites, context
-  - tip: Best practices, recommendations
-  - caution: Limitations, version requirements
-  - danger: Critical warnings, breaking changes
+    - note: Requirements, prerequisites, context
+    - tip: Best practices, recommendations
+    - caution: Limitations, version requirements
+    - danger: Critical warnings, breaking changes
 - Keep content focused and concise
 - Don't nest admonitions
 - Use consistent formatting
@@ -649,11 +645,11 @@ Couch supports the use of Pretty URLs (aka search engine friendly - SEF URLs). T
 
 - Always use 4 spaces for indentation everywhere EXCEPT for code blocks
 - One blank line before and after:
-  - Headers
-  - Code blocks
-  - Lists
-  - Tables
-  - Admonitions
+    - Headers
+    - Code blocks
+    - Lists
+    - Tables
+    - Admonitions
 - Use 4 spaces for nested lists
 - Use 4 spaces for code blocks
 - Use 4 spaces for blockquotes
@@ -664,22 +660,22 @@ Couch supports the use of Pretty URLs (aka search engine friendly - SEF URLs). T
 
 - Use UTF-8 encoding
 - Escape special characters when needed:
-  - Backslash: `\\`
-  - Backtick: `` ` ``
-  - Asterisk: `\*`
+    - Backslash: `\\`
+    - Backtick: `` ` ``
+    - Asterisk: `\*`
 - Use HTML entities for:
-  - Copyright: &copy;
-  - Trademark: &trade;
-  - Registered: &reg;
+    - Copyright: &copy;
+    - Trademark: &trade;
+    - Registered: &reg;
 
 ### 3.4. Emoji Usage
 
 - Use emojis sparingly and only when they add value
 - Common acceptable uses:
-  - ✅ Success or completion
-  - ⚠️ Warning or caution
-  - ℹ️ Information or note
-  - 🚫 Error or prohibition
+    - ✅ Success or completion
+    - ⚠️ Warning or caution
+    - ℹ️ Information or note
+    - 🚫 Error or prohibition
 
 ## 4. Quality Standards
 
@@ -701,11 +697,11 @@ Couch supports the use of Pretty URLs (aka search engine friendly - SEF URLs). T
 3. Preserve attribute order in HTML
 4. Maintain original line breaks
 5. Use language-appropriate markers for partial code:
-   - PHP: `// ... existing code ...`
-   - HTML: `<!-- ... existing code ... -->`
-   - CSS: `/* ... existing code ... */`
-   - JavaScript: `// ... existing code ...`
-   - Python: `# ... existing code ...`
+    - PHP: `// ... existing code ...`
+    - HTML: `<!-- ... existing code ... -->`
+    - CSS: `/* ... existing code ... */`
+    - JavaScript: `// ... existing code ...`
+    - Python: `# ... existing code ...`
 
 ## 6. Common Corrections
 

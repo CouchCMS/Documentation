@@ -16,7 +16,7 @@ sidebar:
 
 import { Steps } from "@astrojs/starlight/components";
 
-With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the [**editable**](../../tags-reference/editable/) tag. You can use it to define areas within your HTML template that you wish to make editable.
+With the introduction to the tags over, let us now take a look at, arguably, the most important tag in Couch - the [**editable**](../../tags-reference/core/editable/) tag. You can use it to define areas within your HTML template that you wish to make editable.
 
 As an example, suppose the following is a chunk of HTML from a template named `property.php`:
 
@@ -30,7 +30,7 @@ As an example, suppose the following is a chunk of HTML from a template named `p
 </div>
 ```
 
-The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part themselves. To do so, simply enclose this part by an [**editable**](../../tags-reference/editable/) tag:
+The highlighted part is the description of some property. Suppose you wish to allow the user to edit this part themselves. To do so, simply enclose this part by an [**editable**](../../tags-reference/core/editable/) tag:
 
 ```php title="property.php"
 <div class="prop_desc">
@@ -46,7 +46,7 @@ The highlighted part is the description of some property. Suppose you wish to al
 </div>
 ```
 
-The [**editable**](../../tags-reference/editable/) tag accepts several parameters but only one is mandatory - `name`. It has to be unique within a template.
+The [**editable**](../../tags-reference/core/editable/) tag accepts several parameters but only one is mandatory - `name`. It has to be unique within a template.
 
 Now, while being logged in as the super-admin, visit the template in your browser.
 For example, if the template was `property.php`, visit `https://www.yoursite.com/property.php`
@@ -58,7 +58,7 @@ At the risk of repeating ourselves - for your changes to show up in the admin pa
 Now visit the admin panel and access `property.php` and you'll find that Couch has created a textarea for the editable region.
 
 :::tip[Default Text]
-If you enclose some text between the opening and closing [**editable**](../../tags-reference/editable/) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [**editable**](../../tags-reference/editable/) tag as a self closing tag:
+If you enclose some text between the opening and closing [**editable**](../../tags-reference/core/editable/) tags, this will cause Couch to display the text as default text within the editable region. Sometimes you do not wish have any default text displayed at all. For such cases, you can use the [**editable**](../../tags-reference/core/editable/) tag as a self closing tag:
 
 ```php title="Self-closing Tag Example"
 <cms:editable name='prop_desc' />
@@ -86,20 +86,20 @@ Will result in Couch now displaying a WYSIWYG editor instead of the plain textar
 
 The following are the different types of editable regions currently supported by Couch:
 
-- [**checkbox**](../../tags-reference/editable/checkbox/)
-- [**dropdown**](../../tags-reference/editable/dropdown/)
-- [**file**](../../tags-reference/editable/file/)
-- [**group**](../../tags-reference/editable/group/)
-- [**image**](../../tags-reference/editable/image/)
-- [**message**](../../tags-reference/editable/message/)
-- [**nicedit**](../../tags-reference/editable/nicedit/)
-- [**password**](../../tags-reference/editable/password/)
-- [**radio**](../../tags-reference/editable/radio/)
-- [**relation**](../../tags-reference/editable/relation/)
-- [**richtext**](../../tags-reference/editable/richtext/)
-- [**text**](../../tags-reference/editable/text/)
-- [**textarea**](../../tags-reference/editable/textarea/)
-- [**thumbnail**](../../tags-reference/editable/thumbnail/)
+- [**checkbox**](../../tags-reference/core/editable/checkbox/)
+- [**dropdown**](../../tags-reference/core/editable/dropdown/)
+- [**file**](../../tags-reference/core/editable/file/)
+- [**group**](../../tags-reference/core/editable/group/)
+- [**image**](../../tags-reference/core/editable/image/)
+- [**message**](../../tags-reference/core/editable/message/)
+- [**nicedit**](../../tags-reference/core/editable/nicedit/)
+- [**password**](../../tags-reference/core/editable/password/)
+- [**radio**](../../tags-reference/core/editable/radio/)
+- [**relation**](../../tags-reference/core/editable/relation/)
+- [**richtext**](../../tags-reference/core/editable/richtext/)
+- [**text**](../../tags-reference/core/editable/text/)
+- [**textarea**](../../tags-reference/core/editable/textarea/)
+- [**thumbnail**](../../tags-reference/core/editable/thumbnail/)
 
 You can define any number of editable regions in a template.
 
@@ -117,9 +117,9 @@ There are four ways the contents of an editable region defined within a template
 
     You might recall from our previous discussion about tags that, every tag after executing its function returns back it output (which could be a blank).
 
-    The [**editable**](../../tags-reference/editable/) tag, as its function, checks if the editable region has not already been created in the Admin Panel. If not, it creates one. After executing its function, the [**editable**](../../tags-reference/editable/) tag fetches back the contents of the editable region and returns it as its output.
+    The [**editable**](../../tags-reference/core/editable/) tag, as its function, checks if the editable region has not already been created in the Admin Panel. If not, it creates one. After executing its function, the [**editable**](../../tags-reference/core/editable/) tag fetches back the contents of the editable region and returns it as its output.
 
-    Thus you can see that in the resulting webpage, the [**editable**](../../tags-reference/editable/) tags are replaced by the current contents of the associated editable regions.
+    Thus you can see that in the resulting webpage, the [**editable**](../../tags-reference/core/editable/) tags are replaced by the current contents of the associated editable regions.
 
 2. **As Variables Automatically Set by Couch**
 
@@ -135,25 +135,25 @@ There are four ways the contents of an editable region defined within a template
 
 3. **As Variables Set by the Pages Tag**
 
-    The [**pages**](../../tags-reference/pages/) tag is used to list (all or specific) pages cloned from a template. The tag, as it fetches the pages, makes available all the variables pertaining to the pages - these include the variables that represent the editables regions defined for the pages.
+    The [**pages**](../../tags-reference/core/pages/) tag is used to list (all or specific) pages cloned from a template. The tag, as it fetches the pages, makes available all the variables pertaining to the pages - these include the variables that represent the editables regions defined for the pages.
 
     See also [**Listing Pages**](../listing-pages/)
 
 4. **By Using the Get Custom Field Tag**
 
-    While the [**pages**](../../tags-reference/pages/) tag mentioned in the previous method can be used to access all the variables of a page (or multiple pages) in a single go, the [**get_custom_field**](../../tags-reference/get_custom_field/) tag can be used to access a single variable of a page.
+    While the [**pages**](../../tags-reference/core/pages/) tag mentioned in the previous method can be used to access all the variables of a page (or multiple pages) in a single go, the [**get_custom_field**](../../tags-reference/core/get_custom_field/) tag can be used to access a single variable of a page.
 
-    See [**get_custom_field**](../../tags-reference/get_custom_field/) tag for more details.
+    See [**get_custom_field**](../../tags-reference/core/get_custom_field/) tag for more details.
 
 </Steps>
 
 ## Separating the Definition of Editable Region from Its Display
 
-In the examples above we have been creating the editable regions exactly at the spot where we wanted their outputs to appear. In effect we have been using the [**editable**](../../tags-reference/editable/) tag to both define the editable regions as well as to display their contents.
+In the examples above we have been creating the editable regions exactly at the spot where we wanted their outputs to appear. In effect we have been using the [**editable**](../../tags-reference/core/editable/) tag to both define the editable regions as well as to display their contents.
 
 In complex templates (_clonable_ templates, specifically) with several editable regions it is sometimes more manageable to define all the editable regions together at a single place.
 
-For such cases, we can use the [**editable**](../../tags-reference/editable/) tag to only define the editable regions and use the [**show**](../../tags-reference/show/) tag to display the contents. A good practice is to define together all editable regions used by the template somewhere at the very top of the template:
+For such cases, we can use the [**editable**](../../tags-reference/core/editable/) tag to only define the editable regions and use the [**show**](../../tags-reference/core/show/) tag to display the contents. A good practice is to define together all editable regions used by the template somewhere at the very top of the template:
 
 ```php title="index.php"
 <cms:template title='Index' clonable='1' >
@@ -162,11 +162,11 @@ For such cases, we can use the [**editable**](../../tags-reference/editable/) ta
 </cms:template>
 ```
 
-The editable tags themselves can be enclosed within [**template**](../../tags-reference/template/) tag (more about it in a little while) because this is a key tag in clonable templates and also because this tag has no output of its own and thus it "swallows up" the default output of the enclosed editable tags, which otherwise would have appeared on the webpage.
+The editable tags themselves can be enclosed within [**template**](../../tags-reference/core/template/) tag (more about it in a little while) because this is a key tag in clonable templates and also because this tag has no output of its own and thus it "swallows up" the default output of the enclosed editable tags, which otherwise would have appeared on the webpage.
 
-If you do not wish to enclose the [**editable**](../../tags-reference/editable/) tags within [**template**](../../tags-reference/template/) tag, set the `hidden` parameter of each to `1` and this will turn off the output of the tags.
+If you do not wish to enclose the [**editable**](../../tags-reference/core/editable/) tags within [**template**](../../tags-reference/core/template/) tag, set the `hidden` parameter of each to `1` and this will turn off the output of the tags.
 
-The content of these editable regions can be displayed where ever required by using the [**show**](../../tags-reference/show/) tag:
+The content of these editable regions can be displayed where ever required by using the [**show**](../../tags-reference/core/show/) tag:
 
 ```php title="Show Content Example"
 <cms:show body />

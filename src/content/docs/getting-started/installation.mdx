@@ -13,6 +13,11 @@ lastUpdated: 2025-03-27
 ---
 
 import { FileTree, Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite5 from '../../../assets/img/contents/portfolio-site-5.jpg';
+import portfolioSite6 from '../../../assets/img/contents/portfolio-site-6.jpg';
+import portfolioSite7 from '../../../assets/img/contents/portfolio-site-7.jpg';
+import portfolioSite8 from '../../../assets/img/contents/portfolio-site-8.png';
 
 CouchCMS is a user-friendly and powerful Content Management System (CMS) perfect for small to medium-sized projects. Below, you'll learn how to install CouchCMS on your web server in just a few simple steps.
 
@@ -189,7 +194,8 @@ This will create a new directory called `mywebsite` and clone the CouchCMS repos
 
 2. You'll see the CouchCMS installation screen. Couch will sense that installation is required and will display the following form for you to fill:
 
-    ![Portfolio Site Example](../../../assets/img/contents/portfolio-site-5.jpg)
+    <Image src={portfolioSite5} alt="Portfolio Site Example" />
+    > Portfolio Site Example
 
     :::caution
     If, however, at this point you get an '500 Internal Server Error', please try deleting the `.htaccess` file present in the `couch` installation folder. Certain hosts, notably GoDaddy, have problems with the directive contained in this file.
@@ -197,7 +203,8 @@ This will create a new directory called `mywebsite` and clone the CouchCMS repos
 
 3. Enter your desired name, password and email address. Press install and in a little while you should be prompted with the following screen:
 
-    ![Portfolio Site Example](../../../assets/img/contents/portfolio-site-6.jpg)
+    <Image src={portfolioSite6} alt="Portfolio Site Example" />
+    > Portfolio Site Example
 
     Couch created an account with super-admin privilege using the information provided by you in the last step and is now prompting you to login using the same.
 
@@ -209,13 +216,15 @@ This will create a new directory called `mywebsite` and clone the CouchCMS repos
 
  4. Login using the super-admin account you created and brace yourself for facing the most 'barren' admin section you'll ever come across:
 
-    ![Portfolio Site Example](../../../assets/img/contents/portfolio-site-7.jpg)
+    <Image src={portfolioSite7} alt="Portfolio Site Example" />
+    > Portfolio Site Example
 
     This almost bare admin panel is an important feature of Couch. We realize that the person most often logged into it is going to be the client that you'll be building the website for and, more often than not, he is not going to be as computer savvy as you are. Instead of overwhelming such a client with an admin panel that resembles the cockpit of an airliner, we wished to confront him with just as much information as is absolutely essential.
-    
+
     As we move along with building the site, the admin panel will start displaying more information. This is the admin panel of our finished site:
 
-    ![Portfolio Site Example](../../../assets/img/contents/portfolio-site-8.png)
+    <Image src={portfolioSite8} alt="Portfolio Site Example" />
+    > Portfolio Site Example
 
     It is important to note that the admin panels of no two sites built with Couch are going to be identical. As the designer of a website, it is you who'll choose how much data gets exposed to the client within the admin section.
 
@@ -249,4 +258,4 @@ With Couch installed you can now begin porting your files to it.
 
 </Steps>
 
-For more details about templates, please refer to the [**Templates**](../../concepts/templates) page.
+For more details about templates, please refer to the [**Templates**](../../concepts/templates/) page.

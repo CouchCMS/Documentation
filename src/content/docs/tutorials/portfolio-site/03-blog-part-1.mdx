@@ -20,6 +20,34 @@ slug: tutorials/portfolio-site/blog-part-1
 ---
 
 import { Steps, Card } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import portfolioSite20 from '../../../../assets/img/contents/portfolio-site-20.png';
+import portfolioSite21 from '../../../../assets/img/contents/portfolio-site-21.png';
+import portfolioSite22 from '../../../../assets/img/contents/portfolio-site-22.png';
+import portfolioSite25 from '../../../../assets/img/contents/portfolio-site-25.png';
+import portfolioSite30 from '../../../../assets/img/contents/portfolio-site-30.png';
+import portfolioSite32 from '../../../../assets/img/contents/portfolio-site-32.png';
+import portfolioSite33 from '../../../../assets/img/contents/portfolio-site-33.png';
+import portfolioSite34 from '../../../../assets/img/contents/portfolio-site-34.png';
+import portfolioSite35 from '../../../../assets/img/contents/portfolio-site-35.png';
+import portfolioSite36 from '../../../../assets/img/contents/portfolio-site-36.png';
+import portfolioSite37 from '../../../../assets/img/contents/portfolio-site-37.png';
+import portfolioSite38 from '../../../../assets/img/contents/portfolio-site-38.png';
+import portfolioSite41 from '../../../../assets/img/contents/portfolio-site-41.png';
+import portfolioSite42 from '../../../../assets/img/contents/portfolio-site-42.png';
+import portfolioSite48 from '../../../../assets/img/contents/portfolio-site-48.png';
+import portfolioSite49 from '../../../../assets/img/contents/portfolio-site-49.png';
+import portfolioSite54 from '../../../../assets/img/contents/portfolio-site-54.png';
+import portfolioSite55 from '../../../../assets/img/contents/portfolio-site-55.png';
+import portfolioSite58 from '../../../../assets/img/contents/portfolio-site-58.png';
+import portfolioSite59 from '../../../../assets/img/contents/portfolio-site-59.png';
+import portfolioSite63 from '../../../../assets/img/contents/portfolio-site-63.png';
+import portfolioSite64 from '../../../../assets/img/contents/portfolio-site-64.png';
+import portfolioSite65 from '../../../../assets/img/contents/portfolio-site-65.png';
+import portfolioSite66 from '../../../../assets/img/contents/portfolio-site-66.png';
+import portfolioSite69 from '../../../../assets/img/contents/portfolio-site-69.png';
+import portfolioSite70 from '../../../../assets/img/contents/portfolio-site-70.png';
+import portfolioSite72 from '../../../../assets/img/contents/portfolio-site-72.png';
 
 <Card icon="download" title="Download Code">
 
@@ -48,7 +76,7 @@ Looking at the files that came with Aurelius, you'll find that that the **Blog**
 
 ### Template Configuration
 
-Since `single.html` is the actual blog entry, we'll use it as the template to define the [**editable**](../../../tags-reference/editable/) regions required for capturing the data for each blog entry and for displaying each entry.
+Since `single.html` is the actual blog entry, we'll use it as the template to define the [**editable**](../../../../tags-reference/core/editable/) regions required for capturing the data for each blog entry and for displaying each entry.
 
 <Steps>
 
@@ -58,12 +86,12 @@ Since `single.html` is the actual blog entry, we'll use it as the template to de
     ```txt title="URL"
     https://www.mytestsite.com/blog.html
     ```
-        
+
 </Steps>
 
 :::tip[Component Overview]
 Before we start building, let's identify the key components we need to implement:
-![Blog Components](../../../../assets/img/contents/portfolio-site-20.png)
+<Image src={portfolioSite20} alt="Blog Components" />
 :::
 
 ### Required Components
@@ -137,14 +165,14 @@ Follow these steps to register the `blog.php` template:
    - Navigate to the Couch admin panel.
    - You should see `blog.php` listed among the templates managed by Couch.
 
-   ![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-21.png)
+   <Image src={portfolioSite21} alt="Portfolio Site Example" />
    > The blog template appears in the Couch admin panel
 
 3. **Check Editable Regions**:
    - Click on `blog.php` in the sidebar.
    - Notice that the template currently has no editable regions defined.
 
-   ![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-22.png)
+   <Image src={portfolioSite22} alt="Portfolio Site Example" />
    > Initially, no editable regions are defined for the blog template
 
 </Steps>
@@ -157,7 +185,7 @@ In the previous chapter, we defined the editable regions in `about.php` by enclo
 
 ### Using the Template Tag
 
-You'll recall using the [**template**](../../../tags-reference/template/) tag while building the **About Us** section where we used it to change the display name of the template. This tag can also be used to enclose structural Couch tags like [**editable**](../../../tags-reference/editable/), [**folder**](../../../tags-reference/folder/) etc.
+You'll recall using the [**template**](../../../../tags-reference/core/template/) tag while building the **About Us** section where we used it to change the display name of the template. This tag can also be used to enclose structural Couch tags like [**editable**](../../../../tags-reference/core/editable/), [**folder**](../../../../tags-reference/core/folder/) etc.
 
 <Steps>
 
@@ -181,9 +209,9 @@ You'll recall using the [**template**](../../../tags-reference/template/) tag wh
    <?php require_once( 'couch/cms.php' ); ?>
    <cms:template title="blog" >
    +    <cms:editable name="blog_content" type="richtext" />
-   +    <cms:editable name="blog_image" 
+   +    <cms:editable name="blog_image"
    +        crop="1"
-   +        width="610" 
+   +        width="610"
    +        height="150"
    +        type="image"
    +    />
@@ -205,7 +233,7 @@ Use `<cms:dump_all />` or `<cms:dump />` to get a quick list of all available va
 
 Refresh `blog.php` in your browser while logged in as super-admin and visit the admin panel. The blog section should now show two editable regions:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-25.png)
+<Image src={portfolioSite25} alt="Portfolio Site Example" />
 
 Add some content in the `richtext` editor and save. When you access `https://www.mytestsite.com/blog.php/`, you'll notice no changes appear on the page.
 
@@ -275,7 +303,7 @@ And replace the `src` attribute of the `image` tag with the content of the edita
 
 Access `https://www.mytestsite.com/blog.php` again. Your edited contents should appear on the page now.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-30.png)
+<Image src={portfolioSite30} alt="Portfolio Site Example" />
 
 ### Cloning the template
 
@@ -288,9 +316,9 @@ The way to do so is setting the *clonable* parameter within the template tag:
 <?php require_once( 'couch/cms.php' ); ?>
 <cms:template title="blog" clonable="1" >
     <cms:editable name="blog_content" type="richtext" />
-    <cms:editable name="blog_image" 
+    <cms:editable name="blog_image"
         crop="1"
-        width="610" 
+        width="610"
         height="150"
         type="image"
     />
@@ -311,7 +339,7 @@ Click on *Blog* in the list of templates in the sidebar. Whereas previously clic
 
 For now notice that in the list of pages cloned from `blog.php` in the right panel, Couch is showing one cloned page that it has created automatically:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-32.png)
+<Image src={portfolioSite32} alt="Portfolio Site Example" />
 
 It has named this page:
 
@@ -321,7 +349,7 @@ Default page for blog.php * PLEASE CHANGE THIS TITLE *
 
 Click on this new page:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-33.png)
+<Image src={portfolioSite33} alt="Portfolio Site Example" />
 
 Notice how the two editable regions that we had defined for `blog.php` are present in the panel that opens up. Also notice that the two regions have the same data that we had entered into `blog.php` when it was not clonable. Whenever a template is declared as being clonable, Couch creates a default page as the first cloned page of the template by moving all the editable data that was previously allocated to the non-clonable template.
 
@@ -333,23 +361,23 @@ If you fill the *Title* field, you can leave the *Name* field empty and Couch wi
 
 Change the *title* to something friendlier and leave the *name* blank:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-34.png)
+<Image src={portfolioSite34} alt="Portfolio Site Example" />
 
 Press the save button at the bottom.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-35.png)
+<Image src={portfolioSite35} alt="Portfolio Site Example" />
 
 Couch will save the changes and refresh the page. Notice how a name was generated by Couch using the *title* field.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-36.png)
+<Image src={portfolioSite36} alt="Portfolio Site Example" />
 
 Click the view button to see this page in browser:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-37.png)
+<Image src={portfolioSite37} alt="Portfolio Site Example" />
 
 Notice the address of the page in the address bar:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-38.png)
+<Image src={portfolioSite38} alt="Portfolio Site Example" />
 
 It has an additional '`?p=2`' after the `blog.php`:
 
@@ -367,15 +395,15 @@ Every cloned page has the additional '`?p=x`' after the non-clonable URL where `
 
 Let us create a second cloned page to illustrate the point further. Click on the button that has been added on the top that says 'Add New':
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-39.png)
+<Image src={portfolioSite41} alt="Portfolio Site Example" />
 
 Save the page after filling in the fields.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-40.png)
+<Image src={portfolioSite42} alt="Portfolio Site Example" />
 
 Press view and the second page should show up:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-41.png)
+<Image src={portfolioSite48} alt="Portfolio Site Example" />
 
 Once again notice the address of this page:
 
@@ -387,7 +415,7 @@ Clearly, the '`?p=2`' and '`?p=3`' after the `blog.php` signal to Couch to gener
 
 Access `https://www.mytestsite.com/blog.php` and the following page should appear:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-42.png)
+<Image src={portfolioSite49} alt="Portfolio Site Example" />
 
 As you can see, a page has been generated using `blog.php` as the template. However, since no cloned page was specified, the two editable regions come up empty. So if no page's data is associated with the address `https://www.mytestsite.com/blog.php`, is this address useless for clonable templates? Not at all. We can use it to show a listing of all the pages cloned from the template or display information about this section or do whatever you wish. Couch, on its part, will signal to you whether or not a cloned page's data is available. This it does by setting up certain variables that you can test and take action accordingly.
 
@@ -403,9 +431,9 @@ Enclose the HTML part of the `blog.php` with Couch's `if` tags the following way
 <?php require_once( 'couch/cms.php' ); ?>
 <cms:template title="blog" clonable="1" >
     <cms:editable name="blog_content" type="richtext" />
-    <cms:editable name="blog_image" 
+    <cms:editable name="blog_image"
         crop="1"
-        width="610" 
+        width="610"
         height="150"
         type="image"
     />
@@ -465,7 +493,7 @@ Of course, you'll want to do something more useful than this in this view. Listi
 
 Couch has a very powerful feature that allows us to keep chunks of HTML code (along with any Couch tags that might be within them) in separate files as snippets, and then use these snippets anywhere using the Couch embed tag.
 
-We'll use the embed tag to display `blog_list.html` in the list-view. Move `blog_list.html` into the snippets folder found within the couch folder (this is not mandatory, but files kept in this folder are kept safe from being accessed directly by the `.htaccess` file present within the folder and hence is desirable). See [**embed**](../../../tags-reference/embed/) tag for snippets folder customization instructions. Now replace the silly message we were displaying in list-view with the following embed tag:
+We'll use the embed tag to display `blog_list.html` in the list-view. Move `blog_list.html` into the snippets folder found within the couch folder (this is not mandatory, but files kept in this folder are kept safe from being accessed directly by the `.htaccess` file present within the folder and hence is desirable). See [**embed**](../../../../tags-reference/core/embed/) tag for snippets folder customization instructions. Now replace the silly message we were displaying in list-view with the following embed tag:
 
 ```diff lang="php" title="blog.php"
 </body>
@@ -477,7 +505,7 @@ We'll use the embed tag to display `blog_list.html` in the list-view. Move `blog
 
 Access `https://www.mytestsite.com/blog.php` and you should see the contents of `blog_list.html` being displayed.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-48.png)
+<Image src={portfolioSite48} alt="Portfolio Site Example" />
 
 In a way, `blog_list.html` has become a part of the `blog.php` template only that it is displayed in list-view.
 
@@ -485,7 +513,7 @@ Of course, what is being displayed is the hard coded HTML within `blog_list.html
 
 Before we set out to dynamically display a list of our cloned pages in the list-view, there is still work to be done in the page-view. With what we have done so far, for each page we are only displaying the *blog_content* and the *blog_image*. The blog entry's title, the categories, date and number of comments need to be handled too.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-49.png)
+<Image src={portfolioSite49} alt="Portfolio Site Example" />
 
 In the step where we decided on the number of editable regions to create, we discussed that these items are present in other ways within a page and do not require the creation of editable regions to capture them. Take a look at the [**Variables available in Views**](../../../concepts/variables-in-views/) in the documentation for a list of variables that become available in the various views.
 
@@ -522,9 +550,9 @@ The titles are currently linked to `single.html`. Let us change this to link the
 
 Access the cloned pages to see their title being shown instead of the ipsum lorem stuff having the right link.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-54.png)
+<Image src={portfolioSite54} alt="Portfolio Site Example" />
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-55.png)
+<Image src={portfolioSite55} alt="Portfolio Site Example" />
 
 Moving on to fix the date, first find the date in the template:
 
@@ -540,7 +568,7 @@ And replace it with:
 
 Accessing any cloned page to see the change:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-58.png)
+<Image src={portfolioSite58} alt="Portfolio Site Example" />
 
 The date that appears, although recognizable, hardly matches the '*31st Sep, 09*' format originally in place. This is because `k_page_date` shows date in the internal raw format of its storage (yyyy-mm-dd hh:mm:ss). To make it display in the desired format we'll have to use the Couch date tag that takes a format parameter which can be used to modify the display. Place the following in place of the show tag:
 
@@ -550,7 +578,7 @@ The date that appears, although recognizable, hardly matches the '*31st Sep, 09*
 
 This results in the following display:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-59.png)
+<Image src={portfolioSite59} alt="Portfolio Site Example" />
 
 The comments count can be similarly fixed by finding and replacing the count:
 
@@ -594,9 +622,9 @@ Place the following tags within the template tag already placed at the beginning
 <?php require_once( 'couch/cms.php' ); ?>
 <cms:template title="blog" clonable="1" >
     <cms:editable name="blog_content" type="richtext" />
-    <cms:editable name="blog_image" 
+    <cms:editable name="blog_image"
         crop="1"
-        width="610" 
+        width="610"
         height="150"
         type="image"
     />
@@ -624,11 +652,11 @@ Virtual folders help you:
 
 Refresh `blog.php` in your browser by visiting it while still being logged-on as the super-admin. Visit the **Blog** section in Couch admin and you should find a drop-down list being added to it:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-63.png)
+<Image src={portfolioSite63} alt="Portfolio Site Example" />
 
 > The folder dropdown list appears in the admin interface
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-64.png)
+<Image src={portfolioSite64} alt="Portfolio Site Example" />
 
 > Virtual folders are now available for categorizing blog entries
 
@@ -636,13 +664,13 @@ Let us now add the first blog entry to a folder.
 - Click on _My first blog entry_ to edit it.
 - Click on _Advanced Settings_ found at the top right:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-65.png)
+<Image src={portfolioSite65} alt="Portfolio Site Example" />
 
 > Advanced Settings button location in the admin panel
 
 It will expand to reveal several advanced settings. A list of the virtual folders defined for the template is one of them.
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-66.png)
+<Image src={portfolioSite66} alt="Portfolio Site Example" />
 > Virtual folder selection in Advanced Settings
 
 Select one, let us say _clients_, and save.
@@ -675,12 +703,12 @@ Notice how we have eliminated the second category because we can only have one.
 
 Visit _My first blog entry_ to see the change being reflected on the web page:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-69.png)
+<Image src={portfolioSite69} alt="Portfolio Site Example" />
 > Blog entry showing its assigned category
 
 Now visit _My second blog entry_:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-70.png)
+<Image src={portfolioSite70} alt="Portfolio Site Example" />
 > Blog entry without a category shows empty
 
 Nothing is displayed for the folder as this page was not placed in any folder but the blank looks awkward. We'd like to display _Uncategorised_ for such pages that do not reside in any folder.
@@ -709,7 +737,7 @@ Notice how we are now using `my_category`, instead of `k_page_foldertitle`, to d
 
 Visiting _My second blog entry_ now will show:
 
-![Portfolio Site Example](../../../../assets/img/contents/portfolio-site-72.png)
+<Image src={portfolioSite72} alt="Portfolio Site Example" />
 > Blog entry now shows "Uncategorised" when no category is assigned
 
 That about wraps up the page-view part of `blog.php` (one that displays a single blog entry). A few minor points still remain unattended but we'll get back to them after we configure the other parts. Let us now move on to the list-view of `blog.php` - where we display a paginated list of all cloned pages i.e. blog entries.

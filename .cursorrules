@@ -1,0 +1,51 @@
+
+START SPECIFICATION:
+---
+description: Documentation overview for CouchCMS, focusing on the core documentation structure and domain-specific features implemented through Astro and Starlight
+globs: *.mjs,*.ts,*.astro
+alwaysApply: false
+---
+
+
+# main-overview
+
+## Development Guidelines
+
+- Only modify code directly relevant to the specific request. Avoid changing unrelated functionality.
+- Never replace code with placeholders like `# ... rest of the processing ...`. Always include complete code.
+- Break problems into smaller steps. Think through each step separately before implementing.
+- Always provide a complete PLAN with REASONING based on evidence from code and logs before making changes.
+- Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
+
+
+CouchCMS Documentation implements a specialized knowledge hierarchy organized around domain-specific concepts and features:
+
+Core Documentation Structure:
+- Getting Started
+- Core Concepts
+- Tags Reference
+- Add-Ons
+- Tutorials by complexity
+
+Domain Features:
+1. Template Management
+   - Sub-Templates (New Feature)
+   - Template Inheritance (New Feature)
+   - Core tag implementations
+
+2. Custom Routing System
+   - Extended routing capabilities
+   - Custom route definitions
+   - URL management
+
+3. Entity Framework
+   - Extended Entities (New Feature)
+   - Entity relationships
+   - Custom data models
+
+Components containing business logic are organized into presentation layers for media content and documentation structure, with specific focus on CMS-specific implementations and content organization patterns.
+
+Importance Score: 75 - Represents key documentation organization for core CMS functionality
+
+$END$
+END SPECIFICATION

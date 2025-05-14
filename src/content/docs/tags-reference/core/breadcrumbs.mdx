@@ -1,0 +1,53 @@
+---
+title: breadcrumbs
+category: tag
+description: "The breadcrumbs tag outputs the hierarchy of folders leading up to the current page or folder."
+keywords:
+    - breadcrumbs
+    - CouchCMS
+    - Couch
+    - tags
+    - PHP
+author: Kamran Kashif
+lastUpdated: 2025-03-27
+---
+
+The `breadcrumbs` tag outputs the hierarchy of folders leading up to the folder being shown (if _folder_view_) or the folder within which the current page resides (if _page_view_). This can be used to create a trail (breadcrumbs) leading up to the current page.
+
+```php title="Basic Usage of breadcrumbs Tag"
+<cms:breadcrumbs />
+```
+
+Please see [**Core Concepts - Folders**](../../../../concepts/folders/) for a discussion on this tag's usage.
+
+## Parameters
+
+- `separator`
+- `include_template`
+
+### `separator`
+
+Set the separator to show between each item in the breadcrumbs. The default separator is `&nbsp;&gt;&nbsp;`.
+
+### `include_template`
+
+By default, this tag only outputs the hierarchy of folders. To make it also list the template of the folders as the first item in the breadcrumbs, set this parameter to `1`. If this parameter is set, remember to check that the current view is either _folder-view_ or _page-view_ before invoking this tag, because for any other views the folder hierarchy is irrelevant and `breadcrumbs` tag rightly does not output any folder names, however the `include_template` parameter will cause the template's name to appear which might not be desirable.
+
+```php title="Advanced Usage of breadcrumbs Tag"
+<cms:if k_is_page || k_is_folder >
+    <cms:breadcrumbs separator='&nbsp;>>&nbsp;' include_template='1' />
+</cms:if>
+```
+
+## Variables
+
+This tag is self-closing and does not set any variables of its own.
+
+## Related Tags
+
+- [**folder**](../../folder/)
+- [**folders**](../../folders/)
+- [**listfolders**](../../listfolders/)
+- [**dropdownfolders**](../../dropdownfolders/)
+- [**parentfolders**](../../parentfolders/)
+- [**is_ancestor**](../../is_ancestor/)

@@ -1,0 +1,341 @@
+---
+title: Template Inheritance
+description: "Learn how to use template inheritance in CouchCMS to create flexible, maintainable templates with parent-child relationships and dynamic content blocks."
+keywords:
+    - template inheritance
+    - parent templates
+    - child templates
+    - template hierarchy
+    - template blocks
+    - template overrides
+    - dynamic content
+    - CouchCMS
+category: tags
+author: Kamran Kashif
+lastUpdated: 2025-03-28
+sidebar:
+    order: 1
+    label: Overview
+slug: tags-reference/template-inheritance
+---
+
+import { Steps, FileTree } from "@astrojs/starlight/components";
+
+## A New Method for Organizing Layouts
+
+:::note[Historical Context]
+This feature was first introduced on **July 13, 2017** in the [**CouchCMS Forum**](https://www.couchcms.com/forum/viewtopic.php?f=5&t=10984&p=39753&hilit=twig#p28250/).
+:::
+
+More often than not, the templates used in most sites share many common markup elements like header, sidebar, footer etc. For reusing such elements across templates, the standard method in Couch, as I am sure you know, is isolating them as 'snippets' and then incorporating them back through the use of `<cms:embed>` tag (people often call this process 'chunking').
+
+Couch, true to its philosophy, does not mandate or prescribe any hard-and-fast procedure for this chunking. One is free to follow any way that suits the use-case - often the best way is simply isolating the header and footer parts of the layout and embedding those in all templates.
+
+However, for sites with more complex needs, following certain well established patterns of chunking the layout makes life a lot easier for developers. One such pattern is the 'decorator' pattern. You can find a discussion on it at [**Advanced Tutorial - Views**](../../tutorials/advanced-tutorial/views/) where we use it in our 'Advanced tutorial'.
+
+Our implementation of it mentioned above is rather simple but serves the needs of that particular use-case.
+PHP heavy-weights like Symfony (and also others like Laravel) have used a different take in their implementation of it (if it interests you, you can find details about it at [**Symfony Template Inheritance**](https://symfony.com/doc/current/templating.html#template-inheritance-and-layouts/)).
+
+It involves defining 'blocks' in the parent template and then the child templates 'extend' the parent (i.e. inherit it) and replace the parent's blocks with their own.
+
+It may appear a bit complex at first sight but is, no doubt, a very powerful and flexible approach.
+Particularly, there are two points in it that cannot be accomplished with our simple approach:
+
+<Steps>
+
+1. The child template can be extended by another child template which, then in turn, can be extended by another - it can go on without limits. This can be invaluable in implementing very complex layouts.
+
+2. More importantly, any child template can access the original contents of its parent template.
+
+</Steps>
+
+So, sometime last year while preparing Couch v2.0, I added this method to our code base and then conveniently forgot about it :)
+That is to say, it has always been possible with v2.0 to create layouts using blocks/extends but yours truly forgot to document the process so it was as good as not having it in the first place.
+
+Anyway, time to make up for the lapse. Here is everything you'd need to know if this method holds any interest to you.
+
+## Meet the block/extends tags
+
+There are primarily two new tags that'll help us in implementing this method - `<cms:block>` and `<cms:extends>`
+An easier way of understanding how these tags work would be to see them action.
+
+Take a look at the following snippet (please note that this is a 'snippet' i.e it resides in the snippets folder of your installation which, by default, is `couch/snippets` but you can change the location for config). Let us call it `parent.html`:
+
+```html title="parent.html"
+<!DOCTYPE html>
+<html>
+    <head>
+        <cms:block 'head'>
+            <link rel="stylesheet" href="style.css" />
+            <title><cms:block 'title'></cms:block> - My Webpage</title>
+        </cms:block>
+    </head>
+    <body>
+        <div id="content"><cms:block 'content'></cms:block></div>
+        <div id="footer">
+            <cms:block 'footer'>
+                &copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.
+            </cms:block>
+        </div>
+    </body>
+</html>
+```
+
+As you can see, it contains the base skeletal HTML layout.
+Also notice the `<cms:block>` blocks it contains (there are four of them).
+
+For understanding, you could consider these block elements as 'placeholders'.
+Any snippet 'extending' (or 'inheriting') this snippet can then choose to replace these placeholders (blocks) with its own.
+
+Let us create one such snippet. Take a look at the following snippet (again, remember this is a 'snippet' and mandatorily needs to placed within the snippets folder). Let us call it `child.html`:
+
+```html title="child.html"
+<cms:extends 'parent.html' />
+
+<cms:block 'title' >Index</cms:block>
+
+<cms:block 'head' >
+    <cms:block_parent />
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+</cms:block>
+
+<cms:block 'content' >
+    <h1>Index</h1>
+    <p class="important">
+        Welcome on my awesome homepage.
+    </p>
+</cms:block>
+```
+
+Some important points about this child snippet:
+
+<Steps>
+
+1. Notice the `<cms:extends>` tag right at the top. This statement is what signifies that this snippet is actually a child snippet and is extending the specified snippet (`parent.html` in this case).
+
+    :::danger[Important]
+    The `<cms:extends>` statement absolutely needs to be the very first line in the child statement else things will not work.
+    :::
+
+2. Also notice that this child snippet contains *only* `<cms:block>`'s as first-level tags. This is important - all other tags at first-level will be totally ignored (in Symfony this actually throws an error). These blocks, in turn, can have any markup or Couch tags within them (even other `<cms:block>` tags nested within).
+
+</Steps>
+
+OK, now to understand what this peculiar structure of the child snippet does.
+Notice the names of the `<cms:block>`s you see defined in there. They match those of the blocks appearing in the parent snippet.
+
+Now when the `<cms:extends>` tag kicks in, it fetches the specified snippet (`parent.html`), replaces all blocks within the parent snippet with blocks contained within itself (i.e. the child snippet) having matching names and then finally executes the resulting code.
+
+:::note
+Please notice that our child snippet has only three blocks defined so only these three will be substituted in the parent snippet. The remaining fourth block in the parent snippet will continue using its own code.
+:::
+
+Effectively, this means that the child snippet *dynamically modifies* the code within the parent snippet (by injecting its own blocks into it) and it is this modified code that finally executes and produces the output.
+
+Powerful stuff. If you are familiar with Object Oriented Programming (OOP), this effectively is exactly what happens when a class inherits (or extends) a parent class. Symfony rightly names this method 'Template Inheritance'.
+
+Alright, so as the final step let us now see the modified output.
+For that we'll need a bonafide Couch template (i.e. a PHP file with `<?php require_once("couch/cms.php"); ?>` and `<?php COUCH::invoke(); ?>` statements and appearing in the admin-panel sidebar).
+
+Let us create a simple Couch template to test our experiment so far. Create a file named `test.php` in your site's root and place the following code within it:
+
+```php title="test.php"
+<?php require_once("couch/cms.php"); ?>
+<cms:template>
+
+</cms:template>
+
+<cms:embed 'child.html' />
+
+<?php COUCH::invoke(); ?>
+```
+
+I'm sure you'll recognize that it is a regular Couch template (albeit with no editable regions defined yet). Notice how it is embedding the 'child' snippet. Perform the mandatory visit to it on the frontend as super-admin for it to be registered.
+
+You'll see some output on the frontend while visiting this template. To see exactly what the generated HTML behind it is, do a view-source.
+You should something like this:
+
+```html title="Generated Output"
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <title>Index - My Webpage</title>
+        <style type="text/css">
+            .important { color: #336699; }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Index</h1>
+            <p class="important">
+                Welcome on my awesome homepage.
+            </p>
+        </div>
+        <div id="footer">
+            &copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.
+        </div>
+    </body>
+</html>
+```
+
+Notice how the generated HTML is basically the code in the parent snippet mixed with the code from the child snippet within the blocks we defined.
+
+I'd like to draw your attention particularly to the `<head>` section. Notice how it contains code from *both* parent snippet as well as the child snippet (you might want to scroll up and examine the two snippets now).
+
+As you have seen, the parent snippet had a block named 'head' with some code within it. The child snippet also had a block named 'head', so the code from this child block should totally replace that from the parent block. And so it does. However, the child block had the following statement within it:
+
+```html
+<cms:block_parent />
+```
+
+This tag (the third and last new tag we'll encounter) fetches the parent block's original code so the effective child code becomes a mix of the parent code plus the child code that follows the `<cms:block_parent />`.
+
+This is one of this method's distinguishing feature that I mentioned at the start of this discussion:
+
+> More importantly, any child template can access the original contents of its parent template.
+
+So basically that is it. This is how this new method of 'inheritance' works.
+
+Allow me to put a finer point on some aspects that are easy to miss while learning them:
+
+<Steps>
+
+1. Symfony calls this method 'Template inheritance' but in Couch's context this is actually 'Snippet inheritance'.
+    Please keep in mind that both the 'parent' as well as the 'child' involved in this inheritance layout are 'snippets' in Couch's parlance (i.e. are files that are kept in snippets folder where they can be found by `<cms:embed>`).
+
+2. Since we know that snippets cannot be directly invoked from the browser (i.e. do not have a URL leading upto them), the only way to make the snippets click into action is by embedding them (i.e. use `<cms:embed>`) in a bonafide Couch template (again 'template' in Couch parlance is a public facing PHP file i.e. one that can be accessed from browser using its URL, and registered with Couch).
+
+    Keeping Couch's terminology in mind, the point I am trying to make is that we cannot actually make a 'template' inherit another 'template' (i.e. don't try putting the `<cms:extends>` statement directly within a 'template' and expect it to inherit another 'template'). We have to use 'snippets' for that. A 'template' can only call a 'snippet' using `<cms:embed>`.
+
+3. With the last point hopefully clear, take another look at the 'template' in our example (i.e. `test.php`). As discussed above, it is indeed using a `<cms:embed>` statement. The point I'd like to stress here is that the template is embedding the 'child' snippet (i.e. the one that has the `<cms:extends>` statement) and *not* the parent snippet.
+
+    This should be logical to see at this point now that we have already seen that it is actually the `<cms:extends>` tag that does all the magic of substituting code within the parent snippet with code within itself. We begin from the end of the chain - call the child snippet and it will automatically call the parent it is extending.
+
+</Steps>
+
+Wrapping up this post, following is a full real-life example implemented using this inheritance method.
+
+## A complete real-life example
+
+Symfony suggests organizing complex layouts using 'three-level' inheritance.
+Following is the Couchified version of the example code used in their docs ([**Symfony Template Inheritance**](https://symfony.com/doc/current/templating.html#template-inheritance-and-layouts/)):
+
+<Steps>
+
+1. Create a `base.html` snippet that contains the main layout for your site:
+
+    ```html title="base.html"
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title><cms:block 'title'>Welcome!</cms:block></title>
+            <cms:block 'stylesheets'></cms:block>
+            <link rel="icon" type="image/x-icon" href="<cms:show k_site_link />assets/favicon.ico" />
+        </head>
+        <body>
+            <cms:block 'body'></cms:block>
+            <cms:block 'javascripts'></cms:block>
+        </body>
+    </html>
+    ```
+
+2. Create a snippet for each "section" of your site. For example, the blog functionality would have a snippet called `blog.html` that contains only blog section-specific elements:
+
+    ```html title="blog.html"
+    <cms:extends 'base.html' />
+
+    <cms:block 'body' >
+        <h1>Blog Application</h1>
+
+        <cms:block 'content'></cms:block>
+    </cms:block>
+    ```
+
+3. Create individual snippets for each 'view' (i.e. page-view, list-view, home-view etc.) used by the section and make each extend the appropriate section snippet. For example, the 'list-view' snippet would be called `blog-list.html` and list the actual blog posts:
+
+    ```html title="blog-list.html"
+    <cms:extends 'blog.html' />
+
+    <cms:block 'content' >
+        <cms:pages paginate='1' limit='10'>
+            <h2><a href="<cms:show k_page_link />"><cms:show k_page_title /></a></h2>
+            <p><cms:show content /></p>
+
+            <cms:paginator />
+        </cms:pages>
+    </cms:block>
+    ```
+
+    Similarly, the 'page-view' snippet would be called `blog-page.html` and would display contents from a single page:
+
+    ```html title="blog-page.html"
+    <cms:extends 'blog.html' />
+
+    <cms:block 'content' >
+        <h2><cms:show k_page_title /></h2>
+        <p><cms:show content /></p>
+
+        <a href="<cms:show k_template_link />">Back to listing</a>
+    </cms:block>
+    ```
+
+    Finally, make the template for the section call the appropriate snippets. For example, the `blog.php` template below:
+
+    ```php title="blog.php"
+    <?php require_once('couch/cms.php'); ?>
+    <cms:template title='Blog' clonable='1'>
+        <cms:editable name='content' label='Contents' type='richtext' />
+    </cms:template>
+    <cms:if k_is_page>
+        <cms:embed 'blog-page.html '/>
+    <cms:else />
+        <cms:embed 'blog-list.html '/>
+    </cms:if>
+    <?php COUCH::invoke(); ?>
+    ```
+
+    Notice how the view snippets (`blog-list.html`, `blog-page.html`) extend the section template (`blog.html`) which in turn extends the base layout snippet (base.html). This is the common three-level inheritance model.
+
+</Steps>
+
+When building your site, you may choose to follow this method or simply make each view snippet extend the base layout snippet directly (i.e. 'two-level' inheritance as seen in the first example above).
+
+In the example above, all the snippets were placed right within the 'snippets' folder.
+I personally find it useful to organize the snippets within sub-folders as follows (you are free to use whatever way suits you):
+
+<FileTree>
+- couch
+    - snippets
+        - base.html
+        - blog
+            - base.html
+            - list.html
+            - page.html
+            - archive.html
+        - products
+            - base.html
+            - list.html
+            - page.html
+        - contact.html
+</FileTree>
+
+So now my main template (e.g. `blog.php`) would contain:
+```php
+<cms:embed 'blog/page.html' />
+```
+
+The view snippet (e.g. `blog/page.html`) would in turn contain:
+```php
+<cms:extends 'blog/base.html' />
+```
+
+And finally the section snippet (e.g. `blog/base.html`) would contain:
+```php
+<cms:extends 'base.html' />
+```
+
+In closing, not every site is likely to warrant the use of this method. But for those that do, a small amount of planning would go a long way in making the process of implementing the site so much easier.
