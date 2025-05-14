@@ -1,8 +1,8 @@
 
 START SPECIFICATION:
 ---
-description: Documentation overview for CouchCMS, focusing on the core documentation structure and domain-specific features implemented through Astro and Starlight
-globs: *.mjs,*.ts,*.astro
+description: Applies when documenting the core structure of CouchCMS documentation system built with Astro and Starlight theme
+globs: *.astro,*.ts,*.mjs
 alwaysApply: false
 ---
 
@@ -18,34 +18,22 @@ alwaysApply: false
 - Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
 
 
-CouchCMS Documentation implements a specialized knowledge hierarchy organized around domain-specific concepts and features:
+CouchCMS Documentation Infrastructure
 
-Core Documentation Structure:
-- Getting Started
-- Core Concepts
-- Tags Reference
-- Add-Ons
-- Tutorials by complexity
+## Core Organization
+The project establishes a documentation framework for CouchCMS with specialized media handling capabilities focused on content presentation.
 
-Domain Features:
-1. Template Management
-   - Sub-Templates (New Feature)
-   - Template Inheritance (New Feature)
-   - Core tag implementations
+## Business Components
+Media Display System:
+- Generic media wrapper containers
+- YouTube-specific content embedding
+- Custom content collection management
 
-2. Custom Routing System
-   - Extended routing capabilities
-   - Custom route definitions
-   - URL management
+## Integration Points
+Documentation content is processed through configured collection endpoints before being rendered into the documentation system.
 
-3. Entity Framework
-   - Extended Entities (New Feature)
-   - Entity relationships
-   - Custom data models
-
-Components containing business logic are organized into presentation layers for media content and documentation structure, with specific focus on CMS-specific implementations and content organization patterns.
-
-Importance Score: 75 - Represents key documentation organization for core CMS functionality
+Importance Score: 45
+Primary focus is on documentation structure and media presentation rather than complex business rules.
 
 $END$
 END SPECIFICATION
