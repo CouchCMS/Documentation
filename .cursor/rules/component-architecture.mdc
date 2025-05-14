@@ -1,27 +1,36 @@
 ---
-description: Documentation for media card component system including base display and YouTube video patterns
-globs: src/components/card-*.astro,src/content.config.ts
+description: Documentation for media card component implementation patterns and extensions
+globs: src/components/card-*.astro,src/content/*.ts
 alwaysApply: false
 ---
 
 
 # component-architecture
 
-The media card component system implements a two-tiered architecture for content display:
+The component system follows a base media card pattern with specialized extensions:
 
-1. Base Media Card (`src/components/card-media.astro`)
-- Core presentation component for standard media content
-- Parent template defining common display patterns
+### Card Component Hierarchy
 
-2. YouTube Extension (`src/components/card-youtube.astro`)
-- Specialized card implementation for YouTube content
-- Inherits base media card structure
-- Adds YouTube-specific embedding capabilities
+`src/components/card-media.astro`
+- Base media card wrapper providing shared display logic 
+- Accepts generic media content through slots
+- Standardizes media presentation across the system
 
-The architecture follows a template inheritance pattern with specialized media type implementations extending from the base card component.
+`src/components/card-youtube.astro`
+- Extends base media card for YouTube content
+- Implements specialized video embedding
+- Translates YouTube URLs into embedded players
 
-Business Importance Score: 45
-- While providing content structure, the components primarily handle presentation without complex business rules
-- Template inheritance pattern enables consistent media display across the CMS
+### Content Integration 
+
+The media components integrate with content collections to enable:
+- Dynamic media insertion in content blocks
+- Consistent media rendering across collection types
+- Automated YouTube URL processing
+
+Importance Score: 45
+- Core presentation components but limited unique business logic
+- Standard media embedding patterns
+- Basic component composition structure
 
 $END$
