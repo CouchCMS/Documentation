@@ -1,3 +1,9 @@
+---
+description: "Comprehensive style guide for CouchCMS documentation"
+globs: ["**/*.md", "**/*.mdx"]
+alwaysApply: true
+---
+
 # CouchCMS Documentation Style Guide
 
 This comprehensive style guide outlines all rules for writing CouchCMS documentation. The primary goals are consistency, readability, maintainability, and accessibility.
@@ -160,7 +166,6 @@ Use double quotes (") consistently in Markdown:
     - Frontmatter strings with special chars:
       `description: "A: clear, description!"`
     - Code block titles: `php title="Example"`
-    - Admonition titles: :::note[Info] "Additional context" :::
 
 Exception: Only use single quotes (') within code examples for:
 
