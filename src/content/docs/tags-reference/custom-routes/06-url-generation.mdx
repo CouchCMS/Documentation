@@ -1,0 +1,97 @@
+---
+title: "URL Generation"
+description: "How to generate URLs for custom routes in Couch."
+keywords:
+    - custom routes
+    - url generation
+    - routing
+    - route_link
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 6
+    label: URL Generation
+slug: tags-reference/custom-routes/url-generation
+---
+
+Generating custom URLs:
+
+Throughout this tutorial we have been 'hand-crafting' the URLs leading to the various views we have defined (and feeding them in the browser's address-bar).
+
+Let us now see how to generate those URLs programmatically. As you'd remember, in normal Couch templates (i.e. those that do not use the custom routes), the system provides us with the variable named `k_page_link` that contains the URL of the cloned-pages. Additionally we use the `cms:link` tag to generate URLs of all the canonical views.
+
+With custom routes added to a template, both these methods will cease to work. Instead, we now use the `cms:route_link` tag to generate URLs for the custom routes we have defined.
+
+As an example, if we place the following code in our test template, it'll generate the **edit_view** URL.
+
+```php
+<cms:route_link 'edit_view' rt_id='41' />
+```
+
+If the code is placed in some other template, we'll have to specify the template containing the route's definition using the 'masterpage' parameter:
+
+```php
+<cms:route_link 'edit_view' masterpage='test.php' rt_id='41' />
+```
+
+The `cms:route_link` tag expects the 'name' of the route as its first parameter. We'll also have to provide it with values for all the parameters in the route's `path`. The **edit_view** had the following as its path where `id` was the only parameter:
+
+```php
+path='{:id}/edit'
+```
+
+And so we provided the value for `id` to `cms:route_link` as a parameter named `rt_id` (i.e. by prefixing `rt_` to the route's parameter).
+
+Let us output a list of all cloned pages of our test template in its **list_view** and provide each page with its **page_view** and **edit_view** link. Amend the code in the **list_view** handler to add the `cms:pages` listing as shown below:
+
+```php
+<!-- implement the selected view -->
+<cms:if k_matched_route='list_view'>
+    <h2>This is list_view</h2>
+   
+    <cms:pages>
+        <a href="#">
+            <cms:show k_page_title />
+        </a>
+       
+        <a href="#">
+            [EDIT]
+        </a>
+        <br/>
+    </cms:pages>
+   
+<cms:else_if k_matched_route='create_view' />
+    ...
+    ...
+```
+
+Create a few cloned pages out of our test template and then access the **list_view** (i.e. `https://www.yoursite.com/test.php`). You should see all the pages getting listed. The link, for now, contain only a placeholder `#`. Amend the code to use the `cms:route_link` to output the two kinds of URLs as follows:
+
+```php
+<!-- implement the selected view -->
+<cms:if k_matched_route='list_view'>
+    <h2>This is list_view</h2>
+   
+    <cms:pages>
+        <a href="<cms:route_link 'page_view' rt_page_name=k_page_name rt_format='.html' />">
+            <cms:show k_page_title />
+        </a>
+       
+        <a href="<cms:route_link 'edit_view' rt_id=k_page_id />">
+            [EDIT]
+        </a>
+        <br/>
+    </cms:pages>
+   
+<cms:else_if k_matched_route='create_view' />
+    ...
+    ...
+```
+
+Notice how we are providing the right parameters for each view to the `cms:route_link` tag. Test out to see how the links invoke the right views.
+
+---
+
+[Next Chapter: **Complete Example**](../complete-example/)
