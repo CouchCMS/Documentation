@@ -1,0 +1,111 @@
+---
+title: "Introduction to Custom Routes"
+description: "Learn the basics of custom routing in Couch: what it is, why it matters, and how to enable it."
+keywords:
+    - custom routes
+    - introduction
+    - routing
+    - basics
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 1
+    label: Introduction
+slug: tags-reference/custom-routes
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+If you've worked for any amount time with Couch, you'd certainly be familiar with its various views - namely the **page-view**, **list-view**, **home-view**, **folder-view** and **archive-view**.
+
+You'd also be aware that each of the aforementioned views is triggered by URLs with certain fixed patterns in them. For example, the following URLs will lead to a page-view:
+
+```txt
+http://www.yoursite.com/blog.php?p=12
+http://www.yoursite.com/blog/some_page_name.html (with prettyURLs activated)
+```
+
+In the URLs above, it is the `?p=x` or the `/x.html` that signals to Couch that this is a page-view.
+
+Similarly, in the following URLs, it is the `?d=201501` or the `/2015/01/` that invokes the archive-view:
+
+```txt
+http://www.yoursite.com/blog.php?d=201501
+http://www.yoursite.com/blog/2015/01/ (with prettyURLs activated)
+```
+
+Roughly speaking, when Couch matches a URL to the available views, it does the following:
+
+<Steps>
+
+1. Examines the URL used to access the page and matches it against some fixed patterns.
+2. If a match is found, it carries out additional validations (e.g. in page-view the `p` should be a non-zero integer and a page with that id should also exist. Similarly in archive-view the values supplied for the year and month should be valid).
+3. If validations succeed, it sets a variable indicating the name of the matched 'view'. It also makes available the arguments supplied in the URL (e.g. the value of `p` etc.) as variables. The Couch tags placed in the template can now make use of these variables to alter the output of the page (e.g. `<cms:if k_is_page>..</cms:if>`).
+4. If the validations fail, it throws a distinct error. Similarly if the URL does not match any known pattern a 'Page not found' HTTP 404 is thrown.
+
+</Steps>
+
+For most brochure type sites, the default views (and hence the corresponding URLs) suffice. However, application-type sites (e.g. where registered users can create/edit/delete their own pages/data etc.), usually require passing more information through the URLs than what the default views do. For example, the following could be a prettyURL that edits invoice no. 190 that resides in a folder of id 11:
+
+```txt
+http://www.yoursite.com/invoice/190/edit/11/folder/
+```
+
+Clearly, the default views of Couch won't be of much help in this situation.
+
+To help handle such cases, Couch now ships with an addon named **routes** that'll allow us to register our own patterns and thus define our custom views.
+
+### The 'Routes' Addon
+
+As has been our practice, instead of rolling out dry specifications of this addon's tags and parameters, we'll take a hands-on approach and make use of custom routes in a template.
+
+As the very first step we need to activate this addon.
+
+To do so, add the following line to `couch/addons/kfunctions.php` of your installation (you might have to rename `kfunctions.example.php` to `kfunctions.php` for newer installations):
+
+```php title="couch/addons/kfunctions.php"
+require_once( K_COUCH_DIR.'addons/routes/routes.php' );
+```
+
+With the addon activated, let us begin experimenting with it by creating a test template (say named 'test.php'). Place the following code in it and register it by visiting it as super-admin:
+
+```php
+<?php require_once( 'couch/cms.php' ); ?>
+    <cms:template clonable='1' >
+
+    </cms:template>
+
+    <h1>Test</h1>
+
+<?php COUCH::invoke(); ?>
+```
+
+The code above is the standard code we place in any template to make it a Couch managed one.
+To make our template support custom routes, we need to make two little changes to this code:
+
+```php
+<?php require_once( 'couch/cms.php' ); ?>
+    <cms:template clonable='1' routable='1' >
+
+    </cms:template>
+
+    <h1>Test</h1>
+
+<?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
+```
+
+The first change (adding `routable='1'` to the `cms:template` tag) serves to attach the 'routes' addon to this template. We'll now be able to define our custom views for this template.
+
+The second change (adding `K_IGNORE_CONTEXT` to `COUCH::invoke()`) serves to instruct Couch to no longer apply the default views to this template. This is an important point - by doing this we are turning off Couch's default behavior of examining the URL used to access this template and then attaching one of the well-known views to it
+
+:::note
+Strictly speaking, Couch still attaches one view to this template - the **home-view**. So whatever the URL used to access the template, if we query Couch about the view it'll always report **home-view**. Thing is, we'll now use the **routes** module and no longer use Couch's interpretation of the current view so this is not a problem.
+:::
+
+Now we are ready to define our own routes (and hence 'views') for this template.
+
+---
+
+[Next Chapter: **Simple Routes**](simple-routes/)
