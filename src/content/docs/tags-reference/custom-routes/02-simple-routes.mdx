@@ -1,0 +1,189 @@
+---
+title: "Simple Routes"
+description: "How to define and use simple custom routes in Couch."
+keywords:
+    - custom routes
+    - simple routes
+    - routing
+    - basics
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 2
+    badge:
+        text: New
+        variant: tip
+slug: tags-reference/custom-routes/simple-routes
+---
+
+import { Image } from 'astro:assets';
+import customRoutes01 from './img/custom-routes-01.gif';
+import customRoutes02 from './img/custom-routes-02.gif';
+
+Let us begin by defining two very simple ones:
+
+```php
+<?php require_once( 'couch/cms.php' ); ?>
+    <cms:template clonable='1' routable='1' >
+
+        <!-- define routes -->
+        <cms:route name='list_view' path='' />
+
+        <cms:route name='create_view' path='create' />
+
+    </cms:template>
+
+
+    <!-- find the matched route (view) -->
+    <cms:match_route debug='1' />
+
+    <h1>Test</h1>
+
+<?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
+```
+
+As you can see, we have used the cms:route tag inside the `cms:template` block to define the two routes.
+Please also notice that we have used a `cms:match_route` tag right outside the `cms:template` block.
+
+Using custom routes requires the use of both these tags in tandem - multiple instances of the `cms:route` tag define the various routes within the `cms:template` block while a single `cms:match_route` tag placed somewhere in the main body of the template (usually as the first statement after the `cms:template` block) does the actual match processing by comparing the incoming URL with the routes we defined above.
+
+For now we have set the `debug` parameter of `cms:match_route` tag to `1` as this causes the tag to spit out all the processing steps it takes during the matching process. This makes it easier for us to see if our defined routes are working the way we had expected. We'll set the `debug` to `0` (or remove the parameter altogether) once the routes are finalized.
+
+Let us look at the `cms:route` tag a little more closely. The `name` parameter, expectedly, uniquely identifies a route amongst others in the template. The `path` parameter is the most important of all and defines the 'pattern' against which the incoming URL is tested in a bid to find the matching route.
+
+To understand that, let us study the second route first.
+
+```php
+<cms:route name='create_view' path='create' />
+```
+
+Since we are assuming that our template is named `test.php`, with prettyURLs on the following URL will match this route:
+
+```txt
+http://www.yoursite.com/test/create
+```
+
+What happens when we don't have prettyURLs activated? In that case, the matching following URL will look like this:
+
+```txt
+http://www.yoursite.com/test.php?q=create
+```
+
+I think you can see where the value specified in the `path` parameter appears in the URLs.
+
+OK, so now take a look at the first route we registered.
+
+```php
+<cms:route name='list_view' path='' />
+```
+
+Notice how its `path` parameter is set to blank. This would simply translate to the following URLs (i.e. where the template is invoked with no additional route info):
+
+```txt
+http://www.yoursite.com/test/
+http://www.yoursite.com/test.php (without prettyURLs)
+```
+
+Time to test our routes out.
+
+Access the template as super-admin, typing the following in your browser's address bar (of course putting your server's address in it), and see what the `cms:match_route` tag reports:
+
+```txt
+http://www.yoursite.com/test.php?q=create
+```
+
+:::note
+At this point, I'd assume that you won't have prettyURLs activated so you'll have to use the non-pretty version of the URLs.
+:::
+
+You should get something like this:
+
+<Image src={customRoutes01} alt="Matched Route" />
+
+:::note
+If instead you get 'No routes defined' message, just refresh the template as this could happen the very first time a template is accessed after defining routes.
+:::
+
+Now try accessing `https://www.yoursite.com/test.php` and you should see the **list_view** getting selected.
+
+As you can see, the `cms:match_route` tag takes the term 'create' (which is the `q` querystring parameter in the URL) and then tries to match it sequentially with all the defined routes (we have only two for now). Once a match is found, it reports the name of the route and declares that a variable named `k_matched_route` would be set using the route's name.
+
+We can now use this variable in our template's code to make further decisions about implementing the selected view e.g.:
+
+```php
+<?php require_once( 'couch/cms.php' ); ?>
+    <cms:template clonable='1' routable='1' >
+
+        <!-- define routes -->
+        <cms:route name='list_view' path='' />
+
+        <cms:route name='create_view' path='create' />
+
+    </cms:template>
+
+
+    <!-- find the matched route (view) -->
+    <cms:match_route debug='1' />
+
+    <h1>Test</h1>
+
+    <!-- implement the selected view -->
+    <cms:if k_matched_route='list_view'>
+        <h2>This is list_view</h2>
+    <cms:else_if k_matched_route='create_view' />
+        <h2>This is create_view</h2>
+    </cms:if>
+
+<?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
+```
+
+Ok, so what happens if none of the defined routes match? Let us try by accessing the following URL:
+
+```txt
+http://www.yoursite.com/test.php?q=edit
+```
+
+You should get the following output:
+
+<Image src={customRoutes02} alt="No Matched Route" />
+
+The `cms:match_route` tag is dutifully reporting that 'No matching route found'. How do we factor this in our code where we implement the selected view (considering that no defined view matches the visitor's requested URL)? That is completely our choice. If, as is the most common scenario, we wish to respond with HTTP 404 'Page not found' error, the easiest way would be to instruct the `cms:match_route` tag itself to do it for us by setting its `is_404` parameter to `1` -
+
+```php
+<!-- find the matched route (view). Respond with 404 if no route matches. -->
+<cms:match_route debug='1' is_404='1' />
+```
+
+Please note that the `cms:match_route` tag will honor the `is_404` setting only when `debug` is not in effect. So, in the code above, set the `debug` to `0` and then try visiting the non-existing route `https://www.yoursite.com/test.php?q=edit` again to see how it works.
+
+If, however, instead of 404 we wish to take some other action in case of a non-match, we can modify our code like this:
+
+```php
+<!-- find the matched route (view) -->
+<cms:match_route debug='1' />
+
+..
+
+<!-- implement the selected view -->
+<cms:if k_matched_route != '' >
+
+    <cms:if k_matched_route='list_view'>
+        <h2>This is list_view</h2>
+    <cms:else_if k_matched_route='create_view' />
+        <h2>This is create_view</h2>
+    </cms:if>
+
+<cms:else />
+    .. No route matched. Take some action ..
+</cms:if>
+```
+
+In the modified code above we make use of the fact that if no view gets selected the `k_matched_route` variable would remain blank.
+
+OK, so now, hopefully, we should have a fair idea about how custom routes work. We can now move on to defining more complex routes and exploring the other features offered by `cms:route` tag.
+
+---
+
+[Next Chapter: **Complex Routes**](../complex-routes/)
