@@ -1,0 +1,53 @@
+
+START SPECIFICATION:
+---
+description: Applies to documentation architecture and content organization for CouchCMS, specifically focused on the high-level documentation structure and specialized content categories
+globs: *.md,docs/*.md,tutorials/*.md,reference/*.md
+alwaysApply: false
+---
+
+
+# main-overview
+
+## Development Guidelines
+
+- Only modify code directly relevant to the specific request. Avoid changing unrelated functionality.
+- Never replace code with placeholders like `# ... rest of the processing ...`. Always include complete code.
+- Break problems into smaller steps. Think through each step separately before implementing.
+- Always provide a complete PLAN with REASONING based on evidence from code and logs before making changes.
+- Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
+
+
+The CouchCMS documentation system implements a domain-specific organization structure for managing technical content and user education resources.
+
+## Documentation Architecture (Importance: 85)
+Hierarchical content organization divided into specialized categories:
+- Getting Started
+- Concepts
+- Tags Reference
+- Tutorials
+- Tips & Tricks
+- Add-Ons
+
+## Specialized Feature Documentation (Importance: 90)
+Tags Reference section contains documentation for new CMS capabilities:
+- Sub-Templates
+- Template Inheritance 
+- Custom Routes
+- Extended Entities
+
+## Advanced Tutorial Framework (Importance: 75)
+Multi-level documentation structure supporting:
+- Code implementation guidance
+- View handling documentation
+- User management documentation
+- Controller logic explanations
+
+## Asset Management Rules (Importance: 70)
+Documentation-specific caching policies:
+- Long-term image/icon caching (1 year)
+- Medium-term resource caching for CSS/JS/PDF (1 month)
+- Content-specific compression rules
+
+$END$
+END SPECIFICATION
