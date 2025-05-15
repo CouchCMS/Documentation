@@ -1,0 +1,48 @@
+---
+description: Analysis of CouchCMS documentation structure, hierarchy, and content organization patterns
+globs: docs/**/*.md,content/**/*.{md,mdx},*.{md,mdx}
+alwaysApply: false
+---
+
+
+# content-structure
+
+The CouchCMS documentation implements a domain-specific hierarchical content organization with specialized categorization:
+
+## Primary Documentation Categories [Score: 85]
+- Getting Started
+- Concepts
+- Tags Reference
+- Tutorials
+- Tips & Tricks
+- Add-Ons
+
+## Tags Reference Organization [Score: 90]
+Specialized technical categorization for CMS-specific features:
+1. Core tags documentation
+2. Sub-Templates (new feature)
+3. Template Inheritance (new feature) 
+4. Custom Routes (new feature)
+5. Extended Entities (new feature)
+
+## Tutorial Content Architecture [Score: 75]
+Multi-level documentation structure:
+- Code walkthrough sections
+- Implementation guidance
+- Views documentation
+- User management documentation
+- Controller logic explanations
+
+## Documentation Integration Rules [Score: 70]
+New documentation sections are integrated through:
+- Feature-specific categorization
+- Clear marking of new features
+- Nested organization for complex topics
+
+## Asset Organization [Score: 65]
+Documentation assets follow domain-specific rules:
+- Image and icon organization
+- CSS/JavaScript asset structure
+- PDF resource management
+
+$END$

@@ -1,11 +1,10 @@
+## START SPECIFICATION:
 
-START SPECIFICATION:
----
-description: Documentation overview for CouchCMS, focusing on the core documentation structure and domain-specific features implemented through Astro and Starlight
-globs: *.mjs,*.ts,*.astro
+description: Applies when documenting the core structure of CouchCMS documentation system built with Astro and Starlight theme
+globs: _.astro,_.ts,\*.mjs
 alwaysApply: false
----
 
+---
 
 # main-overview
 
@@ -17,35 +16,26 @@ alwaysApply: false
 - Always provide a complete PLAN with REASONING based on evidence from code and logs before making changes.
 - Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
 
+CouchCMS Documentation Infrastructure
 
-CouchCMS Documentation implements a specialized knowledge hierarchy organized around domain-specific concepts and features:
+## Core Organization
 
-Core Documentation Structure:
-- Getting Started
-- Core Concepts
-- Tags Reference
-- Add-Ons
-- Tutorials by complexity
+The project establishes a documentation framework for CouchCMS with specialized media handling capabilities focused on content presentation.
 
-Domain Features:
-1. Template Management
-   - Sub-Templates (New Feature)
-   - Template Inheritance (New Feature)
-   - Core tag implementations
+## Business Components
 
-2. Custom Routing System
-   - Extended routing capabilities
-   - Custom route definitions
-   - URL management
+Media Display System:
 
-3. Entity Framework
-   - Extended Entities (New Feature)
-   - Entity relationships
-   - Custom data models
+- Generic media wrapper containers
+- YouTube-specific content embedding
+- Custom content collection management
 
-Components containing business logic are organized into presentation layers for media content and documentation structure, with specific focus on CMS-specific implementations and content organization patterns.
+## Integration Points
 
-Importance Score: 75 - Represents key documentation organization for core CMS functionality
+Documentation content is processed through configured collection endpoints before being rendered into the documentation system.
+
+Importance Score: 45
+Primary focus is on documentation structure and media presentation rather than complex business rules.
 
 $END$
 END SPECIFICATION

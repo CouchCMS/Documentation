@@ -1,37 +1,37 @@
 ---
-description: Handles documentation organization patterns and hierarchy for CMS content
-globs: src/content/**.md,src/content/**.mdx,astro.config.mjs,src/content.config.ts
+description: Documentation site content hierarchy, section organization, and navigation structure documentation
+globs: src/content/**/*,src/components/layout/*,.astro.config.*
 alwaysApply: false
 ---
 
 
 # content-structure
 
-The documentation implements a domain-specific hierarchy for CMS content organization:
+The documentation site employs a hierarchical content organization system with the following key components:
 
-## Core Documentation Structure
-- `Getting Started`: Onboarding documentation
-- `Core Concepts`: Fundamental CMS principles 
-- `Tags Reference`: Command reference divided into:
-  - Core Tags
-  - Sub-Templates
-  - Template Inheritance
-  - Extended Features
+Content Collections:
+- Documentation sections are organized into Astro content collections
+- Navigation structure is defined through configuration rather than hard-coding
+- New documentation sections are automatically integrated via the content collection system
 
-## Feature Classification
-The structure uses dedicated badges to highlight new CMS capabilities:
-- Sub-Templates System 
-- Template Inheritance Framework
-- Custom Routes Engine
-- Extended Entities Model
+Section Integration Flow:
+1. Documentation files placed in content collections
+2. Automatic sidebar generation based on folder structure
+3. Navigation hierarchy derived from file frontmatter metadata
+4. Documentation sections rendered using the Starlight theme templates
 
-## Integration Points
-Documentation sections are organized by:
-1. Functional domain (templating, routing, entities)
-2. Feature maturity (core vs extended)
-3. Implementation complexity (basic to advanced)
+Primary Structure:
+```
+/src/content/docs/
+  ├── getting-started/
+  ├── reference/
+  ├── guides/
+  └── api/
+```
 
-Importance Score: 75
-Rationale: The content structure directly impacts how users understand and implement the CMS features, making it a key integration point for developer experience.
+Technical Importance Scores:
+- Content Collection Organization: 65
+- Navigation Structure: 45
+- Section Integration: 40
 
 $END$

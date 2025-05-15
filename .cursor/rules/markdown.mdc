@@ -166,7 +166,6 @@ Use double quotes (") consistently in Markdown:
     - Frontmatter strings with special chars:
       `description: "A: clear, description!"`
     - Code block titles: `php title="Example"`
-    - Admonition titles: :::note[Info] "Additional context" :::
 
 Exception: Only use single quotes (') within code examples for:
 

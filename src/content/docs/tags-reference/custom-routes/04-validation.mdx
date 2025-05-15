@@ -1,0 +1,166 @@
+---
+title: "Validation & Constraints"
+description: "How to validate and constrain route parameters in Couch custom routes."
+keywords:
+    - custom routes
+    - validation
+    - constraints
+    - route validators
+    - routing
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 4
+    label: Validation & Constraints
+slug: tags-reference/custom-routes/validation
+---
+
+import { Image } from 'astro:assets';
+import customRoutes05 from './img/custom-routes-05.gif';
+import customRoutes06 from './img/custom-routes-06.gif';
+import customRoutes07 from './img/custom-routes-07.gif';
+
+### Route Validators
+
+Following is the existing definition of our **edit_view** route:
+
+```php
+<cms:route name='edit_view' path='{:id}/edit' />
+```
+
+As can be seen, the cms:route tag is being used as a self-closing tag.
+Modify it to make it a tag-pair version:
+
+```php
+<cms:route name='edit_view' path='{:id}/edit' >
+
+</cms:route>
+```
+
+And now place a `cms:route_validators` tag within it as its child:
+
+```php
+<cms:route name='edit_view' path='{:id}/edit' >
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+Access again `https://www.yoursite.com/test.php?q=dummy/edit`.
+You should get:
+
+<Image src={customRoutes05} alt="Invalid ID" />
+
+As for which validators are available for use - we can use almost all those accepted by the [**editable**](../../core/editable/) tag namely:
+
+- `min_len`
+- `max_len`
+- `exact_len`
+- `alpha`
+- `alpha_num`
+- `integer`
+- `non_negative_integer`
+- `non_zero_integer`
+- `decimal`
+- `non_negative_decimal`
+- `non_zero_decimal`
+- `email`
+- `title_ready`
+
+If the built-in validators do not suffice, we can even write our own custom validators (which are essentially nothing but simple PHP functions).
+
+Multiple validators can be applied to the same route segment e.g. as shown in the following sample route:
+
+```php
+<cms:route name='sample_view' path='{:folder_name}/read/{:page_id}' >
+    <cms:route_validators
+        folder_name='title_ready | min_len=3 | max_len=32'
+        page_id='non_zero_integer'
+    />
+</cms:route>
+```
+
+### Route Constraints
+
+Very closely related to validators is another method that can be used to perform the same task of constraining the URL segments to defined formats. Recall that the `path` we specify for a route is internally converted into a Regex which is then used to test the URL e.g. the `path` of our **edit_view** route:
+
+```php
+<cms:route name='edit_view' path='{:id}/edit'>
+    <cms:route_validators
+        id='non_zero_integer'
+    />
+</cms:route>
+```
+
+Internally gets converted to the following regex (as reported by `cms:match_route` in debug mode):
+
+<Image src={customRoutes06} alt="Regex" />
+
+By using Route constraints we can modify the regex so that it becomes stricter and thus impose the desired constraints on the URL. We use the `cms:route_constraints` tag for specifying our own regex patterns. As an example, following is our **edit_view** using `cms:route_constraints` instead of `cms:route_validators`:
+
+```php
+<cms:route name='edit_view' path='{:id}/edit'>
+    <cms:route_constraints
+        id='(\d+)'
+    />
+</cms:route>
+```
+
+Compare the regex that `cms:match_route` reports now with the one shown earlier.
+
+<Image src={customRoutes07} alt="Regex" />
+
+At this point a logical question arises - if both `cms:route_validators` and `cms:route_constraints` do the same job, which of the two should we use?
+
+Actually, you can even use them both together in the same route, if you so wish. For most cases, however, I'd say that you'll find `cms:route_validators` the easier of the two to use as it does not involve regular expressions. There are times, however, when specifying a regex pattern directly becomes necessary and then `cms:route_constraints` becomes the choice.
+
+As an example of using both the methods together, let us define a final route for our template - the **page_view**. In this view, we'll enforce that only URLs such as the following are used to access the view:
+
+```txt
+http://www.yoursite.com/test/some-page-name.html
+http://www.yoursite.com/test.php?q=some-page-name.html (without prettyURLs)
+```
+
+Following is the route definition that'll do the job:
+
+```php
+<cms:route name='page_view' path='{:page_name}{:format}'>
+    <cms:route_constraints
+        format='(\.html)'
+    />
+    <cms:route_validators
+        page_name='title_ready'
+    />
+</cms:route>
+```
+
+We needed to use `cms:route_constraints` for this route because if we placed `.html` within the `path` (i.e. `path='{:page_name}.html'`), the `.` within it is confused by the default generated regex to mean 'any single character' (you'll recognize this problem if you've worked with Regular Expressions).
+
+OK, so as we have seen, with comparatively little effort, we can impose pretty water-tight restrictions on the URLs that can be used to access our template.
+
+However, there are still certain conditions that cannot be enforced using validators/constraints alone.
+For example, in the 'sample_view' route we encountered before:
+
+```php
+<cms:route name='sample_view' path='{:folder_name}/read/{:page_id}' >
+    <cms:route_validators
+        folder_name='title_ready | min_len=3 | max_len=32'
+        page_id='non_zero_integer'
+    />
+</cms:route>
+```
+
+We can ensure that a valid folder-name and a valid page-id are provided for the route to be considered a match. What we cannot do using validators (at least not with the built-in ones) and constraints is ensuring that:
+
+- **a**. A folder by the name provided exists
+- **b**. A page with the ID provided exists
+- **c**. The page really belongs to the folder
+
+Obviously the aforementioned points cannot be ascertained without using some code. But don't worry - we can use our normal Couch tags to write that code. The `cms:match_route` tag allows us to use regular Couch 'snippets' to act as such 'filters'. Let us see how.
+
+---
+
+[Next Chapter: **Filters**](../filters/)

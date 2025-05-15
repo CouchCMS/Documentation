@@ -1,0 +1,209 @@
+---
+title: "Filters"
+description: "How to use filters for advanced validation and access control in custom routes."
+keywords:
+    - custom routes
+    - filters
+    - access control
+    - validation
+    - routing
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 5
+    label: Filters
+slug: tags-reference/custom-routes/filters
+---
+
+import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import customRoutes08 from './img/custom-routes-08.gif';
+import customRoutes09 from './img/custom-routes-09.gif';
+import customRoutes10 from './img/custom-routes-10.gif';
+
+### Route Filters
+
+Filters, as mentioned, are regular Couch snippets (i.e. those that we invoke through `cms:embed` tag) with a few important differences. Let us see one in action and the differences will become apparent.
+
+Snippets, as you know, are always placed within `couch/snippets` folder (or any folder of your choice as specified in `couch/config.php` file). Do the following:
+
+<Steps>
+
+1. Create a subfolder within the snippets folder mentioned above and name it 'filters' (this name is important). Assuming you have not changed the location of the snippets folder in config, you should now have a `couch/snippets/filters` folder.
+
+2. Create a file named `page_exists.html` and place it in the folder we created above.
+
+3. Our **edit_view** route as it exist now is as follows:
+
+    ```php
+    <cms:route name='edit_view' path='{:id}/edit' >
+        <cms:route_validators
+            id='non_zero_integer'
+        />
+    </cms:route>
+    ```
+
+    Modify it to make it as follows:
+
+    ```php
+    <cms:route name='edit_view' path='{:id}/edit' filters='page_exists'>
+        <cms:route_validators
+            id='non_zero_integer'
+        />
+    </cms:route>
+    ```
+
+    Note that we are *not* specifying the extension of our filter snippet.
+
+</Steps>
+
+Access the edit-view by using `https://www.yoursite.com/test.php?q=41/edit`.
+Assuming the `cms:match_route` tag has 'debug' set to `1`, you should see:
+
+<Image src={customRoutes08} alt="Debug" />
+
+Please notice that the `cms:match_route` tag has already declared the 'edit-view' as the matched route (which implies that all constraints specified in `cms:route_validators` tag have been met) and has set the required variables. It is only *after* a route is selected that the filters get called.
+
+Which means that if a called filter fails now, that would be the end of this page's processing. If there are any routes defined after this route, they won't be tested.
+
+Compare it to the validators we used before where a failed validator caused the route not to match and the processing then moves on to test the routes that were defined after the failed route.
+
+We can see that the `cms:match_route` is reporting that it will invoke the `filters/page_exists.html`. Set its `debug` parameter to `0` and access `https://www.yoursite.com/test.php?q=41/edit` again to see the invoked filter in action.
+
+If the `filters/page_exists.html` is empty (as it should be at this point), we'll see that the page gets processed normally. Now do the following - add this line to `filters/page_exists.html`:
+
+```php title="filters/page_exists.html"
+<h2>Shoo off!</h2>
+```
+
+Access the **edit-view** again and you should see the page rudely asking us to 'Shoo off!'.
+
+<Image src={customRoutes09} alt="Shoo off!" />
+
+Important point about filters here is that if a filter chooses to output *anything* (excluding whitespaces or newlines), the `cms:match_route` tag will consider that as an error message returned by the filter and will summarily terminate the page showing instead only that output.
+
+In other words, our filter should do all the constraints checking and validation it wants to and if everything is fine, it should remain silent ('No news is good news'). It should output the error messages only if the checks fail and these would then be displayed to the visitor with the script terminated without any further processing.
+
+Let us modify our filter to make it actually check something. Place the following within it:
+
+```php title="filters/page_exists.html"
+<cms:if "<cms:not "<cms:page_exists id=rt_id masterpage=k_template_name />" />" >
+    <h2>Shoo off!</h2>
+</cms:if>
+```
+
+The code above will output the remark only if a page with the ID specified in the URL (notice the `rt_id` being used) does not exist as a cloned page of the current template.
+
+:::note[Note]
+Since, in the case of the filter failing any check, the page being accessed will in any case be terminated, following are two variations that a filter snippet can use in lieu of specifying an error message that the calling `cms:match_route` tag displays while killing the page:
+
+<Steps>
+
+1. Abort the page by itself e.g.:
+
+    ```php
+    <cms:if "<cms:not "<cms:page_exists id=rt_id masterpage=k_template_name />" />" >
+        <cms:abort is_404='1' />
+    </cms:if>
+    ```
+
+2. Redirect to different page. This can be very useful for filters that enforce 'access control' e.g. ensuring that only a logged-in user can access the page e.g. place the following in a snippet named `authenticated.html` and we have a filter that will allow only logged-in users to access the route:
+
+    ```php
+    <cms:if k_logged_out >
+        <cms:redirect k_login_link />
+    </cms:if>
+    ```
+
+</Steps>
+:::
+
+### Chaining filters
+
+Multiple filters can be applied to a route e.g. in the code below, the **test_view** route has three filters attached to it:
+
+```php
+<cms:route name='test_view' path='{:id}/edit' filters='authenticated | page_exists | is_owner' />
+```
+
+As can be seen, we use the pipe (`|`) character to separate the filters. Filters are applied in the sequence they are specified e.g. in the example above the `authenticated` filter will be invoked first. In case this filter fails, the page is terminated and the remaining filters do not get called. If, however, it succeeds, the next filter (i.e. `page_exists`) gets called and the process is repeated.
+
+The way filters get called make them act as if they were chained together - that is to say, the code found in `page_exists` filter can positively assume that the visitor accessing the page is an authenticated user because the `authenticated` filter would have already run before it. Similarly, in the `is_owner` filter (where, supposedly, we'll try to ascertain that the logged-in user is also the owner of the page being edited), our code can positively assume that a logged-in user is present and that the specified page also exists.
+
+### Passing parameters (arguments) to filters:
+
+Filters are slightly different than ordinary snippets in that we can pass parameters to them. Let us see how. Modify the definition of our **edit_view** route from this:
+
+```php title="test.php"
+<cms:route name='edit_view' path='{:id}/edit' filters='page_exists'>
+```
+to this:
+
+```php title="test.php"
+<cms:route name='edit_view' path='{:id}/edit' filters='page_exists=foo, bar'>
+```
+
+Set the `debug` parameter of the `cms:match_route` tag back to `1` and access the **edit_view** (`https://www.yoursite.com/test.php?q=41/edit`).
+
+<Image src={customRoutes10} alt="Matched Route" />
+
+Notice the additional info being reported for the filter to be called:
+
+```php
+Following filter(s) will be called:
+filters/page_exists.html ( arg_count='2' arg_1='foo' arg_2='bar' )
+```
+
+Notice how the `arg_1` and `arg_2` variables hold the values of the two parameters (`foo` and `bar`) we passed to the filter. Had there been a third argument, it'd be made available as `arg_3`. The `arg_count` variable always reports the number of arguments passed to the filter.
+
+We can now make use of these variables in our code within the filter e.g. `<cms:show arg_2 />`.
+
+How is this feature of passing arguments to filter useful? Arguments can make it possible to reuse a filter across different situations. For example, we can pass the name of `masterpage` as argument and so use the same filter with different templates.
+
+Let us use a filter argument to reuse the `page_exists` filter, used with **edit_view** before, now with the **page_view** route. Modify the existing **page_view** route to add the filters as follows:
+
+```php title="test.php"
+<cms:route name='page_view' path='{:page_name}{:format}' filters='page_exists=name'>
+    <cms:route_constraints
+        format='(\.html)'
+    />
+    <cms:route_validators
+        page_name='title_ready'
+    />
+</cms:route>
+```
+
+As we have seen, this route enforces that only URLs such as the following will be allowed:
+
+```txt
+https://www.yoursite.com/test/some-page-name.html
+https://www.yoursite.com/test.php?q=some-page-name.html (without prettyURLs)
+```
+
+The `title_ready` validator will ensure that only a valid page_name is supplied. The `page_exists` filter will ensure that a page with that name actually exists.
+
+Problem is that the existing code within `page_exists` filter (i.e. within `snippets/filters/page_exists.html`), currently uses 'ID' to check for the existence of a page while we want to check for page_name.
+
+One option is to create a separate filter (say named `page_exists_name`) that uses page_name to verify a page's existence. We'll, instead, modify the existing `page_exists` filter and make it use both ID as well as page_name to do the check. To make it use name. we'll simply pass it 'name' as its first parameter (note how our route is doing this by setting: `filters='page_exists=name'`).
+
+The code in `page_exists` can now be modified to check if 'name' is the first parameter. If it is, the page_name is checked else the ID is used. The modified code now becomes:
+
+```php title="snippets/filters/page_exists.html"
+<cms:if arg_1='name'>
+    <cms:if "<cms:not "<cms:page_exists name=rt_page_name masterpage=k_template_name />" />" >
+        <cms:abort is_404='1' /> 
+    </cms:if>
+<cms:else />
+    <cms:if "<cms:not "<cms:page_exists id=rt_id masterpage=k_template_name />" />" >
+        <cms:abort is_404='1' /> 
+    </cms:if>
+</cms:if>
+```
+
+Ok, so we have now covered most of the concepts involving creating and using custom routes. One final piece remains that will complete the discussion.
+
+---
+
+[Next Chapter: **URL Generation**](../url-generation/)

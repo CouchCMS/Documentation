@@ -122,13 +122,6 @@ export default defineConfig({
                     ],
                 },
                 {
-                    label: "Add-Ons",
-                    collapsed: true,
-                    autogenerate: {
-                        directory: "addons",
-                    },
-                },
-                {
                     label: "Miscellaneous",
                     collapsed: true,
                     autogenerate: { directory: "miscellaneous" },
@@ -225,6 +218,13 @@ export default defineConfig({
                     label: "Tips & Tricks",
                     collapsed: true,
                     autogenerate: { directory: "tips-and-tricks" },
+                },
+                {
+                    label: "Add-Ons",
+                    collapsed: true,
+                    autogenerate: {
+                        directory: "addons",
+                    },
                 },
             ],
         }),

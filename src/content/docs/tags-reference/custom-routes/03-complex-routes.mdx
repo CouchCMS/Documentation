@@ -1,0 +1,141 @@
+---
+title: "Complex Routes"
+description: "How to use dynamic parameters in custom routes for flexible URL patterns."
+keywords:
+    - custom routes
+    - route parameters
+    - dynamic URLs
+    - routing
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 3
+    label: Complex Routes
+slug: tags-reference/custom-routes/complex-routes
+---
+
+import { Steps } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import customRoutes03 from './img/custom-routes-03.gif';
+import customRoutes04 from './img/custom-routes-04.gif';
+
+### Complex Routes (i.e. routes with parameters)
+
+Consider the following scenario - suppose we need to grant our registered users the ability to 'edit' their own pages (using DataBound Forms). So assume that, in the 'list_view' we created above, we show a list of pages created by them. Alongside each page is an icon that opens up a page where we display a Databound Form already populated by the selected page's data and ready to be edited. Let us call this the **edit_view**.
+
+Clearly while invoking this **edit_view**, we'll have to pass it a unique identifier (e.g. name or ID) of the page it is supposed to edit. We can do this (as is the convention) by providing this value through the URL used to invoke the **edit_view**. One reasonable format of the URL could be:
+
+```txt
+http://www.yoursite.com/test/41/edit
+or
+http://www.yoursite.com/test.php?q=41/edit (without prettyURLs)
+```
+
+In the URLs above the '41' would be the ID of the page to be edited. Now obviously, this value will vary with each page so we could have URLs like:
+
+```txt
+http://www.yoursite.com/test/22/edit
+http://www.yoursite.com/test/362/edit etc.
+```
+
+As can be seen, the `edit` segment of the route remains the same for all URLs but the numeric segment preceding it varies. Let us now define such a route where one or several segments of the URL are not known beforehand (i.e. will be variable). Add the new route to our existing two routes:
+
+```php
+<cms:template clonable='1' routable='1' >
+
+    <!-- define routes -->
+    <cms:route name='list_view' path='' />
+
+    <cms:route name='create_view' path='create' />
+
+    <cms:route name='edit_view' path='{:id}/edit' />
+
+</cms:template>
+```
+
+The enclosing `{:` and `}` is a signal to Couch that `id` is a 'placeholder' (as opposed to the adjacent 'edit' which will always be a 'literal' value).
+
+Access `https://www.yoursite.com/test.php?q=41/edit`.
+You should get:
+
+<Image src={customRoutes03} alt="Matched Route" />
+
+Two things stand out in the data being reported:
+
+<Steps>
+
+1. Internally the 'regex' pattern being searched for is more complex that the simpler routes we had seen so far:
+
+    ```php
+    Pattern: {:id}/edit
+    Regex: (?P<id>[^/]+)/edit
+    ```
+
+    Since this something being handled internally, it is not of much concern to us for now. More important is the second point below.
+
+2. Now two variables will be set by this route:
+
+    ```php
+    Following variable(s) will be set:
+    k_matched_route = edit_view
+    rt_id = 41
+    ```
+
+    The `rt_id` variable is indicating the value used in the URL for the `id` segment we specified in the route's path. As can easily be figured out, `cms:match_route` is simply adding a `rt_` prefix to the name of the segment (`id` in this case).
+
+    The process remains the same even if there are multiple variable segments in the path e.g. for the following path the variables set by `cms:match_route` to show the values in the two placeholders would be `rt_name` and `rt_type`:
+
+    ```php
+    path='{:name}/edit/{:type}.html'
+    ```
+
+</Steps>
+
+Continuing with the **edit_view** route - we can now use the value provided by the URL as the page's `id` as follows:
+
+```php
+..
+..
+<cms:else_if k_matched_route='edit_view' />
+    <h2>This is edit_view. ID of page to be edited is <cms:show rt_id /></h2>
+</cms:if>
+..
+..
+```
+
+Of course, in a real-world scenario we'd be putting the `id` to more serious use like using it with DataBound Form to edit the page.
+
+OK, so now guess what happens when we access this view using the following URL:
+
+Access `https://www.yoursite.com/test.php?q=dummy/edit`.
+
+<Image src={customRoutes04} alt="Invalid ID" />
+
+Uh oh! ID of page to be edited is *dummy*? Not good. ID of a page can only be an integer (a non-zero integer to be specific).
+
+:::danger[Important]
+This example illustrates a vital point in creating any non-trivial application - you simply cannot trust any user-supplied value. Period. Never, ever, use a user-supplied value without having first validated it.
+:::
+
+One way of doing this could be *after* a route has been selected e.g.:
+
+```php
+...
+...
+<cms:else_if k_matched_route='edit_view' />
+    <cms:if "<cms:validate rt_id validator='non_zero_integer' />">
+        <h2>This is edit_view. ID of page to be edited is <cms:show rt_id /></h2>
+    <cms:else />
+        Invalid value!
+    </cms:if>
+</cms:if>
+...
+```
+
+A better option, however, is to do so *before* the route is flagged by `cms:match_route` as having matched. That is to say, make the validation a requirement for the match to happen. Let us see how.
+
+---
+
+[Next Chapter: **Validation & Constraints**](../validation/)

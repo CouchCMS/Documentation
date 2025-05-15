@@ -1,0 +1,94 @@
+---
+title: "Complete Example"
+description: "A full working example of custom routes in Couch, combining all concepts."
+keywords:
+    - custom routes
+    - example
+    - routing
+    - best practices
+category: tags
+subCategory: routing
+author: Kamran Kashif
+lastUpdated: 2025-05-14
+sidebar:
+    order: 7
+    label: Complete Example
+slug: tags-reference/custom-routes/complete-example
+---
+
+The end, finally. With this we have now completed our (rather long) journey through custom routes.
+
+Following is how our `test.php` template finally looks like:
+
+```php
+<?php require_once( 'couch/cms.php' ); ?>
+    <cms:template clonable='1' routable='1' >
+
+        <!-- define routes -->
+        <cms:route name='list_view' path='' />
+       
+        <cms:route name='create_view' path='create' />
+       
+        <cms:route name='edit_view' path='{:id}/edit' filters='page_exists'>
+            <cms:route_validators
+                id='non_zero_integer'
+            />
+        </cms:route>
+
+        <cms:route name='page_view' path='{:page_name}{:format}' filters='page_exists=name'>
+            <cms:route_constraints
+                format='(\.html)'
+            />
+            <cms:route_validators
+                page_name='title_ready'
+            />
+        </cms:route>
+
+    </cms:template>
+
+   
+    <!-- find the matched route (view). Respond with 404 if no route matches. -->
+    <cms:match_route debug='1' is_404='1' />
+   
+    <h1>Test</h1>
+   
+    <!-- implement the selected view -->
+    <cms:if k_matched_route='list_view'>
+        <h2>This is list_view</h2>
+       
+        <cms:pages>
+            <a href="<cms:route_link 'page_view' rt_page_name=k_page_name rt_format='.html' />">
+                <cms:show k_page_title />
+            </a>
+           
+            <a href="<cms:route_link 'edit_view' masterpage=k_template_name rt_id=k_page_id />">
+                [EDIT]
+            </a>
+            <br/>
+        </cms:pages>
+       
+    <cms:else_if k_matched_route='create_view' />
+        <h2>This is create_view</h2>
+    <cms:else_if k_matched_route='edit_view' />
+        <h2>This is edit_view. ID of page to be edited is <cms:show rt_id /></h2>   
+    <cms:else_if k_matched_route='page_view' />
+        <h2>This is page_view. Name of page to be edited is <cms:show rt_page_name /></h2>         
+    </cms:if>
+
+   
+<?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
+```
+
+In closing, I'll quote a paragraph I used at the beginning of this thread where I described the actions taken by Couch while routing the default views:
+
+Roughly speaking, when Couch matches a URL to the available views, it does the following:
+
+**a**. Examines the URL used to access the page and matches it against some fixed patterns.
+
+**b**. If a match is found, it carries out additional validations e.g. in **page-view** the `p` should be a non-zero integer and a page with that id should also exist. Similarly in **archive-view** the values supplied for the year and month should be valid.
+
+**c**. If validations succeed, it sets a variable indicating the name of the matched 'view'. It also makes available the arguments supplied in the URL (e.g. the value of `p` etc.) as variables. The Couch tags placed in the template can now make use of these variables to alter the output of the page e.g. `<cms:if k_is_page>..</cms:if>`
+
+**d**. If the validations fail, it throws a distinct error. Similarly if the URL does not match any known pattern a 'Page not found' HTTP 404 is thrown.
+
+Please compare the points above with what custom routes do and you'll see that now we can mimic the default logic of Couch with almost any kind of custom URL structure.
