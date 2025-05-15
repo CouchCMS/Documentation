@@ -1,0 +1,50 @@
+---
+description: Documentation architecture specification for organizing technical content of a CMS system
+globs: docs/**/*,content/**/*,src/components/media/*,src/components/layout/*
+alwaysApply: false
+---
+
+
+# component-architecture
+
+The documentation system implements a domain-specific component architecture focused on organizing CMS technical content:
+
+## Core Organization Components
+- Hierarchical content structure with specialized sections
+- Domain-specific tag reference categorization
+- Advanced tutorial content nesting
+- Asset management subsystem
+
+## Documentation Categories (Importance: 85)
+Core documentation components organized into distinct business domains:
+- Getting Started
+- Concepts 
+- Tags Reference
+- Tutorials
+- Tips & Tricks
+- Add-Ons
+
+## Specialized Tag Components (Importance: 90)
+Domain-specific tag categorization system:
+- Core tags implementation
+- Sub-Templates framework
+- Template Inheritance system
+- Custom Routes engine
+- Extended Entities model
+
+## Tutorial Component System (Importance: 75)
+Multi-level nested architecture for complex documentation:
+- Code implementation sections
+- Implementation guidelines
+- Views documentation
+- User management docs
+- Controller documentation
+
+## Asset Management (Importance: 65)
+Documentation asset organization:
+- Image and icon management
+- Style and script organization
+- PDF document handling
+- Content compression rules
+
+$END$
