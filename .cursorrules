@@ -1,11 +1,10 @@
+## START SPECIFICATION:
 
-START SPECIFICATION:
----
 description: Applies when documenting the core structure of CouchCMS documentation system built with Astro and Starlight theme
-globs: *.astro,*.ts,*.mjs
+globs: _.astro,_.ts,\*.mjs
 alwaysApply: false
----
 
+---
 
 # main-overview
 
@@ -17,19 +16,22 @@ alwaysApply: false
 - Always provide a complete PLAN with REASONING based on evidence from code and logs before making changes.
 - Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
 
-
 CouchCMS Documentation Infrastructure
 
 ## Core Organization
+
 The project establishes a documentation framework for CouchCMS with specialized media handling capabilities focused on content presentation.
 
 ## Business Components
+
 Media Display System:
+
 - Generic media wrapper containers
 - YouTube-specific content embedding
 - Custom content collection management
 
 ## Integration Points
+
 Documentation content is processed through configured collection endpoints before being rendered into the documentation system.
 
 Importance Score: 45

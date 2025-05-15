@@ -12,7 +12,7 @@ The component system follows a base media card pattern with specialized extensio
 ### Card Component Hierarchy
 
 `src/components/card-media.astro`
-- Base media card wrapper providing shared display logic 
+- Base media card wrapper providing shared display logic
 - Accepts generic media content through slots
 - Standardizes media presentation across the system
 
@@ -21,7 +21,7 @@ The component system follows a base media card pattern with specialized extensio
 - Implements specialized video embedding
 - Translates YouTube URLs into embedded players
 
-### Content Integration 
+### Content Integration
 
 The media components integrate with content collections to enable:
 - Dynamic media insertion in content blocks
