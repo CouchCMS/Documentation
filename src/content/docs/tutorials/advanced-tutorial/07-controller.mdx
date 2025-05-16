@@ -69,7 +69,7 @@ In the `snippets` folder of your site (this is the folder where, by default, Cou
 </FileTree>
 
 :::note
-Couch, as you know, doesn't dictate where you place your code in e.g. all the code for views could have been within `notes.php` itself or all the snippets could have been put directly in 'snippets' root.
+Couch, as you know, doesn't dictate where you place your code in e.g. all the code for views could have been within `notes.php` itself or all the snippets could have been put directly in `snippets` root.
 
 Segregating the views as separate files and keeping them within a folder hierarchy as shown above is just to divide the code into manageable chunks. For complex applications, for your sanity's sake, this becomes almost a necessity.
 :::
@@ -89,18 +89,17 @@ Our decision tree can now become:
 </cms:if>
 ```
 
-If you notice above, we have named all the snippet files after the view they are implementing (e.g. `list_view.html` implements 'list_view').
-Again, this convention is a self-imposed one as Couch does not mandate what names are to be used for snippets. However, by virtue of this convention, we can shorten our decision tree above to just a single line:
+If you notice above, we have named all the snippet files after the view they are implementing (e.g. `list_view.html` implements **list_view**). Again, this convention is a self-imposed one as Couch does not mandate what names are to be used for snippets. However, by virtue of this convention, we can shorten our decision tree above to just a single line:
 
 ```php
 <cms:embed "views/notes/<cms:show k_matched_route />.html" />
 ```
 
-As you can see, the line of code above always tries to embed a '.html' file named after the selected view (as indicated by `k_matched_route` variable) from the 'views/notes' folder.
+As you can see, the line of code above always tries to embed a `.html` file named after the selected view (as indicated by `k_matched_route` variable) from the `views/notes` folder.
 
 This version of the decision tree, apart from being concise, is also future-proof as it does not contain any hard-coded file names.
 
-Suppose we add a new route named 'test_view' to our template. We don't have to make any changes to the code above as it'll automatically try to embed the `views/notes/test_view.html` snippet whenever a URL matches the new route.
+Suppose we add a new route named **test_view** to our template. We don't have to make any changes to the code above as it'll automatically try to embed the `views/notes/test_view.html` snippet whenever a URL matches the new route.
 
 Another nice thing about this arrangement is that the snippet being invoked need not necessarily be present for the application to work. An absent snippet will only show a message like:
 
