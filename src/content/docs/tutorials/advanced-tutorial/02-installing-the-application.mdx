@@ -105,7 +105,7 @@ As mentioned before, the Notejam application comprises of three distinct 'entiti
 
 As is the norm with Couch, we use clonable templates to represent each of these entities. The `notes.php` and `pads.php` templates can be found in the site's root while the users template can be found within the `users` folders as `index.php`.
 
-We'll begin with registering the users template (users/index.php) first as the other two templates will refer to this in their relation fields.
+We'll begin with registering the users template (`users/index.php`) first as the other two templates will refer to this in their relation fields.
 
 ### Users Template
 
@@ -150,9 +150,13 @@ The process of setting up the user accounts template is described in detail in t
 
     This will make the module use cloned pages of this template as user accounts.
 
-4. Visit `https://www.yoursite.com/users/index.php` as super-admin once again. This action will trigger the `extended-users` module to add all the necessary editable regions to our template.
+4. Visit `https://www.yoursite.com/users/index.php` as super-admin once again. This action will trigger the **Extended Users** module to add all the necessary editable regions to our template.
 
-5. Check that everything works as expected by coming back to the admin-panel and creating a cloned page from the template. This should cause an equivalent user account to be created automatically. Open the super-admin account for editing and simply hit 'save' without changing anything. This should cause an equivalent cloned-page to be created in the users template.
+5. Test that the extended users functionality works correctly by following these steps:
+
+    a. Go to the admin panel and create a cloned page from the `users/index.php` template. Verify that a corresponding user account is automatically created.
+
+    b. Next, open the super-admin account for editing. Simply click 'save' without changing anything. This should cause a corresponding cloned page to be created in the users template.
 
 </Steps>
 
@@ -161,7 +165,7 @@ two templates.
 
 ### Notes and Pads Templates
 
-Fortunately, registering these templates is a much simpler affair. Visit the folowwing pages as super-admin
+Fortunately, registering these templates is a much simpler affair. Visit the following pages as super-admin:
 
 <Steps>
 
@@ -170,20 +174,28 @@ Fortunately, registering these templates is a much simpler affair. Visit the fol
 
 </Steps>
 
-:::note[Registration Order]
+:::caution[Important]
 The sequence is important as a relation field within `notes.php` references `pads.php`.
 :::
 
-Coming back to the admin-panel, you should see the two templates appear in the sidebar along with the user template we registered before them.
+:::danger[Expected Errors]
+When you first visit these template URLs, you may see errors similar to these:
+
+```txt
+Error embedding file: /var/www/html/snippets/views/pads/.html
+Error embedding file: /var/www/html/snippets/views/notes/.html
+```
+
+These errors are expected and will disappear once you've completed the template registration process.
+:::
+
+After visiting both URLs, return to the admin panel. You should now see both templates appearing in the sidebar, alongside the user template we registered earlier.
+
+To verify that the registration was successful, navigate back to `https://www.yoursite.com/notes.php`. The previous errors should be gone, and you should see the application interface.
 
 ## Adding Test Data
 
-Before we move onto the front-end to work directly with the application, create some 'seeding' data for the application:
-
-Before we move onto the front-end to work directly with the application, create some 'seeding' data for the
-application. To do so, use the admin-panel to create a couple of pads (i.e. cloned-pages of `pads.php`). Associate
-them with 'admin' for now. Now create some notes and associate them with the pads we created above and user
-'admin'.
+Before we move onto the front-end to work directly with the application, create some 'seeding' data for the application. To do so, use the admin-panel to create a couple of pads (i.e. cloned-pages of `pads.php`). Associate them with 'admin' for now. Now create some notes and associate them with the pads we created above and user 'admin'.
 
 <Steps>
 
