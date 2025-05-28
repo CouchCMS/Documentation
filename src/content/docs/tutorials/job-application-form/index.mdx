@@ -8,6 +8,7 @@ keywords:
     - file upload
     - form validation
     - database storage
+    - couchcms
 category: tutorial
 subCategory: job-application-form
 author: Kamran Kashif
@@ -324,12 +325,12 @@ After:
 I am sure you'd be surprised to notice that the only change we've done is convert the 'type' of *all* `cms:input` tags to 'bound'. Try accessing the template in the browser at this point. You'll see that although we declared all the inputs with the same type 'bound', on the front-end each renders differently - the 'position' input renders as a dropdown, the 'resume' input renders as a file input etc. In fact, each renders exactly as it does in the admin-panel. That is the 'bound' in 'data-bound' for you.
 
 Please read the following explanation carefully -
-**For rendering a bound cms:input on the front-end, Couch actually uses the definition of the 'editable region' of the same name from the template the form is bound to.**
-Got it? The key here is to use the same 'name' for the bound cms:inputs as those used for the defined editable regions.
+**For rendering a bound `cms:input` on the front-end, Couch actually uses the definition of the `editable region` of the same name from the `template` the form is bound to.**
+Got it? The key here is to use the same `name` for the bound `cms:input`s as those used for the defined editable regions.
 
 So, actually what we are seeing on the front-end form are the very editable regions that we see on the backend. It is almost like we have slit open the form in places and the editable regions from the admin-panel are peeping out of these slits ( well, at least that is how I feel about them :-) ).
 
-Test the form out. All the validations, requirements etc. that we defined for the editable regions will be enforced on the front-end too (not surprising as these actually *are* the editable regions).
+Test the form out. All the validations, requirements etc. that we defined for the editable regions will be enforced on the front-end too (not surprising as these actually _are_ the editable regions).
 
 When all the inputs are filled with proper data, the form submission succeeds and the `<cms:if k_success >` block executes. However, we haven't placed anything there. Let us do that in the final modification
 
@@ -364,7 +365,7 @@ After:
 
 The `db_persist_form` tag is the final piece of this puzzle.
 
-Used without any parameters, this tag simply pulls in the submitted values (from the 'bound' inputs) and saves them into the template the form is bound to. Since in our case, the binding 'mode' of the form is 'create', this saving action results in the creation of a new cloned page of our template.
+Used without any parameters, this tag simply pulls in the submitted values (from the `bound` inputs) and saves them into the `template` the form is bound to. Since in our case, the binding `mode` of the form is `create`, this saving action results in the creation of a new cloned page of our template.
 
 Try submitting some filled forms from the front-end. Coming back to the admin-panel, you should see a list of cloned pages that were created for all successful form submissions.
 
@@ -464,7 +465,7 @@ As a solution:
 <Steps>
 
 1. We could duplicate the method used in the admin-panel (i.e. offer explicit input boxes for name and title).
-   This can be done by using cms:input fields bound to the system fields e.g.:
+   This can be done by using `cms:input` fields bound to the system fields e.g.:
 
     ```php
     <cms:input type="bound" name="k_page_name" />
@@ -473,7 +474,7 @@ As a solution:
 
     If the input bound to `k_page_name` is omitted, a name would be auto-generated using the value from the field bound to the 'title' (i.e. `k_page_title`).
 
-2. We could indirectly supply values for the name/title as parameters of the cms:db_persist_form tag e.g.:
+2. We could indirectly supply values for the name/title as parameters of the `cms:db_persist_form` tag e.g.:
 
     ```php
     <cms:db_persist_form
@@ -535,7 +536,7 @@ Suppose we choose, 'What colour is a blue apple?'. To implement it in the form, 
 <cms:input name="human" type="text" required='1' validator='regex=/^blue$/i' />
 ```
 
-To explain the code - we are using a simple `cms:input` of type 'text' with the `required` parameter set to make it mandatory. The real deal is the `validator` parameter where we are checking if the inputted response matches the correct answer:
+To explain the code - we are using a simple `cms:input` of type `text` with the `required` parameter set to make it mandatory. The real deal is the `validator` parameter where we are checking if the inputted response matches the correct answer:
 
 ```php
 validator='regex=/^blue$/i'
@@ -543,8 +544,8 @@ validator='regex=/^blue$/i'
 
 Make sure to change the highlighted portion to match whatever is the answer to the question you put. Your visitors will also appreciate if you provided a hint about the length of the right answer.
 
-:::note
-This step, incidentally, also shows that we can use 'bound' and normal `cms:input` tags together in the same form (the 'human' input we used above, unlike others, is not a bound field). Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by `frm_` and `k_error_` to input names). The only difference between the two lies in the fact that values of normal inputs, unlike those of bound inputs, will not be saved into the database.
+This step, incidentally, also shows that we can use `bound` and normal `cms:input` tags together in the same form (the `human` input we used above, unlike others, is not a bound field). Submitted values or error messages from both types will be made available by the form in identical fashion (i.e. as variables prefixed by `frm_` and `k_error_` to input names). The only difference between the two lies in the fact that values of normal inputs, unlike those of bound inputs, will not be saved into the database.
+
 :::
 
 This one step alone should cut down the spam spewed by bots appreciably. Spam submitted by real humans is a different prospect altogether.
@@ -792,12 +793,12 @@ As with the custom listing, Couch forgoes everything it normally does while rend
 
 So, although we can do anything we wish through our snippet it is only fair to assume that we'd want to provide the editing functionality here (after all it is the edit screen). If we take a look at the code used by Couch's default edit screen (using browser tools), we'll find that it uses an HTML form for the purpose. That is hardly surprising as anything related to editing database fields in a browser invariably has to use a form. Speaking of which, remember our databound form? I think you get the connection - yes, we'll use the databound form in our snippet to handle page editing.
 
-Once again, it'd be useful to begin with a snippet that mimics the default edit screen and then add our modifications to it. The attached zip at the bottom contains (in the `couchified\\snippets` folder) a sample snippet named `default_edit.html` that has all the necessary boilerplate code.
-The block between `<!-- EDIT -->` and `<!-- END EDIT -->` is where we should place our 'bound' `cms:inputs` (the `cms:form` is already in place).
+Once again, it'd be useful to begin with a snippet that mimics the default edit screen and then add our modifications to it. The attached zip at the bottom contains (in the `couchified\snippets` folder) a sample snippet named `default_edit.html` that has all the necessary boilerplate code.
+The block between `<!-- EDIT -->` and `<!-- END EDIT -->` is where we should place our `bound` `cms:input`s (the `cms:form` is already in place).
 
 `my_edit.html` found in the same folder is its modified version tailored for our applications module.
 
-If you do a comparison of both versions, you'll find that the added code for the 'bound' inputs is just a copy/paste job from the front-end template (i.e. `applications.php` found in the 'couchified' folder). So we are basically just duplicating the front-end form on the back-end.
+If you do a comparison of both versions, you'll find that the added code for the `bound` inputs is just a copy/paste job from the front-end template (i.e. `applications.php` found in the 'couchified' folder). So we are basically just duplicating the front-end form on the back-end.
 
 The other minor modifications consist of adding a few in-page CSS styles and linking `bootstrap.min.css` to the form (you might have to adjust its href if located at a different location).
 
