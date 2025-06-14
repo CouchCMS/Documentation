@@ -39,6 +39,8 @@ importers:
       markdownlint-cli2:
         specifier: ^0.18.1
         version: 0.18.1
+        specifier: ^0.18.1
+        version: 0.18.1
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1029,6 +1031,8 @@ packages:
 
   debug@4.4.1:
     resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
+  debug@4.4.1:
+    resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -1460,6 +1464,8 @@ packages:
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
+  markdownlint-cli2@0.18.1:
+    resolution: {integrity: sha512-/4Osri9QFGCZOCTkfA8qJF+XGjKYERSHkXzxSyS1hd3ZERJGjvsUao2h4wdnvpHp6Tu2Jh/bPHM0FE9JJza6ng==}
   markdownlint-cli2@0.18.1:
     resolution: {integrity: sha512-/4Osri9QFGCZOCTkfA8qJF+XGjKYERSHkXzxSyS1hd3ZERJGjvsUao2h4wdnvpHp6Tu2Jh/bPHM0FE9JJza6ng==}
     engines: {node: '>=20'}
@@ -1959,6 +1965,8 @@ packages:
 
   semver@7.7.2:
     resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2449,6 +2457,9 @@ packages:
   yaml@2.8.0:
     resolution: {integrity: sha512-4lLa/EcQCB0cJkyts+FpIRx5G/llPxfP6VQU5KByHEhLxY3IJCH0f0Hy1MHI8sClTvsIb8qwRJ6R/ZdlDJ/leQ==}
     engines: {node: '>= 14.6'}
+  yaml@2.8.0:
+    resolution: {integrity: sha512-4lLa/EcQCB0cJkyts+FpIRx5G/llPxfP6VQU5KByHEhLxY3IJCH0f0Hy1MHI8sClTvsIb8qwRJ6R/ZdlDJ/leQ==}
+    engines: {node: '>= 14.6'}
     hasBin: true
 
   yargs-parser@21.1.1:
@@ -2628,6 +2639,7 @@ snapshots:
     dependencies:
       ci-info: 4.2.0
       debug: 4.4.1
+      debug: 4.4.1
       dlv: 1.1.3
       dset: 3.1.4
       is-docker: 3.0.0
@@ -2638,6 +2650,7 @@ snapshots:
 
   '@astrojs/yaml2ts@0.2.2':
     dependencies:
+      yaml: 2.8.0
       yaml: 2.8.0
 
   '@babel/helper-string-parser@7.27.1': {}
@@ -3304,6 +3317,7 @@ snapshots:
       cookie: 1.0.2
       cssesc: 3.0.0
       debug: 4.4.1
+      debug: 4.4.1
       deterministic-object-hash: 2.0.2
       devalue: 5.1.1
       diff: 5.2.0
@@ -3511,6 +3525,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
+  debug@4.4.1:
   debug@4.4.1:
     dependencies:
       ms: 2.1.3
@@ -4065,9 +4080,12 @@ snapshots:
   markdown-table@3.0.4: {}
 
   markdownlint-cli2-formatter-default@0.0.5(markdownlint-cli2@0.18.1):
+  markdownlint-cli2-formatter-default@0.0.5(markdownlint-cli2@0.18.1):
     dependencies:
       markdownlint-cli2: 0.18.1
+      markdownlint-cli2: 0.18.1
 
+  markdownlint-cli2@0.18.1:
   markdownlint-cli2@0.18.1:
     dependencies:
       globby: 14.1.0
@@ -4075,6 +4093,7 @@ snapshots:
       jsonc-parser: 3.3.1
       markdown-it: 14.1.0
       markdownlint: 0.38.0
+      markdownlint-cli2-formatter-default: 0.0.5(markdownlint-cli2@0.18.1)
       markdownlint-cli2-formatter-default: 0.0.5(markdownlint-cli2@0.18.1)
       micromatch: 4.0.8
     transitivePeerDependencies:
@@ -4574,6 +4593,7 @@ snapshots:
     dependencies:
       '@types/debug': 4.1.12
       debug: 4.4.1
+      debug: 4.4.1
       decode-named-character-reference: 1.1.0
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.3
@@ -4982,11 +5002,13 @@ snapshots:
   sax@1.4.1: {}
 
   semver@7.7.2: {}
+  semver@7.7.2: {}
 
   sharp@0.33.5:
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.4
+      semver: 7.7.2
       semver: 7.7.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.33.5
@@ -5014,6 +5036,7 @@ snapshots:
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.4
+      semver: 7.7.2
       semver: 7.7.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.2
@@ -5175,6 +5198,7 @@ snapshots:
   typescript-auto-import-cache@0.3.6:
     dependencies:
       semver: 7.7.2
+      semver: 7.7.2
 
   typescript@5.8.3: {}
 
@@ -5300,6 +5324,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.0.1
       fsevents: 2.3.3
+      yaml: 2.8.0
       yaml: 2.8.0
 
   vitefu@1.0.6(vite@6.3.5(@types/node@24.0.1)(yaml@2.8.0)):
@@ -5474,6 +5499,7 @@ snapshots:
 
   yaml@2.2.2: {}
 
+  yaml@2.8.0: {}
   yaml@2.8.0: {}
 
   yargs-parser@21.1.1: {}
