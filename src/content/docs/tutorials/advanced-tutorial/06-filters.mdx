@@ -59,7 +59,7 @@ If you remember, with filters 'no news is good news' - if the visitor happens to
 
 The important part above is the `cms:page_exists` tag that queries the `notes.php` template for a page with ID contained in the `rt_id` variable.
 
-If you recall from the docs, the `cms:match_route` upon finding a matching route, creates variables by prefixing all 'variable parameters' in its 'path' (i.e. those defined e.g. as `{:id}`) with `rt_` and puts into them the actual value used in the URL.
+If you recall from the docs, the `cms:match_route` upon finding a matching route, creates variables by prefixing all 'variable parameters' in its `path` (i.e. those defined e.g. as `{:id}`) with `rt_` and puts into them the actual value used in the URL.
 
 To take a concrete example, our **edit_view** route defines the path as follows:
 
@@ -143,7 +143,6 @@ The syntax used to query a relation field made its debut very recently and so mi
 :::
 
 If no such page is found, the `cms:no_results` tag executes and the HTTP 404 is served.
-If, however, this page is found, the `cms:pages` tag has nothing within it to execute so it outputs a blank.
-Which translates to that this is a success case for this filter.
+If, however, this page is found, the `cms:pages` tag has nothing within it to execute so it outputs a blank. Which translates to that this is a success case for this filter.
 
 We can now move on to see what happens when a route gets selected.
