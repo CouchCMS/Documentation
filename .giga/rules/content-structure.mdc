@@ -1,62 +1,51 @@
 ---
-description: Documentation for content hierarchy and organization patterns in technical documentation systems
-globs: **/*.md,**/*.mdx,**/content/**,**/docs/**,src/content.config.ts
+description: Defines content hierarchy, documentation organization, and section integration processes for documentation management
+globs: src/content/**/*.mdx,src/content/**/*.md,*.md,astro.config.mjs
 alwaysApply: false
 ---
 
 
 # content-structure
 
-### Documentation Hierarchy
+### Documentation Organization
+The content structure is organized into distinct documentation sections:
 
-The content structure implements a multi-level documentation organization system with specialized sections:
+1. **Profile Management Documentation**
+- Location: `src/content/docs/profile-management.mdx`
+- Contains student profile update workflows and validation rules
+- Structured with validation procedures and data formatting guidelines
 
-#### Core Documentation Sections
-- Getting Started
-- Concepts 
-- Tags Reference
-- Miscellaneous
-- Tutorials
-- Tips & Tricks
-- Add-Ons
+2. **Portfolio Management Documentation**
+- Location: `src/content/docs/portfolio-updates.mdx`
+- Documents portfolio update mechanisms
+- Includes content formatting requirements and validation rules
 
-#### Advanced Tutorial Structure
-Implements nested documentation hierarchies:
-- Code Walkthrough
-- Views
-- Additional subsections (dynamically generated)
+3. **Validation Documentation**
+- Location: `src/content/docs/validation-rules.mdx`
+- Details custom validation rules for:
+  - Email format requirements
+  - Date validations
+  - Unique identifier checks
 
-### Content Integration Rules
+4. **Data Transformation Documentation**
+- Location: `src/content/docs/data-transformation.mdx`
+- Documents standardization processes for portfolio data
+- Covers date format conversions and content normalization rules
 
-1. **Dynamic Section Generation**
-Automatic section population through markdown file detection and integration
-- File paths: `src/content/**/*.md`
+### Navigation Structure
+The documentation implements a nested navigation system:
+- Collapsible sections for complex topics
+- Auto-generated content based on directory structure
+- Custom labels for new features
+- Integrated table of contents with specific heading levels
 
-2. **Sidebar Organization**
-Collapsible section management with hierarchical documentation grouping
-- Importance Score: 75 (Key structural organization component)
+### Content Integration Points
+- Documentation content is validated through link checking
+- Markdown formatting rules ensure consistency
+- Direct GitHub edit links for collaborative documentation maintenance
+- Integration of social links for community engagement
 
-3. **Documentation Editing Flow**
-GitHub-based editing workflow integration with direct links to source content
-- Importance Score: 65 (Supporting documentation maintenance)
-
-4. **Table of Contents Structure**
-Multi-level heading organization (levels 2-5) for detailed content navigation
-- Importance Score: 60 (Content accessibility feature)
-
-### Media Content Organization
-
-Specialized components for media integration:
-
-1. **Media Card Structure**
-Component-based organization for multimedia content display
-- File path: `src/components/card-media.astro`
-- Importance Score: 70 (Key content presentation pattern)
-
-2. **YouTube Content Integration**
-Dedicated structure for video content organization
-- File path: `src/components/card-youtube.astro`
-- Importance Score: 65 (Specialized media integration)
+Importance Score: 85 (Key documentation structure impacting user understanding and system maintainability)
 
 $END$
 
