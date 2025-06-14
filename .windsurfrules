@@ -10,62 +10,46 @@
 - Explain your OBSERVATIONS clearly, then provide REASONING to identify the exact issue. Add console logs when needed to gather more information.
 
 
-Student-Hub implements a specialized backend system for student profile and portfolio management with several interconnected business components:
+### Core Business Logic Organization
 
-### Core Business Components
+The Student-Hub backend system is organized around two primary business domains:
 
-1. Profile Management System
-- Handles student profile updates and portfolio modifications
-- Implements institutional validation rules
-- Manages file attachments and metadata
-- File: `src/components/ProfileManagement.js`
+1. Profile Management System (Importance: 95)
+- Located in `src/content/docs/profile-management.mdx`
+- Handles student profile updates with custom validation rules
+- Enforces unique identifier verification and email format validation
+- Manages date validation for biographical information
 
-2. Portfolio Processing Pipeline
-- Transforms raw portfolio submissions into standardized formats
-- Applies institutional content policies
-- Manages version control of portfolio items
-- File: `src/transformers/PortfolioTransformer.js`
+2. Portfolio Management System (Importance: 90)
+- Located in `src/content/docs/portfolio-updates.mdx`
+- Controls portfolio content updates with specific formatting requirements
+- Implements project description length validation
+- Maintains predefined skill level categorization
 
-### Validation & Policy Layer
+### Business Policy Implementation
 
-1. Custom Validators
-- Enforces institution-specific profile requirements
-- Validates portfolio content and file types
-- Files: 
-  - `src/validators/ProfileValidator.js`
-  - `src/validators/PortfolioValidator.js`
+1. Data Integrity Rules (Importance: 85)
+- Located in `src/content/docs/validation-rules.mdx`
+- Enforces unique student ID verification
+- Validates email formats and uniqueness
+- Implements date range validation logic
 
-2. Policy Management
-- Enforces institutional content guidelines
-- Manages privacy settings and access controls
-- File: `src/policies/PolicyEnforcer.js`
+2. Update Control System (Importance: 80)
+- Located in `src/content/docs/business-policies.mdx`
+- Regulates update frequency to prevent spam
+- Manages content review workflows
+- Controls privacy settings with three-tier access system:
+  - Public access
+  - Private access
+  - Institution-only access
 
-### Workflow Orchestration
+3. Data Transformation Layer (Importance: 75)
+- Located in `src/content/docs/data-transformation.mdx`
+- Standardizes input data formats
+- Normalizes skill level representations
+- Maintains consistent project description formatting
 
-1. Profile Update Workflow
-- Coordinates profile modification processes
-- Manages approval workflows
-- Handles notification systems
-- File: `src/workflows/WorkflowManager.js`
-
-### Component Importance Scores
-
-1. Profile Management System: 95
-- Critical core business functionality
-- Direct impact on user experience
-- Central to system operation
-
-2. Portfolio Processing: 90
-- Essential for institutional compliance
-- Key data transformation processes
-
-3. Validation & Policy Layer: 85
-- Ensures data integrity
-- Maintains institutional standards
-
-4. Workflow Orchestration: 80
-- Coordinates system processes
-- Manages user interactions
+The system interconnects these components through a structured workflow that ensures data integrity and proper access control while maintaining flexible portfolio management capabilities.
 
 $END$
 
