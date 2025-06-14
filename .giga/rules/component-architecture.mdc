@@ -1,39 +1,56 @@
 ---
-description: Documentation for analyzing custom media card components and YouTube integration patterns.
-globs: src/components/card-*.astro
+description: Technical specification for media card component architecture and YouTube embedding patterns
+globs: src/components/card-*.{astro,tsx,jsx},src/content/docs/components/*.{mdx,md}
 alwaysApply: false
 ---
 
 
 # component-architecture
 
-## Media Card System
+### Media Card System Architecture
 
-The architecture implements a two-tiered card component system for handling media content:
+The component architecture implements a two-tier media card system:
 
-### Base Media Card Component
-- Implements dynamic rendering logic to switch between clickable (`<a>`) and non-clickable (`<span>`) containers based on `href` presence
-- Located at: `src/components/card-media.astro`
+1. **Base Media Card Component**
+   - **File:** `src/components/card-media.astro`
+   - **Core Logic:**
+     - Dynamic wrapper selection between anchor/span based on href presence
+     - Slot-based media content injection pattern
+     - Standardized card layout structure for media content
 
-### YouTube Extension Pattern
-- Extends base media card specifically for YouTube video content
-- Integrates specialized video embedding capabilities through `@astro-community/astro-embed-youtube`
-- Handles metadata layout pattern with title and optional description fields 
-- Located at: `src/components/card-youtube.astro`
+2. **YouTube Extension Component**
+   - **File:** `src/components/card-youtube.astro`
+   - **Core Logic:**
+     - Specialized YouTube video embedding workflow
+     - Integration with base media card component
+     - Conditional description rendering system
+     - Title and metadata handling specific to video content
 
-## Domain-Specific Implementation
+### Component Relationships
 
-### Media Content Specialization
-Importance Score: 85
-- Custom video embedding logic for YouTube content
-- Structured metadata display patterns
-- Content-specific styling rules
+The architecture follows an extension pattern where:
+- Base media card provides core structure and wrapper logic
+- YouTube component extends base functionality with video-specific features
+- Slot system enables flexible content injection
+- Props pass through system maintains consistent interface
 
-### Component Relationship Model
-Importance Score: 75
-- Base component provides foundational card structure
-- YouTube extension adds specialized video functionality while maintaining base card patterns
-- Maintains consistent styling and layout between different media types
+### Business Domain Rules
+
+1. **Media Content Handling**
+   - Media cards must support both interactive and static states
+   - Content wrapper selection based on interaction requirements
+   - Standardized slot interface for content injection
+
+2. **YouTube Integration**
+   - Direct video URL handling
+   - Required title property enforcement
+   - Optional description handling with HTML support
+   - Integration with external YouTube embedding service
+
+Importance Scores:
+- Base Media Card Component: 85 (key integration point)
+- YouTube Extension: 75 (important business workflow)
+- Content Injection System: 70 (business integration structure)
 
 $END$
 
