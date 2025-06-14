@@ -34,7 +34,7 @@ or
 </cms:repeat>
 ```
 
-In the snippets above, "Hello World" and '4' are literal values being used as parameters. Please notice that **an explicit value is ALWAYS enclosed within quotes (either single or double)**.
+In the snippets above, `Hello World` and `4` are literal values being used as parameters. Please notice that **an explicit value is ALWAYS enclosed within quotes (either single or double)**.
 
 ## 2. Using a Variable
 
@@ -121,9 +121,10 @@ Don't worry, we'll replace the tags by their outputs and everything will start m
 - [**if**](../../tags-reference/core/if/)
 - [**exists**](../../tags-reference/core/exists/)
 - [**embed**](../../tags-reference/core/embed/)
+
 You can find more about them in the documentation but for now a brief word about these tags will do.
 
-If the parameter passed to [**if**](../../tags-reference/core/if/) tag is `1`, it outputs anything contained between its 'start_tag' and 'end_tag' else it does not.
+If the parameter passed to [**if**](../../tags-reference/core/if/) tag is `1`, it outputs anything contained between its `start_tag` and `end_tag` else it does not.
 [**exists**](../../tags-reference/core/exists/) expects the parameter passed to it to be a file's (or folder's) name. It tests if the given file/folder is actually present and if it is, it outputs `1`, else it outputs `0`.
 Finally, the [**embed**](../../tags-reference/core/embed/) tag expects the parameter passed to it to be a file's name. It then simply reads the file and returns back its contents as its own output.
 

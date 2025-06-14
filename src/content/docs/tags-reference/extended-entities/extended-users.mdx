@@ -12,7 +12,7 @@ keywords:
     - user roles
 category: tags
 author: Kamran Kashif
-lastUpdated: 2025-04-29
+lastUpdated: 2025-06-14
 sidebar:
     order: 2
 ---
@@ -22,7 +22,7 @@ import { Image } from 'astro:assets';
 import extendedUsers01 from '../extended-entities/img/extended-users-01.png';
 import extendedUsers02 from '../extended-entities/img/extended-users-02.png';
 
-Much of what I say here would be a repetition of what has already been said in the documentation for the 'members' addon (viewtopic.php?f=5&t=8063). This should be understandable as 'extended users' addon is meant to be an official replacement for the 'members' addon and provides exactly the same functions (albeit the tag names are slightly different).
+Much of what I say here would be a repetition of what has already been said in the documentation for the [**members**](https://www.couchcms.com/forum/viewtopic.php?f=5&t=8063) addon. This should be understandable as **Extended Users** addon is meant to be an official replacement for the 'members' addon and provides exactly the same functions (albeit the tag names are slightly different).
 
 ## Installation
 
@@ -51,11 +51,11 @@ Extracting the zip will yield a folder named 'users'. Place this folder within y
 
 <FileTree>
 - users/
-    - index.php     # Main template for extending user accounts
-    - login.php     # Custom login/logout
-    - lost-password.php  # Password recovery
-    - profile.php   # Profile editing
-    - register.php  # Front-end registration
+    - index.php             # Main template for extending user accounts
+    - login.php             # Custom login/logout
+    - lost-password.php     # Password recovery
+    - profile.php           # Profile editing
+    - register.php          # Front-end registration
 </FileTree>
 
 ### Template Purposes
@@ -68,9 +68,9 @@ A short explanation of what each template implements:
     This is the main template that 'extends' the native user accounts.
 
     It serves two purposes:
-    a. All editable regions defined within this template will become part of the user accounts. This can be used to add any number of custom fields to users e.g. sex, qualification, address etc.
+    - **a**. All editable regions defined within this template will become part of the user accounts. This can be used to add any number of custom fields to users e.g. sex, qualification, address etc.
 
-    b. Each cloned page created from this template will automatically create and get associated with a user account. This can be used to create user accounts from the front-end using DataBound Forms.
+    - **b**. Each cloned page created from this template will automatically create and get associated with a user account. This can be used to create user accounts from the front-end using DataBound Forms.
 
     If your site does not require any of the two above-mentioned features, you can skip implementing this template.
 
@@ -112,8 +112,7 @@ To repeat the obvious - login into the admin-panel as super-admin and then in th
 
 Unpublish the default-page to get it out of the way.
 
-At this point, we have our user template ready but one last step remains before we can use to create/extend user accounts. You'll find a file named `config.sample.php` within `couch/addons/extended/` folder. Rename it to `config.php`.
-Open it up in your text editor and specify the name of our user template (i.e. `users/index.php`) as value of the `users_tpl` setting as follows
+At this point, we have our user template ready but one last step remains before we can use to create/extend user accounts. You'll find a file named `config.sample.php` within `couch/addons/extended/` folder. Rename it to `config.php`. Open it up in your text editor and specify the name of our user template (i.e. `users/index.php`) as value of the `users_tpl` setting as follows:
 
 Before:
 ```php title="couch/addons/extended/config.php" "users_tpl"
@@ -133,9 +132,14 @@ $t['lost_password_tpl'] = '';
 $t['registration_tpl'] = '';
 ```
 
-Please note that registering all our templates (except users/profile.php) is a two-step procedure:
+Please note that registering all our templates (except `users/profile.php`) is a two-step procedure:
+
+<Steps>
+
 1. the usual registeration involving visiting the template as super-admin though the browser.
 2. specifying the template in `couch/addons/extended/config.php` file.
+
+</Steps>
 
 :::danger[Very Important]
 Please make sure that you specify a template's name in the config file only after the template has been registered with Couch (i.e. its name appears in the admin-panel's sidebar).
@@ -167,7 +171,7 @@ So in a sense, the two (i.e. the cloned page of users/index.php and the user acc
 
 Delete a user account and the associated cloned-page gets deleted automatically (the reverse, though, does not happen i.e. deleting a cloned-page will *not* delete the associated user-account. This is by design to prevent accidental deletions of precious user-accounts)
 
-:::note
+:::caution[Default user / super-admin]
 You'll notice that the default user-account created by Couch at installation (the 'super-admin') does not, yet, have a counterpart cloned-page. Click on the account to open its edit screen and press 'save'. Doing so will create its associated cloned-page.
 :::
 
@@ -203,7 +207,7 @@ As mentioned before, this template handles two functions:
 The creation of a new account simply involves creating a regular cloned-page and this is done using a regular DataBound Form.
 
 :::note[DataBound Forms]
-If you happen to be unfamiliar with DataBound Forms, please first take a look at [DataBounds Forms](../../../concepts/databound-forms/) as this sections builds entirely on that feature.
+If you happen to be unfamiliar with DataBound Forms, please first take a look at [**DataBounds Forms**](../../../concepts/databound-forms/) as this sections builds entirely on that feature.
 :::
 
 This is how the DataBound form is defined:
@@ -216,10 +220,10 @@ This is how the DataBound form is defined:
     ..
 ```
 
-The 'create' mode specifies that submitting this form will result in creation of a cloned page from the template specified in the 'masterpage' parameter.
+The 'create' mode specifies that submitting this form will result in creation of a cloned page from the template specified in the `masterpage` parameter.
 
 :::note
-Speaking of which, please notice that the 'masterpage' parameter is set to a variable named `k_user_template`. This actually resolves to `users/index.php` i.e. the template that we have used to create the 'proxy' user accounts. For code portability, Couch fetches the names of the templates specified in the config file and makes them available as variables. `k_user_template` is one of them. The others being:
+Speaking of which, please notice that the `masterpage` parameter is set to a variable named `k_user_template`. This actually resolves to `users/index.php` i.e. the template that we have used to create the 'proxy' user accounts. For code portability, Couch fetches the names of the templates specified in the config file and makes them available as variables. `k_user_template` is one of them. The others being:
 - `k_user_login_template`
 - `k_user_lost_password_template`
 - `k_user_registration_template`
