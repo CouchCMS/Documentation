@@ -77,10 +77,6 @@ export default defineConfig({
                         {
                             label: "Sub-Templates",
                             collapsed: true,
-                            badge: {
-                                text: "New",
-                                variant: "tip",
-                            },
                             autogenerate: {
                                 directory: "tags-reference/sub-templates",
                             },
@@ -88,10 +84,6 @@ export default defineConfig({
                         {
                             label: "Template Inheritance",
                             collapsed: true,
-                            badge: {
-                                text: "New",
-                                variant: "tip",
-                            },
                             autogenerate: {
                                 directory:
                                     "tags-reference/template-inheritance",
@@ -100,10 +92,6 @@ export default defineConfig({
                         {
                             label: "Custom Routes",
                             collapsed: true,
-                            badge: {
-                                text: "New",
-                                variant: "tip",
-                            },
                             autogenerate: {
                                 directory: "tags-reference/custom-routes",
                             },
@@ -111,10 +99,6 @@ export default defineConfig({
                         {
                             label: "Extended Entities",
                             collapsed: true,
-                            badge: {
-                                text: "New",
-                                variant: "tip",
-                            },
                             autogenerate: {
                                 directory: "tags-reference/extended-entities",
                             },
