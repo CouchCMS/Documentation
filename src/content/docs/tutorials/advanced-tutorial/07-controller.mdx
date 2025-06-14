@@ -28,10 +28,9 @@ So we finally step out of the definitions in `cms:template` and reach the first 
 <cms:match_route debug='0' is_404='1' />
 ```
 
-This tag is the 'heart' of any routable template as this is what (as explained in the docs) matches the URL used to access the template with the defined routes. If you wish to study how it works and which variables are made available in the various views, set the 'debug' parameter to '1' temporarily.
+This tag is the 'heart' of any routable template as this is what (as explained in the docs) matches the URL used to access the template with the defined routes. If you wish to study how it works and which variables are made available in the various views, set the `debug` parameter to `1` temporarily.
 
-Please note that we have set the `is_404` parameter of `cms:match_route` to '1' so if no route matches, a 404 response will automatically be returned.
-This means that any code that comes after this tag can be sure that a valid route has been selected and that the variable `k_matched_route` contains the selected route's name.
+Please note that we have set the `is_404` parameter of `cms:match_route` to `1` so if no route matches, a 404 response will automatically be returned. This means that any code that comes after this tag can be sure that a valid route has been selected and that the variable `k_matched_route` contains the selected route's name.
 
 The code that follows `cms:match_route` checks this variable and decides the course of execution depending on the selected route, effectively acting as a 'controller'.
 
