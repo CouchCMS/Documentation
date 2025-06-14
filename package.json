@@ -6,7 +6,6 @@
         "dev": "astro dev",
         "start": "astro dev",
         "build": "astro build && cp .cursor/rules/markdown.mdc STYLEGUIDE.md",
-        "build": "astro build && cp .cursor/rules/markdown.mdc STYLEGUIDE.md",
         "preview": "astro preview",
         "astro": "astro",
         "clean": "rm -rf dist node_modules/.cache",
