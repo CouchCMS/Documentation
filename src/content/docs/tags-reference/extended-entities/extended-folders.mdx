@@ -1,11 +1,174 @@
 ---
 title: Extended Folders
-description: ""
+description: "Learn about Couch's Extended Folders module for adding custom editable regions to dynamic folders of a template"
 keywords:
-    -
+    - extended folders
 category: tags
 author: Kamran Kashif
-lastUpdated: 2025-04-29
+lastUpdated: 2025-06-14
 sidebar:
     order: 3
+    badge: {
+        text: "New",
+        variant: "tip",
+    }
 ---
+
+As compared to the [**Extended Users**](../extended-users/) module, the 'extended-folders' module is much less involved. It merely serves to add custom editable regions to the dynamic folders of a template.
+
+The core philosophy remains the same - we use a normal clonable template to define our editable regions and then associate this template to the folders of another template using the 'extended-folders' module. Once the template get associated to the folders, its editable regions get 'borrowed' by the target template and we'll see the regions appear in the edit-folder screen automatically.
+
+Let us see how this works.
+Suppose our target template (i.e. the folders of which we'll extend) is `portfolio.php`. Make sure this template is registered (i.e. visible in the admin-panel) and is configured to use dynamic folders.
+
+```html
+<cms:template title='Portfolio' clonable='1' dynamic_folders='1'>
+    ..
+</cms:template>
+```
+
+With dynamic folders, as we know, the 'Manage Folders' button becomes available and using this we can create folders for the template. Try creating a new folder and you'll see that the edit-folder screen shows a fixed number of editable regions.
+
+Our task is to add custom editable regions to this screen just like we do with normal cloned pages.
+
+There is no provision to add editable regions directly but the 'extended-folders' addons allows us to do so using another normal clonable template. We'll call this template the 'source' template.
+
+For our example, let us suppose this template is named 'portfolio-folders.php'.
+Following would be the complete source-code of this template -
+
+```html
+<?php require_once( 'couch/cms.php' ); ?>
+<cms:template title='Portfolio Folders' clonable='1' hidden='1'>
+    <!-- define editable regions here -->   
+</cms:template>
+<?php COUCH::invoke(); ?>
+```
+
+As you can see, the source template is just a regular clonable template and there is nothing special about it.
+Define the editable regions in this template that we'd like to see in the source template's folder.
+
+For our example, we'll define an image region within a repeatable region so as to create a gallery per folder:
+
+```html
+<cms:template title='Portfolio Folders' clonable='1' hidden='1'>
+    <cms:repeatable name='my_gallery' label='Gallery' >
+        <cms:editable name='my_image' type='image' show_preview='1' preview_width='150' />
+    </cms:repeatable>   
+</cms:template>
+```
+
+Register this template in the usual manner and make sure the editable regions appear as expected.
+
+And now with both the target and the source templates ready and registered, time to make the source template's editable regions show up in the target template's edit-folder screen.
+
+It'll require two steps:
+
+1. The first step in our quest would be to enable the 'extended-folders' module.
+Assuming you have already extracted and placed the 'extended' folder from the attached zip into 'couch/addons', this step simply entails uncommenting (i.e. removing the '//') from the following line in 'couch/addons/kfunctions.php' -
+
+```php
+require_once( K_COUCH_DIR.'addons/extended/extended-folders.php' );
+```
+
+2. As the second step, associate the source template to the target template by making the following changes to the target template's definition -
+Before:
+```html
+<cms:template title='Portfolio' clonable='1' dynamic_folders='1'>
+```
+
+After:
+```html
+<cms:template title='Portfolio' clonable='1' dynamic_folders='1' folder_masterpage='portfolio-folders.php'>
+```
+
+As you can see, we have used the `folder_masterpage` parameter to specify our source template's name.
+
+:::caution[Important]
+Make sure to visit the modified target template at this point as super-admin for the changes to picked up by Couch.
+:::
+
+And that should be it.
+Go to the 'Manage Folders' section of the target template and create a new folder. You should see the 'gallery' repeatable region we defined in the source template avaiable for editing here.
+Our `portfolio.php` target template had just borrowed all the editable regions defined within `portfolio-folders.php` source template to use them for its own folders.
+
+Save the folder and all the data should get saved as expected.
+
+At this point if you take a look at the source template section (`portfolio-folders.php`), you'll see that a cloned-page, by the same title as the folder we just created, has been automatically created.
+This is where all the data gets stored but, for all practical purposes, you'll never need to interface directly with these 'shadow' pages.
+
+The data that was stored into the custom editable regions will be made available automatically by the 'extended-folders' module. Let us see how.
+
+Displaying extended folder data:
+There are only three places where we are likely to output the custom data stored with the folders.
+1. The most likely place is the 'folder-view' i.e. when a folder per-se is being displayed.
+This will require no additional effort on our part as Couch will automatically make available all the data as regular variables. For example we can use the following code in the folder-view of our target `portfolio.php` template -
+
+```html
+<cms:if k_is_folder >
+    <h1>Folder-view: <cms:show k_folder_title /></h1>
+   
+    <cms:show_repeatable 'my_gallery' >
+        <img src="<cms:show my_image />" />
+    </cms:show_repeatable>
+
+</cms:if>
+```
+
+In the code above, notice that we are using the cms:show_repeatable tag as if the 'my_gallery' region was defined in the target template itself.
+
+2. The second place where we might need to show the extended data could be while looping though a list of folders using cms:folders tag e.g. as follows -
+
+```html
+<cms:folders hierarchical='1' >
+
+    <a href="<cms:show k_folder_link />"><cms:show k_folder_title /></a><br />
+
+</cms:folders>
+```
+
+In this case, we'll need to specifically ask Couch to make available the extended data by setting the `include_custom_fields` parameter of `cms:folders` to `1`. For example as follows:
+
+```html
+<cms:folders hierarchical='1' include_custom_fields='1' >
+
+    <a href="<cms:show k_folder_link />"><cms:show k_folder_title /></a><br />
+   
+    <cms:show_repeatable 'my_gallery' >
+        <cms:show my_image /> <br />
+    </cms:show_repeatable>
+
+</cms:folders>
+```
+
+3. And finally, it is possible that we need to show the extended folder data in a 'page-view' i.e. while visiting a page we might need to display data pertaining to the page's containing folder.
+
+This will require just a little bit more effort as we'll need to bring the folder in context before getting to its data. Here is one way of doing it:
+
+```html
+<cms:if k_is_page>
+    <h1>Page-view: <cms:show k_page_title /></h1>
+   
+    <!-- if page is contained within a folder -->
+    <cms:if k_page_foldername >
+        <h3>Page in folder: <cms:show k_page_foldertitle /></h3>
+       
+        <!-- bring the containing folder in context using cms:folders like this -->
+        <cms:folders hierarchical='1' include_custom_fields='1' root=k_page_foldername depth='1'>
+       
+            <a href="<cms:show k_folder_link />"><cms:show k_folder_title /></a><br />
+           
+            <cms:show_repeatable 'my_gallery' >
+                <cms:show my_image /> <br />
+            </cms:show_repeatable>
+           
+        </cms:folders>
+       
+    </cms:if>
+
+</cms:if>
+```
+
+The `root=k_page_foldername depth='1'` parameters will make `cms:folders` fetch in only a single folder - the folder our page resides in.
+
+And that is all that needs to be known to work with extended-folders.
+We can move to extended-comments next.
