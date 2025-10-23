@@ -31,6 +31,5 @@ pnpm-debug.log*
 *.tmp
 *.temp
 
-# PR Tracker working files
-DRAFT-PR.md
-PR-DESCRIPTION.md
+# PR Tracker state
+.last-pr.json
