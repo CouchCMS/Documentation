@@ -20,7 +20,9 @@
         "pr:since-last": "node scripts/pr-since-last.js",
         "pr:mark-as-merged": "node scripts/pr-mark-merged.js",
         "pr:create": "node scripts/pr-create.js",
-        "pr:help": "echo '\n📊 PR Tracker:\n  pr:since-last      - Show changes since last upstream PR\n  pr:mark-as-merged  - Mark current upstream state\n  pr:create          - Automatically create GitHub PR\n  pr:help            - Show this help\n'",
+        "pr:test": "node scripts/pr-create-test.js",
+        "pr:guided": "node scripts/pr-guided.js",
+        "pr:help": "echo '\n📊 PR Tracker:\n  pr:since-last      - Show changes since last upstream PR\n  pr:mark-as-merged  - Mark current upstream state\n  pr:test            - Test PR creation (dry run)\n  pr:create          - Actually create GitHub PR\n  pr:guided          - Step-by-step guided PR creation\n  pr:help            - Show this help\n'",
         "postinstall": "pnpm run sync"
     },
     "dependencies": {

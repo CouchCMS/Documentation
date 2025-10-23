@@ -33,3 +33,4 @@ pnpm-debug.log*
 
 # PR Tracker state
 .last-pr.json
+PR-TEST-OUTPUT.md

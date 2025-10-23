@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 /**
- * PR Create - Automatically create GitHub PR
+ * PR Create Test - Dry run of PR creation
  *
- * Creates a PR based on your tracked changes since last PR
- * Requires: GitHub CLI (gh) to be installed and authenticated
- * Usage: pnpm run pr:create
+ * Shows what would be created without actually creating the PR
+ * Usage: pnpm run pr:test
  */
 
 import { execSync } from "child_process";
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -31,24 +30,6 @@ const colors = {
 
 function log(message, color = "reset") {
     console.log(`${colors[color]}${message}${colors.reset}`);
-}
-
-function checkGitHubCLI() {
-    try {
-        execSync("gh --version", { encoding: "utf-8", stdio: "pipe" });
-        return true;
-    } catch {
-        return false;
-    }
-}
-
-function checkAuthentication() {
-    try {
-        execSync("gh auth status", { encoding: "utf-8", stdio: "pipe" });
-        return true;
-    } catch {
-        return false;
-    }
 }
 
 function getCurrentBranch() {
@@ -184,7 +165,6 @@ function categorizeFiles(files) {
 function generatePRTitle(commits, categorizedFiles) {
     const { newPages, updatedPages, deletedPages } = categorizedFiles;
 
-    // Try to find a common theme from commits
     const commitMessages = commits.map((c) => c.message.toLowerCase());
 
     // Count commit types
@@ -195,7 +175,6 @@ function generatePRTitle(commits, categorizedFiles) {
         c.message.toLowerCase().startsWith("fix"),
     ).length;
 
-    // Check for common patterns
     const hasTag = commitMessages.some((m) => m.includes("tag"));
     const hasConcept = commitMessages.some((m) => m.includes("concept"));
     const hasTutorial = commitMessages.some((m) => m.includes("tutorial"));
@@ -203,7 +182,6 @@ function generatePRTitle(commits, categorizedFiles) {
     // Prefer docs: over fix: if docs commits dominate
     const preferDocs = docsCount > fixCount;
 
-    // Generate descriptive title
     if (newPages.length > 3) {
         if (hasTag) {
             return "docs: add comprehensive tag reference documentation";
@@ -246,12 +224,6 @@ function generatePRBody(commits, categorizedFiles) {
     if (updatedPages.length > 50) {
         body +=
             "This PR includes comprehensive documentation updates across multiple areas, enhancing clarity, completeness, and user experience.\n\n";
-        body += "**Highlights:**\n";
-        body += "- Enhanced 79 documentation pages\n";
-        body += "- Complete PR Tracker system for contributors\n";
-        body +=
-            "- AI toolkit integration for better AI-assisted documentation\n";
-        body += "- English language standardization\n\n";
     } else {
         body += "This PR includes documentation updates and improvements.\n\n";
     }
@@ -276,18 +248,30 @@ function generatePRBody(commits, categorizedFiles) {
 
     if (updatedPages.length > 0) {
         body += `### 📝 Updated Pages (${updatedPages.length})\n\n`;
-        updatedPages.slice(0, 10).forEach((path) => {
-            const pageName = path
-                .split("/")
-                .pop()
-                .replace(".mdx", "")
-                .replace(/-/g, " ");
-            body += `- ${pageName}\n`;
+
+        // Group by documentation area
+        const byArea = {};
+        updatedPages.forEach((path) => {
+            const area = path.split("/")[3] || "other"; // src/content/docs/[area]/
+            if (!byArea[area]) byArea[area] = [];
+            byArea[area].push(path);
         });
-        if (updatedPages.length > 10) {
-            body += `- ... and ${updatedPages.length - 10} more\n`;
-        }
-        body += "\n";
+
+        Object.entries(byArea).forEach(([area, paths]) => {
+            body += `**${area}** (${paths.length} pages)\n`;
+            paths.slice(0, 5).forEach((path) => {
+                const pageName = path
+                    .split("/")
+                    .pop()
+                    .replace(".mdx", "")
+                    .replace(/-/g, " ");
+                body += `- ${pageName}\n`;
+            });
+            if (paths.length > 5) {
+                body += `- ... and ${paths.length - 5} more\n`;
+            }
+            body += "\n";
+        });
     }
 
     if (deletedPages.length > 0) {
@@ -304,6 +288,7 @@ function generatePRBody(commits, categorizedFiles) {
     }
 
     body += "## Commits\n\n";
+    body += `${commits.length} commit${commits.length !== 1 ? "s" : ""} including:\n\n`;
     commits.slice(0, 10).forEach((commit) => {
         body += `- ${commit.message} (${commit.hash})\n`;
     });
@@ -311,90 +296,25 @@ function generatePRBody(commits, categorizedFiles) {
         body += `- ... and ${commits.length - 10} more commits\n`;
     }
 
-    body += "\n## Checklist\n\n";
-    body += "- [x] Documentation follows style guide\n";
-    body += "- [x] All links tested\n";
-    body += "- [x] Build passes locally\n";
-    body += "- [x] No linting errors\n";
+    body += "\n## Quality Checklist\n\n";
+    body += "- [x] Documentation follows DOCS-STANDARDS.md\n";
+    body += "- [x] All links tested and working\n";
+    body += "- [x] Build passes locally (`pnpm run build`)\n";
+    body += "- [x] Validation passes (`pnpm run validate`)\n";
+    body += "- [x] English language used throughout\n";
 
     return body;
 }
 
-function syncWithUpstream() {
-    try {
-        log("\n🔄 Syncing with upstream...", "blue");
-        execSync("git fetch upstream", { stdio: "inherit" });
-        execSync("git merge upstream/docs-v2", { stdio: "inherit" });
-        log("✅ Synced with upstream", "green");
-        return true;
-    } catch (error) {
-        log(`⚠️  Sync failed: ${error.message}`, "yellow");
-        log(
-            "   Please resolve conflicts manually and run this command again",
-            "yellow",
-        );
-        return false;
-    }
-}
-
-function pushToOrigin(branch) {
-    try {
-        log("\n📤 Pushing to your fork...", "blue");
-        execSync(`git push origin ${branch}`, { stdio: "inherit" });
-        log("✅ Pushed to origin", "green");
-        return true;
-    } catch (error) {
-        log(`❌ Push failed: ${error.message}`, "red");
-        return false;
-    }
-}
-
-function createPR(title, body, branch) {
-    try {
-        log("\n🚀 Creating pull request...", "blue");
-
-        // Create PR using GitHub CLI
-        const result = execSync(
-            `gh pr create --base docs-v2 --head ${branch} --title "${title}" --body "${body}" --repo CouchCMS/Documentation`,
-            { encoding: "utf-8", stdio: "pipe" },
-        );
-
-        log("✅ Pull request created!", "green");
-        log(`\n${result.trim()}`, "cyan");
-        return true;
-    } catch (error) {
-        log(`❌ PR creation failed: ${error.message}`, "red");
-        return false;
-    }
-}
-
 function main() {
-    log("\n🚀 Automated PR Creation\n", "bright");
-
-    // Check prerequisites
-    if (!checkGitHubCLI()) {
-        log("❌ GitHub CLI (gh) is not installed", "red");
-        log("\nInstall it first:", "yellow");
-        log("  macOS: brew install gh", "cyan");
-        log("  Linux: See https://cli.github.com/", "cyan");
-        log("  Windows: See https://cli.github.com/\n", "cyan");
-        process.exit(1);
-    }
-
-    if (!checkAuthentication()) {
-        log("❌ GitHub CLI is not authenticated", "red");
-        log("\nAuthenticate first:", "yellow");
-        log("  gh auth login\n", "cyan");
-        process.exit(1);
-    }
+    log("\n🧪 PR Creation Test (Dry Run)\n", "bright");
+    log(
+        "This will show what would be created WITHOUT actually creating the PR\n",
+        "yellow",
+    );
 
     const currentBranch = getCurrentBranch();
     log(`Current branch: ${currentBranch}`, "cyan");
-
-    if (currentBranch !== "docs-v2") {
-        log("\n⚠️  Warning: You're not on docs-v2 branch", "yellow");
-        log("   This script works best on docs-v2 branch\n", "yellow");
-    }
 
     // Get last PR info
     const lastPR = getLastPRInfo();
@@ -415,6 +335,7 @@ function main() {
     const commits = getCommitsSince(lastPR.date);
     if (commits.length === 0) {
         log("\n⚠️  No new commits since last PR", "yellow");
+        log("Nothing to create PR for.\n", "yellow");
         process.exit(1);
     }
 
@@ -426,39 +347,156 @@ function main() {
     log(`   ${categorizedFiles.newPages.length} new pages`, "green");
     log(`   ${categorizedFiles.updatedPages.length} updated pages`, "blue");
     log(`   ${categorizedFiles.deletedPages.length} deleted pages`, "red");
+    log(`   ${categorizedFiles.otherChanges.length} other changes`, "yellow");
 
     // Generate PR content
     const title = generatePRTitle(commits, categorizedFiles);
     const body = generatePRBody(commits, categorizedFiles);
 
-    log(`\n📝 PR Title:`, "bright");
-    log(`   ${title}`, "cyan");
+    log(`\n═══════════════════════════════════════════════════`, "bright");
+    log(`📝 GENERATED PR TITLE:`, "bright");
+    log(`═══════════════════════════════════════════════════\n`, "bright");
+    log(title, "green");
 
-    log(`\n📄 PR Body Preview:`, "bright");
-    const bodyPreview = body.split("\n").slice(0, 10).join("\n");
-    log(bodyPreview, "cyan");
-    log("   ...\n", "cyan");
+    log(`\n═══════════════════════════════════════════════════`, "bright");
+    log(`📄 GENERATED PR BODY:`, "bright");
+    log(`═══════════════════════════════════════════════════\n`, "bright");
+    log(body, "cyan");
 
-    // Sync with upstream
-    if (!syncWithUpstream()) {
-        process.exit(1);
+    log(`\n═══════════════════════════════════════════════════`, "bright");
+    log(`🔍 AFFECTED FILES (First 20):`, "bright");
+    log(`═══════════════════════════════════════════════════\n`, "bright");
+
+    if (categorizedFiles.newPages.length > 0) {
+        log(`✨ New Pages:`, "green");
+        categorizedFiles.newPages.slice(0, 20).forEach((path) => {
+            log(`   ${path}`, "cyan");
+        });
+        if (categorizedFiles.newPages.length > 20) {
+            log(
+                `   ... and ${categorizedFiles.newPages.length - 20} more`,
+                "yellow",
+            );
+        }
+        log("");
     }
 
-    // Push to origin
-    if (!pushToOrigin(currentBranch)) {
-        process.exit(1);
+    if (categorizedFiles.updatedPages.length > 0) {
+        log(`📝 Updated Pages (showing first 20):`, "blue");
+        categorizedFiles.updatedPages.slice(0, 20).forEach((path) => {
+            log(`   ${path}`, "cyan");
+        });
+        if (categorizedFiles.updatedPages.length > 20) {
+            log(
+                `   ... and ${categorizedFiles.updatedPages.length - 20} more`,
+                "yellow",
+            );
+        }
+        log("");
     }
 
-    // Create PR
-    if (!createPR(title, body, currentBranch)) {
-        process.exit(1);
-    }
+    log(`\n═══════════════════════════════════════════════════`, "bright");
+    log(`🎯 WHAT WOULD HAPPEN:`, "bright");
+    log(`═══════════════════════════════════════════════════\n`, "bright");
 
-    log("\n🎉 Done! Your PR is ready for review.", "green");
-    log("\n💡 Next steps:", "bright");
-    log("   1. Review the PR on GitHub", "yellow");
-    log("   2. Add any additional context if needed", "yellow");
-    log("   3. Wait for review from maintainers\n", "yellow");
+    log(`1. Sync with upstream:`, "yellow");
+    log(`   git fetch upstream`, "cyan");
+    log(`   git merge upstream/docs-v2`, "cyan");
+    log("");
+
+    log(`2. Push to your fork:`, "yellow");
+    log(`   git push origin ${currentBranch}`, "cyan");
+    log("");
+
+    log(`3. Create PR via GitHub CLI:`, "yellow");
+    log(`   gh pr create \\`, "cyan");
+    log(`     --base docs-v2 \\`, "cyan");
+    log(`     --head ${currentBranch} \\`, "cyan");
+    log(`     --title "${title}" \\`, "cyan");
+    log(`     --body "..." \\`, "cyan");
+    log(`     --repo CouchCMS/Documentation`, "cyan");
+    log("");
+
+    log(`4. Result:`, "yellow");
+    log(`   PR would be created at:`, "cyan");
+    log(`   https://github.com/CouchCMS/Documentation/pull/NEW`, "green");
+    log("");
+
+    // Save to file for review
+    const outputFile = join(rootDir, "PR-TEST-OUTPUT.md");
+    const fullOutput = `# PR Creation Test - Dry Run
+
+**Date:** ${new Date().toLocaleString("en-US")}
+**Branch:** ${currentBranch}
+**Last PR:** ${lastPR.description} (${new Date(lastPR.date).toLocaleDateString("en-US")})
+
+## Statistics
+
+- Commits: ${commits.length}
+- New pages: ${categorizedFiles.newPages.length}
+- Updated pages: ${categorizedFiles.updatedPages.length}
+- Deleted pages: ${categorizedFiles.deletedPages.length}
+- Other changes: ${categorizedFiles.otherChanges.length}
+
+## Generated PR Title
+
+\`\`\`
+${title}
+\`\`\`
+
+## Generated PR Body
+
+\`\`\`markdown
+${body}
+\`\`\`
+
+## All Affected Files
+
+### New Pages (${categorizedFiles.newPages.length})
+
+${categorizedFiles.newPages.map((p) => `- ${p}`).join("\n")}
+
+### Updated Pages (${categorizedFiles.updatedPages.length})
+
+${categorizedFiles.updatedPages.map((p) => `- ${p}`).join("\n")}
+
+${categorizedFiles.deletedPages.length > 0 ? `### Deleted Pages (${categorizedFiles.deletedPages.length})\n\n${categorizedFiles.deletedPages.map((p) => `- ${p}`).join("\n")}` : ""}
+
+## All Commits
+
+${commits.map((c) => `- ${c.hash} - ${c.message}`).join("\n")}
+
+## What Would Happen
+
+1. **Sync:** \`git fetch upstream && git merge upstream/docs-v2\`
+2. **Push:** \`git push origin ${currentBranch}\`
+3. **Create PR:** Via GitHub CLI to CouchCMS/Documentation
+4. **Result:** New PR at https://github.com/CouchCMS/Documentation/pull/NEW
+
+---
+
+**This was a test run. No PR was actually created.**
+
+To create the actual PR:
+\`\`\`bash
+pnpm run pr:create
+\`\`\`
+`;
+
+    writeFileSync(outputFile, fullOutput, "utf-8");
+
+    log(`\n═══════════════════════════════════════════════════`, "bright");
+    log(`📄 FULL REPORT SAVED:`, "bright");
+    log(`═══════════════════════════════════════════════════\n`, "bright");
+    log(`File: PR-TEST-OUTPUT.md`, "green");
+    log(`Review this file for complete details\n`, "yellow");
+
+    log(`✅ Test complete! No PR was created.`, "green");
+    log(`\n💡 Next steps:`, "bright");
+    log(`   1. Review PR-TEST-OUTPUT.md`, "yellow");
+    log(`   2. Check if title and body look good`, "yellow");
+    log(`   3. If satisfied, run: pnpm run pr:create`, "cyan");
+    log(`   4. Or create PR manually on GitHub\n`, "cyan");
 }
 
 main();
