@@ -42,16 +42,17 @@ function fixLinksInFile(filePath) {
 
     // Pattern: [text](../path) or [text](./path) without trailing slash
     // Must not already end with /
-    const linkPattern = /(\[([^\]]+)\]\((\.\.?\/[^)]+))(?<!\/)\)/g;
+    const linkPattern = /\[([^\]]+)\]\((\.\.?\/[^)]+?)(?<!\/)\)/g;
 
     let fixCount = 0;
-    const newContent = content.replace(
-        linkPattern,
-        (match, group1, text, url) => {
-            fixCount++;
-            return `[${text}](${url}/)`;
-        },
-    );
+    const newContent = content.replace(linkPattern, (match, text, url) => {
+        // Skip if URL contains an anchor (#) - don't add / before anchors
+        if (url.includes("#")) {
+            return match; // Return unchanged
+        }
+        fixCount++;
+        return `[${text}](${url}/)`;
+    });
 
     if (fixCount > 0) {
         writeFileSync(filePath, newContent, "utf8");
