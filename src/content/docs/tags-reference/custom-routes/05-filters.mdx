@@ -1,6 +1,6 @@
 ---
 title: "Filters"
-description: "How to use filters for advanced validation and access control in custom routes."
+description: "Advanced guide to using filters in CouchCMS custom routes for validation, access control, authentication, and conditional route processing."
 keywords:
     - custom routes
     - filters
@@ -193,11 +193,11 @@ The code in `page_exists` can now be modified to check if 'name' is the first pa
 ```php title="snippets/filters/page_exists.html"
 <cms:if arg_1='name'>
     <cms:if "<cms:not "<cms:page_exists name=rt_page_name masterpage=k_template_name />" />" >
-        <cms:abort is_404='1' /> 
+        <cms:abort is_404='1' />
     </cms:if>
 <cms:else />
     <cms:if "<cms:not "<cms:page_exists id=rt_id masterpage=k_template_name />" />" >
-        <cms:abort is_404='1' /> 
+        <cms:abort is_404='1' />
     </cms:if>
 </cms:if>
 ```
