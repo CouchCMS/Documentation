@@ -1,8 +1,10 @@
-# PR Tracker - Changes Since Last PR
+# PR Tracker - Technical Documentation
 
-## 🎯 Wat is Dit?
+## 🎯 Overview
 
-Een tool om bij te houden **wanneer** je laatste PR was gemerged naar de upstream repository ([CouchCMS/Documentation](https://github.com/CouchCMS/Documentation/tree/docs-v2)) en **wat er sindsdien is veranderd** op een high-level.
+Technical documentation for the PR tracker system that monitors changes since the last merged PR to upstream [CouchCMS/Documentation](https://github.com/CouchCMS/Documentation/tree/docs-v2).
+
+For user documentation, see **`PR-TRACKER.md`**.
 
 Dit helpt je om:
 - ✅ Te zien hoeveel werk je hebt gedaan sinds de laatste PR

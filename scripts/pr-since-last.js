@@ -182,7 +182,7 @@ function categorizeCommits(commits) {
 }
 
 function formatDate(date) {
-    return new Date(date).toLocaleDateString("nl-NL", {
+    return new Date(date).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",

@@ -21,6 +21,7 @@ const colors = {
     reset: "\x1b[0m",
     bright: "\x1b[1m",
     green: "\x1b[32m",
+    yellow: "\x1b[33m",
     cyan: "\x1b[36m",
 };
 
@@ -77,7 +78,7 @@ function main() {
 
     log("✅ Successfully marked as last PR!", "green");
     log(`\n📍 Details:`, "bright");
-    log(`  Date: ${new Date(prInfo.date).toLocaleString("nl-NL")}`, "cyan");
+    log(`  Date: ${new Date(prInfo.date).toLocaleString("en-US")}`, "cyan");
     log(`  Branch: ${branch}`, "cyan");
     if (description) {
         log(`  Description: ${description}`, "cyan");
@@ -89,6 +90,15 @@ function main() {
 
     log("\n💡 To see changes since this PR:", "bright");
     log("  pnpm run pr:since-last\n", "cyan");
+
+    // Check for non-English characters (Dutch: ë, ï, ö, etc.)
+    if (description && /[^\x00-\x7F]/.test(description)) {
+        log("\n⚠️  Reminder: Use English for PR descriptions", "yellow");
+        log(
+            "   Non-English characters detected. This project uses English for international collaboration.\n",
+            "yellow",
+        );
+    }
 }
 
 main();
