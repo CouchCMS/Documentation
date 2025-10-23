@@ -182,21 +182,27 @@ function validateFormatting(content, file) {
         // "is" removed - also a common English word
         "zijn",
     ];
-    const contentLower = content.toLowerCase();
 
-    // Skip code blocks for this check
-    const withoutCodeBlocks = content.replace(/```[\s\S]*?```/g, "");
+    // Skip code blocks, inline code, and ISO language codes for this check
+    let withoutCodeBlocks = content.replace(/```[\s\S]*?```/g, "");
+    withoutCodeBlocks = withoutCodeBlocks.replace(/`[^`]+`/g, "");
 
     for (const word of dutchWords) {
-        const pattern = new RegExp(`\\b${word}\\b`, "i");
-        if (
-            pattern.test(withoutCodeBlocks) &&
-            !withoutCodeBlocks.includes(`\`${word}\``)
-        ) {
-            issues.push(
-                `⚠️  Possible Dutch word detected: "${word}" (should be English only)`,
+        // Case-sensitive pattern to avoid false positives with uppercase ISO codes (DE, EN, etc.)
+        const pattern = new RegExp(`\\b${word}\\b`, "");
+        if (pattern.test(withoutCodeBlocks)) {
+            // Additional check: skip if it's part of a language code pattern
+            // e.g., "(DE)", "(`DE`)", "German (`DE`)"
+            const contextPattern = new RegExp(
+                `\\([A-Z]{2}\\)|\`[A-Z]{2}\`|\\b${word.toUpperCase()}\\b`,
+                "g",
             );
-            break; // Only report once per file
+            if (!contextPattern.test(content)) {
+                issues.push(
+                    `⚠️  Possible Dutch word detected: "${word}" (should be English only)`,
+                );
+                break; // Only report once per file
+            }
         }
     }
 
