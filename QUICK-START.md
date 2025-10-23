@@ -36,15 +36,30 @@ gh auth login
 git remote add upstream https://github.com/CouchCMS/Documentation.git
 ```
 
-### 4. Mark Current State
+### 4. Mark Current State (Only After PR is Merged)
 
 ```bash
+# Only run this AFTER a PR is merged by Kamran:
 git fetch upstream
-git merge upstream/docs-v2
+git pull upstream/docs-v2
 pnpm run pr:mark-as-merged "Initial baseline"
 ```
 
 ## 🎯 Daily Usage
+
+## ⚠️ Important: New No-Conflict Workflow!
+
+**Don't merge upstream before creating your PR!** This prevents conflicts.
+
+**Old way (causing conflicts):**
+```
+1. Work → 2. Merge upstream → 3. Create PR ← CONFLICTS!
+```
+
+**New way (no conflicts):**
+```
+1. Work → 2. Push to fork → 3. Create PR ← GitHub handles conflicts!
+```
 
 ### Check Your Progress
 
@@ -58,11 +73,12 @@ Output shows:
 - Time elapsed
 - Affected areas
 
-### Create PR When Ready
+### Create PR When Ready (No Upstream Merge!)
 
 ```bash
 # Option 1: Automated (requires GitHub CLI)
-pnpm run pr:create
+git push origin docs-v2  # Push directly to fork
+pnpm run pr:create       # Create PR automatically
 # Done! PR created automatically
 
 # Option 2: Manual
@@ -73,8 +89,9 @@ git push origin docs-v2
 ### After PR Merge
 
 ```bash
+# ONLY AFTER your PR is merged by Kamran:
 git fetch upstream
-git merge upstream/docs-v2
+git pull upstream/docs-v2
 pnpm run pr:mark-as-merged "Your PR title in English"
 ```
 

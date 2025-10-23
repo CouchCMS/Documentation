@@ -16,14 +16,31 @@ Perfect for deciding: "Is it time to create a PR?"
 
 **Always use English** for all PR descriptions and commit messages. The CouchCMS Documentation project is an international open-source project, and English ensures all contributors and maintainers can understand your work.
 
-## 🚀 Quick Start
+## 🚀 Quick Start (New No-Conflict Workflow!)
+
+### The Key Insight: Don't Merge Upstream Before PR!
+
+**Old way (causing conflicts):**
+```
+1. You work on docs-v2
+2. You merge upstream/docs-v2 ← CONFLICTS!
+3. You create PR
+```
+
+**New way (no conflicts):**
+```
+1. You work on docs-v2
+2. You push directly to your fork
+3. You create PR
+4. GitHub handles conflicts automatically when Kamran merges
+```
 
 ### First Time Setup
 
 After your first PR is merged to upstream:
 
 ```bash
-# Pull the merged changes
+# Pull the merged changes (only AFTER PR is merged by Kamran)
 git pull upstream docs-v2
 
 # Mark this as your baseline (use English!)
@@ -40,6 +57,12 @@ pnpm run pr:mark-as-merged "Added dropdownfolders tag documentation"
 ```bash
 # Check what you've done since last upstream merge
 pnpm run pr:since-last
+
+# When ready for PR, push directly to your fork (no upstream merge!)
+git push origin docs-v2
+
+# Create PR automatically
+pnpm run pr:create
 ```
 
 ## 📊 What You See
@@ -123,28 +146,7 @@ git remote -v
 # upstream  https://github.com/CouchCMS/Documentation.git
 ```
 
-### 2. After PR Merge on GitHub Upstream
-
-```bash
-# Fetch latest changes from upstream
-git fetch upstream
-
-# Make sure you're on docs-v2
-git checkout docs-v2
-
-# Merge upstream changes into your branch
-git merge upstream/docs-v2
-
-# Resolve any merge conflicts if they occur
-
-# Push updated branch to your fork
-git push origin docs-v2
-
-# Mark this as your new baseline
-pnpm run pr:mark-as-merged "Title of the merged PR"
-```
-
-### 2. During Development
+### 2. During Development (No Upstream Merge!)
 
 ```bash
 # Work on your documentation
@@ -153,7 +155,12 @@ git commit -m "docs: update concepts"
 
 # Check your progress
 pnpm run pr:since-last
+
+# When ready for PR, push directly to your fork
+git push origin docs-v2
 ```
+
+**Key Point:** Don't merge upstream changes before creating your PR! This prevents conflicts.
 
 ### 3. When Ready for New PR
 
@@ -164,15 +171,16 @@ pnpm run pr:since-last
 pnpm run pr:since-last
 # Output shows: 15 commits, 5 new pages, 3 days work
 
+# Push your changes to your fork (no upstream merge needed!)
+git push origin docs-v2
+
 # Create PR automatically (requires GitHub CLI)
 pnpm run pr:create
 
 # The script will:
-# 1. Sync with upstream
-# 2. Generate PR title and body
-# 3. Push to your fork
-# 4. Create PR on GitHub
-# 5. Open PR URL
+# 1. Generate PR title and body
+# 2. Create PR on GitHub
+# 3. Open PR URL
 
 # Done! Review the PR on GitHub
 ```
@@ -186,11 +194,7 @@ pnpm run pr:create
 pnpm run pr:since-last
 # Output shows: 15 commits, 5 new pages, 3 days work
 
-# Sync with upstream
-git fetch upstream
-git merge upstream/docs-v2
-
-# Push your branch to your fork
+# Push your branch to your fork (no upstream merge!)
 git push origin docs-v2
 
 # Create PR on GitHub UI
@@ -205,12 +209,10 @@ git push origin docs-v2
 ### 4. After New PR is Merged (Cycle Repeats)
 
 ```bash
+# ONLY AFTER Kamran merged your PR:
 # Fetch and merge the merged PR
 git fetch upstream
-git merge upstream/docs-v2
-
-# Push to your fork
-git push origin docs-v2
+git pull upstream/docs-v2
 
 # Mark as new baseline
 pnpm run pr:mark-as-merged "New PR description"
@@ -370,7 +372,8 @@ pnpm run pr:mark-as-merged "Current baseline"
 
 **Solution:**
 ```bash
-git pull upstream docs-v2
+# Only do this AFTER a PR is merged by Kamran
+git pull upstream/docs-v2
 pnpm run pr:mark-as-merged "Sync with upstream"
 ```
 
@@ -383,6 +386,44 @@ pnpm run pr:mark-as-merged "Sync with upstream"
 git add .
 git commit -m "your changes"
 pnpm run pr:since-last
+```
+
+### Merge Conflicts (Should Be Rare!)
+
+With the new workflow, conflicts should be minimal. If you still get them:
+
+**Emergency conflict resolution:**
+```bash
+pnpm run conflicts:resolve
+```
+
+**Or manual resolution:**
+```bash
+# Accept your version for config files
+git checkout --ours .cursorrules .windsurfrules package.json
+
+# Accept upstream for dependencies
+git checkout --theirs pnpm-lock.yaml
+
+# Manual review for docs files
+git status
+# Edit conflicted files manually
+git add .
+git commit -m "Resolve merge conflicts"
+```
+
+### Can't Push to Fork
+
+**Problem:** Remote branch is behind.
+
+**Solution:**
+```bash
+# Force push your changes (only if you're sure!)
+git push origin docs-v2 --force-with-lease
+
+# Or create a new branch
+git checkout -b docs-v2-new
+git push origin docs-v2-new
 ```
 
 ## 📚 Related Files

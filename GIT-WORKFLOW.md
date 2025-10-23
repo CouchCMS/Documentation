@@ -46,7 +46,24 @@ upstream  https://github.com/CouchCMS/Documentation.git (fetch)
 upstream  https://github.com/CouchCMS/Documentation.git (push)
 ```
 
-## 🔄 Regular Workflow
+## 🔄 New Improved Workflow (No More Conflicts!)
+
+### 🎯 Key Insight: Don't Merge Upstream Before PR!
+
+**Old way (causing conflicts):**
+```
+1. You work on docs-v2
+2. You merge upstream/docs-v2 ← CONFLICTS!
+3. You create PR
+```
+
+**New way (no conflicts):**
+```
+1. You work on docs-v2
+2. You push directly to your fork
+3. You create PR
+4. GitHub handles conflicts automatically when Kamran merges
+```
 
 ### Step 1: Start New Work Session
 
@@ -54,20 +71,7 @@ upstream  https://github.com/CouchCMS/Documentation.git (push)
 # Make sure you're on docs-v2
 git checkout docs-v2
 
-# Fetch latest changes from upstream
-git fetch upstream
-
-# Merge upstream changes
-git merge upstream/docs-v2
-
-# Resolve any conflicts if they occur
-# (Rare if you always sync before starting work)
-
-# Push updated branch to your fork
-git push origin docs-v2
-
-# Mark this as your baseline for tracking
-pnpm run pr:mark-as-merged "Synced with upstream latest changes"
+# Start working immediately - no upstream sync needed!
 ```
 
 ### Step 2: Work on Documentation
@@ -84,26 +88,23 @@ git commit -m "docs: add examples for dropdownfolders tag"
 pnpm run pr:since-last
 ```
 
-### Step 3: Create Pull Request
-
-#### Before Creating PR
+### Step 3: Create Pull Request (No Upstream Merge!)
 
 ```bash
 # Check what you've done
 pnpm run pr:since-last
 # Output: 15 commits, 5 new pages
 
-# Sync with upstream one more time
-git fetch upstream
-git merge upstream/docs-v2
-
-# Resolve any conflicts if needed
-
-# Push your branch
+# Push directly to your fork (no upstream merge needed!)
 git push origin docs-v2
+
+# Create PR automatically
+pnpm run pr:create
+
+# Or create manually on GitHub (see below)
 ```
 
-#### Create PR on GitHub
+#### Manual PR Creation on GitHub
 
 1. **Go to your fork:** `https://github.com/YOUR_USERNAME/Documentation`
 2. **Click:** "Compare & pull request" button (appears after push)
@@ -123,14 +124,9 @@ git push origin docs-v2
 ```bash
 # Your PR was merged! Celebrate 🎉
 
-# Fetch the merged changes
+# ONLY AFTER your PR is merged by Kamran:
 git fetch upstream
-
-# Merge into your local branch
-git merge upstream/docs-v2
-
-# Push to your fork
-git push origin docs-v2
+git pull upstream/docs-v2
 
 # Mark this as new baseline
 pnpm run pr:mark-as-merged "Added comprehensive tag reference for core tags"
@@ -140,39 +136,39 @@ pnpm run pr:mark-as-merged "Added comprehensive tag reference for core tags"
 
 ## 🚨 Common Scenarios
 
-### Scenario 1: Merge Conflicts
+### Scenario 1: Merge Conflicts (Should Be Rare!)
 
-When `git merge upstream/docs-v2` shows conflicts:
+With the new workflow, conflicts should be minimal. If you still get them:
 
 ```bash
-# Git will tell you which files have conflicts
-# Open each file and look for:
-<<<<<<< HEAD
-Your changes
-=======
-Upstream changes
->>>>>>> upstream/docs-v2
+# Use the automated conflict resolver
+pnpm run conflicts:resolve
 
-# Edit the file to resolve conflicts
-# Remove conflict markers and keep the correct version
+# Or manually resolve:
+# Accept your version for config files
+git checkout --ours .cursorrules .windsurfrules package.json
 
-# After fixing all conflicts:
+# Accept upstream for dependencies
+git checkout --theirs pnpm-lock.yaml
+
+# Manual review for docs files
+git status
+# Edit conflicted files manually
 git add .
-git commit -m "Merge upstream changes, resolved conflicts"
-git push origin docs-v2
+git commit -m "Resolve merge conflicts"
 ```
 
-### Scenario 2: Your Fork is Behind
+### Scenario 2: Your Fork is Behind (Don't Worry!)
 
-If GitHub shows "This branch is X commits behind":
+With the new workflow, this is normal and expected:
 
 ```bash
-# No problem! Just sync:
-git fetch upstream
-git merge upstream/docs-v2
-git push origin docs-v2
+# This is OK! GitHub will handle it when Kamran merges your PR
+# No need to sync before creating PR
 
-# Now you're up to date
+# Only sync AFTER your PR is merged:
+git fetch upstream
+git pull upstream/docs-v2
 ```
 
 ### Scenario 3: Multiple PRs in Progress

@@ -265,10 +265,9 @@ async function automatedFlow(hasGH) {
     }
 
     log("The script will:\n", "cyan");
-    log("  1. Sync with upstream", "yellow");
-    log("  2. Push to your fork", "yellow");
-    log("  3. Create PR on GitHub", "yellow");
-    log("  4. Open PR URL\n", "yellow");
+    log("  1. Push to your fork (no upstream sync needed!)", "yellow");
+    log("  2. Create PR on GitHub", "yellow");
+    log("  3. Open PR URL\n", "yellow");
 
     const proceed = await ask("Proceed with automated creation? (yes/no):");
     if (proceed.toLowerCase() !== "yes" && proceed.toLowerCase() !== "y") {
@@ -293,29 +292,13 @@ async function manualFlow() {
     log("MANUAL PR CREATION", "bright");
     log("─".repeat(60) + "\n", "blue");
 
-    // Step 1: Sync with upstream
-    log("Step 1: Sync with upstream\n", "bright");
-    log("Run these commands:\n", "cyan");
-    log("  git fetch upstream", "yellow");
-    log("  git merge upstream/docs-v2\n", "yellow");
-
-    const synced = await ask("Have you synced with upstream? (yes/no):");
-    if (synced.toLowerCase() !== "yes" && synced.toLowerCase() !== "y") {
-        log("\nPlease sync first, then run this again.\n", "yellow");
-        process.exit(0);
-    }
-
-    // Step 2: Check for conflicts
-    const hasConflicts = hasUncommittedChanges();
-    if (hasConflicts) {
-        log("\n⚠️  Merge conflicts detected!", "red");
-        log("Resolve them first, then run this again.\n", "yellow");
-        process.exit(1);
-    }
-    log("✓ No merge conflicts\n", "green");
-
-    // Step 3: Push to fork
-    log("Step 2: Push to your fork\n", "bright");
+    // Step 1: Push to fork (no upstream sync needed!)
+    log("Step 1: Push to your fork\n", "bright");
+    log("⚠️  IMPORTANT: Don't sync with upstream before PR!\n", "yellow");
+    log(
+        "The new workflow prevents conflicts by letting GitHub handle them.\n",
+        "cyan",
+    );
     log("Run this command:\n", "cyan");
     log(`  git push origin ${getCurrentBranch()}\n`, "yellow");
 
@@ -325,8 +308,8 @@ async function manualFlow() {
         process.exit(0);
     }
 
-    // Step 4: Get GitHub username
-    log("\nStep 3: Get your GitHub username\n", "bright");
+    // Step 2: Get GitHub username
+    log("\nStep 2: Get your GitHub username\n", "bright");
     try {
         const origin = execSync("git config --get remote.origin.url", {
             encoding: "utf-8",
@@ -345,8 +328,8 @@ async function manualFlow() {
         log("Could not detect username automatically.\n", "yellow");
     }
 
-    // Step 5: Create PR on GitHub
-    log("Step 4: Create PR on GitHub.com\n", "bright");
+    // Step 3: Create PR on GitHub
+    log("Step 3: Create PR on GitHub.com\n", "bright");
     log("1. Go to your fork on GitHub.com", "yellow");
     log('2. Click the "Compare & pull request" button', "yellow");
     log("3. Make sure base is set to:", "yellow");
@@ -403,8 +386,7 @@ async function postPRInstructions() {
 
     log("3. After your PR is merged:", "yellow");
     log("   git fetch upstream", "cyan");
-    log("   git merge upstream/docs-v2", "cyan");
-    log("   git push origin docs-v2", "cyan");
+    log("   git pull upstream/docs-v2", "cyan");
     log('   pnpm run pr:mark-as-merged "Your PR title"\n', "cyan");
 
     log("🎊 Congratulations on your contribution!\n", "green");

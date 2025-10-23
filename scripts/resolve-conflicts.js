@@ -36,7 +36,10 @@ function getConflicts() {
             encoding: "utf-8",
             cwd: rootDir,
         });
-        return output.trim().split("\n").filter((f) => f);
+        return output
+            .trim()
+            .split("\n")
+            .filter((f) => f);
     } catch {
         return [];
     }
@@ -61,8 +64,12 @@ function categorizeFile(file) {
     if (file.includes("package.json") || file.includes("pnpm-lock.yaml")) {
         return "dependency";
     }
-    if (file.includes(".cursorrules") || file.includes(".windsurfrules") || 
-        file.includes(".giga") || file.includes("rules/")) {
+    if (
+        file.includes(".cursorrules") ||
+        file.includes(".windsurfrules") ||
+        file.includes(".giga") ||
+        file.includes("rules/")
+    ) {
         return "ai-config";
     }
     if (file.includes("src/content/docs/") && file.endsWith(".mdx")) {
@@ -133,11 +140,17 @@ function main() {
 
     if (conflicts.length === 0) {
         log("✅ No merge conflicts detected!\n", "green");
-        log("If you expected conflicts, make sure you're in a merge state.\n", "yellow");
+        log(
+            "If you expected conflicts, make sure you're in a merge state.\n",
+            "yellow",
+        );
         return;
     }
 
-    log(`Found ${conflicts.length} conflicted file${conflicts.length !== 1 ? "s" : ""}\n`, "red");
+    log(
+        `Found ${conflicts.length} conflicted file${conflicts.length !== 1 ? "s" : ""}\n`,
+        "red",
+    );
 
     const byCategory = {
         dependency: [],
@@ -184,16 +197,21 @@ function main() {
         log("🤖 AI CONFIGURATION CONFLICTS (Safe - Keep Yours)", "bright");
         log("═══════════════════════════════════════════════════\n", "blue");
 
-        byCategory["ai-config"].forEach(({ file, suggestion, conflictType }) => {
-            log(`File: ${file}`, "yellow");
-            log(`Type: ${conflictType}`, "cyan");
-            log(`Action: ${suggestion.action}`, "cyan");
-            log(`Reason: ${suggestion.reason}`, "cyan");
-            log(`Command: ${suggestion.command}`, "green");
-            log("");
-        });
+        byCategory["ai-config"].forEach(
+            ({ file, suggestion, conflictType }) => {
+                log(`File: ${file}`, "yellow");
+                log(`Type: ${conflictType}`, "cyan");
+                log(`Action: ${suggestion.action}`, "cyan");
+                log(`Reason: ${suggestion.reason}`, "cyan");
+                log(`Command: ${suggestion.command}`, "green");
+                log("");
+            },
+        );
 
-        log("✅ These are your local AI configs - safe to keep yours\n", "green");
+        log(
+            "✅ These are your local AI configs - safe to keep yours\n",
+            "green",
+        );
     }
 
     // Show documentation conflicts
@@ -210,7 +228,10 @@ function main() {
             log("");
         });
 
-        log("⚠️  These need manual review - both versions have changes\n", "yellow");
+        log(
+            "⚠️  These need manual review - both versions have changes\n",
+            "yellow",
+        );
     }
 
     // Show other conflicts
@@ -235,16 +256,18 @@ function main() {
     const safeCommands = [];
     const manualFiles = [];
 
-    Object.values(byCategory).flat().forEach(({ file, suggestion }) => {
-        if (suggestion.safe) {
-            safeCommands.push(suggestion.command);
-            if (suggestion.post) {
-                safeCommands.push(suggestion.post);
+    Object.values(byCategory)
+        .flat()
+        .forEach(({ file, suggestion }) => {
+            if (suggestion.safe) {
+                safeCommands.push(suggestion.command);
+                if (suggestion.post) {
+                    safeCommands.push(suggestion.post);
+                }
+            } else {
+                manualFiles.push(file);
             }
-        } else {
-            manualFiles.push(file);
-        }
-    });
+        });
 
     if (safeCommands.length > 0) {
         log("Safe auto-resolve (run these):", "green");
@@ -269,9 +292,11 @@ function main() {
 
     log("After resolving all conflicts:", "bright");
     log("  git add .", "green");
-    log("  git commit -m 'Merge upstream/docs-v2, resolved conflicts'", "green");
+    log(
+        "  git commit -m 'Merge upstream/docs-v2, resolved conflicts'",
+        "green",
+    );
     log("  git push origin docs-v2\n", "green");
 }
 
 main();
-
