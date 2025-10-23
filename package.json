@@ -19,7 +19,8 @@
         "ai:update": "pnpm run sync && pnpm run validate",
         "pr:since-last": "node scripts/pr-since-last.js",
         "pr:mark-as-merged": "node scripts/pr-mark-merged.js",
-        "pr:help": "echo '\n📊 PR Tracker:\n  pr:since-last      - Show changes since last upstream PR\n  pr:mark-as-merged  - Mark current upstream state\n  pr:help            - Show this help\n'",
+        "pr:create": "node scripts/pr-create.js",
+        "pr:help": "echo '\n📊 PR Tracker:\n  pr:since-last      - Show changes since last upstream PR\n  pr:mark-as-merged  - Mark current upstream state\n  pr:create          - Automatically create GitHub PR\n  pr:help            - Show this help\n'",
         "postinstall": "pnpm run sync"
     },
     "dependencies": {

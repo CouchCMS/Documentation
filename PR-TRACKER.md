@@ -105,11 +105,40 @@ $ pnpm run pr:since-last
 
 ## 🔄 Complete Workflow
 
-### 1. After PR Merge on GitHub Upstream
+### 1. Setup Upstream Remote (First Time Only)
+
+If you haven't set up the upstream remote yet:
 
 ```bash
-# Pull merged changes from upstream
-git pull upstream docs-v2
+# Check your current remotes
+git remote -v
+
+# Add the CouchCMS Documentation repository as upstream
+git remote add upstream https://github.com/CouchCMS/Documentation.git
+
+# Verify it was added
+git remote -v
+# Should show:
+# origin    https://github.com/YOUR_USERNAME/Documentation.git
+# upstream  https://github.com/CouchCMS/Documentation.git
+```
+
+### 2. After PR Merge on GitHub Upstream
+
+```bash
+# Fetch latest changes from upstream
+git fetch upstream
+
+# Make sure you're on docs-v2
+git checkout docs-v2
+
+# Merge upstream changes into your branch
+git merge upstream/docs-v2
+
+# Resolve any merge conflicts if they occur
+
+# Push updated branch to your fork
+git push origin docs-v2
 
 # Mark this as your new baseline
 pnpm run pr:mark-as-merged "Title of the merged PR"
@@ -128,24 +157,70 @@ pnpm run pr:since-last
 
 ### 3. When Ready for New PR
 
+#### Option A: Automated PR Creation (Recommended)
+
 ```bash
 # Check final status
 pnpm run pr:since-last
 # Output shows: 15 commits, 5 new pages, 3 days work
 
-# Create PR manually on GitHub
+# Create PR automatically (requires GitHub CLI)
+pnpm run pr:create
+
+# The script will:
+# 1. Sync with upstream
+# 2. Generate PR title and body
+# 3. Push to your fork
+# 4. Create PR on GitHub
+# 5. Open PR URL
+
+# Done! Review the PR on GitHub
+```
+
+**Note:** Requires GitHub CLI setup. See `PR-CREATE-SETUP.md` for installation.
+
+#### Option B: Manual PR Creation
+
+```bash
+# Check final status
+pnpm run pr:since-last
+# Output shows: 15 commits, 5 new pages, 3 days work
+
+# Sync with upstream
+git fetch upstream
+git merge upstream/docs-v2
+
+# Push your branch to your fork
 git push origin docs-v2
-# Then create PR on GitHub UI
+
+# Create PR on GitHub UI
+# 1. Go to: https://github.com/YOUR_USERNAME/Documentation
+# 2. Click "Compare & pull request"
+# 3. Base: CouchCMS/Documentation docs-v2
+# 4. Compare: YOUR_USERNAME/Documentation docs-v2
+# 5. Add title and description (in English!)
+# 6. Submit PR
 ```
 
 ### 4. After New PR is Merged (Cycle Repeats)
 
 ```bash
-git pull upstream docs-v2
+# Fetch and merge the merged PR
+git fetch upstream
+git merge upstream/docs-v2
+
+# Push to your fork
+git push origin docs-v2
+
+# Mark as new baseline
 pnpm run pr:mark-as-merged "New PR description"
+
+# Start working on next changes...
 ```
 
 ## 💡 Commands
+
+### PR Tracker Commands
 
 ```bash
 # Show changes since last upstream merge
@@ -154,8 +229,40 @@ pnpm run pr:since-last
 # Mark current upstream state as baseline
 pnpm run pr:mark-as-merged ["Optional description"]
 
+# Automatically create GitHub PR (requires GitHub CLI)
+pnpm run pr:create
+
 # Show help
 pnpm run pr:help
+```
+
+### GitHub CLI Setup (For Automated PR Creation)
+
+```bash
+# Install GitHub CLI
+brew install gh              # macOS
+sudo apt install gh          # Ubuntu/Debian
+
+# Authenticate
+gh auth login
+
+# Verify
+gh auth status
+```
+
+**See `PR-CREATE-SETUP.md` for detailed setup instructions.**
+
+### Git Commands for Upstream Sync
+
+```bash
+# Fetch latest from upstream
+git fetch upstream
+
+# Merge upstream changes
+git merge upstream/docs-v2
+
+# Push to your fork
+git push origin docs-v2
 ```
 
 ## 📁 How It Works
@@ -280,9 +387,19 @@ pnpm run pr:since-last
 
 ## 📚 Related Files
 
-- **`PR-TRACKER-SINCE-LAST.md`** - Detailed documentation
-- **`scripts/pr-since-last.js`** - Implementation
-- **`scripts/pr-mark-merged.js`** - Implementation
+- **`PR-CREATE-SETUP.md`** ⭐ - Automated PR creation setup
+- **`GIT-WORKFLOW.md`** - Complete Git workflow guide
+- **`ENGLISH-REMINDER.md`** - Language guidelines
+- **`PR-TRACKER-SINCE-LAST.md`** - Technical documentation
+- **`scripts/pr-since-last.js`** - Progress tracker implementation
+- **`scripts/pr-mark-merged.js`** - Baseline marker implementation
+- **`scripts/pr-create.js`** - Automated PR creator implementation
+
+## 🔗 External Resources
+
+- **[CouchCMS Documentation Repo](https://github.com/CouchCMS/Documentation)** - Upstream repository
+- **[Your Fork Settings](https://github.com/settings/repositories)** - Manage your forks
+- **[GitHub PR Guide](https://docs.github.com/en/pull-requests)** - Official GitHub documentation
 
 ---
 

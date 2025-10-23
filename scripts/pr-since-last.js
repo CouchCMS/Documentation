@@ -310,9 +310,13 @@ function main() {
 
     // Suggestions
     log("💡 Next steps:", "bright");
-    if (commits.length >= 5) {
-        log("  📋 Consider creating a new PR:", "yellow");
-        log("     pnpm run pr:prepare", "cyan");
+    if (commits.length >= 10) {
+        log("  📋 Time to create a PR!", "yellow");
+        log("     Option 1 (Automated): pnpm run pr:create", "cyan");
+        log("     Option 2 (Manual): Create PR on GitHub UI", "cyan");
+    } else if (commits.length >= 5) {
+        log("  📋 Consider creating a new PR soon:", "yellow");
+        log("     pnpm run pr:create", "cyan");
     } else {
         log("  ⏳ Continue working. Create PR when ready.", "yellow");
     }
