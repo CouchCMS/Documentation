@@ -12,22 +12,30 @@
         "clean:all": "rm -rf dist node_modules",
         "lint:md": "markdownlint-cli2 \"src/content/docs/**/*.mdx\" \".cursor/rules/**/*.mdc\"",
         "lint:md:fix": "markdownlint-cli2 --fix \"src/content/docs/**/*.mdx\" \".cursor/rules/**/*.mdc\"",
-        "postinstall": "pnpm build"
+        "sync": "node scripts/sync-ai-configs.js",
+        "validate": "node scripts/validate-docs.js",
+        "validate:analyze": "node scripts/analyze-validation-issues.js",
+        "fix:links": "node scripts/fix-links.js",
+        "ai:update": "pnpm run sync && pnpm run validate",
+        "pr:prepare": "node scripts/pr-prepare.js",
+        "pr:finalize": "node scripts/pr-finalize.js",
+        "pr:help": "echo '\n📋 PR Tracker Commands:\n  pr:prepare  - Generate draft from git changes\n  pr:finalize - Validate and create final version\n  pr:help     - Show this help\n'",
+        "postinstall": "pnpm run sync"
     },
     "dependencies": {
-        "@astro-community/astro-embed-youtube": "^0.5.6",
-        "@astrojs/starlight": "^0.34.4",
-        "astro": "^5.9.3",
-        "sharp": "^0.34.2",
-        "starlight-links-validator": "^0.16.0",
-        "typescript": "^5.8.3"
+        "@astro-community/astro-embed-youtube": "^0.5.7",
+        "@astrojs/starlight": "^0.36.1",
+        "astro": "^5.15.0",
+        "sharp": "^0.34.4",
+        "starlight-links-validator": "^0.19.0",
+        "typescript": "^5.9.3"
     },
     "devDependencies": {
-        "@astrojs/check": "^0.9.4",
-        "markdownlint": "^0.38.0",
+        "@astrojs/check": "^0.9.5",
+        "markdownlint": "^0.39.0",
         "markdownlint-cli": "^0.45.0",
         "markdownlint-cli2": "^0.18.1",
-        "prettier": "^3.5.3",
+        "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1"
     }
 }
