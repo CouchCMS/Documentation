@@ -65,7 +65,7 @@ pnpm run pr:help
 pnpm run pr:prepare origin/docs-v1
 # Generated DRAFT-PR.md with 327 changes detected:
 # - 270 new items
-# - 0 updates  
+# - 0 updates
 # - 57 deletions
 ```
 
