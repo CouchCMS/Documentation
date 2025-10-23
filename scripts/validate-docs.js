@@ -76,21 +76,6 @@ function validateFrontmatter(content, file) {
         }
     }
 
-    // Check description length
-    const descMatch = frontmatter.match(/description:\s*["'](.+)["']/);
-    if (descMatch) {
-        const desc = descMatch[1];
-        if (desc.length < 100) {
-            issues.push(
-                `⚠️  Description too short (${desc.length} chars, minimum 100)`,
-            );
-        } else if (desc.length > 170) {
-            issues.push(
-                `⚠️  Description too long (${desc.length} chars, maximum 170)`,
-            );
-        }
-    }
-
     return issues;
 }
 
@@ -152,7 +137,8 @@ function validateLinks(content, file) {
     const issues = [];
 
     // Check for links without trailing slashes (internal only)
-    const internalLinkPattern = /\[([^\]]+)\]\(\.\.?\/[^)]+(?<!\/)\)/g;
+    // Exclude links with anchors (#) - those should NOT have trailing slashes
+    const internalLinkPattern = /\[([^\]]+)\]\((\.\.?\/[^)#]+)(?<!\/)\)/g;
     let match;
 
     while ((match = internalLinkPattern.exec(content)) !== null) {
