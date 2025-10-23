@@ -49,7 +49,7 @@ To take the tedium out of creating such galleries, version 1.2.5 of Couch introd
 
 This new feature is built upon the existing functionality of Couch and requires only minimal modifications to the usual method described above in order to use it. Let us walk through all the steps leading up to the creation of a full-featured gallery. I'll point out the parts where something new is required to be done.
 
-#### 1. Create a clonable template
+### 1. Create a clonable template
 
 The process begins, as is the norm, by creating a cloned template for the gallery. For our example, let us assume the name of our template is `gallery.php`. We use the regular method of declaring the template as **clonable**:
 
@@ -71,7 +71,7 @@ Now comes the new part in this step. We add a new parameter to this declaration:
 
 By adding `gallery='1'`, we inform Couch that template will require special consideration.
 
-#### 2. Define editable regions
+### 2. Define editable regions
 
 As mentioned before, any template meant to be used for a gallery will require at least two editable regions - one for the main image and another for the thumbnail.
 
@@ -114,7 +114,7 @@ The thumbnail region `gg_thumb` is used by Couch for displaying the image thumbn
 
 To persist the changes made to the template, make the mandatory visit to the template using your browser while being logged on as the super-admin. This will add the template to Couch admin. We are now all set to begin adding images to our gallery.
 
-#### 3. Creating cloned pages
+### 3. Creating cloned pages
 
 This is the step where everything is now very different. The first thing that you'll notice is that there is no 'add new' button in the admin-panel of this template (this is the `gallery` parameter in action). Instead you have an 'Upload' button
 
@@ -152,7 +152,7 @@ Click on any thumbnail and you'll reach the familiar 'Edit' panel common to all 
 
 You'll notice that Couch has used the uploaded image's name as the page's title and name fields. If that does not suit you, you can always edit them.
 
-#### 4. Displaying the gallery
+### 4. Displaying the gallery
 
 With the pages already created, it is time to display them on your site. This step is no different to what is used with the regular templates. The markup, as always, will be yours and you can use the cms:pages tag to output the list of the images in your gallery the regular way. Example:
 
