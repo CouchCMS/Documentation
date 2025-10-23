@@ -134,6 +134,25 @@ pnpm run pr:mark-as-merged "Added comprehensive tag reference for core tags"
 # Start next work session...
 ```
 
+**Why These Steps Matter:**
+
+This step is crucial for two reasons:
+
+1. **Keep Your Local Branch in Sync**
+   - Your merged PR is now in `CouchCMS/Documentation/docs-v2`
+   - Your local branch still has the "pre-merge" state
+   - `git pull upstream/docs-v2` updates your local branch to match
+
+2. **Reset the Progress Tracker**
+   - `pr:mark-as-merged` tells the tracker: "Start counting from here"
+   - Without this, `pr:since-last` shows old (already merged) changes
+   - Example: You'll see "25 commits" when you've only made 3 new ones
+
+**If You Skip This Step:**
+- ❌ Your local branch falls behind
+- ❌ PR tracker shows incorrect progress
+- ❌ Next PR will include old, already-merged changes
+
 ## 🚨 Common Scenarios
 
 ### Scenario 1: Merge Conflicts (Should Be Rare!)

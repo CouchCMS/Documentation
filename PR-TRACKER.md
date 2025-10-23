@@ -220,6 +220,23 @@ pnpm run pr:mark-as-merged "New PR description"
 # Start working on next changes...
 ```
 
+**Why is this step necessary?**
+
+1. **Sync your local branch:** Your PR is now in upstream, but your local branch is still the "old" version. These commands update your local branch with Kamran's merged version.
+
+2. **Reset the tracking baseline:** This tells the PR tracker system: "This is my new starting point." Without this, `pr:since-last` will keep showing your old (already merged) changes.
+
+3. **Prevent confusion:** If you skip this, the tracker thinks you have 25 commits when you've only made 3 new ones since the merge.
+
+**The complete cycle:**
+```
+Work → Create PR → Kamran merges → Sync & Reset → Repeat
+                                        ↑
+                                    This step!
+```
+
+Without step 4, the cycle doesn't restart - you're stuck on the old PR.
+
 ## 💡 Commands
 
 ### PR Tracker Commands

@@ -95,6 +95,8 @@ git pull upstream/docs-v2
 pnpm run pr:mark-as-merged "Your PR title in English"
 ```
 
+**Why?** This syncs your local branch and resets the tracker so `pr:since-last` only shows NEW changes.
+
 ## 📊 Complete Cycle
 
 ```
