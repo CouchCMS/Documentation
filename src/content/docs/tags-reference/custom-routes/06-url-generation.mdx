@@ -1,6 +1,6 @@
 ---
 title: "URL Generation"
-description: "How to generate URLs for custom routes in Couch."
+description: "Learn how to programmatically generate URLs for custom routes in CouchCMS using the route_link tag with proper parameter handling and template integration."
 keywords:
     - custom routes
     - url generation
@@ -50,18 +50,18 @@ Let us output a list of all cloned pages of our test template in its **list_view
 <!-- implement the selected view -->
 <cms:if k_matched_route='list_view'>
     <h2>This is list_view</h2>
-   
+
     <cms:pages>
         <a href="#">
             <cms:show k_page_title />
         </a>
-       
+
         <a href="#">
             [EDIT]
         </a>
         <br/>
     </cms:pages>
-   
+
 <cms:else_if k_matched_route='create_view' />
     ...
     ...
@@ -73,18 +73,18 @@ Create a few cloned pages out of our test template and then access the **list_vi
 <!-- implement the selected view -->
 <cms:if k_matched_route='list_view'>
     <h2>This is list_view</h2>
-   
+
     <cms:pages>
         <a href="<cms:route_link 'page_view' rt_page_name=k_page_name rt_format='.html' />">
             <cms:show k_page_title />
         </a>
-       
+
         <a href="<cms:route_link 'edit_view' rt_id=k_page_id />">
             [EDIT]
         </a>
         <br/>
     </cms:pages>
-   
+
 <cms:else_if k_matched_route='create_view' />
     ...
     ...
