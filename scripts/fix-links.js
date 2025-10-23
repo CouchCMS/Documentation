@@ -50,6 +50,13 @@ function fixLinksInFile(filePath) {
         if (url.includes("#")) {
             return match; // Return unchanged
         }
+
+        // Skip if URL points to a file (has file extension)
+        // Common extensions: .zip, .pdf, .jpg, .png, .gif, .svg, .webp, etc.
+        if (/\.\w+$/.test(url)) {
+            return match; // Return unchanged - it's a file
+        }
+
         fixCount++;
         return `[${text}](${url}/)`;
     });

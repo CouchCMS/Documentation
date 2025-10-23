@@ -62,9 +62,17 @@ function analyzeFile(filePath) {
     }
 
     // Check for links without trailing slashes
-    const internalLinkPattern = /\[([^\]]+)\]\((\.\.?\/[^)]+)(?<!\/)\)/g;
+    // Exclude links with anchors (#) and file links - those should NOT have trailing slashes
+    const internalLinkPattern = /\[([^\]]+)\]\((\.\.?\/[^)]+?)(?<!\/)\)/g;
     let match;
     while ((match = internalLinkPattern.exec(content)) !== null) {
+        const url = match[2];
+
+        // Skip if it's an anchor link or file link
+        if (url.includes("#") || /\.\w+$/.test(url)) {
+            continue;
+        }
+
         issuesByType.missingTrailingSlash.push({
             file: relativePath,
             text: match[1],

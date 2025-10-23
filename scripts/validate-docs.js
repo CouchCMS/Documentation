@@ -137,12 +137,19 @@ function validateLinks(content, file) {
     const issues = [];
 
     // Check for links without trailing slashes (internal only)
-    // Exclude links with anchors (#) - those should NOT have trailing slashes
-    const internalLinkPattern = /\[([^\]]+)\]\((\.\.?\/[^)#]+)(?<!\/)\)/g;
+    // Exclude links with anchors (#) and file links - those should NOT have trailing slashes
+    const internalLinkPattern = /\[([^\]]+)\]\((\.\.?\/[^)]+?)(?<!\/)\)/g;
     let match;
 
     while ((match = internalLinkPattern.exec(content)) !== null) {
         const linkText = match[1];
+        const url = match[2];
+
+        // Skip if it's an anchor link or file link
+        if (url.includes("#") || /\.\w+$/.test(url)) {
+            continue;
+        }
+
         issues.push(`⚠️  Internal link missing trailing slash: "${linkText}"`);
     }
 
