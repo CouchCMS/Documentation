@@ -110,6 +110,33 @@ The documentation is built with [Astro](https://astro.build/) + [Starlight](http
 
 ---
 
+## 🤖 AI-Assisted Documentation
+
+This project includes a complete AI toolkit for documentation development:
+
+**Quick Start:**
+```markdown
+@.cursor/prompts/convert-to-markdown.md
+Convert this content to documentation format: [your content]
+```
+
+**Documentation:**
+- **[AI-TOOLKIT.md](./AI-TOOLKIT.md)** - Main entry point and overview
+- **[QUICKSTART.md](.cursor/QUICKSTART.md)** - 30-second reference guide
+- **[Complete Guide](.cursor/README.md)** - Full toolkit documentation
+- **[STYLEGUIDE.md](./STYLEGUIDE.md)** - Complete formatting rules
+
+The AI toolkit provides:
+- ✅ Automated formatting rules (applied automatically in Cursor)
+- ✅ Content conversion prompts (HTML → Markdown)
+- ✅ Quick reference guides for common patterns
+- ✅ Quality assurance checklists
+- ✅ Consistent documentation standards
+
+See [AI-TOOLKIT.md](./AI-TOOLKIT.md) for complete details.
+
+---
+
 ## Resources
 
 - [CouchCMS Website](https://www.couchcms.com)
@@ -122,7 +149,26 @@ The documentation is built with [Astro](https://astro.build/) + [Starlight](http
 
 ## Need Help?
 
-- Check the [CouchCMS Documentation Style Guide](./STYLEGUIDE.md)
-- See [Starlight authoring guide](https://starlight.astro.build/guides/authoring-content/)
-- Visit the [CouchCMS Forum](https://www.couchcms.com/forum/)
-- Open an issue in this repository
+### Documentation & AI Toolkit
+- 🎯 **[SYSTEM-OVERVIEW.md](./SYSTEM-OVERVIEW.md)** - Complete system architecture
+- 🤖 **[AI-TOOLKIT.md](./AI-TOOLKIT.md)** - Main AI toolkit guide
+- 📖 **[STYLEGUIDE.md](./STYLEGUIDE.md)** - Complete style guide
+- ⚡ **[QUICKSTART.md](.cursor/QUICKSTART.md)** - 30-second quick start
+- 🔧 **[Scripts Documentation](./scripts/README.md)** - Sync & validation tools
+
+### CouchCMS Resources
+- [CouchCMS Website](https://www.couchcms.com)
+- [CouchCMS Forum](https://www.couchcms.com/forum/)
+- [Starlight Authoring Guide](https://starlight.astro.build/guides/authoring-content/)
+
+### Get Started
+```bash
+# All AI tools are configured automatically!
+pnpm install
+
+# Start writing documentation
+pnpm dev
+
+# Validate your work
+pnpm run validate
+```

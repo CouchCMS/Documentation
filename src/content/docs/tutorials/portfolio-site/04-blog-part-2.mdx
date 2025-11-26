@@ -96,7 +96,7 @@ And it will show:
 As you can see we can access all variables belonging to each cloned pages just the way we did when the page was accessed in its page-view.
 
 :::note
-The [**pages**](../../../tags-reference/core/pages/) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please refer to the [documentation](../../../tags-reference/core/pages/) for a comprehensive discussion.
+The [**pages**](../../../tags-reference/core/pages/) tag, in a way, is one of the most powerful tags in Couch and supports several parameters that you can use to fine-tune the cloned pages that are fetched and the way they are fetched. Please refer to the [**documentation**](../../../tags-reference/core/pages/) for a comprehensive discussion.
 :::
 
 With this ability to list cloned pages and access their data, we can now make changes to the `blog_list.html` snippet to display the cloned pages instead of its hard coded content.
@@ -162,8 +162,7 @@ Visit `http://www.mytestsite.com/blog.php` to see the two cloned pages listed on
 
 Click on the title of any post to verify that it loads the page-view of that post.
 
-Everything looks good for now. The '*Read More..*' button at the bottom of each post needs some attention.
-Usually when a blog post is displayed in its page-view (i.e. singly), its entire content is displayed. However, when the same post is displayed in the list-view (with several other posts) it is pragmatic to display only an excerpt of its contents and provide a link that leads to its page-view.
+Everything looks good for now. The '*Read More..*' button at the bottom of each post needs some attention. Usually when a blog post is displayed in its page-view (i.e. singly), its entire content is displayed. However, when the same post is displayed in the list-view (with several other posts) it is pragmatic to display only an excerpt of its contents and provide a link that leads to its page-view.
 
 Couch has two tags that can be used to get an excerpt from any input provided to them - `excerpt` and `excerptHTML`. The difference between the two, of course, is that excerptHTML preserves the HTML elements present in the input while excerpt strips off all HTML tags. We'll use the excerptHTML tag for our purpose. It can be additionally configured to ignore certain HTML tags. We'll make it ignore any `img` tag because if it happens to be present within the excerpt it is certainly going to make the post taller than what we desire. We'll set the count of words for the excerpt to 75. The modified code is:
 
@@ -195,8 +194,7 @@ As we keep on adding new blog entries, the list-view faithfully keeps showing th
 
 ### Pagination
 
-For the purpose of our demonstration, we'll show three pages at a time in the list-view.
-Add the following parameters to the `pages` tag:
+For the purpose of our demonstration, we'll show three pages at a time in the list-view. Add the following parameters to the `pages` tag:
 
 ```php title="blog_list.html" ins="limit="3"" ins="paginate="1""
 <cms:pages masterpage='blog.php' limit="3" paginate="1" >
@@ -206,7 +204,8 @@ Add the following parameters to the `pages` tag:
     <h3 class="title"><a href="<cms:show k_page_link />"><cms:show k_page_title /></a></h3>
 ```
 
-The *limit* parameter limits the number of pages fetched to 3 while setting the *paginate* parameter to 1 indicates to Couch that it now has to support pagination. Once Couch is made to support pagination, it will set some new variables for us that show the current status of the paginated result [see [Pagination](../../../concepts/pagination/) in documentation for more details]. The new variables include links to the next and the previous set of three pages (if available). We can use them to modify the links of the two buttons at the bottom that say '*Previous Posts*' and '*Next Posts*', but before we can do that we'll have to move the HTML code for the two buttons within the pages tags (because the variables are available only within this tag's context) -
+The *limit* parameter limits the number of pages fetched to 3 while setting the *paginate* parameter to 1 indicates to Couch that it now has to support pagination. Once Couch is made to support pagination, it will set some new variables for us that show the current status of the paginated result (see [Pagination](../../../concepts/pagination/) in documentation for more details). The new variables include links to the next and the previous set of three pages (if available). We can use them to modify the links of the two buttons at the bottom that say '*Previous Posts*' and '*Next Posts*', but before we can do that we'll have to move the HTML code for the two buttons within the pages tags (because the variables are available only within this tag's context):
+
 Before:
 
 ```diff lang="php" title="blog_list.html"
@@ -337,7 +336,7 @@ Find the following sidebar code in `blog.php`.
 
 Cut and paste it into a file and save it as `blog_sidebar.html` in the snippets folder. Place the following code in `blog.php` in place the code removed above:
 
-```diff lang="php" title="blog.php"
+```diff lang="html" title="blog.php"
 <!-- Column 2 / Sidebar -->
 +<cms:embed 'blog_sidebar.html' />
 
@@ -491,7 +490,7 @@ Visit `blog.php` and you'll see the archives being displayed in the sidebar. Cli
 http://www.mytestsite.com/blog.php?d=201010
 ```
 
-The '`?d=201010`' after the `blog.php` signals to Couch that an archive-view is being accessed. Couch makes available all information pertaining to the archive period specified in the URL by setting various variables (see [Variables available in Views](../../../concepts/variables-in-views/)). It is up to the template being accessed to handle the archive period anyway it chooses to. For now, our `blog.php` will simply display whatever it did in the list-view (remember archive-view and folder-view are sub-categories of list-view) because we have not yet handled the archive-view. Let us do that now.
+The '`?d=201010`' after the `blog.php` signals to Couch that an archive-view is being accessed. Couch makes available all information pertaining to the archive period specified in the URL by setting various variables (see [**Variables available in Views**](../../../concepts/variables-in-views/)). It is up to the template being accessed to handle the archive period anyway it chooses to. For now, our `blog.php` will simply display whatever it did in the list-view (remember archive-view and folder-view are sub-categories of list-view) because we have not yet handled the archive-view. Let us do that now.
 
 Once again it is the pages tag that we placed within the `blog_list.html` (that handles list-view) that needs a little modification. Pages tag supports two parameters that can be set to constrain the fetched pages to belong to a certain time period - `start_on` and `stop_before`. We'll set the values of these parameters by using two variables that are set by Couch in archive-view that denote the start and end dates of the archive period - `k_archive_date` and `k_next_archive_date`. The modified pages tag should look like:
 
@@ -863,5 +862,5 @@ Congratulations. The blog section is finally complete.
 
 ---
 
-[Next Chapter: **The Portfolio Section**](../portfolio)
+[Next Chapter: **The Portfolio Section**](../portfolio/)
 

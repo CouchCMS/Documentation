@@ -6,29 +6,40 @@
         "dev": "astro dev",
         "start": "astro dev",
         "build": "astro build && cp .cursor/rules/markdown.mdc STYLEGUIDE.md",
-        "build": "astro build && cp .cursor/rules/markdown.mdc STYLEGUIDE.md",
         "preview": "astro preview",
         "astro": "astro",
         "clean": "rm -rf dist node_modules/.cache",
         "clean:all": "rm -rf dist node_modules",
         "lint:md": "markdownlint-cli2 \"src/content/docs/**/*.mdx\" \".cursor/rules/**/*.mdc\"",
         "lint:md:fix": "markdownlint-cli2 --fix \"src/content/docs/**/*.mdx\" \".cursor/rules/**/*.mdc\"",
-        "postinstall": "pnpm build"
+        "sync": "node scripts/sync-ai-configs.js",
+        "validate": "node scripts/validate-docs.js",
+        "validate:analyze": "node scripts/analyze-validation-issues.js",
+        "fix:links": "node scripts/fix-links.js",
+        "ai:update": "bun run sync && bun run validate",
+        "pr:since-last": "node scripts/pr-since-last.js",
+        "pr:mark-as-merged": "node scripts/pr-mark-merged.js",
+        "pr:create": "node scripts/pr-create.js",
+        "pr:test": "node scripts/pr-create-test.js",
+        "pr:guided": "node scripts/pr-guided.js",
+        "conflicts:resolve": "node scripts/resolve-conflicts.js",
+        "pr:help": "echo '\n📊 PR Tracker:\n  pr:since-last      - Show changes since last upstream PR\n  pr:mark-as-merged  - Mark current upstream state\n  pr:test            - Test PR creation (dry run)\n  pr:create          - Actually create GitHub PR\n  pr:guided          - Step-by-step guided PR creation\n  conflicts:resolve  - Help resolve merge conflicts\n  pr:help            - Show this help\n'",
+        "postinstall": "bun run sync"
     },
     "dependencies": {
-        "@astro-community/astro-embed-youtube": "^0.5.6",
-        "@astrojs/starlight": "^0.34.4",
-        "astro": "^5.9.3",
-        "sharp": "^0.34.2",
-        "starlight-links-validator": "^0.16.0",
-        "typescript": "^5.8.3"
+        "@astro-community/astro-embed-youtube": "^0.5.9",
+        "@astrojs/starlight": "^0.36.3",
+        "astro": "^5.16.1",
+        "sharp": "^0.34.5",
+        "starlight-links-validator": "^0.19.1",
+        "typescript": "^5.9.3"
     },
     "devDependencies": {
-        "@astrojs/check": "^0.9.4",
-        "markdownlint": "^0.38.0",
+        "@astrojs/check": "^0.9.6",
+        "markdownlint": "^0.39.0",
         "markdownlint-cli": "^0.45.0",
         "markdownlint-cli2": "^0.18.1",
-        "prettier": "^3.5.3",
+        "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1"
     }
 }

@@ -1,6 +1,6 @@
 ---
 title: "Complete Example"
-description: "A full working example of custom routes in Couch, combining all concepts."
+description: "Full working example of CouchCMS custom routes demonstrating URL patterns, parameter validation, view handlers, and best practices in action."
 keywords:
     - custom routes
     - example
@@ -26,9 +26,9 @@ Following is how our `test.php` template finally looks like:
 
         <!-- define routes -->
         <cms:route name='list_view' path='' />
-       
+
         <cms:route name='create_view' path='create' />
-       
+
         <cms:route name='edit_view' path='{:id}/edit' filters='page_exists'>
             <cms:route_validators
                 id='non_zero_integer'
@@ -46,36 +46,36 @@ Following is how our `test.php` template finally looks like:
 
     </cms:template>
 
-   
+
     <!-- find the matched route (view). Respond with 404 if no route matches. -->
     <cms:match_route debug='1' is_404='1' />
-   
+
     <h1>Test</h1>
-   
+
     <!-- implement the selected view -->
     <cms:if k_matched_route='list_view'>
         <h2>This is list_view</h2>
-       
+
         <cms:pages>
             <a href="<cms:route_link 'page_view' rt_page_name=k_page_name rt_format='.html' />">
                 <cms:show k_page_title />
             </a>
-           
+
             <a href="<cms:route_link 'edit_view' masterpage=k_template_name rt_id=k_page_id />">
                 [EDIT]
             </a>
             <br/>
         </cms:pages>
-       
+
     <cms:else_if k_matched_route='create_view' />
         <h2>This is create_view</h2>
     <cms:else_if k_matched_route='edit_view' />
-        <h2>This is edit_view. ID of page to be edited is <cms:show rt_id /></h2>   
+        <h2>This is edit_view. ID of page to be edited is <cms:show rt_id /></h2>
     <cms:else_if k_matched_route='page_view' />
-        <h2>This is page_view. Name of page to be edited is <cms:show rt_page_name /></h2>         
+        <h2>This is page_view. Name of page to be edited is <cms:show rt_page_name /></h2>
     </cms:if>
 
-   
+
 <?php COUCH::invoke( K_IGNORE_CONTEXT ); ?>
 ```
 

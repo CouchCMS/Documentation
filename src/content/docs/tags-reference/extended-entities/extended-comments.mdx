@@ -14,12 +14,14 @@ sidebar:
     }
 ---
 
+import { Steps } from "@astrojs/starlight/components";
+
 To complete the trio of our extended-entities, we tackle extended-comments in this section.
 
-Since we have already been through extended-folders, this part should seem familiar.
-It extends the existing commenting functionality in Couch (as documentated at [http://www.couchcms.com/docs/concepts/u ... ments.html](http://www.couchcms.com/docs/concepts/u ... ments.html)) so I assume we have a registered template (`blog.php`) that is already configured to
-a. accept submitted comments (via `cms:process_comment` used within a Couch form's success condition) and
-b. list submitted comments using `cms:comments` tag
+Since we have already been through extended-folders, this part should seem familiar. It extends the existing commenting functionality in Couch (as documentated [**here**](../../../../concepts/comments/)) so I assume we have a registered template (`blog.php`) that is already configured to:
+
+- **a**. accept submitted comments (via `cms:process_comment` used within a Couch form's success condition) and
+- **b**. list submitted comments using `cms:comments` tag
 
 We'll call this template the 'target' template (as we'll be extending its comments).
 
@@ -27,7 +29,7 @@ Next we'll use another clonable template (lets name it `blog-comments.php`), def
 
 Following is our sample source template (for our demo we are defining two editable regions in it, a `checkbox` and a `text`. These regions will eventually be borrowed by the comments in the target template i.e. `blog.php`)
 
-```html
+```html title="blog-comments.php"
 <?php require_once( 'couch/cms.php' ); ?>
 <cms:template title='Blog Comments' clonable='1' hidden='1'>
    
@@ -45,68 +47,48 @@ Following is our sample source template (for our demo we are defining two editab
 <?php COUCH::invoke(); ?>
 ```
 
-With the two templates registered and ready, we can begin the process of extending the comments in the target template.
-It is, just like with extended-folders, a two step process:
+With the two templates registered and ready, we can begin the process of extending the comments in the target template. It is, just like with extended-folders, a two step process:
 
-1. Enable the 'extended-comments' addon by uncommenting (i.e. removing the '//') from the following line in 'couch/addons/kfunctions.php' -
+<Steps>
 
-```php
-require_once( K_COUCH_DIR.'addons/extended/extended-comments.php' );
-```
+1. Enable the **extended-comments** addon by uncommenting (i.e. removing the `//`) from the following line in `couch/addons/kfunctions.php`:
 
-(we are assuming that you have already extracted and placed the 'extended' folder from the attached zip into 'couch/addons')
+    ```php
+    require_once( K_COUCH_DIR.'addons/extended/extended-comments.php' );
+    ```
 
-2. Make the following change to the target template (i.e. blog.php in our example). Assuming this was the template's original definition -
-Before:
-```html
-<cms:template title='Blog' clonable='1' commentable='1'>
-```
+    (we are assuming that you have already extracted and placed the `extended` folder from the attached zip into `couch/addons`)
 
-After:
-```html
-<cms:template title='Blog' clonable='1' commentable='1' comment_masterpage='blog-comments.php'>
-```
+2. Make the following change to the target template (i.e. `blog.php` in our example). Assuming this was the template's original definition:
 
-As you can see, we have used the `comment_masterpage` parameter to specify our source template's name.
-IMP: make sure to visit the modified target template at this point as super-admin for the changes to picked up by Couch.
+    Before:
+    ```html
+    <cms:template title='Blog' clonable='1' commentable='1'>
+    ```
+
+    After:
+    ```html ins="comment_masterpage='blog-comments.php'"
+    <cms:template title='Blog' clonable='1' commentable='1' comment_masterpage='blog-comments.php'>
+    ```
+
+    As you can see, we have used the `comment_masterpage` parameter to specify our source template's name.
+
+    :::caution[Important]
+    Make sure to visit the modified target template at this point as super-admin for the changes to picked up by Couch.
+    :::
+
+</Steps>
 
 With the two above-mentioned changes, our target template is now ready to accept the additional fields.
 Let us see now.
 
 Unlike folders that we extended before, comments cannot be created from the admin-panel. They get created from the front-end through comment submission form placed in the target template.
 
-As you'd know from the docs (http://www.couchcms.com/docs/concepts/u ... ments.html), the comment form expects inputs named k_author, k_email, k_link and k_comment. With the extended-comments addon activated, we can now add to this form the editable regions we defined in the source template as well.
+As you'd know from the [**docs**](../../../../concepts/comments/), the comment form expects inputs named `k_author`, `k_email`, `k_link` and `k_comment`. With the extended-comments addon activated, we can now add to this form the editable regions we defined in the source template as well.
 
-Assuming our comment form is using the sample code given in the docs, folowing is an excerpt from the form body showing some regular inputs
+Assuming our comment form is using the sample code given in the docs, folowing is an excerpt from the form body showing some regular inputs and our 'extended' fields:
 
-```html
-...
-<p class="comment-input">
-    <cms:input type="textarea" name="k_comment" style="width:93%" rows="10" cols="10" tabindex="4"
-        validator_msg="required=Please enter something as comment"
-        required="1" />
-   
-    <br>
-    <small>
-    <cms:html_encode>
-        You can use the following HTML tags: <a><br><strong><b><em><i><blockquote><pre><code><ul><ol><li><del>
-    </cms:html_encode>
-    </small>
-</p>
-
-<cms:if k_logged_out >
-    <p class="comment-input">
-        <label for="captcha"><small>Please enter this word in the textbox below</small></label><br>
-        <cms:input type="captcha" name="captcha" format='i-r-t' />
-    </p>
-</cms:if>
-
-<cms:input type="submit" value="Submit" name="submit"/>
-...
-```
-
-We can add our 'extended' fields to the form as follows -
-```html
+```html ins={16-28}
 ...
 <p class="comment-input">
     <cms:input type="textarea" name="k_comment" style="width:93%" rows="10" cols="10" tabindex="4"
@@ -148,10 +130,9 @@ We can add our 'extended' fields to the form as follows -
 ...
 ```
 
-As you can see, the `cms:input` match their corresponding `cms:editable` regions we defined in the source template.
-And that is the key - any `cms:inputs` with names matching the editable regions in source template will be persisted as part of the comment upon successful form submission.
+As you can see, the `cms:input` match their corresponding `cms:editable` regions we defined in the source template. And that is the key - any `cms:inputs` with names matching the editable regions in source template will be persisted as part of the comment upon successful form submission.
 
-The tag that does all the heavy-lifting while saving a comment, as you'd know, is
+The tag that does all the heavy-lifting while saving a comment, as you'd know, is `cms:process_comment`:
 
 ```html
 cms:process_comment
@@ -169,13 +150,14 @@ Try submitting some comments and verify this.
 
 One little problem you might face while adding cms:input fields manually, as we did above, is when there is no matching input type for an extending editable region e.g. 'relation' etc. (or even when it is too much hassle to craft an input that matches the editable region exactly)
 
-To get around this we can piggy-back on DataBound Form. As you know, we can use a generic input of type 'bound' with DataBound Forms and that input automatically gets resolved to whatever editable region is defined with its name.
+To get around this we can piggy-back on [**DataBound Form**](../../../../concepts/databound-forms/). As you know, we can use a generic input of type `bound` with DataBound Forms and that input automatically gets resolved to whatever editable region is defined with its name.
 
 Let us make a little change to our comment submission form to turn it into a DataBound form:
 
 Before:
 ```html
 <cms:form method="post" class="k_form">
+
 ```
 
 After:
@@ -199,6 +181,7 @@ Before:
     opt_values='Entertainment | Computers | Sports | Health'
     type='checkbox'
 />
+```
 
 After:
 ```html
@@ -209,8 +192,7 @@ The resulting form will look and work just the same as before.
 
 If you are conversant with DataBound Forms, you might be wondering why we have not used the `cms:db_persist_form` tag that conventionally accompanies all DBFs?
 
-The answer is that the `cms:process_comment` already present in the comment form now works exactly as `cms:db_persist_form` (as mentioned, it has grown 'smarter' :) ).
-So much so that it now also supports passing values directly into it as parameters, exactly how we can do with `cms:db_persist_form` e.g. the following would always submit 'Penguin!' as the club field's value:
+The answer is that the `cms:process_comment` already present in the comment form now works exactly as `cms:db_persist_form` (as mentioned, it has grown 'smarter' :)). So much so that it now also supports passing values directly into it as parameters, exactly how we can do with `cms:db_persist_form` e.g. the following would always submit 'Penguin!' as the club field's value:
 
 ```html
 <cms:if k_success >
@@ -222,10 +204,9 @@ So much so that it now also supports passing values directly into it as paramete
 
 Okay, so now we can get the values into our custom fields. How do we get them out?
 
-Listing Extended Comments:
-Displaying the values submitted through the extended fields requires no additional effort.
-The `cms:comments` tag used to list submitted comments will make available the extended fields too.
-For example, the following placed within the `cms:comments` loop will show the club and categories of the comments been shown:
+### Listing Extended Comments
+
+Displaying the values submitted through the extended fields requires no additional effort. The `cms:comments` tag used to list submitted comments will make available the extended fields too. For example, the following placed within the `cms:comments` loop will show the club and categories of the comments been shown:
 
 ```html
 <cms:if k_is_page >

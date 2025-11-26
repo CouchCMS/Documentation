@@ -1,10 +1,33 @@
 {
-    "editor.fontSize": 15,
-    "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 120,
+    "files.associations": {
+        "*.mdx": "mdx",
+        "*.mdc": "markdown"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "[mdx]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.wordWrap": "on"
+    },
     "markdown.validate.enabled": true,
-    "markdown.validate.ignoredLinks": [
-        "../../../concepts/extended-users/",
-        "../../../tags-reference/core/template/"
+    "markdown.updateLinksOnFileMove.enabled": "always",
+    "cSpell.enabled": true,
+    "cSpell.language": "en",
+    "cSpell.words": [
+        "CouchCMS",
+        "editable",
+        "Starlight",
+        "Astro",
+        "mdx",
+        "frontmatter"
     ]
 }
