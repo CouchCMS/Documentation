@@ -423,7 +423,7 @@ All AI editor configurations are automatically generated from **DOCS-STANDARDS.m
 
 To update all AI configurations:
 \`\`\`bash
-pnpm run sync
+bun run sync
 \`\`\`
 
 ## Manual Tools
@@ -439,7 +439,7 @@ Generated: ${new Date().toISOString()}
 
 ---
 
-**Never edit generated files directly. Edit DOCS-STANDARDS.md and run \`pnpm run sync\`.**
+**Never edit generated files directly. Edit DOCS-STANDARDS.md and run \`bun run sync\`.**
 `;
 
 writeConfig(
@@ -454,4 +454,4 @@ console.log("📁 Files updated: 9 configurations");
 console.log("🔄 Next steps:");
 console.log("   - Review generated files");
 console.log("   - Commit changes to version control");
-console.log("   - Run `pnpm run sync` after editing DOCS-STANDARDS.md\n");
+console.log("   - Run `bun run sync` after editing DOCS-STANDARDS.md\n");

@@ -23,7 +23,7 @@ All AI editor configurations are automatically generated from **DOCS-STANDARDS.m
 
 To update all AI configurations:
 ```bash
-pnpm run sync
+bun run sync
 ```
 
 ## Manual Tools
@@ -35,8 +35,8 @@ These files are maintained manually:
 
 ## Last Sync
 
-Generated: 2025-10-23T12:04:35.034Z
+Generated: 2025-11-26T17:19:28.784Z
 
 ---
 
-**Never edit generated files directly. Edit DOCS-STANDARDS.md and run `pnpm run sync`.**
+**Never edit generated files directly. Edit DOCS-STANDARDS.md and run `bun run sync`.**

@@ -210,4 +210,4 @@ Requires CouchCMS v2.0 or higher.
 
 **For complete rules, see STYLEGUIDE.md**
 **For conversion help, use @.cursor/prompts/convert-to-markdown.md**
-**Generated from DOCS-STANDARDS.md - Last updated: 2025-10-23**
+**Generated from DOCS-STANDARDS.md - Last updated: 2025-11-26**
